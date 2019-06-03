@@ -5,7 +5,7 @@
       placement="right"
       @close="onClose"
       :closable="false"
-      :visible="visible"
+      :visible="ChangeVisible"
     >
       <div class="setting-drawer-index-content">
 
@@ -160,9 +160,9 @@
           </a-alert>
         </div>
       </div>
-      <div class="setting-drawer-index-handle" @click="toggle">
-        <a-icon type="setting" v-if="!visible"/>
-        <a-icon type="close" v-else/>
+      <div class="setting-drawer-index-handle" @click="onClose" v-if="ChangeVisible">
+        <!-- <a-icon type="setting" v-if="!ChangeVisible"/> -->
+        <a-icon type="close" />
       </div>
     </a-drawer>
   </div>
@@ -187,13 +187,17 @@ export default {
       colorList
     }
   },
-  watch: {
-
+  watch: {},
+  computed: {
+    ChangeVisible: function () {
+      return this.$store.getters.visible
+    }
   },
   mounted () {
     const vm = this
     setTimeout(() => {
-      vm.visible = false
+      vm.visible = vm.$store.getters.visible
+      console.log('visible', vm.visible)
     }, 16)
     // 当主题色不是默认色时，才进行主题编译
     if (this.primaryColor !== config.primaryColor) {
@@ -208,7 +212,7 @@ export default {
       this.visible = true
     },
     onClose () {
-      this.visible = false
+      this.$store.dispatch('ToggleVisible', false)
     },
     toggle () {
       this.visible = !this.visible

@@ -9,7 +9,8 @@ import {
   DEFAULT_FIXED_SIDEMENU,
   DEFAULT_FIXED_HEADER_HIDDEN,
   DEFAULT_CONTENT_WIDTH_TYPE,
-  DEFAULT_MULTI_TAB
+  DEFAULT_MULTI_TAB,
+  DEFAULT_LAYER_VISIBLE
 } from '@/store/mutation-types'
 
 const app = {
@@ -24,7 +25,8 @@ const app = {
     autoHideHeader: false,
     color: null,
     weak: false,
-    multiTab: true
+    multiTab: true,
+    visible: false
   },
   mutations: {
     SET_SIDEBAR_TYPE: (state, type) => {
@@ -74,6 +76,11 @@ const app = {
     TOGGLE_MULTI_TAB: (state, bool) => {
       Vue.ls.set(DEFAULT_MULTI_TAB, bool)
       state.multiTab = bool
+    },
+    // cs切换主题层
+    TOGGLE_VISIBLE: (state, visible) => {
+      Vue.ls.set(DEFAULT_LAYER_VISIBLE, visible)
+      state.visible = visible
     }
   },
   actions: {
@@ -115,6 +122,10 @@ const app = {
     },
     ToggleMultiTab ({ commit }, bool) {
       commit('TOGGLE_MULTI_TAB', bool)
+    },
+    // cs 显示右侧主题层
+    ToggleVisible ({ commit }, visible) {
+      commit('TOGGLE_VISIBLE', visible)
     }
   }
 }

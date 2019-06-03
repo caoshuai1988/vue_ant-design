@@ -38,6 +38,9 @@
           </a-menu-item>
         </a-menu>
       </a-dropdown>
+      <span class="action" @click="handleSwitchLayer">
+        <a-icon type="setting"></a-icon>
+      </span>
     </div>
   </div>
 </template>
@@ -52,7 +55,7 @@ export default {
     NoticeIcon
   },
   methods: {
-    ...mapActions(['Logout']),
+    ...mapActions(['Logout', 'visible']),
     ...mapGetters(['nickname', 'avatar']),
     handleLogout () {
       const that = this
@@ -73,6 +76,9 @@ export default {
         onCancel () {
         }
       })
+    },
+    handleSwitchLayer () {
+      this.$store.dispatch('ToggleVisible', true)
     }
   }
 }

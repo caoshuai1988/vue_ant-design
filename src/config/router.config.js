@@ -67,6 +67,21 @@ export const asyncRouterMap = [
           }
         ]
       },
+      // 新建表单
+      {
+        path: '/fsxt',
+        redirect: '/fsxt/fsxt-base-form',
+        component: PageView,
+        meta: { title: '富深协通表单', icon: 'form', permission: [ 'form' ] },
+        children: [
+          {
+            path: '/fsxt/fsxt-base-form',
+            name: 'BaseFormPage',
+            component: () => import('@/views/form/BasicFormPage'),
+            meta: { title: '基础表单', keepAlive: true, permission: [ 'form' ] }
+          }
+        ]
+      },
 
       // list
       {

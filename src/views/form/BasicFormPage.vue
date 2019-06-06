@@ -10,8 +10,18 @@
     padding: 0 20px;
     height: 0.5px;
     background: #cccccc;
+    margin-bottom: 24px;
+  }
+  /* you can make up upload button and sample style by using stylesheets */
+  .ant-upload-select-picture-card i {
+    font-size: 32px;
+    color: #999;
   }
 
+  .ant-upload-select-picture-card .ant-upload-text {
+    margin-top: 8px;
+    color: #666;
+  }
 </style>
 <template>
   <a-card :body-style="{padding: '24px 32px'}" :bordered="false">
@@ -138,31 +148,98 @@
           <a-button>筛选三</a-button>
         </a-button-group>
       </a-form-item>
+      <!-- ====分界线====== -->
       <div class="line"></div>
+      <!-- <h1 class="title-name">组标题</h1> -->
+      <!-- 上传附件 -->
+      <a-form-item
+        label="上传附件"
+        help="支持扩展名：.rar .zip .doc .docx .pdf .jpg..."
+        :labelCol="{lg: {span: 7}, sm: {span: 7}}"
+        :wrapperCol="{lg: {span: 10}, sm: {span: 17} }">
+        <a-upload name="file" :multiple="true" action="https://www.mocky.io/v2/5cc8019d300000980a055e76" :headers="headers" @change="handleChange">
+          <a-button>
+            <a-icon type="upload" />上传文件
+          </a-button>
+        </a-upload>
+      </a-form-item>
+
+      <!-- 上传证件 -->
+      <a-form-item
+        label="上传证件"
+        :labelCol="{lg: {span: 7}, sm: {span: 7}}"
+        :wrapperCol="{lg: {span: 10}, sm: {span: 17} }">
+        <template>
+          <div class="clearfix">
+            <a-upload
+              action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+              listType="picture-card"
+              :fileList="fileList"
+              @preview="handlePreview"
+              @change="handleChange"
+            >
+              <div v-if="fileList.length < 3">
+                <a-icon type="plus" />
+                <div class="ant-upload-text">Upload</div>
+              </div>
+            </a-upload>
+            <a-modal :visible="previewVisible" :footer="null" @cancel="handleCancel">
+              <img alt="example" style="width: 100%" :src="previewImage" />
+            </a-modal>
+          </div>
+        </template>
+      </a-form-item>
+      <!-- 批量上传 -->
+      <a-form-item
+        label="批量上传"
+        :labelCol="{lg: {span: 7}, sm: {span: 7}}"
+        :wrapperCol="{lg: {span: 10}, sm: {span: 17} }">
+        <template>
+          <a-upload-dragger name="file" :multiple="true" action="https://www.mocky.io/v2/5cc8019d300000980a055e76" @change="handleChange">
+            <p class="ant-upload-drag-icon">
+              <a-icon type="inbox" />
+            </p>
+            <p class="ant-upload-text">点击或将文件拖拽到这里上传</p>
+            <p class="ant-upload-hint">支持扩展名：.rar .zip .doc .docx .pdf .jpg...</p>
+          </a-upload-dragger>
+        </template>
+      </a-form-item>
+      <!-- 提交 -->
       <a-form-item
         :wrapperCol="{ span: 24 }"
         style="text-align: center">
         <a-button htmlType="submit" type="primary">提交</a-button>
         <a-button style="margin-left: 8px">保存</a-button>
       </a-form-item>
+
     </a-form>
   </a-card>
 </template>
 
 <script>
 export default {
-  name: 'BaseForm',
+  name: 'BaseFormPage',
   data () {
     return {
-      description: '表单页用于向用户收集或验证信息，基础表单常见于数据项较少的表单场景。',
+      headers: {
+        authorization: 'authorization-text'
+      },
+      // description: '表单页用于向用户收集或验证信息，基础表单常见于数据项较少的表单场',
       value: 1,
       // form
-      form: this.$form.createForm(this)
+      form: this.$form.createForm(this),
+      previewVisible: false,
+      previewImage: '',
+      fileList: [{
+        uid: '-1',
+        name: 'xxx.png',
+        status: 'done',
+        url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png'
+      }]
 
     }
   },
   methods: {
-
     // handler
     handleSubmit (e) {
       e.preventDefault()
@@ -173,7 +250,16 @@ export default {
         }
       })
     },
-    // 多选框选择事件
+    handleCancel () {
+      this.previewVisible = false
+    },
+    handlePreview (file) {
+      this.previewImage = file.url || file.thumbUrl
+      this.previewVisible = true
+    },
+    handleChange ({ fileList }) {
+      this.fileList = fileList
+    },
     onChange () {
 
     }

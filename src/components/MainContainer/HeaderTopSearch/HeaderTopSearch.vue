@@ -14,9 +14,13 @@
           <div class="header-index-wide">
             <div class="header-index-left">
               <logo class="top-nav-header" :show-title="device !== 'mobile'"/>
-              <s-menu v-if="device !== 'mobile'" mode="horizontal" :menu="menus" :theme="theme" />
-              <a-icon v-else class="trigger" :type="collapsed ? 'menu-fold' : 'menu-unfold'" @click="toggle" />
-              <top-drop-menu></top-drop-menu>
+            </div>
+            <div class="header-index-middle">
+              <a-input-search
+                placeholder="搜索菜单"
+                style="width: 200px"
+                @search="onSearch"
+              />
             </div>
             <user-menu class="header-index-right"></user-menu>
           </div>
@@ -27,14 +31,14 @@
 </template>
 
 <script>
-import UserMenu from '../tools/UserMenu'
-import SMenu from '../Menu/'
-import Logo from '../tools/Logo'
+import UserMenu from '../../tools/UserMenu'
+import SMenu from '../../Menu/'
+import Logo from '../../tools/Logo'
 import { mixin } from '@/utils/mixin'
-import TopDropMenu from '../MainContainer/TopDropMenu'
+import TopDropMenu from '../TopDropMenu'
 
 export default {
-  name: 'GlobalHeader',
+  name: 'HeaderTopSearch',
   components: {
     UserMenu,
     SMenu,
@@ -101,6 +105,9 @@ export default {
     },
     toggle () {
       this.$emit('toggle')
+    },
+    onSearch (value) {
+      console.log(value)
     }
   },
   beforeDestroy () {

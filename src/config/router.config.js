@@ -311,7 +311,15 @@ export const asyncRouterMap = [
                 path: '/other/list/permission-list',
                 name: 'PermissionList',
                 component: () => import('@/views/other/PermissionList'),
-                meta: { title: '权限列表', keepAlive: true }
+                meta: { title: '权限列表', keepAlive: true },
+                children: [
+                  {
+                    path: '/other/list/user-list',
+                    name: 'UserList',
+                    component: () => import('@/views/other/UserList'),
+                    meta: { title: '用户列表', keepAlive: true }
+                  }
+                ]
               }
             ]
           }

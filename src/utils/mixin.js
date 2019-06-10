@@ -25,8 +25,14 @@ const mixin = {
     isTopMenu () {
       return this.layoutMode === 'topmenu'
     },
+    // isSideMenu () {
+    //   return !this.isTopMenu()
+    // },
     isSideMenu () {
-      return !this.isTopMenu()
+      return this.layoutMode === 'sidemenu'
+    },
+    isNewMenu () {
+      return this.layoutMode === 'newmenu'
     }
   }
 }

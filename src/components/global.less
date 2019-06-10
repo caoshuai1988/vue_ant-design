@@ -119,6 +119,14 @@ body {
     }
   }
 
+  .newmenu {
+    display: flex;
+    flex-direction: column;
+    .ant-layout-content {
+      display: flex;
+    }
+  }
+
   .header {
     height: 64px;
     padding: 0 12px 0 0;
@@ -234,7 +242,7 @@ body {
     transition: background 0.3s, width 0.2s;
 
     .header-index-wide {
-      max-width: 1200px;
+      // max-width: 1200px; cs
       margin: auto;
       padding-left: 0;
       display: flex;
@@ -249,17 +257,18 @@ body {
       }
 
       .header-index-left {
-        flex: 0 1 1000px;
+        flex: 0 1 800px; // cs
         display: flex;
 
         .logo.top-nav-header {
-          flex: 0 0 165px;
-          width: 165px;
+          // flex: 0 0 165px;
+          width: 200px;
           height: 64px;
           position: relative;
           line-height: 64px;
           transition: all 0.3s;
           overflow: hidden;
+          margin-left: 24px;
 
           img,
           svg {
@@ -284,7 +293,7 @@ body {
         flex: 1 0 auto;
         height: 64px;
         overflow: hidden;
-
+        margin-right: 24px;
         .content-box {
           float: right;
         }
@@ -349,13 +358,17 @@ body {
     padding: 0;
   }
 }
-
+.ant-layout-sider {
+  background: #ffffff !important;
+}
 // 菜单样式
 .sider {
   box-shadow: 2px 0 6px rgba(0, 21, 41, 0.35);
   position: relative;
   z-index: 10;
   min-height: 100vh;
+
+ 
 
   .ant-layout-sider-children {
     overflow-y: hidden;
@@ -376,7 +389,7 @@ body {
     padding-left: 24px;
     overflow: hidden;
     line-height: 64px;
-    background: #002140;
+    background: #003F7D;
     transition: all .3s;
 
     img,
@@ -399,6 +412,7 @@ body {
       font-family: Avenir, Helvetica Neue, Arial, Helvetica, sans-serif;
       font-weight: 600;
       vertical-align: middle;
+      width: 164px; // cs
     }
   }
 
@@ -487,4 +501,16 @@ body {
       margin-right: 8px;
     }
   }
+}
+/** cs-custom-style **/
+.text-overflow {
+  overflow:hidden; /*内容超出宽度时隐藏超出部分的内容 */
+  text-overflow:ellipsis;/* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用。*/
+  white-space:nowrap; /*不换行 */
+}
+.no-padding {
+  padding: 0 !important;
+}
+.no-margin {
+  margin: 0 !important;
 }

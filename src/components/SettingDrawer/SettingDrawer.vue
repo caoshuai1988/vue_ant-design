@@ -31,7 +31,7 @@
               </template>
               <div class="setting-drawer-index-item" @click="handleMenuTheme('light')">
                 <img src="https://gw.alipayobjects.com/zos/rmsportal/jpRkZQMyYRryryPNtyIC.svg" alt="light">
-                <div class="setting-drawer-index-selectIcon" v-if="navTheme !== 'dark'">
+                <div class="setting-drawer-index-selectIcon" v-if="navTheme === 'light'">
                   <a-icon type="check"/>
                 </div>
               </div>
@@ -78,7 +78,19 @@
               </template>
               <div class="setting-drawer-index-item" @click="handleLayout('topmenu')">
                 <img src="https://gw.alipayobjects.com/zos/rmsportal/KDNDBbriJhLwuqMoxcAr.svg" alt="topmenu">
-                <div class="setting-drawer-index-selectIcon" v-if="layoutMode !== 'sidemenu'">
+                <div class="setting-drawer-index-selectIcon" v-if="layoutMode === 'topmenu'">
+                  <a-icon type="check"/>
+                </div>
+              </div>
+            </a-tooltip>
+
+            <a-tooltip>
+              <template slot="title">
+                顶部栏导航
+              </template>
+              <div class="setting-drawer-index-item" @click="handleLayout('newmenu')">
+                <img src="https://gw.alipayobjects.com/zos/rmsportal/KDNDBbriJhLwuqMoxcAr.svg" alt="topmenu">
+                <div class="setting-drawer-index-selectIcon" v-if="layoutMode === 'newmenu'">
                   <a-icon type="check"/>
                 </div>
               </div>
@@ -187,7 +199,6 @@ export default {
       colorList
     }
   },
-  watch: {},
   computed: {
     ChangeVisible: function () {
       return this.$store.getters.visible
@@ -197,12 +208,8 @@ export default {
     const vm = this
     setTimeout(() => {
       vm.visible = vm.$store.getters.visible
-      console.log('visible', vm.visible)
     }, 16)
-    // 当主题色不是默认色时，才进行主题编译
-    if (this.primaryColor !== config.primaryColor) {
-      updateTheme(this.primaryColor)
-    }
+    updateTheme(this.primaryColor)
     if (this.colorWeak !== config.colorWeak) {
       updateColorWeak(this.colorWeak)
     }
@@ -276,7 +283,7 @@ export default {
       this.$store.dispatch('ToggleFixedHeaderHidden', autoHidden)
     },
     handleFixSiderbar (fixed) {
-      if (this.layoutMode === 'topmenu') {
+      if (this.$store.getters.layoutMode === 'topmenu' || this.$store.getters.layoutMode === 'newmenu') {
         this.$store.dispatch('ToggleFixSiderbar', false)
         return
       }

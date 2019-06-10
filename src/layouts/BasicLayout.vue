@@ -29,8 +29,8 @@
     ></side-menu>
 
     <a-layout :class="[layoutMode, `content-width-${contentWidth}`]" :style="{ paddingLeft: contentPaddingLeft, minHeight: '100vh' }">
-      <!-- layout header -->
       <global-header
+        v-if="!isNewMenu()"
         :mode="layoutMode"
         :menus="menus"
         :theme="navTheme"
@@ -38,19 +38,42 @@
         :device="device"
         @toggle="toggle"
       />
-
+      <header-top-search
+        v-else
+        :mode="layoutMode"
+        :menus="menus"
+        :theme="navTheme"
+        :collapsed="collapsed"
+        :device="device"
+        @toggle="toggle"
+      />
       <!-- layout content -->
-      <a-layout-content :style="{ height: '100%', margin: '24px 24px 0', paddingTop: fixedHeader ? '64px' : '0' }">
-        <multi-tab v-if="multiTab"></multi-tab>
-        <transition name="page-transition">
-          <route-view />
-        </transition>
+      <a-layout-content :style="{ height: '100%', margin: isNewMenu() ? null : '24px 24px 0', paddingTop: fixedHeader ? '64px' : '0' }">
+        <side-menu
+          v-if="isNewMenu()"
+          mode="inline"
+          :menus="menus"
+          :theme="navTheme"
+          :collapsed="collapsed"
+          :collapsible="true"
+          @toggle="toggle"
+        ></side-menu>
+        <!-- layout header -->
+        <div :style="{ width: isNewMenu() ? '100%' : null }">
+          <multi-tab :class="isNewMenu() ? 'no-margin' : null" v-if="multiTab"></multi-tab>
+          <transition name="page-transition">
+            <route-view />
+          </transition>
+          <a-layout-footer>
+            <global-footer />
+          </a-layout-footer>
+        </div>
       </a-layout-content>
 
       <!-- layout footer -->
-      <a-layout-footer>
+      <!-- <a-layout-footer>
         <global-footer />
-      </a-layout-footer>
+      </a-layout-footer> -->
 
       <!-- Setting Drawer (show in development mode) -->
       <setting-drawer v-if="!production"></setting-drawer>
@@ -68,7 +91,8 @@ import config from '@/config/defaultSettings'
 import RouteView from './RouteView'
 import MultiTab from '@/components/MultiTab'
 import SideMenu from '@/components/Menu/SideMenu'
-import GlobalHeader from '@/components/GlobalHeader'
+import GlobalHeader from '@/components/GlobalHeader' // 左侧菜单通顶版本
+import HeaderTopSearch from '@/components/MainContainer/HeaderTopSearch'
 import GlobalFooter from '@/components/GlobalFooter'
 import SettingDrawer from '@/components/SettingDrawer'
 
@@ -80,6 +104,7 @@ export default {
     MultiTab,
     SideMenu,
     GlobalHeader,
+    HeaderTopSearch,
     GlobalFooter,
     SettingDrawer
   },

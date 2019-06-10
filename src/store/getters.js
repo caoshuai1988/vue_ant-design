@@ -10,7 +10,8 @@ const getters = {
   userInfo: state => state.user.info,
   addRouters: state => state.permission.addRouters,
   multiTab: state => state.app.multiTab,
-  visible: state => state.app.visible // cs
+  visible: state => state.app.visible, // cs
+  layoutMode: state => state.app.layout // cs
 }
 
 export default getters

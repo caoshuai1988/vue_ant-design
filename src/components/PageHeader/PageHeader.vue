@@ -75,7 +75,6 @@ export default {
   .detail {
     display: flex;
     /*margin-bottom: 16px;*/
-
     .avatar {
       flex: 0 1 72px;
       margin: 0 24px 8px 0;

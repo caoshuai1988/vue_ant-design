@@ -1,5 +1,5 @@
 // eslint-disable-next-line
-import { UserLayout, BasicLayout, RouteView, BlankLayout, PageView } from '@/layouts'
+import { UserLayout, BasicLayout, RouteView, BlankLayout, PageView, PageViewFsxt } from '@/layouts'
 import { bxAnaalyse } from '@/core/icons'
 
 export const asyncRouterMap = [
@@ -64,6 +64,21 @@ export const asyncRouterMap = [
             name: 'AdvanceForm',
             component: () => import('@/views/form/advancedForm/AdvancedForm'),
             meta: { title: '高级表单', keepAlive: true, permission: [ 'form' ] }
+          }
+        ]
+      },
+      // 新建表单
+      {
+        path: '/fsxt',
+        redirect: '/fsxt/fsxt-base-form',
+        component: PageViewFsxt,
+        meta: { title: '富深协通表单', icon: 'form', permission: [ 'form' ] },
+        children: [
+          {
+            path: '/fsxt/fsxt-base-form',
+            name: 'BaseFormPage',
+            component: () => import('@/views/form/BasicFormPage'),
+            meta: { title: '基础表单', keepAlive: true, permission: [ 'form' ] }
           }
         ]
       },

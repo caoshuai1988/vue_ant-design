@@ -1,41 +1,17 @@
 <template>
   <div class="page-header">
     <div class="page-header-index-wide">
-      <!-- <s-breadcrumb /> -->
+      <s-breadcrumb />
       <div class="detail">
         <div class="main" v-if="!$route.meta.hiddenHeaderContent">
           <div class="row">
-            <!-- <img v-if="logo" :src="logo" class="logo"/> -->
+            <img v-if="logo" :src="logo" class="logo"/>
             <h1 v-if="title" class="title">{{ title }}</h1>
-            <a-button type="primary" style="margin-left: 8px;margin-right: 8px">保存</a-button>
-            <a-button-group>
-              <a-button>提交审批</a-button>
-              <a-button>演示提醒</a-button>
-              <a-button>删除</a-button>
-              <a-button><a-icon type="ellipsis"/></a-button>
-            </a-button-group>
-            <span>|</span>
-            <!-- suffixIcon="caret-down" -->
-            <a-select
-              showSearch
-              placeholder="Select a person"
-              optionFilterProp="children"
-              style="width: 200px"
-              @focus="handleFocus"
-              @blur="handleBlur"
-              @change="handleChange"
-              :filterOption="filterOption">
-              <i slot="suffixIcon"><a-icon type="caret-down" /></i>
-              <a-select-option value="jack">Jack</a-select-option>
-              <a-select-option value="lucy">Lucy</a-select-option>
-              <a-select-option value="tom">Tom</a-select-option>
-            </a-select>
-
-            <!-- <div class="action">
+            <div class="action">
               <slot name="action"></slot>
-            </div> -->
+            </div>
           </div>
-          <!-- <div class="row">
+          <div class="row">
             <div v-if="avatar" class="avatar">
               <a-avatar :src="avatar" />
             </div>
@@ -48,7 +24,7 @@
           </div>
           <div>
             <slot name="pageMenu"></slot>
-          </div> -->
+          </div>
         </div>
       </div>
     </div>
@@ -134,7 +110,7 @@ export default {
         font-weight: 500;
         color: rgba(0, 0, 0, 0.85);
         margin-bottom: 16px;
-        // flex: auto;
+        flex: auto;
       }
       .logo {
         width: 28px;

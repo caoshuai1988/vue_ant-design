@@ -1,5 +1,5 @@
 // eslint-disable-next-line
-import { UserLayout, BasicLayout, RouteView, BlankLayout, PageView } from '@/layouts'
+import { UserLayout, BasicLayout, RouteView, BlankLayout, PageView, PageViewFsxt } from '@/layouts'
 import { bxAnaalyse } from '@/core/icons'
 
 export const asyncRouterMap = [
@@ -71,7 +71,7 @@ export const asyncRouterMap = [
       {
         path: '/fsxt',
         redirect: '/fsxt/fsxt-base-form',
-        component: PageView,
+        component: PageViewFsxt,
         meta: { title: '富深协通表单', icon: 'form', permission: [ 'form' ] },
         children: [
           {

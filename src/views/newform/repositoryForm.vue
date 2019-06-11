@@ -88,10 +88,9 @@
 </template>
 
 <script>
-import bus from '@/bus'
 export default {
   components: {
-    bus
+
   },
   name: 'RepositoryForm',
   // props: ['ceshi'],

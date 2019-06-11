@@ -316,6 +316,39 @@ export const asyncRouterMap = [
             ]
           }
         ]
+      },
+      // form1
+      {
+        path: '/newform',
+        redirect: '/newform/newbaseform',
+        component: PageView,
+        meta: { title: '表单页1', icon: 'form', permission: [ 'form' ] },
+        children: [
+          {
+            path: '/form/newbaseform',
+            name: 'NewBaseForm',
+            component: () => import('@/views/newform/newBaseForm'),
+            meta: { title: '基础表单', keepAlive: true, permission: [ 'form' ] }
+          },
+          {
+            path: 'newform/indexa',
+            name: 'indexa',
+            component: () => import('@/views/newform/indexa'),
+            meta: { title: '弹出', keepAlive: true, permission: [ 'form' ] }
+          },
+          {
+            path: 'newform/advancedForm',
+            name: 'advancedForm',
+            component: () => import('@/views/newform/advancedForm'),
+            meta: { title: '高级表单', keepAlive: true, permission: [ 'form' ] }
+          },
+          {
+            path: 'newform/mapForm',
+            name: 'mapForm',
+            component: () => import('@/views/newform/mapForm'),
+            meta: { title: '地图表单', keepAlive: true, permission: [ 'form' ] }
+          }
+        ]
       }
     ]
   },

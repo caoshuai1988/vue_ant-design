@@ -10,6 +10,7 @@
       @close="drawerClose"
     >
       <side-menu
+        :class="surplusTheme"
         mode="inline"
         :menus="menus"
         :theme="navTheme"
@@ -20,6 +21,7 @@
     </a-drawer>
 
     <side-menu
+      :class="surplusTheme"
       v-else-if="isSideMenu()"
       mode="inline"
       :menus="menus"
@@ -110,7 +112,13 @@ export default {
       this.collapsed = !val
     }
   },
+  beforeCreate(){
+
+  },
   created () {
+
+    console.log(this.navTheme)
+    console.log(this.surplusTheme)
     this.menus = this.mainMenu.find(item => item.path === '/').children
     this.collapsed = !this.sidebarOpened
   },
@@ -128,6 +136,7 @@ export default {
   methods: {
     ...mapActions(['setSidebar']),
     toggle () {
+      debugger
       this.collapsed = !this.collapsed
       this.setSidebar(!this.collapsed)
       triggerWindowResizeEvent()

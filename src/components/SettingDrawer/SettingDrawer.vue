@@ -19,7 +19,7 @@
               </template>
               <div class="setting-drawer-index-item" @click="handleMenuTheme('dark')">
                 <img src="https://gw.alipayobjects.com/zos/rmsportal/LCkqqYNmvBEbokSDscrm.svg" alt="dark">
-                <div class="setting-drawer-index-selectIcon" v-if="navTheme === 'dark'">
+                <div class="setting-drawer-index-selectIcon" v-if="navTheme === 'dark' && !surplusTheme">
                   <a-icon type="check"/>
                 </div>
               </div>
@@ -31,7 +31,29 @@
               </template>
               <div class="setting-drawer-index-item" @click="handleMenuTheme('light')">
                 <img src="https://gw.alipayobjects.com/zos/rmsportal/jpRkZQMyYRryryPNtyIC.svg" alt="light">
-                <div class="setting-drawer-index-selectIcon" v-if="navTheme !== 'dark'">
+                <div class="setting-drawer-index-selectIcon" v-if="navTheme === 'light' && !surplusTheme">
+                  <a-icon type="check"/>
+                </div>
+              </div>
+            </a-tooltip>
+            <a-tooltip>
+              <template slot="title">
+                plusTheme01风格测试
+              </template>
+              <div class="setting-drawer-index-item" @click="handleSurplusTheme('plusTheme01')">
+                <img src="https://gw.alipayobjects.com/zos/rmsportal/jpRkZQMyYRryryPNtyIC.svg" alt="plusTheme01">
+                <div class="setting-drawer-index-selectIcon" v-if="surplusTheme === 'plusTheme01'">
+                  <a-icon type="check"/>
+                </div>
+              </div>
+            </a-tooltip>
+            <a-tooltip>
+              <template slot="title">
+                plusTheme02风格测试
+              </template>
+              <div class="setting-drawer-index-item" @click="handleSurplusTheme('plusTheme02')">
+                <img src="https://gw.alipayobjects.com/zos/rmsportal/jpRkZQMyYRryryPNtyIC.svg" alt="plusTheme02">
+                <div class="setting-drawer-index-selectIcon" v-if="surplusTheme === 'plusTheme02'">
                   <a-icon type="check"/>
                 </div>
               </div>
@@ -222,6 +244,10 @@ export default {
     },
     handleMenuTheme (theme) {
       this.$store.dispatch('ToggleTheme', theme)
+      this.$store.dispatch('ToggleSurplusTheme', '')
+    },
+    handleSurplusTheme (plusTheme) {
+      this.$store.dispatch('ToggleSurplusTheme', plusTheme)
     },
     doCopy () {
       // get current settings from mixin or this.$store.state.app, pay attention to the property name

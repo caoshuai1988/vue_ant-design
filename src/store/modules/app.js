@@ -17,6 +17,7 @@ const app = {
     sidebar: true,
     device: 'desktop',
     theme: '',
+    surplusTheme:'',//新增主题
     layout: '',
     contentWidth: '',
     fixedHeader: false,
@@ -41,7 +42,12 @@ const app = {
     TOGGLE_THEME: (state, theme) => {
       // setStore('_DEFAULT_THEME', theme)
       Vue.ls.set(DEFAULT_THEME, theme)
+     // Vue.ls.remove('pro__SURPLUS_HEME')
       state.theme = theme
+    },
+    TOGGLE_SURPLUS_THEME:(state,plusTheme)=>{
+      Vue.ls.set('SURPLUS_HEME', plusTheme)
+      state.surplusTheme = plusTheme
     },
     TOGGLE_LAYOUT_MODE: (state, layout) => {
       Vue.ls.set(DEFAULT_LAYOUT_MODE, layout)
@@ -88,6 +94,9 @@ const app = {
     },
     ToggleTheme ({ commit }, theme) {
       commit('TOGGLE_THEME', theme)
+    },
+    ToggleSurplusTheme({commit},plusTheme){
+      commit('TOGGLE_SURPLUS_THEME', plusTheme)
     },
     ToggleLayoutMode ({ commit }, mode) {
       commit('TOGGLE_LAYOUT_MODE', mode)

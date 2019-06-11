@@ -2,14 +2,24 @@
   <div :style="!$route.meta.hiddenHeaderContent ? 'margin: -24px -24px 0px;' : null">
     <!-- pageHeader , route meta :true on hide -->
     <page-header v-if="!$route.meta.hiddenHeaderContent" :title="pageTitle" :logo="logo" :avatar="avatar">
-      <slot slot="action" name="action"></slot>
+      <slot slot="action" name="action">
+        <div class="list-action" v-if="isPageList">
+          <template>
+            <span><i></i>刷新</span>
+            <span><i></i>设置</span>
+            <span><i></i>回收站</span>
+            <span><i></i>业务流程</span>
+            <span><i></i>帮助</span>
+          </template>
+        </div>
+      </slot>
       <slot slot="content" name="headerContent"></slot>
       <div slot="content" v-if="!this.$slots.headerContent && description">
         <p style="font-size: 14px;color: rgba(0,0,0,.65)">{{ description }}</p>
         <div class="link">
           <template v-for="(link, index) in linkList">
             <a :key="index" :href="link.href">
-              <a-icon :type="link.icon" />
+              <a-icon :type="link.icon"/>
               <span>{{ link.title }}</span>
             </a>
           </template>
@@ -22,12 +32,7 @@
       </slot>
       <div slot="pageMenu">
         <div class="page-menu-search" v-if="search">
-          <a-input-search
-            style="width: 80%; max-width: 522px;"
-            placeholder="请输入..."
-            size="large"
-            enterButton="搜索"
-          />
+          <a-input-search style="width: 80%; max-width: 522px;" placeholder="请输入..." size="large" enterButton="搜索"/>
         </div>
         <div class="page-menu-tabs" v-if="tabs && tabs.items">
           <!-- @change="callback" :activeKey="activeKey" -->
@@ -42,9 +47,9 @@
         <slot>
           <!-- keep-alive  -->
           <keep-alive v-if="multiTab">
-            <router-view ref="content" />
+            <router-view ref="content"/>
           </keep-alive>
-          <router-view v-else ref="content" />
+          <router-view v-else ref="content"/>
         </slot>
       </div>
     </div>
@@ -52,74 +57,75 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import PageHeader from '@/components/PageHeader'
+  import { mapState } from 'vuex'
+  import PageHeader from '@/components/PageHeader'
 
-export default {
-  name: 'PageView',
-  components: {
-    PageHeader
-  },
-  props: {
-    avatar: {
-      type: String,
-      default: null
+  export default {
+    name: 'PageView',
+    components: {
+      PageHeader
     },
-    title: {
-      type: [String, Boolean],
-      default: true
+    props: {
+      avatar: {
+        type: String,
+        default: null
+      },
+      title: {
+        type: [String, Boolean],
+        default: true
+      },
+      logo: {
+        type: String,
+        default: null
+      },
+      directTabs: {
+        type: Object,
+        default: null
+      }
     },
-    logo: {
-      type: String,
-      default: null
+    data() {
+      return {
+        pageTitle: null,
+        description: null,
+        linkList: [],
+        extraImage: '',
+        search: false,
+        tabs: {},
+        isPageList: false
+      }
     },
-    directTabs: {
-      type: Object,
-      default: null
-    }
-  },
-  data () {
-    return {
-      pageTitle: null,
-      description: null,
-      linkList: [],
-      extraImage: '',
-      search: false,
-      tabs: {}
-    }
-  },
-  computed: {
-    ...mapState({
-      multiTab: state => state.app.multiTab
-    })
-  },
-  mounted () {
-    this.tabs = this.directTabs
-    this.getPageMeta()
-  },
-  updated () {
-    this.getPageMeta()
-  },
-  methods: {
-    getPageMeta () {
-      // eslint-disable-next-line
-      this.pageTitle = (typeof(this.title) === 'string' || !this.title) ? this.title : this.$route.meta.title
+    computed: {
+      ...mapState({
+        multiTab: state => state.app.multiTab
+      })
+    },
+    mounted() {
+      this.tabs = this.directTabs
+      this.getPageMeta()
+    },
+    updated() {
+      this.getPageMeta()
+    },
+    methods: {
+      getPageMeta() {
 
-      const content = this.$refs.content
-      if (content) {
-        if (content.pageMeta) {
-          Object.assign(this, content.pageMeta)
-        } else {
-          this.description = content.description
-          this.linkList = content.linkList
-          this.extraImage = content.extraImage
-          this.search = content.search === true
-          this.tabs = content.tabs
+        this.pageTitle = (typeof(this.title) === 'string' || !this.title) ? this.title : this.$route.meta.title
+        this.isPageList = typeof (this.$route.meta.isList) === 'boolean' ? this.$route.meta.isList : false
+        const content = this.$refs.content
+        if (content) {
+          if (content.pageMeta) {
+            Object.assign(this, content.pageMeta)
+          } else {
+            this.description = content.description
+            this.linkList = content.linkList
+            this.extraImage = content.extraImage
+            this.search = content.search === true
+            this.tabs = content.tabs
+          }
         }
       }
     }
   }
-}
 </script>
 
 <style lang="less" scoped>
@@ -149,10 +155,12 @@ export default {
       }
     }
   }
+
   .page-menu-search {
     text-align: center;
     margin-bottom: 16px;
   }
+
   .page-menu-tabs {
     margin-top: 48px;
   }
@@ -168,14 +176,15 @@ export default {
   }
 
   .mobile {
-    .extra-img{
+    .extra-img {
       margin-top: 0;
       text-align: center;
       width: 96px;
 
-      img{
+      img {
         width: 100%;
       }
     }
   }
+
 </style>

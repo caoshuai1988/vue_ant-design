@@ -18,6 +18,7 @@ import config from '@/config/defaultSettings'
 export default function Initializer () {
   store.commit('SET_SIDEBAR_TYPE', Vue.ls.get(SIDEBAR_TYPE, true))
   store.commit('TOGGLE_THEME', Vue.ls.get(DEFAULT_THEME, config.navTheme))
+  store.commit('TOGGLE_SURPLUS_THEME', Vue.ls.get('SURPLUS_HEME', config.surplusTheme))
   store.commit('TOGGLE_LAYOUT_MODE', Vue.ls.get(DEFAULT_LAYOUT_MODE, config.layout))
   store.commit('TOGGLE_FIXED_HEADER', Vue.ls.get(DEFAULT_FIXED_HEADER, config.fixedHeader))
   store.commit('TOGGLE_FIXED_SIDERBAR', Vue.ls.get(DEFAULT_FIXED_SIDEMENU, config.fixSiderbar))

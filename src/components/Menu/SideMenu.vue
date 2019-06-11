@@ -21,7 +21,7 @@
 import Logo from '@/components/tools/Logo'
 import SMenu from './index'
 import { mixin, mixinDevice } from '@/utils/mixin'
-
+console.log('---------ssssssssss---------')
 export default {
   name: 'SideMenu',
   components: { Logo, SMenu },

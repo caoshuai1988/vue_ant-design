@@ -11,6 +11,47 @@ export const asyncRouterMap = [
     meta: { title: '首页' },
     redirect: '/dashboard/workplace',
     children: [
+      // Modal
+      {
+        path: '/modal',
+        name: 'modal',
+        redirect: '/modal/inputModal',
+        component: RouteView,
+        meta: { title: '弹框-提示-通知-进度条', keepAlive: true, icon: 'fund' },
+        children: [
+          {
+            path: '/modal/inputModal',
+            name: 'inputModal',
+            component: () => import('@/views/modal/InputModal'),
+            meta: { title: '输入弹窗', keepAlive: false }
+          },
+          {
+            path: '/modal/confirmModal',
+            name: 'confirmModal',
+            component: () => import('@/views/modal/ConfirmModal'),
+            meta: { title: '提示弹窗', keepAlive: false }
+          },
+          {
+            path: '/modal/promptModal',
+            name: 'promptModal',
+            component: () => import('@/views/modal/PromptModal'),
+            meta: { title: '提示信息', keepAlive: false }
+          },
+          {
+            path: '/modal/notiification',
+            name: 'notiification',
+            component: () => import('@/views/modal/Notiification'),
+            meta: { title: '通知信息', keepAlive: false }
+          },
+          {
+            path: '/modal/spin',
+            name: 'spin',
+            component: () => import('@/views/modal/Spin'),
+            meta: { title: '加载组件', keepAlive: false }
+          }
+        ]
+      },
+
       // dashboard
       {
         path: '/dashboard',

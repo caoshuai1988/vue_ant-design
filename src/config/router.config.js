@@ -332,7 +332,7 @@ export const asyncRouterMap = [
           }
         ]
       },
-      // form1
+      // new FORM
       {
         path: '/newform',
         redirect: '/newform/newbaseform',
@@ -352,9 +352,9 @@ export const asyncRouterMap = [
             meta: { title: '弹出', keepAlive: true, permission: [ 'form' ] }
           },
           {
-            path: 'newform/advancedForm',
-            name: 'advancedForm',
-            component: () => import('@/views/newform/advancedForm'),
+            path: 'newform/AdvancedForms',
+            name: 'AdvancedForms',
+            component: () => import('@/views/newform/AdvancedForms'),
             meta: { title: '高级表单', keepAlive: true, permission: [ 'form' ] }
           },
           {

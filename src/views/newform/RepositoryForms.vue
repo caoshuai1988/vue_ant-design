@@ -93,7 +93,6 @@ export default {
 
   },
   name: 'RepositoryForm',
-  // props: ['ceshi'],
   props: {
     showSubmit: {
       type: Boolean,

@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import AddForm from './addForm.vue'
+import AddForm from './AddBtnForm.vue'
 export default {
   components: {
     AddForm

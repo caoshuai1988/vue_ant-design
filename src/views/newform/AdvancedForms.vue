@@ -94,8 +94,8 @@
 </template>
 
 <script>
-import repositoryForm from './repositoryForm'
-import taskForm from './taskForm'
+import repositoryForm from './RepositoryForms'
+import taskForm from './TaskForms'
 import verticaltoggle from '@/views/newform/verticaltoggle'
 const fieldLabels = {
   name: '仓库名',

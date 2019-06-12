@@ -78,7 +78,28 @@ export const asyncRouterMap = [
             path: '/fsxt/fsxt-base-form',
             name: 'BaseFormPage',
             component: () => import('@/views/form/BasicFormPage'),
-            meta: { title: '基础表单', keepAlive: true, permission: [ 'form' ] }
+            meta: { title: '基础表单', showbtn: true, keepAlive: true, permission: [ 'form' ] }
+          },
+          {
+            path: '/fsxt/fsxt-advanced-form',
+            name: 'StepFormPage',
+            component: () => import('@/views/form/StepFormPage'),
+            meta: { title: '高级带分步表单', showbtn: false, keepAlive: true, permission: [ 'form' ] }
+          }
+        ]
+      },
+      // 查看审批页
+      {
+        path: '/check',
+        redirect: '/check/single-row',
+        component: PageViewFsxt,
+        meta: { title: '查看审批页', icon: 'form', permission: [ 'form' ] },
+        children: [
+          {
+            path: '/check/single-row',
+            name: 'singleRow',
+            component: () => import('@/views/check/singleRow'),
+            meta: { title: '查看审批页-三列', showbtn: true, keepAlive: true, permission: [ 'form' ] }
           }
         ]
       },

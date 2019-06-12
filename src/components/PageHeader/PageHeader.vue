@@ -1,8 +1,7 @@
 <template>
-  <div></div>
-  <!-- <div class="page-header">
+  <div class="page-header">
     <div class="page-header-index-wide">
-      <s-breadcrumb />
+      <!-- <s-breadcrumb /> -->
       <div class="detail">
         <div class="main" v-if="!$route.meta.hiddenHeaderContent">
           <div class="row">
@@ -29,7 +28,7 @@
         </div>
       </div>
     </div>
-  </div> -->
+  </div>
 </template>
 
 <script>

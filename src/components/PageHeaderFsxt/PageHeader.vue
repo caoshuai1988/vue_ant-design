@@ -3,7 +3,7 @@
 .page-header {
   position: relative;
   background: #fff;
-  padding: 16px 32px 0;
+  padding: 16px 24px;
   border-bottom: 1px solid #e8e8e8;
 
   .breadcrumb {
@@ -40,13 +40,13 @@
       }
 
       .title {
-        font-size: 20px;
+        font-size: 16px;
         font-weight: 500;
         font-size: 20px;
         line-height: 28px;
         font-weight: 500;
         color: rgba(0, 0, 0, 0.85);
-        margin-bottom: 16px;
+        // margin-bottom: 16px;
         // flex: auto;
       }
       .btn-wrap{
@@ -154,7 +154,7 @@
           <div class="row">
             <!-- <img v-if="logo" :src="logo" class="logo"/> -->
             <h1 v-if="title" class="title">{{ title }}</h1>
-            <div class="btn-wrap">
+            <div class="btn-wrap" v-if="$route.meta.showbtn">
               <a-button type="primary" style="margin-right: 8px; color:#fff;">保存</a-button>
               <a-button-group style="margin-left: 8px;margin-right: 16px">
                 <a-button>提交审批</a-button>
@@ -166,11 +166,11 @@
               <a-button style="width: 130px;margin-left:16px;">审批：<span style="color:#F5222D">待审批</span> <a-icon type="caret-down" /></a-button>
             </div>
 
-            <!-- <div class="action">
+            <div class="action">
               <slot name="action"></slot>
-            </div> -->
+            </div>
           </div>
-          <!-- <div class="row">
+          <div class="row">
             <div v-if="avatar" class="avatar">
               <a-avatar :src="avatar" />
             </div>
@@ -183,7 +183,10 @@
           </div>
           <div>
             <slot name="pageMenu"></slot>
-          </div> -->
+          </div>
+          <div>
+            <slot name="step"></slot>
+          </div>
         </div>
       </div>
       <!-- <div class="page-direction"></div> -->

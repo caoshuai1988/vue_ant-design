@@ -64,7 +64,7 @@
 </template>
 
 <script>
-import baseFormContent from './baseFormContent'
+import baseFormContent from './BaseFormContent'
 export default {
   components: {
     baseFormContent

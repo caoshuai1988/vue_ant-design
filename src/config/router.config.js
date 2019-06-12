@@ -363,7 +363,7 @@ export const asyncRouterMap = [
           {
             path: '/form/newbaseform',
             name: 'NewBaseForm',
-            component: () => import('@/views/newform/newBaseForm'),
+            component: () => import('@/views/newform/NewBaseForm'),
             meta: { title: '基础表单', keepAlive: true, permission: [ 'form' ] }
           },
           {
@@ -381,7 +381,7 @@ export const asyncRouterMap = [
           {
             path: 'newform/mapForm',
             name: 'mapForm',
-            component: () => import('@/views/newform/mapForm'),
+            component: () => import('@/views/newform/MapForm'),
             meta: { title: '地图表单', keepAlive: true, permission: [ 'form' ] }
           }
         ]

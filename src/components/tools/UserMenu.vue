@@ -27,7 +27,7 @@
           </a-menu-item>
           <a-menu-item key="2" disabled>
             <a-icon type="setting"/>
-            <span>测试</span>
+            <span>测试示例</span>
           </a-menu-item>
           <a-menu-divider/>
           <a-menu-item key="3">

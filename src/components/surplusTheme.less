@@ -1,15 +1,15 @@
 /*需要建立样式表和模块对应*/
 /*侧边重置*/
-.plusTheme01.sider{
+.plusTheme01.sider {
   background: #529BE2 !important;
   .logo {
     background: #0582f6 !important;
     box-shadow: 1px 1px 0 0 #0582f6 !important;
-    h1{
+    h1 {
       color: #fff !important;
     }
   }
-  .ant-menu-root{
+  .ant-menu-root {
     color: rgba(255, 255, 255, 0.65);
     background: #529BE2;
     .ant-menu-inline.ant-menu-sub {
@@ -17,30 +17,31 @@
       background: #176EC4;
       box-shadow: none !important;
       .ant-menu-item > a {
-        color:rgba(255, 255, 255, 0.65);
+        color: rgba(255, 255, 255, 0.65);
       }
     }
   }
-  .user-wrapper .action{
+  .user-wrapper .action {
     color: #fff;
   }
-  .ant-menu-submenu-open{
-    color: #fff ;
+  .ant-menu-submenu-open {
+    color: #fff;
   }
-  .ant-menu-submenu-title:hover{
+  .ant-menu-submenu-title:hover {
     color: #fff !important;
   }
-  .ant-menu-submenu-title .ant-menu-submenu-arrow:before,.ant-menu-submenu-title .ant-menu-submenu-arrow:after{
-    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.65), rgba(255, 255, 255,0.65));
+  .ant-menu-submenu-title .ant-menu-submenu-arrow:before, .ant-menu-submenu-title .ant-menu-submenu-arrow:after {
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.65));
   }
-  .ant-menu-submenu-title:hover .ant-menu-submenu-arrow:before,.ant-menu-submenu-title:hover .ant-menu-submenu-arrow:after{
-    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.65), rgba(255, 255, 255,0.65));
+  .ant-menu-submenu-title:hover .ant-menu-submenu-arrow:before, .ant-menu-submenu-title:hover .ant-menu-submenu-arrow:after {
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.65));
   }
 }
+
 /*顶部重置*/
 .layout.ant-layout .top-nav-header-index.plusTheme01 {
   background: #529BE2 !important;
-  .ant-menu-root{
+  .ant-menu-root {
     background: #529BE2;
     color: rgba(255, 255, 255, 0.65);
   }
@@ -51,27 +52,32 @@
     border-bottom: 2px solid #fff;
     color: #fff;
   }
-  .user-wrapper .action{
+  .user-wrapper .action {
     color: #fff;
   }
-  .ant-menu-submenu-open{
-    color: #fff ;
+  .ant-menu-submenu-open {
+    color: #fff;
   }
-  .ant-menu-submenu-title:hover{
+  .ant-menu-submenu-title:hover {
     color: #fff;
   }
 }
+
 /*处理流式布局隐藏menu问题*/
-.layout.ant-layout .top-nav-header-index .header-index-wide .ant-menu.ant-menu-horizontal{
+.layout.ant-layout .top-nav-header-index .header-index-wide .ant-menu.ant-menu-horizontal {
   max-width: 100% !important;
 }
 
-
 /*处理form line-height:39问题 重置为32*/
-.ant-form-horizontal .ant-form-item-label{
-  line-height: 32px ;
-}
-.ant-form-horizontal .ant-form-item-control{
-  line-height: 32px ;
+.ant-form-horizontal .ant-form-item-label {
+  line-height: 32px;
 }
 
+.ant-form-horizontal .ant-form-item-control {
+  line-height: 32px;
+}
+
+/*处理多行文本框mb 4px 问题*/
+.ant-form-horizontal textarea.ant-input {
+  margin-bottom: 0 !important;
+}

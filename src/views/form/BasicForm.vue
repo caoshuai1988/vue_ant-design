@@ -1,5 +1,5 @@
 <template>
-  <a-card :body-style="{padding: '24px 32px'}" :bordered="false">
+  <a-card :body-style="{padding: '24px 32px'}" :bordered="true">
     <a-form @submit="handleSubmit" :form="form">
       <a-form-item
         label="标题"
@@ -11,7 +11,7 @@
             {rules: [{ required: true, message: '请输入标题' }]}
           ]"
           name="name"
-          placeholder="给目标起个名字" />
+          placeholder="给目标起个名字"/>
       </a-form-item>
       <a-form-item
         label="起止日期"
@@ -23,7 +23,7 @@
           v-decorator="[
             'buildTime',
             {rules: [{ required: true, message: '请选择起止日期' }]}
-          ]" />
+          ]"/>
       </a-form-item>
       <a-form-item
         label="目标描述"
@@ -35,7 +35,7 @@
           v-decorator="[
             'description',
             {rules: [{ required: true, message: '请输入目标描述' }]}
-          ]" />
+          ]"/>
       </a-form-item>
       <a-form-item
         label="衡量标准"
@@ -47,7 +47,7 @@
           v-decorator="[
             'type',
             {rules: [{ required: true, message: '请输入衡量标准' }]}
-          ]" />
+          ]"/>
       </a-form-item>
       <a-form-item
         label="客户"
@@ -58,7 +58,7 @@
           v-decorator="[
             'customer',
             {rules: [{ required: true, message: '请描述你服务的客户' }]}
-          ]" />
+          ]"/>
       </a-form-item>
       <a-form-item
         label="邀评人"
@@ -66,7 +66,7 @@
         :wrapperCol="{lg: {span: 10}, sm: {span: 17} }"
         :required="false"
       >
-        <a-input placeholder="请直接 @姓名／工号，最多可邀请 5 人" />
+        <a-input placeholder="请直接 @姓名／工号，最多可邀请 5 人"/>
       </a-form-item>
       <a-form-item
         label="权重"
@@ -74,7 +74,7 @@
         :wrapperCol="{lg: {span: 10}, sm: {span: 17} }"
         :required="false"
       >
-        <a-input-number :min="0" :max="100" />
+        <a-input-number :min="0" :max="100"/>
         <span> %</span>
       </a-form-item>
       <a-form-item
@@ -109,30 +109,33 @@
 </template>
 
 <script>
-export default {
-  name: 'BaseForm',
-  data () {
-    return {
-      description: '表单页用于向用户收集或验证信息，基础表单常见于数据项较少的表单场景。',
-      value: 1,
+  import moment from 'moment'
 
-      // form
-      form: this.$form.createForm(this)
+  export default {
+    name: 'BaseForm',
+    data() {
+      return {
+        description: '表单页用于向用户收集或验证信息，基础表单常见于数据项较少的表单场景。',
+        value: 1,
 
-    }
-  },
-  methods: {
+        // form
+        form: this.$form.createForm(this)
 
-    // handler
-    handleSubmit (e) {
-      e.preventDefault()
-      this.form.validateFields((err, values) => {
-        if (!err) {
-          // eslint-disable-next-line no-console
-          console.log('Received values of form: ', values)
-        }
-      })
+      }
+    },
+    methods: {
+
+      moment,
+      // handler
+      handleSubmit(e) {
+        e.preventDefault()
+        this.form.validateFields((err, values) => {
+          if (!err) {
+            // eslint-disable-next-line no-console
+            console.log('Received values of form: ', values)
+          }
+        })
+      }
     }
   }
-}
 </script>

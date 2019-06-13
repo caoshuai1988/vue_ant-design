@@ -89,7 +89,7 @@
         description: null,
         linkList: [],
         extraImage: '',
-        search: false,
+        search: true,
         tabs: {},
         isPageList: false
       }

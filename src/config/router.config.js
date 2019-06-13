@@ -81,7 +81,21 @@ export const asyncRouterMap = [
             name: 'TableListMode',
             hideChildrenInMenu: true, // 强制显示 MenuItem 而不是 SubMenu
             component: () => import('@/views/list/TableListMode'),
-            meta: { title: '列表模型', keepAlive: true, permission: [ 'table' ],isList:true }
+            meta: { title: '列表模型', keepAlive: true, permission: [ 'table' ], isList: true }
+          },
+          {
+            path: '/list/table-list-roll/:pageNo([1-9]\\d*)?',
+            name: 'TableListRoll',
+            hideChildrenInMenu: true, // 强制显示 MenuItem 而不是 SubMenu
+            component: () => import('@/views/list/TableListRoll'),
+            meta: { title: '上下左右', keepAlive: true, permission: [ 'table' ], isList: true }
+          },
+          {
+            path: '/list/table-list-tabs/:pageNo([1-9]\\d*)?',
+            name: 'TableListTabs',
+            hideChildrenInMenu: true, // 强制显示 MenuItem 而不是 SubMenu
+            component: () => import('@/views/list/TableListTabs'),
+            meta: { title: '标签列表', keepAlive: true, permission: [ 'table' ] }
           },
           {
             path: '/list/table-list/:pageNo([1-9]\\d*)?',

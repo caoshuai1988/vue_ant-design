@@ -343,7 +343,7 @@ export default {
           title: '用途',
           dataIndex: 'workId',
           key: 'workId',
-          width: '40%',
+          width: '20%',
           scopedSlots: { customRender: 'workId' }
         },
         {

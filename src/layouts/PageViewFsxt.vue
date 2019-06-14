@@ -1,6 +1,7 @@
 
 <style lang="less" scoped>
 .content {
+  padding: 24px;
   // margin: 24px 24px 0;
   // width: calc(100% - (10px + 5px) * 2);
   // .main-wrap {
@@ -67,7 +68,7 @@
   }
 }
 .page-title {
-  width: 90%;
+  width: 100%;
   padding-top: 16px;
   font-size: 14px;
   // display: flex;
@@ -115,7 +116,34 @@
   line-height: 16px;
   padding: 16px;
 }
+.ant-steps-item-title{
+  &:hover{
+    color: #1890ff;
+  }
+}
+
+// progress 字体透明度
+.step-content /deep/ .ant-steps-item-process > .ant-steps-item-content > .ant-steps-item-title{
+  color: rgba(0, 0, 0, 0.65);
+  &:hover{
+    color: #1890ff;
+  }
+}
+// progress 字体透明度
+.step-content /deep/ .ant-steps-item-finish > .ant-steps-item-content > .ant-steps-item-title{
+  &:hover{
+    color: #1890ff;
+  }
+}
 .step-content /deep/.ant-steps-label-vertical .ant-steps-item{
+  cursor: pointer;
+  // progress
+  &.ant-steps-item-process .ant-steps-item-icon {
+    background: #fff;
+    .ant-steps-icon{
+      color: #1890ff;
+    }
+  }
   &.active{
     .ant-steps-item-title{
       // position: relative;
@@ -130,7 +158,23 @@
         left: 0;
       }
     }
+    .ant-steps-item-content > .ant-steps-item-title{
+      color: #1890ff;
+    }
+    .ant-steps-item-icon{
+      background: #1890ff;
+      .ant-steps-icon{
+        color: #fff;
+      }
+      .anticon svg{
+        color: #fff;
+      }
+    }
   }
+}
+
+.step-content /deep/ .ant-steps-small .ant-steps-item-tail{
+  top:12px;
 }
 .submit{
   padding-top: 48px;
@@ -285,7 +329,7 @@ export default {
       name: '2018年韶关市翁源县江尾镇高标准农田建设项目',
       code: '4402290011140201810',
       date: 20190909,
-      current: 3,
+      current: 4,
       currentStep: 0,
       steps: [
         { title: '项目库阶段',

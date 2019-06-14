@@ -88,7 +88,7 @@
 
 /*定义滚动条轨道 内阴影+圆角*/
       &::-webkit-scrollbar-track{
-        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
         border-radius: 10px;
         background-color: #a5a5a5;
       }
@@ -96,18 +96,17 @@
 /*定义滑块 内阴影+圆角*/
       &::-webkit-scrollbar-thumb{
           border-radius: 5px;
-          -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+          box-shadow: inset 0 0 5px rgba(0,0,0,0.3);
           background-color: #EDEDED;
       }
     }
   }
-  // .form-body /deep/.ant-form{
-  //   // background: #fff;
-  //   padding: 24px;
-  // }
-  // .form-body /deep/.ant-card-body {
+  // .form-detial /deep/.ant-card-wider-padding .ant-card-body{
   //   padding: 0;
   // }
+  .form-detial /deep/ .ant-card .ant-card-body {
+    padding: 0;
+  }
 
 </style>
 <template>

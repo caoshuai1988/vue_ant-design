@@ -20,7 +20,8 @@ import flowPng from '@/assets/flow.png'
 export default {
   data () {
     return {
-      flowFlag: true
+      flowFlag: true,
+      big: 'default'
     }
   },
   computed: {

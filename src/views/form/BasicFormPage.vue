@@ -83,18 +83,17 @@
         height: 8px;
         // background-color: #F5F5F5;
       }
-
-/*定义滚动条轨道 内阴影+圆角*/
+      /*定义滚动条轨道 内阴影+圆角*/
       &::-webkit-scrollbar-track{
-        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
         border-radius: 10px;
         background-color: #a5a5a5;
       }
 
-/*定义滑块 内阴影+圆角*/
+      /*定义滑块 内阴影+圆角*/
       &::-webkit-scrollbar-thumb{
           border-radius: 5px;
-          -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+          box-shadow: inset 0 0 5px rgba(0,0,0,0.3);
           background-color: #EDEDED;
       }
     }
@@ -104,6 +103,9 @@
   }
   .form-body /deep/.ant-card-body {
     background:'#f0f2f5';
+  }
+  .content /deep/ .ant-card-wider-padding .ant-card-body{
+    padding: 0
   }
 
 </style>
@@ -404,7 +406,6 @@ export default {
       },
       // description: '表单页用于向用户收集或验证信息，基础表单常见于数据项较少的表单场',
       value: 1,
-      // form
       form: this.$form.createForm(this),
       previewVisible: false,
       previewImage: '',

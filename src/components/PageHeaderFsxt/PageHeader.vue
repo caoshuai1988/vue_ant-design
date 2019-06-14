@@ -144,6 +144,9 @@
   }
 }
 
+.detail .main .title{
+  margin:0;
+}
 </style>
 <template>
   <div class="page-header">

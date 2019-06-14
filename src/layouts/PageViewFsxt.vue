@@ -68,7 +68,7 @@
 }
 .page-title {
   width: 90%;
-  padding-top: 12px;
+  padding-top: 16px;
   font-size: 14px;
   // display: flex;
   // justify-content: space-between;
@@ -89,7 +89,9 @@
   }
 }
 .step-content{
-  padding-top: 60px;
+  padding-top: 56px;
+  padding-left: 10%;
+  padding-right: 10%;
   .steps-content {
       margin-top: 16px;
       border: 1px dashed #e9e9e9;
@@ -105,6 +107,14 @@
     }
 }
 // ant-steps-item
+
+.step-content /deep/ .ant-steps-label-vertical .ant-steps-item-title{
+  padding-right: 0;
+}
+.step-content /deep/ .ant-steps-small .ant-steps-item-title{
+  line-height: 16px;
+  padding: 16px;
+}
 .step-content /deep/.ant-steps-label-vertical .ant-steps-item{
   &.active{
     .ant-steps-item-title{
@@ -112,19 +122,18 @@
       &::after{
         contain: '';
         display: inline-block;
-        width: 120%;
-        height: 4px;
+        width: 100%;
+        height: 2px;
         background: #1890ff;
         position: absolute;
-        top: 24px;
+        top: 46px;
         left: 0;
-        transform: translateX(-10%)
       }
     }
   }
 }
 .submit{
-  padding-top: 50px;
+  padding-top: 48px;
   display: flex;
   justify-content: flex-end;
 }
@@ -136,8 +145,7 @@
       v-if="!$route.meta.hiddenHeaderContent"
       :title="pageTitle"
       :logo="logo"
-      :avatar="avatar"
-    >
+      :avatar="avatar">
       <slot slot="action" name="action"></slot>
       <slot slot="content" name="headerContent"></slot>
       <div slot="content" v-if="!this.$slots.headerContent && description">
@@ -194,7 +202,7 @@
           <template>
             <div>
               <a-steps :current="current" size="small" labelPlacement="vertical" >
-                <a-step v-for="(item, index) in steps" :key="item.title" :title="item.title" :class="{ active: current===index }" @click="handelclick(index)">
+                <a-step v-for="(item, index) in steps" :key="item.title" :title="item.title" :class="{ active: currentStep === index, }" @click="handelclick(index)">
                 </a-step>
               </a-steps>
               <!-- <div class="steps-content">{{ steps[current].content }}</div> -->
@@ -277,7 +285,8 @@ export default {
       name: '2018年韶关市翁源县江尾镇高标准农田建设项目',
       code: '4402290011140201810',
       date: 20190909,
-      current: 0,
+      current: 3,
+      currentStep: 0,
       steps: [
         { title: '项目库阶段',
           content: 'First-content' },
@@ -317,8 +326,8 @@ export default {
       this.current--
     },
     handelclick (index) {
-      // if (this.current < index) return
-      this.current = index
+      if (this.current < index) return
+      this.currentStep = index
     },
     getPageMeta () {
       // eslint-disable-next-line

@@ -26,9 +26,6 @@
   .page-direction{
     // right: @help-width;
     background: #fff;
-    // min-width: 400px;
-    // height: 600px;
-    // min-height: 800px;
     z-index: 3;
     .title{
       position: relative;
@@ -306,6 +303,7 @@
           </a-form>
         </div>
       </a-col>
+      <!-- 帮助侧边栏 -->
       <template v-if="isShowHelp">
         <a-col
           style="padding: 0 12px"

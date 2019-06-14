@@ -383,6 +383,12 @@ export const asyncRouterMap = [
             name: 'mapForm',
             component: () => import('@/views/newform/MapForm'),
             meta: { title: '地图表单', keepAlive: true, permission: [ 'form' ] }
+          },
+          {
+            path: 'newform/ThrowRowForm',
+            name: 'ThrowRowForm',
+            component: () => import('@/views/newform/ThrowRowForm'),
+            meta: { title: '三列表单', keepAlive: true, permission: [ 'form' ] }
           }
         ]
       }

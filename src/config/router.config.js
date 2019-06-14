@@ -86,22 +86,34 @@ export const asyncRouterMap = [
             // component: () => import('@/views/form/StepFormPage'),
             // meta: { title: '高级带分步表单', showbtn: false, keepAlive: true, permission: ['form'] }
             component: () => import('@/views/newform/MapForm'),
-            meta: { title: '高级带分步表单', showbtn: false, keepAlive: true, permission: ['form'] }
+            meta: { title: '高级带分步表单', showbtn: false, showStep: true, keepAlive: true, permission: ['form'] }
           }
         ]
       },
       // 查看审批页
       {
         path: '/check',
-        redirect: '/check/single-row',
+        redirect: '/check/three-row',
         component: PageViewFsxt,
         meta: { title: '查看审批页', icon: 'form', permission: [ 'form' ] },
         children: [
           {
+            path: '/check/three-row',
+            name: 'threeRow',
+            component: () => import('@/views/check/threeRow'),
+            meta: { title: '查看审批页-三列', showbtn: true, showStep: false, keepAlive: true, permission: ['form'] }
+          },
+          {
             path: '/check/single-row',
             name: 'singleRow',
             component: () => import('@/views/check/singleRow'),
-            meta: { title: '查看审批页-三列', showbtn: true, keepAlive: true, permission: ['form'] }
+            meta: { title: '查看审批页-单列', showbtn: true, showStep: false, keepAlive: true, permission: ['form'] }
+          },
+          {
+            path: 'check/alert',
+            name: 'alert',
+            component: () => import('@/views/check/alert'),
+            meta: { title: '弹出', showbtn: false, keepAlive: true, permission: ['form'] }
           }
         ]
       },

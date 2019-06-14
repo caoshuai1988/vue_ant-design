@@ -224,7 +224,7 @@
           </a-tabs>
         </div>
       </div>
-      <div slot="step" v-if="!$route.meta.showbtn">
+      <div slot="step" v-if="$route.meta.showStep">
         <!-- 标题 -->
         <div class="page-title">
           <div class="item">

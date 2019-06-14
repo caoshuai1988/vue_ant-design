@@ -101,76 +101,63 @@
       }
     }
   }
-
-  .ant-card-body{
+  // .form-detial /deep/.ant-card-wider-padding .ant-card-body{
+  //   padding: 0;
+  // }
+  .form-detial /deep/ .ant-card .ant-card-body {
     padding: 0;
   }
 
-// 单列
-.ant-form-horizontal .ant-form-item {
-  margin-bottom: 16px;
-}
-/deep/ .ant-form-horizontal .ant-form-item > .ant-form-item-label{
-  line-height: 24px;
-}
-/deep/ .ant-form-horizontal .ant-form-item .ant-form-item-control-wrapper .ant-form-item-control{
-  line-height: 24px;
-
-}
 </style>
 <template>
-  <a-card :body-style="{background:'#f0f2f5', padding: 0}" :bordered="false" class="card-box">
+  <a-card :body-style="{background:'#f0f2f5'}" :bordered="false">
 
     <a-row :gutter="24">
       <a-col :body-style="{ background:'#fff'}" :xl="num" :lg="num" :md="num" :sm="num" >
         <div class="form-detial" style="background: #fff; padding: 24px">
-          <a-form class="detailInfo" :form="form">
-            <a-form-item label="取货单号" :labelCol="labelCol" :wrapperCol="wrapperCol">
-              <span>
-                {{ "1000000000" }}
-              </span>
-            </a-form-item>
-            <a-form-item label="子订单" :labelCol="labelCol" :wrapperCol="wrapperCol">
-              <span>
-                {{ "3214321432" }}
-              </span>
-            </a-form-item>
-            <a-form-item label="状态" :labelCol="labelCol" :wrapperCol="wrapperCol">
-              <span>
-                {{ "已取货" }}
-              </span>
-            </a-form-item>
-            <a-form-item label="销售单号" :labelCol="labelCol" :wrapperCol="wrapperCol">
-              <span>
-                {{ "1234123421" }}
-              </span>
-            </a-form-item>
-            <a-form-item label="用户姓名：" :labelCol="labelCol" :wrapperCol="wrapperCol">
-              <span>
-                {{ "付小小" }}
-              </span>
-            </a-form-item>
-            <a-form-item label="取货地址" :labelCol="labelCol" :wrapperCol="wrapperCol">
-              <span>
-                {{ "浙江省杭州市西湖区万塘路18号" }}
-              </span>
-            </a-form-item>
-            <a-form-item label="备注：" :labelCol="labelCol" :wrapperCol="wrapperCol">
-              <span>
-                {{ "无" }}
-              </span>
-            </a-form-item>
-            <a-form-item label="联系电话：" :labelCol="labelCol" :wrapperCol="wrapperCol">
-              <span>
-                {{ "18100000000" }}
-              </span>
-            </a-form-item>
-            <a-form-item label="常用快递：" :labelCol="labelCol" :wrapperCol="wrapperCol">
-              <span>
-                {{ "菜鸟仓储" }}
-              </span>
-            </a-form-item>
-          </a-form>
+          <a-card :bordered="false">
+            <detail-list title="退款申请" :col="3">
+              <detail-list-item term="取货单号">1000000000</detail-list-item>
+              <detail-list-item term="状态">已取货</detail-list-item>
+              <detail-list-item term="销售单号">1234123421</detail-list-item>
+              <detail-list-item term="子订单">3214321432</detail-list-item>
+            </detail-list>
+            <a-divider style="margin-bottom: 32px"/>
+            <detail-list title="用户信息">
+              <detail-list-item term="用户姓名">付小小</detail-list-item>
+              <detail-list-item term="联系电话">18100000000</detail-list-item>
+              <detail-list-item term="常用快递">菜鸟仓储</detail-list-item>
+              <detail-list-item term="取货地址">浙江省杭州市西湖区万塘路18号</detail-list-item>
+              <detail-list-item term="备注">	无</detail-list-item>
+            </detail-list>
+            <a-divider style="margin-bottom: 32px"/>
+
+            <div class="title">退货商品</div>
+            <s-table
+              style="margin-bottom: 24px"
+              row-key="id"
+              :columns="goodsColumns"
+              :data="loadGoodsData">
+
+            </s-table>
+
+            <div class="title">退货进度</div>
+            <s-table
+              style="margin-bottom: 24px"
+              row-key="key"
+              :columns="scheduleColumns"
+              :data="loadScheduleData">
+
+              <template
+                slot="status"
+                slot-scope="status">
+                <a-badge :status="status" :text="status"/>
+                <!-- <a-badge :status="status" :text="status | statusFilter"/> -->
+              </template>
+
+            </s-table>
+          </a-card>
+
         </div>
       </a-col>
       <template v-if="isShowHelp">

@@ -57,12 +57,12 @@
       <a-tab-pane key="3">
         <span slot="tab">基本情况表</span>
       </a-tab-pane>
-      <a-tab-pane key="4">
+      <!-- <a-tab-pane key="4">
         <span slot="tab">任务及投资情况估算表</span>
       </a-tab-pane>
       <a-tab-pane key="5">
         <span slot="tab">资益估算表</span>
-      </a-tab-pane>
+      </a-tab-pane> -->
       <a-tab-pane key="6">
         <span slot="tab">附件信息</span>
         <AccessoryForm></AccessoryForm>
@@ -79,6 +79,7 @@ export default {
     baseFormContent,
     AccessoryForm
   },
+  name: 'MapForm1',
   data () {
     return {
       center: { lng: 0, lat: 0 }, // 地图坐标

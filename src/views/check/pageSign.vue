@@ -129,7 +129,7 @@
     <a-row :gutter="24">
       <a-col :body-style="{ background:'#f0f2f5'}" :xl="num" :lg="num" :md="num" :sm="num" >
         <a-affix :offsetTop="this.top">
-          <a-tabs :defaultActiveKey="defaultActiveKey" class="tabMar card-header" @click="tabTwo(1)">
+          <a-tabs :defaultActiveKey="defaultActiveKey" class="tabMar card-header" @tabClick="callback">
             <a-tab-pane key="1">
               <span slot="tab">
                 <span>基础信息</span>
@@ -616,9 +616,9 @@ export default {
     // }, 3000)
   },
   methods: {
-    tabTwo (index) {
+    callback (val) {
       const jump = document.querySelectorAll('.page-sign-title') // 用 class="instance_title" 添加锚点
-      const total = jump[index].offsetTop
+      const total = jump[val].offsetTop
       let distance = document.documentElement.scrollTop || document.body.scrollTop
 
       let step = total / 30 // 平滑滚动，时长500ms，每10ms一跳，共30跳
@@ -651,6 +651,9 @@ export default {
           document.documentElement.scrollTop = total
         }
       }
+    },
+    tabTwo (index) {
+      console.log(index)
     },
     aa () {
       this.defaultActiveKey = 4

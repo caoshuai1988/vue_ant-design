@@ -10,7 +10,7 @@
         </span>
         <baseFormContent></baseFormContent>
       </a-tab-pane>
-      <a-tab-pane key="2" style="padding:10px 24px 24px 24px">
+      <a-tab-pane key="2" style="padding:8px 24px 24px 24px">
         <span slot="tab">
           <span >地理信息</span>
           <div class="checkIcon">

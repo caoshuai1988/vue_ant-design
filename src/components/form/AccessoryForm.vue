@@ -8,7 +8,6 @@
           <a-icon type="down" v-else />
         </span>
       </div>
-
       <a-upload
         name="file"
         :multiple="true"

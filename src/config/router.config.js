@@ -98,10 +98,10 @@ export const asyncRouterMap = [
         meta: { title: '查看审批页', icon: 'form', permission: [ 'form' ] },
         children: [
           {
-            path: '/check/three-row',
-            name: 'threeRow',
-            component: () => import('@/views/check/threeRow'),
-            meta: { title: '查看审批页-三列', showbtn: true, showStep: false, keepAlive: true, permission: ['form'] }
+            path: 'check/alert',
+            name: 'alert',
+            component: () => import('@/views/check/alert'),
+            meta: { title: '弹出', showbtn: false, keepAlive: true, permission: ['form'] }
           },
           {
             path: '/check/single-row',
@@ -109,11 +109,24 @@ export const asyncRouterMap = [
             component: () => import('@/views/check/singleRow'),
             meta: { title: '查看审批页-单列', showbtn: true, showStep: false, keepAlive: true, permission: ['form'] }
           },
+          // 附件
           {
-            path: 'check/alert',
-            name: 'alert',
-            component: () => import('@/views/check/alert'),
-            meta: { title: '弹出', showbtn: false, keepAlive: true, permission: ['form'] }
+            path: '/check/accessory',
+            name: 'accessory',
+            component: () => import('@/views/check/accessory'),
+            meta: { title: '查看审批页-附件', showbtn: true, showStep: false, keepAlive: true, permission: ['form'] }
+          },
+          {
+            path: '/check/three-row',
+            name: 'threeRow',
+            component: () => import('@/views/check/threeRow'),
+            meta: { title: '查看审批页-三列', showbtn: true, showStep: false, keepAlive: true, permission: ['form'] }
+          },
+          {
+            path: '/check/page-sign',
+            name: 'pageSign',
+            component: () => import('@/views/check/pageSign'),
+            meta: { title: '查看审批页-分页签', showbtn: true, showStep: false, keepAlive: true, permission: ['form'] }
           }
         ]
       },

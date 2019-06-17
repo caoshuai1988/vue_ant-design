@@ -31,10 +31,10 @@
       position: relative;
       box-sizing: border-box;
       padding:0 24px;
-      height: 57px;
+      height: 56px;
       .title-des{
         box-sizing: border-box;
-        height: 57px;
+        height: 56px;
         // flex: 1 1;
         padding: 16px 0;
         overflow: hidden;

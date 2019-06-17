@@ -86,7 +86,7 @@ export const asyncRouterMap = [
             // component: () => import('@/views/form/StepFormPage'),
             // meta: { title: '高级带分步表单', showbtn: false, keepAlive: true, permission: ['form'] }
             component: () => import('@/views/form/advancedStepForm/index'),
-            meta: { title: '高级带分步表单', showbtn: false, showStep: true, keepAlive: true, permission: ['form'] }
+            meta: { title: '高级带分步表单', showbtn: false, showStep: true, keepAlive: false, permission: ['form'] }
           }
         ]
       },

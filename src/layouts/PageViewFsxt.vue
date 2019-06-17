@@ -242,11 +242,12 @@
           <span class="item editor" style="color: #1890ff;">编辑</span>
           <span class="item detial" style="color: #1890ff;">流程详情</span>
         </div>
+        <!-- 高级带分布步骤 -->
         <div class="step-content">
           <template>
             <div>
               <a-steps :current="current" size="small" labelPlacement="vertical" >
-                <a-step v-for="(item, index) in steps" :key="item.title" :title="item.title" :class="{ active: currentStep === index, }" @click="handelclick(index)">
+                <a-step v-for="(item, index) in steps" :key="item.title" :title="item.title" :class="{ active: currentStep === index, }" @click="handelStepclick(index, item.content)">
                 </a-step>
               </a-steps>
               <!-- <div class="steps-content">{{ steps[current].content }}</div> -->
@@ -291,7 +292,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 import PageHeader from '@/components/PageHeaderFsxt'
 
 export default {
@@ -363,15 +364,19 @@ export default {
     this.getPageMeta()
   },
   methods: {
-    next () {
-      this.current++
-    },
-    prev () {
-      this.current--
-    },
-    handelclick (index) {
+    // next () {
+    //   this.current++
+    // },
+    // prev () {
+    //   this.current--
+    // },
+    ...mapMutations('stepform', ['SET_DATALIST']),
+    handelStepclick (index, content) {
       if (this.current < index) return
       this.currentStep = index
+      this.SET_DATALIST(index)
+      this.$forceUpdate()
+      // console.log('dddd', content)
     },
     getPageMeta () {
       // eslint-disable-next-line

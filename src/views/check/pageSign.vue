@@ -246,7 +246,7 @@
         <div style="margin-top:24px;">
           <a-card
             :body-style="{padding: '24px', marginTop: '24px'}"
-            title="基础信息">
+            title="附件信息">
             <!-- <a href="#" slot="extra">More</a> -->
             <div class="form-detial" style="background: #fff;">
               <detail-list title="退款申请" :col="3">

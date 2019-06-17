@@ -330,7 +330,7 @@ export default {
       name: '2018年韶关市翁源县江尾镇高标准农田建设项目',
       code: '4402290011140201810',
       date: 20190909,
-      current: 4,
+      current: 3,
       currentStep: 0,
       steps: [
         { title: '项目库阶段',
@@ -375,9 +375,7 @@ export default {
       if (this.current < index) return
       this.currentStep = index
       // this.SET_DATALIST(index)
-
       this.$store.dispatch('changOneActions', index)
-      // console.log('dddd', content)
       this.$forceUpdate()
     },
     getPageMeta () {

@@ -1,6 +1,6 @@
 <template>
   <div style="background:#fff">
-    <a-tabs defaultActiveKey="2" class="tabMar">
+    <a-tabs defaultActiveKey="1" class="tabMar">
       <a-tab-pane key="1">
         <span slot="tab">
           <span>基础信息</span>

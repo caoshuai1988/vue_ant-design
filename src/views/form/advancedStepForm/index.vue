@@ -1,19 +1,24 @@
 <template>
   <a-card :bordered="false">
     <div class="content">
-      <keep-alive>
-        <!-- <component :is="stepForm.data.bb"></component> -->
-        <!-- <component :is="which_to_show[stepForm.data.currentTab]"></component>
+      <!-- <keep-alive>
+        <component :is="aaa"></component>
         <map-form1 v-if="stepForm.data.currentTab ===1" />
-        <map-form2 v-if="stepForm.data.currentTab ===2" /> -->
-      </keep-alive>
+        <map-form2 v-if="stepForm.data.currentTab ===2" />
+      </keep-alive> -->
       <!-- // 4 -->
-      <template v-if="aaa === 1">
+      <template v-if="curentIndex === 0">
         <map-form1 />
+      </template>
+      <template v-if="curentIndex === 1">
+        <map-form2 />
+      </template>
+      <template v-if="curentIndex === 2">
+        <map-form3 />
       </template>
       <!-- 3 -->
       <template v-else>
-        <map-form2 />
+        <map-form4 />
       </template>
       <!-- <map-form2 v-show="stepForm.data.currentTab ===1" /> -->
     </div>
@@ -25,12 +30,16 @@
 
 import mapForm1 from './MapForm1'
 import mapForm2 from './MapForm2'
+import mapForm3 from './MapForm3'
+import mapForm4 from './MapForm4'
 
 export default {
   name: 'AdvancedStepForm',
   components: {
     mapForm1,
-    mapForm2
+    mapForm2,
+    mapForm3,
+    mapForm4
   },
   data () {
     return {
@@ -43,11 +52,10 @@ export default {
       //   'mapForm3',
       //   'mapForm4'
       // ],
-      aa: 'mapForm1'
     }
   },
   computed: {
-    aaa () {
+    curentIndex () {
       return this.$store.state.dataOne
     }
     // ...mapGetters(['stepForm']),

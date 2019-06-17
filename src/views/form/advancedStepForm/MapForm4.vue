@@ -1,6 +1,6 @@
 <template>
   <div style="background:#fff">
-    <a-tabs defaultActiveKey="2" class="tabMar">
+    <a-tabs defaultActiveKey="6" class="tabMar">
       <a-tab-pane key="1">
         <span slot="tab">
           <span>基础信息</span>
@@ -54,19 +54,19 @@
           </div>
         </a-card>
       </a-tab-pane>
-      <!-- <a-tab-pane key="3">
+      <a-tab-pane key="3">
         <span slot="tab">基本情况表</span>
-      </a-tab-pane> -->
-      <!-- <a-tab-pane key="4">
+      </a-tab-pane>
+      <a-tab-pane key="4">
         <span slot="tab">任务及投资情况估算表</span>
       </a-tab-pane>
-      <a-tab-pane key="5">
+      <!-- <a-tab-pane key="5">
         <span slot="tab">资益估算表</span>
       </a-tab-pane> -->
-      <!-- <a-tab-pane key="6">
+      <a-tab-pane key="6">
         <span slot="tab">附件信息</span>
         <AccessoryForm></AccessoryForm>
-      </a-tab-pane> -->
+      </a-tab-pane>
     </a-tabs>
   </div>
 </template>
@@ -79,7 +79,7 @@ export default {
     baseFormContent,
     AccessoryForm
   },
-  name: 'MapForm1',
+  name: 'MapForm4',
   data () {
     return {
       center: { lng: 0, lat: 0 }, // 地图坐标

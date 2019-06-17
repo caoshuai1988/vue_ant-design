@@ -129,7 +129,7 @@
     <a-row :gutter="24">
       <a-col :body-style="{ background:'#f0f2f5'}" :xl="num" :lg="num" :md="num" :sm="num" >
         <a-affix :offsetTop="this.top">
-          <a-tabs :defaultActiveKey="defaultActiveKey" class="tabMar card-header">
+          <a-tabs :defaultActiveKey="defaultActiveKey" class="tabMar card-header" @click="tabTwo(1)">
             <a-tab-pane key="1">
               <span slot="tab">
                 <span>基础信息</span>
@@ -139,7 +139,7 @@
               </span>
               <!-- <baseFormContent></baseFormContent> -->
             </a-tab-pane>
-            <a-tab-pane key="2">
+            <a-tab-pane key="2" >
               <span slot="tab">
                 <span >地理信息</span>
                 <!-- <div class="checkIcon">
@@ -610,20 +610,48 @@ export default {
     }
   },
   beforeCreate () {
-    const vue = this
-    setTimeout(() => {
-      vue.set(vue.defaultActiveKey, 4)
-    }, 3000)
+    // const vue = this
+    // setTimeout(() => {
+    //   vue.set(vue.defaultActiveKey, 4)
+    // }, 3000)
   },
-  // watch: {
-  //   defaultActiveKey: {
-  //     immediate: true,
-  //     handler (val) {
-  //       this.aa = val
-  //     }
-  //   }
-  // },
   methods: {
+    tabTwo (index) {
+      const jump = document.querySelectorAll('.page-sign-title') // 用 class="instance_title" 添加锚点
+      const total = jump[index].offsetTop
+      let distance = document.documentElement.scrollTop || document.body.scrollTop
+
+      let step = total / 30 // 平滑滚动，时长500ms，每10ms一跳，共30跳
+      if (total > distance) {
+        smoothDown()
+      } else {
+        const newTotal = distance - total
+        step = newTotal / 30
+        smoothUp()
+      }
+      function smoothDown () {
+        if (distance < total) {
+          distance += step
+          document.body.scrollTop = distance
+          document.documentElement.scrollTop = distance
+          setTimeout(smoothDown, 10)
+        } else {
+          document.body.scrollTop = total
+          document.documentElement.scrollTop = total
+        }
+      }
+      function smoothUp () {
+        if (distance > total) {
+          distance -= step
+          document.body.scrollTop = distance
+          document.documentElement.scrollTop = distance
+          setTimeout(smoothUp, 10)
+        } else {
+          document.body.scrollTop = total
+          document.documentElement.scrollTop = total
+        }
+      }
+    },
     aa () {
       this.defaultActiveKey = 4
       console.log('@@@@@', this.defaultActiveKey)

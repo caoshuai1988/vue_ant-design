@@ -17,9 +17,9 @@
             <a-icon type="check" />
           </div>
         </span>
-        <a-card :body-style="{padding: '24px'}">
+        <a-card :body-style="{padding: '0'}">
           <div :style="mapFd" :class="{screenload: screenloadFlag}">
-            <div :class="{mapHead: mapHeadFlag,headMap: !mapHeadFlag}">
+            <div :class="{mapHead: mapHeadFlag,headMap: !mapHeadFlag}" ref="text">
               <a-button type="primary" style="margin-left: 24px">保存</a-button>
               <a-button-group style="margin-left: 10px">
                 <a-button>新增</a-button>
@@ -36,7 +36,7 @@
                 <a-icon type="shrink" v-else/>
               </span>
             </div>
-            <div id="container" ref="container" :class="{mapContent: mapFlag}">
+            <div id="container" ref="container" :style="mapMr" :class="{mapContent: mapFlag}">
               <baidu-map
                 :center="center"
                 :zoom="zoom"
@@ -90,10 +90,22 @@ export default {
       mapFd: { // 自定义样式map
         width: '',
         height: ''
+      },
+      mapMr: {
+        width: '100%',
+        height: ''
       }
     }
   },
-  mounted () {},
+  computed: {
+    mapH () {
+      return 1
+    }
+  },
+  mounted () {
+    console.log(window.screen.availHeight - this.$refs.text.offsetHeight - 64)
+    this.mapMr.height = window.screen.availHeight - this.$refs.text.offsetHeight - 64 - 61 - 45 - 52.5 - 93 + 'px'
+  },
   methods: {
 
     onTabChange (key, type) {
@@ -177,10 +189,10 @@ export default {
   padding-bottom: 15px;
 }
 /* map */
-#container {
-  width: 100%;
-  height: 590px;
-}
+// #container {
+//   width: 100%;
+//   height: 590px;
+// }
 /* 全屏 add css */
 
 .screenload {
@@ -212,6 +224,7 @@ export default {
 
 .headMap {
   width: 100%;
+  padding-top: 10px;
   padding-bottom: 10px;
   background-color: #fff;
 }

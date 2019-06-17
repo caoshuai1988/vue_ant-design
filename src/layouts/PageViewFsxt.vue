@@ -374,9 +374,11 @@ export default {
     handelStepclick (index, content) {
       if (this.current < index) return
       this.currentStep = index
-      this.SET_DATALIST(index)
-      this.$forceUpdate()
+      // this.SET_DATALIST(index)
+
+      this.$store.dispatch('changOneActions', index)
       // console.log('dddd', content)
+      this.$forceUpdate()
     },
     getPageMeta () {
       // eslint-disable-next-line

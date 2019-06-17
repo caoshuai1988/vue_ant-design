@@ -17,13 +17,17 @@ export default new Vuex.Store({
     stepform
   },
   state: {
-
+    dataOne: 0
   },
   mutations: {
-
+    changOne (state, type) {
+      state.dataOne = type
+    }
   },
   actions: {
-
+    changOneActions (context, type) {
+      context.commit('changOne', type)
+    }
   },
   getters
 })

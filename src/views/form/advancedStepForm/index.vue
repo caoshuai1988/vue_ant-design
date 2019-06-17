@@ -2,24 +2,26 @@
   <a-card :bordered="false">
     <div class="content">
       <keep-alive>
-        <component :is="stepForm.data.bb"></component>
+        <!-- <component :is="stepForm.data.bb"></component> -->
         <!-- <component :is="which_to_show[stepForm.data.currentTab]"></component>
         <map-form1 v-if="stepForm.data.currentTab ===1" />
         <map-form2 v-if="stepForm.data.currentTab ===2" /> -->
       </keep-alive>
-      <!-- <template v-if="stepForm.data.currentTab">
+      <!-- // 4 -->
+      <template v-if="aaa === 1">
         <map-form1 />
       </template>
-      <template>
+      <!-- 3 -->
+      <template v-else>
         <map-form2 />
-      </template> -->
+      </template>
       <!-- <map-form2 v-show="stepForm.data.currentTab ===1" /> -->
     </div>
   </a-card>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+// import { mapState } from 'vuex'
 
 import mapForm1 from './MapForm1'
 import mapForm2 from './MapForm2'
@@ -45,7 +47,10 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['stepForm'])
+    aaa () {
+      return this.$store.state.dataOne
+    }
+    // ...mapGetters(['stepForm']),
     // which_to_show () {
     //   return mapForm1
     // }

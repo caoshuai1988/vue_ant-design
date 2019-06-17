@@ -75,6 +75,7 @@
 import baseFormContent from '@/components/form/BaseFormContent'
 import AccessoryForm from '@/components/form/AccessoryForm'
 export default {
+  name: 'MapForm2',
   components: {
     baseFormContent,
     AccessoryForm

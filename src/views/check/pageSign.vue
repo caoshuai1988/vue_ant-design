@@ -146,41 +146,41 @@
                         <a-icon type="check" />
                       </div> -->
               </span>
-              <a-card :body-style="{padding: '24px'}">
+              <!-- <a-card :body-style="{padding: '24px'}">
                 <div :style="mapFd" :class="{screenload: screenloadFlag}">
-                  <!-- <div :class="{mapHead: mapHeadFlag,headMap: !mapHeadFlag}">
-                          <a-button type="primary" style="margin-left: 24px">保存</a-button>
-                          <a-button-group style="margin-left: 10px">
-                            <a-button>新增</a-button>
-                            <a-button>绘制</a-button>
-                            <a-button>审核</a-button>
-                            <a-button>监管</a-button>
-                            <a-button>导入</a-button>
-                          </a-button-group>
-                          <span class="searchSpan">
-                            <a-input-search placeholder="请输入" style="width: 300px"/>
-                          </span>
-                          <span class="amplification" @click="amplificationBtn">
-                            <a-icon type="arrows-alt" v-if="iconSwitch"/>
-                            <a-icon type="shrink" v-else/>
-                          </span>
-                        </div> -->
+                  <div :class="{mapHead: mapHeadFlag,headMap: !mapHeadFlag}">
+                    <a-button type="primary" style="margin-left: 24px">保存</a-button>
+                    <a-button-group style="margin-left: 10px">
+                      <a-button>新增</a-button>
+                      <a-button>绘制</a-button>
+                      <a-button>审核</a-button>
+                      <a-button>监管</a-button>
+                      <a-button>导入</a-button>
+                    </a-button-group>
+                    <span class="searchSpan">
+                      <a-input-search placeholder="请输入" style="width: 300px"/>
+                    </span>
+                    <span class="amplification" @click="amplificationBtn">
+                      <a-icon type="arrows-alt" v-if="iconSwitch"/>
+                      <a-icon type="shrink" v-else/>
+                    </span>
+                  </div>
                   <div id="container" ref="container" :class="{mapContent: mapFlag}">
-                    <!-- <baidu-map
-                            :center="center"
-                            :zoom="zoom"
-                            @ready="handler"
-                            style="width:100%;height:100%">
-                            <bm-navigation anchor="BMAP_ANCHOR_TOP_LEFT"></bm-navigation>
-                            <bm-geolocation
-                              anchor="BMAP_ANCHOR_BOTTOM_RIGHT"
-                              :showAddressBar="true"
-                              :autoLocation="true"
-                            ></bm-geolocation>
-                          </baidu-map> -->
+                    <baidu-map
+                      :center="center"
+                      :zoom="zoom"
+                      @ready="handler"
+                      style="width:100%;height:100%">
+                      <bm-navigation anchor="BMAP_ANCHOR_TOP_LEFT"></bm-navigation>
+                      <bm-geolocation
+                        anchor="BMAP_ANCHOR_BOTTOM_RIGHT"
+                        :showAddressBar="true"
+                        :autoLocation="true"
+                      ></bm-geolocation>
+                    </baidu-map>
                   </div>
                 </div>
-              </a-card>
+              </a-card> -->
             </a-tab-pane>
             <a-tab-pane key="3">
               <span slot="tab">基本情况表</span>
@@ -609,7 +609,7 @@ export default {
 
     }
   },
-  mounted () {
+  beforeCreate () {
     const vue = this
     setTimeout(() => {
       vue.set(vue.defaultActiveKey, 4)

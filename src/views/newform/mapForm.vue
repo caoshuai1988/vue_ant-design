@@ -1,8 +1,8 @@
 <template>
-  <div style="background:#fff">
-    <a-tabs defaultActiveKey="2" class="tabMar">
+  <div style="background:#fff;padding-top:11px;" >
+    <a-tabs defaultActiveKey="2" >
       <a-tab-pane key="1">
-        <span slot="tab">
+        <span slot="tab" class="tabMar">
           <span>基础信息</span>
           <div class="checkIcon">
             <a-icon type="check" />
@@ -10,7 +10,7 @@
         </span>
         <baseFormContent></baseFormContent>
       </a-tab-pane>
-      <a-tab-pane key="2">
+      <a-tab-pane key="2" style="padding:10px 24px 24px 24px">
         <span slot="tab">
           <span >地理信息</span>
           <div class="checkIcon">
@@ -20,7 +20,7 @@
         <a-card :body-style="{padding: '0'}">
           <div :style="mapFd" :class="{screenload: screenloadFlag}">
             <div :class="{mapHead: mapHeadFlag,headMap: !mapHeadFlag}" ref="text">
-              <a-button type="primary" style="margin-left: 24px">保存</a-button>
+              <a-button type="primary" style="margin-left: 12px">保存</a-button>
               <a-button-group style="margin-left: 10px">
                 <a-button>新增</a-button>
                 <a-button>绘制</a-button>
@@ -179,9 +179,10 @@ export default {
 </script>
 
  <style lang="less" scoped>
+
 // tab 间距
 .tabMar{
-  margin-left: 24px;
+  padding-left: 24px;
 }
 
 .boxBoder {
@@ -240,7 +241,7 @@ export default {
   font-weight: 700;
   font-size: 18px;
   cursor: pointer;
-  margin-right: 24px;
+  margin-right: 12px;
 }
 
 </style>

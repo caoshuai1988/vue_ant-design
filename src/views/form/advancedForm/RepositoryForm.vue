@@ -2,10 +2,8 @@
   <a-form @submit="handleSubmit" :form="form" class="form">
     <a-row class="form-row" :gutter="16">
       <a-col :lg="6" :md="12" :sm="24">
-        <a-form-item >
-          <span slot="label" :class="{textClass : ceshi == 'large'}">仓库名</span>
+        <a-form-item label="仓库名">
           <a-input
-            :size="ceshi"
             placeholder="请输入仓库名称"
             v-decorator="[
               'name',
@@ -15,10 +13,8 @@
       </a-col>
       <a-col :xl="{span: 7, offset: 1}" :lg="{span: 8}" :md="{span: 12}" :sm="24">
         <a-form-item
-        >
-          <span slot="label" :class="{textClass : ceshi == 'large'}">仓库域名</span>
+          label="仓库域名">
           <a-input
-            :size="ceshi"
             addonBefore="http://"
             addonAfter=".com"
             placeholder="请输入"
@@ -30,9 +26,8 @@
       </a-col>
       <a-col :xl="{span: 9, offset: 1}" :lg="{span: 10}" :md="{span: 24}" :sm="24">
         <a-form-item
-        >
-          <span slot="label" :class="{textClass : ceshi == 'large'}">仓库管理员</span>
-          <a-select :size="ceshi" placeholder="请选择管理员" v-decorator="[ 'owner', {rules: [{ required: true, message: '请选择管理员'}]} ]">
+          label="仓库管理员">
+          <a-select placeholder="请选择管理员" v-decorator="[ 'owner', {rules: [{ required: true, message: '请选择管理员'}]} ]">
             <a-select-option value="王同学">王同学</a-select-option>
             <a-select-option value="李同学">李同学</a-select-option>
             <a-select-option value="黄同学">黄同学</a-select-option>
@@ -43,9 +38,8 @@
     <a-row class="form-row" :gutter="16">
       <a-col :lg="6" :md="12" :sm="24">
         <a-form-item
-        >
-          <span slot="label" :class="{textClass : ceshi == 'large'}">审批人</span>
-          <a-select :size="ceshi" placeholder="请选择审批员" v-decorator="[ 'approver', {rules: [{ required: true, message: '请选择审批员'}]} ]">
+          label="审批人">
+          <a-select placeholder="请选择审批员" v-decorator="[ 'approver', {rules: [{ required: true, message: '请选择审批员'}]} ]">
             <a-select-option value="王晓丽">王晓丽</a-select-option>
             <a-select-option value="李军">李军</a-select-option>
           </a-select>
@@ -53,10 +47,8 @@
       </a-col>
       <a-col :xl="{span: 7, offset: 1}" :lg="{span: 8}" :md="{span: 12}" :sm="24">
         <a-form-item
-        >
-          <span slot="label" :class="{textClass : ceshi == 'large'}">生效日期</span>
+          label="生效日期">
           <a-range-picker
-            :size="ceshi"
             style="width: 100%"
             v-decorator="[
               'dateRange',
@@ -66,10 +58,8 @@
       </a-col>
       <a-col :xl="{span: 9, offset: 1}" :lg="{span: 10}" :md="{span: 24}" :sm="24">
         <a-form-item
-        >
-          <span slot="label" :class="{textClass : ceshi == 'large'}">仓库类型</span>
+          label="仓库类型">
           <a-select
-            :size="ceshi"
             placeholder="请选择仓库类型"
             v-decorator="[
               'type',
@@ -88,30 +78,18 @@
 </template>
 
 <script>
-import bus from '@/bus'
 export default {
-  components: {
-    bus
-  },
   name: 'RepositoryForm',
-  // props: ['ceshi'],
   props: {
     showSubmit: {
       type: Boolean,
       default: false
-    },
-    ceshi: {
-      type: String,
-      default: ''
     }
   },
   data () {
     return {
       form: this.$form.createForm(this)
     }
-  },
-  mounted () {
-    console.log(this.ceshi)
   },
   methods: {
     handleSubmit (e) {
@@ -136,8 +114,6 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
-  .textClass{
-    font-size: 16px;
-  }
+<style scoped>
+
 </style>

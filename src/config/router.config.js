@@ -126,7 +126,7 @@ export const asyncRouterMap = [
             path: '/check/page-sign',
             name: 'pageSign',
             component: () => import('@/views/check/pageSign'),
-            meta: { title: '查看审批页-分页签', showbtn: true, showStep: false, keepAlive: true, permission: ['form'] }
+            meta: { title: '查看审批页-分页签', showbtn: true, showStep: false, keepAlive: false, permission: ['form'] }
           }
         ]
       },
@@ -416,6 +416,12 @@ export const asyncRouterMap = [
             name: 'ThrowRowForm',
             component: () => import('@/views/newform/ThrowRowForm'),
             meta: { title: '三列表单', keepAlive: true, permission: [ 'form' ] }
+          },
+          {
+            path: 'newform/PreviewWord',
+            name: 'PreviewWord',
+            component: () => import('@/views/newform/PreviewWord'),
+            meta: { title: '预览附件', keepAlive: true, permission: [ 'form' ] }
           }
         ]
       }

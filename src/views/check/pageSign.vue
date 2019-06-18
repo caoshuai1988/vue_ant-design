@@ -153,66 +153,30 @@
   }
   #container {
     width: 100%;
-    height: 590px;
+    height: 640px;
   }
 </style>
 <template>
-  <a-card :body-style="{background:'#f0f2f5', padding: 0}" :bordered="false" class="aa">
+  <a-card
+    :body-style="{background:'#f0f2f5', padding: 0}"
+    :bordered="false"
+    class="aa"
+
+    @scroll="handleScroll"
+    ref="content">
     <a-row :gutter="24">
       <a-col :body-style="{ background:'#f0f2f5'}" :xl="num" :lg="num" :md="num" :sm="num" >
         <a-affix :offsetTop="this.top">
-          <a-tabs :defaultActiveKey="defaultActiveKey" class="tabMar card-header" @tabClick="callback">
-            <a-tab-pane key="1">
+          <a-tabs :activeKey="activeKey" class="tabMar card-header" :animated="false" @tabClick="callback" style="padding:8px 24px 0 24px">
+            <a-tab-pane key="1" >
               <span slot="tab">
                 <span>基础信息</span>
-                <!-- <div class="checkIcon">
-                        <a-icon type="check" />
-                      </div> -->
               </span>
-              <!-- <baseFormContent></baseFormContent> -->
             </a-tab-pane>
             <a-tab-pane key="2" >
               <span slot="tab">
                 <span >地理信息</span>
-                <!-- <div class="checkIcon">
-                        <a-icon type="check" />
-                      </div> -->
               </span>
-              <!-- <a-card :body-style="{padding: '24px'}">
-                <div :style="mapFd" :class="{screenload: screenloadFlag}">
-                  <div :class="{mapHead: mapHeadFlag,headMap: !mapHeadFlag}">
-                    <a-button type="primary" style="margin-left: 24px">保存</a-button>
-                    <a-button-group style="margin-left: 10px">
-                      <a-button>新增</a-button>
-                      <a-button>绘制</a-button>
-                      <a-button>审核</a-button>
-                      <a-button>监管</a-button>
-                      <a-button>导入</a-button>
-                    </a-button-group>
-                    <span class="searchSpan">
-                      <a-input-search placeholder="请输入" style="width: 300px"/>
-                    </span>
-                    <span class="amplification" @click="amplificationBtn">
-                      <a-icon type="arrows-alt" v-if="iconSwitch"/>
-                      <a-icon type="shrink" v-else/>
-                    </span>
-                  </div>
-                  <div id="container" ref="container" :class="{mapContent: mapFlag}">
-                    <baidu-map
-                      :center="center"
-                      :zoom="zoom"
-                      @ready="handler"
-                      style="width:100%;height:100%">
-                      <bm-navigation anchor="BMAP_ANCHOR_TOP_LEFT"></bm-navigation>
-                      <bm-geolocation
-                        anchor="BMAP_ANCHOR_BOTTOM_RIGHT"
-                        :showAddressBar="true"
-                        :autoLocation="true"
-                      ></bm-geolocation>
-                    </baidu-map>
-                  </div>
-                </div>
-              </a-card> -->
             </a-tab-pane>
             <a-tab-pane key="3">
               <span slot="tab">基本情况表</span>
@@ -225,14 +189,13 @@
             </a-tab-pane>
             <a-tab-pane key="6">
               <span slot="tab">附件信息</span>
-              <!-- <AccessoryForm></AccessoryForm> -->
             </a-tab-pane>
           </a-tabs>
         </a-affix>
         <a-card
           :body-style="{padding: '24px'}"
-          title="基础信息">
-          <!-- <a href="#" slot="extra">More</a> -->
+          title="基础信息"
+          class="anchor">
           <div class="form-detial" style="background: #fff;">
             <detail-list title="退款申请" :col="3">
               <detail-list-item term="取货单号">1000000000</detail-list-item>
@@ -275,12 +238,12 @@
             </s-table>
           </div>
         </a-card>
-        <div style="margin-top:24px;">
+        <div style="margin-top:24px;" class="anchor">
           <a-card
             :body-style="{padding: '24px'}"
             title="地理信息">
             <!-- <a href="#" slot="extra">More</a> -->
-            <div id="container" ref="container" :style="mapMr" :class="{mapContent: mapFlag}">
+            <div id="container" ref="container" :class="{mapContent: mapFlag}">
               <baidu-map
                 :center="center"
                 :zoom="zoom"
@@ -297,7 +260,7 @@
           </a-card>
         </div>
         <!-- 附件信息 -->
-        <div style="margin-top:24px;">
+        <div style="margin-top:24px;" class="anchor">
           <a-card
             :body-style="{padding: '24px', marginTop: '24px'}"
             title="附件信息">
@@ -532,7 +495,7 @@ export default {
       // 固钉
       top: 0,
       // 当前tab标签为第几个
-      defaultActiveKey: 1,
+      activeKey: '1',
       num: 18,
       helpNum: 6,
       lablenum: 7,
@@ -743,7 +706,27 @@ export default {
     //   vue.set(vue.defaultActiveKey, 4)
     // }, 3000)
   },
+  mounted () {
+    window.addEventListener('scroll', this.handleScroll) // 监听滚动条
+  },
   methods: {
+
+    handleScroll (el) {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTo
+      const jump = document.querySelectorAll('.anchor') // 用 class" 添加锚点
+      const total = jump[1].offsetTop
+      const totalOne = jump[2].offsetTop
+      const totalOnes = jump[0].offsetTop
+      if (scrollTop >= totalOnes) {
+        this.activeKey = '1'
+      }
+      if (scrollTop >= total) {
+        this.activeKey = '2'
+      }
+      if (scrollTop >= totalOne) {
+        this.activeKey = '3'
+      }
+    },
     // 地图处理
     handler ({ BMap, map }) {
       this.center.lng = 116.404
@@ -751,16 +734,20 @@ export default {
       this.zoom = this.zoom
     },
     callback (val) {
-      const jump = document.querySelectorAll('.page-sign-title') // 用 class="instance_title" 添加锚点
+      val = val - 1
+      if (val >= 3) { // 暂时防止页面报错
+        return
+      }
+      const jump = document.querySelectorAll('.anchor') // 用 class" 添加锚点
       const total = jump[val].offsetTop
       let distance = document.documentElement.scrollTop || document.body.scrollTop
 
-      let step = total / 30 // 平滑滚动，时长500ms，每10ms一跳，共30跳
+      let step = total / 40 // 平滑滚动，时长500ms，每10ms一跳，共30跳
       if (total > distance) {
         smoothDown()
       } else {
         const newTotal = distance - total
-        step = newTotal / 30
+        step = newTotal / 40
         smoothUp()
       }
       function smoothDown () {
@@ -785,9 +772,6 @@ export default {
           document.documentElement.scrollTop = total
         }
       }
-    },
-    tabTwo (index) {
-      console.log(index)
     },
     aa () {
       this.defaultActiveKey = 4
@@ -820,6 +804,9 @@ export default {
     onChange () {
 
     }
+  },
+  beforeDestroy () {
+    window.removeEventListener('scroll', this.handleScroll)
   }
 }
 </script>

@@ -296,7 +296,7 @@ import { mapState, mapMutations } from 'vuex'
 import PageHeader from '@/components/PageHeaderFsxt'
 
 export default {
-  name: 'PageView',
+  name: 'PageViewFsxt',
   components: {
     PageHeader
   },

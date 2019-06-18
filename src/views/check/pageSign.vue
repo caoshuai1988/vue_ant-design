@@ -123,6 +123,38 @@
   .ant-tabs-bar{
     margin: 0;
   }
+  // 附件打包现在样式
+  .table-wrap{
+    margin-bottom: 48px;
+    .title-box{
+      // height: 32px;
+      padding-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .title-des{
+        font-size: 16px;
+        color:rgba(0, 0, 0, 0.85);
+
+      }
+
+    }
+}
+
+// 地图的样式
+/* 放大生效 */
+  .mapHead {
+    padding: 10px 0;
+    background-color: #fff;
+  }
+
+  .mapContent {
+    height: 100% !important;
+  }
+  #container {
+    width: 100%;
+    height: 590px;
+  }
 </style>
 <template>
   <a-card :body-style="{background:'#f0f2f5', padding: 0}" :bordered="false" class="aa">
@@ -243,6 +275,28 @@
             </s-table>
           </div>
         </a-card>
+        <div style="margin-top:24px;">
+          <a-card
+            :body-style="{padding: '24px'}"
+            title="地理信息">
+            <!-- <a href="#" slot="extra">More</a> -->
+            <div id="container" ref="container" :style="mapMr" :class="{mapContent: mapFlag}">
+              <baidu-map
+                :center="center"
+                :zoom="zoom"
+                @ready="handler"
+                style="width:100%;height:100%">
+                <bm-navigation anchor="BMAP_ANCHOR_TOP_LEFT"></bm-navigation>
+                <bm-geolocation
+                  anchor="BMAP_ANCHOR_BOTTOM_RIGHT"
+                  :showAddressBar="true"
+                  :autoLocation="true"
+                ></bm-geolocation>
+              </baidu-map>
+            </div>
+          </a-card>
+        </div>
+        <!-- 附件信息 -->
         <div style="margin-top:24px;">
           <a-card
             :body-style="{padding: '24px', marginTop: '24px'}"
@@ -690,6 +744,12 @@ export default {
     // }, 3000)
   },
   methods: {
+    // 地图处理
+    handler ({ BMap, map }) {
+      this.center.lng = 116.404
+      this.center.lat = 39.915
+      this.zoom = this.zoom
+    },
     callback (val) {
       const jump = document.querySelectorAll('.page-sign-title') // 用 class="instance_title" 添加锚点
       const total = jump[val].offsetTop

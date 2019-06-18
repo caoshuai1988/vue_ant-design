@@ -123,6 +123,38 @@
   .ant-tabs-bar{
     margin: 0;
   }
+  // 附件打包现在样式
+  .table-wrap{
+    margin-bottom: 48px;
+    .title-box{
+      // height: 32px;
+      padding-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .title-des{
+        font-size: 16px;
+        color:rgba(0, 0, 0, 0.85);
+
+      }
+
+    }
+}
+
+// 地图的样式
+/* 放大生效 */
+  .mapHead {
+    padding: 10px 0;
+    background-color: #fff;
+  }
+
+  .mapContent {
+    height: 100% !important;
+  }
+  #container {
+    width: 100%;
+    height: 590px;
+  }
 </style>
 <template>
   <a-card :body-style="{background:'#f0f2f5', padding: 0}" :bordered="false" class="aa">
@@ -245,49 +277,76 @@
         </a-card>
         <div style="margin-top:24px;">
           <a-card
+            :body-style="{padding: '24px'}"
+            title="地理信息">
+            <!-- <a href="#" slot="extra">More</a> -->
+            <div id="container" ref="container" :style="mapMr" :class="{mapContent: mapFlag}">
+              <baidu-map
+                :center="center"
+                :zoom="zoom"
+                @ready="handler"
+                style="width:100%;height:100%">
+                <bm-navigation anchor="BMAP_ANCHOR_TOP_LEFT"></bm-navigation>
+                <bm-geolocation
+                  anchor="BMAP_ANCHOR_BOTTOM_RIGHT"
+                  :showAddressBar="true"
+                  :autoLocation="true"
+                ></bm-geolocation>
+              </baidu-map>
+            </div>
+          </a-card>
+        </div>
+        <!-- 附件信息 -->
+        <div style="margin-top:24px;">
+          <a-card
             :body-style="{padding: '24px', marginTop: '24px'}"
             title="附件信息">
             <!-- <a href="#" slot="extra">More</a> -->
-            <div class="form-detial" style="background: #fff;">
-              <detail-list title="退款申请" :col="3">
-                <detail-list-item term="取货单号">1000000000</detail-list-item>
-                <detail-list-item term="状态">已取货</detail-list-item>
-                <detail-list-item term="销售单号">1234123421</detail-list-item>
-                <detail-list-item term="子订单">3214321432</detail-list-item>
-              </detail-list>
-              <a-divider style="margin-bottom: 32px"/>
-              <detail-list title="用户信息">
-                <detail-list-item term="用户姓名">付小小</detail-list-item>
-                <detail-list-item term="联系电话">18100000000</detail-list-item>
-                <detail-list-item term="常用快递">菜鸟仓储</detail-list-item>
-                <detail-list-item term="取货地址">浙江省杭州市西湖区万塘路18号</detail-list-item>
-                <detail-list-item term="备注">	无</detail-list-item>
-              </detail-list>
-              <a-divider style="margin-bottom: 32px"/>
-
-              <div class="page-sign-title">退货商品</div>
-              <s-table
-                style="margin-bottom: 24px"
-                row-key="id"
-                :columns="goodsColumns"
-                :data="loadGoodsData">
-              </s-table>
-
-              <div class="page-sign-title" @click="aa">退货进度</div>
-              <s-table
-                style="margin-bottom: 24px"
-                row-key="key"
-                :columns="scheduleColumns"
-                :data="loadScheduleData">
-
-                <template
-                  slot="status"
-                  slot-scope="status">
-                  <a-badge :status="status" :text="status"/>
-                  <!-- <a-badge :status="status" :text="status | statusFilter"/> -->
-                </template>
-
-              </s-table>
+            <div class="accessory-box" style="background: #fff;">
+              <div class="table-wrap">
+                <div class="title-box">
+                  <div class="title-des">项目可研报告</div>
+                  <a-button size="small">打包下载</a-button>
+                </div>
+                <a-table :dataSource="data" :pagination="false">
+                  <a-table-column title="种类" data-index="icon" key="icon">
+                    <template slot-scope="icon">
+                      <a-icon :type="item" v-for="item in icon" :key="item.icon"/>
+                    </template>
+                  </a-table-column>
+                  <a-table-column title="名称" data-index="name" key="name"/>
+                  <a-table-column title="大小" data-index="size" key="size"/>
+                  <a-table-column title="上传时间" data-index="time" key="time"/>
+                  <a-table-column title="操作" key="operation">
+                    <template slot-scope="text, record">
+                      <a href style="margin-right:10px">{{ record.operation.text }}</a>
+                      <a style="margin-right:10px">{{ record.operation.textOne }}</a>
+                    </template>
+                  </a-table-column>
+                </a-table>
+              </div>
+              <div class="table-wrap">
+                <div class="title-box">
+                  <div class="title-des">绩效目标</div>
+                  <a-button size="small">打包下载</a-button>
+                </div>
+                <a-table :dataSource="data" :pagination="false">
+                  <a-table-column title="种类" data-index="icon" key="icon">
+                    <template slot-scope="icon">
+                      <a-icon :type="item" v-for="item in icon" :key="item.icon"/>
+                    </template>
+                  </a-table-column>
+                  <a-table-column title="名称" data-index="name" key="name"/>
+                  <a-table-column title="大小" data-index="size" key="size"/>
+                  <a-table-column title="上传时间" data-index="time" key="time"/>
+                  <a-table-column title="操作" key="operation">
+                    <template slot-scope="text, record">
+                      <a href style="margin-right:10px">{{ record.operation.text }}</a>
+                      <a style="margin-right:10px">{{ record.operation.textOne }}</a>
+                    </template>
+                  </a-table-column>
+                </a-table>
+              </div>
             </div>
           </a-card>
         </div>
@@ -393,6 +452,74 @@
 import { STable } from '@/components'
 import DetailList from '@/components/tools/DetailList'
 const DetailListItem = DetailList.Item
+// 列表的数据定义
+const data = [
+  {
+    key: '1',
+    icon: ['file-text'],
+    name: '融合服务开发服务平台前端部分工作规划.docx',
+    size: '23.6MB',
+    time: '2016-09-21 08:50:08',
+    state: [{ c: 60, d: 'active' }],
+    operation: {
+      text: '预览',
+      textOne: '下载',
+      flagOpen: true
+    }
+  },
+  {
+    key: '2',
+    icon: ['file-text'],
+    name: '融合服务开发服务平台前端部分工作规划.docx',
+    size: '23.6MB',
+    time: '2016-09-21 08:50:08',
+    state: [{ c: 100, d: 'success' }],
+    operation: {
+      text: '预览',
+      textOne: '下载',
+      flagOpen: true
+    }
+  },
+  {
+    key: '3',
+    icon: ['file-text'],
+    name: '融合服务开发服务平台前端部分工作规划.docx',
+    size: '23.6MB',
+    time: '2016-09-21 08:50:08',
+    state: [{ c: 80, d: 'exception' }],
+    operation: {
+      text: '预览',
+      textOne: '下载',
+      flagOpen: true
+    }
+  },
+  {
+    key: '4',
+    icon: ['file-text'],
+    name: '融合服务开发服务平台前端部分工作规划.docx',
+    size: '23.6MB',
+    time: '2016-09-21 08:50:08',
+    state: [{ c: 60, d: 'active' }],
+    operation: {
+      text: '预览',
+      textOne: '下载',
+      flagOpen: true
+    }
+  },
+  {
+    key: '5',
+    icon: ['file-text'],
+    name: '融合服务开发服务平台前端部分工作规划.docx',
+    size: '23.6MB',
+    time: '2016-09-21 08:50:08',
+    state: [{ c: 60, d: 'active' }],
+    operation: {
+      text: '预览',
+      textOne: '下载',
+      flagOpen: true
+    }
+  }
+]
 export default {
   components: {
     DetailList,
@@ -401,6 +528,7 @@ export default {
   },
   data () {
     return {
+      data,
       // 固钉
       top: 0,
       // 当前tab标签为第几个
@@ -616,6 +744,12 @@ export default {
     // }, 3000)
   },
   methods: {
+    // 地图处理
+    handler ({ BMap, map }) {
+      this.center.lng = 116.404
+      this.center.lat = 39.915
+      this.zoom = this.zoom
+    },
     callback (val) {
       const jump = document.querySelectorAll('.page-sign-title') // 用 class="instance_title" 添加锚点
       const total = jump[val].offsetTop

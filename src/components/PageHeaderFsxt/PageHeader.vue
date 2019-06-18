@@ -55,6 +55,9 @@
           padding: 0 8px;
           font-size: 18px;
         }
+        .checking{
+          color:#F5222D;
+        }
       }
       .logo {
         width: 28px;
@@ -147,6 +150,7 @@
 .detail .main .title{
   margin:0;
 }
+
 </style>
 <template>
   <div class="page-header">
@@ -166,7 +170,7 @@
                 <a-button><a-icon type="ellipsis"/></a-button>
               </a-button-group>
               <span class="sign">|</span>
-              <a-button style="width: 130px;margin-left:16px;">审批：<span style="color:#F5222D">待审批</span> <a-icon type="caret-down" /></a-button>
+              <a-button style="width: 130px;margin-left:16px;">审批：<span class="checking">待审批</span> <a-icon type="caret-down" /></a-button>
             </div>
 
             <div class="action">

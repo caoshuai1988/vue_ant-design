@@ -406,9 +406,15 @@ export const asyncRouterMap = [
             meta: { title: '高级表单', keepAlive: true, permission: [ 'form' ] }
           },
           {
+<<<<<<< HEAD
             path: 'newform/MapForm',
             name: 'MapForm',
             component: () => import('@/views/newform/MapForm'),
+=======
+            path: 'newform/mapForm',
+            name: 'mapForm',
+            component: () => import('@/views/newform/mapForm'),
+>>>>>>> lxh-form1
             meta: { title: '地图表单', keepAlive: true, permission: [ 'form' ] }
           },
           {

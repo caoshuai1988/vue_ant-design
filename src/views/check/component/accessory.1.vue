@@ -1,0 +1,363 @@
+<style lang="less">
+  .table-wrap{
+    margin-bottom: 48px;
+    .title-box{
+      // height: 32px;
+      padding-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .title-des{
+        font-size: 16px;
+        color:rgba(0, 0, 0, 0.85);
+
+      }
+
+    }
+  }
+
+  .lable{
+    text-align: right;
+  }
+  .title-name {
+    font-size: 18px;
+    margin-left: 200px ;
+  }
+
+  .line{
+    box-sizing: border-box;
+    width:100%;
+    padding: 0 20px;
+    height: 0.5px;
+    background: #cccccc;
+    margin-bottom: 24px;
+  }
+  /* you can make up upload button and sample style by using stylesheets */
+  .ant-upload-select-picture-card i {
+    font-size: 32px;
+    color: #999;
+  }
+
+  .ant-upload-select-picture-card .ant-upload-text {
+    margin-top: 8px;
+    color: #666;
+  }
+
+</style>
+<template>
+  <div class="accessory-box" style="background: #fff; padding: 24px">
+    <div class="table-wrap">
+      <div class="title-box">
+        <div class="title-des">项目可研报告</div>
+        <a-button size="small">打包下载</a-button>
+      </div>
+      <a-table :dataSource="data" :pagination="false">
+        <a-table-column title="种类" data-index="icon" key="icon">
+          <template slot-scope="icon">
+            <a-icon :type="item" v-for="item in icon" :key="item.icon"/>
+          </template>
+        </a-table-column>
+        <a-table-column title="名称" data-index="name" key="name"/>
+        <a-table-column title="大小" data-index="size" key="size"/>
+        <a-table-column title="上传时间" data-index="time" key="time"/>
+        <a-table-column title="操作" key="operation">
+          <template slot-scope="text, record">
+            <a href style="margin-right:10px">{{ record.operation.text }}</a>
+            <a style="margin-right:10px">{{ record.operation.textOne }}</a>
+          </template>
+        </a-table-column>
+      </a-table>
+    </div>
+    <div class="table-wrap">
+      <div class="title-box">
+        <div class="title-des">绩效目标</div>
+        <a-button size="small">打包下载</a-button>
+      </div>
+      <a-table :dataSource="data" :pagination="false">
+        <a-table-column title="种类" data-index="icon" key="icon">
+          <template slot-scope="icon">
+            <a-icon :type="item" v-for="item in icon" :key="item.icon"/>
+          </template>
+        </a-table-column>
+        <a-table-column title="名称" data-index="name" key="name"/>
+        <a-table-column title="大小" data-index="size" key="size"/>
+        <a-table-column title="上传时间" data-index="time" key="time"/>
+        <a-table-column title="操作" key="operation">
+          <template slot-scope="text, record">
+            <a href style="margin-right:10px">{{ record.operation.text }}</a>
+            <a style="margin-right:10px">{{ record.operation.textOne }}</a>
+          </template>
+        </a-table-column>
+      </a-table>
+    </div>
+  </div>
+</template>
+
+<script>
+import { STable } from '@/components'
+import DetailList from '@/components/tools/DetailList'
+const DetailListItem = DetailList.Item
+// 列表的数据定义
+const data = [
+  {
+    key: '1',
+    icon: ['file-text'],
+    name: '融合服务开发服务平台前端部分工作规划.docx',
+    size: '23.6MB',
+    time: '2016-09-21 08:50:08',
+    state: [{ c: 60, d: 'active' }],
+    operation: {
+      text: '预览',
+      textOne: '下载',
+      flagOpen: true
+    }
+  },
+  {
+    key: '2',
+    icon: ['file-text'],
+    name: '融合服务开发服务平台前端部分工作规划.docx',
+    size: '23.6MB',
+    time: '2016-09-21 08:50:08',
+    state: [{ c: 100, d: 'success' }],
+    operation: {
+      text: '预览',
+      textOne: '下载',
+      flagOpen: true
+    }
+  },
+  {
+    key: '3',
+    icon: ['file-text'],
+    name: '融合服务开发服务平台前端部分工作规划.docx',
+    size: '23.6MB',
+    time: '2016-09-21 08:50:08',
+    state: [{ c: 80, d: 'exception' }],
+    operation: {
+      text: '预览',
+      textOne: '下载',
+      flagOpen: true
+    }
+  },
+  {
+    key: '4',
+    icon: ['file-text'],
+    name: '融合服务开发服务平台前端部分工作规划.docx',
+    size: '23.6MB',
+    time: '2016-09-21 08:50:08',
+    state: [{ c: 60, d: 'active' }],
+    operation: {
+      text: '预览',
+      textOne: '下载',
+      flagOpen: true
+    }
+  },
+  {
+    key: '5',
+    icon: ['file-text'],
+    name: '融合服务开发服务平台前端部分工作规划.docx',
+    size: '23.6MB',
+    time: '2016-09-21 08:50:08',
+    state: [{ c: 60, d: 'active' }],
+    operation: {
+      text: '预览',
+      textOne: '下载',
+      flagOpen: true
+    }
+  }
+]
+export default {
+  components: {
+    DetailList,
+    DetailListItem,
+    STable
+  },
+  data () {
+    return {
+      data,
+      num: 18,
+      helpNum: 6,
+      lablenum: 7,
+      valuenum: 17,
+      isShowHelp: true,
+      labelCol: { lg: { span: 7 }, sm: { span: 7 } },
+      wrapperCol: { lg: { span: 10 }, sm: { span: 10 } },
+      headers: {
+        authorization: 'authorization-text'
+      },
+      // description: '表单页用于向用户收集或验证信息，基础表单常见于数据项较少的表单场',
+      value: 1,
+      // form
+      form: this.$form.createForm(this),
+      previewVisible: false,
+      previewImage: '',
+      fileList: [{
+        uid: '-1',
+        name: 'xxx.png',
+        status: 'done',
+        url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png'
+      }],
+
+      // 加载数据方法 必须为 Promise 对象
+      loadGoodsData: () => {
+        return new Promise(resolve => {
+          resolve({
+            data: [
+              {
+                id: '1234561',
+                name: '矿泉水 550ml',
+                barcode: '12421432143214321',
+                price: '2.00',
+                num: '1',
+                amount: '2.00'
+              },
+              {
+                id: '1234562',
+                name: '凉茶 300ml',
+                barcode: '12421432143214322',
+                price: '3.00',
+                num: '2',
+                amount: '6.00'
+              },
+              {
+                id: '1234563',
+                name: '好吃的薯片',
+                barcode: '12421432143214323',
+                price: '7.00',
+                num: '4',
+                amount: '28.00'
+              },
+              {
+                id: '1234564',
+                name: '特别好吃的蛋卷',
+                barcode: '12421432143214324',
+                price: '8.50',
+                num: '3',
+                amount: '25.50'
+              }
+            ],
+            pageSize: 10,
+            pageNo: 1,
+            totalPage: 1,
+            totalCount: 10
+          })
+        }).then(res => {
+          return res
+        })
+      },
+
+      scheduleColumns: [
+        {
+          title: '时间',
+          dataIndex: 'time',
+          key: 'time'
+        },
+        {
+          title: '当前进度',
+          dataIndex: 'rate',
+          key: 'rate'
+        },
+        {
+          title: '状态',
+          dataIndex: 'status',
+          key: 'status',
+          scopedSlots: { customRender: 'status' }
+        },
+        {
+          title: '操作员ID',
+          dataIndex: 'operator',
+          key: 'operator'
+        },
+        {
+          title: '耗时',
+          dataIndex: 'cost',
+          key: 'cost'
+        }
+      ],
+      loadScheduleData: () => {
+        return new Promise(resolve => {
+          resolve({
+            data: [
+              {
+                key: '1',
+                time: '2017-10-01 14:10',
+                rate: '联系客户',
+                status: 'processing',
+                operator: '取货员 ID1234',
+                cost: '5mins'
+              },
+              {
+                key: '2',
+                time: '2017-10-01 14:05',
+                rate: '取货员出发',
+                status: 'success',
+                operator: '取货员 ID1234',
+                cost: '1h'
+              },
+              {
+                key: '3',
+                time: '2017-10-01 13:05',
+                rate: '取货员接单',
+                status: 'success',
+                operator: '取货员 ID1234',
+                cost: '5mins'
+              },
+              {
+                key: '4',
+                time: '2017-10-01 13:00',
+                rate: '申请审批通过',
+                status: 'success',
+                operator: '系统',
+                cost: '1h'
+              },
+              {
+                key: '5',
+                time: '2017-10-01 12:00',
+                rate: '发起退货申请',
+                status: 'success',
+                operator: '用户',
+                cost: '5mins'
+              }
+            ],
+            pageSize: 10,
+            pageNo: 1,
+            totalPage: 1,
+            totalCount: 10
+          })
+        }).then(res => {
+          return res
+        })
+      }
+
+    }
+  },
+  methods: {
+    // handler
+    handleSubmit (e) {
+      e.preventDefault()
+      this.form.validateFields((err, values) => {
+        if (!err) {
+          // eslint-disable-next-line no-console
+          console.log('Received values of form: ', values)
+        }
+      })
+    },
+    handleClose () {
+      this.isShowHelp = false
+      this.num = 24
+    },
+    handleCancel () {
+      this.previewVisible = false
+    },
+    handlePreview (file) {
+      this.previewImage = file.url || file.thumbUrl
+      this.previewVisible = true
+    },
+    handleChange ({ fileList }) {
+      this.fileList = fileList
+    },
+    onChange () {
+
+    }
+  }
+}
+</script>

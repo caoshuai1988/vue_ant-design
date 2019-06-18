@@ -1,7 +1,7 @@
 <template>
   <div class="footer">
     <div class="links">
-      <a
+      <!-- <a
         href="https://pro.loacg.com/"
         target="_blank"
       >Pro 首页</a>
@@ -12,11 +12,12 @@
         <a-icon type="github" />
       </a>
       <a href="https://ant.design/">Ant Design</a>
-      <a href="https://vue.ant.design/">Vue Antd</a>
+      <a href="https://vue.ant.design/">Vue Antd</a> -->
     </div>
     <div class="copyright">
-      Copyright
-      <a-icon type="copyright" /> 2018 <span>白鹭学园技术组出品</span>
+      <!-- Copyright
+      <a-icon type="copyright" /> 2018 <span>白鹭学园技术组出品</span> -->
+      版权所有：江苏富深协通科技股份有限公司&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span>技术支持电话：0519-86612998</span>
     </div>
   </div>
 </template>

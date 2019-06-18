@@ -38,7 +38,7 @@
             </a-tooltip>
             <a-tooltip>
               <template slot="title">
-                plusTheme01风格测试
+                风格测试
               </template>
               <div class="setting-drawer-index-item" @click="handleSurplusTheme('plusTheme01')">
                 <img src="https://gw.alipayobjects.com/zos/rmsportal/jpRkZQMyYRryryPNtyIC.svg" alt="plusTheme01">
@@ -47,7 +47,7 @@
                 </div>
               </div>
             </a-tooltip>
-            <a-tooltip>
+    <!--        <a-tooltip>
               <template slot="title">
                 plusTheme02风格测试
               </template>
@@ -57,7 +57,7 @@
                   <a-icon type="check"/>
                 </div>
               </div>
-            </a-tooltip>
+            </a-tooltip>-->
           </div>
         </div>
 
@@ -100,7 +100,18 @@
               </template>
               <div class="setting-drawer-index-item" @click="handleLayout('topmenu')">
                 <img src="https://gw.alipayobjects.com/zos/rmsportal/KDNDBbriJhLwuqMoxcAr.svg" alt="topmenu">
-                <div class="setting-drawer-index-selectIcon" v-if="layoutMode !== 'sidemenu'">
+                <div class="setting-drawer-index-selectIcon" v-if="layoutMode === 'topmenu'">
+                  <a-icon type="check"/>
+                </div>
+              </div>
+            </a-tooltip>
+            <a-tooltip>
+              <template slot="title">
+                满屏顶部栏导航
+              </template>
+              <div class="setting-drawer-index-item" @click="handleLayout('fulltopmenu')">
+                <img src="https://gw.alipayobjects.com/zos/rmsportal/KDNDBbriJhLwuqMoxcAr.svg" alt="fulltopmenu">
+                <div class="setting-drawer-index-selectIcon" v-if="layoutMode === 'fulltopmenu'">
                   <a-icon type="check"/>
                 </div>
               </div>
@@ -113,10 +124,19 @@
                   <template slot="title">
                     该设定仅 [顶部栏导航] 时有效
                   </template>
-                  <a-select size="small" style="width: 80px;" :defaultValue="contentWidth" @change="handleContentWidthChange">
-                    <a-select-option value="Fixed">固定</a-select-option>
-                    <a-select-option value="Fluid" v-if="layoutMode !== 'sidemenu'">流式</a-select-option>
+                  <a-select v-if="layoutMode === 'sidemenu'" size="small" style="width: 80px;" :defaultValue="contentWidth" @change="handleContentWidthChange">
+                    <a-select-option value="Fluid">流式</a-select-option>
                   </a-select>
+
+                  <a-select v-if="layoutMode === 'topmenu'" size="small" style="width: 80px;" :defaultValue="contentWidth" @change="handleContentWidthChange">
+                    <a-select-option value="Fixed">固定</a-select-option>
+                    <a-select-option value="Fluid">流式</a-select-option>
+                  </a-select>
+
+                  <a-select v-if="layoutMode === 'fulltopmenu'" size="small" style="width: 80px;" :defaultValue="contentWidth" @change="handleContentWidthChange">
+                    <a-select-option value="Fluid">流式</a-select-option>
+                  </a-select>
+
                 </a-tooltip>
                 <a-list-item-meta>
                   <div slot="title">内容区域宽度</div>
@@ -145,6 +165,11 @@
               </a-list-item>
             </a-list>
           </div>
+
+
+
+
+
         </div>
         <a-divider />
 

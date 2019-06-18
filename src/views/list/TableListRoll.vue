@@ -196,7 +196,7 @@ export default {
         }
       },
       optionAlertShow: false,
-      scrollDisabled: false,
+      //scrollDisabled: false,
       scroll: {
         x:2000,
         y:350

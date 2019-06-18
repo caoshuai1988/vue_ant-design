@@ -23,5 +23,5 @@ export default new Vuex.Store({
   actions: {
 
   },
-  getters
+  getters // Getter相当于vue中的computed计算属性，getter 的返回值会根据它的依赖被缓存起来，且只有当它的依赖值发生了改变才会被重新计算
 })

@@ -136,7 +136,6 @@ export default {
   methods: {
     ...mapActions(['setSidebar']),
     toggle () {
-      debugger
       this.collapsed = !this.collapsed
       this.setSidebar(!this.collapsed)
       triggerWindowResizeEvent()

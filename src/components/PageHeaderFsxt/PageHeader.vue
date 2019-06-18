@@ -177,7 +177,11 @@
                 <a-button><a-icon type="ellipsis"/></a-button>
               </a-button-group>
               <span class="sign">|</span>
-              <a-button class="btn" style="width: 130px;margin-left:16px;">审批：<span class="checking">待审批</span></a-button>
+              <a-button
+                class="btn"
+                @click="showDrawer"
+                style="width: 130px;margin-left:16px;">
+                审批：<span class="checking">待审批</span></a-button>
             </div>
 
             <div class="action">
@@ -204,17 +208,19 @@
         </div>
       </div>
       <!-- <div class="page-direction"></div> -->
-      <!-- page -->
+      <drawer :isVisible="isVisible" @close-drawer="closeDrawer" @show-drawer="showDrawer"/>
     </div>
   </div>
 </template>
 
 <script>
 import Breadcrumb from '@/components/tools/Breadcrumb'
+import drawer from '@/components/drawer'
 
 export default {
   name: 'PageHeader',
   components: {
+    drawer,
     's-breadcrumb': Breadcrumb
   },
   props: {
@@ -235,7 +241,17 @@ export default {
     }
   },
   data () {
-    return {}
+    return {
+      isVisible: false
+    }
+  },
+  methods: {
+    showDrawer () {
+      this.isVisible = true
+    },
+    closeDrawer () {
+      this.isVisible = false
+    }
   }
 }
 </script>

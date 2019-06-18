@@ -528,6 +528,10 @@ export default {
   },
   data () {
     return {
+      mapMr: {
+        width: '100%',
+        height: ''
+      },
       data,
       // 固钉
       top: 0,

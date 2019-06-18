@@ -58,6 +58,13 @@
         .checking{
           color:#F5222D;
         }
+        .btn{
+          &:focus{
+            .checking{
+              color: #40a9ff;
+            }
+          }
+        }
       }
       .logo {
         width: 28px;
@@ -170,7 +177,7 @@
                 <a-button><a-icon type="ellipsis"/></a-button>
               </a-button-group>
               <span class="sign">|</span>
-              <a-button style="width: 130px;margin-left:16px;">审批：<span class="checking">待审批</span> <a-icon type="caret-down" /></a-button>
+              <a-button class="btn" style="width: 130px;margin-left:16px;">审批：<span class="checking">待审批</span></a-button>
             </div>
 
             <div class="action">
@@ -197,6 +204,7 @@
         </div>
       </div>
       <!-- <div class="page-direction"></div> -->
+      <!-- page -->
     </div>
   </div>
 </template>

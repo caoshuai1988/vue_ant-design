@@ -104,7 +104,7 @@ export default {
       .title {
         font-size: 20px;
         font-weight: 500;
-
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         font-size: 20px;
         line-height: 28px;
         font-weight: 500;

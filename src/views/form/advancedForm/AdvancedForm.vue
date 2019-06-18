@@ -1,21 +1,11 @@
 <template>
   <div>
-    <a-button style="width: 100%; margin-top: 16px; margin-bottom: 8px" type="dashed" icon="plus" @click="sizeBig('large')">变大</a-button>
-    <a-button style="width: 100%; margin-top: 16px; margin-bottom: 8px" type="dashed" icon="plus" @click="sizeBig('default')">默认</a-button>
-    <a-button style="width: 100%; margin-top: 16px; margin-bottom: 8px" type="dashed" icon="plus" @click="sizeBig('small')">变小</a-button>
-    <a-tabs defaultActiveKey="1" :size="big">
-      <a-tab-pane tab="基础信息" key="1" >
-        <a-card class="card" style="font-size: 26px" :bordered="false" >
-          <span slot="title" :class="{abc : big == 'large'}">仓库管理</span>
-          <repository-form ref="repository" :showSubmit="false" :ceshi="big" />
-        </a-card>
-        <a-card class="card" title="任务管理" :bordered="false">
-          <task-form ref="task" :showSubmit="false" />
-        </a-card>
-      </a-tab-pane>
-      <a-tab-pane tab="地理信息" key="2" forceRender></a-tab-pane>
-      <a-tab-pane tab="基本情况表" key="3"></a-tab-pane>
-    </a-tabs>
+    <a-card class="card" title="仓库管理" :bordered="false">
+      <repository-form ref="repository" :showSubmit="false" />
+    </a-card>
+    <a-card class="card" title="任务管理" :bordered="false">
+      <task-form ref="task" :showSubmit="false" />
+    </a-card>
 
     <!-- table -->
     <a-card>
@@ -79,7 +69,7 @@
           </span>
         </a-popover>
       </span>
-      <a-button type="primary" @click="validate" :size="big" :loading="loading">提交</a-button>
+      <a-button type="primary" @click="validate" :loading="loading">提交</a-button>
     </footer-tool-bar>
   </div>
 </template>
@@ -118,7 +108,7 @@ export default {
       description: '高级表单常见于一次性输入和提交大批量数据的场景。',
       loading: false,
       memberLoading: false,
-      big: 'default',
+
       // table
       columns: [
         {
@@ -176,10 +166,6 @@ export default {
     }
   },
   methods: {
-    sizeBig (num) {
-      this.big = num
-      this.$forceUpdate()
-    },
     handleSubmit (e) {
       e.preventDefault()
     },
@@ -241,14 +227,11 @@ export default {
 
     // 最终全页面提交
     validate () {
-      console.log('3333', this)
       const { $refs: { repository, task }, $notification } = this
       const repositoryForm = new Promise((resolve, reject) => {
         repository.form.validateFields((err, values) => {
           if (err) {
             reject(err)
-            console.log(err)
-
             return
           }
           resolve(values)
@@ -307,9 +290,6 @@ export default {
 <style lang="less" scoped>
   .card{
     margin-bottom: 24px;
-  }
-  .abc{
-    font-size: 18px;
   }
   .popover-wrapper {
     /deep/ .antd-pro-pages-forms-style-errorPopover .ant-popover-inner-content {

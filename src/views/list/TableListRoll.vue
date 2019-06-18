@@ -196,8 +196,11 @@ export default {
         }
       },
       optionAlertShow: false,
-      // scrollDisabled: false,
-      scroll: {}
+      //scrollDisabled: false,
+      scroll: {
+        x:2000,
+        y:350
+      }
     }
   },
   filters: {
@@ -213,6 +216,7 @@ export default {
     window.addEventListener('resize', () => {
       // debugger
       this.changeBrowser()
+      console.log('scroll',this.scroll)
     })
   },
   methods: {
@@ -220,19 +224,19 @@ export default {
       if (document.documentElement['clientWidth'] < 1200 && document.documentElement['clientHeight'] < 600) {
         this.scroll = {
           x: 1200,
-          y: 300
+          y: 250
         }
       } else if (document.documentElement['clientHeight'] < 600) {
         this.scroll = {
-          y: 300
+          y: 200
         }
       } else if (document.documentElement['clientWidth'] < 1200) {
         // debugger
         this.scroll = {
-          x: 1200
+          x: 2000
         }
       } else {
-        this.scroll = {}
+
       }
     },
     // 收起/展开

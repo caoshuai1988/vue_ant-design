@@ -5,25 +5,23 @@
     :collapsible="collapsible"
     v-model="collapsed"
     :trigger="null">
-    <logo />
     <s-menu
       :collapsed="collapsed"
       :menu="menus"
       :theme="theme"
       :mode="mode"
       @select="onSelect"
-      style="padding: 16px 0px;"></s-menu>
+      style="padding: 16px 0;"></s-menu>
   </a-layout-sider>
 
 </template>
 
 <script>
-import Logo from '@/components/tools/Logo'
 import SMenu from './index'
 import { mixin, mixinDevice } from '@/utils/mixin'
 export default {
-  name: 'SideMenu',
-  components: { Logo, SMenu },
+  name: 'LowSideMenu',
+  components: {SMenu },
   mixins: [mixin, mixinDevice],
   props: {
     mode: {

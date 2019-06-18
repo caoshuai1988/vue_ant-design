@@ -1,24 +1,25 @@
 <template>
   <div class="logo">
     <router-link :to="{name:'dashboard'}">
-      <LogoSvg alt="logo" />
+      <!--<LogoSvg alt="logo" />-->
+     <!-- <img src="@/assets/logo1.png" />-->
       <h1 v-if="showTitle">{{ title }}</h1>
     </router-link>
   </div>
 </template>
 
 <script>
-import LogoSvg from '@/assets/logo.svg?inline'
+/*import LogoSvg from '@/assets/logo.svg?inline'*/
 
 export default {
   name: 'Logo',
   components: {
-    LogoSvg
+    /*LogoSvg*/
   },
   props: {
     title: {
       type: String,
-      default: 'Ant Design Pro',
+      default: '富深新平台模板',
       required: false
     },
     showTitle: {

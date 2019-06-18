@@ -1,6 +1,9 @@
 <template>
   <div class="user-wrapper">
     <div class="content-box">
+      <span class="antd-pro-components-global-header-index-action antd-pro-components-global-header-index-search antd-pro-components-header-search-index-headerSearch">
+
+      </span>
       <a href="https://pro.loacg.com/docs/getting-started" target="_blank">
         <span class="action">
           <a-icon type="question-circle-o"></a-icon>

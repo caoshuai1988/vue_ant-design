@@ -1,6 +1,6 @@
 <template>
   <a-card :bordered="false">
-    <a-steps class="steps" :current="currentTab">
+    <a-steps class="steps" :status="currentStatus" labelPlacement="vertical" :current="currentTab">
       <a-step title="填写转账信息" />
       <a-step title="确认转账信息" />
       <a-step title="完成" />
@@ -29,7 +29,7 @@ export default {
     return {
       description: '将一个冗长或用户不熟悉的表单任务分成多个步骤，指导用户完成。',
       currentTab: 0,
-
+      currentStatus: 'wait',
       // form
       form: null
     }

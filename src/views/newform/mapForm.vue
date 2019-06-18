@@ -1,8 +1,8 @@
 <template>
-  <div style="background:#fff">
-    <a-tabs defaultActiveKey="2" class="tabMar">
+  <div style="background:#fff;padding-top:11px;" >
+    <a-tabs defaultActiveKey="2" >
       <a-tab-pane key="1">
-        <span slot="tab">
+        <span slot="tab" class="tabMar">
           <span>基础信息</span>
           <div class="checkIcon">
             <a-icon type="check" />
@@ -10,17 +10,17 @@
         </span>
         <baseFormContent></baseFormContent>
       </a-tab-pane>
-      <a-tab-pane key="2">
+      <a-tab-pane key="2" style="padding:8px 24px 24px 24px">
         <span slot="tab">
           <span >地理信息</span>
           <div class="checkIcon">
             <a-icon type="check" />
           </div>
         </span>
-        <a-card :body-style="{padding: '24px'}">
+        <a-card :body-style="{padding: '0'}">
           <div :style="mapFd" :class="{screenload: screenloadFlag}">
-            <div :class="{mapHead: mapHeadFlag,headMap: !mapHeadFlag}">
-              <a-button type="primary" style="margin-left: 24px">保存</a-button>
+            <div :class="{mapHead: mapHeadFlag,headMap: !mapHeadFlag}" ref="text">
+              <a-button type="primary" style="margin-left: 12px">保存</a-button>
               <a-button-group style="margin-left: 10px">
                 <a-button>新增</a-button>
                 <a-button>绘制</a-button>
@@ -36,7 +36,7 @@
                 <a-icon type="shrink" v-else/>
               </span>
             </div>
-            <div id="container" ref="container" :class="{mapContent: mapFlag}">
+            <div id="container" ref="container" :style="mapMr" :class="{mapContent: mapFlag}">
               <baidu-map
                 :center="center"
                 :zoom="zoom"
@@ -90,10 +90,22 @@ export default {
       mapFd: { // 自定义样式map
         width: '',
         height: ''
+      },
+      mapMr: {
+        width: '100%',
+        height: ''
       }
     }
   },
-  mounted () {},
+  computed: {
+    mapH () {
+      return 1
+    }
+  },
+  mounted () {
+    console.log(window.screen.availHeight - this.$refs.text.offsetHeight - 64)
+    this.mapMr.height = window.screen.availHeight - this.$refs.text.offsetHeight - 64 - 61 - 45 - 52.5 - 93 + 'px'
+  },
   methods: {
 
     onTabChange (key, type) {
@@ -167,9 +179,10 @@ export default {
 </script>
 
  <style lang="less" scoped>
+
 // tab 间距
 .tabMar{
-  margin-left: 24px;
+  padding-left: 24px;
 }
 
 .boxBoder {
@@ -177,10 +190,10 @@ export default {
   padding-bottom: 15px;
 }
 /* map */
-#container {
-  width: 100%;
-  height: 590px;
-}
+// #container {
+//   width: 100%;
+//   height: 590px;
+// }
 /* 全屏 add css */
 
 .screenload {
@@ -212,6 +225,7 @@ export default {
 
 .headMap {
   width: 100%;
+  padding-top: 10px;
   padding-bottom: 10px;
   background-color: #fff;
 }
@@ -227,7 +241,7 @@ export default {
   font-weight: 700;
   font-size: 18px;
   cursor: pointer;
-  margin-right: 24px;
+  margin-right: 12px;
 }
 
 </style>

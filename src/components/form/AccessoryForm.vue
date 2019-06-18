@@ -8,7 +8,6 @@
           <a-icon type="down" v-else />
         </span>
       </div>
-
       <a-upload
         name="file"
         :multiple="true"
@@ -25,10 +24,12 @@
       <a-form-item v-bind="formItemLayout" class="boxBoder" v-if="iconShow">
         <div>绩效目标</div>
         <a-upload
+          :showUploadList="false"
           name="file"
           :multiple="true"
           action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
           :headers="headers"
+          @change="handleChange"
         >
           <a-button style="margin-bottom:15px">
             <a-icon type="upload"/>文件上传

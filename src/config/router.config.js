@@ -397,7 +397,7 @@ export const asyncRouterMap = [
             path: 'newform/indexa',
             name: 'indexa',
             component: () => import('@/views/newform/indexa'),
-            meta: { title: '弹出', keepAlive: true, permission: [ 'form' ] }
+            meta: { title: '弹出抽屉', keepAlive: true, permission: [ 'form' ] }
           },
           {
             path: 'newform/AdvancedForms',

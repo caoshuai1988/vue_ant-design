@@ -6,7 +6,7 @@
         <div class="list-action" v-if="isPageList">
           <template>
             <span><i></i>刷新</span>
-            <span><i></i>设置</span>
+            <span @click="showDrawer"><i></i>设置</span>
             <span><i></i>回收站</span>
             <span><i></i>业务流程</span>
             <span><i></i>帮助</span>
@@ -42,6 +42,94 @@
         </div>
       </div>
     </page-header>
+    <!--弹窗消失隐藏-->
+    <template>
+      <div class="alert">
+        <a-drawer
+          title="设置"
+          :width="640"
+          @close="onClose"
+          :visible="visible"
+          :wrapStyle="{height: 'calc(100% - 108px)',overflow: 'auto',paddingBottom: '108px'}"
+        >
+          <template>
+            <div>
+            	<a-row class="form-row" :gutter="16">
+            		<a-col class="gutter-row" :lg="24" :md="12" :sm="24">
+			            <a-card class="card" style="font-size: 26px;border-top:none" :bordered="false" >
+				          	<span slot="title" class="titleBtn" @click="fold(1)">模板</span>
+				          	<span slot="extra" class="foldStyle" @click="fold(1)">
+									        <a-icon type="up" v-if="iconToggle" />
+									        <a-icon type="down" v-else />
+									  </span>
+							      <verticaltoggle>
+							        <TagModule v-if="foldOne"></TagModule>
+							      </verticaltoggle>
+									</a-card>
+								</a-col>
+								<a-col class="gutter-row" :lg="24" :md="12" :sm="24">
+								  <a-card class="card" style="font-size: 26px" :bordered="false" >
+				          	<span slot="title" class="titleBtn" @click="fold(2)">列表基础</span>
+				          	<span slot="extra" class="foldStyle" @click="fold(2)">
+									        <a-icon type="up" v-if="iconToggleOne" />
+									        <a-icon type="down" v-else />
+									  </span>
+							      <verticaltoggle>
+							        <Listjc v-if="foldTwo"></Listjc>
+							      </verticaltoggle>
+									</a-card>
+								</a-col>
+								<a-col class="gutter-row" :lg="24" :md="12" :sm="24">
+									<a-card class="card" style="font-size: 26px" :bordered="false" >
+				          	<span slot="title" class="titleBtn" @click="fold(3)">列表列</span>
+				          	<span slot="extra" class="foldStyle" @click="fold(3)">
+									        <a-icon type="up" v-if="iconTable" />
+									        <a-icon type="down" v-else />
+									  </span>
+							      <verticaltoggle>
+							        <ListTable v-if="foldTable"></ListTable>
+							      </verticaltoggle>
+									</a-card>
+								</a-col>
+								
+								<a-col class="gutter-row" :lg="24" :md="12" :sm="24">
+									<a-card class="card" style="font-size: 26px;border-bottom:1px solid #e8e8e8;" :bordered="false" >
+				          	<span slot="title" class="titleBtn" @click="fold(4)">默认筛选</span>
+				          	<span slot="extra" class="foldStyle" @click="fold(4)">
+									        <a-icon type="up" v-if="iconFour" />
+									        <a-icon type="down" v-else />
+									  </span>
+							      <verticaltoggle>
+							        <ScreeningTable v-if="dataFour"></ScreeningTable>
+							      </verticaltoggle>
+									</a-card>
+								</a-col>
+							</a-row>
+            </div>
+          </template>
+          <div
+            :style="{
+		          position: 'absolute',
+		          left: 0,
+		          bottom: 0,
+		          width: '100%',
+		          borderTop: '1px solid #e9e9e9',
+		          padding: '10px 16px',
+		          background: '#fff',
+		          textAlign: 'right',
+		        }"
+          >
+            <a-button
+              :style="{marginRight: '8px'}"
+              @click="onClose"
+            >
+              保存
+            </a-button>
+            <a-button @click="onClose" type="primary">保存为模板</a-button>
+          </div>
+        </a-drawer>
+      </div>
+    </template>
     <div class="content">
       <div class="page-header-index-wide">
         <slot>
@@ -59,11 +147,21 @@
 <script>
   import { mapState } from 'vuex'
   import PageHeader from '@/components/PageHeader'
+  import TagModule from './listTables/TagModule'
+  import ListTable from './listTables/listTable'
+  import ScreeningTable from './listTables/ScreeningTable'
+  import verticaltoggle from '@/views/newform/verticaltoggle.js'
+  import Listjc from './listTables/listjc'
 
   export default {
     name: 'PageView',
     components: {
-      PageHeader
+      PageHeader,
+      TagModule,
+      ListTable,
+      ScreeningTable,
+      verticaltoggle,
+      Listjc
     },
     props: {
       avatar: {
@@ -85,13 +183,24 @@
     },
     data() {
       return {
+        tags: ['默认模板', '自定义模板', '自定义模板2'],
         pageTitle: null,
         description: null,
         linkList: [],
         extraImage: '',
         search: true,
         tabs: {},
-        isPageList: false
+        isPageList: false,
+        visible: false,
+        foldOne: false, // 折叠组件1
+	      foldTwo: false, // 折叠组件2
+	      foldTable: false, // 折叠表格
+	      iconTable: false, // 图标表格
+	      iconToggle: false, // 图标1
+	      iconToggleOne: false, // 图标2
+	      memberLoading: false,
+	      iconFour:false, //筛选icon
+	      dataFour:false  //筛选组件
       }
     },
     computed: {
@@ -107,6 +216,22 @@
       this.getPageMeta()
     },
     methods: {
+//  	消失隐藏
+    	fold (flag) {
+	      if (flag==1) {
+	        this.foldOne = !this.foldOne
+	        this.iconToggle = !this.iconToggle
+	      } else if (flag === 2) {
+	        this.foldTwo = !this.foldTwo
+          this.iconToggleOne = !this.iconToggleOne
+	      }else if (flag === 3) {
+	        this.foldTable = !this.foldTable
+	        this.iconTable = !this.iconTable
+	      } else if (flag === 4) {
+	        this.iconFour = !this.iconFour
+	        this.dataFour = !this.dataFour
+	      }
+     },
       getPageMeta() {
 
         this.pageTitle = (typeof(this.title) === 'string' || !this.title) ? this.title : this.$route.meta.title
@@ -123,11 +248,56 @@
             this.tabs = content.tabs
           }
         }
+      },
+      showDrawer() {
+        this.visible = true
+      },
+      onClose() {
+        this.visible = false
       }
     }
   }
 </script>
-
+<style>
+	.ant-card-head-title{
+		padding:24px 0 !important;
+		font-size:16px !important;
+	}
+	.foldStyle{
+		cursor:pointer;
+	}
+	.ant-card-body{
+		padding:1px !important;
+	}
+	.ant-card-head{
+		border-top:1px solid #e8e8e8;
+		border-bottom:none !important;
+	}
+	.ant-drawer-close{
+		right:3px !important;
+	}
+  .ant-drawer-body{
+    padding-top:0px !important;
+  }
+  .ant-collapse > .ant-collapse-item > .ant-collapse-header .arrow{
+    left:590px !important;
+  }
+  .ant-collapse > .ant-collapse-item > .ant-collapse-header{
+    padding:24px 0 24px 3px !important;
+    font-size:16px !important;
+  }
+  .ant-drawer-title{
+    font-size:18px !important;
+  }
+  .ant-card-head{
+  	padding:0px !important;
+  }
+  .titleBtn{
+  	width:600px;
+  	display: block;
+  	cursor:pointer;
+  }
+</style>
 <style lang="less" scoped>
   .content {
     margin: 24px 24px 0;
@@ -155,7 +325,6 @@
       }
     }
   }
-
   .page-menu-search {
     text-align: center;
     margin-bottom: 16px;
@@ -188,3 +357,4 @@
   }
 
 </style>
+

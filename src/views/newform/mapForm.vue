@@ -1,8 +1,8 @@
 <template>
   <div style="background:#fff;padding-top:11px;" >
     <a-tabs defaultActiveKey="2" >
-      <a-tab-pane key="1">
-        <span slot="tab" class="tabMar">
+      <a-tab-pane key="1" class="tabMar">
+        <span slot="tab" >
           <span>基础信息</span>
           <div class="checkIcon">
             <a-icon type="check" />
@@ -61,13 +61,18 @@ export default {
    margin: 0;
 }
 .tabMar{ // tab 间距
-  padding-left: 24px;
+  // margin-left: 24px !important;
+}
+/deep/ .ant-tabs-nav-wrap{
+  padding-left:  24px
 }
 .checkIcon { /* icon */
-  color: #52c41a;
+
   position: absolute;
   top: 11px;
   right: -9px;
+  color: #52c41a;
+  z-index: 9;
 }
 
 </style>

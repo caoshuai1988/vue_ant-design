@@ -56,7 +56,7 @@
             <div>
             	<a-row class="form-row" :gutter="16">
             		<a-col class="gutter-row" :lg="24" :md="12" :sm="24">
-			            <a-card class="card" style="font-size: 26px;border-top:none" :bordered="false" >
+			            <a-card class="card" style="font-size: 26px;border-top:10px solid white;margin-top:-35px;" :bordered="false" >
 				          	<span slot="title" class="titleBtn" @click="fold(1)">模板</span>
 				          	<span slot="extra" class="foldStyle" @click="fold(1)">
 									        <a-icon type="up" v-if="iconToggle" />
@@ -119,13 +119,12 @@
 		          textAlign: 'right',
 		        }"
           >
-            <a-button
-              :style="{marginRight: '8px'}"
+          	<a-button :style="{marginRight: '12px'}" @click="onClose" type="primary">保存 </a-button>
+            <a-button 
               @click="onClose"
             >
-              保存
+             保存为模板 
             </a-button>
-            <a-button @click="onClose" type="primary">保存为模板</a-button>
           </div>
         </a-drawer>
       </div>
@@ -259,8 +258,15 @@
   }
 </script>
 <style>
+	.ant-table-wrapper .ant-checkbox-wrapper{
+		position:static;
+		
+	}
 	.ant-card-head-title{
 		padding:24px 0 !important;
+		font-size:16px !important;
+	}
+	.ant-card-extra{
 		font-size:16px !important;
 	}
 	.foldStyle{
@@ -276,9 +282,6 @@
 	.ant-drawer-close{
 		right:3px !important;
 	}
-  .ant-drawer-body{
-    padding-top:0px !important;
-  }
   .ant-collapse > .ant-collapse-item > .ant-collapse-header .arrow{
     left:590px !important;
   }

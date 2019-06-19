@@ -46,5 +46,7 @@
 </script>
 
 <style>
-
+.listjc{
+	padding-bottom:48px;
+}
 </style>

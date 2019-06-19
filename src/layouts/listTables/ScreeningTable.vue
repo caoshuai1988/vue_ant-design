@@ -1,7 +1,7 @@
 <template>
 	<div class="screening">
 		<div class="showHide">
-			显示/隐藏
+			显示
 		</div>
 		<a-table :columns="columns" :dataSource="data" :rowSelection="rowSelection" bordered>
     <template v-for="col in ['name', 'age', 'address']" :slot="col" slot-scope="text, record, index">
@@ -9,6 +9,7 @@
         <a-input
           style="margin: -5px 0"
           :value="text"
+          placeholder="输入序号"
           @change="e => handleChange(e.target.value, record.key, col)"
         />
       </div>
@@ -19,23 +20,24 @@
 </template>
 <script>
 const columns = [{
-  title: '列名1',
+  title: '筛选项',
   dataIndex: 'age',
-  width: '37.5%',
+  width: '50%',
 },
 {
   title: '顺序',
   dataIndex: 'name',
-  width: '37.5%',
+  width: '50%',
   scopedSlots: { customRender: 'name' },
 }]
 
 const data = []
+const name=['状态','进度','名称','编号','日期范围']
 for (let i = 0; i < 5; i++) {
   data.push({
     key: i.toString(),
-    name: `我是顺序 ${i}`,
-    age: `我是列名. ${i}`,
+    name: '',
+    age: name[i],
     address: `London Park no. ${i}`,
   })
 }
@@ -70,14 +72,20 @@ export default {
 }
 </script>
 <style>
+.ant-drawer-content-wrapper .ant-table-wrapper .ant-checkbox-wrapper{
+	position:relative;
+	left:145px;
+	top:0;
+	z-index: 100;
+}
 .screening{
-	padding-bottom:30px;
+	padding-bottom:48px;
 	position:relative;
 }
 .screening  .showHide{
 		position:absolute;
-		left:87px;
-		top:18px;
+		left:192px;
+		top:19px;
 		z-index: 100;
 		font-size:13px;
 		color:rgba(0, 0, 0, 0.85)

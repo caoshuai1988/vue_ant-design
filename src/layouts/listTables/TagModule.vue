@@ -37,7 +37,7 @@
 
 <style>
 	.tagModule{
-		padding-bottom:24px;
+		padding-bottom:48px;
 		margin-top:-10px;
 	}
 	.tagModule .ant-tag:nth-child(1){

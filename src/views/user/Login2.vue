@@ -1,5 +1,6 @@
 <template>
   <div class="main">
+    <img src="@/assets/login_bg1.png"/>
     <div class="login-box">
       <a-form
         id="formLogin2"
@@ -77,9 +78,9 @@
                 :disabled="state.loginBtn"
               >登录</a-button>
             </a-form-item>
-            <a-form-item class="login-tips">
+            <div class="login-tips">
               <span>用户名或密码错误！</span>
-            </a-form-item>
+            </div>
           </a-tab-pane>
           <a-tab-pane key="tab2" tab="CA密钥登录">
             <div class="ca-uninstall" v-if="!isPassCA">
@@ -339,26 +340,10 @@ export default {
 </script>
 
 <style lang="less" scoped>
-  /*.user-layout-left,.user-layout-login {*/
-  /*  float: left;*/
-  /*  height: 384px;*/
-  /*}*/
-  /*.user-layout-left {*/
-  /*  width: 440px;*/
-  /*  background: rgba(255,255,255,0.2);*/
-  /*  font-size: 28px;*/
-  /*  !*color: #ffffff;*!*/
-  /*  font-family: 'Arial Negreta', 'Arial';*/
-  /*  font-weight: 700;*/
-  /*  font-style: normal;*/
-  /*  !*font-size: 36px;*!*/
-  /*  !*text-align: center;*!*/
-  /*  padding: 0 42px;*/
-  /*  div {*/
-  /*    margin-top: 115px;*/
-  /*  }*/
-  /*}*/
-  /*.main {*/
+  .main {
+    img {
+      width: 100%;
+    }
     .login-box {
       margin: 0 auto;
       overflow: hidden;
@@ -369,54 +354,19 @@ export default {
       #formLogin2.user-layout-login2 {
         background: #ffffff;
         padding: 32px;
+        min-height: 481px;
         .login-tabs {
           width: 335px;
-          /*.ant-tabs-content{*/
-          /*  margin-top: 24px !important;*/
-          /*}*/
-          /*.ant-tabs-top-bar {*/
-          /*  border: 1px solid #f00;*/
-          /*  !*margin-bottom: 24px !important;*!*/
-          /*}*/
           input {
             font-size: 16px;
           }
         }
-        /*.login-drag {*/
-        /*  height: 40px;*/
-        /*  .drag_verify {*/
-        /*    border-radius: 4px !important;*/
-        /*  }*/
-        /*  // 未显示*/
-        /*  .dv_progress_bar {*/
-        /*    border-radius: 4px 0px 0px 4px !important;*/
-        /*  }*/
-        /*  // 未显示*/
-        /*  .dv_handler.dv_handler_bg.dv_handler_ok_bg {*/
-        /*    width: 40px !important;*/
-        /*    height: 40px !important;*/
-        /*    border-radius: 0 !important;*/
-        /*  }*/
-          /*.ant-slider {*/
-          /*  height: 40px;*/
-          /*  margin: 0;*/
-          /*  .ant-slider-rail {*/
-          /*    height: 100% !important;*/
-          /*  }*/
-          /*  .ant-slider-handle {*/
-          /*    margin-left: 0;*/
-          /*    margin-top: 0;*/
-          /*    width: 40px;*/
-          /*    height: 40px;*/
-          /*    -webkit-border-radius: 0;*/
-          /*    -moz-border-radius: 0;*/
-          /*    border-radius: 0;*/
-          /*  }*/
-          /*}*/
-        /*}*/
         .login-tips {
           color: #FF1A2E;
           font-size: 14px;
+          height: 14px;
+          line-height: 14px;
+          margin-bottom: 24px;
         }
         label {
           font-size: 14px;
@@ -491,5 +441,5 @@ export default {
         /*}*/
       }
     }
-  /*}*/
+  }
 </style>

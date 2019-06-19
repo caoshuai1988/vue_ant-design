@@ -1,181 +1,191 @@
 <style lang="less">
-  .page-sign-title {
-    color: rgba(0,0,0,.85);
-    font-size: 16px;
-    font-weight: 500;
-    margin-bottom: 16px;
-  }
-  .lable{
-    text-align: right;
-  }
-  .title-name {
-    font-size: 18px;
-    margin-left: 200px ;
-  }
+.page-sign-title {
+  color: rgba(0, 0, 0, 0.85);
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+.lable {
+  text-align: right;
+}
+.title-name {
+  font-size: 18px;
+  margin-left: 200px;
+}
 
-  .line{
+.line {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0 20px;
+  height: 0.5px;
+  background: #cccccc;
+  margin-bottom: 24px;
+}
+/* you can make up upload button and sample style by using stylesheets */
+.ant-upload-select-picture-card i {
+  font-size: 32px;
+  color: #999;
+}
+
+.ant-upload-select-picture-card .ant-upload-text {
+  margin-top: 8px;
+  color: #666;
+}
+
+.page-direction {
+  // right: @help-width;
+  background: #fff;
+  // min-width: 400px;
+  // height: 600px;
+  // min-height: 800px;
+  z-index: 3;
+  .title {
+    position: relative;
     box-sizing: border-box;
-    width:100%;
-    padding: 0 20px;
-    height: 0.5px;
-    background: #cccccc;
-    margin-bottom: 24px;
-  }
-  /* you can make up upload button and sample style by using stylesheets */
-  .ant-upload-select-picture-card i {
-    font-size: 32px;
-    color: #999;
-  }
-
-  .ant-upload-select-picture-card .ant-upload-text {
-    margin-top: 8px;
-    color: #666;
-  }
-
-  .page-direction{
-    // right: @help-width;
-    background: #fff;
-    // min-width: 400px;
-    // height: 600px;
-    // min-height: 800px;
-    z-index: 3;
-    .title{
-      position: relative;
+    padding: 0 24px;
+    height: 56px;
+    .title-des {
       box-sizing: border-box;
-      padding:0 24px;
       height: 56px;
-      .title-des{
-        box-sizing: border-box;
-        height: 56px;
-        // flex: 1 1;
-        padding: 16px 0;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        .help{
-          font-size: 16px;
-          color: #272727;
-          margin-right: 8px;
-        }
-        .detail{
-          font-size: 14px;
-          color: #62bfff;
-        }
-        .close{
-          // position: absolute;
-          // right: 24px;
-          float: right;
-          margin-top: 4px;
-          // top: 16px;
-          &:hover{
-            cursor: pointer;
-          }
-        }
-      }
-    }
-    .help-line{
-      width: 100%;
-      height: 0.5px;
-      background: #e9e9e9;
-    }
-    .content-box{
-      padding: 24px;
-    }
-    .content{
-      // height: 650px;
-      min-height: 300px;
-      max-height: 650px;
-      overflow-y: auto;
-      &::-webkit-scrollbar{
-        width: 4px;
-        height: 8px;
-        // background-color: #F5F5F5;
-      }
-
-      /*定义滚动条轨道 内阴影+圆角*/
-      &::-webkit-scrollbar-track{
-        box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
-        border-radius: 10px;
-        background-color: #a5a5a5;
-      }
-
-      /*定义滑块 内阴影+圆角*/
-      &::-webkit-scrollbar-thumb{
-          border-radius: 5px;
-          box-shadow: inset 0 0 5px rgba(0,0,0,0.3);
-          background-color: #EDEDED;
-      }
-    }
-  }
-  .form-detial /deep/ .ant-card .ant-card-body {
-    padding: 0;
-  }
-  .card-header{
-    box-sizing: border-box;
-    // height: 56px;
-    z-index: 1;
-    padding-top: 11px;
-    width: 100%;
-    margin-bottom: 24px;
-    background-color: #fff;
-    box-shadow: 0px 0px 20px 0px rgba(129, 129, 129, 0.2);
-  }
-  .ant-tabs-bar{
-    margin: 0;
-  }
-  // 附件打包现在样式
-  .table-wrap{
-    margin-bottom: 48px;
-    .title-box{
-      // height: 32px;
-      padding-bottom: 16px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      .title-des{
+      // flex: 1 1;
+      padding: 16px 0;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      .help {
         font-size: 16px;
-        color:rgba(0, 0, 0, 0.85);
-
+        color: #272727;
+        margin-right: 8px;
       }
-
+      .detail {
+        font-size: 14px;
+        color: #62bfff;
+      }
+      .close {
+        // position: absolute;
+        // right: 24px;
+        float: right;
+        margin-top: 4px;
+        // top: 16px;
+        &:hover {
+          cursor: pointer;
+        }
+      }
     }
+  }
+  .help-line {
+    width: 100%;
+    height: 0.5px;
+    background: #e9e9e9;
+  }
+  .content-box {
+    padding: 24px;
+  }
+  .content {
+    // height: 650px;
+    min-height: 300px;
+    max-height: 650px;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+      width: 4px;
+      height: 8px;
+      // background-color: #F5F5F5;
+    }
+
+    /*定义滚动条轨道 内阴影+圆角*/
+    &::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      background-color: #a5a5a5;
+    }
+
+    /*定义滑块 内阴影+圆角*/
+    &::-webkit-scrollbar-thumb {
+      border-radius: 5px;
+      box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+      background-color: #ededed;
+    }
+  }
+}
+.form-detial /deep/ .ant-card .ant-card-body {
+  padding: 0;
+}
+.card-header {
+  box-sizing: border-box;
+  // height: 56px;
+  z-index: 1;
+  padding-top: 11px;
+  width: 100%;
+  margin-bottom: 24px;
+  background-color: #fff;
+  box-shadow: 0px 0px 20px 0px rgba(129, 129, 129, 0.2);
+}
+.ant-tabs-bar {
+  margin: 0;
+}
+// 附件打包现在样式
+.table-wrap {
+  margin-bottom: 48px;
+  .title-box {
+    // height: 32px;
+    padding-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .title-des {
+      font-size: 16px;
+      color: rgba(0, 0, 0, 0.85);
+    }
+  }
 }
 
 // 地图的样式
 /* 放大生效 */
-  .mapHead {
-    padding: 10px 0;
-    background-color: #fff;
-  }
 
-  .mapContent {
-    height: 100% !important;
-  }
-  #container {
-    width: 100%;
-    height: 640px;
-  }
+.mapContent {
+  height: 100% !important;
+}
+#container {
+  width: 100%;
+  height: 640px;
+}
+.screenload {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1999;
+}
+.amplification{
+  cursor: pointer;
+  padding: 5px 10px;
+}
+
 </style>
 <template>
   <a-card
     :body-style="{background:'#f0f2f5', padding: 0}"
     :bordered="false"
     class="aa"
-
-    @scroll="handleScroll"
-    ref="content">
+    ref="content"
+  >
     <a-row :gutter="24">
-      <a-col :body-style="{ background:'#f0f2f5'}" :xl="num" :lg="num" :md="num" :sm="num" >
+      <a-col :body-style="{ background:'#f0f2f5'}" :xl="num" :lg="num" :md="num" :sm="num">
         <a-affix :offsetTop="this.top">
-          <a-tabs :activeKey="activeKey" class="tabMar card-header" :animated="false" @tabClick="callback" style="padding:8px 24px 0 24px">
-            <a-tab-pane key="1" >
+          <a-tabs
+            :activeKey="activeKey"
+            class="tabMar card-header"
+            :animated="false"
+            @tabClick="callback"
+            style="padding:8px 24px 0 24px"
+          >
+            <a-tab-pane key="1">
               <span slot="tab">
                 <span>基础信息</span>
               </span>
             </a-tab-pane>
-            <a-tab-pane key="2" >
+            <a-tab-pane key="2">
               <span slot="tab">
-                <span >地理信息</span>
+                <span>地理信息</span>
               </span>
             </a-tab-pane>
             <a-tab-pane key="3">
@@ -192,10 +202,7 @@
             </a-tab-pane>
           </a-tabs>
         </a-affix>
-        <a-card
-          :body-style="{padding: '24px'}"
-          title="基础信息"
-          class="anchor">
+        <a-card :body-style="{padding:'24px'}" title="基础信息" class="anchor">
           <div class="form-detial" style="background: #fff;">
             <detail-list title="退款申请" :col="3">
               <detail-list-item term="取货单号">1000000000</detail-list-item>
@@ -209,7 +216,7 @@
               <detail-list-item term="联系电话">18100000000</detail-list-item>
               <detail-list-item term="常用快递">菜鸟仓储</detail-list-item>
               <detail-list-item term="取货地址">浙江省杭州市西湖区万塘路18号</detail-list-item>
-              <detail-list-item term="备注">	无</detail-list-item>
+              <detail-list-item term="备注">无</detail-list-item>
             </detail-list>
             <a-divider style="margin-bottom: 32px"/>
 
@@ -218,37 +225,41 @@
               style="margin-bottom: 24px"
               row-key="id"
               :columns="goodsColumns"
-              :data="loadGoodsData">
-            </s-table>
+              :data="loadGoodsData"
+            ></s-table>
 
             <div class="page-sign-title" @click="aa">退货进度</div>
             <s-table
               style="margin-bottom: 24px"
               row-key="key"
               :columns="scheduleColumns"
-              :data="loadScheduleData">
-
-              <template
-                slot="status"
-                slot-scope="status">
+              :data="loadScheduleData"
+            >
+              <template slot="status" slot-scope="status">
                 <a-badge :status="status" :text="status"/>
-              <!-- <a-badge :status="status" :text="status | statusFilter"/> -->
+                <!-- <a-badge :status="status" :text="status | statusFilter"/> -->
               </template>
-
             </s-table>
           </div>
         </a-card>
-        <div style="margin-top:24px;" class="anchor">
+        <div style="margin-top:24px;" class="anchor" >
           <a-card
-            :body-style="{padding: '24px'}"
-            title="地理信息">
-            <!-- <a href="#" slot="extra">More</a> -->
-            <div id="container" ref="container" :class="{mapContent: mapFlag}">
+            title="地理信息"
+            :body-style="closePad"
+            :style="mapFd"
+            :class="{screenload: screenloadFlag}">
+            <span class="amplification" slot="extra" @click="amplificationBtn" >
+              <a-icon type="arrows-alt" v-if="iconSwitch"/>
+              <a-icon type="shrink" v-else/>
+            </span>
+            <div id="container" ref="container" :style="mapFd" >
               <baidu-map
+
                 :center="center"
                 :zoom="zoom"
                 @ready="handler"
-                style="width:100%;height:100%">
+                style="width:100%;height:100%"
+              >
                 <bm-navigation anchor="BMAP_ANCHOR_TOP_LEFT"></bm-navigation>
                 <bm-geolocation
                   anchor="BMAP_ANCHOR_BOTTOM_RIGHT"
@@ -261,9 +272,7 @@
         </div>
         <!-- 附件信息 -->
         <div style="margin-top:24px;" class="anchor">
-          <a-card
-            :body-style="{padding: '24px', marginTop: '24px'}"
-            title="附件信息">
+          <a-card :body-style="{padding: '24px', marginTop: '24px'}" title="附件信息">
             <!-- <a href="#" slot="extra">More</a> -->
             <div class="accessory-box" style="background: #fff;">
               <div class="table-wrap">
@@ -313,7 +322,6 @@
             </div>
           </a-card>
         </div>
-
       </a-col>
       <template v-if="isShowHelp">
         <a-col
@@ -322,82 +330,72 @@
           :lg="helpNum"
           :md="helpNum"
           :sm="helpNum"
-          :xs="helpNum">
+          :xs="helpNum"
+        >
           <a-affix :offsetTop="this.top">
             <div class="page-direction">
               <div class="title">
                 <div class="title-des">
                   <span class="help">帮助</span>
                   <span class="detail">详情</span>
-                  <a-icon type="close" style="fontSize :16px; color:#a3a3a3;" class="close" @click="handleClose"/>
+                  <a-icon
+                    type="close"
+                    style="fontSize :16px; color:#a3a3a3;"
+                    class="close"
+                    @click="handleClose"
+                  />
                 </div>
               </div>
               <div class="help-line"></div>
               <div class="content-box">
                 <div class="content">
                   <div style="margin-bottom:20px">
-                    <p class="question">
-                      企业官网或轻量的Web应用
-                    </p>
-                    <p class="question">
-                      网站初始阶段访问量小，只需要一台低配置的云服务器ECS实例即可运行Apache或Nginx等Web应用程序、数据库、存储文件等。随着网站发展，您可以随时升级ECS实例的配置，或者增加ECS实例数量，无需担心低配计算单元在业务突增时带来的资源不足。
-                    </p>
+                    <p class="question">企业官网或轻量的Web应用</p>
+                    <p
+                      class="question"
+                    >网站初始阶段访问量小，只需要一台低配置的云服务器ECS实例即可运行Apache或Nginx等Web应用程序、数据库、存储文件等。随着网站发展，您可以随时升级ECS实例的配置，或者增加ECS实例数量，无需担心低配计算单元在业务突增时带来的资源不足。</p>
                   </div>
                   <div style="margin-bottom:20px">
-                    <p class="question">
-                      企业官网或轻量的Web应用
-                    </p>
-                    <p class="question">
-                      网站初始阶段访问量小，只需要一台低配置的云服务器ECS实例即可运行Apache或Nginx等Web应用程序、数据库、存储文件等。随着网站发展，您可以随时升级ECS实例的配置，或者增加ECS实例数量，无需担心低配计算单元在业务突增时带来的资源不足。
-                    </p>
+                    <p class="question">企业官网或轻量的Web应用</p>
+                    <p
+                      class="question"
+                    >网站初始阶段访问量小，只需要一台低配置的云服务器ECS实例即可运行Apache或Nginx等Web应用程序、数据库、存储文件等。随着网站发展，您可以随时升级ECS实例的配置，或者增加ECS实例数量，无需担心低配计算单元在业务突增时带来的资源不足。</p>
                   </div>
                   <div style="margin-bottom:20px">
-                    <p class="question">
-                      企业官网或轻量的Web应用
-                    </p>
-                    <p class="question">
-                      网站初始阶段访问量小，只需要一台低配置的云服务器ECS实例即可运行Apache或Nginx等Web应用程序、数据库、存储文件等。随着网站发展，您可以随时升级ECS实例的配置，或者增加ECS实例数量，无需担心低配计算单元在业务突增时带来的资源不足。
-                    </p>
+                    <p class="question">企业官网或轻量的Web应用</p>
+                    <p
+                      class="question"
+                    >网站初始阶段访问量小，只需要一台低配置的云服务器ECS实例即可运行Apache或Nginx等Web应用程序、数据库、存储文件等。随着网站发展，您可以随时升级ECS实例的配置，或者增加ECS实例数量，无需担心低配计算单元在业务突增时带来的资源不足。</p>
                   </div>
                   <div style="margin-bottom:20px">
-                    <p class="question">
-                      企业官网或轻量的Web应用
-                    </p>
-                    <p class="question">
-                      网站初始阶段访问量小，只需要一台低配置的云服务器ECS实例即可运行Apache或Nginx等Web应用程序、数据库、存储文件等。随着网站发展，您可以随时升级ECS实例的配置，或者增加ECS实例数量，无需担心低配计算单元在业务突增时带来的资源不足。
-                    </p>
+                    <p class="question">企业官网或轻量的Web应用</p>
+                    <p
+                      class="question"
+                    >网站初始阶段访问量小，只需要一台低配置的云服务器ECS实例即可运行Apache或Nginx等Web应用程序、数据库、存储文件等。随着网站发展，您可以随时升级ECS实例的配置，或者增加ECS实例数量，无需担心低配计算单元在业务突增时带来的资源不足。</p>
                   </div>
                   <div style="margin-bottom:20px">
-                    <p class="question">
-                      企业官网或轻量的Web应用
-                    </p>
-                    <p class="question">
-                      网站初始阶段访问量小，只需要一台低配置的云服务器ECS实例即可运行Apache或Nginx等Web应用程序、数据库、存储文件等。随着网站发展，您可以随时升级ECS实例的配置，或者增加ECS实例数量，无需担心低配计算单元在业务突增时带来的资源不足。
-                    </p>
+                    <p class="question">企业官网或轻量的Web应用</p>
+                    <p
+                      class="question"
+                    >网站初始阶段访问量小，只需要一台低配置的云服务器ECS实例即可运行Apache或Nginx等Web应用程序、数据库、存储文件等。随着网站发展，您可以随时升级ECS实例的配置，或者增加ECS实例数量，无需担心低配计算单元在业务突增时带来的资源不足。</p>
                   </div>
                   <div style="margin-bottom:20px">
-                    <p class="question">
-                      企业官网或轻量的Web应用
-                    </p>
-                    <p class="question">
-                      网站初始阶段访问量小，只需要一台低配置的云服务器ECS实例即可运行Apache或Nginx等Web应用程序、数据库、存储文件等。随着网站发展，您可以随时升级ECS实例的配置，或者增加ECS实例数量，无需担心低配计算单元在业务突增时带来的资源不足。
-                    </p>
+                    <p class="question">企业官网或轻量的Web应用</p>
+                    <p
+                      class="question"
+                    >网站初始阶段访问量小，只需要一台低配置的云服务器ECS实例即可运行Apache或Nginx等Web应用程序、数据库、存储文件等。随着网站发展，您可以随时升级ECS实例的配置，或者增加ECS实例数量，无需担心低配计算单元在业务突增时带来的资源不足。</p>
                   </div>
                   <div style="margin-bottom:20px">
-                    <p class="question">
-                      企业官网或轻量的Web应用
-                    </p>
-                    <p class="question">
-                      网站初始阶段访问量小，只需要一台低配置的云服务器ECS实例即可运行Apache或Nginx等Web应用程序、数据库、存储文件等。随着网站发展，您可以随时升级ECS实例的配置，或者增加ECS实例数量，无需担心低配计算单元在业务突增时带来的资源不足。
-                    </p>
+                    <p class="question">企业官网或轻量的Web应用</p>
+                    <p
+                      class="question"
+                    >网站初始阶段访问量小，只需要一台低配置的云服务器ECS实例即可运行Apache或Nginx等Web应用程序、数据库、存储文件等。随着网站发展，您可以随时升级ECS实例的配置，或者增加ECS实例数量，无需担心低配计算单元在业务突增时带来的资源不足。</p>
                   </div>
                   <div style="margin-bottom:20px">
-                    <p class="question">
-                      企业官网或轻量的Web应用
-                    </p>
-                    <p class="question">
-                      网站初始阶段访问量小，只需要一台低配置的云服务器ECS实例即可运行Apache或Nginx等Web应用程序、数据库、存储文件等。随着网站发展，您可以随时升级ECS实例的配置，或者增加ECS实例数量，无需担心低配计算单元在业务突增时带来的资源不足。
-                    </p>
+                    <p class="question">企业官网或轻量的Web应用</p>
+                    <p
+                      class="question"
+                    >网站初始阶段访问量小，只需要一台低配置的云服务器ECS实例即可运行Apache或Nginx等Web应用程序、数据库、存储文件等。随着网站发展，您可以随时升级ECS实例的配置，或者增加ECS实例数量，无需担心低配计算单元在业务突增时带来的资源不足。</p>
                   </div>
                 </div>
               </div>
@@ -405,9 +403,7 @@
           </a-affix>
         </a-col>
       </template>
-
     </a-row>
-
   </a-card>
 </template>
 
@@ -491,9 +487,8 @@ export default {
   },
   data () {
     return {
-      mapMr: {
-        width: '100%',
-        height: ''
+      closePad: {
+        padding: '24px'
       },
       data,
       // 固钉
@@ -516,12 +511,14 @@ export default {
       form: this.$form.createForm(this),
       previewVisible: false,
       previewImage: '',
-      fileList: [{
-        uid: '-1',
-        name: 'xxx.png',
-        status: 'done',
-        url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png'
-      }],
+      fileList: [
+        {
+          uid: '-1',
+          name: 'xxx.png',
+          status: 'done',
+          url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png'
+        }
+      ],
 
       // 高级表单
       goodsColumns: [
@@ -695,27 +692,33 @@ export default {
       zoom: 11, // 地图级别
       mapFlag: false, // 地图内容
       screenloadFlag: false, // 全屏
-      mapHeadFlag: false, // 地图自定义head
       iconSwitch: true, // 缩放图标
-      mapFd: { // 自定义样式map
+      mapFd: {
+        // 自定义样式map
         width: '',
         height: ''
       }
-
     }
-  },
-  beforeCreate () {
-    // const vue = this
-    // setTimeout(() => {
-    //   vue.set(vue.defaultActiveKey, 4)
-    // }, 3000)
   },
   mounted () {
     window.addEventListener('scroll', this.handleScroll) // 监听滚动条
   },
   methods: {
+    amplificationBtn () { // 地图放大
+      if (this.mapFd.width === window.screen.availWidth + 'px') {
+        this.mapFd = {}
+        this.closePad.padding = 24 + 'px' // 缩小清除边距
+      } else {
+        this.mapFd.width = window.screen.availWidth + 'px'
+        this.mapFd.height = window.screen.availHeight + 'px'
+        this.closePad.padding = 0 + 'px' // 放大清除边距
+      }
 
-    handleScroll (el) {
+      this.screenloadFlag = !this.screenloadFlag
+      this.mapFlag = !this.mapFlag
+      this.iconSwitch = !this.iconSwitch
+    },
+    handleScroll (el) { // 监听滚动条
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTo
       const jump = document.querySelectorAll('.anchor') // 用 class" 添加锚点
       const total = jump[1].offsetTop
@@ -731,16 +734,26 @@ export default {
         this.activeKey = '3'
       }
     },
-    // 地图处理
-    handler ({ BMap, map }) {
+
+    handler ({ BMap, map }) { // 地图处理
       this.center.lng = 116.404
       this.center.lat = 39.915
       this.zoom = this.zoom
     },
-    callback (val) {
+    callback (val) { // 点击tab
+      window.removeEventListener('scroll', this.handleScroll)
+      this.$forceUpdate()
       val = val - 1
-      if (val >= 3) { // 暂时防止页面报错
+      if (val >= 3) {
+        // 暂时防止页面报错
         return
+      }
+      if (val === 0) { // 主动切换
+        this.activeKey = '1'
+      } else if (val === 2) {
+        this.activeKey = '3'
+      } else if (val === 1) {
+        this.activeKey = '2'
       }
       const jump = document.querySelectorAll('.anchor') // 用 class" 添加锚点
       const total = jump[val].offsetTop
@@ -805,11 +818,9 @@ export default {
     handleChange ({ fileList }) {
       this.fileList = fileList
     },
-    onChange () {
-
-    }
+    onChange () {}
   },
-  beforeDestroy () {
+  beforeDestroy () { // 取消监听滚动条
     window.removeEventListener('scroll', this.handleScroll)
   }
 }

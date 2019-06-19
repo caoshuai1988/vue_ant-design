@@ -62,7 +62,7 @@
             <a-form-item>
               <a-checkbox v-decorator="['rememberMe']">记住账号</a-checkbox>
               <router-link
-                :to="{ name: 'register'}"
+                :to="{ name: 'recover'}"
                 class="forge-password"
                 style="float: right;"
               >忘记密码</router-link>

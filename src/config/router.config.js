@@ -1,5 +1,5 @@
 // eslint-disable-next-line
-import { UserLayout, BasicLayout, RouteView, BlankLayout, PageView } from '@/layouts'
+import { UserLayout, UserLayout2, UserLayout3, BasicLayout, RouteView, BlankLayout, PageView } from '@/layouts'
 import { bxAnaalyse } from '@/core/icons'
 
 export const asyncRouterMap = [
@@ -359,9 +359,7 @@ export const constantRouterMap = [
       {
         path: 'login',
         name: 'login',
-        // component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login')
-        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login2')
-        // component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login3')
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login')
       },
       {
         path: 'register',
@@ -375,7 +373,51 @@ export const constantRouterMap = [
       }
     ]
   },
+  {
+    path: '/user2',
+    component: UserLayout2,
+    redirect: '/user2/login2',
+    hidden: true,
+    children: [
+      {
+        path: 'login2',
+        name: 'login2',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login2')
+      },
+      {
+        path: 'recover',
+        name: 'recover',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Recover')
+      }
+    ]
+  },
+  {
+    path: '/user3',
+    component: UserLayout3,
+    redirect: '/user3/login3',
+    hidden: true,
+    children: [
+      {
+        path: 'login3',
+        name: 'login3',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login3')
+      }
+    ]
+  },
 
+  {
+    path: '/user4',
+    component: UserLayout2,
+    redirect: '/user4/login4',
+    hidden: true,
+    children: [
+      {
+        path: 'login4',
+        name: 'login4',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login4')
+      }
+    ]
+  },
   {
     path: '/test',
     component: BlankLayout,

@@ -4,26 +4,19 @@
       <div class="top">
         <div class="header">
           <a href="/">
-            <img src="~@/assets/logo.svg" class="logo" alt="logo">
-            <span class="title">Ant Design</span>
+            <img src="~@/assets/fslogo.png" class="logo" alt="logo">
           </a>
         </div>
         <div class="desc">
-          Ant Design 是西湖区最具影响力的 Web 设计规范
+          富深协通新平台规范模板
         </div>
       </div>
 
       <route-view></route-view>
 
       <div class="footer">
-        <div class="links">
-          <a href="_self">帮助</a>
-          <a href="_self">隐私</a>
-          <a href="_self">条款</a>
-        </div>
-        <div class="copyright">
-          Copyright &copy; 2018 白鹭学园技术组出品
-        </div>
+        <a href="javascript:;">关于我们</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <span>版权所有：江苏富深协通科技股份有限公司&nbsp;&nbsp;&nbsp;&nbsp;技术支持：0519-86612998</span>
       </div>
     </div>
   </div>
@@ -34,7 +27,7 @@ import RouteView from './RouteView'
 import { mixinDevice } from '@/utils/mixin'
 
 export default {
-  name: 'UserLayout',
+  name: 'UserLayout3',
   components: { RouteView },
   mixins: [mixinDevice],
   data () {
@@ -63,8 +56,10 @@ export default {
     }
 
     .container {
+      min-width: 1200px;
       width: 100%;
       min-height: 100%;
+      /*background: #f0f2f5 url(~@/assets/login_bg2.png) no-repeat center;*/
       background: #f0f2f5 url(~@/assets/background.svg) no-repeat 50%;
       background-size: 100%;
       padding: 110px 0 144px;
@@ -78,8 +73,8 @@ export default {
         text-align: center;
 
         .header {
-          height: 44px;
-          line-height: 44px;
+          /*height: 44px;*/
+          /*line-height: 44px;*/
 
           .badge {
             position: absolute;
@@ -92,24 +87,17 @@ export default {
           }
 
           .logo {
-            height: 44px;
+            /*height: 44px;*/
             vertical-align: top;
             margin-right: 16px;
             border-style: none;
           }
-
-          .title {
-            font-size: 33px;
-            color: rgba(0, 0, 0, .85);
-            font-family: Avenir, 'Helvetica Neue', Arial, Helvetica, sans-serif;
-            font-weight: 600;
-            position: relative;
-            top: 2px;
-          }
         }
         .desc {
-          font-size: 14px;
-          color: rgba(0, 0, 0, 0.45);
+          font-size: 33px;
+          color: rgba(0, 0, 0, 0.85);
+          /*font-family: Avenir, 'Helvetica Neue', Arial, Helvetica, sans-serif;*/
+          /*font-weight: 600;*/
           margin-top: 12px;
           margin-bottom: 40px;
         }

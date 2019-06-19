@@ -181,6 +181,29 @@
   display: flex;
   justify-content: flex-end;
 }
+
+.btn-wrap{
+  .sign{
+    color: #d9d9d9;
+    padding: 0 8px;
+    font-size: 18px;
+  }
+  .checking{
+    color:#F5222D;
+  }
+  .btn{
+    &:focus{
+      .checking{
+        color: #40a9ff;
+      }
+    }
+    &:hover{
+      .checking{
+        color: #40a9ff;
+      }
+    }
+  }
+}
 </style>
 <template>
   <div :style="!$route.meta.hiddenHeaderContent ? 'margin: -24px -24px 0px;' : null">
@@ -272,9 +295,14 @@
               <a-button><a-icon type="ellipsis"/></a-button>
             </a-button-group>
             <span class="sign">|</span>
-            <a-button style="width: 130px;margin-left:16px;">审批：<span style="color:#F5222D">待审批</span> <a-icon type="caret-down" /></a-button>
+            <a-button
+              class="btn"
+              @click="showDrawer"
+              style="width: 130px;margin-left:16px;">
+              审批：<span class="checking">待审批</span></a-button>
           </div>
         </div>
+        <drawer :isVisible="isVisible" @close-drawer="closeDrawer" @show-drawer="showDrawer"/>
       </div>
     </page-header>
     <div class="content">
@@ -294,11 +322,13 @@
 <script>
 import { mapState, mapMutations } from 'vuex'
 import PageHeader from '@/components/PageHeaderFsxt'
+import drawer from '@/components/drawer'
 
 export default {
   name: 'PageViewFsxt',
   components: {
-    PageHeader
+    PageHeader,
+    drawer
   },
   props: {
     avatar: {
@@ -320,6 +350,7 @@ export default {
   },
   data () {
     return {
+      isVisible: false,
       pageTitle: null,
       description: null,
       linkList: [],
@@ -371,6 +402,12 @@ export default {
     //   this.current--
     // },
     ...mapMutations('stepform', ['SET_DATALIST']),
+    showDrawer () {
+      this.isVisible = true
+    },
+    closeDrawer () {
+      this.isVisible = false
+    },
     handelStepclick (index, content) {
       if (this.current < index) return
       this.currentStep = index

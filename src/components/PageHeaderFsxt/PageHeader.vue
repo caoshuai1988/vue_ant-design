@@ -64,6 +64,11 @@
               color: #40a9ff;
             }
           }
+          &:hover{
+            .checking{
+              color: #40a9ff;
+            }
+          }
         }
       }
       .logo {

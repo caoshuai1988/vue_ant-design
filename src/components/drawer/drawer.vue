@@ -197,7 +197,7 @@
               :labelCol="labelCol"
               :wrapperCol="wrapperCol"
               :required="false">
-              <a-radio-group @change="onChange">
+              <a-radio-group>
                 <a-radio value="1">同意</a-radio>
                 <a-radio value="2">退回</a-radio>
               </a-radio-group>

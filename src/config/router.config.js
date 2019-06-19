@@ -1,8 +1,9 @@
 // eslint-disable-next-line
-import { UserLayout, UserLayout2,BasicLayout, RouteView, BlankLayout, PageView } from '@/layouts'
+import { UserLayout, UserLayout2, UserLayout3, BasicLayout, RouteView, BlankLayout, PageView } from '@/layouts'
 import { bxAnaalyse } from '@/core/icons'
 
 export const asyncRouterMap = [
+
   {
     path: '/',
     name: 'index',
@@ -358,8 +359,7 @@ export const constantRouterMap = [
       {
         path: 'login',
         name: 'login',
-        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login2')
-        // component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login')
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login')
       },
       {
         path: 'register',
@@ -374,25 +374,47 @@ export const constantRouterMap = [
     ]
   },
   {
-    path: '/user',
+    path: '/user2',
     component: UserLayout2,
-    redirect: '/user/login2',
+    redirect: '/user2/login2',
     hidden: true,
     children: [
       {
         path: 'login2',
         name: 'login2',
-        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login')
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login2')
       },
       {
-        path: 'register',
-        name: 'register',
-        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Register')
-      },
+        path: 'recover',
+        name: 'recover',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Recover')
+      }
+    ]
+  },
+  {
+    path: '/user3',
+    component: UserLayout3,
+    redirect: '/user3/login3',
+    hidden: true,
+    children: [
       {
-        path: 'register-result',
-        name: 'registerResult',
-        component: () => import(/* webpackChunkName: "user" */ '@/views/user/RegisterResult')
+        path: 'login3',
+        name: 'login3',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login3')
+      }
+    ]
+  },
+
+  {
+    path: '/user4',
+    component: UserLayout2,
+    redirect: '/user4/login4',
+    hidden: true,
+    children: [
+      {
+        path: 'login4',
+        name: 'login4',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login4')
       }
     ]
   },

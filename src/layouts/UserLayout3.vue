@@ -2,12 +2,14 @@
   <div id="userLayout" :class="['user-layout-wrapper', device]">
     <div class="container">
       <div class="top">
-        <a-row>
-          <a-col :span="23" :offset="1">
-            <img src="~@/assets/fslogo.png" alt="logo">
-            <span class="title">富深新平台规范模板</span>
-          </a-col>
-        </a-row>
+        <div class="header">
+          <a href="/">
+            <img src="~@/assets/fslogo.png" class="logo" alt="logo">
+          </a>
+        </div>
+        <div class="desc">
+          富深协通新平台规范模板
+        </div>
       </div>
 
       <route-view></route-view>
@@ -23,11 +25,10 @@
 <script>
 import RouteView from './RouteView'
 import { mixinDevice } from '@/utils/mixin'
-import ARow from 'ant-design-vue/es/grid/Row'
 
 export default {
-  name: 'UserLayout2',
-  components: { ARow, RouteView },
+  name: 'UserLayout3',
+  components: { RouteView },
   mixins: [mixinDevice],
   data () {
     return {}
@@ -57,35 +58,65 @@ export default {
     .container {
       min-width: 1200px;
       width: 100%;
-      height: 100%;
-      .top {
-        height: 128px;
-        line-height: 128px;
-        width:100%;
-        .title {
-          font-size: 28px;
-          color: rgba(0,0,0,0.85);
-          margin-left: 16px;
-        }
-      }
+      min-height: 100%;
+      /*background: #f0f2f5 url(~@/assets/login_bg2.png) no-repeat center;*/
+      background: #f0f2f5 url(~@/assets/background.svg) no-repeat 50%;
+      background-size: 100%;
+      padding: 110px 0 144px;
+      position: relative;
+
       a {
         text-decoration: none;
       }
 
+      .top {
+        text-align: center;
+
+        .header {
+          /*height: 44px;*/
+          /*line-height: 44px;*/
+
+          .badge {
+            position: absolute;
+            display: inline-block;
+            line-height: 1;
+            vertical-align: middle;
+            margin-left: -12px;
+            margin-top: -10px;
+            opacity: 0.8;
+          }
+
+          .logo {
+            /*height: 44px;*/
+            vertical-align: top;
+            margin-right: 16px;
+            border-style: none;
+          }
+        }
+        .desc {
+          font-size: 33px;
+          color: rgba(0, 0, 0, 0.85);
+          /*font-family: Avenir, 'Helvetica Neue', Arial, Helvetica, sans-serif;*/
+          /*font-weight: 600;*/
+          margin-top: 12px;
+          margin-bottom: 40px;
+        }
+      }
+
       .main {
-        position: relative;
-        width: 100%;
-        /*height: calc(100% - 128px);*/
-        /*background: #ffffff url(~@/assets/login_bg1.png) no-repeat;*/
+        min-width: 260px;
+        width: 368px;
+        margin: 0 auto;
       }
 
       .footer {
-        /*position: absolute;*/
+        position: absolute;
         width: 100%;
-        /*bottom: 0;*/
-        /*padding: 0 16px;*/
-        margin: 56px 0 128px 0;
+        bottom: 0;
+        padding: 0 16px;
+        margin: 48px 0 24px;
         text-align: center;
+
         .links {
           margin-bottom: 8px;
           font-size: 14px;

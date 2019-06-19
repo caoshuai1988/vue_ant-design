@@ -41,6 +41,9 @@
           </a-menu-item>
         </a-menu>
       </a-dropdown>
+      <span class="action">
+        <a-icon type="setting" @click="test"/>
+      </span>
     </div>
   </div>
 </template>
@@ -76,6 +79,10 @@ export default {
         onCancel () {
         }
       })
+    },
+    test(){
+      console.log(this.$router)
+      this.$router.push({name:'login2'})
     }
   }
 }

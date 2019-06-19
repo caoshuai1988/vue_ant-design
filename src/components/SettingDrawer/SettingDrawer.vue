@@ -47,7 +47,7 @@
                 </div>
               </div>
             </a-tooltip>
-    <!--        <a-tooltip>
+            <a-tooltip>
               <template slot="title">
                 plusTheme02风格测试
               </template>
@@ -57,7 +57,7 @@
                   <a-icon type="check"/>
                 </div>
               </div>
-            </a-tooltip>-->
+            </a-tooltip>
           </div>
         </div>
 
@@ -259,6 +259,7 @@ export default {
     },
     toggle () {
       this.visible = !this.visible
+      console.log('sssss111',this.$store.state)
     },
     onColorWeak (checked) {
       this.$store.dispatch('ToggleWeak', checked)

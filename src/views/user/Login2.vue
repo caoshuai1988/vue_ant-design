@@ -61,10 +61,11 @@
             <a-form-item>
               <a-checkbox v-decorator="['rememberMe']">记住账号</a-checkbox>
               <router-link
-                :to="{ name: 'recover', params: { user: 'aaa'} }"
+                :to="{ name: 'register'}"
                 class="forge-password"
                 style="float: right;"
               >忘记密码</router-link>
+<!--              <router-link class="register" :to="{ name: 'register' }">注册账户</router-link>-->
             </a-form-item>
             <a-form-item>
               <a-button
@@ -255,7 +256,9 @@ export default {
           console.log('login form', values)
           const loginParams = { ...values }
           delete loginParams.username
-          loginParams[!state.loginType ? 'email' : 'username'] = values.username
+          // debugger
+          // loginParams[!state.loginType ? 'email' : 'username'] = values.username
+          loginParams['username'] = values.username
           loginParams.password = md5(values.password)
           Login(loginParams)
             .then((res) => this.loginSuccess(res))

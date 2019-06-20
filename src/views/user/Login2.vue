@@ -1,107 +1,34 @@
 <template>
   <div class="main">
     <img src="@/assets/login_bg1.png"/>
-    <div class="login-box">
-      <a-form
-        id="formLogin2"
-        class="user-layout-login2"
-        ref="formLogin"
-        :form="form"
-        @submit="handleSubmit"
-      >
-        <a-tabs
-          :activeKey="customActiveKey"
-          :tabBarStyle="{ textAlign: 'center', borderBottom: 'unset' }"
-          @change="handleTabClick"
-          class="login-tabs"
+        <div class="login-box">
+        <a-form
+          id="formLogin2"
+          class="user-layout-login2"
+          ref="formLogin"
+          :form="form"
+          @submit="handleSubmit"
         >
-          <a-tab-pane key="tab1" tab="账号密码登录">
-            <a-form-item>
-              <a-input
-                size="large"
-                type="text"
-                placeholder="账号"
-                v-decorator="[
+          <a-tabs
+            :animated="false"
+            :activeKey="customActiveKey"
+            :tabBarStyle="{ textAlign: 'center', borderBottom: 'unset' }"
+            @change="handleTabClick"
+            class="login-tabs"
+          >
+            <a-tab-pane key="tab1" tab="账号密码登录">
+              <a-form-item>
+                <a-input
+                  size="large"
+                  type="text"
+                  placeholder="账号"
+                  v-decorator="[
                   'username',
                   {rules: [{ required: true, message: '请输入账号' }], validateTrigger: 'change'}
                 ]"
-              >
-                <a-icon slot="prefix" type="user" :style="{ color: 'rgba(0,0,0,.25)' }"/>
-              </a-input>
-            </a-form-item>
-            <a-form-item>
-              <a-input
-                size="large"
-                type="password"
-                autocomplete="false"
-                placeholder="密码"
-                v-decorator="[
-                  'password',
-                  {rules: [{ required: true, message: '请输入密码' }], validateTrigger: 'blur'}
-                ]"
-              >
-                <a-icon slot="prefix" type="lock" :style="{ color: 'rgba(0,0,0,.25)' }"/>
-              </a-input>
-            </a-form-item>
-            <a-form-item class="login-drag">
-              <drag-verify
-                @passcallback= "passcallback"
-                :width="drag.width"
-                :height="drag.height"
-                :text="drag.text"
-                :success-text="drag.successText"
-                :background="drag.background"
-                :progress-bar-bg="drag.progressBarBg"
-                :completed-bg="drag.completedBg"
-                :handler-bg="drag.handlerBg"
-                :text-size="drag.textSize"
-                ref="Verify"
-              >
-              </drag-verify>
-            </a-form-item>
-            <a-form-item>
-              <a-checkbox v-decorator="['rememberMe']">记住账号</a-checkbox>
-              <router-link
-                :to="{ name: 'recover'}"
-                class="forge-password"
-                style="float: right;"
-              >忘记密码</router-link>
-<!--              <router-link class="register" :to="{ name: 'register' }">注册账户</router-link>-->
-            </a-form-item>
-            <a-form-item>
-              <a-button
-                size="large"
-                type="primary"
-                htmlType="submit"
-                class="login-button"
-                :loading="state.loginBtn"
-                :disabled="state.loginBtn"
-              >登录</a-button>
-            </a-form-item>
-        <!--    <div class="login-tips">
-              <span>用户名或密码错误！</span>
-            </div>-->
-          </a-tab-pane>
-          <a-tab-pane key="tab2" tab="CA密钥登录">
-            <div class="ca-uninstall" v-if="!isPassCA">
-              <a-form-item><img src="~@/assets/CA.png"></a-form-item>
-              <a-form-item>
-                <p><span>请插入您的CA密钥后</span></p>
-                <p><span>点击下方检测</span></p>
-              </a-form-item>
-              <a-form-item>
-                <a-button
-                size="large"
-                type="primary"
-                class="test-button"
-                @click="testCA"
-                :loading="state.testBtn"
-                :disabled="state.testBtn"
-              >检测</a-button></a-form-item>
-            </div>
-            <div class="ca-install" v-else>
-              <a-form-item>
-                <p><span>检测通过，请输入登录密码</span></p>
+                >
+                  <a-icon slot="prefix" type="user" :style="{ color: 'rgba(0,0,0,.25)' }"/>
+                </a-input>
               </a-form-item>
               <a-form-item>
                 <a-input
@@ -110,18 +37,37 @@
                   autocomplete="false"
                   placeholder="密码"
                   v-decorator="[
-                  'caPassword',
-                  {rules: [{ required: true, message: '请输入登录密码' }], validateTrigger: 'blur'}
-                ]">
+                  'password',
+                  {rules: [{ required: true, message: '请输入密码' }], validateTrigger: 'blur'}
+                ]"
+                >
                   <a-icon slot="prefix" type="lock" :style="{ color: 'rgba(0,0,0,.25)' }"/>
                 </a-input>
               </a-form-item>
+              <a-form-item class="login-drag">
+                <drag-verify
+                  @passcallback= "passcallback"
+                  :width="drag.width"
+                  :height="drag.height"
+                  :text="drag.text"
+                  :success-text="drag.successText"
+                  :background="drag.background"
+                  :progress-bar-bg="drag.progressBarBg"
+                  :completed-bg="drag.completedBg"
+                  :handler-bg="drag.handlerBg"
+                  :text-size="drag.textSize"
+                  ref="Verify"
+                >
+                </drag-verify>
+              </a-form-item>
               <a-form-item>
+                <a-checkbox v-decorator="['rememberMe']">记住账号</a-checkbox>
                 <router-link
-                  :to="{ name: 'recover', params: { user: 'aaa'} }"
+                  :to="{ name: 'recover'}"
                   class="forge-password"
                   style="float: right;"
                 >忘记密码</router-link>
+                <!--              <router-link class="register" :to="{ name: 'register' }">注册账户</router-link>-->
               </a-form-item>
               <a-form-item>
                 <a-button
@@ -129,15 +75,70 @@
                   type="primary"
                   htmlType="submit"
                   class="login-button"
-                  :loading="state.caLoginBtn"
-                  :disabled="state.caLoginBtn"
+                  :loading="state.loginBtn"
+                  :disabled="state.loginBtn"
                 >登录</a-button>
               </a-form-item>
-            </div>
-          </a-tab-pane>
-        </a-tabs>
-      </a-form>
-    </div>
+              <!--    <div class="login-tips">
+                    <span>用户名或密码错误！</span>
+                  </div>-->
+            </a-tab-pane>
+            <a-tab-pane key="tab2" tab="CA密钥登录">
+              <div class="ca-uninstall" v-if="!isPassCA">
+                <a-form-item><img src="~@/assets/CA.png"></a-form-item>
+                <a-form-item>
+                  <p><span>请插入您的CA密钥后</span></p>
+                  <p><span>点击下方检测</span></p>
+                </a-form-item>
+                <a-form-item>
+                  <a-button
+                    size="large"
+                    type="primary"
+                    class="test-button"
+                    @click="testCA"
+                    :loading="state.testBtn"
+                    :disabled="state.testBtn"
+                  >检测</a-button></a-form-item>
+              </div>
+              <div class="ca-install" v-else>
+                <a-form-item>
+                  <p><span>检测通过，请输入登录密码</span></p>
+                </a-form-item>
+                <a-form-item>
+                  <a-input
+                    size="large"
+                    type="password"
+                    autocomplete="false"
+                    placeholder="密码"
+                    v-decorator="[
+                  'caPassword',
+                  {rules: [{ required: true, message: '请输入登录密码' }], validateTrigger: 'blur'}
+                ]">
+                    <a-icon slot="prefix" type="lock" :style="{ color: 'rgba(0,0,0,.25)' }"/>
+                  </a-input>
+                </a-form-item>
+                <a-form-item>
+                  <router-link
+                    :to="{ name: 'recover', params: { user: 'aaa'} }"
+                    class="forge-password"
+                    style="float: right;"
+                  >忘记密码</router-link>
+                </a-form-item>
+                <a-form-item>
+                  <a-button
+                    size="large"
+                    type="primary"
+                    htmlType="submit"
+                    class="login-button"
+                    :loading="state.caLoginBtn"
+                    :disabled="state.caLoginBtn"
+                  >登录</a-button>
+                </a-form-item>
+              </div>
+            </a-tab-pane>
+          </a-tabs>
+        </a-form>
+      </div>
     <two-step-captcha
       v-if="requiredTwoStepCaptcha"
       :visible="stepCaptchaVisible"
@@ -348,13 +349,15 @@ export default {
       margin: 0 auto;
       overflow: hidden;
       position: absolute;
+      width: 400px;
       top: 50%;
-      left: 50%;
-      transform: translate(-50%,-50%);
+      right: 16.666666666666668%;
+      transform: translate(0,-50%);
       #formLogin2.user-layout-login2 {
         background: #ffffff;
         padding: 32px;
-        min-height: 481px;
+        height: 482px;
+        border-radius: 4px;
         .login-tabs {
           width: 335px;
           input {

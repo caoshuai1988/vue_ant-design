@@ -1,19 +1,20 @@
 <template>
   <div class="page-header">
     <div class="page-header-index-wide">
-      <!--<s-breadcrumb/>-->
+      <!-- <s-breadcrumb /> -->
       <div class="detail">
         <div class="main" v-if="!$route.meta.hiddenHeaderContent">
           <div class="row">
-            <img v-if="logo" :src="logo" class="logo"/>
-            <h1 v-if="title" class="title">{{ title }}</h1>
+            <img v-if="logo" :src="logo" class="logo">
+            <h1 v-if="title" class="title">基础表单</h1>
+            <h1 class="title box-lc">业务流程(1/3)</h1>
             <div class="action">
               <slot name="action"></slot>
             </div>
           </div>
           <div class="row">
             <div v-if="avatar" class="avatar">
-              <a-avatar :src="avatar" />
+              <a-avatar :src="avatar"/>
             </div>
             <div v-if="this.$slots.content" class="headerContent">
               <slot name="content"></slot>
@@ -25,6 +26,7 @@
           <div>
             <slot name="pageMenu"></slot>
           </div>
+
         </div>
       </div>
     </div>
@@ -63,24 +65,21 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.box-lc {
+  font-size: 16px !;
+}
 .page-header {
   background: #fff;
   padding: 16px 32px 0;
   border-bottom: 1px solid #e8e8e8;
 
-    .breadcrumb {
-      margin-bottom: 16px;
-    }
-    .action .list-action {
-      span {
-        color: #1890ff;
-        margin-left:56px;
-        cursor: pointer;
-      }
-    }
-    .detail {
-      display: flex;
-      /*margin-bottom: 16px;*/
+  .breadcrumb {
+    margin-bottom: 16px;
+  }
+
+  .detail {
+    display: flex;
+    /*margin-bottom: 16px;*/
 
     .avatar {
       flex: 0 1 72px;
@@ -109,13 +108,14 @@ export default {
 
       .title {
         font-size: 20px;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-weight: 500;
+
         font-size: 20px;
         line-height: 28px;
         font-weight: 500;
         color: rgba(0, 0, 0, 0.85);
         margin-bottom: 16px;
-        flex: auto;
+        // flex: auto;
       }
       .logo {
         width: 28px;

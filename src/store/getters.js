@@ -9,7 +9,14 @@ const getters = {
   roles: state => state.user.roles,
   userInfo: state => state.user.info,
   addRouters: state => state.permission.addRouters,
-  multiTab: state => state.app.multiTab
+  multiTab: state => state.app.multiTab,
+  // form 表单相关的的数据
+  stepForm: state => {
+    return {
+      // 高级带分布表单的tabs数据
+      data: state.stepform.dataList
+    }
+  }
 }
 
 export default getters

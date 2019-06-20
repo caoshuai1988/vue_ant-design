@@ -283,7 +283,9 @@
                 <a-table :dataSource="data" :pagination="false">
                   <a-table-column title="种类" data-index="icon" key="icon">
                     <template slot-scope="icon">
-                      <a-icon :type="item" v-for="item in icon" :key="item.icon"/>
+                      <div v-for="img in icon" :key="img.id">
+                        <img :src="img" style="width:24px;height: 24px" alt="文件图标">
+                      </div>
                     </template>
                   </a-table-column>
                   <a-table-column title="名称" data-index="name" key="name"/>
@@ -305,7 +307,9 @@
                 <a-table :dataSource="data" :pagination="false">
                   <a-table-column title="种类" data-index="icon" key="icon">
                     <template slot-scope="icon">
-                      <a-icon :type="item" v-for="item in icon" :key="item.icon"/>
+                      <div v-for="img in icon" :key="img.id">
+                        <img :src="img" style="width:24px;height: 24px" alt="文件图标">
+                      </div>
                     </template>
                   </a-table-column>
                   <a-table-column title="名称" data-index="name" key="name"/>
@@ -410,12 +414,20 @@
 <script>
 import { STable } from '@/components'
 import DetailList from '@/components/tools/DetailList'
+// word格式
+import icon1 from '@/assets/iconfiles/fileicon4.svg'
+// MP4格式
+import icon2 from '@/assets/iconfiles/fileicon10.svg'
+// pdf格式
+import icon3 from '@/assets/iconfiles/fileicon15.svg'
+// ppt格式
+import icon4 from '@/assets/iconfiles/fileicon1.svg'
 const DetailListItem = DetailList.Item
 // 列表的数据定义
 const data = [
   {
     key: '1',
-    icon: ['file-text'],
+    icon: [icon1],
     name: '融合服务开发服务平台前端部分工作规划.docx',
     size: '23.6MB',
     time: '2016-09-21 08:50:08',
@@ -428,7 +440,7 @@ const data = [
   },
   {
     key: '2',
-    icon: ['file-text'],
+    icon: [icon2],
     name: '融合服务开发服务平台前端部分工作规划.docx',
     size: '23.6MB',
     time: '2016-09-21 08:50:08',
@@ -441,7 +453,7 @@ const data = [
   },
   {
     key: '3',
-    icon: ['file-text'],
+    icon: [icon3],
     name: '融合服务开发服务平台前端部分工作规划.docx',
     size: '23.6MB',
     time: '2016-09-21 08:50:08',
@@ -454,7 +466,7 @@ const data = [
   },
   {
     key: '4',
-    icon: ['file-text'],
+    icon: [icon4],
     name: '融合服务开发服务平台前端部分工作规划.docx',
     size: '23.6MB',
     time: '2016-09-21 08:50:08',
@@ -467,7 +479,7 @@ const data = [
   },
   {
     key: '5',
-    icon: ['file-text'],
+    icon: [icon1],
     name: '融合服务开发服务平台前端部分工作规划.docx',
     size: '23.6MB',
     time: '2016-09-21 08:50:08',

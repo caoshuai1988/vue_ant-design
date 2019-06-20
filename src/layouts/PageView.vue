@@ -53,59 +53,51 @@
           :wrapStyle="{height: 'calc(100% - 108px)',overflow: 'auto',paddingBottom: '108px'}"
         >
           <template>
-            <div>
-            	<a-row class="form-row" :gutter="16">
-            		<a-col class="gutter-row" :lg="24" :md="12" :sm="24">
-			            <a-card class="card" style="font-size: 26px;border-top:10px solid white;margin-top:-35px;" :bordered="false" >
-				          	<span slot="title" class="titleBtn" @click="fold(1)">模板</span>
-				          	<span slot="extra" class="foldStyle" @click="fold(1)">
-									        <a-icon type="up" v-if="iconToggle" />
-									        <a-icon type="down" v-else />
-									  </span>
-							      <verticaltoggle>
-							        <TagModule v-if="foldOne"></TagModule>
-							      </verticaltoggle>
-									</a-card>
-								</a-col>
-								<a-col class="gutter-row" :lg="24" :md="12" :sm="24">
-								  <a-card class="card" style="font-size: 26px" :bordered="false" >
-				          	<span slot="title" class="titleBtn" @click="fold(2)">列表基础</span>
-				          	<span slot="extra" class="foldStyle" @click="fold(2)">
-									        <a-icon type="up" v-if="iconToggleOne" />
-									        <a-icon type="down" v-else />
-									  </span>
-							      <verticaltoggle>
-							        <Listjc v-if="foldTwo"></Listjc>
-							      </verticaltoggle>
-									</a-card>
-								</a-col>
-								<a-col class="gutter-row" :lg="24" :md="12" :sm="24">
-									<a-card class="card" style="font-size: 26px" :bordered="false" >
-				          	<span slot="title" class="titleBtn" @click="fold(3)">列表列</span>
-				          	<span slot="extra" class="foldStyle" @click="fold(3)">
-									        <a-icon type="up" v-if="iconTable" />
-									        <a-icon type="down" v-else />
-									  </span>
-							      <verticaltoggle>
-							        <ListTable v-if="foldTable"></ListTable>
-							      </verticaltoggle>
-									</a-card>
-								</a-col>
-								
-								<a-col class="gutter-row" :lg="24" :md="12" :sm="24">
-									<a-card class="card" style="font-size: 26px;border-bottom:1px solid #e8e8e8;" :bordered="false" >
-				          	<span slot="title" class="titleBtn" @click="fold(4)">默认筛选</span>
-				          	<span slot="extra" class="foldStyle" @click="fold(4)">
-									        <a-icon type="up" v-if="iconFour" />
-									        <a-icon type="down" v-else />
-									  </span>
-							      <verticaltoggle>
-							        <ScreeningTable v-if="dataFour"></ScreeningTable>
-							      </verticaltoggle>
-									</a-card>
-								</a-col>
-							</a-row>
-            </div>
+	           <div>
+	           		<a-card class="card" style="font-size: 26px" :bordered="false" >
+
+						      <layoutForm title="模板" >
+						        <span class="foldStyle" @click="fold(1)">
+						          <a-icon type="up" v-if="iconToggle" />
+						          <a-icon type="down" v-else />
+						        </span>
+						        <verticaltoggle>
+						          <TagModule v-if="foldOne"></TagModule>
+						        </verticaltoggle>
+						      </layoutForm>
+						      <a-divider style="margin-bottom: 32px"/>
+						      <layoutForm title="列表基础">
+						        <span class="foldStyle" @click="fold(2)">
+						          <a-icon type="up" v-if="iconToggleOne" />
+						          <a-icon type="down" v-else />
+						        </span>
+						        <verticaltoggle>
+						          <Listjc v-if="foldTwo"></Listjc>
+						        </verticaltoggle>
+						      </layoutForm>
+						      <a-divider style="margin-bottom: 32px"/>
+						      <layoutForm title="列表列">
+						        <span class="foldStyle" @click="fold(3)">
+						          <a-icon type="up" v-if="iconTable" />
+						          <a-icon type="down" v-else />
+						        </span>
+						        <verticaltoggle>
+						          <ListTable v-if="foldTable"></ListTable>
+						        </verticaltoggle>
+						      </layoutForm>
+						      <a-divider style="margin-bottom: 32px"/>
+						      <layoutForm title="默认筛选">
+						        <span class="foldStyle" @click="fold(4)">
+						          <a-icon type="up" v-if="iconFour" />
+						          <a-icon type="down" v-else />
+						        </span>
+						        <verticaltoggle>
+						          <ScreeningTable v-if="dataFour"></ScreeningTable>
+						        </verticaltoggle>
+						      </layoutForm>
+						      <a-divider style="margin-bottom: 32px"/>
+						    </a-card>
+	           </div>
           </template>
           <div
             :style="{
@@ -151,6 +143,7 @@
   import ScreeningTable from './listTables/ScreeningTable'
   import verticaltoggle from '@/views/newform/verticaltoggle.js'
   import Listjc from './listTables/listjc'
+  import layoutForm from '@/views/newform/layoutForm'
 
   export default {
     name: 'PageView',
@@ -160,7 +153,8 @@
       ListTable,
       ScreeningTable,
       verticaltoggle,
-      Listjc
+      Listjc,
+      layoutForm
     },
     props: {
       avatar: {
@@ -191,12 +185,12 @@
         tabs: {},
         isPageList: false,
         visible: false,
-        foldOne: false, // 折叠组件1
-	      foldTwo: false, // 折叠组件2
+        foldOne: true, // 折叠组件1
+	      foldTwo: true, // 折叠组件2
 	      foldTable: false, // 折叠表格
 	      iconTable: false, // 图标表格
-	      iconToggle: false, // 图标1
-	      iconToggleOne: false, // 图标2
+	      iconToggle: true, // 图标1
+	      iconToggleOne: true, // 图标2
 	      memberLoading: false,
 	      iconFour:false, //筛选icon
 	      dataFour:false  //筛选组件
@@ -300,6 +294,9 @@
   	display: block;
   	cursor:pointer;
   }
+  .ant-drawer-body{
+  	/*padding-bottom:80px !important;*/
+  }
 </style>
 <style lang="less" scoped>
   .content {
@@ -358,6 +355,17 @@
       }
     }
   }
-
+	// 底部
+.footerBox{
+  background-color: #fff;
+}
+// icon
+.foldStyle{
+    position: absolute;
+    top: -34px;
+    right: 0;
+    font-size: 16px;
+    cursor: pointer;
+}
 </style>
 

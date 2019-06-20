@@ -1,9 +1,12 @@
 <template>
 	<div class="screening">
-		<div class="showHide">
-			显示
-		</div>
-		<a-table :columns="columns" :dataSource="data" :rowSelection="rowSelection" bordered>
+		<a-table :columns="columns" :dataSource="data" bordered>
+	<template v-for="col1 in ['hide']" :slot="col1" slot-scope="text1, record, index">
+				
+      <div :key="col1">
+      	<a-switch defaultChecked checkedChildren="是" unCheckedChildren="否"/>
+      </div>
+    </template>
     <template v-for="col in ['name', 'age', 'address']" :slot="col" slot-scope="text, record, index">
       <div :key="col">
         <a-input
@@ -22,12 +25,18 @@
 const columns = [{
   title: '筛选项',
   dataIndex: 'age',
-  width: '50%',
+  width: '33.333%',
+},
+{
+  title: '显示',
+  dataIndex: 'hide',
+  width: '33.333%',
+  scopedSlots: { customRender: 'hide' },
 },
 {
   title: '顺序',
   dataIndex: 'name',
-  width: '50%',
+  width: '33.333%',
   scopedSlots: { customRender: 'name' },
 }]
 
@@ -72,24 +81,6 @@ export default {
 }
 </script>
 <style>
-.ant-drawer-content-wrapper .ant-table-wrapper .ant-checkbox-wrapper{
-	position:relative;
-	left:145px;
-	top:0;
-	z-index: 100;
-}
-.screening{
-	padding-bottom:48px;
-	position:relative;
-}
-.screening  .showHide{
-		position:absolute;
-		left:192px;
-		top:19px;
-		z-index: 100;
-		font-size:13px;
-		color:rgba(0, 0, 0, 0.85)
-	}
 .screening .ant-table-bordered .ant-table-thead > tr > th, .ant-table-bordered .ant-table-tbody > tr > td{
 	border-right:0px !important;
 	

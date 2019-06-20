@@ -17,7 +17,7 @@ const app = {
     sidebar: true,
     device: 'desktop',
     theme: '',
-    surplusTheme:'',//新增主题
+    surplusTheme: '',//新增主题
     layout: '',
     contentWidth: '',
     fixedHeader: false,
@@ -25,7 +25,8 @@ const app = {
     autoHideHeader: false,
     color: null,
     weak: false,
-    multiTab: true
+    multiTab: true,
+    settingDrawer: false
   },
   mutations: {
     SET_SIDEBAR_TYPE: (state, type) => {
@@ -42,10 +43,10 @@ const app = {
     TOGGLE_THEME: (state, theme) => {
       // setStore('_DEFAULT_THEME', theme)
       Vue.ls.set(DEFAULT_THEME, theme)
-     // Vue.ls.remove('pro__SURPLUS_HEME')
+      // Vue.ls.remove('pro__SURPLUS_HEME')
       state.theme = theme
     },
-    TOGGLE_SURPLUS_THEME:(state,plusTheme)=>{
+    TOGGLE_SURPLUS_THEME: (state, plusTheme) => {
       Vue.ls.set('SURPLUS_HEME', plusTheme)
       state.surplusTheme = plusTheme
     },
@@ -80,50 +81,56 @@ const app = {
     TOGGLE_MULTI_TAB: (state, bool) => {
       Vue.ls.set(DEFAULT_MULTI_TAB, bool)
       state.multiTab = bool
+    },
+    TOGGLE_SET_DRAWER: (state,bool) => {
+      state.settingDrawer = bool
     }
   },
   actions: {
-    setSidebar ({ commit }, type) {
+    setSidebar({ commit }, type) {
       commit('SET_SIDEBAR_TYPE', type)
     },
-    CloseSidebar ({ commit }) {
+    CloseSidebar({ commit }) {
       commit('CLOSE_SIDEBAR')
     },
-    ToggleDevice ({ commit }, device) {
+    ToggleDevice({ commit }, device) {
       commit('TOGGLE_DEVICE', device)
     },
-    ToggleTheme ({ commit }, theme) {
+    ToggleTheme({ commit }, theme) {
       commit('TOGGLE_THEME', theme)
     },
-    ToggleSurplusTheme({commit},plusTheme){
+    ToggleSurplusTheme({ commit }, plusTheme) {
       commit('TOGGLE_SURPLUS_THEME', plusTheme)
     },
-    ToggleLayoutMode ({ commit }, mode) {
+    ToggleLayoutMode({ commit }, mode) {
       commit('TOGGLE_LAYOUT_MODE', mode)
     },
-    ToggleFixedHeader ({ commit }, fixedHeader) {
+    ToggleFixedHeader({ commit }, fixedHeader) {
       if (!fixedHeader) {
         commit('TOGGLE_FIXED_HEADER_HIDDEN', false)
       }
       commit('TOGGLE_FIXED_HEADER', fixedHeader)
     },
-    ToggleFixSiderbar ({ commit }, fixSiderbar) {
+    ToggleFixSiderbar({ commit }, fixSiderbar) {
       commit('TOGGLE_FIXED_SIDERBAR', fixSiderbar)
     },
-    ToggleFixedHeaderHidden ({ commit }, show) {
+    ToggleFixedHeaderHidden({ commit }, show) {
       commit('TOGGLE_FIXED_HEADER_HIDDEN', show)
     },
-    ToggleContentWidth ({ commit }, type) {
+    ToggleContentWidth({ commit }, type) {
       commit('TOGGLE_CONTENT_WIDTH', type)
     },
-    ToggleColor ({ commit }, color) {
+    ToggleColor({ commit }, color) {
       commit('TOGGLE_COLOR', color)
     },
-    ToggleWeak ({ commit }, weakFlag) {
+    ToggleWeak({ commit }, weakFlag) {
       commit('TOGGLE_WEAK', weakFlag)
     },
-    ToggleMultiTab ({ commit }, bool) {
+    ToggleMultiTab({ commit }, bool) {
       commit('TOGGLE_MULTI_TAB', bool)
+    },
+    ToggleSetDrawer({ commit },bool){
+      commit('TOGGLE_SET_DRAWER', bool)
     }
   }
 }

@@ -11,7 +11,6 @@ import { ACCESS_TOKEN } from '@/store/mutation-types'
 NProgress.configure({ showSpinner: false }) // NProgress Configuration
 
 const whiteList = ['login', 'register', 'registerResult'] // no redirect whitelist
-
 router.beforeEach((to, from, next) => {
   NProgress.start() // start progress bar
   to.meta && (typeof to.meta.title !== 'undefined' && setDocumentTitle(`${to.meta.title} - ${domTitle}`))
@@ -58,8 +57,7 @@ router.beforeEach((to, from, next) => {
       // 在免登录白名单，直接进入
       next()
     } else {
-      // next({ path: '/user/login', query: { redirect: to.fullPath } })
-      next()
+      next({ path: '/user/login', query: { redirect: to.fullPath } })
       NProgress.done() // if current page is login will not trigger afterEach hook, so manually handle it
     }
   }

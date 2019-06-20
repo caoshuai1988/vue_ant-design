@@ -374,9 +374,9 @@ export const constantRouterMap = [
     ]
   },
   {
-    path: '/user2',
+    path: '/user',
     component: UserLayout2,
-    redirect: '/user2/login2',
+    redirect: '/user/login2',
     hidden: true,
     children: [
       {
@@ -392,9 +392,9 @@ export const constantRouterMap = [
     ]
   },
   {
-    path: '/user3',
+    path: '/user',
     component: UserLayout3,
-    redirect: '/user3/login3',
+    redirect: '/user/login3',
     hidden: true,
     children: [
       {
@@ -404,11 +404,10 @@ export const constantRouterMap = [
       }
     ]
   },
-
   {
-    path: '/user4',
+    path: '/user',
     component: UserLayout2,
-    redirect: '/user4/login4',
+    redirect: '/user/login4',
     hidden: true,
     children: [
       {

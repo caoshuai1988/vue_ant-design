@@ -5,7 +5,7 @@
       placement="right"
       @close="onClose"
       :closable="false"
-      :visible="visible"
+      :visible="setDrawerStatus"
     >
       <div class="setting-drawer-index-content">
 
@@ -38,10 +38,10 @@
             </a-tooltip>
             <a-tooltip>
               <template slot="title">
-                风格测试
+                深蓝风格
               </template>
               <div class="setting-drawer-index-item" @click="handleSurplusTheme('plusTheme01')">
-                <img src="https://gw.alipayobjects.com/zos/rmsportal/jpRkZQMyYRryryPNtyIC.svg" alt="plusTheme01">
+                <img src="/configcolor.svg" alt="plusTheme01">
                 <div class="setting-drawer-index-selectIcon" v-if="surplusTheme === 'plusTheme01'">
                   <a-icon type="check"/>
                 </div>
@@ -49,10 +49,10 @@
             </a-tooltip>
             <a-tooltip>
               <template slot="title">
-                plusTheme02风格测试
+                浅蓝风格
               </template>
               <div class="setting-drawer-index-item" @click="handleSurplusTheme('plusTheme02')">
-                <img src="https://gw.alipayobjects.com/zos/rmsportal/jpRkZQMyYRryryPNtyIC.svg" alt="plusTheme02">
+                <img src="/configcolor2.svg" alt="plusTheme02">
                 <div class="setting-drawer-index-selectIcon" v-if="surplusTheme === 'plusTheme02'">
                   <a-icon type="check"/>
                 </div>
@@ -110,7 +110,7 @@
                 满屏顶部栏导航
               </template>
               <div class="setting-drawer-index-item" @click="handleLayout('fulltopmenu')">
-                <img src="https://gw.alipayobjects.com/zos/rmsportal/KDNDBbriJhLwuqMoxcAr.svg" alt="fulltopmenu">
+                <img src="/configcolor3.svg" alt="fulltopmenu">
                 <div class="setting-drawer-index-selectIcon" v-if="layoutMode === 'fulltopmenu'">
                   <a-icon type="check"/>
                 </div>
@@ -207,9 +207,10 @@
           </a-alert>
         </div>
       </div>
-      <div class="setting-drawer-index-handle" @click="toggle">
-        <a-icon type="setting" v-if="!visible"/>
-        <a-icon type="close" v-else/>
+      <div class="setting-drawer-index-handle"  @click="toggle" v-if="setDrawerStatus">
+      <!--  <a-icon type="setting" v-if="!visible"/>
+        <a-icon type="close" v-else/>-->
+        <a-icon type="close"/>
       </div>
     </a-drawer>
   </div>
@@ -237,6 +238,11 @@ export default {
   watch: {
 
   },
+  computed:{
+    setDrawerStatus(){
+      return this.$store.state.app.settingDrawer
+    }
+  },
   mounted () {
     const vm = this
     setTimeout(() => {
@@ -251,15 +257,11 @@ export default {
     }
   },
   methods: {
-    showDrawer () {
-      this.visible = true
-    },
     onClose () {
-      this.visible = false
+      this.$store.dispatch('ToggleSetDrawer',false)
     },
     toggle () {
-      this.visible = !this.visible
-      console.log('sssss111',this.$store.state)
+      this.$store.dispatch('ToggleSetDrawer',false)
     },
     onColorWeak (checked) {
       this.$store.dispatch('ToggleWeak', checked)

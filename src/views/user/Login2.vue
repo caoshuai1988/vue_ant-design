@@ -78,9 +78,9 @@
                 :disabled="state.loginBtn"
               >登录</a-button>
             </a-form-item>
-            <div class="login-tips">
+        <!--    <div class="login-tips">
               <span>用户名或密码错误！</span>
-            </div>
+            </div>-->
           </a-tab-pane>
           <a-tab-pane key="tab2" tab="CA密钥登录">
             <div class="ca-uninstall" v-if="!isPassCA">
@@ -184,8 +184,8 @@ export default {
       // 滑块
       drag: {
         // show: true,
-        // handlerIcon: 'fa fa-angle-double-right',
-        // successIcon: 'fa fa-check',
+         //handlerIcon: 'fa fa-angle-double-right',
+         //successIcon: 'fa fa-check',
         background: 'rgba(0,0,0,0.15)',
         progressBarBg: '#52c41a',
         completedBg: '#52c41a',

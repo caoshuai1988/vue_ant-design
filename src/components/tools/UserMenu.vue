@@ -34,6 +34,24 @@
           </a-menu-item>
           <a-menu-divider/>
           <a-menu-item key="3">
+            <router-link :to="{ name: 'login2' }">
+              <a-icon type="logout"/>
+              <span>登录模板1</span>
+            </router-link>
+          </a-menu-item>
+          <a-menu-item key="4">
+            <router-link :to="{ name: 'login3' }">
+              <a-icon type="logout"/>
+              <span>登录模板2</span>
+            </router-link>
+          </a-menu-item>
+          <a-menu-item key="5">
+            <router-link :to="{ name: 'login4' }">
+              <a-icon type="logout"/>
+              <span>登录模板3</span>
+            </router-link>
+          </a-menu-item>
+          <a-menu-item key="6">
             <a href="javascript:;" @click="handleLogout">
               <a-icon type="logout"/>
               <span>退出登录</span>
@@ -41,8 +59,8 @@
           </a-menu-item>
         </a-menu>
       </a-dropdown>
-      <span class="action">
-        <a-icon type="setting" @click="test"/>
+      <span class="action" @click="openDrawer">
+        <a-icon type="setting" />
       </span>
     </div>
   </div>
@@ -68,6 +86,7 @@ export default {
         content: '真的要注销登录吗 ?',
         onOk () {
           return that.Logout({}).then(() => {
+            debugger
             window.location.reload()
           }).catch(err => {
             that.$message.error({
@@ -80,9 +99,10 @@ export default {
         }
       })
     },
-    test(){
+    openDrawer(){
       console.log(this.$router)
-      this.$router.push({name:'login2'})
+      this.$store.dispatch('ToggleSetDrawer',true)
+     // this.$router.push({name:'login2'})
     }
   }
 }

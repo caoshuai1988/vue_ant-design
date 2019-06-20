@@ -3,7 +3,8 @@
     <router-link :to="{name:'dashboard'}">
       <!--<LogoSvg alt="logo" />-->
      <!-- <img src="@/assets/logo1.png" />-->
-      <h1 v-if="showTitle">{{ title }}</h1>
+        <h1 v-if="!showTitle">富深</h1>
+        <h1 v-if="showTitle">{{ title }}</h1>
     </router-link>
   </div>
 </template>

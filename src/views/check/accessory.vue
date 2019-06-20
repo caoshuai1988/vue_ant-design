@@ -135,7 +135,7 @@
               <a-table-column title="种类" data-index="icon" key="icon">
                 <template slot-scope="icon">
                   <div v-for="img in icon" :key="img.id">
-                    <img :src="img" style="width:30px;height: 30px" alt="文件图标">
+                    <img :src="img" style="width:24px;height: 24px" alt="文件图标">
                   </div>
                 </template>
               </a-table-column>
@@ -159,7 +159,7 @@
               <a-table-column title="种类" data-index="icon" key="icon">
                 <template slot-scope="icon">
                   <div v-for="img in icon" :key="img.id">
-                    <img :src="img" style="width:30px;height: 30px" alt="文件图标">
+                    <img :src="img" style="width:24px;height: 24px" alt="文件图标">
                   </div>
                 </template>
               </a-table-column>
@@ -273,7 +273,6 @@
 <script>
 import { STable } from '@/components'
 import DetailList from '@/components/tools/DetailList'
-// import icon1 from '@/assets/iconfiles/file-b-_1.svg'
 // word格式
 import icon1 from '@/assets/iconfiles/fileicon4.svg'
 // MP4格式

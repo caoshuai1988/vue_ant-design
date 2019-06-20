@@ -39,7 +39,7 @@
 <script>
 import baseFormContent from '@/components/form/BaseFormContent'
 import AccessoryForm from '@/components/form/AccessoryForm'
-import MapModule from './MapModule'
+import MapModule from '@/components/form/MapModule'
 export default {
   components: {
     baseFormContent,

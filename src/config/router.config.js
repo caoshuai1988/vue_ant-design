@@ -1,5 +1,5 @@
 // eslint-disable-next-line
-import { UserLayout, BasicLayout, RouteView, BlankLayout, PageView } from '@/layouts'
+import { UserLayout, BasicLayout, RouteView, BlankLayout, PageView, HomeView } from '@/layouts'
 import { bxAnaalyse } from '@/core/icons'
 
 export const asyncRouterMap = [
@@ -80,7 +80,22 @@ export const asyncRouterMap = [
           }
         ]
       },
-
+      // home
+      {
+        path: '/homepage',
+        name: 'homepage',
+        redirect: '/homepage/home',
+        component: HomeView,
+        meta: { title: '首页', keepAlive: true, icon: bxAnaalyse },
+        children: [
+          {
+            path: '/homepage/home',
+            name: 'Home',
+            component: () => import('@/views/homepage/Home'),
+            meta: { title: '首页', keepAlive: true }
+          }
+        ]
+      },
       // forms
       {
         path: '/form',

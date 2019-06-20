@@ -81,6 +81,7 @@ const app = {
     TOGGLE_VISIBLE: (state, visible) => {
       Vue.ls.set(DEFAULT_LAYER_VISIBLE, visible)
       state.visible = visible
+      console.log('app.js=>' + visible)
     }
   },
   actions: {

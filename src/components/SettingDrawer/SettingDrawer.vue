@@ -186,6 +186,7 @@ import SettingItem from './SettingItem'
 import config from '@/config/defaultSettings'
 import { updateTheme, updateColorWeak, colorList } from './settingConfig'
 import { mixin, mixinDevice } from '@/utils/mixin'
+import { mapState } from 'vuex'
 
 export default {
   components: {
@@ -199,16 +200,25 @@ export default {
       colorList
     }
   },
-  computed: {
-    ChangeVisible: function () {
-      return this.$store.getters.visible
+  // computed: mapState({
+  //   ChangeVisible: state => state.app.visible
+  // }),
+  computed: mapState({
+    ChangeVisible (state) {
+      return state.app.visible
     }
-  },
+  }),
+  // {
+  //   ChangeVisible: function () {
+  //     console.log('ChangeVisible=>' + this.$store.state.app.visible)
+  //     return this.$store.state.app.visible
+  //   }
+  // },
   mounted () {
-    const vm = this
-    setTimeout(() => {
-      vm.visible = vm.$store.getters.visible
-    }, 16)
+    // const vm = this
+    // setTimeout(() => {
+    //   vm.visible = vm.$store.getters.visible
+    // }, 16)
     updateTheme(this.primaryColor)
     if (this.colorWeak !== config.colorWeak) {
       updateColorWeak(this.colorWeak)

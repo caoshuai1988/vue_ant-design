@@ -2,141 +2,148 @@
   <div class="main">
     <img src="@/assets/login_bg1.png"/>
     <div class="login-box">
-      <a-form
-        id="formLogin2"
-        class="user-layout-login2"
-        ref="formLogin"
-        :form="form"
-        @submit="handleSubmit"
-      >
-        <a-tabs
-          :activeKey="customActiveKey"
-          :tabBarStyle="{ textAlign: 'center', borderBottom: 'unset' }"
-          @change="handleTabClick"
-          class="login-tabs"
-        >
-          <a-tab-pane key="tab1" tab="账号密码登录">
-            <a-form-item>
-              <a-input
-                size="large"
-                type="text"
-                placeholder="账号"
-                v-decorator="[
-                  'username',
-                  {rules: [{ required: true, message: '请输入账号' }], validateTrigger: 'change'}
-                ]"
+      <a-row>
+        <a-col :span="20">
+          <div>
+            <a-form
+              id="formLogin"
+              class="user-layout-login"
+              ref="formLogin"
+              :form="form"
+              @submit="handleSubmit"
+            >
+              <a-tabs
+                :activeKey="customActiveKey"
+                :tabBarStyle="{ textAlign: 'center', borderBottom: 'unset' }"
+                @change="handleTabClick"
+                class="login-tabs"
               >
-                <a-icon slot="prefix" type="user" :style="{ color: 'rgba(0,0,0,.25)' }"/>
-              </a-input>
-            </a-form-item>
-            <a-form-item>
-              <a-input
-                size="large"
-                type="password"
-                autocomplete="false"
-                placeholder="密码"
-                v-decorator="[
-                  'password',
-                  {rules: [{ required: true, message: '请输入密码' }], validateTrigger: 'blur'}
-                ]"
-              >
-                <a-icon slot="prefix" type="lock" :style="{ color: 'rgba(0,0,0,.25)' }"/>
-              </a-input>
-            </a-form-item>
-            <a-form-item class="login-drag">
-              <drag-verify
-                @passcallback= "passcallback"
-                :width="drag.width"
-                :height="drag.height"
-                :text="drag.text"
-                :success-text="drag.successText"
-                :background="drag.background"
-                :progress-bar-bg="drag.progressBarBg"
-                :completed-bg="drag.completedBg"
-                :handler-bg="drag.handlerBg"
-                :text-size="drag.textSize"
-                ref="Verify"
-              >
-              </drag-verify>
-            </a-form-item>
-            <a-form-item>
-              <a-checkbox v-decorator="['rememberMe']">记住账号</a-checkbox>
-              <router-link
-                :to="{ name: 'recover'}"
-                class="forge-password"
-                style="float: right;"
-              >忘记密码</router-link>
-<!--              <router-link class="register" :to="{ name: 'register' }">注册账户</router-link>-->
-            </a-form-item>
-            <a-form-item>
-              <a-button
-                size="large"
-                type="primary"
-                htmlType="submit"
-                class="login-button"
-                :loading="state.loginBtn"
-                :disabled="state.loginBtn"
-              >登录</a-button>
-            </a-form-item>
-            <div class="login-tips">
-              <span>用户名或密码错误！</span>
-            </div>
-          </a-tab-pane>
-          <a-tab-pane key="tab2" tab="CA密钥登录">
-            <div class="ca-uninstall" v-if="!isPassCA">
-              <a-form-item><img src="~@/assets/CA.png"></a-form-item>
-              <a-form-item>
-                <p><span>请插入您的CA密钥后</span></p>
-                <p><span>点击下方检测</span></p>
-              </a-form-item>
-              <a-form-item>
-                <a-button
-                size="large"
-                type="primary"
-                class="test-button"
-                @click="testCA"
-                :loading="state.testBtn"
-                :disabled="state.testBtn"
-              >检测</a-button></a-form-item>
-            </div>
-            <div class="ca-install" v-else>
-              <a-form-item>
-                <p><span>检测通过，请输入登录密码</span></p>
-              </a-form-item>
-              <a-form-item>
-                <a-input
-                  size="large"
-                  type="password"
-                  autocomplete="false"
-                  placeholder="密码"
-                  v-decorator="[
-                  'caPassword',
-                  {rules: [{ required: true, message: '请输入登录密码' }], validateTrigger: 'blur'}
-                ]">
-                  <a-icon slot="prefix" type="lock" :style="{ color: 'rgba(0,0,0,.25)' }"/>
-                </a-input>
-              </a-form-item>
-              <a-form-item>
-                <router-link
-                  :to="{ name: 'recover', params: { user: 'aaa'} }"
-                  class="forge-password"
-                  style="float: right;"
-                >忘记密码</router-link>
-              </a-form-item>
-              <a-form-item>
-                <a-button
-                  size="large"
-                  type="primary"
-                  htmlType="submit"
-                  class="login-button"
-                  :loading="state.caLoginBtn"
-                  :disabled="state.caLoginBtn"
-                >登录</a-button>
-              </a-form-item>
-            </div>
-          </a-tab-pane>
-        </a-tabs>
-      </a-form>
+                <a-tab-pane key="tab1" tab="账号密码登录">
+                  <a-form-item>
+                    <a-input
+                      size="large"
+                      type="text"
+                      placeholder="账号"
+                      v-decorator="[
+                        'username',
+                        {rules: [{ required: true, message: '请输入账号' }], validateTrigger: 'change'}
+                      ]"
+                    >
+                      <a-icon slot="prefix" type="user" :style="{ color: 'rgba(0,0,0,.25)' }"/>
+                    </a-input>
+                  </a-form-item>
+                  <a-form-item>
+                    <a-input
+                      size="large"
+                      type="password"
+                      autocomplete="false"
+                      placeholder="密码"
+                      v-decorator="[
+                        'password',
+                        {rules: [{ required: true, message: '请输入密码' }], validateTrigger: 'blur'}
+                      ]"
+                    >
+                      <a-icon slot="prefix" type="lock" :style="{ color: 'rgba(0,0,0,.25)' }"/>
+                    </a-input>
+                  </a-form-item>
+                  <a-form-item class="login-drag">
+                    <drag-verify
+                      @passcallback="passcallback"
+                      :width="drag.width"
+                      :height="drag.height"
+                      :text="drag.text"
+                      :success-text="drag.successText"
+                      :background="drag.background"
+                      :progress-bar-bg="drag.progressBarBg"
+                      :completed-bg="drag.completedBg"
+                      :handler-bg="drag.handlerBg"
+                      :text-size="drag.textSize"
+                      ref="Verify"
+                    >
+                    </drag-verify>
+                  </a-form-item>
+                  <a-form-item class="login-operation">
+                    <a-checkbox v-decorator="['rememberMe']">记住账号</a-checkbox>
+                    <router-link
+                      :to="{ name: 'recover'}"
+                      class="forge-password"
+                      style="float: right;"
+                    >忘记密码</router-link>
+                    <!--              <router-link class="register" :to="{ name: 'register' }">注册账户</router-link>-->
+                  </a-form-item>
+                  <a-form-item>
+                    <a-button
+                      size="large"
+                      type="primary"
+                      htmlType="submit"
+                      class="login-button"
+                      :loading="state.loginBtn"
+                      :disabled="state.loginBtn"
+                    >登录</a-button>
+                  </a-form-item>
+                  <div class="login-tips">
+                    <span>用户名或密码错误！</span>
+                  </div>
+                </a-tab-pane>
+                <a-tab-pane key="tab2" tab="CA密钥登录">
+                  <div class="ca-uninstall" v-if="!isPassCA">
+                    <a-form-item><img src="~@/assets/CA.png"></a-form-item>
+                    <a-form-item>
+                      <p><span>请插入您的CA密钥后</span></p>
+                      <p><span>点击下方检测</span></p>
+                    </a-form-item>
+                    <a-form-item>
+                      <a-button
+                        size="large"
+                        type="primary"
+                        class="test-button"
+                        @click="testCA"
+                        :loading="state.testBtn"
+                        :disabled="state.testBtn"
+                      >检测</a-button></a-form-item>
+                  </div>
+                  <div class="ca-install" v-else>
+                    <a-form-item>
+                      <p><span>检测通过，请输入登录密码</span></p>
+                    </a-form-item>
+                    <a-form-item>
+                      <a-input
+                        size="large"
+                        type="password"
+                        autocomplete="false"
+                        placeholder="密码"
+                        v-decorator="[
+                          'caPassword',
+                          {rules: [{ required: true, message: '请输入登录密码' }], validateTrigger: 'blur'}
+                        ]">
+                        <a-icon slot="prefix" type="lock" :style="{ color: 'rgba(0,0,0,.25)' }"/>
+                      </a-input>
+                    </a-form-item>
+                    <a-form-item>
+                      <router-link
+                        :to="{ name: 'recover', params: { user: 'aaa'} }"
+                        class="forge-password"
+                        style="float: right;"
+                      >忘记密码</router-link>
+                    </a-form-item>
+                    <a-form-item>
+                      <a-button
+                        size="large"
+                        type="primary"
+                        htmlType="submit"
+                        class="login-button"
+                        :loading="state.caLoginBtn"
+                        :disabled="state.caLoginBtn"
+                      >登录</a-button>
+                    </a-form-item>
+                  </div>
+                </a-tab-pane>
+              </a-tabs>
+            </a-form>
+          </div>
+        </a-col>
+        <a-col :span="4"></a-col>
+      </a-row>
     </div>
     <two-step-captcha
       v-if="requiredTwoStepCaptcha"
@@ -155,9 +162,11 @@ import { timeFix } from '@/utils/util'
 import { getSmsCaptcha, get2step } from '@/api/login'
 import AFormItem from 'ant-design-vue/es/form/FormItem'
 import dragVerify from 'vue-drag-verify'
+import ARow from 'ant-design-vue/es/grid/Row'
 
 export default {
   components: {
+    ARow,
     AFormItem,
     TwoStepCaptcha,
     dragVerify
@@ -341,42 +350,53 @@ export default {
 
 <style lang="less" scoped>
   .main {
+    position: relative;
     img {
       width: 100%;
     }
     .login-box {
-      margin: 0 auto;
-      overflow: hidden;
       position: absolute;
       top: 50%;
-      left: 50%;
-      transform: translate(-50%,-50%);
-      #formLogin2.user-layout-login2 {
+      transform: translateY(-50%);
+      width: 100%;
+      #formLogin.user-layout-login {
+        float: right;
         background: #ffffff;
-        padding: 32px;
-        min-height: 481px;
+        padding: 32px 32px 0;
+        height: 428px;
+        border-radius: 4px;
         .login-tabs {
           width: 335px;
           input {
             font-size: 16px;
           }
         }
+        .login-operation {
+          height: 14px;
+        }
+        /*  border: 1px solid #f00;*/
+        /*  >.ant-form-item-control-wrapper {*/
+        /*    border: 1px solid #0f0;*/
+        /*    height: 22px;*/
+        /*    margin-top: -9px;*/
+        /*  }*/
+        /*}*/
         .login-tips {
           color: #FF1A2E;
           font-size: 14px;
           height: 14px;
           line-height: 14px;
-          margin-bottom: 24px;
+          /*margin-bottom: 24px;*/
         }
         label {
           font-size: 14px;
         }
 
-        .getCaptcha {
-          display: block;
-          width: 100%;
-          height: 40px;
-        }
+        /*.getCaptcha {*/
+        /*  display: block;*/
+        /*  width: 100%;*/
+        /*  height: 40px;*/
+        /*}*/
 
         .forge-password {
           font-size: 14px;
@@ -420,26 +440,9 @@ export default {
             }
           }
         }
-        /*.user-login-other {*/
-        /*  text-align: left;*/
-        /*  margin-top: 24px;*/
-        /*  line-height: 22px;*/
-        /*  .item-icon {*/
-        /*    font-size: 24px;*/
-        /*    color: rgba(0, 0, 0, 0.2);*/
-        /*    margin-left: 16px;*/
-        /*    vertical-align: middle;*/
-        /*    cursor: pointer;*/
-        /*    transition: color 0.3s;*/
-        /*    &:hover {*/
-        /*      color: #1890ff;*/
-        /*    }*/
-        /*  }*/
-        /*  .register {*/
-        /*    float: right;*/
-        /*  }*/
-        /*}*/
       }
+
     }
+    /*}*/
   }
 </style>

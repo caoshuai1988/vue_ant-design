@@ -13,8 +13,7 @@
       <route-view></route-view>
 
       <div class="footer">
-        <a href="javascript:;">关于我们</a>&nbsp;&nbsp;&nbsp;&nbsp;
-        <span>版权所有：江苏富深协通科技股份有限公司&nbsp;&nbsp;&nbsp;&nbsp;技术支持：0519-86612998</span>
+        <span>关于我们&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;版权所有：江苏富深协通科技股份有限公司&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;技术支持：0519-86612998</span>
       </div>
     </div>
   </div>
@@ -62,23 +61,26 @@ export default {
         height: 128px;
         line-height: 128px;
         width:100%;
-        .title {
-          font-size: 28px;
-          color: rgba(0,0,0,0.85);
-          margin-left: 16px;
+        background: #fff;
+        .ant-row{
+          height: 100%;
+          .ant-col-23 {
+            height: 100%;
+            position: relative;
+            img {
+              width: 163px;
+              height: 36px;
+              position: absolute;
+              top: 44px;
+            }
+            .title {
+              font-size: 28px;
+              color: rgba(0,0,0,0.85);
+              margin-left: 179px;
+            }
+          }
         }
       }
-      a {
-        text-decoration: none;
-      }
-
-      .main {
-        position: relative;
-        width: 100%;
-        /*height: calc(100% - 128px);*/
-        /*background: #ffffff url(~@/assets/login_bg1.png) no-repeat;*/
-      }
-
       .footer {
         /*position: absolute;*/
         width: 100%;
@@ -86,6 +88,9 @@ export default {
         /*padding: 0 16px;*/
         margin: 56px 0 128px 0;
         text-align: center;
+        height: 14px;
+        line-height: 14px;
+        color: rgba(0,0,0,0.45);
         .links {
           margin-bottom: 8px;
           font-size: 14px;

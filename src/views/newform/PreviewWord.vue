@@ -1,7 +1,15 @@
 <template>
   <div class="content">
     <a-card title="目录" style="width: 20%;margin-right:2%;" :body-style="{padding: '24px'}">
-      <p>card content</p>
+      <!-- <a-card :bordered="false" style="width: 100%">
+        <span slot="title">可研报告</span>
+        <span slot="extra">
+          <a-icon type="up" />
+        </span>
+        <p>Card content</p>
+        <p>Card content</p>
+        <p>Card content</p>
+      </a-card> -->
       <p>card content</p>
       <p>card content</p>
     </a-card>

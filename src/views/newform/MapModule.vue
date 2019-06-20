@@ -13,10 +13,11 @@
         <span class="searchSpan">
           <a-input-search placeholder="请输入" style="width: 300px"/>
         </span>
-        <span class="amplification" @click="amplificationBtn">
+        <div class="amplification" @click="amplificationBtn">
           <a-icon type="arrows-alt" v-if="iconSwitch"/>
-          <a-icon type="shrink" v-else/>
-        </span>
+          <a-button type="primary" v-else>返回</a-button>
+          <!-- <a-icon type="shrink" v-else/> -->
+        </div>
       </div>
       <div id="container" ref="container" :style="mapMr" :class="{mapContent: mapFlag}">
         <baidu-map
@@ -165,7 +166,7 @@ export default {
   font-weight: 700;
   font-size: 18px;
   cursor: pointer;
-  padding: 5px 10px;
+  padding: 0 10px;
   margin-right: 12px;
 }
 
@@ -174,6 +175,7 @@ export default {
   padding-top: 10px;
   padding-bottom: 10px;
   background-color: #fff;
+  border-left: 1px solid #e8e8e8;
 }
 
 </style>

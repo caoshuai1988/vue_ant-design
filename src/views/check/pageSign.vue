@@ -157,7 +157,7 @@
 }
 .amplification{
   cursor: pointer;
-  padding: 5px 10px;
+  padding: 0 10px;
 }
 
 </style>
@@ -250,7 +250,7 @@
             :class="{screenload: screenloadFlag}">
             <span class="amplification" slot="extra" @click="amplificationBtn" >
               <a-icon type="arrows-alt" v-if="iconSwitch"/>
-              <a-icon type="shrink" v-else/>
+              <a-button type="primary" v-else>返回</a-button>
             </span>
             <div id="container" ref="container" :style="mapFd" >
               <baidu-map

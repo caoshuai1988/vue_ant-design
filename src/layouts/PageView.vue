@@ -1,5 +1,4 @@
 <template>
-<<<<<<<<< Temporary merge branch 1
   <div :style="!$route.meta.hiddenHeaderContent ? 'margin: -24px -24px 0px;' : null">
     <!-- pageHeader , route meta :true on hide -->
     <page-header v-if="!$route.meta.hiddenHeaderContent" :title="pageTitle" :logo="logo" :avatar="avatar">
@@ -7,7 +6,7 @@
         <div class="list-action" v-if="isPageList">
           <template>
             <span><i></i>刷新</span>
-            <span @click="showDrawer"><i></i>设置</span>
+            <span><i></i>设置</span>
             <span><i></i>回收站</span>
             <span><i></i>业务流程</span>
             <span><i></i>帮助</span>
@@ -57,117 +56,6 @@
           </keep-alive>
           <router-view v-else ref="content" />
         </slot>
-              <a-icon :type="link.icon"/>
-              <span>{{ link.title }}</span>
-            </a>
-          </template>
-        </div>
-      </div>
-      <slot slot="extra" name="extra">
-        <div class="extra-img">
-          <img v-if="typeof extraImage !== 'undefined'" :src="extraImage"/>
-        </div>
-      </slot>
-      <div slot="pageMenu">
-        <div class="page-menu-search" v-if="search">
-          <a-input-search style="width: 80%; max-width: 522px;" placeholder="请输入..." size="large" enterButton="搜索"/>
-        </div>
-        <div class="page-menu-tabs" v-if="tabs && tabs.items">
-          <!-- @change="callback" :activeKey="activeKey" -->
-          <a-tabs :tabBarStyle="{margin: 0}" :activeKey="tabs.active()" @change="tabs.callback">
-            <a-tab-pane v-for="item in tabs.items" :tab="item.title" :key="item.key"></a-tab-pane>
-          </a-tabs>
-        </div>
-      </div>
-    </page-header>
-    <!--弹窗消失隐藏-->
-    <template>
-      <div class="alert">
-        <a-drawer
-          title="设置"
-          :width="640"
-          @close="onClose"
-          :visible="visible"
-          :wrapStyle="{height: 'calc(100% - 108px)',overflow: 'auto',paddingBottom: '108px'}"
-        >
-          <template>
-	           <div>
-	           		<a-card class="card" style="font-size: 26px" :bordered="false" >
-
-						      <layoutForm title="模板" >
-						        <span class="foldStyle" @click="fold(1)">
-						          <a-icon type="up" v-if="iconToggle" />
-						          <a-icon type="down" v-else />
-						        </span>
-						        <verticaltoggle>
-						          <TagModule v-if="foldOne"></TagModule>
-						        </verticaltoggle>
-						      </layoutForm>
-						      <a-divider style="margin-bottom: 32px"/>
-						      <layoutForm title="列表基础">
-						        <span class="foldStyle" @click="fold(2)">
-						          <a-icon type="up" v-if="iconToggleOne" />
-						          <a-icon type="down" v-else />
-						        </span>
-						        <verticaltoggle>
-						          <Listjc v-if="foldTwo"></Listjc>
-						        </verticaltoggle>
-						      </layoutForm>
-						      <a-divider style="margin-bottom: 32px"/>
-						      <layoutForm title="列表列">
-						        <span class="foldStyle" @click="fold(3)">
-						          <a-icon type="up" v-if="iconTable" />
-						          <a-icon type="down" v-else />
-						        </span>
-						        <verticaltoggle>
-						          <ListTable v-if="foldTable"></ListTable>
-						        </verticaltoggle>
-						      </layoutForm>
-						      <a-divider style="margin-bottom: 32px"/>
-						      <layoutForm title="默认筛选">
-						        <span class="foldStyle" @click="fold(4)">
-						          <a-icon type="up" v-if="iconFour" />
-						          <a-icon type="down" v-else />
-						        </span>
-						        <verticaltoggle>
-						          <ScreeningTable v-if="dataFour"></ScreeningTable>
-						        </verticaltoggle>
-						      </layoutForm>
-						      <a-divider style="margin-bottom: 32px"/>
-						    </a-card>
-	           </div>
-          </template>
-          <div
-            :style="{
-		          position: 'absolute',
-		          left: 0,
-		          bottom: 0,
-		          width: '100%',
-		          borderTop: '1px solid #e9e9e9',
-		          padding: '10px 16px',
-		          background: '#fff',
-		          textAlign: 'right',
-		        }"
-          >
-          	<a-button :style="{marginRight: '12px'}" @click="onClose" type="primary">保存 </a-button>
-            <a-button
-              @click="onClose"
-            >
-             保存为模板
-            </a-button>
-          </div>
-        </a-drawer>
-      </div>
-    </template>
-    <div class="content">
-      <div class="page-header-index-wide">
-        <slot>
-          <!-- keep-alive  -->
-          <keep-alive v-if="multiTab">
-            <router-view ref="content"/>
-          </keep-alive>
-          <router-view v-else ref="content"/>
-        </slot>
       </div>
     </div>
   </div>
@@ -176,25 +64,11 @@
 <script>
 import { mapState } from 'vuex'
 import PageHeader from '@/components/PageHeader'
-  import { mapState } from 'vuex'
-  import PageHeader from '@/components/PageHeader'
-  import TagModule from './listTables/TagModule'
-  import ListTable from './listTables/listTable'
-  import ScreeningTable from './listTables/ScreeningTable'
-  import verticaltoggle from '@/views/newform/verticaltoggle.js'
-  import Listjc from './listTables/listjc'
-  import layoutForm from '@/views/newform/layoutForm'
 
 export default {
   name: 'PageView',
   components: {
-    PageHeader,
-    TagModule,
-    ListTable,
-    ScreeningTable,
-    verticaltoggle,
-    Listjc,
-    layoutForm
+    PageHeader
   },
   props: {
     avatar: {
@@ -216,24 +90,13 @@ export default {
   },
   data () {
     return {
-      tags: ['默认模板', '自定义模板', '自定义模板2'],
       pageTitle: null,
       description: null,
       linkList: [],
       extraImage: '',
-      search: true,
+      search: false,
       tabs: {},
-      isPageList: false,
-      visible: false,
-      foldOne: true, // 折叠组件1
-      foldTwo: true, // 折叠组件2
-      foldTable: false, // 折叠表格
-      iconTable: false, // 图标表格
-      iconToggle: true, // 图标1
-      iconToggleOne: true, // 图标2
-      memberLoading: false,
-      iconFour:false, //筛选icon
-      dataFour:false  //筛选组件
+      isPageList: false
     }
   },
   computed: {
@@ -249,22 +112,6 @@ export default {
     this.getPageMeta()
   },
   methods: {
-    //  	消失隐藏
-    fold (flag) {
-      if (flag==1) {
-        this.foldOne = !this.foldOne
-        this.iconToggle = !this.iconToggle
-      } else if (flag === 2) {
-        this.foldTwo = !this.foldTwo
-        this.iconToggleOne = !this.iconToggleOne
-      }else if (flag === 3) {
-        this.foldTable = !this.foldTable
-        this.iconTable = !this.iconTable
-      } else if (flag === 4) {
-        this.iconFour = !this.iconFour
-        this.dataFour = !this.dataFour
-      }
-    },
     getPageMeta () {
       // eslint-disable-next-line
       this.pageTitle = (typeof(this.title) === 'string' || !this.title) ? this.title : this.$route.meta.title
@@ -284,159 +131,8 @@ export default {
     }
   }
 }
-  export default {
-    name: 'PageView',
-    components: {
-      PageHeader,
-      TagModule,
-      ListTable,
-      ScreeningTable,
-      verticaltoggle,
-      Listjc,
-      layoutForm
-    },
-    props: {
-      avatar: {
-        type: String,
-        default: null
-      },
-      title: {
-        type: [String, Boolean],
-        default: true
-      },
-      logo: {
-        type: String,
-        default: null
-      },
-      directTabs: {
-        type: Object,
-        default: null
-      }
-    },
-    data() {
-      return {
-        tags: ['默认模板', '自定义模板', '自定义模板2'],
-        pageTitle: null,
-        description: null,
-        linkList: [],
-        extraImage: '',
-        search: true,
-        tabs: {},
-        isPageList: false,
-        visible: false,
-        foldOne: true, // 折叠组件1
-	      foldTwo: true, // 折叠组件2
-	      foldTable: false, // 折叠表格
-	      iconTable: false, // 图标表格
-	      iconToggle: true, // 图标1
-	      iconToggleOne: true, // 图标2
-	      memberLoading: false,
-	      iconFour:false, //筛选icon
-	      dataFour:false  //筛选组件
-      }
-    },
-    computed: {
-      ...mapState({
-        multiTab: state => state.app.multiTab
-      })
-    },
-    mounted() {
-      this.tabs = this.directTabs
-      this.getPageMeta()
-    },
-    updated() {
-      this.getPageMeta()
-    },
-    methods: {
-//  	消失隐藏
-    	fold (flag) {
-	      if (flag==1) {
-	        this.foldOne = !this.foldOne
-	        this.iconToggle = !this.iconToggle
-	      } else if (flag === 2) {
-	        this.foldTwo = !this.foldTwo
-          this.iconToggleOne = !this.iconToggleOne
-	      }else if (flag === 3) {
-	        this.foldTable = !this.foldTable
-	        this.iconTable = !this.iconTable
-	      } else if (flag === 4) {
-	        this.iconFour = !this.iconFour
-	        this.dataFour = !this.dataFour
-	      }
-     },
-      getPageMeta() {
-
-        this.pageTitle = (typeof(this.title) === 'string' || !this.title) ? this.title : this.$route.meta.title
-        this.isPageList = typeof (this.$route.meta.isList) === 'boolean' ? this.$route.meta.isList : false
-        const content = this.$refs.content
-        if (content) {
-          if (content.pageMeta) {
-            Object.assign(this, content.pageMeta)
-          } else {
-            this.description = content.description
-            this.linkList = content.linkList
-            this.extraImage = content.extraImage
-            this.search = content.search === true
-            this.tabs = content.tabs
-          }
-        }
-      },
-      showDrawer() {
-        this.visible = true
-      },
-      onClose() {
-        this.visible = false
-      }
-    }
-  }
 </script>
-<style>
-	.ant-table-wrapper .ant-checkbox-wrapper{
-		position:static;
 
-	}
-	.ant-card-head-title{
-		padding:24px 0 !important;
-		font-size:16px !important;
-	}
-	.ant-card-extra{
-		font-size:16px !important;
-	}
-	.foldStyle{
-		cursor:pointer;
-	}
-	.ant-card-body{
-		padding:1px !important;
-	}
-	.ant-card-head{
-		border-top:1px solid #e8e8e8;
-		border-bottom:none !important;
-	}
-	.ant-drawer-close{
-		right:3px !important;
-	}
-  .ant-collapse > .ant-collapse-item > .ant-collapse-header .arrow{
-    left:590px !important;
-  }
-  .ant-collapse > .ant-collapse-item > .ant-collapse-header{
-    padding:24px 0 24px 3px !important;
-    font-size:16px !important;
-  }
-  .ant-drawer-title{
-    font-size:18px !important;
-  }
-  .ant-card-head{
-  	padding:0px !important;
-  }
-  .titleBtn{
-  	width:600px;
-  	display: block;
-  	cursor:pointer;
-  }
-  .ant-drawer-body{
-  	/*padding-bottom:80px !important;*/
-  }
-</style>
 <style lang="less" scoped>
   .content {
     margin: 24px 24px 0;
@@ -464,12 +160,10 @@ export default {
       }
     }
   }
-
   .page-menu-search {
     text-align: center;
     margin-bottom: 16px;
   }
-
   .page-menu-tabs {
     margin-top: 48px;
   }
@@ -485,26 +179,14 @@ export default {
   }
 
   .mobile {
-    .extra-img {
+    .extra-img{
       margin-top: 0;
       text-align: center;
       width: 96px;
 
-      img {
+      img{
         width: 100%;
       }
     }
   }
-	// 底部
-.footerBox{
-  background-color: #fff;
-}
-// icon
-.foldStyle{
-    position: absolute;
-    top: -34px;
-    right: 0;
-    font-size: 16px;
-    cursor: pointer;
-}
 </style>

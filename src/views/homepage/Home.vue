@@ -148,10 +148,8 @@
               <a-table-column title="操作时间" data-index="datetime" key="datetime"/>
               <a-table-column title="操作" key="operation">
                 <template slot-scope="text, record">
-                  <a-badge :count="5" :numberStyle="{backgroundColor: '#199ED8'}">
-                    <a href style="margin-right:10px">{{ record.operation.transaction }}</a>
-                    <a style="margin-right:10px">{{ record.operation.delayed }}</a>
-                  </a-badge>
+                  <a href style="margin-right:10px">{{ record.operation.transaction }}</a>
+                  <a style="margin-right:10px">{{ record.operation.delayed }}</a>
                 </template>
               </a-table-column>
             </a-table>
@@ -230,7 +228,7 @@
               快捷菜单
             </span>
             <a slot="extra">设置</a>
-            <a-row style="padding:5px 15px">
+            <a-row :gutter="24" style="padding:5px 15px">
               <a-col style="padding: 2px 0" :span="12" v-for="(item, index) in teams" :key="index">
                 <div class="shortcut-menu">
                   <a-button type="primary">

@@ -57,9 +57,10 @@ export default {
       min-width: 1200px;
       width: 100%;
       height: 100%;
+      /*overflow-y: hidden;*/
       .top {
-        height: 128px;
-        line-height: 128px;
+        height: 106px;
+        line-height: 106px;
         width:100%;
         background: #fff;
         .ant-row{
@@ -71,7 +72,7 @@ export default {
               width: 163px;
               height: 36px;
               position: absolute;
-              top: 44px;
+              top: 36px;
             }
             .title {
               font-size: 28px;
@@ -82,30 +83,12 @@ export default {
         }
       }
       .footer {
-        /*position: absolute;*/
         width: 100%;
-        /*bottom: 0;*/
-        /*padding: 0 16px;*/
         margin: 56px 0 128px 0;
         text-align: center;
         height: 14px;
         line-height: 14px;
         color: rgba(0,0,0,0.45);
-        .links {
-          margin-bottom: 8px;
-          font-size: 14px;
-          a {
-            color: rgba(0, 0, 0, 0.45);
-            transition: all 0.3s;
-            &:not(:last-child) {
-              margin-right: 40px;
-            }
-          }
-        }
-        .copyright {
-          color: rgba(0, 0, 0, 0.45);
-          font-size: 14px;
-        }
       }
     }
   }

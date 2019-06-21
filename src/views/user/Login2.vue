@@ -69,7 +69,6 @@
                       class="forge-password"
                       style="float: right;"
                     >忘记密码</router-link>
-                    <!--              <router-link class="register" :to="{ name: 'register' }">注册账户</router-link>-->
                   </a-form-item>
                   <a-form-item>
                     <a-button
@@ -87,11 +86,11 @@
                 </a-tab-pane>
                 <a-tab-pane key="tab2" tab="CA密钥登录">
                   <div class="ca-uninstall" v-if="!isPassCA">
-                    <a-form-item><img src="~@/assets/CA.png"></a-form-item>
-                    <a-form-item>
-                      <p><span>请插入您的CA密钥后</span></p>
-                      <p><span>点击下方检测</span></p>
-                    </a-form-item>
+                    <div><img src="~@/assets/CA.png"></div>
+                    <div>
+                      <span>请插入您的CA密钥后<br/>
+                      点击下方检测</span>
+                    </div>
                     <a-form-item>
                       <a-button
                         size="large"
@@ -100,7 +99,8 @@
                         @click="testCA"
                         :loading="state.testBtn"
                         :disabled="state.testBtn"
-                      >检测</a-button></a-form-item>
+                      >检测</a-button>
+                    </a-form-item>
                   </div>
                   <div class="ca-install" v-else>
                     <a-form-item>
@@ -119,7 +119,7 @@
                         <a-icon slot="prefix" type="lock" :style="{ color: 'rgba(0,0,0,.25)' }"/>
                       </a-input>
                     </a-form-item>
-                    <a-form-item>
+                    <a-form-item style="margin-bottom: 40px">
                       <router-link
                         :to="{ name: 'recover', params: { user: 'aaa'} }"
                         class="forge-password"
@@ -350,9 +350,12 @@ export default {
 
 <style lang="less" scoped>
   .main {
+    height: calc(100% - 304px);
+    min-height: 450px;
     position: relative;
     img {
       width: 100%;
+      height: 100%;
     }
     .login-box {
       position: absolute;
@@ -371,16 +374,6 @@ export default {
             font-size: 16px;
           }
         }
-        .login-operation {
-          height: 14px;
-        }
-        /*  border: 1px solid #f00;*/
-        /*  >.ant-form-item-control-wrapper {*/
-        /*    border: 1px solid #0f0;*/
-        /*    height: 22px;*/
-        /*    margin-top: -9px;*/
-        /*  }*/
-        /*}*/
         .login-tips {
           color: #FF1A2E;
           font-size: 14px;
@@ -410,21 +403,18 @@ export default {
         .ca-uninstall {
           margin-top: 32px;
           text-align: center;
-          img {
-            width: 80px;
-            height: 80px;
+          div:first-child {
+            margin-bottom: 24px;
+            img {
+              width: 80px;
+              height: 80px;
+            }
           }
           div:nth-of-type(2){
+            height: 44px;
             font-size: 16px;
             color: rgba(0,0,0,0.85);
             margin-bottom: 32px;
-            p {
-              text-align: center;
-              margin-bottom: 0;
-              &:last-child {
-                margin-top: -10px;
-              }
-            }
           }
           div:last-child   {
             margin-bottom: 40px;

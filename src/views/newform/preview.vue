@@ -203,7 +203,7 @@
       </div>
       <!-- 右侧内容区 -->
       <div class="right-box">
-        <a-card style="height: 100%;" :head-style="{height:'57px', fontSize:'20px', color:'rgba(0,0,0,0.85)'}" :body-style="{padding: 0, border: 0}">
+        <a-card style="height: 100%;border:0;" :head-style="{height:'57px', fontSize:'20px', color:'rgba(0,0,0,0.85)'}" :body-style="{padding: 0, border: 0}">
           <!-- <iframe src="https://view.officeapps.live.com/op/view.aspx?src=http://storage.xuetangx.com/public_assets/xuetangx/PDF/1.xls" style="height: 100%;" width="100%" height="100%" frameborder="1">
           </iframe> -->
           <!-- <div slot="title">

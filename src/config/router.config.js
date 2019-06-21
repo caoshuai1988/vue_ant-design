@@ -3,7 +3,6 @@ import { UserLayout, UserLayout2, UserLayout3, BasicLayout, RouteView, BlankLayo
 import { bxAnaalyse } from '@/core/icons'
 
 export const asyncRouterMap = [
-
   {
     path: '/',
     name: 'index',
@@ -11,126 +10,42 @@ export const asyncRouterMap = [
     meta: { title: '首页' },
     redirect: '/dashboard/workplace',
     children: [
-      // dashboard
+      //工作台
+      {
+        path: '/dashboard/workplace',
+        name: 'Workplace',
+        component: () => import('@/views/dashboard/Workplace'),
+        meta: { title: '工作台', icon: 'home', keepAlive: true, permission: [ 'dashboard' ] }
+      },
+      // 登陆页
       {
         path: '/dashboard',
         name: 'dashboard',
         redirect: '/dashboard/workplace',
         component: RouteView,
-        meta: { title: '仪表盘', keepAlive: true, icon: bxAnaalyse, permission: [ 'dashboard' ] },
+        meta: { title: '登陆页', keepAlive: true, icon: bxAnaalyse, permission: [ 'dashboard' ] },
         children: [
+          // 登陆模板2
           {
-            path: '/dashboard/analysis',
-            name: 'Analysis',
-            component: () => import('@/views/dashboard/Analysis'),
-            meta: { title: '分析页', keepAlive: false, permission: [ 'dashboard' ] }
+            path: '/user/login2',
+            name: 'login2',
+            meta: { title: '登陆模板2', target: '_blank' }
           },
-          // 外部链接
+          // 登陆模板3
           {
-            path: 'https://www.baidu.com/',
-            name: 'Monitor',
-            meta: { title: '监控页（外部）', target: '_blank' }
+            path: '/user/login3',
+            name: 'login3',
+            meta: { title: '登陆模板3', target: '_blank' }
           },
+          // 登陆模板4
           {
-            path: '/dashboard/workplace',
-            name: 'Workplace',
-            component: () => import('@/views/dashboard/Workplace'),
-            meta: { title: '工作台', keepAlive: true, permission: [ 'dashboard' ] }
+            path: '/user/login4',
+            name: 'login4',
+            meta: { title: '登陆模板4', target: '_blank' }
           }
-        ]
-      },
 
-      // forms
-      {
-        path: '/form',
-        redirect: '/form/base-form',
-        component: PageView,
-        meta: { title: '表单页', icon: 'form', permission: [ 'form' ] },
-        children: [
-          {
-            path: '/form/base-form',
-            name: 'BaseForm',
-            component: () => import('@/views/form/BasicForm'),
-            meta: { title: '基础表单', keepAlive: true, permission: [ 'form' ] }
-          },
-          {
-            path: '/form/step-form',
-            name: 'StepForm',
-            component: () => import('@/views/form/stepForm/StepForm'),
-            meta: { title: '分步表单', keepAlive: true, permission: [ 'form' ] }
-          },
-          {
-            path: '/form/advanced-form',
-            name: 'AdvanceForm',
-            component: () => import('@/views/form/advancedForm/AdvancedForm'),
-            meta: { title: '高级表单', keepAlive: true, permission: [ 'form' ] }
-          }
         ]
       },
-      // 新建表单
-      {
-        path: '/fsxt',
-        redirect: '/fsxt/fsxt-base-form',
-        component: PageViewFsxt,
-        meta: { title: '富深协通表单', icon: 'form', permission: [ 'form' ] },
-        children: [
-          {
-            path: '/fsxt/fsxt-base-form',
-            name: 'BaseFormPage',
-            component: () => import('@/views/form/BasicFormPage'),
-            meta: { title: '基础表单', showbtn: true, keepAlive: true, permission: [ 'form' ] }
-          },
-          {
-            path: '/fsxt/fsxt-advanced-form',
-            name: 'StepFormPage',
-            // component: () => import('@/views/form/StepFormPage'),
-            // meta: { title: '高级带分步表单', showbtn: false, keepAlive: true, permission: ['form'] }
-            component: () => import('@/views/form/advancedStepForm/index'),
-            meta: { title: '高级带分步表单', showbtn: false, showStep: true, keepAlive: false, permission: ['form'] }
-          }
-        ]
-      },
-      // 查看审批页
-      {
-        path: '/check',
-        redirect: '/check/three-row',
-        component: PageViewFsxt,
-        meta: { title: '查看审批页', icon: 'form', permission: [ 'form' ] },
-        children: [
-          {
-            path: 'check/alert',
-            name: 'alert',
-            component: () => import('@/views/check/alert'),
-            meta: { title: '弹出', showbtn: false, keepAlive: true, permission: ['form'] }
-          },
-          {
-            path: '/check/single-row',
-            name: 'singleRow',
-            component: () => import('@/views/check/singleRow'),
-            meta: { title: '查看审批页-单列', showbtn: true, showStep: false, keepAlive: true, permission: ['form'] }
-          },
-          // 附件
-          {
-            path: '/check/accessory',
-            name: 'accessory',
-            component: () => import('@/views/check/accessory'),
-            meta: { title: '查看审批页-附件', showbtn: true, showStep: false, keepAlive: true, permission: ['form'] }
-          },
-          {
-            path: '/check/three-row',
-            name: 'threeRow',
-            component: () => import('@/views/check/threeRow'),
-            meta: { title: '查看审批页-三列', showbtn: true, showStep: false, keepAlive: true, permission: ['form'] }
-          },
-          {
-            path: '/check/page-sign',
-            name: 'pageSign',
-            component: () => import('@/views/check/pageSign'),
-            meta: { title: '查看审批页-分页签', showbtn: true, showStep: false, keepAlive: false, permission: ['form'] }
-          }
-        ]
-      },
-
       // list
       {
         path: '/list',
@@ -208,26 +123,111 @@ export const asyncRouterMap = [
           }
         ]
       },
-
-      // profile
+      // new FORM
       {
-        path: '/profile',
-        name: 'profile',
-        component: RouteView,
-        redirect: '/profile/basic',
-        meta: { title: '详情页', icon: 'profile', permission: [ 'profile' ] },
+        path: '/newform',
+        redirect: '/newform/newbaseform',
+        component: PageView,
+        meta: { title: '表单页', icon: 'form', permission: [ 'form' ] },
         children: [
           {
-            path: '/profile/basic',
-            name: 'ProfileBasic',
-            component: () => import('@/views/profile/basic/Index'),
-            meta: { title: '基础详情页', permission: [ 'profile' ] }
+            path: '/form/newbaseform',
+            name: 'NewBaseForm',
+            component: () => import('@/views/newform/newBaseForm'),
+            meta: { title: '基础表单', keepAlive: true, permission: [ 'form' ] }
           },
           {
-            path: '/profile/advanced',
-            name: 'ProfileAdvanced',
-            component: () => import('@/views/profile/advanced/Advanced'),
-            meta: { title: '高级详情页', permission: [ 'profile' ] }
+            path: 'newform/indexa',
+            name: 'indexa',
+            component: () => import('@/views/newform/indexa'),
+            meta: { title: '弹出抽屉', keepAlive: true, permission: [ 'form' ] }
+          },
+          {
+            path: 'newform/AdvancedForms',
+            name: 'AdvancedForms',
+            component: () => import('@/views/newform/AdvancedForms'),
+            meta: { title: '高级表单', keepAlive: true, permission: [ 'form' ] }
+          },
+          {
+            path: 'newform/mapForm',
+            name: 'mapForm',
+            component: () => import('@/views/newform/mapForm'),
+            meta: { title: '地图表单', keepAlive: true, permission: [ 'form' ] }
+          },
+          {
+            path: 'newform/ThrowRowForm',
+            name: 'ThrowRowForm',
+            component: () => import('@/views/newform/ThrowRowForm'),
+            meta: { title: '三列表单', keepAlive: true, permission: [ 'form' ] }
+          },
+          {
+            path: 'newform/PreviewWord',
+            name: 'PreviewWord',
+            component: () => import('@/views/newform/PreviewWord'),
+            meta: { title: '预览附件', keepAlive: true, permission: [ 'form' ] }
+          }
+        ]
+      },
+      // 新建表单
+      {
+        path: '/fsxt',
+        redirect: '/fsxt/fsxt-base-form',
+        component: PageViewFsxt,
+        meta: { title: '富深协通表单', icon: 'form', permission: [ 'form' ] },
+        children: [
+          {
+            path: '/fsxt/fsxt-base-form',
+            name: 'BaseFormPage',
+            component: () => import('@/views/form/BasicFormPage'),
+            meta: { title: '基础表单', showbtn: true, keepAlive: true, permission: [ 'form' ] }
+          },
+          {
+            path: '/fsxt/fsxt-advanced-form',
+            name: 'StepFormPage',
+            // component: () => import('@/views/form/StepFormPage'),
+            // meta: { title: '高级带分步表单', showbtn: false, keepAlive: true, permission: ['form'] }
+            component: () => import('@/views/form/advancedStepForm/index'),
+            meta: { title: '高级带分步表单', showbtn: false, showStep: true, keepAlive: false, permission: ['form'] }
+          }
+        ]
+      },
+      // 查看审批页
+      {
+        path: '/check',
+        redirect: '/check/three-row',
+        component: PageViewFsxt,
+        meta: { title: '查看审批页', icon: 'form', permission: [ 'form' ] },
+        children: [
+          {
+            path: 'check/alert',
+            name: 'alert',
+            component: () => import('@/views/check/alert'),
+            meta: { title: '弹出', showbtn: false, keepAlive: true, permission: ['form'] }
+          },
+          {
+            path: '/check/single-row',
+            name: 'singleRow',
+            component: () => import('@/views/check/singleRow'),
+            meta: { title: '查看审批页-单列', showbtn: true, showStep: false, keepAlive: true, permission: ['form'] }
+          },
+          // 附件
+          {
+            path: '/check/accessory',
+            name: 'accessory',
+            component: () => import('@/views/check/accessory'),
+            meta: { title: '查看审批页-附件', showbtn: true, showStep: false, keepAlive: true, permission: ['form'] }
+          },
+          {
+            path: '/check/three-row',
+            name: 'threeRow',
+            component: () => import('@/views/check/threeRow'),
+            meta: { title: '查看审批页-三列', showbtn: true, showStep: false, keepAlive: true, permission: ['form'] }
+          },
+          {
+            path: '/check/page-sign',
+            name: 'pageSign',
+            component: () => import('@/views/check/pageSign'),
+            meta: { title: '查看审批页-分页签', showbtn: true, showStep: false, keepAlive: false, permission: ['form'] }
           }
         ]
       },
@@ -398,51 +398,6 @@ export const asyncRouterMap = [
                 meta: { title: '权限列表', keepAlive: true }
               }
             ]
-          }
-        ]
-      },
-      // new FORM
-      {
-        path: '/newform',
-        redirect: '/newform/newbaseform',
-        component: PageView,
-        meta: { title: '表单页1', icon: 'form', permission: [ 'form' ] },
-        children: [
-          {
-            path: '/form/newbaseform',
-            name: 'NewBaseForm',
-            component: () => import('@/views/newform/newBaseForm'),
-            meta: { title: '基础表单', keepAlive: true, permission: [ 'form' ] }
-          },
-          {
-            path: 'newform/indexa',
-            name: 'indexa',
-            component: () => import('@/views/newform/indexa'),
-            meta: { title: '弹出抽屉', keepAlive: true, permission: [ 'form' ] }
-          },
-          {
-            path: 'newform/AdvancedForms',
-            name: 'AdvancedForms',
-            component: () => import('@/views/newform/AdvancedForms'),
-            meta: { title: '高级表单', keepAlive: true, permission: [ 'form' ] }
-          },
-          {
-            path: 'newform/mapForm',
-            name: 'mapForm',
-            component: () => import('@/views/newform/mapForm'),
-            meta: { title: '地图表单', keepAlive: true, permission: [ 'form' ] }
-          },
-          {
-            path: 'newform/ThrowRowForm',
-            name: 'ThrowRowForm',
-            component: () => import('@/views/newform/ThrowRowForm'),
-            meta: { title: '三列表单', keepAlive: true, permission: [ 'form' ] }
-          },
-          {
-            path: 'newform/PreviewWord',
-            name: 'PreviewWord',
-            component: () => import('@/views/newform/PreviewWord'),
-            meta: { title: '预览附件', keepAlive: true, permission: [ 'form' ] }
           }
         ]
       }

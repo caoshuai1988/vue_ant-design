@@ -422,6 +422,13 @@ export const asyncRouterMap = [
             name: 'PreviewWord',
             component: () => import('@/views/newform/PreviewWord'),
             meta: { title: '预览附件', keepAlive: false, permission: [ 'form' ] }
+            // meta: { title: '预览附件', keepAlive: true, permission: [ 'form' ] }
+          },
+          {
+            path: 'newform/preview',
+            name: 'preview',
+            component: () => import('@/views/newform/preview'),
+            meta: { title: '附件预览', keepAlive: true, permission: [ 'form' ] }
           }
         ]
       }

@@ -1,7 +1,7 @@
 <template>
   <div class="page-header">
     <div class="page-header-index-wide">
-      <!-- <s-breadcrumb /> -->
+      <!--<s-breadcrumb/>-->
       <div class="detail">
         <div class="main" v-if="!$route.meta.hiddenHeaderContent">
           <div class="row">
@@ -68,13 +68,20 @@ export default {
   padding: 16px 32px 0;
   border-bottom: 1px solid #e8e8e8;
 
-  .breadcrumb {
-    margin-bottom: 16px;
-  }
+    .breadcrumb {
+      margin-bottom: 16px;
+    }
+    .action .list-action {
+      span {
+        color: #1890ff;
+        margin-left:56px;
+        cursor: pointer;
+      }
+    }
+    .detail {
+      display: flex;
+      /*margin-bottom: 16px;*/
 
-  .detail {
-    display: flex;
-    /*margin-bottom: 16px;*/
     .avatar {
       flex: 0 1 72px;
       margin: 0 24px 8px 0;
@@ -102,8 +109,7 @@ export default {
 
       .title {
         font-size: 20px;
-        font-weight: 500;
-
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         font-size: 20px;
         line-height: 28px;
         font-weight: 500;

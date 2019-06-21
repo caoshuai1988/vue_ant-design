@@ -1,5 +1,6 @@
 // eslint-disable-next-line
-import { UserLayout, BasicLayout, RouteView, BlankLayout, PageView, HomeView } from '@/layouts'
+
+import { UserLayout, UserLayout2, UserLayout3, BasicLayout, RouteView, BlankLayout, PageView, PageViewFsxt, HomeView } from '@/layouts'
 import { bxAnaalyse } from '@/core/icons'
 
 export const asyncRouterMap = [
@@ -123,6 +124,69 @@ export const asyncRouterMap = [
           }
         ]
       },
+      // 新建表单
+      {
+        path: '/fsxt',
+        redirect: '/fsxt/fsxt-base-form',
+        component: PageViewFsxt,
+        meta: { title: '富深协通表单', icon: 'form', permission: [ 'form' ] },
+        children: [
+          {
+            path: '/fsxt/fsxt-base-form',
+            name: 'BaseFormPage',
+            component: () => import('@/views/form/BasicFormPage'),
+            meta: { title: '基础表单', showbtn: true, keepAlive: true, permission: [ 'form' ] }
+          },
+          {
+            path: '/fsxt/fsxt-advanced-form',
+            name: 'StepFormPage',
+            // component: () => import('@/views/form/StepFormPage'),
+            // meta: { title: '高级带分步表单', showbtn: false, keepAlive: true, permission: ['form'] }
+            component: () => import('@/views/form/advancedStepForm/index'),
+            meta: { title: '高级带分步表单', showbtn: false, showStep: true, keepAlive: false, permission: ['form'] }
+          }
+        ]
+      },
+      // 查看审批页
+      {
+        path: '/check',
+        redirect: '/check/three-row',
+        component: PageViewFsxt,
+        meta: { title: '查看审批页', icon: 'form', permission: [ 'form' ] },
+        children: [
+          {
+            path: 'check/alert',
+            name: 'alert',
+            component: () => import('@/views/check/alert'),
+            meta: { title: '弹出', showbtn: false, keepAlive: true, permission: ['form'] }
+          },
+          {
+            path: '/check/single-row',
+            name: 'singleRow',
+            component: () => import('@/views/check/singleRow'),
+            meta: { title: '查看审批页-单列', showbtn: true, showStep: false, keepAlive: true, permission: ['form'] }
+          },
+          // 附件
+          {
+            path: '/check/accessory',
+            name: 'accessory',
+            component: () => import('@/views/check/accessory'),
+            meta: { title: '查看审批页-附件', showbtn: true, showStep: false, keepAlive: true, permission: ['form'] }
+          },
+          {
+            path: '/check/three-row',
+            name: 'threeRow',
+            component: () => import('@/views/check/threeRow'),
+            meta: { title: '查看审批页-三列', showbtn: true, showStep: false, keepAlive: true, permission: ['form'] }
+          },
+          {
+            path: '/check/page-sign',
+            name: 'pageSign',
+            component: () => import('@/views/check/pageSign'),
+            meta: { title: '查看审批页-分页签', showbtn: true, showStep: false, keepAlive: false, permission: ['form'] }
+          }
+        ]
+      },
 
       // list
       {
@@ -132,6 +196,27 @@ export const asyncRouterMap = [
         redirect: '/list/table-list',
         meta: { title: '列表页', icon: 'table', permission: [ 'table' ] },
         children: [
+          {
+            path: '/list/table-list-mode/:pageNo([1-9]\\d*)?',
+            name: 'TableListMode',
+            hideChildrenInMenu: true, // 强制显示 MenuItem 而不是 SubMenu
+            component: () => import('@/views/list/TableListMode'),
+            meta: { title: '列表模型', keepAlive: true, permission: [ 'table' ], isList: true }
+          },
+          {
+            path: '/list/table-list-roll/:pageNo([1-9]\\d*)?',
+            name: 'TableListRoll',
+            hideChildrenInMenu: true, // 强制显示 MenuItem 而不是 SubMenu
+            component: () => import('@/views/list/TableListRoll'),
+            meta: { title: '上下左右', keepAlive: true, permission: [ 'table' ], isList: true }
+          },
+          {
+            path: '/list/table-list-tabs/:pageNo([1-9]\\d*)?',
+            name: 'TableListTabs',
+            hideChildrenInMenu: true, // 强制显示 MenuItem 而不是 SubMenu
+            component: () => import('@/views/list/TableListTabs'),
+            meta: { title: '标签列表', keepAlive: true, permission: [ 'table' ] }
+          },
           {
             path: '/list/table-list/:pageNo([1-9]\\d*)?',
             name: 'TableListWrapper',
@@ -380,6 +465,51 @@ export const asyncRouterMap = [
             ]
           }
         ]
+      },
+      // new FORM
+      {
+        path: '/newform',
+        redirect: '/newform/newbaseform',
+        component: PageView,
+        meta: { title: '表单页1', icon: 'form', permission: [ 'form' ] },
+        children: [
+          {
+            path: '/form/newbaseform',
+            name: 'NewBaseForm',
+            component: () => import('@/views/newform/newBaseForm'),
+            meta: { title: '基础表单', keepAlive: true, permission: [ 'form' ] }
+          },
+          {
+            path: 'newform/indexa',
+            name: 'indexa',
+            component: () => import('@/views/newform/indexa'),
+            meta: { title: '弹出抽屉', keepAlive: true, permission: [ 'form' ] }
+          },
+          {
+            path: 'newform/AdvancedForms',
+            name: 'AdvancedForms',
+            component: () => import('@/views/newform/AdvancedForms'),
+            meta: { title: '高级表单', keepAlive: true, permission: [ 'form' ] }
+          },
+          {
+            path: 'newform/mapForm',
+            name: 'mapForm',
+            component: () => import('@/views/newform/mapForm'),
+            meta: { title: '地图表单', keepAlive: true, permission: [ 'form' ] }
+          },
+          {
+            path: 'newform/ThrowRowForm',
+            name: 'ThrowRowForm',
+            component: () => import('@/views/newform/ThrowRowForm'),
+            meta: { title: '三列表单', keepAlive: true, permission: [ 'form' ] }
+          },
+          {
+            path: 'newform/PreviewWord',
+            name: 'PreviewWord',
+            component: () => import('@/views/newform/PreviewWord'),
+            meta: { title: '预览附件', keepAlive: true, permission: [ 'form' ] }
+          }
+        ]
       }
     ]
   },
@@ -416,7 +546,50 @@ export const constantRouterMap = [
       }
     ]
   },
-
+  {
+    path: '/user',
+    component: UserLayout2,
+    redirect: '/user/login2',
+    hidden: true,
+    children: [
+      {
+        path: 'login2',
+        name: 'login2',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login2')
+      },
+      {
+        path: 'recover',
+        name: 'recover',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Recover')
+      }
+    ]
+  },
+  {
+    path: '/user',
+    component: UserLayout3,
+    redirect: '/user/login3',
+    hidden: true,
+    children: [
+      {
+        path: 'login3',
+        name: 'login3',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login3')
+      }
+    ]
+  },
+  {
+    path: '/user',
+    component: UserLayout2,
+    redirect: '/user/login4',
+    hidden: true,
+    children: [
+      {
+        path: 'login4',
+        name: 'login4',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login4')
+      }
+    ]
+  },
   {
     path: '/test',
     component: BlankLayout,

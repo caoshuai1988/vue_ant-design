@@ -2,7 +2,6 @@ import Menu from 'ant-design-vue/es/menu'
 import Icon from 'ant-design-vue/es/icon'
 
 const { Item, SubMenu } = Menu
-
 export default {
   name: 'SMenu',
   props: {
@@ -172,7 +171,7 @@ export default {
     })
     // {...{ props, on: on }}
     return (
-      <Menu vModel={this.selectedKeys} {...{ props, on: on }}>
+      <Menu  vModel={this.selectedKeys} {...{ props, on: on }}>
         {menuTree}
       </Menu>
     )

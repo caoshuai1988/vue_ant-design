@@ -1,6 +1,9 @@
 <template>
   <div class="user-wrapper">
     <div class="content-box">
+      <span class="antd-pro-components-global-header-index-action antd-pro-components-global-header-index-search antd-pro-components-header-search-index-headerSearch">
+
+      </span>
       <a href="https://pro.loacg.com/docs/getting-started" target="_blank">
         <span class="action">
           <a-icon type="question-circle-o"></a-icon>
@@ -27,10 +30,28 @@
           </a-menu-item>
           <a-menu-item key="2" disabled>
             <a-icon type="setting"/>
-            <span>测试</span>
+            <span>测试示例</span>
           </a-menu-item>
           <a-menu-divider/>
           <a-menu-item key="3">
+            <router-link :to="{ name: 'login2' }">
+              <a-icon type="logout"/>
+              <span>登录模板1</span>
+            </router-link>
+          </a-menu-item>
+          <a-menu-item key="4">
+            <router-link :to="{ name: 'login3' }">
+              <a-icon type="logout"/>
+              <span>登录模板2</span>
+            </router-link>
+          </a-menu-item>
+          <a-menu-item key="5">
+            <router-link :to="{ name: 'login4' }">
+              <a-icon type="logout"/>
+              <span>登录模板3</span>
+            </router-link>
+          </a-menu-item>
+          <a-menu-item key="6">
             <a href="javascript:;" @click="handleLogout">
               <a-icon type="logout"/>
               <span>退出登录</span>
@@ -38,8 +59,8 @@
           </a-menu-item>
         </a-menu>
       </a-dropdown>
-      <span class="action" @click="handleSwitchLayer">
-        <a-icon type="setting"></a-icon>
+      <span class="action" @click="openDrawer">
+        <a-icon type="setting" />
       </span>
     </div>
   </div>
@@ -65,6 +86,7 @@ export default {
         content: '真的要注销登录吗 ?',
         onOk () {
           return that.Logout({}).then(() => {
+            // debugger
             window.location.reload()
           }).catch(err => {
             that.$message.error({
@@ -77,8 +99,10 @@ export default {
         }
       })
     },
-    handleSwitchLayer () {
-      this.$store.dispatch('ToggleVisible', true)
+    openDrawer () {
+      console.log(this.$router)
+      this.$store.dispatch('ToggleSetDrawer', true)
+      // this.$router.push({name:'login2'})
     }
   }
 }

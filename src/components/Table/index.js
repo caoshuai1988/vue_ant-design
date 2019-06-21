@@ -114,7 +114,19 @@ export default {
     this.needTotalList = this.initTotalList(this.columns)
     this.loadData()
   },
+  mounted(){
+    this.addExpendRow()
+  },
   methods: {
+
+    /**
+     * test
+     */
+    addExpendRow(){
+      this.$nextTick(function(){
+        console.log('ceshi',this.$el)
+      })
+    },
     /**
      * 表格重新加载方法
      * 如果参数为 true, 则强制刷新到第一页

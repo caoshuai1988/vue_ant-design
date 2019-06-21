@@ -5,8 +5,7 @@
     :collapsible="collapsible"
     v-model="collapsed"
     :trigger="null">
-    <menu-bar v-if="isNewMenu()" v-bind="$attrs" v-on="$listeners" :collapsed="collapsed" />
-    <logo v-else />
+    <logo :showTitle="!collapsed" />
     <s-menu
       :collapsed="collapsed"
       :menu="menus"
@@ -23,7 +22,6 @@ import Logo from '@/components/tools/Logo'
 import MenuBar from '@/components/tools/MenuBar'
 import SMenu from './index'
 import { mixin, mixinDevice } from '@/utils/mixin'
-
 export default {
   name: 'SideMenu',
   components: { Logo, SMenu, MenuBar },

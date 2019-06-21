@@ -1,8 +1,18 @@
 <template>
-  <div :style="!$route.meta.hiddenHeaderContent && !isNewMenu() ? 'margin: -24px -24px 0px;' : 'width:100%'">
+  <div :style="!$route.meta.hiddenHeaderContent && !isFullTopMenu() ? 'margin: -24px -24px 0px;' : 'width:100%'">
     <!-- pageHeader , route meta :true on hide -->
     <page-header v-if="!$route.meta.hiddenHeaderContent" :title="pageTitle" :logo="logo" :avatar="avatar">
-      <slot slot="action" name="action"></slot>
+      <slot slot="action" name="action">
+        <div class="list-action" v-if="isPageList">
+          <template>
+            <span><i></i>刷新</span>
+            <span><i></i>设置</span>
+            <span><i></i>回收站</span>
+            <span><i></i>业务流程</span>
+            <span><i></i>帮助</span>
+          </template>
+        </div>
+      </slot>
       <slot slot="content" name="headerContent"></slot>
       <div slot="content" v-if="!this.$slots.headerContent && description">
         <p style="font-size: 14px;color: rgba(0,0,0,.65)">{{ description }}</p>
@@ -87,7 +97,8 @@ export default {
       linkList: [],
       extraImage: '',
       search: false,
-      tabs: {}
+      tabs: {},
+      isPageList: false
     }
   },
   computed: {
@@ -106,7 +117,7 @@ export default {
     getPageMeta () {
       // eslint-disable-next-line
       this.pageTitle = (typeof(this.title) === 'string' || !this.title) ? this.title : this.$route.meta.title
-
+      this.isPageList = typeof (this.$route.meta.isList) === 'boolean' ? this.$route.meta.isList : false
       const content = this.$refs.content
       if (content) {
         if (content.pageMeta) {

@@ -1,6 +1,6 @@
 <template>
-  <div class="promptModal">
-    <div class="ant-message">
+  <div class="container">
+    <div class="space-bottom_24">
       <span>
         <div class="ant-message-notice">
           <div class="ant-message-notice-content">
@@ -15,8 +15,9 @@
         </div>
       </span>
     </div>
+    <a-button class="space-bottom_24" @click="warning">警告信息</a-button>
 
-    <div class="ant-message">
+    <div class="space-bottom_24">
       <span>
         <div class="ant-message-notice">
           <div class="ant-message-notice-content">
@@ -32,8 +33,9 @@
         </div>
       </span>
     </div>
+    <a-button class="space-bottom_24" @click="error">错误信息</a-button>
 
-    <div class="ant-message">
+    <div class="space-bottom_24">
       <span>
         <div class="ant-message-notice">
           <div class="ant-message-notice-content">
@@ -49,8 +51,9 @@
         </div>
       </span>
     </div>
+    <a-button class="space-bottom_24" @click="remindInfo">提示信息</a-button>
 
-    <div class="ant-message">
+    <div class="space-bottom_24">
       <span>
         <div class="ant-message-notice">
           <div class="ant-message-notice-content">
@@ -70,12 +73,11 @@
         </div>
       </span>
     </div>
+    <a-button class="space-bottom_24" @click="success">成功信息</a-button>
 
     <div style="text-align:center; margin-top:50px;">
       <a-button @click="tenSeconds">10秒显示</a-button>
-
       <a-button @click="loadingIcon">显示loading图标</a-button>
-
     </div>
 
   </div>
@@ -105,22 +107,36 @@ export default {
       const hide = this.$message.loading('请稍后...', 0)
       setTimeout(hide, 2500)
     },
+    remindInfo () {
+      this.$message.info('字多的时候要延长展示时间')
+    },
     success () {
-      this.$message.success('This is a message of success')
+      this.$message.success('如需连接和描述，请改用通知提醒框')
     },
     error () {
-      this.$message.error('This is a message of error')
+      this.$message.error('默认3S消失，可自定义时长。不要超过15个字')
     },
     warning () {
-      this.$message.warning('This is message of warning')
+      this.$message.warning('这是全局提示，用于操作反馈')
     }
   }
 }
 </script>
 
-<style lang="less" scoped>
-
-.promptModal /deep/ .ant-message {
-  position: relative;
+<style lang="less">
+.ant-message {
+    top: 80px;
 }
+</style>
+<style lang="less" scoped>
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  .space-bottom_24 {
+    margin-bottom: 24px;
+  }
+}
+
 </style>

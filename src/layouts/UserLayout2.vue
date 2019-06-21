@@ -2,7 +2,7 @@
   <div id="userLayout" :class="['user-layout-wrapper', device]">
     <div class="container">
       <div class="top">
-        <a-row>
+        <a-row type="flex" justify="space-around" align="middle" style="height: 128px">
           <a-col :span="23" :offset="1">
             <img src="~@/assets/fslogo.png" alt="logo">
             <span class="title">富深新平台规范模板</span>
@@ -59,13 +59,11 @@ export default {
       width: 100%;
       height: 100%;
       .top {
-        height: 128px;
-        line-height: 128px;
-        width:100%;
         .title {
           font-size: 28px;
           color: rgba(0,0,0,0.85);
           margin-left: 16px;
+          vertical-align: middle;
         }
       }
       a {
@@ -86,6 +84,8 @@ export default {
         /*padding: 0 16px;*/
         margin: 56px 0 128px 0;
         text-align: center;
+        color: rgba(0, 0, 0, 0.45);
+        font-size: 14px;
         .links {
           margin-bottom: 8px;
           font-size: 14px;

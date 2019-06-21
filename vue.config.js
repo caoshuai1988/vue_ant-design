@@ -3,7 +3,7 @@ const webpack = require('webpack')
 const ThemeColorReplacer = require('webpack-theme-color-replacer')
 const generate = require('@ant-design/colors/lib/generate').default
 
-function resolve(dir) {
+function resolve (dir) {
   return path.join(__dirname, dir)
 }
 
@@ -32,7 +32,7 @@ module.exports = {
         fileName: 'css/theme-colors.css', // TODO 需要处理的暗坑
         matchColors: getAntdSerials('#1890ff'), // 主色系列
         // 改变样式选择器，解决样式覆盖问题
-        changeSelector(selector) {
+        changeSelector (selector) {
           switch (selector) {
             case '.ant-calendar-today .ant-calendar-date':
               return ':not(.ant-calendar-selected-date)' + selector
@@ -90,9 +90,9 @@ module.exports = {
       less: {
         modifyVars: {
           /* less 变量覆盖，用于自定义 ant design 主题 */
-          'menu-dark-bg': '#003F7D',
-          'menu-dark-submenu-bg': '#003F7D',
-          'layout-header-background': '#003F7D',
+          // 'menu-dark-bg': '#003F7D',
+          // 'menu-dark-submenu-bg': '#003F7D',
+          // 'layout-header-background': '#003F7D'
           /*
           'primary-color': '#F5222D',
           'link-color': '#F5222D',
@@ -129,7 +129,7 @@ module.exports = {
   transpileDependencies: []
 }
 
-function getAntdSerials(color) {
+function getAntdSerials (color) {
   // 淡化（即less的tint）
   const lightens = new Array(9).fill().map((t, i) => {
     return ThemeColorReplacer.varyColor.lighten(color, i / 10)

@@ -29,7 +29,7 @@
         :collapsed="collapsed"
         :collapsible="true"
       ></side-menu>
-      <a-layout class="d11111111" :class="[layoutMode, `content-width-${contentWidth}`]" :style="{ paddingLeft: contentPaddingLeft, minHeight: '100vh' }">
+      <a-layout :class="[layoutMode, `content-width-${contentWidth}`]" :style="{ paddingLeft: contentPaddingLeft, minHeight: '100vh' }">
         <!-- layout header -->
         <global-header
           :mode="layoutMode"
@@ -58,9 +58,8 @@
       </a-layout>
     </a-layout>
 
-    <a-layout class="full111111111111" v-if="isFullTopMenu()">
-
-      <a-layout class="rrrrrrrrrrrrrrr" :class="[layoutMode, `content-width-${contentWidth}`]" :style="{ paddingLeft: contentPaddingLeft, minHeight: '100vh' }">
+    <a-layout v-if="isFullTopMenu()">
+      <a-layout :class="[layoutMode, `content-width-${contentWidth}`]" :style="{ paddingLeft: contentPaddingLeft, minHeight: '100vh' }">
         <!-- layout header -->
         <global-header
           :mode="layoutMode"

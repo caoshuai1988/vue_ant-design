@@ -196,9 +196,7 @@
                 </a-list-item-meta>
                 <div>Content</div>
               </a-list-item>
-              <div v-if="loading && !busy" class="demo-loading-container">
-                <a-spin />
-              </div>
+
             </a-list>
           </a-card>
           <a-card style="margin-bottom: 24px" :bordered="false" :body-style="{padding: 0}">
@@ -217,9 +215,6 @@
                 </a-list-item-meta>
                 <div>Content</div>
               </a-list-item>
-              <div v-if="loading && !busy" class="demo-loading-container">
-                <a-spin />
-              </div>
             </a-list>
           </a-card>
 

@@ -22,7 +22,7 @@ export default {
   props: {
     title: {
       type: String,
-      default: '富深新平台规范模板',
+      default: '富深新平台模板',
       required: false
     },
     showTitle: {

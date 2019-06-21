@@ -29,7 +29,7 @@
         :collapsed="collapsed"
         :collapsible="true"
       ></side-menu>
-      <a-layout class="d11111111" :class="[layoutMode, `content-width-${contentWidth}`]" :style="{ paddingLeft: contentPaddingLeft, minHeight: '100vh' }">
+      <a-layout :class="[layoutMode, `content-width-${contentWidth}`]" :style="{ paddingLeft: contentPaddingLeft, minHeight: '100vh' }">
         <!-- layout header -->
         <global-header
           :mode="layoutMode"
@@ -58,10 +58,8 @@
       </a-layout>
     </a-layout>
 
-
-    <a-layout class="full111111111111" v-if="isFullTopMenu()">
-
-      <a-layout class="rrrrrrrrrrrrrrr" :class="[layoutMode, `content-width-${contentWidth}`]" :style="{ paddingLeft: contentPaddingLeft, minHeight: '100vh' }">
+    <a-layout v-if="isFullTopMenu()">
+      <a-layout :class="[layoutMode, `content-width-${contentWidth}`]" :style="{ paddingLeft: contentPaddingLeft, minHeight: '100vh' }">
         <!-- layout header -->
         <global-header
           :mode="layoutMode"
@@ -97,15 +95,12 @@
 
           </a-layout>
 
-
         </a-layout>
         <!-- Setting Drawer (show in development mode) -->
         <setting-drawer v-if="!production"></setting-drawer>
       </a-layout>
 
     </a-layout>
-
-
 
   </a-layout>
 
@@ -166,11 +161,10 @@ export default {
       this.collapsed = !val
     }
   },
-  beforeCreate(){
+  beforeCreate () {
 
   },
   created () {
-
     console.log(this.navTheme)
     console.log(this.surplusTheme)
     this.menus = this.mainMenu.find(item => item.path === '/').children

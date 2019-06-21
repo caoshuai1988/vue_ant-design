@@ -1,5 +1,7 @@
 @import './index.less';
 
+@help-width: 50px;
+
 body {
 
   &.colorWeak {
@@ -119,6 +121,14 @@ body {
     }
   }
 
+  .newmenu {
+    display: flex;
+    flex-direction: column;
+    .ant-layout-content {
+      display: flex;
+    }
+  }
+
   .header {
     height: 64px;
     padding: 0 12px 0 0;
@@ -234,7 +244,7 @@ body {
     transition: background 0.3s, width 0.2s;
 
     .header-index-wide {
-      max-width: 1200px;
+      // max-width: 1200px; cs
       margin: auto;
       padding-left: 0;
       display: flex;
@@ -249,17 +259,18 @@ body {
       }
 
       .header-index-left {
-        flex: 0 1 1000px;
+        flex: 0 1 800px; // cs
         display: flex;
 
         .logo.top-nav-header {
-          flex: 0 0 165px;
-          width: 165px;
+          // flex: 0 0 165px;
+          width: 200px;
           height: 64px;
           position: relative;
           line-height: 64px;
           transition: all 0.3s;
           overflow: hidden;
+          margin-left: 24px;
 
           img,
           svg {
@@ -284,7 +295,7 @@ body {
         flex: 1 0 auto;
         height: 64px;
         overflow: hidden;
-
+        margin-right: 24px;
         .content-box {
           float: right;
         }
@@ -357,6 +368,8 @@ body {
   z-index: 10;
   min-height: 100vh;
 
+ 
+
   .ant-layout-sider-children {
     overflow-y: hidden;
 
@@ -376,7 +389,7 @@ body {
     padding-left: 24px;
     overflow: hidden;
     line-height: 64px;
-    background: #002140;
+    background: #003F7D;
     transition: all .3s;
 
     img,
@@ -396,9 +409,10 @@ body {
       color: #fff;
       font-size: 20px;
       margin: 0 0 0 12px;
-      font-family: Avenir, Helvetica Neue, Arial, Helvetica, sans-serif;
+      font-family: Avenir, 'Helvetica Neue, Arial', Helvetica, sans-serif;
       font-weight: 600;
       vertical-align: middle;
+      width: 164px; // cs
     }
   }
 
@@ -453,6 +467,8 @@ body {
       display: flex;
       margin-bottom: 24px;
       margin-right: 0;
+      // height: 32px;
+      // line-height: 32px;
 
       .ant-form-item-control-wrapper {
         flex: 1 1;
@@ -464,6 +480,8 @@ body {
         line-height: 32px;
         padding-right: 8px;
         width: auto;
+        // height: 32px;
+        // line-height: 32px!important; //fix
       }
       .ant-form-item-control {
         height: 32px;
@@ -488,3 +506,19 @@ body {
     }
   }
 }
+/** cs-custom-style Start **/
+.text-overflow {
+  overflow:hidden; /*内容超出宽度时隐藏超出部分的内容 */
+  text-overflow:ellipsis;/* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用。*/
+  white-space:nowrap; /*不换行 */
+}
+.no-padding {
+  padding: 0 !important;
+}
+.no-margin {
+  margin: 0 !important;
+}
+.ant-notification-notice-message {
+  font-weight: bold;
+}
+/** cs-custom-style End **/

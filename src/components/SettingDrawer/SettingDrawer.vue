@@ -5,7 +5,7 @@
       placement="right"
       @close="onClose"
       :closable="false"
-      :visible="visible"
+      :visible="setDrawerStatus"
     >
       <div class="setting-drawer-index-content">
 
@@ -38,26 +38,26 @@
             </a-tooltip>
             <a-tooltip>
               <template slot="title">
-                风格测试
+                深蓝风格
               </template>
               <div class="setting-drawer-index-item" @click="handleSurplusTheme('plusTheme01')">
-                <img src="https://gw.alipayobjects.com/zos/rmsportal/jpRkZQMyYRryryPNtyIC.svg" alt="plusTheme01">
+                <img src="/configcolor.svg" alt="plusTheme01">
                 <div class="setting-drawer-index-selectIcon" v-if="surplusTheme === 'plusTheme01'">
                   <a-icon type="check"/>
                 </div>
               </div>
             </a-tooltip>
-    <!--        <a-tooltip>
+            <a-tooltip>
               <template slot="title">
-                plusTheme02风格测试
+                浅蓝风格
               </template>
               <div class="setting-drawer-index-item" @click="handleSurplusTheme('plusTheme02')">
-                <img src="https://gw.alipayobjects.com/zos/rmsportal/jpRkZQMyYRryryPNtyIC.svg" alt="plusTheme02">
+                <img src="/configcolor2.svg" alt="plusTheme02">
                 <div class="setting-drawer-index-selectIcon" v-if="surplusTheme === 'plusTheme02'">
                   <a-icon type="check"/>
                 </div>
               </div>
-            </a-tooltip>-->
+            </a-tooltip>
           </div>
         </div>
 
@@ -110,7 +110,7 @@
                 满屏顶部栏导航
               </template>
               <div class="setting-drawer-index-item" @click="handleLayout('fulltopmenu')">
-                <img src="https://gw.alipayobjects.com/zos/rmsportal/KDNDBbriJhLwuqMoxcAr.svg" alt="fulltopmenu">
+                <img src="/configcolor3.svg" alt="fulltopmenu">
                 <div class="setting-drawer-index-selectIcon" v-if="layoutMode === 'fulltopmenu'">
                   <a-icon type="check"/>
                 </div>
@@ -166,10 +166,6 @@
             </a-list>
           </div>
 
-
-
-
-
         </div>
         <a-divider />
 
@@ -207,9 +203,10 @@
           </a-alert>
         </div>
       </div>
-      <div class="setting-drawer-index-handle" @click="toggle">
-        <a-icon type="setting" v-if="!visible"/>
-        <a-icon type="close" v-else/>
+      <div class="setting-drawer-index-handle" @click="toggle" v-if="setDrawerStatus">
+        <!--  <a-icon type="setting" v-if="!visible"/>
+        <a-icon type="close" v-else/>-->
+        <a-icon type="close"/>
       </div>
     </a-drawer>
   </div>
@@ -237,28 +234,43 @@ export default {
   watch: {
 
   },
-  mounted () {
-    const vm = this
-    setTimeout(() => {
-      vm.visible = false
-    }, 16)
-    // 当主题色不是默认色时，才进行主题编译
-    if (this.primaryColor !== config.primaryColor) {
-      updateTheme(this.primaryColor)
+  computed: {
+    setDrawerStatus () {
+      return this.$store.state.app.settingDrawer
     }
+  },
+  // mounted () {
+  //   const vm = this
+  //   setTimeout(() => {
+  //     vm.visible = false
+  //   }, 16)
+  //   // 当主题色不是默认色时，才进行主题编译
+  //   if (this.primaryColor !== config.primaryColor) {
+  //     updateTheme(this.primaryColor)
+  //   }
+  // }),
+  // {
+  //   ChangeVisible: function () {
+  //     console.log('ChangeVisible=>' + this.$store.state.app.visible)
+  //     return this.$store.state.app.visible
+  //   }
+  // },
+  mounted () {
+    // const vm = this
+    // setTimeout(() => {
+    //   vm.visible = vm.$store.getters.visible
+    // }, 16)
+    updateTheme(this.primaryColor)
     if (this.colorWeak !== config.colorWeak) {
       updateColorWeak(this.colorWeak)
     }
   },
   methods: {
-    showDrawer () {
-      this.visible = true
-    },
     onClose () {
-      this.visible = false
+      this.$store.dispatch('ToggleSetDrawer', false)
     },
     toggle () {
-      this.visible = !this.visible
+      this.$store.dispatch('ToggleSetDrawer', false)
     },
     onColorWeak (checked) {
       this.$store.dispatch('ToggleWeak', checked)
@@ -323,7 +335,7 @@ export default {
       this.$store.dispatch('ToggleFixedHeaderHidden', autoHidden)
     },
     handleFixSiderbar (fixed) {
-      if (this.layoutMode === 'topmenu') {
+      if (this.$store.getters.layoutMode === 'topmenu' || this.$store.getters.layoutMode === 'newmenu') {
         this.$store.dispatch('ToggleFixSiderbar', false)
         return
       }

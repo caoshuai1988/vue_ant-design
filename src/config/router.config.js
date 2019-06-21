@@ -1,5 +1,6 @@
 // eslint-disable-next-line
-import { UserLayout, UserLayout2, UserLayout3, BasicLayout, RouteView, BlankLayout, PageView } from '@/layouts'
+
+import { UserLayout, UserLayout2, UserLayout3, BasicLayout, RouteView, BlankLayout, PageView, PageViewFsxt, HomeView } from '@/layouts'
 import { bxAnaalyse } from '@/core/icons'
 
 export const asyncRouterMap = [
@@ -11,6 +12,47 @@ export const asyncRouterMap = [
     meta: { title: '首页' },
     redirect: '/dashboard/workplace',
     children: [
+      // Modal
+      {
+        path: '/modal',
+        name: 'modal',
+        redirect: '/modal/inputModal',
+        component: RouteView,
+        meta: { title: '弹框-提示-通知-进度条', keepAlive: true, icon: 'fund' },
+        children: [
+          {
+            path: '/modal/inputModal',
+            name: 'inputModal',
+            component: () => import('@/views/modal/InputModal'),
+            meta: { title: '输入弹窗', keepAlive: false }
+          },
+          {
+            path: '/modal/confirmModal',
+            name: 'confirmModal',
+            component: () => import('@/views/modal/ConfirmModal'),
+            meta: { title: '提示弹窗', keepAlive: false }
+          },
+          {
+            path: '/modal/promptModal',
+            name: 'promptModal',
+            component: () => import('@/views/modal/PromptModal'),
+            meta: { title: '提示信息', keepAlive: false }
+          },
+          {
+            path: '/modal/notiification',
+            name: 'notiification',
+            component: () => import('@/views/modal/Notiification'),
+            meta: { title: '通知信息', keepAlive: false }
+          },
+          {
+            path: '/modal/spin',
+            name: 'spin',
+            component: () => import('@/views/modal/Spin'),
+            meta: { title: '加载组件', keepAlive: false }
+          }
+        ]
+      },
+
       // dashboard
       {
         path: '/dashboard',
@@ -39,7 +81,22 @@ export const asyncRouterMap = [
           }
         ]
       },
-
+      // home
+      {
+        path: '/homepage',
+        name: 'homepage',
+        redirect: '/homepage/home',
+        component: HomeView,
+        meta: { title: '首页', keepAlive: true, icon: bxAnaalyse },
+        children: [
+          {
+            path: '/homepage/home',
+            name: 'Home',
+            component: () => import('@/views/homepage/Home'),
+            meta: { title: '首页', keepAlive: true }
+          }
+        ]
+      },
       // forms
       {
         path: '/form',
@@ -64,6 +121,69 @@ export const asyncRouterMap = [
             name: 'AdvanceForm',
             component: () => import('@/views/form/advancedForm/AdvancedForm'),
             meta: { title: '高级表单', keepAlive: true, permission: [ 'form' ] }
+          }
+        ]
+      },
+      // 新建表单
+      {
+        path: '/fsxt',
+        redirect: '/fsxt/fsxt-base-form',
+        component: PageViewFsxt,
+        meta: { title: '富深协通表单', icon: 'form', permission: [ 'form' ] },
+        children: [
+          {
+            path: '/fsxt/fsxt-base-form',
+            name: 'BaseFormPage',
+            component: () => import('@/views/form/BasicFormPage'),
+            meta: { title: '基础表单', showbtn: true, keepAlive: true, permission: [ 'form' ] }
+          },
+          {
+            path: '/fsxt/fsxt-advanced-form',
+            name: 'StepFormPage',
+            // component: () => import('@/views/form/StepFormPage'),
+            // meta: { title: '高级带分步表单', showbtn: false, keepAlive: true, permission: ['form'] }
+            component: () => import('@/views/form/advancedStepForm/index'),
+            meta: { title: '高级带分步表单', showbtn: false, showStep: true, keepAlive: false, permission: ['form'] }
+          }
+        ]
+      },
+      // 查看审批页
+      {
+        path: '/check',
+        redirect: '/check/three-row',
+        component: PageViewFsxt,
+        meta: { title: '查看审批页', icon: 'form', permission: [ 'form' ] },
+        children: [
+          {
+            path: 'check/alert',
+            name: 'alert',
+            component: () => import('@/views/check/alert'),
+            meta: { title: '弹出', showbtn: false, keepAlive: true, permission: ['form'] }
+          },
+          {
+            path: '/check/single-row',
+            name: 'singleRow',
+            component: () => import('@/views/check/singleRow'),
+            meta: { title: '查看审批页-单列', showbtn: true, showStep: false, keepAlive: true, permission: ['form'] }
+          },
+          // 附件
+          {
+            path: '/check/accessory',
+            name: 'accessory',
+            component: () => import('@/views/check/accessory'),
+            meta: { title: '查看审批页-附件', showbtn: true, showStep: false, keepAlive: true, permission: ['form'] }
+          },
+          {
+            path: '/check/three-row',
+            name: 'threeRow',
+            component: () => import('@/views/check/threeRow'),
+            meta: { title: '查看审批页-三列', showbtn: true, showStep: false, keepAlive: true, permission: ['form'] }
+          },
+          {
+            path: '/check/page-sign',
+            name: 'pageSign',
+            component: () => import('@/views/check/pageSign'),
+            meta: { title: '查看审批页-分页签', showbtn: true, showStep: false, keepAlive: false, permission: ['form'] }
           }
         ]
       },
@@ -332,9 +452,62 @@ export const asyncRouterMap = [
                 path: '/other/list/permission-list',
                 name: 'PermissionList',
                 component: () => import('@/views/other/PermissionList'),
-                meta: { title: '权限列表', keepAlive: true }
+                meta: { title: '权限列表', keepAlive: true },
+                children: [
+                  {
+                    path: '/other/list/user-list',
+                    name: 'UserList',
+                    component: () => import('@/views/other/UserList'),
+                    meta: { title: '用户列表', keepAlive: true }
+                  }
+                ]
               }
             ]
+          }
+        ]
+      },
+      // new FORM
+      {
+        path: '/newform',
+        redirect: '/newform/newbaseform',
+        component: PageView,
+        meta: { title: '表单页1', icon: 'form', permission: [ 'form' ] },
+        children: [
+          {
+            path: '/form/newbaseform',
+            name: 'NewBaseForm',
+            component: () => import('@/views/newform/newBaseForm'),
+            meta: { title: '基础表单', keepAlive: true, permission: [ 'form' ] }
+          },
+          {
+            path: 'newform/indexa',
+            name: 'indexa',
+            component: () => import('@/views/newform/indexa'),
+            meta: { title: '弹出抽屉', keepAlive: true, permission: [ 'form' ] }
+          },
+          {
+            path: 'newform/AdvancedForms',
+            name: 'AdvancedForms',
+            component: () => import('@/views/newform/AdvancedForms'),
+            meta: { title: '高级表单', keepAlive: true, permission: [ 'form' ] }
+          },
+          {
+            path: 'newform/mapForm',
+            name: 'mapForm',
+            component: () => import('@/views/newform/mapForm'),
+            meta: { title: '地图表单', keepAlive: true, permission: [ 'form' ] }
+          },
+          {
+            path: 'newform/ThrowRowForm',
+            name: 'ThrowRowForm',
+            component: () => import('@/views/newform/ThrowRowForm'),
+            meta: { title: '三列表单', keepAlive: true, permission: [ 'form' ] }
+          },
+          {
+            path: 'newform/PreviewWord',
+            name: 'PreviewWord',
+            component: () => import('@/views/newform/PreviewWord'),
+            meta: { title: '预览附件', keepAlive: true, permission: [ 'form' ] }
           }
         ]
       }
@@ -374,9 +547,9 @@ export const constantRouterMap = [
     ]
   },
   {
-    path: '/user2',
+    path: '/user',
     component: UserLayout2,
-    redirect: '/user2/login2',
+    redirect: '/user/login2',
     hidden: true,
     children: [
       {
@@ -392,9 +565,9 @@ export const constantRouterMap = [
     ]
   },
   {
-    path: '/user3',
+    path: '/user',
     component: UserLayout3,
-    redirect: '/user3/login3',
+    redirect: '/user/login3',
     hidden: true,
     children: [
       {
@@ -404,11 +577,10 @@ export const constantRouterMap = [
       }
     ]
   },
-
   {
-    path: '/user4',
+    path: '/user',
     component: UserLayout2,
-    redirect: '/user4/login4',
+    redirect: '/user/login4',
     hidden: true,
     children: [
       {

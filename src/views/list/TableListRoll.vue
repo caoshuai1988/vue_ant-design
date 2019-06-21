@@ -226,7 +226,12 @@ export default {
           x: 1200,
           y: 250
         }
-      } else if (document.documentElement['clientHeight'] < 600) {
+      } else if (document.documentElement['clientWidth'] > 1200 && document.documentElement['clientHeight'] > 600) {
+        this.scroll = {
+          x: 1200,
+          y: 250
+        }
+      }else if (document.documentElement['clientHeight'] < 600) {
         this.scroll = {
           y: 200
         }

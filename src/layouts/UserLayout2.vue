@@ -57,7 +57,6 @@ export default {
       min-width: 1200px;
       width: 100%;
       height: 100%;
-      /*overflow-y: hidden;*/
       .top {
         height: 106px;
         line-height: 106px;

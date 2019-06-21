@@ -33,24 +33,6 @@
             <span>测试示例</span>
           </a-menu-item>
           <a-menu-divider/>
-          <a-menu-item key="3">
-            <router-link :to="{ name: 'login2' }">
-              <a-icon type="logout"/>
-              <span>登录模板1</span>
-            </router-link>
-          </a-menu-item>
-          <a-menu-item key="4">
-            <router-link :to="{ name: 'login3' }">
-              <a-icon type="logout"/>
-              <span>登录模板2</span>
-            </router-link>
-          </a-menu-item>
-          <a-menu-item key="5">
-            <router-link :to="{ name: 'login4' }">
-              <a-icon type="logout"/>
-              <span>登录模板3</span>
-            </router-link>
-          </a-menu-item>
           <a-menu-item key="6">
             <a href="javascript:;" @click="handleLogout">
               <a-icon type="logout"/>

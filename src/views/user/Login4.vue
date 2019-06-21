@@ -2,7 +2,10 @@
   <div class="main">
     <img src="@/assets/login_bg1.png"/>
     <div class="login-box">
-      <a-form
+      <a-row>
+        <a-col :span="20">
+          <div>
+           <a-form
         id="formLogin"
         class="user-layout-login"
         ref="formLogin"
@@ -38,7 +41,7 @@
               <a-icon slot="prefix" type="lock" :style="{ color: 'rgba(0,0,0,.25)' }"/>
             </a-input>
           </a-form-item>
-          <a-form-item>
+          <a-form-item class="login-operation">
             <a-checkbox v-decorator="['rememberMe']">记住账号</a-checkbox>
             <router-link
               :to="{ name: 'recover'}"
@@ -59,6 +62,9 @@
         </a-form-item>
         </div>
       </a-form>
+          </div>
+        </a-col>
+      </a-row>
     </div>
     <two-step-captcha
       v-if="requiredTwoStepCaptcha"
@@ -263,25 +269,32 @@ export default {
 
 <style lang="less" scoped>
   .main {
+    height: calc(100% - 304px);
+    min-height: 450px;
+    position: relative;
     img {
       width: 100%;
+      height: 100%;
     }
     .login-box {
-      margin: 0 auto;
-      overflow: hidden;
       position: absolute;
       top: 50%;
-      left: 50%;
-      transform: translate(-50%,-50%);
+      transform: translateY(-50%);
+      width: 100%;
       #formLogin.user-layout-login {
+        float: right;
         background: #ffffff;
-        padding: 32px;
+        padding: 32px 32px 0;
+        height: 428px;
+        border-radius: 4px;
         >div {
           width: 335px;
           .form-title {
             font-size: 18px;
             color: rgba(0,0,0,0.85);
-            margin-bottom: 32px;
+            margin-bottom: 24px;
+            height: 46px;
+            line-height: 46px;
           }
           label {
             font-size: 14px;

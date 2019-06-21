@@ -1,26 +1,28 @@
 <template>
   <div class="logo">
     <router-link :to="{name:'dashboard'}">
+      <!-- <LogoSvg alt="logo" />
+      <h1 class="text-overflow" v-if="showTitle">{{ title }}</h1> *cs*-->
       <!--<LogoSvg alt="logo" />-->
-     <!-- <img src="@/assets/logo1.png" />-->
-        <h1 v-if="!showTitle">富深</h1>
-        <h1 v-if="showTitle">{{ title }}</h1>
+      <!-- <img src="@/assets/logo1.png" />-->
+      <h1 v-if="!showTitle">富深</h1>
+      <h1 v-if="showTitle">{{ title }}</h1>
     </router-link>
   </div>
 </template>
 
 <script>
-/*import LogoSvg from '@/assets/logo.svg?inline'*/
+/* import LogoSvg from '@/assets/logo.svg?inline' */
 
 export default {
   name: 'Logo',
   components: {
-    /*LogoSvg*/
+    /* LogoSvg */
   },
   props: {
     title: {
       type: String,
-      default: '富深新平台模板',
+      default: '富深新平台规范模板',
       required: false
     },
     showTitle: {

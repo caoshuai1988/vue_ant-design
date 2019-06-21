@@ -76,7 +76,7 @@ export default {
     NoticeIcon
   },
   methods: {
-    ...mapActions(['Logout']),
+    ...mapActions(['Logout', 'visible']),
     ...mapGetters(['nickname', 'avatar']),
     handleLogout () {
       const that = this
@@ -86,7 +86,7 @@ export default {
         content: '真的要注销登录吗 ?',
         onOk () {
           return that.Logout({}).then(() => {
-            debugger
+            // debugger
             window.location.reload()
           }).catch(err => {
             that.$message.error({
@@ -99,10 +99,10 @@ export default {
         }
       })
     },
-    openDrawer(){
+    openDrawer () {
       console.log(this.$router)
-      this.$store.dispatch('ToggleSetDrawer',true)
-     // this.$router.push({name:'login2'})
+      this.$store.dispatch('ToggleSetDrawer', true)
+      // this.$router.push({name:'login2'})
     }
   }
 }

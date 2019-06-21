@@ -5,7 +5,11 @@
     :collapsible="collapsible"
     v-model="collapsed"
     :trigger="null">
-    <logo :showTitle="!collapsed" />
+    <div class="bars">
+      <router-link :to="{name:'dashboard'}">
+        <a-icon class="trigger" :type="collapsed ? 'menu-unfold' : 'menu-fold'" @click="toggle"/>
+      </router-link>
+    </div>
     <s-menu
       :collapsed="collapsed"
       :menu="menus"
@@ -18,13 +22,12 @@
 </template>
 
 <script>
-import Logo from '@/components/tools/Logo'
-import MenuBar from '@/components/tools/MenuBar'
 import SMenu from './index'
 import { mixin, mixinDevice } from '@/utils/mixin'
+
 export default {
   name: 'SideMenu',
-  components: { Logo, SMenu, MenuBar },
+  components: { SMenu },
   mixins: [mixin, mixinDevice],
   props: {
     mode: {
@@ -55,6 +58,9 @@ export default {
   methods: {
     onSelect (obj) {
       this.$emit('menuSelect', obj)
+    },
+    toggle () {
+      this.$emit('toggle')
     }
   }
 }

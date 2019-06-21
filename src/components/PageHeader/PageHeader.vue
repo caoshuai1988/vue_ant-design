@@ -32,13 +32,13 @@
 </template>
 
 <script>
-import Breadcrumb from '@/components/tools/Breadcrumb'
+// import Breadcrumb from '@/components/tools/Breadcrumb'
 
 export default {
   name: 'PageHeader',
-  components: {
-    's-breadcrumb': Breadcrumb
-  },
+  // components: {
+  //   's-breadcrumb': Breadcrumb
+  // },
   props: {
     title: {
       type: [String, Boolean],

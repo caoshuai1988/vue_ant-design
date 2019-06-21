@@ -1,6 +1,6 @@
 <template>
   <transition name="showHeader">
-    <div v-if="visible" class="header-animat test11111111">
+    <div v-if="visible" class="header-animat">
       <a-layout-header
         v-if="visible"
         :class="[fixedHeader && 'ant-header-fixedHeader', sidebarOpened ? 'ant-header-side-opened' : 'ant-header-side-closed', ]"
@@ -10,22 +10,17 @@
           <a-icon v-else class="trigger" :type="collapsed ? 'menu-unfold' : 'menu-fold'" @click="toggle"/>
           <user-menu></user-menu>
         </div>
-        <div v-if="mode === 'fulltopmenu'" class="header" :class="[theme,surplusTheme]">
+        <div v-else :class="['top-nav-header-index', theme]">
           <div class="header-index-wide">
             <div class="header-index-left">
               <logo class="top-nav-header" :show-title="device !== 'mobile'"/>
-              <a-icon v-if="device==='mobile'" class="trigger" :type="collapsed ? 'menu-fold' : 'menu-unfold'" @click="toggle"/>
-              <a-icon v-else class="trigger" :type="collapsed ? 'menu-unfold' : 'menu-fold'" @click="toggle2"/>
-              <user-menu></user-menu>
             </div>
-          </div>
-        </div>
-        <div v-if="mode === 'topmenu'" :class="['top-nav-header-index', theme,surplusTheme]">
-          <div class="header-index-wide">
-            <div class="header-index-left">
-              <logo class="top-nav-header" :show-title="device !== 'mobile'"/>
-              <s-menu v-if="device !== 'mobile'" mode="horizontal" :menu="menus" :theme="theme" :class="surplusTheme"/>
-              <a-icon v-else class="trigger" :type="collapsed ? 'menu-fold' : 'menu-unfold'" @click="toggle"/>
+            <div class="header-index-middle">
+              <a-input-search
+                placeholder="搜索菜单"
+                style="width: 200px"
+                @search="onSearch"
+              />
             </div>
             <user-menu class="header-index-right"></user-menu>
           </div>
@@ -36,17 +31,19 @@
 </template>
 
 <script>
-import UserMenu from '../tools/UserMenu'
-import SMenu from '../Menu/'
-import Logo from '../tools/Logo'
+import UserMenu from '../../tools/UserMenu'
+import SMenu from '../../Menu/'
+import Logo from '../../tools/Logo'
 import { mixin } from '@/utils/mixin'
+import TopDropMenu from '../TopDropMenu'
 
 export default {
-  name: 'GlobalHeader',
+  name: 'HeaderTopSearch',
   components: {
     UserMenu,
     SMenu,
-    Logo
+    Logo,
+    TopDropMenu
   },
   mixins: [mixin],
   props: {
@@ -109,8 +106,8 @@ export default {
     toggle () {
       this.$emit('toggle')
     },
-    toggle2 () {
-      this.$emit('toggle2')
+    onSearch (value) {
+      console.log(value)
     }
   },
   beforeDestroy () {
@@ -120,20 +117,17 @@ export default {
 </script>
 
 <style lang="less">
-  .header-animat {
-    position: relative;
-    z-index: 2;
-  }
-
-  .showHeader-enter-active {
-    transition: all 0.25s ease;
-  }
-
-  .showHeader-leave-active {
-    transition: all 0.5s ease;
-  }
-
-  .showHeader-enter, .showHeader-leave-to {
-    opacity: 0;
-  }
+.header-animat{
+  position: relative;
+  z-index: 2;
+}
+.showHeader-enter-active {
+  transition: all 0.25s ease;
+}
+.showHeader-leave-active {
+  transition: all 0.5s ease;
+}
+.showHeader-enter, .showHeader-leave-to {
+  opacity: 0;
+}
 </style>

@@ -1,23 +1,9 @@
 <template>
   <div class="footer">
-    <div class="links">
-      <!-- <a
-        href="https://pro.loacg.com/"
-        target="_blank"
-      >Pro 首页</a>
-      <a
-        href="https://github.com/sendya/ant-design-pro-vue"
-        target="_blank"
-      >
-        <a-icon type="github" />
-      </a>
-      <a href="https://ant.design/">Ant Design</a>
-      <a href="https://vue.ant.design/">Vue Antd</a> -->
-    </div>
     <div class="copyright">
-      <!-- Copyright
-      <a-icon type="copyright" /> 2018 <span>白鹭学园技术组出品</span> -->
-      版权所有：江苏富深协通科技股份有限公司&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span>技术支持电话：0519-86612998</span>
+      Copyright
+      <a-icon type="copyright" /> 版权所有： <span>江苏富深协通科技股份有限公司</span>
+      <span class="telephone">技术支持电话：0519-86612998</span>
     </div>
   </div>
 </template>
@@ -55,6 +41,9 @@ export default {
   .copyright {
     color: rgba(0, 0, 0, 0.45);
     font-size: 14px;
+  }
+  .telephone {
+    margin-left: 30px;
   }
 }
 </style>

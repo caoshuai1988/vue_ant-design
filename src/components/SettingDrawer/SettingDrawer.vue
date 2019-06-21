@@ -166,10 +166,6 @@
             </a-list>
           </div>
 
-
-
-
-
         </div>
         <a-divider />
 
@@ -207,8 +203,8 @@
           </a-alert>
         </div>
       </div>
-      <div class="setting-drawer-index-handle"  @click="toggle" v-if="setDrawerStatus">
-      <!--  <a-icon type="setting" v-if="!visible"/>
+      <div class="setting-drawer-index-handle" @click="toggle" v-if="setDrawerStatus">
+        <!--  <a-icon type="setting" v-if="!visible"/>
         <a-icon type="close" v-else/>-->
         <a-icon type="close"/>
       </div>
@@ -238,30 +234,43 @@ export default {
   watch: {
 
   },
-  computed:{
-    setDrawerStatus(){
+  computed: {
+    setDrawerStatus () {
       return this.$store.state.app.settingDrawer
     }
   },
+  // mounted () {
+  //   const vm = this
+  //   setTimeout(() => {
+  //     vm.visible = false
+  //   }, 16)
+  //   // 当主题色不是默认色时，才进行主题编译
+  //   if (this.primaryColor !== config.primaryColor) {
+  //     updateTheme(this.primaryColor)
+  //   }
+  // }),
+  // {
+  //   ChangeVisible: function () {
+  //     console.log('ChangeVisible=>' + this.$store.state.app.visible)
+  //     return this.$store.state.app.visible
+  //   }
+  // },
   mounted () {
-    const vm = this
-    setTimeout(() => {
-      vm.visible = false
-    }, 16)
-    // 当主题色不是默认色时，才进行主题编译
-    if (this.primaryColor !== config.primaryColor) {
-      updateTheme(this.primaryColor)
-    }
+    // const vm = this
+    // setTimeout(() => {
+    //   vm.visible = vm.$store.getters.visible
+    // }, 16)
+    updateTheme(this.primaryColor)
     if (this.colorWeak !== config.colorWeak) {
       updateColorWeak(this.colorWeak)
     }
   },
   methods: {
     onClose () {
-      this.$store.dispatch('ToggleSetDrawer',false)
+      this.$store.dispatch('ToggleSetDrawer', false)
     },
     toggle () {
-      this.$store.dispatch('ToggleSetDrawer',false)
+      this.$store.dispatch('ToggleSetDrawer', false)
     },
     onColorWeak (checked) {
       this.$store.dispatch('ToggleWeak', checked)
@@ -326,7 +335,7 @@ export default {
       this.$store.dispatch('ToggleFixedHeaderHidden', autoHidden)
     },
     handleFixSiderbar (fixed) {
-      if (this.layoutMode === 'topmenu') {
+      if (this.$store.getters.layoutMode === 'topmenu' || this.$store.getters.layoutMode === 'newmenu') {
         this.$store.dispatch('ToggleFixSiderbar', false)
         return
       }

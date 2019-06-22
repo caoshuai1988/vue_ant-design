@@ -1,5 +1,5 @@
 <template>
-  <div :style="!$route.meta.hiddenHeaderContent ? 'margin: -24px -24px 0px;' : null">
+  <div :style="!$route.meta.hiddenHeaderContent ? 'margin: -24px -24px 0px;' : null" class="contentBox">
     <!-- pageHeader , route meta :true on hide -->
     <page-header v-if="!$route.meta.hiddenHeaderContent" :title="pageTitle" :logo="logo" :avatar="avatar">
       <slot slot="action" name="action">
@@ -252,50 +252,11 @@
   }
 </script>
 <style>
-	.ant-table-wrapper .ant-checkbox-wrapper{
-		position:static;
-		
-	}
-	.ant-card-head-title{
-		padding:24px 0 !important;
-		font-size:16px !important;
-	}
-	.ant-card-extra{
-		font-size:16px !important;
-	}
-	.foldStyle{
-		cursor:pointer;
-	}
-	.ant-card-body{
-		padding:1px !important;
-	}
-	.ant-card-head{
-		border-top:1px solid #e8e8e8;
-		border-bottom:none !important;
-	}
 	.ant-drawer-close{
 		right:3px !important;
 	}
-  .ant-collapse > .ant-collapse-item > .ant-collapse-header .arrow{
-    left:590px !important;
-  }
-  .ant-collapse > .ant-collapse-item > .ant-collapse-header{
-    padding:24px 0 24px 3px !important;
-    font-size:16px !important;
-  }
   .ant-drawer-title{
     font-size:18px !important;
-  }
-  .ant-card-head{
-  	padding:0px !important;
-  }
-  .titleBtn{
-  	width:600px;
-  	display: block;
-  	cursor:pointer;
-  }
-  .ant-drawer-body{
-  	/*padding-bottom:80px !important;*/
   }
 </style>
 <style lang="less" scoped>
@@ -325,6 +286,9 @@
       }
     }
   }
+  /deep/ .ant-card-body{
+		padding:1px !important;
+	}
   .page-menu-search {
     text-align: center;
     margin-bottom: 16px;
@@ -343,7 +307,7 @@
       width: 100%;
     }
   }
-
+	
   .mobile {
     .extra-img {
       margin-top: 0;
@@ -367,5 +331,6 @@
     font-size: 16px;
     cursor: pointer;
 }
+
 </style>
 

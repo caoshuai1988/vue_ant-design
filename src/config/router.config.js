@@ -151,7 +151,7 @@ export const asyncRouterMap = [
             name: 'TableListRoll',
             hideChildrenInMenu: true, // 强制显示 MenuItem 而不是 SubMenu
             component: () => import('@/views/list/TableListRoll'),
-            meta: { title: '上下左右', keepAlive: true, permission: [ 'table' ], isList: true }
+            meta: { title: '固定头和列', keepAlive: true, permission: [ 'table' ], isList: true }
           },
           {
             path: '/list/table-list-tabs/:pageNo([1-9]\\d*)?',

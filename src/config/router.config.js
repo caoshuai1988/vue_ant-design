@@ -126,7 +126,7 @@ export const asyncRouterMap = [
             path: '/check/page-sign',
             name: 'pageSign',
             component: () => import('@/views/check/pageSign'),
-            meta: { title: '查看审批页-分页签', showbtn: true, showStep: false, keepAlive: false, permission: ['form'] }
+            meta: { title: '查看审批页-分页签', showbtn: true, showStep: false, keepAlive: true, permission: ['form'] }
           }
         ]
       },

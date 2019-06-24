@@ -427,7 +427,7 @@ import icon2 from '@/assets/iconfiles/fileicon10.svg'
 import icon3 from '@/assets/iconfiles/fileicon15.svg'
 // ppt格式
 import icon4 from '@/assets/iconfiles/fileicon1.svg'
-import preview from '@/views/newform/preview'
+// import preview from '@/views/newform/preview'
 const DetailListItem = DetailList.Item
 // 列表的数据定义
 const data = [
@@ -501,8 +501,8 @@ export default {
   components: {
     DetailList,
     DetailListItem,
-    STable,
-    preview
+    STable
+    // preview
   },
   data () {
     return {
@@ -721,19 +721,22 @@ export default {
       }
     }
   },
+
   mounted () {
     window.addEventListener('scroll', this.handleScroll) // 监听滚动条
+    this.$nextTick(() => {
+      document.documentElement.scrollTop = this.$route.params.scrollY
+    })
   },
   methods: {
     addAmplifier (val) {
-      // this.$router.push({
-      //   path: '/preview'
-      // })
-      this.valueKey = parseInt(val)
-      this.flag = true
-    },
-    monitor (val) {
-      this.flag = val
+      this.$router.push({
+        name: 'preview',
+        params: {
+          val: val,
+          scrollY: window.scrollY + 550
+        }
+      })
     },
     amplificationBtn () { // 地图放大
       if (this.mapFd.width === window.screen.availWidth + 'px') {

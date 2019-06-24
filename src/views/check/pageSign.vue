@@ -726,6 +726,9 @@ export default {
   },
   methods: {
     addAmplifier (val) {
+      // this.$router.push({
+      //   path: '/preview'
+      // })
       this.valueKey = parseInt(val)
       this.flag = true
     },

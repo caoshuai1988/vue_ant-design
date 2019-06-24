@@ -456,6 +456,11 @@ export const constantRouterMap = [
   },
 
   {
+    path: '/preview',
+    name: 'preview',
+    component: () => import('@/views/newform/preview')
+  },
+  {
     path: '/test',
     component: BlankLayout,
     redirect: '/test/home',

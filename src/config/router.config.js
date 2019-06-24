@@ -1,5 +1,5 @@
 // eslint-disable-next-line
-import { UserLayout, UserLayout2, UserLayout3, BasicLayout, RouteView, BlankLayout, PageView, PageViewFsxt } from '@/layouts'
+import { UserLayout, UserLayout2, UserLayout3, BasicLayout, RouteView, BlankLayout, PageView, PageViewFsxt, HomeView } from '@/layouts'
 import { bxAnaalyse } from '@/core/icons'
 
 export const asyncRouterMap = [
@@ -10,12 +10,6 @@ export const asyncRouterMap = [
     meta: { title: '首页' },
     redirect: '/homepage/home',
     children: [
-      {
-        path: '/homepage/home',
-        name: 'Home',
-        component: () => import('@/views/homepage/Home'),
-        meta: { title: '首页',  icon: 'home',keepAlive: true }
-      },
       // 登陆页
       {
         path: 'user/login',
@@ -59,18 +53,42 @@ export const asyncRouterMap = [
             meta: { title: '列表模型', keepAlive: true, permission: [ 'table' ], isList: true }
           },
           {
-            path: '/list/table-list-roll/:pageNo([1-9]\\d*)?',
-            name: 'TableListRoll',
-            hideChildrenInMenu: true, // 强制显示 MenuItem 而不是 SubMenu
-            component: () => import('@/views/list/TableListRoll'),
-            meta: { title: '上下左右', keepAlive: true, permission: [ 'table' ], isList: true }
+            path: '/dashboard/workplace',
+            name: 'Workplace',
+            component: () => import('@/views/dashboard/Workplace'),
+            meta: { title: '工作台', keepAlive: true, permission: [ 'dashboard' ] }
+          }
+        ]
+      },
+      // home
+      {
+        path: '/homepage',
+        name: 'homepage',
+        redirect: '/homepage/home',
+        component: HomeView,
+        meta: { title: '首页', keepAlive: true, icon: 'home' },
+        children: [
+          {
+            path: '/homepage/home',
+            name: 'Home',
+            component: () => import('@/views/homepage/Home'),
+            meta: { title: '首页', keepAlive: true }
+          },
+          // 外部链接
+          {
+            path: 'https://viserjs.github.io/demoHome.html',
+            name: 'viser',
+            meta: { title: 'Viser图表库', target: '_blank' }
           },
           {
-            path: '/list/table-list-tabs/:pageNo([1-9]\\d*)?',
-            name: 'TableListTabs',
-            hideChildrenInMenu: true, // 强制显示 MenuItem 而不是 SubMenu
-            component: () => import('@/views/list/TableListTabs'),
-            meta: { title: '标签列表', keepAlive: true, permission: [ 'table' ] }
+            path: 'https://www.iconfont.cn/',
+            name: 'IconFont',
+            meta: { title: 'IconFont图标库', target: '_blank' }
+          },
+          {
+            path: 'https://vue.ant.design/components/icon-cn/',
+            name: 'IconDesign',
+            meta: { title: 'IconDesign内置图标', target: '_blank' }
           }
         ]
       },
@@ -226,9 +244,8 @@ export const asyncRouterMap = [
       {
         path: 'gap',
         name: 'gap',
-        meta: { title: '---分割线---',icon:'bulb'}
+        meta: { title: '---分割线---', icon: 'bulb' }
       },
-
 
       // dashboard
       {
@@ -536,7 +553,6 @@ export const asyncRouterMap = [
           }
         ]
       }
-
 
     ]
   },

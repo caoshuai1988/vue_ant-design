@@ -418,12 +418,15 @@ export default {
             margin: 0 auto;
             .ant-form {
               margin: 64px auto;
+              .ant-form-item {
+                margin-bottom: 24px;
+              }
               .phoneItem {
                 height: 22px;
                 line-height: 22px;
                 text-align: center;
                 color: rgba(0, 0, 0, 0.85);
-                margin-top: 2px;
+                margin-top: 4px;
                 margin-bottom: 40px;
               }
               .captchaItem {

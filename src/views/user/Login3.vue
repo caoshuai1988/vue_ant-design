@@ -292,6 +292,9 @@ export default {
   .main {
     #formLogin {
       height: 340px;
+      .ant-form-item {
+        margin-bottom: 24px;
+      }
       label {
         font-size: 14px;
       }
@@ -330,10 +333,6 @@ export default {
             color: #1890ff;
           }
         }
-
-        /*.register {*/
-        /*  float: right;*/
-        /*}*/
       }
 
       .ca-uninstall {

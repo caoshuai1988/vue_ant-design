@@ -243,6 +243,7 @@
             <!-- <h1 class="title-name">组标题</h1> -->
             <!-- 上传附件 -->
             <a-form-item
+              style="margin-bottom:32px"
               label="上传附件"
               help="支持扩展名：.rar .zip .doc .docx .pdf .jpg..."
               :labelCol="labelCol"

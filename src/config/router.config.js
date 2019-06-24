@@ -7,8 +7,8 @@ import {
   RouteView,
   BlankLayout,
   PageView,
-  PageViewFsxt,
-  HomeView
+  PageViewFsxt
+  // HomeView
 } from '@/layouts'
 import { bxAnaalyse } from '@/core/icons'
 
@@ -617,53 +617,7 @@ export const asyncRouterMap = [
             ]
           }
         ]
-      },
-      // new FORM
-      {
-        path: '/newform',
-        redirect: '/newform/newbaseform',
-        component: PageView,
-        meta: { title: '表单页1', icon: 'form', permission: [ 'form' ] },
-        children: [
-          {
-            path: '/form/newbaseform',
-            name: 'newBaseForm',
-            component: () => import('@/views/newform/newBaseForm'),
-            meta: { title: '基础表单', keepAlive: true, permission: [ 'form' ] }
-          },
-          {
-            path: 'newform/indexa',
-            name: 'indexa',
-            component: () => import('@/views/newform/indexa'),
-            meta: { title: '弹出抽屉', keepAlive: true, permission: [ 'form' ] }
-          },
-          {
-            path: 'newform/AdvancedForms',
-            name: 'AdvancedForms',
-            component: () => import('@/views/newform/AdvancedForms'),
-            meta: { title: '高级表单', keepAlive: true, permission: [ 'form' ] }
-          },
-          {
-            path: 'newform/mapForm',
-            name: 'mapForm',
-            component: () => import('@/views/newform/mapForm'),
-            meta: { title: '地图表单', keepAlive: true, permission: [ 'form' ] }
-          },
-          {
-            path: 'newform/ThrowRowForm',
-            name: 'ThrowRowForm',
-            component: () => import('@/views/newform/ThrowRowForm'),
-            meta: { title: '三列表单', keepAlive: true, permission: [ 'form' ] }
-          },
-          {
-            path: 'newform/PreviewWord',
-            name: 'PreviewWord',
-            component: () => import('@/views/newform/PreviewWord'),
-            meta: { title: '预览附件', keepAlive: true, permission: [ 'form' ] }
-          }
-        ]
       }
-
     ]
   },
   {

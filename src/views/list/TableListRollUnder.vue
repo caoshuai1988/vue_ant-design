@@ -145,7 +145,6 @@ export default {
           title: '规则编号',
           dataIndex: 'no',
           width: 100,
-          fixed: 'left' 
         },
         {
           title: '描述',
@@ -176,7 +175,6 @@ export default {
         {
           title: '操作',
           dataIndex: 'action',
-          fixed: 'right',
           width: 150,
           scopedSlots: { customRender: 'action' }
         }
@@ -241,12 +239,10 @@ export default {
 	$('.ant-table-body').css({"height":'oHeight'});
 	$('.table-wrapper').css({"minHeight":'0px'});
 	this.scroll = {
-	  x: 2000,
       y: document.documentElement['clientHeight']-510
    }
 	if (document.documentElement['clientHeight'] < 710){
 		this.scroll = {
-		  x: 2000,
           y: 200
         }
 	}

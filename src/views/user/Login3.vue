@@ -2,6 +2,7 @@
   <div class="main">
     <a-form
       id="formLogin"
+      class="user-layout-login"
       ref="formLogin"
       :form="form"
       @submit="handleSubmit"
@@ -40,7 +41,7 @@
               <a-icon slot="prefix" type="lock" :style="{ color: 'rgba(0,0,0,.25)' }"/>
             </a-input>
           </a-form-item>
-          <a-form-item>
+          <a-form-item class="login-operation">
             <a-checkbox v-decorator="['rememberMe']">自动登录</a-checkbox>
             <router-link
               :to="{ name: 'recover' }"
@@ -61,13 +62,12 @@
           </a-form-item>
         </a-tab-pane>
         <a-tab-pane key="tab2" tab="CA密钥登录">
-
           <div class="ca-uninstall" v-if="!isPassCA">
-            <a-form-item><img src="~@/assets/CA.png"></a-form-item>
-            <a-form-item>
-              <p><span>请插入您的CA密钥后</span></p>
-              <p><span>点击下方检测</span></p>
-            </a-form-item>
+            <div><img src="~@/assets/CA.png"></div>
+            <div>
+              <span>请插入您的CA密钥后<br/>
+                点击下方检测</span>
+            </div>
             <a-form-item>
               <a-button
                 size="large"
@@ -96,7 +96,7 @@
                 <a-icon slot="prefix" type="lock" :style="{ color: 'rgba(0,0,0,.25)' }"/>
               </a-input>
             </a-form-item>
-            <a-form-item>
+            <a-form-item style="margin-bottom: 40px">
               <router-link
                 :to="{ name: 'recover', params: { user: 'aaa'} }"
                 class="forge-password"
@@ -114,30 +114,6 @@
               >登录</a-button>
             </a-form-item>
           </div>
-          <!--          <a-form-item>-->
-          <!--            <a-input size="large" type="text" placeholder="手机号" v-decorator="['mobile', {rules: [{ required: true, pattern: /^1[34578]\d{9}$/, message: '请输入正确的手机号' }], validateTrigger: 'change'}]">-->
-          <!--              <a-icon slot="prefix" type="mobile" :style="{ color: 'rgba(0,0,0,.25)' }"/>-->
-          <!--            </a-input>-->
-          <!--          </a-form-item>-->
-
-          <!--          <a-row :gutter="16">-->
-          <!--            <a-col class="gutter-row" :span="16">-->
-          <!--              <a-form-item>-->
-          <!--                <a-input size="large" type="text" placeholder="验证码" v-decorator="['captcha', {rules: [{ required: true, message: '请输入验证码' }], validateTrigger: 'blur'}]">-->
-          <!--                  <a-icon slot="prefix" type="mail" :style="{ color: 'rgba(0,0,0,.25)' }"/>-->
-          <!--                </a-input>-->
-          <!--              </a-form-item>-->
-          <!--            </a-col>-->
-          <!--            <a-col class="gutter-row" :span="8">-->
-          <!--              <a-button-->
-          <!--                class="getCaptcha"-->
-          <!--                tabindex="-1"-->
-          <!--                :disabled="state.smsSendBtn"-->
-          <!--                @click.stop.prevent="getCaptcha"-->
-          <!--                v-text="!state.smsSendBtn && '获取验证码' || (state.time+' s')"-->
-          <!--              ></a-button>-->
-          <!--            </a-col>-->
-          <!--          </a-row>-->
         </a-tab-pane>
       </a-tabs>
     </a-form>
@@ -313,81 +289,81 @@ export default {
 </script>
 
 <style lang="less" scoped>
-  #formLogin {
-    label {
-      font-size: 14px;
-    }
-
-    .getCaptcha {
-      display: block;
-      width: 100%;
-      height: 40px;
-    }
-
-    .forge-password {
-      font-size: 14px;
-    }
-
-    button.login-button,button.test-button {
-      padding: 0 15px;
-      font-size: 16px;
-      height: 40px;
-      width: 100%;
-    }
-
-    .user-login-other {
-      text-align: left;
-      margin-top: 24px;
-      line-height: 22px;
-
-      .item-icon {
-        font-size: 24px;
-        color: rgba(0, 0, 0, 0.2);
-        margin-left: 16px;
-        vertical-align: middle;
-        cursor: pointer;
-        transition: color 0.3s;
-
-        &:hover {
-          color: #1890ff;
-        }
+  .main {
+    #formLogin {
+      height: 340px;
+      label {
+        font-size: 14px;
       }
 
-      /*.register {*/
-      /*  float: right;*/
-      /*}*/
-    }
-
-    .ca-uninstall {
-      margin-top: 32px;
-      text-align: center;
-      img {
-        width: 80px;
-        height: 80px;
+      .getCaptcha {
+        display: block;
+        width: 100%;
+        height: 40px;
       }
-      div:nth-of-type(2){
+
+      .forge-password {
+        font-size: 14px;
+      }
+
+      button.login-button,button.test-button {
+        padding: 0 15px;
         font-size: 16px;
-        color: rgba(0,0,0,0.85);
-        margin-bottom: 32px;
-        p {
-          text-align: center;
-          margin-bottom: 0;
-          &:last-child {
-            margin-top: -10px;
+        height: 40px;
+        width: 100%;
+      }
+
+      .user-login-other {
+        text-align: left;
+        margin-top: 24px;
+        line-height: 22px;
+
+        .item-icon {
+          font-size: 24px;
+          color: rgba(0, 0, 0, 0.2);
+          margin-left: 16px;
+          vertical-align: middle;
+          cursor: pointer;
+          transition: color 0.3s;
+
+          &:hover {
+            color: #1890ff;
           }
         }
+
+        /*.register {*/
+        /*  float: right;*/
+        /*}*/
       }
-      div:last-child   {
-        margin-bottom: 40px;
+
+      .ca-uninstall {
+        margin-top: 32px;
+        text-align: center;
+        div:first-child {
+          margin-bottom: 24px;
+          img {
+            width: 80px;
+            height: 80px;
+          }
+        }
+        div:nth-of-type(2){
+          height: 44px;
+          font-size: 16px;
+          color: rgba(0,0,0,0.85);
+          margin-bottom: 32px;
+        }
+        div:last-child   {
+          margin-bottom: 40px;
+        }
       }
-    }
-    .ca-install {
-      margin-top: 24px;
-      div:first-child {
-        font-size: 16px;
-        color: rgba(0,0,0,0.85);
-        p {
-          margin-bottom: 0;
+      .ca-install {
+        margin-top: 24px;
+        div:first-child {
+          font-size: 16px;
+          color: rgba(0,0,0,0.85);
+          p {
+            margin-bottom: 0;
+          }
         }
       }
     }

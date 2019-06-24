@@ -34,8 +34,29 @@ export const asyncRouterMap = [
             name: 'login4',
             meta: { title: '登陆模板4', target: '_blank' }
           }
-
         ]
+      },
+      // HelpDocument
+      {
+        path: '/help',
+        name: 'help',
+        meta: { title: '帮助', icon: 'user' },
+        children: [{
+          path: '/help/helpdoc',
+          name: 'helpDoc',
+          redirect: '/help/helpdoc',
+          meta: { title: '帮助文档', keepAlive: false, target: '_blank' }
+        }, {
+          path: '/help/helpsearch',
+          name: 'helpSearch',
+          redirect: 'help/helpsearch',
+          meta: { title: '帮助搜索', keepAlive: false, target: '_blank' }
+        }, {
+          path: '/help/helpinfo',
+          name: 'helpInfo',
+          redirect: 'help/helpinfo',
+          meta: { title: '帮助信息', keepAlive: false, target: '_blank' }
+        }]
       },
       // list
       {
@@ -493,6 +514,36 @@ export const asyncRouterMap = [
         ]
       },
 
+      // {
+      //   path: '/help',
+      //   name: 'help',
+      //   redirect: '/help/helpdoc',
+      //   meta: { title: '帮助', keepAlive: true, icon: 'fund' },
+      //   children: [
+      //     {
+      //       path: '/help/helpdoc',
+      //       name: 'helpDoc',
+      //       component: () => import('@/views/help/HelpDocument'),
+      //       meta: { title: '帮助文档', keepAlive: false, target: '_blank' },
+      //       redirect: '/help/children/first',
+      //       hideChildrenInMenu: true,
+      //       children: [
+      //         {
+      //           path: '/help/children/first',
+      //           name: 'FirstChildren',
+      //           component: () => import('@/views/help/children/FirstChildren'),
+      //           meta: { title: 'A级节点', hidden: true }
+      //         },
+      //         {
+      //           path: '/help/children/last',
+      //           name: 'LastChildren',
+      //           component: () => import('@/views/help/children/LastChildren'),
+      //           meta: { title: 'B级节点', hidden: true }
+      //         }
+      //       ]
+      //     }
+      //   ]
+      // },
       // other
       {
         path: '/other',
@@ -590,50 +641,6 @@ export const constantRouterMap = [
     ]
   },
   {
-    path: '/user',
-    component: UserLayout2,
-    redirect: '/user/login2',
-    hidden: true,
-    children: [
-      {
-        path: 'login2',
-        name: 'login2',
-        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login2')
-      },
-      {
-        path: 'recover',
-        name: 'recover',
-        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Recover')
-      }
-    ]
-  },
-  {
-    path: '/user',
-    component: UserLayout3,
-    redirect: '/user/login3',
-    hidden: true,
-    children: [
-      {
-        path: 'login3',
-        name: 'login3',
-        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login3')
-      }
-    ]
-  },
-  {
-    path: '/user',
-    component: UserLayout2,
-    redirect: '/user/login4',
-    hidden: true,
-    children: [
-      {
-        path: 'login4',
-        name: 'login4',
-        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login4')
-      }
-    ]
-  },
-  {
     path: '/test',
     component: BlankLayout,
     redirect: '/test/home',
@@ -645,7 +652,42 @@ export const constantRouterMap = [
       }
     ]
   },
-
+  {
+    path: '/help/helpdoc',
+    name: 'helpDoc',
+    component: () => import('@/views/help/HelpDocument'),
+    meta: { title: '帮助文档', keepAlive: false, target: '_blank' },
+    redirect: '/help/children/first',
+    hideChildrenInMenu: true,
+    children: [
+      {
+        path: '/help/children/first',
+        name: 'FirstChildren',
+        component: () => import('@/views/help/children/FirstChildren'),
+        meta: { title: '帮助文档-A级节点', hidden: true }
+      },
+      {
+        path: '/help/children/last',
+        name: 'LastChildren',
+        component: () => import('@/views/help/children/LastChildren'),
+        meta: { title: '帮助文档-B级节点', hidden: true }
+      }
+    ]
+  },
+  {
+    path: '/help/helpsearch',
+    name: 'helpSearch',
+    component: () => import('@/views/help/HelpDocSearch'),
+    meta: { title: '帮助搜索', keepAlive: false, target: '_blank' }
+    // redirect: '/help/helpsearch'
+  },
+  {
+    path: '/help/helpinfo',
+    name: 'heleInfo',
+    component: () => import('@/views/help/HelpDocInfo'),
+    meta: { title: '帮助详情', keepAlive: false, target: '_blank' }
+    // redirect: '/help/helpsearch'
+  },
   {
     path: '/404',
     component: () => import(/* webpackChunkName: "fail" */ '@/views/exception/404')

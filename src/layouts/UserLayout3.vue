@@ -15,8 +15,7 @@
       <route-view></route-view>
 
       <div class="footer">
-        <a href="javascript:;">关于我们</a>&nbsp;&nbsp;&nbsp;&nbsp;
-        <span>版权所有：江苏富深协通科技股份有限公司&nbsp;&nbsp;&nbsp;&nbsp;技术支持：0519-86612998</span>
+        <span>关于我们&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;版权所有：江苏富深协通科技股份有限公司&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;技术支持：0519-86612998</span>
       </div>
     </div>
   </div>
@@ -59,12 +58,11 @@ export default {
       min-width: 1200px;
       width: 100%;
       min-height: 100%;
-      /*background: #f0f2f5 url(~@/assets/login_bg2.png) no-repeat center;*/
       background: #f0f2f5 url(~@/assets/background.svg) no-repeat 50%;
       background-size: 100%;
       padding: 110px 0 144px;
       position: relative;
-
+      /*overflow-y: hidden;*/
       a {
         text-decoration: none;
       }
@@ -73,9 +71,6 @@ export default {
         text-align: center;
 
         .header {
-          /*height: 44px;*/
-          /*line-height: 44px;*/
-
           .badge {
             position: absolute;
             display: inline-block;
@@ -87,7 +82,7 @@ export default {
           }
 
           .logo {
-            /*height: 44px;*/
+            width: 178px;
             vertical-align: top;
             margin-right: 16px;
             border-style: none;
@@ -96,8 +91,6 @@ export default {
         .desc {
           font-size: 33px;
           color: rgba(0, 0, 0, 0.85);
-          /*font-family: Avenir, 'Helvetica Neue', Arial, Helvetica, sans-serif;*/
-          /*font-weight: 600;*/
           margin-top: 12px;
           margin-bottom: 40px;
         }
@@ -110,28 +103,14 @@ export default {
       }
 
       .footer {
+
         position: absolute;
         width: 100%;
         bottom: 0;
         padding: 0 16px;
         margin: 48px 0 24px;
         text-align: center;
-
-        .links {
-          margin-bottom: 8px;
-          font-size: 14px;
-          a {
-            color: rgba(0, 0, 0, 0.45);
-            transition: all 0.3s;
-            &:not(:last-child) {
-              margin-right: 40px;
-            }
-          }
-        }
-        .copyright {
-          color: rgba(0, 0, 0, 0.45);
-          font-size: 14px;
-        }
+        color: rgba(0,0,0,0.45);
       }
     }
   }

@@ -10,6 +10,7 @@ const mixin = {
     ...mapState({
       layoutMode: state => state.app.layout,
       navTheme: state => state.app.theme,
+      surplusTheme: state => state.app.surplusTheme,
       primaryColor: state => state.app.color,
       colorWeak: state => state.app.weak,
       fixedHeader: state => state.app.fixedHeader,
@@ -26,7 +27,10 @@ const mixin = {
       return this.layoutMode === 'topmenu'
     },
     isSideMenu () {
-      return !this.isTopMenu()
+      return this.layoutMode === 'sidemenu'
+    },
+    isFullTopMenu () {
+      return this.layoutMode === 'fulltopmenu'
     }
   }
 }

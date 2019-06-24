@@ -16,4 +16,4 @@ export const setDocumentTitle = function (title) {
   }
 }
 
-export const domTitle = 'Ant Design Pro'
+export const domTitle = '富深新平台模板'

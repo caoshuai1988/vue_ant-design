@@ -1,7 +1,7 @@
 <template>
   <div class="page-header">
     <div class="page-header-index-wide">
-      <!-- <s-breadcrumb /> -->
+      <!--<s-breadcrumb/>-->
       <div class="detail">
         <div class="main" v-if="!$route.meta.hiddenHeaderContent">
           <div class="row">
@@ -32,13 +32,13 @@
 </template>
 
 <script>
-import Breadcrumb from '@/components/tools/Breadcrumb'
+// import Breadcrumb from '@/components/tools/Breadcrumb'
 
 export default {
   name: 'PageHeader',
-  components: {
-    's-breadcrumb': Breadcrumb
-  },
+  // components: {
+  //   's-breadcrumb': Breadcrumb
+  // },
   props: {
     title: {
       type: [String, Boolean],
@@ -68,13 +68,19 @@ export default {
   padding: 16px 32px 0;
   border-bottom: 1px solid #e8e8e8;
 
-  .breadcrumb {
-    margin-bottom: 16px;
-  }
-
-  .detail {
-    display: flex;
-    /*margin-bottom: 16px;*/
+    .breadcrumb {
+      margin-bottom: 16px;
+    }
+    .action .list-action {
+      span {
+        color: #1890ff;
+        margin-left:56px;
+        cursor: pointer;
+      }
+    }
+    .detail {
+      display: flex;
+      /*margin-bottom: 16px;*/
 
     .avatar {
       flex: 0 1 72px;
@@ -103,7 +109,6 @@ export default {
 
       .title {
         font-size: 20px;
-        font-weight: 500;
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         font-size: 20px;
         line-height: 28px;

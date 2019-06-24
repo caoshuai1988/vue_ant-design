@@ -1,12 +1,13 @@
 // ie polyfill
-import '@babel/polyfill'
+// import '@babel/polyfill'
 
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store/'
 import { VueAxios } from './utils/request'
-
+// 按需加载
+import './core/lazy_use'
 // mock
 import './mock'
 

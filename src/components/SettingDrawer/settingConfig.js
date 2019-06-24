@@ -3,7 +3,6 @@ import { message } from 'ant-design-vue/es'
 import themeColor from './themeColor.js'
 
 // let lessNodesAppended
-
 const colorList = [
   {
     key: '薄暮', color: '#F5222D'

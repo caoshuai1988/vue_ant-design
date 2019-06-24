@@ -65,21 +65,29 @@ export const asyncRouterMap = [
             name: 'TableListMode',
             hideChildrenInMenu: true, // 强制显示 MenuItem 而不是 SubMenu
             component: () => import('@/views/list/TableListMode'),
-            meta: { title: '列表模型', keepAlive: true, permission: ['table'], isList: true }
+            meta: { title: '常规列表', keepAlive: true, permission: ['table'], isList: true }
           },
+          {
+            path: '/list/table-list-rollUnder/:pageNo([1-9]\\d*)?',
+            name: 'TableListRollUnder',
+            hideChildrenInMenu: true, // 强制显示 MenuItem 而不是 SubMenu
+            component: () => import('@/views/list/TableListRollUnder'),
+            meta: { title: '固定列', keepAlive: true, permission: [ 'table' ], isList: true }
+          },
+
           {
             path: '/list/table-list-roll/:pageNo([1-9]\\d*)?',
             name: 'TableListRoll',
             hideChildrenInMenu: true, // 强制显示 MenuItem 而不是 SubMenu
             component: () => import('@/views/list/TableListRoll'),
-            meta: { title: '上下左右', keepAlive: true, permission: [ 'table' ], isList: true }
+            meta: { title: '固定头和列', keepAlive: true, permission: [ 'table' ], isList: true }
           },
           {
             path: '/list/table-list-tabs/:pageNo([1-9]\\d*)?',
             name: 'TableListTabs',
             hideChildrenInMenu: true, // 强制显示 MenuItem 而不是 SubMenu
             component: () => import('@/views/list/TableListTabs'),
-            meta: { title: '标签列表', keepAlive: true, permission: [ 'table' ] }
+            meta: { title: '分页签', keepAlive: true, permission: [ 'table' ] }
           }
         ]
       },

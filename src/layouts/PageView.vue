@@ -54,7 +54,7 @@
         >
           <template>
 	           <div>
-	           		<a-card class="card" style="font-size: 26px" :bordered="false" >
+	           		<a-card class="card list-set-drawer" style="font-size: 26px;"  :bordered="false"  >
 
 						      <layoutForm title="模板" >
 						        <span class="foldStyle" @click="fold(1)">
@@ -99,8 +99,7 @@
 						    </a-card>
 	           </div>
           </template>
-          <div
-            :style="{
+          <div :style="{
 		          position: 'absolute',
 		          left: 0,
 		          bottom: 0,
@@ -109,14 +108,9 @@
 		          padding: '10px 16px',
 		          background: '#fff',
 		          textAlign: 'right',
-		        }"
-          >
+		        }">
           	<a-button :style="{marginRight: '12px'}" @click="onClose" type="primary">保存 </a-button>
-            <a-button 
-              @click="onClose"
-            >
-             保存为模板 
-            </a-button>
+            <a-button @click="onClose">保存为模板</a-button>
           </div>
         </a-drawer>
       </div>
@@ -144,7 +138,7 @@
   import ScreeningTable from './listTables/ScreeningTable'
   import verticaltoggle from '@/views/newform/verticaltoggle.js'
   import Listjc from './listTables/listjc'
-  import layoutForm from '@/views/newform/layoutForm'
+  import layoutForm from '@/views/newform/LayoutForm'
 
   export default {
     name: 'PageView',
@@ -213,7 +207,7 @@
     methods: {
 //  	消失隐藏
     	fold (flag) {
-	      if (flag==1) {
+	      if (flag===1) {
 	        this.foldOne = !this.foldOne
 	        this.iconToggle = !this.iconToggle
 	      } else if (flag === 2) {
@@ -288,7 +282,7 @@
       }
     }
   }
-  /deep/ .ant-card-body{
+  .list-set-drawer .ant-card-body{
 		padding:1px !important;
 	}
   .page-menu-search {

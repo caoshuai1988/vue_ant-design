@@ -1,5 +1,5 @@
 <template>
-  <a-card :bordered="false">
+  <a-card :bordered="false" class="table-list-tabs">
     <a-tabs @change="callback" type="card">
       <template v-for="item in tabsList">
         <a-tab-pane :tab="item.tab" :key="item.key">
@@ -285,9 +285,9 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-  .ant-card-wider-padding /deep/ .ant-card-body {
+/*  .ant-card-wider-padding /deep/ .ant-card-body {
     padding: 0px !important;
-  }
+  }*/
   /deep/ .ant-tabs-bar{
   	margin-bottom:0px !important;
   	padding-top:24px !important;
@@ -296,6 +296,6 @@ export default {
   	padding-left:24px !important;
   }
   /deep/ .ant-tabs .ant-tabs-top-content, .ant-tabs .ant-tabs-bottom-content{
-  	padding:24px !important;
+  	padding:24px 32px !important;
   }
 </style>

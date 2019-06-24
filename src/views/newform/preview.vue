@@ -308,14 +308,19 @@ export default {
   mounted () {
     this.value = window.screen.availHeight - this.$refs.text.offsetHeight - 92 - 68 - 60 + 'px' // 暂时
     this.imgBox.height = window.screen.availHeight - this.$refs.text.offsetHeight - 92 - 68 - 60 + 'px' // 暂时
-    this.wordShow = this.valKey
+    this.wordShow = this.$route.params.val
   },
   methods: {
     tabSwitcher (val) {
       this.wordShow = val
     },
     backBtn () {
-      this.$emit('monitor', false)
+      this.$router.push({
+        name: 'pageSign',
+        params: {
+          scrollY: this.$route.params.scrollY
+        }
+      })
     }
   }
 

@@ -5,11 +5,11 @@
       <slot slot="action" name="action">
         <div class="list-action" v-if="isPageList">
           <template>
-            <span><i></i>刷新</span>
-            <span @click="showDrawer"><i></i>设置</span>
-            <span><i></i>回收站</span>
-            <span><i></i>业务流程</span>
-            <span><i></i>帮助</span>
+            <span><a-icon type="pie-chart" />刷新</span>
+            <span @click="showDrawer"><a-icon type="tool" />设置</span>
+            <span><a-icon type="delete" />回收站</span>
+            <span><a-icon type="snippets" />业务流程</span>
+            <span><a-icon type="question-circle" />帮助</span>
           </template>
         </div>
       </slot>

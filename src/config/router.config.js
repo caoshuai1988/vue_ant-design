@@ -154,6 +154,13 @@ export const asyncRouterMap = [
             meta: { title: '固定头和列', keepAlive: true, permission: [ 'table' ], isList: true }
           },
           {
+            path: '/list/table-list-rollUnder/:pageNo([1-9]\\d*)?',
+            name: 'TableListRollUnder',
+            hideChildrenInMenu: true, // 强制显示 MenuItem 而不是 SubMenu
+            component: () => import('@/views/list/TableListRollUnder'),
+            meta: { title: '可上下拖动', keepAlive: true, permission: [ 'table' ], isList: true }
+          },
+          {
             path: '/list/table-list-tabs/:pageNo([1-9]\\d*)?',
             name: 'TableListTabs',
             hideChildrenInMenu: true, // 强制显示 MenuItem 而不是 SubMenu

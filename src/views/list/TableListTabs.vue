@@ -163,27 +163,6 @@ export default {
         },
         { tab: '项目登记',
           key: 11
-        },
-        { tab: '科研申报',
-          key: 12
-        },
-        { tab: '计划上报',
-          key: 13
-        },
-        { tab: '在建管理',
-          key: 14
-        },
-        { tab: '项目登记',
-          key: 15
-        },
-        { tab: '科研申报',
-          key: 16
-        },
-        { tab: '计划上报',
-          key: 17
-        },
-        { tab: '在建管理',
-          key: 18
         }
       ],
       // 高级搜索 展开/关闭 false:关闭
@@ -305,8 +284,18 @@ export default {
   }
 }
 </script>
-<style lang="less">
-  .ant-card-wider-padding .ant-card-body {
-    padding: 24px !important;
+<style lang="less" scoped>
+  .ant-card-wider-padding /deep/ .ant-card-body {
+    padding: 0px !important;
+  }
+  /deep/ .ant-tabs-bar{
+  	margin-bottom:0px !important;
+  	padding-top:24px !important;
+  }
+  /deep/ .ant-tabs-nav div{
+  	padding-left:24px !important;
+  }
+  /deep/ .ant-tabs .ant-tabs-top-content, .ant-tabs .ant-tabs-bottom-content{
+  	padding:24px !important;
   }
 </style>

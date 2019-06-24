@@ -93,9 +93,9 @@ export const asyncRouterMap = [
             meta: { title: '基础表单', keepAlive: true, permission: ['form'], showbtn: true }
           },
           {
-            path: 'newform/indexa',
-            name: 'indexa',
-            component: () => import('@/views/newform/indexa'),
+            path: 'newform/popup',
+            name: 'popup',
+            component: () => import('@/views/newform/popup'),
             meta: { title: '弹出抽屉', keepAlive: true, permission: ['form'] }
           },
           {

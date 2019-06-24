@@ -1,5 +1,7 @@
 <style lang="less">
-
+.ant-tabs-nav-container{
+  margin-bottom: 0;
+}
 .page-sign-title {
   color: rgba(0, 0, 0, 0.85);
   font-size: 16px;

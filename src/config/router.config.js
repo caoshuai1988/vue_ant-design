@@ -416,18 +416,6 @@ export const asyncRouterMap = [
             name: 'ThrowRowForm',
             component: () => import('@/views/newform/ThrowRowForm'),
             meta: { title: '三列表单', keepAlive: true, permission: [ 'form' ] }
-          },
-          {
-            path: 'newform/PreviewWord',
-            name: 'PreviewWord',
-            component: () => import('@/views/newform/PreviewWord'),
-            meta: { title: '预览附件', keepAlive: true, permission: [ 'form' ] }
-          },
-          {
-            path: 'newform/preview',
-            name: 'preview',
-            component: () => import('@/views/newform/preview'),
-            meta: { title: '附件预览', keepAlive: true, permission: [ 'form' ] }
           }
         ]
       }
@@ -467,6 +455,11 @@ export const constantRouterMap = [
     ]
   },
 
+  {
+    path: '/preview',
+    name: 'preview',
+    component: () => import('@/views/newform/preview')
+  },
   {
     path: '/test',
     component: BlankLayout,

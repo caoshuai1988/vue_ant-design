@@ -17,16 +17,24 @@ export default new Vuex.Store({
     stepform
   },
   state: {
-    dataOne: 0
+    dataOne: 0,
+    formLargen: 'default' // 改变form
   },
   mutations: {
     changOne (state, type) {
       state.dataOne = type
+    },
+    changLargen (state, type) { // 改变form
+      state.formLargen = type
+      console.log(state.formLargen)
     }
   },
   actions: {
     changOneActions (context, type) {
       context.commit('changOne', type)
+    },
+    changFormLargen (context, type) { // 改变form
+      context.commit('changLargen', type)
     }
   },
   getters

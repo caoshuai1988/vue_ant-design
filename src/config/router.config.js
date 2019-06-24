@@ -78,15 +78,43 @@ export const asyncRouterMap = [
             path: '/fsxt/fsxt-base-form',
             name: 'BaseFormPage',
             component: () => import('@/views/form/BasicFormPage'),
-            meta: { title: '基础表单', showbtn: true, keepAlive: true, permission: [ 'form' ] }
+            meta: { title: '包含帮助侧栏', keepAlive: true, permission: ['form'], showbtn: true }
           },
           {
             path: '/fsxt/fsxt-advanced-form',
             name: 'StepFormPage',
-            // component: () => import('@/views/form/StepFormPage'),
-            // meta: { title: '高级带分步表单', showbtn: false, keepAlive: true, permission: ['form'] }
             component: () => import('@/views/form/advancedStepForm/index'),
-            meta: { title: '高级带分步表单', showbtn: false, showStep: true, keepAlive: false, permission: ['form'] }
+            meta: { title: '高级带分步表单', keepAlive: false, permission: ['form'], showStep: true }
+          },
+          {
+            path: '/form/newbaseform',
+            name: 'NewBaseForm',
+            component: () => import('@/views/newform/NewBaseForm'),
+            meta: { title: '基础表单', keepAlive: true, permission: ['form'], showbtn: true }
+          },
+          {
+            path: 'newform/indexa',
+            name: 'indexa',
+            component: () => import('@/views/newform/indexa'),
+            meta: { title: '弹出抽屉', keepAlive: true, permission: ['form'] }
+          },
+          {
+            path: 'newform/AdvancedForms',
+            name: 'AdvancedForms',
+            component: () => import('@/views/newform/AdvancedForms'),
+            meta: { title: '高级表单', keepAlive: true, permission: ['form'] }
+          },
+          {
+            path: 'newform/mapForm',
+            name: 'mapForm',
+            component: () => import('@/views/newform/mapForm'),
+            meta: { title: '地图表单', keepAlive: true, permission: ['form'], showbtn: true }
+          },
+          {
+            path: 'newform/ThrowRowForm',
+            name: 'ThrowRowForm',
+            component: () => import('@/views/newform/ThrowRowForm'),
+            meta: { title: '三列表单', keepAlive: true, permission: ['form'] }
           }
         ]
       },
@@ -377,45 +405,6 @@ export const asyncRouterMap = [
                 meta: { title: '权限列表', keepAlive: true }
               }
             ]
-          }
-        ]
-      },
-      // new FORM
-      {
-        path: '/newform',
-        redirect: '/newform/newbaseform',
-        component: PageView,
-        meta: { title: '表单页1', icon: 'form', permission: [ 'form' ] },
-        children: [
-          {
-            path: '/form/newbaseform',
-            name: 'NewBaseForm',
-            component: () => import('@/views/newform/NewBaseForm'),
-            meta: { title: '基础表单', keepAlive: true, permission: [ 'form' ] }
-          },
-          {
-            path: 'newform/indexa',
-            name: 'indexa',
-            component: () => import('@/views/newform/indexa'),
-            meta: { title: '弹出抽屉', keepAlive: true, permission: [ 'form' ] }
-          },
-          {
-            path: 'newform/AdvancedForms',
-            name: 'AdvancedForms',
-            component: () => import('@/views/newform/AdvancedForms'),
-            meta: { title: '高级表单', keepAlive: true, permission: [ 'form' ] }
-          },
-          {
-            path: 'newform/mapForm',
-            name: 'mapForm',
-            component: () => import('@/views/newform/mapForm'),
-            meta: { title: '地图表单', keepAlive: true, permission: [ 'form' ] }
-          },
-          {
-            path: 'newform/ThrowRowForm',
-            name: 'ThrowRowForm',
-            component: () => import('@/views/newform/ThrowRowForm'),
-            meta: { title: '三列表单', keepAlive: true, permission: [ 'form' ] }
           }
         ]
       }

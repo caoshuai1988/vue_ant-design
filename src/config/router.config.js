@@ -45,8 +45,8 @@ export const asyncRouterMap = [
       },
       // list
       {
-        path: '/list',
-        name: 'list',
+        path: '/list2',
+        name: 'list2',
         component: PageView,
         redirect: '/list/table-list',
         meta: { title: '列表页', icon: 'table', permission: [ 'table' ] },
@@ -289,7 +289,7 @@ export const asyncRouterMap = [
 
       // list
       {
-        path: '/list2',
+        path: '/list',
         name: 'list2',
         component: PageView,
         redirect: '/list/table-list',

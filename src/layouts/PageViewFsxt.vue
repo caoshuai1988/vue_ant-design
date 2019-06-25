@@ -1,18 +1,6 @@
 <style lang="less" scoped>
   .content {
     padding: 24px;
-    // margin: 24px 24px 0;
-    // width: calc(100% - (10px + 5px) * 2);
-    // .main-wrap {
-    //   width: 1200px;
-    //   height: 100%;
-    //   .main {
-    //     &.content-fix {
-    //       width: calc(1200px - 400px);
-    //     }
-    //   }
-    // }
-
     .link {
       margin-top: 16px;
       &:not(:empty) {
@@ -107,7 +95,6 @@
     }
   }
   // ant-steps-item
-
   .step-content /deep/ .ant-steps-label-vertical .ant-steps-item-title{
     padding-right: 0;
   }
@@ -246,12 +233,13 @@
           </a-tabs>
         </div>
       </div>
+      <!-- 高级带分布步骤 -->
       <div slot="step" v-if="$route.meta.showStep">
         <!-- 标题 -->
         <div class="page-title">
           <div class="item">
             <span class="label">名称：</span>
-            <span class="value">{{ name }}</span>
+            <span class="value">1000000000</span>
           </div>
           <div class="item">
             <span class="label">编码：</span>
@@ -272,15 +260,6 @@
                 <a-step v-for="(item, index) in steps" :key="item.title" :title="item.title" :class="{ active: currentStep === index, }" @click="handelStepclick(index, item.content)">
                 </a-step>
               </a-steps>
-              <!-- <div class="steps-content">{{ steps[current].content }}</div> -->
-              <!-- <div class="steps-action">
-                <a-button v-if="current < steps.length - 1" type="primary" @click="next">Next</a-button>
-                <a-button
-                  v-if="current == steps.length - 1"
-                  type="primary"
-                  @click="$message.success('Processing complete!')">Done</a-button>
-                <a-button v-if="current>0" style="margin-left: 8px" @click="prev">Previous</a-button>
-              </div> -->
             </div>
           </template>
         </div>
@@ -302,6 +281,63 @@
           </div>
         </div>
         <drawer :isVisible="isVisible" @close-drawer="closeDrawer" @show-drawer="showDrawer"/>
+      </div>
+      <!-- 相关联流程图分布表单 -->
+      <div slot="relevance" v-if="$route.meta.showRelevance">
+        <!-- 标题 -->
+        <div class="relevance">
+          <div class="relevance__name">
+            <div class="relevance__name--left">2018年韶关市翁源县江尾镇高标准农田建设项目</div>
+            <div class="relevance__name--right">
+              <a class="relevance-editor">编辑</a>
+              <a class="relevance-detial">流程详情</a>
+            </div>
+          </div>
+          <!-- 项目相关详细信息 -->
+          <div class="relevance__main">
+            <div class="item">
+              <span class="label">项目编号：</span>
+              <span class="value">1000000000</span>
+            </div>
+            <div class="item">
+              <span class="label">项目区划：</span>
+              <span class="value">韶关市翁源县</span>
+            </div>
+            <div class="item">
+              <span class="label">项目类型：</span>
+              <span class="value">高标准农田建设项目</span>
+            </div>
+            <div class="item">
+              <span class="label">立项年度：</span>
+              <span class="value">2019年</span>
+            </div>
+            <div class="item">
+              <span class="label">创建时间：</span>
+              <span class="value">20190101&nbsp;09:00</span>
+            </div>
+            <div class="item">
+              <span class="label">备注：</span>
+              <span class="value">2019年</span>
+            </div>
+          </div>
+          <!-- <div class="relevance__step"> -->
+          <div class="step-content">
+            <template>
+              <div>
+                <a-steps :current="current" size="small" labelPlacement="vertical" >
+                  <a-step v-for="(item, index) in steps" :key="item.title" :title="item.title" :class="{ active: currentStep === index, }" @click="handelStepclick(index, item.content)">
+                  </a-step>
+                </a-steps>
+              </div>
+            </template>
+          </div>
+          <div class="relevance__footer">
+            <div class="btn-wrap">
+              <a-button type="primary" style="margin-right: 8px; color:#fff;">提交</a-button>
+              <a-button type="primary" style="margin-right: 8px; color:#fff;">提交</a-button>
+            </div>
+          </div>
+        </div>
       </div>
     </page-header>
     <div class="content">

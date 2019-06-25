@@ -322,8 +322,9 @@
                     <a-table-column title="上传时间" data-index="time" key="time"/>
                     <a-table-column title="操作" key="operation">
                       <template slot-scope="text, record" >
-                        <a href style="margin-right:10px" @click.prevent="addAmplifier(record.key)">{{ record.operation.text }}</a>
+                        <a href style="margin-right:10px" @click.prevent="addAmplifier(record.key)">  {{ record.operation.text }}</a>
                         <a style="margin-right:10px">{{ record.operation.textOne }}</a>
+                        <!-- <router-link tag="a" target="_blank" :to="{path: '/preview', query: {img:item}}"></router-link> -->
                       </template>
                     </a-table-column>
                   </a-table>

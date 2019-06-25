@@ -277,8 +277,9 @@ export const asyncRouterMap = [
         }]
       },
       {
-        path: 'gap',
+        path: '/gap',
         name: 'gap',
+        redirect: '/',
         meta: { title: '---分割线---', icon: 'bulb' }
       },
 

@@ -20,8 +20,7 @@
       :width="720"
       @close="onClose"
       :visible="visible"
-      :wrapStyle="{height: 'calc(100% - 108px)',overflow: 'auto',paddingBottom: '108px'}"
-    >
+      :wrapStyle="{height: 'calc(100% - 108px)',overflow: 'auto',paddingBottom: '108px'}">
       <a-form :form="form" layout="vertical" hideRequiredMark>
         <a-row :gutter="16">
           <a-col :span="12">
@@ -260,15 +259,13 @@
       :width="640"
       @close="onCloses"
       :visible="visibles"
-      :wrapStyle="{height: 'calc(100% - 108px)',overflow: 'auto',paddingBottom: '108px'}"
-    >
+      :wrapStyle="{height: 'calc(100% - 108px)',overflow: 'auto',paddingBottom: '108px'}">
       <a-card :body-style="{padding: '0'}" :bordered="false">
         <a-form @submit="handleSubmit" :form="form">
           <a-form-item
             label="标题"
             :labelCol="{lg: {span: 6}, sm: {span: 7}}"
-            :wrapperCol="{lg: {span: 15}, sm: {span: 17} }"
-          >
+            :wrapperCol="{lg: {span: 15}, sm: {span: 17} }">
             <a-input
               v-decorator="[
                 'name',
@@ -282,8 +279,7 @@
           <a-form-item
             label="起止日期"
             :labelCol="{lg: {span: 6}, sm: {span: 7}}"
-            :wrapperCol="{lg: {span: 15}, sm: {span: 17}}"
-          >
+            :wrapperCol="{lg: {span: 15}, sm: {span: 17}}">
             <a-range-picker
               name="buildTime"
               style="width: 100%"

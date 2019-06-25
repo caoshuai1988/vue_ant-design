@@ -275,7 +275,7 @@ export default {
     },
     ...mapState({
       selectOption (state) {
-        return state.app.zoom ? state.app.zoom : '1'
+        return state.app.zoom
       }
     })
   },

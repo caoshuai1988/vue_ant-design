@@ -77,9 +77,7 @@
               <div class="module-card-grid " :key="i" v-for="(item, i) in projects">
                 <div class="card-grid">
                   <div class="grid-icon">
-                    <a-badge :count="1">
-                      <a-avatar :size="64" :icon="item.icon" />
-                    </a-badge>
+                    <a-avatar :size="64" :icon="item.icon" />
                   </div>
                   <div class="grid-caption">{{ item.caption }}</div>
                 </div>
@@ -124,10 +122,8 @@
               <a-table-column title="操作时间" data-index="datetime" key="datetime"/>
               <a-table-column title="操作" key="operation">
                 <template slot-scope="text, record">
-                  <a-badge :count="5" :numberStyle="{backgroundColor: '#199ED8'}">
-                    <a href style="margin-right:10px">{{ record.operation.transaction }}</a>
-                    <a style="margin-right:10px">{{ record.operation.delayed }}</a>
-                  </a-badge>
+                  <a href style="margin-right:10px">{{ record.operation.transaction }}</a>
+                  <a style="margin-right:10px">{{ record.operation.delayed }}</a>
                 </template>
               </a-table-column>
             </a-table>
@@ -223,12 +219,12 @@
               快捷菜单
             </span>
             <a slot="extra">设置</a>
-            <a-row :gutter="24" style="padding:5px 15px">
+            <a-row style="padding:5px 15px">
               <a-col style="padding: 2px 0" :span="12" v-for="(item, index) in teams" :key="index">
                 <div class="shortcut-menu">
                   <a-button type="primary">
                     <a-icon type="menu-fold" />
-                    菜单名称菜单名称
+                    菜单名称
                   </a-button>
                 </div>
               </a-col>
@@ -396,7 +392,7 @@ export default {
           }
         }
       ],
-      list1: { 'results': [{ 'gender': 'female', 'name': { 'title': 'mrs', 'first': 'phoebe', 'last': 'dean' }, 'email': 'phoebe.dean@example.com', 'nat': 'IE' }, { 'gender': 'male', 'name': { 'title': 'mr', 'first': 'adam', 'last': 'johansen' }, 'email': 'adam.johansen@example.com', 'nat': 'DK' }, { 'gender': 'male', 'name': { 'title': 'mr', 'first': 'ایلیا', 'last': 'رضاییان' }, 'email': 'ایلیا.رضاییان@example.com', 'nat': 'IR' }, { 'gender': 'male', 'name': { 'title': 'mr', 'first': 'طاها', 'last': 'رضایی' }, 'email': 'طاها.رضایی@example.com', 'nat': 'IR' }, { 'gender': 'male', 'name': { 'title': 'mr', 'first': 'alexander', 'last': 'gagné' }, 'email': 'alexander.gagné@example.com', 'nat': 'CA' }] }
+      list1: { 'results': [{ 'gender': 'female', 'name': { 'title': 'mrs', 'first': 'phoebe', 'last': 'dean' }, 'email': 'phoebe.dean@example.com', 'nat': 'IE' }, { 'gender': 'male', 'name': { 'title': 'mr', 'first': 'adam', 'last': 'johansen' }, 'email': 'adam.johansen@example.com', 'nat': 'DK' }, { 'gender': 'male', 'name': { 'title': 'mr', 'first': '王晓明', 'last': '张立杰' }, 'email': '565686987@qq.com', 'nat': 'IR' }, { 'gender': 'male', 'name': { 'title': 'mr', 'first': '刘欣', 'last': '王日龙' }, 'email': '9u8u98@google.com', 'nat': 'IR' }, { 'gender': 'male', 'name': { 'title': 'mr', 'first': 'alexander', 'last': '萧清松' }, 'email': 'alexander.gagné@example.com', 'nat': 'CA' }] }
     }
   },
   computed: {

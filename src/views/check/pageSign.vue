@@ -1,7 +1,4 @@
-<style lang="less">
-.ant-tabs-nav-container{
-  margin-bottom: 0;
-}
+<style lang="less" scoped>
 .page-sign-title {
   color: rgba(0, 0, 0, 0.85);
   font-size: 16px;
@@ -35,19 +32,71 @@
   color: #666;
 }
 
-.page-direction {
-  // right: @help-width;
+.card-header {
+  box-sizing: border-box;
+  // height: 56px;
+  z-index: 1;
+  padding-top: 11px;
+  width: 100%;
+  margin-bottom: 24px;
+  background-color: #fff;
+  box-shadow: 0px 0px 20px 0px rgba(129, 129, 129, 0.2);
+}
+/deep/.ant-tabs-bar {
+  margin: 0;
+  border: none !important;
+}
+/deep/.ant-tabs-nav-container{
+  margin-bottom: 0;
+}
+// 附件打包现在样式
+.table-wrap {
+  margin-bottom: 48px;
+  .title-box {
+    // height: 32px;
+    padding-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .title-des {
+      font-size: 16px;
+      color: rgba(0, 0, 0, 0.85);
+    }
+  }
+}
+
+// 地图的样式
+/* 放大生效 */
+
+.mapContent {
+  height: 100% !important;
+}
+#container {
+  width: 100%;
+  height: 640px;
+}
+.screenload {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1999;
+}
+.amplification{
+  cursor: pointer;
+  padding: 0 10px;
+}
+.page-direction{
   background: #fff;
   // min-width: 400px;
   // height: 600px;
   // min-height: 800px;
   z-index: 3;
-  .title {
+  .title{
     position: relative;
     box-sizing: border-box;
-    padding: 0 24px;
+    padding:0 24px;
     height: 56px;
-    .title-des {
+    .title-des{
       box-sizing: border-box;
       height: 56px;
       // flex: 1 1;
@@ -55,58 +104,58 @@
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
-      .help {
+      .help{
         font-size: 16px;
         color: #272727;
         margin-right: 8px;
       }
-      .detail {
+      .detail{
         font-size: 14px;
         color: #62bfff;
       }
-      .close {
+      .close{
         // position: absolute;
         // right: 24px;
         float: right;
         margin-top: 4px;
         // top: 16px;
-        &:hover {
+        &:hover{
           cursor: pointer;
         }
       }
     }
   }
-  .help-line {
+  .help-line{
     width: 100%;
     height: 0.5px;
     background: #e9e9e9;
   }
-  .content-box {
+  .content-box{
     padding: 24px;
   }
-  .content {
+  .content{
     // height: 650px;
     min-height: 300px;
     max-height: 650px;
     overflow-y: auto;
-    &::-webkit-scrollbar {
+    &::-webkit-scrollbar{
       width: 4px;
       height: 8px;
       // background-color: #F5F5F5;
     }
 
     /*定义滚动条轨道 内阴影+圆角*/
-    &::-webkit-scrollbar-track {
-      box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+    &::-webkit-scrollbar-track{
+      box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
       border-radius: 10px;
       background-color: #a5a5a5;
     }
 
     /*定义滑块 内阴影+圆角*/
-    &::-webkit-scrollbar-thumb {
-      border-radius: 5px;
-      box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
-      background-color: #ededed;
+    &::-webkit-scrollbar-thumb{
+        border-radius: 5px;
+        box-shadow: inset 0 0 5px rgba(0,0,0,0.3);
+        background-color: #EDEDED;
     }
   }
 }
@@ -171,8 +220,7 @@
       :body-style="{background:'#f0f2f5', padding: 0}"
       :bordered="false"
       class="aa"
-      ref="content"
-    >
+      ref="content">
       <a-row :gutter="24">
         <a-col :body-style="{ background:'#f0f2f5'}" :xl="num" :lg="num" :md="num" :sm="num">
           <a-affix :offsetTop="this.top">
@@ -181,8 +229,7 @@
               class="tabMar card-header"
               :animated="false"
               @tabClick="callback"
-              style="padding:8px 24px 0 24px"
-            >
+              style="padding:8px 24px 0 24px">
               <a-tab-pane key="1">
                 <span slot="tab">
                   <span>基础信息</span>
@@ -207,7 +254,7 @@
               </a-tab-pane>
             </a-tabs>
           </a-affix>
-          <a-card :body-style="{padding:'24px'}" title="基础信息" class="anchor">
+          <a-card :body-style="{padding:'24px 32px'}" title="基础信息" class="anchor">
             <div class="form-detial" style="background: #fff;">
               <detail-list title="退款申请" :col="3">
                 <detail-list-item term="取货单号">1000000000</detail-list-item>
@@ -277,7 +324,7 @@
           </div>
           <!-- 附件信息 -->
           <div style="margin-top:24px;" class="anchor">
-            <a-card :body-style="{padding: '24px', marginTop: '24px'}" title="附件信息">
+            <a-card :body-style="{padding: '24px 32px'}" title="附件信息">
               <!-- <a href="#" slot="extra">More</a> -->
               <div class="accessory-box" style="background: #fff;">
                 <div class="table-wrap">
@@ -516,11 +563,12 @@ export default {
       top: 0,
       // 当前tab标签为第几个
       activeKey: '1',
+      isShowHelp: true,
+      // num: 24,
       num: 18,
       helpNum: 6,
       lablenum: 7,
       valuenum: 17,
-      isShowHelp: true,
       labelCol: { lg: { span: 7 }, sm: { span: 7 } },
       wrapperCol: { lg: { span: 10 }, sm: { span: 10 } },
       headers: {
@@ -720,7 +768,7 @@ export default {
         height: ''
       },
       closePad: {
-        padding: '24px'
+        padding: '24px 32px;'
       }
     }
   },

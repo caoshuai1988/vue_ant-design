@@ -47,6 +47,7 @@ export default {
   margin-bottom: 24px;
   background-color: #fff;
   .flowHeader{
+    padding: 0 32px;
     width: 100%;
     height: 50px;
     line-height: 50px;
@@ -55,7 +56,7 @@ export default {
     justify-content: space-between;
     border-bottom: 1px solid #e9e9e9;
     .flowOne{
-      padding-left: 15px;
+      // padding-left: 32px;
       font-size: 20px;
       color: rgba(0, 0, 0, 85%);
       .sizeTpl{
@@ -66,7 +67,7 @@ export default {
       }
     }
     .flowTwo{
-      padding-right: 15px;
+      // padding-right: 32px;
       font-size: 18px;
       cursor:pointer;
     }
@@ -75,8 +76,7 @@ export default {
     width: 100%;
     height: 140px;
     line-height: 140px;
-    margin: auto;
-    .flowStart{}
+    // margin: auto;
     .flowImg{
       margin: 0 auto;
       display: block;

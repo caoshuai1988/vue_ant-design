@@ -11,6 +11,7 @@ const getters = {
   addRouters: state => state.permission.addRouters,
   multiTab: state => state.app.multiTab,
   layoutMode: state => state.app.layout, // cs
+  curZoom: state => state.app.zoom, // cs
   // form 表单相关的的数据
   stepForm: state => {
     return {

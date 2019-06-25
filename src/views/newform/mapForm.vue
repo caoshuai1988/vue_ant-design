@@ -5,7 +5,7 @@
         <span slot="tab" >
           <span>基础信息</span>
           <div class="checkIcon">
-            <a-icon type="check" />
+            <a-icon type="check"/>
           </div>
         </span>
         <baseFormContent></baseFormContent>
@@ -14,7 +14,7 @@
         <span slot="tab">
           <span >地理信息</span>
           <div class="checkIcon">
-            <a-icon type="check" />
+            <a-icon type="check"/>
           </div>
         </span>
         <MapModule></MapModule>

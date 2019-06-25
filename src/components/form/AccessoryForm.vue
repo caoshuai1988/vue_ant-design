@@ -1,5 +1,5 @@
 <template>
-  <a-card :body-style="{padding: '24px'}">
+  <a-card :body-style="{padding: '24px 32px'}">
     <a-form-item v-bind="formItemLayout" class="boxBoder">
       <div>
         项目可研报告

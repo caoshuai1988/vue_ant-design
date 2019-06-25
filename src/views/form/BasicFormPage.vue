@@ -1,4 +1,4 @@
-<style lang="less">
+<style lang="less" scoped>
   .title-name {
     font-size: 18px;
     margin-left: 200px ;
@@ -101,20 +101,14 @@
   .form-body /deep/.ant-form{
     background: #fff;
   }
-  .form-body /deep/.ant-card-body {
-    background:'#f0f2f5';
-  }
-  .content /deep/ .ant-card-wider-padding .ant-card-body{
-    padding: 0
-  }
 
 </style>
 <template>
-  <a-card :body-style="{background:'#f0f2f5'}" class="form-body" :bordered="false">
+  <a-card :body-style="{background:'#f0f2f5', padding:0}" class="form-body" :bordered="false">
 
     <a-row :gutter="24">
-      <a-col :body-style="{padding: '24px', background:'#fff'}" :xl="num" :lg="num" :md="num" :sm="num" >
-        <div style="background: #fff; padding: 24px">
+      <a-col :body-style="{background:'#fff'}" :xl="num" :lg="num" :md="num" :sm="num" >
+        <div style="background: #fff; padding: 24px 32px">
           <a-form @submit="handleSubmit" :form="form" >
             <!-- <h1 class="title-name">标题组</h1> -->
             <!-- :colon="false"
@@ -243,6 +237,7 @@
             <!-- <h1 class="title-name">组标题</h1> -->
             <!-- 上传附件 -->
             <a-form-item
+              style="margin-bottom:32px"
               label="上传附件"
               help="支持扩展名：.rar .zip .doc .docx .pdf .jpg..."
               :labelCol="labelCol"

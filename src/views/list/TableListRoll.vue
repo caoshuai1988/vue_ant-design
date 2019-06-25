@@ -1,4 +1,5 @@
 <template>
+	<div ref="content">
   <a-card :bordered="false">
     <div class="table-page-search-wrapper">
       <a-form layout="inline">
@@ -62,12 +63,13 @@
         </a-row>
       </a-form>
     </div>
-    <div class="table-operator">
+    <div class="table-operator" >
       <a-button type="primary" icon="plus" @click="$refs.createModal.add()">新建</a-button>
       <a-button>批量操作</a-button>
       <a-button>...</a-button>
     </div>
     <s-table
+    	style="min-height:400px;"
       ref="table"
       rowKey="key"
       :columns="columns"
@@ -88,14 +90,24 @@
           <a @click="handleSub(record)">订阅报警</a>
         </template>
       </span>
+     
     </s-table>
+	<template>
+	  <div style="text-align: right;margin-top:30px;">
+	    <a-pagination showSizeChanger :pageSize.sync="pageSize" @showSizeChange="onShowSizeChange" :total="500" v-model="current"/>
+	  </div>
+	</template>
     <create-form ref="createModal" @ok="handleOk"/>
   </a-card>
+  
+  </div>
 </template>
 <script>
+import './jquery-1.7.2.js'
 import { STable } from '@/components'
 import CreateForm from './modules/CreateForm'
 import { getRoleList, getServiceList, getTestList } from '@/api/manage'
+
 
 const statusMap = {
   0: {
@@ -132,8 +144,8 @@ export default {
         {
           title: '规则编号',
           dataIndex: 'no',
-          fixed: 'left',
-          width: 100
+          width: 100,
+          fixed: 'left' 
         },
         {
           title: '描述',
@@ -164,8 +176,8 @@ export default {
         {
           title: '操作',
           dataIndex: 'action',
-          width: 150,
           fixed: 'right',
+          width: 150,
           scopedSlots: { customRender: 'action' }
         }
       ],
@@ -195,8 +207,11 @@ export default {
           onChange: this.onSelectChange
         }
       },
+      pageSize: 20,
+      current:4,
       optionAlertShow: false,
-      //scrollDisabled: false,
+      scrollDisabled: false,
+      current: 1,
       scroll: {
         x:2000,
         y:350
@@ -220,29 +235,23 @@ export default {
     })
   },
   methods: {
+  	//根据浏览器缩小改变样式
     changeBrowser () {
-      if (document.documentElement['clientWidth'] < 1200 && document.documentElement['clientHeight'] < 600) {
-        this.scroll = {
-          x: 1200,
-          y: 250
-        }
-      } else if (document.documentElement['clientWidth'] > 1200 && document.documentElement['clientHeight'] > 600) {
-        this.scroll = {
-          x: 1200,
-          y: 250
-        }
-      }else if (document.documentElement['clientHeight'] < 600) {
-        this.scroll = {
+	let oHeight=document.documentElement['clientHeight']-510
+	$('.ant-table-body').css({"height":'oHeight'});
+	$('.table-wrapper').css({"minHeight":'0px'});
+	this.scroll = {
+	  x: 2000,
+      y: document.documentElement['clientHeight']-510
+   }
+	if (document.documentElement['clientHeight'] < 710){
+		this.scroll = {
+		  x: 2000,
           y: 200
         }
-      } else if (document.documentElement['clientWidth'] < 1200) {
-        // debugger
-        this.scroll = {
-          x: 2000
-        }
-      } else {
+	}
 
-      }
+
     },
     // 收起/展开
     toggleAdvanced () {
@@ -268,12 +277,12 @@ export default {
       } else {
         this.$message.error(`${record.no} 订阅失败，规则已关闭`)
       }
-    }
+    },
+ 	onShowSizeChange(current, pageSize) {
+    	console.log(current, pageSize);
+  	}
   }
 }
 </script>
 <style lang="less">
-  .ant-card-wider-padding .ant-card-body {
-    padding: 24px !important;
-  }
 </style>

@@ -1,99 +1,98 @@
-
 <style lang="less" scoped>
-.content {
-  padding: 24px;
-  // margin: 24px 24px 0;
-  // width: calc(100% - (10px + 5px) * 2);
-  // .main-wrap {
-  //   width: 1200px;
-  //   height: 100%;
-  //   .main {
-  //     &.content-fix {
-  //       width: calc(1200px - 400px);
-  //     }
-  //   }
-  // }
+  .content {
+    padding: 24px;
+    // margin: 24px 24px 0;
+    // width: calc(100% - (10px + 5px) * 2);
+    // .main-wrap {
+    //   width: 1200px;
+    //   height: 100%;
+    //   .main {
+    //     &.content-fix {
+    //       width: calc(1200px - 400px);
+    //     }
+    //   }
+    // }
 
-  .link {
-    margin-top: 16px;
-    &:not(:empty) {
-      margin-bottom: 16px;
-    }
-    a {
-      margin-right: 32px;
-      height: 24px;
-      line-height: 24px;
-      display: inline-block;
-      i {
-        font-size: 24px;
-        margin-right: 8px;
-        vertical-align: middle;
+    .link {
+      margin-top: 16px;
+      &:not(:empty) {
+        margin-bottom: 16px;
       }
-      span {
+      a {
+        margin-right: 32px;
         height: 24px;
         line-height: 24px;
         display: inline-block;
-        vertical-align: middle;
+        i {
+          font-size: 24px;
+          margin-right: 8px;
+          vertical-align: middle;
+        }
+        span {
+          height: 24px;
+          line-height: 24px;
+          display: inline-block;
+          vertical-align: middle;
+        }
       }
     }
   }
-}
-.page-menu-search {
-  text-align: center;
-  margin-bottom: 16px;
-}
-.page-menu-tabs {
-  margin-top: 48px;
-}
-
-.extra-img {
-  margin-top: -60px;
-  text-align: center;
-  width: 195px;
-
-  img {
-    width: 100%;
-  }
-}
-
-.mobile {
-  .extra-img {
-    margin-top: 0;
+  .page-menu-search {
     text-align: center;
-    width: 96px;
+    margin-bottom: 16px;
+  }
+  .page-menu-tabs {
+    margin-top: 48px;
+  }
+
+  .extra-img {
+    margin-top: -60px;
+    text-align: center;
+    width: 195px;
 
     img {
       width: 100%;
     }
   }
-}
-.page-title {
-  width: 100%;
-  padding-top: 16px;
-  font-size: 14px;
-  // display: flex;
-  // justify-content: space-between;
-  overflow: hidden;
-  .item {
-    margin-right: 32px;
-    float: left;
+
+  .mobile {
+    .extra-img {
+      margin-top: 0;
+      text-align: center;
+      width: 96px;
+
+      img {
+        width: 100%;
+      }
+    }
   }
-  .label {
-    color: rgba(0, 0, 0, 0.85);
+  .page-title {
+    width: 100%;
+    padding-top: 16px;
+    font-size: 14px;
+    // display: flex;
+    // justify-content: space-between;
+    overflow: hidden;
+    .item {
+      margin-right: 32px;
+      float: left;
+    }
+    .label {
+      color: rgba(0, 0, 0, 0.85);
+    }
+    .value {
+      color: rgba(0, 0, 0, 0.65);
+    }
+    .editor,
+    .detial {
+      cursor: pointer;
+    }
   }
-  .value {
-    color: rgba(0, 0, 0, 0.65);
-  }
-  .editor,
-  .detial {
-    cursor: pointer;
-  }
-}
-.step-content{
-  padding-top: 56px;
-  padding-left: 10%;
-  padding-right: 10%;
-  .steps-content {
+  .step-content{
+    padding-top: 56px;
+    padding-left: 10%;
+    padding-right: 10%;
+    .steps-content {
       margin-top: 16px;
       border: 1px dashed #e9e9e9;
       border-radius: 6px;
@@ -106,104 +105,104 @@
     .steps-action {
       margin-top: 24px;
     }
-}
-// ant-steps-item
+  }
+  // ant-steps-item
 
-.step-content /deep/ .ant-steps-label-vertical .ant-steps-item-title{
-  padding-right: 0;
-}
-.step-content /deep/ .ant-steps-small .ant-steps-item-title{
-  line-height: 16px;
-  padding: 16px;
-}
-.ant-steps-item-title{
-  &:hover{
-    color: #1890ff;
+  .step-content /deep/ .ant-steps-label-vertical .ant-steps-item-title{
+    padding-right: 0;
   }
-}
-
-// progress 字体透明度
-.step-content /deep/ .ant-steps-item-process > .ant-steps-item-content > .ant-steps-item-title{
-  color: rgba(0, 0, 0, 0.65);
-  &:hover{
-    color: #1890ff;
+  .step-content /deep/ .ant-steps-small .ant-steps-item-title{
+    line-height: 16px;
+    padding: 16px;
   }
-}
-// progress 字体透明度
-.step-content /deep/ .ant-steps-item-finish > .ant-steps-item-content > .ant-steps-item-title{
-  &:hover{
-    color: #1890ff;
-  }
-}
-.step-content /deep/.ant-steps-label-vertical .ant-steps-item{
-  cursor: pointer;
-  // progress
-  &.ant-steps-item-process .ant-steps-item-icon {
-    background: #fff;
-    .ant-steps-icon{
-      color: #1890ff;
-    }
-  }
-  &.active{
-    .ant-steps-item-title{
-      // position: relative;
-      &::after{
-        contain: '';
-        display: inline-block;
-        width: 100%;
-        height: 2px;
-        background: #1890ff;
-        position: absolute;
-        top: 46px;
-        left: 0;
-      }
-    }
-    .ant-steps-item-content > .ant-steps-item-title{
-      color: #1890ff;
-    }
-    .ant-steps-item-icon{
-      background: #1890ff;
-      .ant-steps-icon{
-        color: #fff;
-      }
-      .anticon svg{
-        color: #fff;
-      }
-    }
-  }
-}
-
-.step-content /deep/ .ant-steps-small .ant-steps-item-tail{
-  top:12px;
-}
-.submit{
-  padding-top: 48px;
-  display: flex;
-  justify-content: flex-end;
-}
-
-.btn-wrap{
-  .sign{
-    color: #d9d9d9;
-    padding: 0 8px;
-    font-size: 18px;
-  }
-  .checking{
-    color:#F5222D;
-  }
-  .btn{
-    &:focus{
-      .checking{
-        color: #40a9ff;
-      }
-    }
+  .ant-steps-item-title{
     &:hover{
-      .checking{
-        color: #40a9ff;
+      color: #1890ff;
+    }
+  }
+
+  // progress 字体透明度
+  .step-content /deep/ .ant-steps-item-process > .ant-steps-item-content > .ant-steps-item-title{
+    color: rgba(0, 0, 0, 0.65);
+    &:hover{
+      color: #1890ff;
+    }
+  }
+  // progress 字体透明度
+  .step-content /deep/ .ant-steps-item-finish > .ant-steps-item-content > .ant-steps-item-title{
+    &:hover{
+      color: #1890ff;
+    }
+  }
+  .step-content /deep/.ant-steps-label-vertical .ant-steps-item{
+    cursor: pointer;
+    // progress
+    &.ant-steps-item-process .ant-steps-item-icon {
+      background: #fff;
+      .ant-steps-icon{
+        color: #1890ff;
+      }
+    }
+    &.active{
+      .ant-steps-item-title{
+        // position: relative;
+        &::after{
+          contain: '';
+          display: inline-block;
+          width: 100%;
+          height: 2px;
+          background: #1890ff;
+          position: absolute;
+          top: 46px;
+          left: 0;
+        }
+      }
+      .ant-steps-item-content > .ant-steps-item-title{
+        color: #1890ff;
+      }
+      .ant-steps-item-icon{
+        background: #1890ff;
+        .ant-steps-icon{
+          color: #fff !important;
+        }
+        .anticon svg{
+          color: #fff;
+        }
       }
     }
   }
-}
+
+  .step-content /deep/ .ant-steps-small .ant-steps-item-tail{
+    top:12px;
+  }
+  .submit{
+    padding-top: 48px;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .btn-wrap{
+    .sign{
+      color: #d9d9d9;
+      padding: 0 8px;
+      font-size: 18px;
+    }
+    .checking{
+      color:#F5222D;
+    }
+    .btn{
+      &:focus{
+        .checking{
+          color: #40a9ff;
+        }
+      }
+      &:hover{
+        .checking{
+          color: #40a9ff;
+        }
+      }
+    }
+  }
 </style>
 <template>
   <div :style="!$route.meta.hiddenHeaderContent ? 'margin: -24px -24px 0px;' : null">
@@ -262,8 +261,8 @@
             <span class="label">录入日期：</span>
             <span class="value">{{ date }}</span>
           </div>
-          <span class="item editor" style="color: #1890ff;">编辑</span>
-          <span class="item detial" style="color: #1890ff;">流程详情</span>
+          <a class="item editor">编辑</a>
+          <a class="item detial">流程详情</a>
         </div>
         <!-- 高级带分布步骤 -->
         <div class="step-content">

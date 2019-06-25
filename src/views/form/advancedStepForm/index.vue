@@ -1,5 +1,5 @@
 <template>
-  <a-card :bordered="false">
+  <a-card :bordered="false" :body-style="{ padding:0}">
     <div class="content">
       <!-- <keep-alive>
         <component :is="aaa"></component>

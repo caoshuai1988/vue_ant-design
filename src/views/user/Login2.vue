@@ -90,7 +90,7 @@
                     <div><img src="~@/assets/CA.png"></div>
                     <div>
                       <span>请插入您的CA密钥后<br/>
-                      点击下方检测</span>
+                        点击下方检测</span>
                     </div>
                     <a-form-item>
                       <a-button

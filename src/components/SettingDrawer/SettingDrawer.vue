@@ -246,6 +246,7 @@
 </template>
 
 <script>
+import { triggerWindowResizeEvent } from '@/utils/util'
 import { DetailList } from '@/components'
 import SettingItem from './SettingItem'
 import config from '@/config/defaultSettings'
@@ -273,7 +274,9 @@ export default {
       return this.$store.state.app.settingDrawer
     },
     ...mapState({
-      selectOption: state => state.app.zoom
+      selectOption (state) {
+        return state.app.zoom ? state.app.zoom : '1'
+      }
     })
   },
   mounted () {
@@ -288,6 +291,7 @@ export default {
     },
     handeCurZoom (zoom) {
       this.$store.dispatch('ToggleZoom', zoom)
+      triggerWindowResizeEvent()
     },
     toggle () {
       this.$store.dispatch('ToggleSetDrawer', false)

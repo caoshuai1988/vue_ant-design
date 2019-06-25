@@ -39,6 +39,7 @@
 </template>
 
 <script>
+  import Vue from 'vue'
   import UserMenu from '../tools/UserMenu'
   import SMenu from '../Menu/'
   import Logo from '../tools/Logo'
@@ -112,7 +113,12 @@
         }
       },
       getAutoMenuWidth() {
-        this.menuWidth = document.body.clientWidth-500
+       if( Vue.ls.get('DEFAULT_CONTENT_WIDTH_TYPE')==='Fixed'){
+         this.menuWidth = 835
+       }else{
+         this.menuWidth = document.body.clientWidth-500
+       }
+
       },
       toggle() {
         this.$emit('toggle')

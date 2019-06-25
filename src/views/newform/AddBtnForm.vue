@@ -6,8 +6,7 @@
     :visible="visible"
     :confirmLoading="confirmLoading"
     @ok="handleSubmit"
-    @cancel="handleCancel"
-  >
+    @cancel="handleCancel">
     <a-spin :spinning="confirmLoading">
       <span class="err-div">
         <a-alert

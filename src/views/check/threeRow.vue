@@ -1,4 +1,4 @@
-<style lang="less">
+<style lang="less" scoped>
 
   .three-row-title {
     color: rgba(0,0,0,.85);
@@ -108,19 +108,13 @@
       }
     }
   }
-  .form-detial /deep/.ant-card-wider-padding .ant-card-body{
-    padding: 0;
-  }
-  .form-detial /deep/ .ant-card .ant-card-body {
-    padding: 0;
-  }
 
 </style>
 <template>
   <a-card :body-style="{background:'#f0f2f5', padding: 0}" :bordered="false">
     <a-row :gutter="24">
       <a-col :body-style="{ background:'#fff'}" :xl="num" :lg="num" :md="num" :sm="num" >
-        <div class="form-detial" style="background: #fff; padding: 24px">
+        <div class="form-detial" style="background: #fff;">
           <a-card :bordered="false">
             <detail-list title="退款申请" :col="3">
               <detail-list-item term="取货单号">1000000000</detail-list-item>
@@ -271,11 +265,12 @@ export default {
   },
   data () {
     return {
-      num: 18,
+      isShowHelp: false,
+      num: 24,
+      // num: 18,
       helpNum: 6,
       lablenum: 7,
       valuenum: 17,
-      isShowHelp: true,
       labelCol: { lg: { span: 7 }, sm: { span: 7 } },
       wrapperCol: { lg: { span: 10 }, sm: { span: 10 } },
       headers: {

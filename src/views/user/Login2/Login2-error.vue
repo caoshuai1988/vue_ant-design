@@ -83,7 +83,7 @@
                       :disabled="state.loginBtn"
                     >登录</a-button>
                   </a-form-item>
-                  <div class="login-tips" v-if="isError">
+                  <div class="login-tips">
                     <span>用户名或密码错误！</span>
                   </div>
                 </a-tab-pane>

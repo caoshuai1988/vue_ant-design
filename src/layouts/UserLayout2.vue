@@ -5,7 +5,7 @@
         <a-row>
           <a-col :span="23" :offset="1">
             <img src="~@/assets/fslogo.png" alt="logo">
-            <span class="title">富深新平台规范模板</span>
+            <span class="title">富深新平台模板</span>
           </a-col>
         </a-row>
       </div>
@@ -13,7 +13,7 @@
       <route-view></route-view>
 
       <div class="footer">
-        <span>关于我们&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;版权所有：江苏富深协通科技股份有限公司&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;技术支持：0519-86612998</span>
+        <span><a href="" target="_blank">关于我们</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;版权所有：江苏富深协通科技股份有限公司&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;技术支持：0519-86612998</span>
       </div>
     </div>
   </div>
@@ -88,6 +88,13 @@ export default {
         height: 14px;
         line-height: 14px;
         color: rgba(0,0,0,0.45);
+        a {
+          text-decoration: none;
+          color: rgba(0,0,0,0.45);
+          &:hover {
+            color: #1890ff;
+          }
+        }
       }
     }
   }

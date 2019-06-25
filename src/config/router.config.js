@@ -36,7 +36,27 @@ export const asyncRouterMap = [
           {
             path: '/user/login2',
             name: 'login2',
-            meta: { title: '登陆模板2', target: '_blank' }
+            meta: { title: '登陆模板2', target: '_blank' },
+            children: [
+              // 登陆模板2-1
+              {
+                path: '/user/login2/base',
+                name: 'login2Base',
+                meta: { title: '2账号密码登录-默认页', target: '_blank' }
+              },
+              // 登陆模板2-2
+              {
+                path: '/user/login2/error',
+                name: 'login2Error',
+                meta: { title: '2账号密码登录-错误提示页', target: '_blank' }
+              },
+              // 登陆模板2-3
+              {
+                path: '/user/login2/drag',
+                name: 'login2Drag',
+                meta: { title: '2账号密码登录-出现滑块页', target: '_blank' }
+              },
+            ]
           },
           // 登陆模板3
           {
@@ -638,16 +658,70 @@ export const constantRouterMap = [
       }
     ]
   },
+  // {
+  //   path: '/user',
+  //   component: UserLayout2,
+  //   redirect: '/user/login2',
+  //   hidden: true,
+  //   children: [
+  //     {
+  //       path: 'login2',
+  //       name: 'login2',
+  //       component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login2')
+  //     },
+  //     {
+  //       path: 'recover',
+  //       name: 'recover',
+  //       component: () => import(/* webpackChunkName: "user" */ '@/views/user/Recover')
+  //     }
+  //   ]
+  // },
   {
     path: '/user',
     component: UserLayout2,
-    redirect: '/user/login2',
+    redirect: '/user/login2/base',
     hidden: true,
     children: [
       {
-        path: 'login2',
-        name: 'login2',
-        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login2')
+        path: 'login2/base',
+        name: 'login2Base',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login2/Login2-base')
+      },
+      {
+        path: 'recover',
+        name: 'recover',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Recover')
+      }
+    ]
+  },
+  {
+    path: '/user',
+    component: UserLayout2,
+    redirect: '/user/login2/error',
+    hidden: true,
+    children: [
+      {
+        path: 'login2/error',
+        name: 'login2Error',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login2/Login2-error')
+      },
+      {
+        path: 'recover',
+        name: 'recover',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Recover')
+      }
+    ]
+  },
+  {
+    path: '/user',
+    component: UserLayout2,
+    redirect: '/user/login2/drag',
+    hidden: true,
+    children: [
+      {
+        path: 'login2/drag',
+        name: 'login2Drag',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login2/Login2-drag')
       },
       {
         path: 'recover',

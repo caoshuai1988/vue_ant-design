@@ -20,7 +20,7 @@
               placeholder="账户"
               v-decorator="[
                 'username',
-                {rules: [{ required: true, message: '请输入帐号' }, { validator: handleUsernameOrEmail }], validateTrigger: 'change'}
+                {rules: [{ required: true, message: ' ' }, { validator: handleUsernameOrEmail }], validateTrigger: 'change'}
               ]"
             >
               <a-icon slot="prefix" type="user" :style="{ color: 'rgba(0,0,0,.25)' }"/>
@@ -35,7 +35,7 @@
               placeholder="密码"
               v-decorator="[
                 'password',
-                {rules: [{ required: true, message: '请输入密码' }], validateTrigger: 'blur'}
+                {rules: [{ required: true, message: ' ' }], validateTrigger: 'blur'}
               ]"
             >
               <a-icon slot="prefix" type="lock" :style="{ color: 'rgba(0,0,0,.25)' }"/>
@@ -65,8 +65,8 @@
           <div class="ca-uninstall" v-if="!isPassCA">
             <div><img src="~@/assets/CA.png"></div>
             <div>
-              <span>请插入您的CA密钥后<br/>
-                点击下方检测</span>
+              <p>请插入您的CA密钥后</p>
+              <p>点击下方检测</p>
             </div>
             <a-form-item>
               <a-button
@@ -76,13 +76,11 @@
                 @click="testCA"
                 :loading="state.testBtn"
                 :disabled="state.testBtn"
-                style="margin-bottom: 40px;"
-              >检测</a-button></a-form-item>
+              >检测</a-button>
+            </a-form-item>
           </div>
           <div class="ca-install" v-else>
-            <a-form-item>
-              <p><span>检测通过，请输入登录密码</span></p>
-            </a-form-item>
+            <a-form-item>检测通过，请输入登录密码</a-form-item>
             <a-form-item>
               <a-input
                 size="large"
@@ -90,13 +88,13 @@
                 autocomplete="false"
                 placeholder="密码"
                 v-decorator="[
-                  'caPassword',
-                  {rules: [{ required: true, message: '请输入登录密码' }], validateTrigger: 'blur'}
-                ]">
+                          'caPassword',
+                          {rules: [{ required: true, message: '请输入登录密码' }], validateTrigger: 'blur'}
+                        ]">
                 <a-icon slot="prefix" type="lock" :style="{ color: 'rgba(0,0,0,.25)' }"/>
               </a-input>
             </a-form-item>
-            <a-form-item style="margin-bottom: 40px">
+            <a-form-item class="login-operation">
               <router-link
                 :to="{ name: 'recover', params: { user: 'aaa'} }"
                 class="forge-password"
@@ -291,7 +289,7 @@ export default {
 <style lang="less" scoped>
   .main {
     #formLogin {
-      height: 340px;
+      /*height: 340px;*/
       .ant-form-item {
         margin-bottom: 24px;
       }
@@ -334,35 +332,34 @@ export default {
           }
         }
       }
-
       .ca-uninstall {
-        margin-top: 32px;
+        /*margin-top: 32px;*/
         text-align: center;
         div:first-child {
           margin-bottom: 24px;
           img {
-            width: 80px;
-            height: 80px;
+            width: 64px;
+            height: 64px;
           }
         }
         div:nth-of-type(2){
           height: 44px;
           font-size: 16px;
-          color: rgba(0,0,0,0.85);
+          color: rgba(0,0,0,0.65);
           margin-bottom: 32px;
+          p {
+            margin-bottom: 0;
+          }
         }
         div:last-child   {
           margin-bottom: 40px;
         }
       }
       .ca-install {
-        margin-top: 24px;
+        /*margin-top: 24px;*/
         div:first-child {
           font-size: 16px;
-          color: rgba(0,0,0,0.85);
-          p {
-            margin-bottom: 0;
-          }
+          color: rgba(0,0,0,0.65);
         }
       }
     }

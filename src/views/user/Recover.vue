@@ -1,182 +1,185 @@
 <template>
   <div class="main">
-    <div class="user-layout-recover">
-      <a-row>
-        <a-col :span="22" :offset="1" class="container">
-          <h3><span>找回密码</span></h3>
-          <a-steps progressDot :current="current">
-            <a-step title="填写用户名" description="" />
-            <a-step title="验证身份" description="" />
-            <a-step title="设置新密码" description="" />
-            <a-step title="完成" description="" />
-          </a-steps>
-          <div class="content">
-            <a-form ref="formRecover" :form="form" id="formRecover" v-if="current==0">
-              <a-form-item
-                label="用户名："
-                :label-col="{ span: 6 }"
-                :wrapper-col="{ span: 12 }">
-                <a-input
-                  size="large"
-                  type="text"
-                  placeholder="用户名/手机号码"
-                  v-decorator="[
-                    'username',
-                    {rules: [{ message: '请输入用户名/手机号码' }], validateTrigger: 'change'}
-                  ]"
-                >
-                </a-input>
-              </a-form-item>
-              <a-form-item
-                class="captchaItem"
-                label="验证码："
-                :label-col="{ span: 6 }"
-                :wrapper-col="{ span: 12 }">
-                <a-row :gutter="8">
-                  <a-col class="gutter-row" :span="16">
-                    <a-form-item>
-                      <a-input size="large" type="text" placeholder="验证码" v-decorator="['captcha', {rules: [{ message: '请输入验证码' }], validateTrigger: 'blur'}]">
-                      </a-input>
-                    </a-form-item>
-                  </a-col>
-                  <a-col class="gutter-row" :span="8">
-                    <a-button
-                      class="getCaptcha"
-                      size="large"
-                      :disabled="state.smsSendBtn"
-                      @click.stop.prevent="getCaptcha"
-                      v-text="!state.smsSendBtn && '获取验证码'||(state.time+' s')"></a-button>
-                  </a-col>
-                </a-row>
-              </a-form-item>
-              <a-form-item>
-                <a-row>
-                  <a-col :span="12" :offset="6">
-                    <a-button
-                      style="width: 100%"
-                      size="large"
-                      type="primary"
-                      htmlType="submit"
-                      class="recover-button"
-                      :loading="recoverBtn"
-                      @click.stop.prevent="nextStep"
-                      :disabled="recoverBtn">下一步
-                    </a-button>
-                  </a-col>
-                </a-row>
-                <!--        <router-link class="login" :to="{ name: 'login' }">使用已有账户登录</router-link>-->
-              </a-form-item>
+    <div class="recover-layout">
+      <div class="container">
+        <h3><span>找回密码</span></h3>
+        <a-steps :current="current">
+          <a-step title="填写用户名" description="" />
+          <a-step title="验证身份" description="" />
+          <a-step title="设置新密码" description="" />
+          <a-step title="完成" description="" />
+        </a-steps>
+        <div class="content">
+          <a-form ref="formRecover" :form="form" id="formRecover" v-if="current==0">
+            <a-form-item
+              label="用户名："
+              :label-col="{ span: 4 }"
+              :wrapper-col="{ span: 12 }">
+              <a-input
+                size="large"
+                type="text"
+                placeholder="用户名/手机号码"
+                v-decorator="[
+                  'username',
+                  {rules: [{ message: '请输入用户名/手机号码' }], validateTrigger: 'change'}
+                ]"
+              >
+              </a-input>
+            </a-form-item>
+            <a-form-item
+              class="imgCaptchaItem"
+              label="验证码："
+              :label-col="{ span: 4 }"
+              :wrapper-col="{ span: 12 }">
+              <a-row :gutter="8">
+                <a-col class="gutter-row" :span="16">
+                  <a-form-item>
+                    <a-input size="large" type="text" placeholder="验证码" v-decorator="['captcha', {rules: [{ message: '请输入验证码' }], validateTrigger: 'blur'}]">
+                    </a-input>
+                  </a-form-item>
+                </a-col>
+                <a-col class="gutter-row" :span="8">
+                  <div class="code" @click="refreshCode">
+                    <s-identify :identifyCode="identifyCode"></s-identify>
+                  </div>
+                </a-col>
+              </a-row>
+            </a-form-item>
+            <a-form-item>
+              <a-row>
+                <a-col :span="12" :offset="4">
+                  <a-button
+                    style="width: 100%"
+                    size="large"
+                    type="primary"
+                    htmlType="submit"
+                    class="recover-button"
+                    :loading="recoverBtn"
+                    @click.stop.prevent="nextStep"
+                    :disabled="recoverBtn">下一步
+                  </a-button>
+                </a-col>
+              </a-row>
+              <!--        <router-link class="login" :to="{ name: 'login' }">使用已有账户登录</router-link>-->
+            </a-form-item>
 
-            </a-form>
-            <a-form v-if="current==1">
-              <div class="phoneItem">本账号绑定的手机号码是：<span>*******7888</span></div>
-              <a-form-item
-                class="captchaItem"
-                label="短信验证码："
-                :label-col="{ span: 6 }"
-                :wrapper-col="{ span: 12 }">
-                <a-row :gutter="8">
-                  <a-col class="gutter-row" :span="16">
-                    <a-form-item>
-                      <a-input size="large" type="text" placeholder="短信验证码" v-decorator="['captcha', {rules: [{ message: '请输入验证码' }], validateTrigger: 'blur'}]">
-                      </a-input>
-                    </a-form-item>
-                  </a-col>
-                  <a-col class="gutter-row" :span="8">
-                    <a-button
-                      class="getCaptcha"
-                      size="large"
-                      :disabled="state.smsSendBtn"
-                      @click.stop.prevent="getCaptcha"
-                      v-text="!state.smsSendBtn && '发送验证码'||(state.time+' s')"></a-button>
-                  </a-col>
-                </a-row>
-              </a-form-item>
-              <a-form-item>
-                <a-row>
-                  <a-col :span="12" :offset="6">
-                    <a-button
-                      style="width: 100%"
-                      size="large"
-                      type="primary"
-                      htmlType="submit"
-                      class="recover-button"
-                      :loading="recoverBtn"
-                      @click.stop.prevent="nextStep"
-                      :disabled="recoverBtn">下一步
-                    </a-button>
-                  </a-col>
-                </a-row>
-              </a-form-item>
-            </a-form>
-            <a-form v-if="current==2">
-              <a-form-item
-                label="设置密码："
-                :label-col="{ span: 6 }"
-                :wrapper-col="{ span: 12 }">
-                <a-input
-                  size="large"
-                  type="password"
-                  @click="handlePasswordInputClick"
-                  autocomplete="false"
-                  placeholder="请设置新的密码"
-                  v-decorator="['password', {rules: [{ required: true, message: '至少6位密码，区分大小写'}, { validator: this.handlePasswordLevel }], validateTrigger: ['change', 'blur']}]"
-                ></a-input>
-              </a-form-item>
-              <a-form-item
-                label="确认密码："
-                :label-col="{ span: 6 }"
-                :wrapper-col="{ span: 12 }">
-                <a-input
-                  size="large"
-                  type="password"
-                  autocomplete="false"
-                  placeholder="再次确认密码"
-                  v-decorator="['password2', {rules: [{ required: true, message: '至少6位密码，区分大小写' }, { validator: this.handlePasswordCheck }], validateTrigger: ['change', 'blur']}]"
-                ></a-input>
-              </a-form-item>
-              <a-form-item>
-                <a-row>
-                  <a-col :span="12" :offset="6">
-                    <a-button
-                      style="width: 100%"
-                      size="large"
-                      type="primary"
-                      htmlType="submit"
-                      class="recover-button"
-                      :loading="recoverBtn"
-                      @click.stop.prevent="nextStep"
-                      :disabled="recoverBtn">提交
-                    </a-button>
-                  </a-col>
-                </a-row>
-              </a-form-item>
-            </a-form>
-            <a-form v-if="current==3">
-              <a-form-item class="resetSuccess">
-                <p><img src="~@/assets/ok.png"></p>
-                <p><span>密码重置成功</span></p>
-              </a-form-item>
-              <a-form-item>
-                <a-row>
-                  <a-col :span="12" :offset="6">
-                    <a-button
-                      style="width: 100%"
-                      size="large"
-                      type="primary"
-                      htmlType="submit"
-                      class="recover-button"
-                      :loading="recoverBtn"
-                      :disabled="recoverBtn">
-                      <router-link :to="{ name: 'login' }">立即登录</router-link>
-                    </a-button>
-                  </a-col>
-                </a-row>
-              </a-form-item>
-            </a-form>
-          </div>
-        </a-col>
-      </a-row>
+          </a-form>
+          <a-form v-if="current==1">
+            <a-form-item class="phoneItem">本账号绑定的手机号码是：<span>*******7888</span></a-form-item>
+            <a-form-item
+              class="captchaItem"
+              label="短信验证码："
+              :label-col="{ span: 4 }"
+              :wrapper-col="{ span: 12 }">
+              <a-row :gutter="8">
+                <a-col class="gutter-row" :span="16">
+                  <a-form-item>
+                    <a-input size="large" type="text" placeholder="短信验证码" v-decorator="['captcha', {rules: [{ message: '请输入验证码' }], validateTrigger: 'blur'}]">
+                    </a-input>
+                  </a-form-item>
+                </a-col>
+                <a-col class="gutter-row" :span="8">
+                  <a-button
+                    class="getCaptcha"
+                    size="large"
+                    :disabled="state.smsSendBtn"
+                    @click.stop.prevent="getCaptcha"
+                    v-text="!state.smsSendBtn && '发送验证码'||(state.time+'s后重新获取')"></a-button>
+                </a-col>
+              </a-row>
+            </a-form-item>
+            <a-form-item>
+              <a-row>
+                <a-col :span="12" :offset="4">
+                  <a-button
+                    style="width: 100%"
+                    size="large"
+                    type="primary"
+                    htmlType="submit"
+                    class="recover-button"
+                    :loading="recoverBtn"
+                    @click.stop.prevent="nextStep"
+                    :disabled="recoverBtn">下一步
+                  </a-button>
+                  <div class="input-tips">
+                    <span>验证码错误，请重试！</span>
+                  </div>
+                </a-col>
+              </a-row>
+            </a-form-item>
+          </a-form>
+          <a-form v-if="current==2">
+            <a-form-item
+              label="设置密码："
+              :label-col="{ span: 4 }"
+              :wrapper-col="{ span: 12 }">
+              <a-input
+                size="large"
+                type="password"
+                @click="handlePasswordInputClick"
+                autocomplete="false"
+                placeholder="请设置新的密码"
+                v-decorator="['password', {rules: [{ required: true, message: '至少4位密码，区分大小写'}, { validator: this.handlePasswordLevel }], validateTrigger: ['change', 'blur']}]"
+              ></a-input>
+            </a-form-item>
+            <a-form-item
+              label="确认密码："
+              :label-col="{ span: 4 }"
+              :wrapper-col="{ span: 12 }">
+              <a-input
+                size="large"
+                type="password"
+                autocomplete="false"
+                placeholder="再次确认密码"
+                v-decorator="['password2', {rules: [{ required: true, message: '至少4位密码，区分大小写' }, { validator: this.handlePasswordCheck }], validateTrigger: ['change', 'blur']}]"
+              ></a-input>
+            </a-form-item>
+            <a-form-item>
+              <a-row>
+                <a-col :span="12" :offset="4">
+                  <a-button
+                    style="width: 100%"
+                    size="large"
+                    type="primary"
+                    htmlType="submit"
+                    class="recover-button"
+                    :loading="recoverBtn"
+                    @click.stop.prevent="nextStep"
+                    :disabled="recoverBtn">提交
+                  </a-button>
+                </a-col>
+              </a-row>
+            </a-form-item>
+          </a-form>
+          <a-form v-if="current==3">
+            <a-form-item class="resetSuccess">
+              <a-row>
+                <a-col :span="4"></a-col>
+                <a-col :span="12">
+                  <p><img src="~@/assets/ok.png"></p>
+                  <p><span>密码重置成功</span></p>
+                </a-col>
+              </a-row>
+            </a-form-item>
+            <a-form-item>
+              <a-row>
+                <a-col :span="12" :offset="4">
+                  <a-button
+                    style="width: 100%"
+                    size="large"
+                    type="primary"
+                    htmlType="submit"
+                    class="recover-button"
+                    :loading="recoverBtn"
+                    :disabled="recoverBtn">
+                    <router-link :to="{ name: 'login' }">立即登录</router-link>
+                  </a-button>
+                </a-col>
+              </a-row>
+            </a-form-item>
+          </a-form>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -186,6 +189,7 @@ import { mixinDevice } from '@/utils/mixin.js'
 import { getSmsCaptcha } from '@/api/login'
 import ARow from 'ant-design-vue/es/grid/Row'
 import ACol from 'ant-design-vue/es/grid/Col'
+import SIdentify from '../../components/Identify/Identify'
 
 const levelNames = {
   0: '低',
@@ -209,7 +213,8 @@ export default {
   name: 'Recover',
   components: {
     ACol,
-    ARow
+    ARow,
+    SIdentify
   },
   mixins: [mixinDevice],
   data () {
@@ -224,8 +229,14 @@ export default {
         percent: 10,
         progressColor: '#FF0000'
       },
-      recoverBtn: false
+      recoverBtn: false,
+      identifyCodes: '1234567890',
+      identifyCode: ''
     }
+  },
+  mounted () {
+    this.identifyCode = ''
+    this.makeCode(this.identifyCodes, 4)
   },
   activated () {
     this.current = 0
@@ -242,7 +253,22 @@ export default {
     }
   },
   methods: {
-
+    randomNum (min, max) {
+      return Math.floor(Math.random() * (max - min) + min)
+    },
+    refreshCode () {
+      this.identifyCode = ''
+      this.makeCode(this.identifyCodes, 4)
+    },
+    makeCode (o, l) {
+      for (let i = 0; i < l; i++) {
+        // eslint-disable-next-line standard/computed-property-even-spacing
+        this.identifyCode += this.identifyCodes [
+          this.randomNum(0, this.identifyCodes.length)
+        ]
+      }
+      console.log(this.identifyCode)
+    },
     handlePasswordLevel (rule, value, callback) {
       let level = 0
 
@@ -317,8 +343,8 @@ export default {
     },
     getCaptcha (e) {
       e.preventDefault()
-      const { form: { validateFields }, state, $message, $notification } = this
-
+      // const { form: { validateFields }, state, $message, $notification } = this
+      const { form: { validateFields }, state, $message } = this
       validateFields(['mobile'], { force: true },
         (err, values) => {
           if (!err) {
@@ -336,11 +362,11 @@ export default {
 
             getSmsCaptcha({ mobile: values.mobile }).then(res => {
               setTimeout(hide, 2500)
-              $notification['success']({
-                message: '提示',
-                description: '验证码获取成功，您的验证码为：' + res.result.captcha,
-                duration: 8
-              })
+              // $notification['success']({
+              //   message: '提示',
+              //   description: '验证码获取成功，您的验证码为：' + res.result.captcha,
+              //   duration: 8
+              // })
             }).catch(err => {
               setTimeout(hide, 1)
               clearInterval(interval)
@@ -385,7 +411,7 @@ export default {
 
   }
 
-  .user-layout-recover {
+  .recover-layout {
     .ant-input-group-addon:first-child {
       background-color: #fff;
     }
@@ -393,28 +419,30 @@ export default {
 </style>
 <style lang="less" scoped>
   .main{
-    .user-layout-recover {
+    .recover-layout {
       background: rgba(240, 242, 245, 1) !important;
       height: 489px;
-      padding: 5px 0;
-      .ant-row {
-        height: 100%;
+      padding-top: 24px;
+      /*.ant-row {*/
         .container {
+          margin: 0 20%;
+          width: 60%;
           height: 100%;
-          background: #ffffff;
+          padding-top: 48px;
+          background: #fff;
           >h3 {
             text-align: center;
-            margin:48px 0;
+            margin-bottom: 48px;
             font-size: 32px;
             height: 32px;
             line-height: 32px;
           }
           .ant-steps {
-            max-width: 900px;
+            max-width: 600px;
             margin: 0 auto;
           }
           .content {
-            max-width: 800px;
+            max-width: 500px;
             margin: 0 auto;
             .ant-form {
               margin: 64px auto;
@@ -422,16 +450,42 @@ export default {
                 margin-bottom: 24px;
               }
               .phoneItem {
-                height: 22px;
-                line-height: 22px;
+                height: 40px;
                 text-align: center;
                 color: rgba(0, 0, 0, 0.85);
-                margin-top: 4px;
-                margin-bottom: 40px;
+                .ant-form-item-control {
+                  line-height: 40px;
+                }
+              }
+              .imgCaptchaItem {
+                .ant-col-16 {
+                  width: 225px;
+                  margin-right: 8px;
+                  height: 40px;
+                }
+                .ant-col-8 {
+                  width: 102px;
+                  height: 40px;
+                  .code {
+                    height: 100%;
+                    .s-canvas {
+                      height: 100%;
+                    }
+                  }
+                }
               }
               .captchaItem {
                 .ant-row.ant-form-item {
                   margin-bottom: 0;
+                }
+                .ant-col-16 {
+                  width: 225px;
+                  margin-right: 8px;
+                  height: 40px;
+                }
+                .ant-col-8 {
+                  width: 102px;
+                  height: 40px;
                 }
               }
               .resetSuccess {
@@ -446,15 +500,27 @@ export default {
                 }
                 p:nth-of-type(2) {
                   margin-bottom: 0;
-                  line-height: 14px;
-                  height: 14px;
+                  line-height: 16px;
+                  height: 16px;
                 }
               }
             }
+            a {
+              text-decoration: none;
+            }
+            .input-tips {
+              margin-top: 12px;
+              color: #FF1A2E;
+              font-size: 14px;
+              height: 14px;
+              line-height: 14px;
+            }
           }
         }
-      }
+      /*}*/
       .getCaptcha {
+        padding: 0;
+        font-size: 14px;
         display: block;
         width: 100%;
         height: 40px;

@@ -333,7 +333,7 @@ export default {
         }
       }
       .ca-uninstall {
-        /*margin-top: 32px;*/
+        margin-top: 8px;
         text-align: center;
         div:first-child {
           margin-bottom: 24px;
@@ -343,11 +343,12 @@ export default {
           }
         }
         div:nth-of-type(2){
-          height: 44px;
+          height: 38px;
           font-size: 16px;
           color: rgba(0,0,0,0.65);
           margin-bottom: 32px;
           p {
+            height: 19px;
             margin-bottom: 0;
           }
         }

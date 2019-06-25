@@ -3,7 +3,7 @@
 .page-header {
   position: relative;
   background: #fff;
-  padding: 16px 24px;
+  padding: 16px 32px;
   border-bottom: 1px solid #e8e8e8;
 
   .breadcrumb {

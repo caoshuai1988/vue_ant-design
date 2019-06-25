@@ -261,8 +261,8 @@
             <span class="label">录入日期：</span>
             <span class="value">{{ date }}</span>
           </div>
-          <span class="item editor" style="color: #1890ff;">编辑</span>
-          <span class="item detial" style="color: #1890ff;">流程详情</span>
+          <a class="item editor">编辑</a>
+          <a class="item detial">流程详情</a>
         </div>
         <!-- 高级带分布步骤 -->
         <div class="step-content">

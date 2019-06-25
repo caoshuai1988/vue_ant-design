@@ -10,7 +10,7 @@
         </span>
         <baseFormContent></baseFormContent>
       </a-tab-pane>
-      <a-tab-pane key="2" style="padding:24px 24px 24px 24px">
+      <a-tab-pane key="2" style="padding:24px 32px">
         <span slot="tab">
           <span >地理信息</span>
           <div class="checkIcon">
@@ -55,7 +55,7 @@ export default {
 }
 </script>
 
- <style lang="less" scoped>
+<style lang="less" scoped>
 
 /deep/ .ant-tabs-bar{ // 清除多余空白
    margin: 0;

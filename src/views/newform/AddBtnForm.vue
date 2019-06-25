@@ -18,34 +18,32 @@
           @click="onClose"/>
       </span>
 
-      <a-form :form="form">
-        <a-form :form="form">
-          <a-form-item label="行政区划" :labelCol="labelCol" :wrapperCol="wrapperCol">
-            <a-select
-              v-decorator="[
-                'aa',
-                {rules: [{ required: true, message: 'Please select your gender!' }]}
-              ]"
-              placeholder="请选择"
-            >
-              <a-select-option value="male">male</a-select-option>
-              <a-select-option value="female">female</a-select-option>
-            </a-select>
-          </a-form-item>
+      <a-form :form="form" :hideRequiredMark="true">
+        <a-form-item label="行政区划" :labelCol="labelCol" :wrapperCol="wrapperCol">
+          <a-select
+            v-decorator="[
+              'aa',
+              {rules: [{ required: true, message: 'Please select your gender!' }]}
+            ]"
+            placeholder="请选择"
+          >
+            <a-select-option value="male">male</a-select-option>
+            <a-select-option value="female">female</a-select-option>
+          </a-select>
+        </a-form-item>
 
-          <a-form-item label="项目类型" :labelCol="labelCol" :wrapperCol="wrapperCol">
-            <a-select
-              v-decorator="[
-                'bb',
-                {rules: [{ required: true, message: 'Please select your gender!' }]}
-              ]"
-              placeholder="请选择"
-            >
-              <a-select-option value="male">male</a-select-option>
-              <a-select-option value="female">female</a-select-option>
-            </a-select>
-          </a-form-item>
-        </a-form>
+        <a-form-item label="项目类型" :labelCol="labelCol" :wrapperCol="wrapperCol">
+          <a-select
+            v-decorator="[
+              'bb',
+              {rules: [{ required: true, message: 'Please select your gender!' }]}
+            ]"
+            placeholder="请选择"
+          >
+            <a-select-option value="male">male</a-select-option>
+            <a-select-option value="female">female</a-select-option>
+          </a-select>
+        </a-form-item>
 
         <a-form-item label="项目年份" :labelCol="labelCol" :wrapperCol="wrapperCol">
           <a-select

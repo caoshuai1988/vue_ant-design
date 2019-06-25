@@ -157,7 +157,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1999;
+  z-index: 11;
 }
 .amplification{
   cursor: pointer;

@@ -262,8 +262,9 @@ export const asyncRouterMap = [
         }]
       },
       {
-        path: 'gap',
+        path: '/gap',
         name: 'gap',
+        redirect: '/',
         meta: { title: '---分割线---', icon: 'bulb' }
       },
 
@@ -512,38 +513,6 @@ export const asyncRouterMap = [
           }
         ]
       },
-
-      // {
-      //   path: '/help',
-      //   name: 'help',
-      //   redirect: '/help/helpdoc',
-      //   meta: { title: '帮助', keepAlive: true, icon: 'fund' },
-      //   children: [
-      //     {
-      //       path: '/help/helpdoc',
-      //       name: 'helpDoc',
-      //       component: () => import('@/views/help/HelpDocument'),
-      //       meta: { title: '帮助文档', keepAlive: false, target: '_blank' },
-      //       redirect: '/help/children/first',
-      //       hideChildrenInMenu: true,
-      //       children: [
-      //         {
-      //           path: '/help/children/first',
-      //           name: 'FirstChildren',
-      //           component: () => import('@/views/help/children/FirstChildren'),
-      //           meta: { title: 'A级节点', hidden: true }
-      //         },
-      //         {
-      //           path: '/help/children/last',
-      //           name: 'LastChildren',
-      //           component: () => import('@/views/help/children/LastChildren'),
-      //           meta: { title: 'B级节点', hidden: true }
-      //         }
-      //       ]
-      //     }
-      //   ]
-      // },
-      // other
       {
         path: '/other',
         name: 'otherPage',

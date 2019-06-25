@@ -246,17 +246,14 @@ export const asyncRouterMap = [
         meta: { title: '帮助', icon: 'user' },
         children: [{
           path: '/help/helpdoc',
-          name: 'helpDoc',
           redirect: '/help/helpdoc',
           meta: { title: '帮助文档', keepAlive: false, target: '_blank' }
         }, {
           path: '/help/helpsearch',
-          name: 'helpSearch',
           redirect: 'help/helpsearch',
           meta: { title: '帮助搜索', keepAlive: false, target: '_blank' }
         }, {
           path: '/help/helpinfo',
-          name: 'helpInfo',
           redirect: 'help/helpinfo',
           meta: { title: '帮助信息', keepAlive: false, target: '_blank' }
         }]
@@ -513,37 +510,6 @@ export const asyncRouterMap = [
           }
         ]
       },
-
-      // {
-      //   path: '/help',
-      //   name: 'help',
-      //   redirect: '/help/helpdoc',
-      //   meta: { title: '帮助', keepAlive: true, icon: 'fund' },
-      //   children: [
-      //     {
-      //       path: '/help/helpdoc',
-      //       name: 'helpDoc',
-      //       component: () => import('@/views/help/HelpDocument'),
-      //       meta: { title: '帮助文档', keepAlive: false, target: '_blank' },
-      //       redirect: '/help/children/first',
-      //       hideChildrenInMenu: true,
-      //       children: [
-      //         {
-      //           path: '/help/children/first',
-      //           name: 'FirstChildren',
-      //           component: () => import('@/views/help/children/FirstChildren'),
-      //           meta: { title: 'A级节点', hidden: true }
-      //         },
-      //         {
-      //           path: '/help/children/last',
-      //           name: 'LastChildren',
-      //           component: () => import('@/views/help/children/LastChildren'),
-      //           meta: { title: 'B级节点', hidden: true }
-      //         }
-      //       ]
-      //     }
-      //   ]
-      // },
       // other
       {
         path: '/other',

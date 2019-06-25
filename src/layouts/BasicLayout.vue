@@ -1,5 +1,5 @@
 <template>
-  <a-layout :class="['layout', device]">
+  <a-layout :class="['layout', device]" :style="{zoom:curZoom}">
     <!-- SideMenu -->
     <a-drawer
       v-if="isMobile()"
@@ -144,7 +144,8 @@ export default {
   computed: {
     ...mapState({
       // 动态主路由
-      mainMenu: state => state.permission.addRouters
+      mainMenu: state => state.permission.addRouters,
+      curZoom: state => state.app.zoom
     }),
     contentPaddingLeft () {
       if (!this.fixSidebar || this.isMobile()) {

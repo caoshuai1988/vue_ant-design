@@ -174,6 +174,19 @@
           <div>
             <a-list :split="false">
               <a-list-item>
+                <a-tooltip slot="actions">
+                  <a-select size="small" style="width: 80px;" :defaultValue="selectOption" @change="handeCurZoom">
+                    <a-select-option value="1">100%</a-select-option>
+                    <a-select-option value="1.15">115%</a-select-option>
+                    <a-select-option value="1.25">125%</a-select-option>
+                    <a-select-option value="1.5">150%</a-select-option>
+                  </a-select>
+                </a-tooltip>
+                <a-list-item-meta>
+                  <div slot="title">缩放页面</div>
+                </a-list-item-meta>
+              </a-list-item>
+              <a-list-item>
                 <a-switch slot="actions" size="small" :defaultChecked="colorWeak" @change="onColorWeak" />
                 <a-list-item-meta>
                   <div slot="title">色弱模式</div>
@@ -188,7 +201,13 @@
             </a-list>
           </div>
         </div>
-        <a-divider />
+
+        <!-- <a-slider
+          :tipFormatter="tipFormatter"
+          :step="step"
+range :marks="marks" :defaultValue="[0]"
+          @change="handeCurZoom" />
+        <a-divider /> -->
         <div :style="{ marginBottom: '24px' }">
           <a-button
             @click="doCopy"
@@ -218,6 +237,7 @@ import SettingItem from './SettingItem'
 import config from '@/config/defaultSettings'
 import { updateTheme, updateColorWeak, colorList } from './settingConfig'
 import { mixin, mixinDevice } from '@/utils/mixin'
+import { mapState } from 'vuex'
 
 export default {
   components: {
@@ -237,7 +257,10 @@ export default {
   computed: {
     setDrawerStatus () {
       return this.$store.state.app.settingDrawer
-    }
+    },
+    ...mapState({
+      selectOption: state => state.app.zoom
+    })
   },
   // mounted () {
   //   const vm = this
@@ -285,6 +308,10 @@ export default {
     },
     handleSurplusTheme (plusTheme) {
       this.$store.dispatch('ToggleSurplusTheme', plusTheme)
+    },
+    handeCurZoom (zoom) {
+      console.log('SET:' + zoom)
+      this.$store.dispatch('ToggleZoom', zoom)
     },
     doCopy () {
       // get current settings from mixin or this.$store.state.app, pay attention to the property name

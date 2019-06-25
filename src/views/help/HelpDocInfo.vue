@@ -1,5 +1,5 @@
 <template>
-  <div class="help-container">
+  <div class="help-container" :style="{zoom:curZoom}">
     <div class="help-con-head">
       <div class="help-head-content">
         <div class="head-caption">
@@ -78,6 +78,7 @@
 </template>
 
 <script>
+import Vue from 'vue'
 import { PageView, RouteView } from '@/layouts'
 import { mixinDevice } from '@/utils/mixin.js'
 import GlobalFooter from '@/components/GlobalFooter'
@@ -128,6 +129,9 @@ export default {
   computed: {
     banner () { // 引入流程图片
       return banner
+    },
+    curZoom () {
+      return Vue.ls.get('DEFAULT_CONTAINER_ZOOM') ? Vue.ls.get('DEFAULT_CONTAINER_ZOOM') : 1
     }
   },
   created () {

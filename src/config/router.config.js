@@ -113,12 +113,6 @@ export const asyncRouterMap = [
             meta: { title: '弹出窗', keepAlive: true, permission: ['form'] }
           },
           {
-            path: '/form/newbaseform',
-            name: 'NewBaseForm',
-            component: () => import('@/views/newform/NewBaseForm'),
-            meta: { title: '单列表单', keepAlive: true, permission: ['form'], showbtn: true }
-          },
-          {
             path: 'newform/ThrowRowForm',
             name: 'ThrowRowForm',
             component: () => import('@/views/newform/ThrowRowForm'),

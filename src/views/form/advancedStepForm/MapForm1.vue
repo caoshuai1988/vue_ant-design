@@ -55,7 +55,7 @@ export default {
 }
 </script>
 
- <style lang="less" scoped>
+<style lang="less" scoped>
 
 /deep/ .ant-tabs-bar{ // 清除多余空白
    margin: 0;

@@ -1,0 +1,59 @@
+.user-layout-login {
+  //登录tabs的下外边距为24px
+  .ant-tabs-bar.ant-tabs-top-bar {
+    margin-bottom: 24px;
+    .ant-tabs-nav.ant-tabs-nav-animated {
+      > div:first-child {
+        height: 47px;
+      }
+    }
+    .ant-tabs-tab {
+      font-size: 16px;
+    }
+  }
+  .login-operation {
+    height: 14px;
+    >.ant-form-item-control-wrapper {
+      height: 22px;
+      margin-top: -9px;
+    }
+  }
+  .ant-form-horizontal .ant-form-item{
+    margin-bottom: 24px;
+  }
+  // 验证滑块
+  .login-drag {
+    .drag_verify,
+    .dv_progress_bar{
+      border-radius: 4px !important;
+      overflow: hidden;
+      .dv_handler {
+        width: 40px !important;
+        height: 40px !important;
+        border-radius: 0 !important;
+      }
+    }
+    .dv_handler.dv_handler_ok_bg{
+      border-top-left-radius: 0 !important;
+      border-bottom-left-radius: 0 !important;
+    }
+  }
+}
+//找回密码
+.main.user-layout-register {
+  .ant-steps {
+    max-width: 900px;
+    margin: 0 auto;
+
+    .ant-steps-item-wait > .ant-steps-item-content > .ant-steps-item-title,
+    .ant-steps-item-finish > .ant-steps-item-content > .ant-steps-item-title,
+    .ant-steps-item-process > .ant-steps-item-content > .ant-steps-item-title{
+      font-size: 14px !important;
+    }
+
+    .ant-steps-item-finish > .ant-steps-item-content > .ant-steps-item-title,
+    .ant-steps-item-process > .ant-steps-item-content > .ant-steps-item-title {
+      color: #3293fe !important;
+    }
+  }
+}

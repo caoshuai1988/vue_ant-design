@@ -29,7 +29,7 @@ module.exports = {
       new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
       // 生成仅包含颜色的替换样式（主题色等）
       new ThemeColorReplacer({
-        fileName: 'css/theme-colors[hash].css',
+        fileName: 'css/theme-colors.css', // TODO 需要处理的暗坑
         matchColors: getAntdSerials('#1890ff'), // 主色系列
         // 改变样式选择器，解决样式覆盖问题
         changeSelector (selector) {
@@ -90,7 +90,9 @@ module.exports = {
       less: {
         modifyVars: {
           /* less 变量覆盖，用于自定义 ant design 主题 */
-
+          // 'menu-dark-bg': '#003F7D',
+          // 'menu-dark-submenu-bg': '#003F7D',
+          // 'layout-header-background': '#003F7D'
           /*
           'primary-color': '#F5222D',
           'link-color': '#F5222D',
@@ -103,6 +105,11 @@ module.exports = {
   },
 
   devServer: {
+    overlay: {
+      warnings: false,
+      errors: false
+    },
+
     // development server port 8000
     port: 8000
     // proxy: {
@@ -117,7 +124,7 @@ module.exports = {
 
   // disable source map in production
   productionSourceMap: false,
-  lintOnSave: undefined,
+  lintOnSave: false,
   // babel-loader no-ignore node_modules/*
   transpileDependencies: []
 }

@@ -6,10 +6,20 @@ const api = {
   service: '/service',
   permission: '/permission',
   permissionNoPager: '/permission/no-pager',
-  orgTree: '/org/tree'
+  orgTree: '/org/tree',
+  testList:'https://randomuser.me/api'
 }
 
 export default api
+
+export function getTestList (parameter) {
+  return axios({
+    url: api.testList,
+    method: 'get',
+    params: parameter
+  })
+}
+
 
 export function getUserList (parameter) {
   return axios({

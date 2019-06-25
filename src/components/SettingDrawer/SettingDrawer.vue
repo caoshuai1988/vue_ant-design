@@ -5,7 +5,7 @@
       placement="right"
       @close="onClose"
       :closable="false"
-      :visible="visible"
+      :visible="setDrawerStatus"
     >
       <div class="setting-drawer-index-content">
 
@@ -19,7 +19,7 @@
               </template>
               <div class="setting-drawer-index-item" @click="handleMenuTheme('dark')">
                 <img src="https://gw.alipayobjects.com/zos/rmsportal/LCkqqYNmvBEbokSDscrm.svg" alt="dark">
-                <div class="setting-drawer-index-selectIcon" v-if="navTheme === 'dark'">
+                <div class="setting-drawer-index-selectIcon" v-if="navTheme === 'dark' && !surplusTheme">
                   <a-icon type="check"/>
                 </div>
               </div>
@@ -31,7 +31,29 @@
               </template>
               <div class="setting-drawer-index-item" @click="handleMenuTheme('light')">
                 <img src="https://gw.alipayobjects.com/zos/rmsportal/jpRkZQMyYRryryPNtyIC.svg" alt="light">
-                <div class="setting-drawer-index-selectIcon" v-if="navTheme !== 'dark'">
+                <div class="setting-drawer-index-selectIcon" v-if="navTheme === 'light' && !surplusTheme">
+                  <a-icon type="check"/>
+                </div>
+              </div>
+            </a-tooltip>
+            <a-tooltip>
+              <template slot="title">
+                深蓝风格
+              </template>
+              <div class="setting-drawer-index-item" @click="handleSurplusTheme('plusTheme01')">
+                <img src="/configcolor.svg" alt="plusTheme01">
+                <div class="setting-drawer-index-selectIcon" v-if="surplusTheme === 'plusTheme01'">
+                  <a-icon type="check"/>
+                </div>
+              </div>
+            </a-tooltip>
+            <a-tooltip>
+              <template slot="title">
+                浅蓝风格
+              </template>
+              <div class="setting-drawer-index-item" @click="handleSurplusTheme('plusTheme02')">
+                <img src="/configcolor2.svg" alt="plusTheme02">
+                <div class="setting-drawer-index-selectIcon" v-if="surplusTheme === 'plusTheme02'">
                   <a-icon type="check"/>
                 </div>
               </div>
@@ -78,7 +100,18 @@
               </template>
               <div class="setting-drawer-index-item" @click="handleLayout('topmenu')">
                 <img src="https://gw.alipayobjects.com/zos/rmsportal/KDNDBbriJhLwuqMoxcAr.svg" alt="topmenu">
-                <div class="setting-drawer-index-selectIcon" v-if="layoutMode !== 'sidemenu'">
+                <div class="setting-drawer-index-selectIcon" v-if="layoutMode === 'topmenu'">
+                  <a-icon type="check"/>
+                </div>
+              </div>
+            </a-tooltip>
+            <a-tooltip>
+              <template slot="title">
+                满屏顶部栏导航
+              </template>
+              <div class="setting-drawer-index-item" @click="handleLayout('fulltopmenu')">
+                <img src="/configcolor3.svg" alt="fulltopmenu">
+                <div class="setting-drawer-index-selectIcon" v-if="layoutMode === 'fulltopmenu'">
                   <a-icon type="check"/>
                 </div>
               </div>
@@ -91,10 +124,19 @@
                   <template slot="title">
                     该设定仅 [顶部栏导航] 时有效
                   </template>
-                  <a-select size="small" style="width: 80px;" :defaultValue="contentWidth" @change="handleContentWidthChange">
-                    <a-select-option value="Fixed">固定</a-select-option>
-                    <a-select-option value="Fluid" v-if="layoutMode !== 'sidemenu'">流式</a-select-option>
+                  <a-select v-if="layoutMode === 'sidemenu'" size="small" style="width: 80px;" :defaultValue="contentWidth" @change="handleContentWidthChange">
+                    <a-select-option value="Fluid">流式</a-select-option>
                   </a-select>
+
+                  <a-select v-if="layoutMode === 'topmenu'" size="small" style="width: 80px;" :defaultValue="contentWidth" @change="handleContentWidthChange">
+                    <a-select-option value="Fixed">固定</a-select-option>
+                    <a-select-option value="Fluid">流式</a-select-option>
+                  </a-select>
+
+                  <a-select v-if="layoutMode === 'fulltopmenu'" size="small" style="width: 80px;" :defaultValue="contentWidth" @change="handleContentWidthChange">
+                    <a-select-option value="Fluid">流式</a-select-option>
+                  </a-select>
+
                 </a-tooltip>
                 <a-list-item-meta>
                   <div slot="title">内容区域宽度</div>
@@ -123,6 +165,7 @@
               </a-list-item>
             </a-list>
           </div>
+
         </div>
         <a-divider />
 
@@ -160,9 +203,10 @@
           </a-alert>
         </div>
       </div>
-      <div class="setting-drawer-index-handle" @click="toggle">
-        <a-icon type="setting" v-if="!visible"/>
-        <a-icon type="close" v-else/>
+      <div class="setting-drawer-index-handle" @click="toggle" v-if="setDrawerStatus">
+        <!--  <a-icon type="setting" v-if="!visible"/>
+        <a-icon type="close" v-else/>-->
+        <a-icon type="close"/>
       </div>
     </a-drawer>
   </div>
@@ -190,28 +234,43 @@ export default {
   watch: {
 
   },
-  mounted () {
-    const vm = this
-    setTimeout(() => {
-      vm.visible = false
-    }, 16)
-    // 当主题色不是默认色时，才进行主题编译
-    if (this.primaryColor !== config.primaryColor) {
-      updateTheme(this.primaryColor)
+  computed: {
+    setDrawerStatus () {
+      return this.$store.state.app.settingDrawer
     }
+  },
+  // mounted () {
+  //   const vm = this
+  //   setTimeout(() => {
+  //     vm.visible = false
+  //   }, 16)
+  //   // 当主题色不是默认色时，才进行主题编译
+  //   if (this.primaryColor !== config.primaryColor) {
+  //     updateTheme(this.primaryColor)
+  //   }
+  // }),
+  // {
+  //   ChangeVisible: function () {
+  //     console.log('ChangeVisible=>' + this.$store.state.app.visible)
+  //     return this.$store.state.app.visible
+  //   }
+  // },
+  mounted () {
+    // const vm = this
+    // setTimeout(() => {
+    //   vm.visible = vm.$store.getters.visible
+    // }, 16)
+    updateTheme(this.primaryColor)
     if (this.colorWeak !== config.colorWeak) {
       updateColorWeak(this.colorWeak)
     }
   },
   methods: {
-    showDrawer () {
-      this.visible = true
-    },
     onClose () {
-      this.visible = false
+      this.$store.dispatch('ToggleSetDrawer', false)
     },
     toggle () {
-      this.visible = !this.visible
+      this.$store.dispatch('ToggleSetDrawer', false)
     },
     onColorWeak (checked) {
       this.$store.dispatch('ToggleWeak', checked)
@@ -222,6 +281,10 @@ export default {
     },
     handleMenuTheme (theme) {
       this.$store.dispatch('ToggleTheme', theme)
+      this.$store.dispatch('ToggleSurplusTheme', '')
+    },
+    handleSurplusTheme (plusTheme) {
+      this.$store.dispatch('ToggleSurplusTheme', plusTheme)
     },
     doCopy () {
       // get current settings from mixin or this.$store.state.app, pay attention to the property name
@@ -272,7 +335,7 @@ export default {
       this.$store.dispatch('ToggleFixedHeaderHidden', autoHidden)
     },
     handleFixSiderbar (fixed) {
-      if (this.layoutMode === 'topmenu') {
+      if (this.$store.getters.layoutMode === 'topmenu' || this.$store.getters.layoutMode === 'newmenu') {
         this.$store.dispatch('ToggleFixSiderbar', false)
         return
       }

@@ -9,7 +9,8 @@ import {
   DEFAULT_FIXED_SIDEMENU,
   DEFAULT_FIXED_HEADER_HIDDEN,
   DEFAULT_CONTENT_WIDTH_TYPE,
-  DEFAULT_MULTI_TAB
+  DEFAULT_MULTI_TAB,
+  DEFAULT_LAYER_VISIBLE
 } from '@/store/mutation-types'
 
 const app = {
@@ -17,6 +18,7 @@ const app = {
     sidebar: true,
     device: 'desktop',
     theme: '',
+    surplusTheme: '', // 新增主题
     layout: '',
     contentWidth: '',
     fixedHeader: false,
@@ -24,7 +26,9 @@ const app = {
     autoHideHeader: false,
     color: null,
     weak: false,
-    multiTab: true
+    multiTab: true,
+    visible: false, // cs
+    settingDrawer: false
   },
   mutations: {
     SET_SIDEBAR_TYPE: (state, type) => {
@@ -41,7 +45,12 @@ const app = {
     TOGGLE_THEME: (state, theme) => {
       // setStore('_DEFAULT_THEME', theme)
       Vue.ls.set(DEFAULT_THEME, theme)
+      // Vue.ls.remove('pro__SURPLUS_HEME')
       state.theme = theme
+    },
+    TOGGLE_SURPLUS_THEME: (state, plusTheme) => {
+      Vue.ls.set('SURPLUS_HEME', plusTheme)
+      state.surplusTheme = plusTheme
     },
     TOGGLE_LAYOUT_MODE: (state, layout) => {
       Vue.ls.set(DEFAULT_LAYOUT_MODE, layout)
@@ -74,6 +83,14 @@ const app = {
     TOGGLE_MULTI_TAB: (state, bool) => {
       Vue.ls.set(DEFAULT_MULTI_TAB, bool)
       state.multiTab = bool
+    },
+    TOGGLE_VISIBLE: (state, visible) => { // cs切换主题层
+      Vue.ls.set(DEFAULT_LAYER_VISIBLE, visible)
+      state.visible = visible
+      console.log('app.js=>' + visible)
+    },
+    TOGGLE_SET_DRAWER: (state, bool) => {
+      state.settingDrawer = bool
     }
   },
   actions: {
@@ -88,6 +105,9 @@ const app = {
     },
     ToggleTheme ({ commit }, theme) {
       commit('TOGGLE_THEME', theme)
+    },
+    ToggleSurplusTheme ({ commit }, plusTheme) {
+      commit('TOGGLE_SURPLUS_THEME', plusTheme)
     },
     ToggleLayoutMode ({ commit }, mode) {
       commit('TOGGLE_LAYOUT_MODE', mode)
@@ -115,6 +135,12 @@ const app = {
     },
     ToggleMultiTab ({ commit }, bool) {
       commit('TOGGLE_MULTI_TAB', bool)
+    },
+    ToggleVisible ({ commit }, visible) { // cs 显示右侧主题层
+      commit('TOGGLE_VISIBLE', visible)
+    },
+    ToggleSetDrawer ({ commit }, bool) {
+      commit('TOGGLE_SET_DRAWER', bool)
     }
   }
 }

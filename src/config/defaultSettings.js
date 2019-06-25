@@ -14,6 +14,7 @@
  */
 
 export default {
+  surplusTheme: '', // 添加额外的主题色对navTheme的延申
   primaryColor: '#1890FF', // primary color of ant design
   navTheme: 'dark', // theme for nav menu
   layout: 'sidemenu', // nav menu position: sidemenu or topmenu

@@ -33,7 +33,7 @@
             <div class="header-index-left">
               <logo class="top-nav-header" :show-title="device !== 'mobile'"/>
               <s-menu
-                :style="{ maxWidth: menuWidth+'px', flex: '0 1 '+menuWidth+'px'}"
+                :style="{ maxWidth: menuWidth+'px', width:menuWidth+'px', flex: '0 1 '+menuWidth+'px'}"
                 v-if="device !== 'mobile'"
                 mode="horizontal"
                 :menu="menus"
@@ -55,7 +55,6 @@ import UserMenu from '../tools/UserMenu'
 import SMenu from '../Menu/'
 import Logo from '../tools/Logo'
 import { mixin } from '@/utils/mixin'
-
 export default {
   name: 'GlobalHeader',
   components: {
@@ -100,11 +99,18 @@ export default {
   computed: {
     contentWidth () {
       return this.$store.state.app.contentWidth
+    },
+    leftWidth () {
+      return this.$store.state.app.zoom
     }
   },
   watch: {
     contentWidth: function () {
       this.getAutoMenuWidth()
+    },
+
+    leftWidth: function () {
+      this.getAutoLeftWidth()
     }
   },
   mounted () {
@@ -139,6 +145,9 @@ export default {
       } else {
         this.menuWidth = document.body.clientWidth - 500
       }
+    },
+    getAutoLeftWidth () {
+      this.menuWidth = document.body.clientWidth - 450
     },
     toggle () {
       this.$emit('toggle')

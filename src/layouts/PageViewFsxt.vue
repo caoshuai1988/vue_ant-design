@@ -1,4 +1,5 @@
 <style lang="less" scoped>
+@import "~@/utils/utils.less";
   .content {
     padding: 24px;
     .link {
@@ -32,12 +33,10 @@
   .page-menu-tabs {
     margin-top: 48px;
   }
-
   .extra-img {
     margin-top: -60px;
     text-align: center;
     width: 195px;
-
     img {
       width: 100%;
     }
@@ -54,32 +53,142 @@
       }
     }
   }
-  .page-title {
-    width: 100%;
-    padding-top: 16px;
-    font-size: 14px;
-    // display: flex;
-    // justify-content: space-between;
-    overflow: hidden;
-    .item {
-      margin-right: 32px;
-      float: left;
+
+  // 高级带分步骤
+  .step-wrap{
+    .page-title {
+      width: 100%;
+      padding-top: 16px;
+      font-size: 14px;
+      // display: flex;
+      // justify-content: space-between;
+      overflow: hidden;
+      .item {
+        margin-right: 32px;
+        float: left;
+      }
+      .label {
+        color: rgba(0, 0, 0, 0.85);
+      }
+      .value {
+        color: rgba(0, 0, 0, 0.65);
+      }
+      .editor,
+      .detial {
+        cursor: pointer;
+      }
     }
-    .label {
-      color: rgba(0, 0, 0, 0.85);
+    .submit{
+      padding-top: 48px;
+      display: flex;
+      justify-content: flex-end;
     }
-    .value {
-      color: rgba(0, 0, 0, 0.65);
-    }
-    .editor,
-    .detial {
-      cursor: pointer;
+    .btn-wrap{
+      .sign{
+        color: #d9d9d9;
+        padding: 0 8px;
+        font-size: 18px;
+      }
+      .checking{
+        color:#F5222D;
+      }
+      .btn{
+        &:focus{
+          .checking{
+            color: #40a9ff;
+          }
+        }
+        &:hover{
+          .checking{
+            color: #40a9ff;
+          }
+        }
+      }
     }
   }
+
+  // 相关联流程
+  .relevance-wrap{
+    font-size: 14px;
+    .relevance__name{
+      width: 100%;
+      padding-top: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      overflow: hidden;
+      .relevance__name--left{
+        font-size: 16px;
+      }
+      .relevance__name--right{
+        font-size: 14px;
+        .relevance-editor{
+          margin-right: 40px;
+        }
+      }
+    }
+    .relevance__main{
+      margin-top: 12px;
+      .clearfix();
+      .item{
+        float: left;
+        margin-right: 24px;
+      }
+    }
+    .relevance__footer{
+      width: 100%;
+      padding-top: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .relevance__footer__title{
+        font-size: 20px;
+        color: rgba(0,0,0,0.85)
+      }
+    }
+    // 分步图部分
+    .relevance__step-wrap{
+      // overflow-x: auto;
+      width: 800px;
+      margin: 0 auto;
+      .top-row{
+        position: absolute;
+        top:-32px;;
+        left: 48px;
+        display: inline-block;
+        width: 348px;
+        height: 32px;
+        border-radius: 5px 5px 0 0;
+        border:0;
+        border: solid 1px #722ed1;
+        border-bottom: none;
+        .icon-row{
+          position: absolute;
+          bottom: -8px;
+          right: -12px;
+          font-size: 24px;
+        }
+      }
+    }
+
+  }
+  .aa{
+    position: fixed;
+    top: 0;
+    width: 100px;
+    height: 50px;
+    z-index: 999999;
+    background-color: pink;
+  }
+
   .step-content{
     padding-top: 56px;
     padding-left: 10%;
     padding-right: 10%;
+    &.step-content--only{
+      padding-left: 0;
+      padding-right: 0;
+    }
     .steps-content {
       margin-top: 16px;
       border: 1px dashed #e9e9e9;
@@ -89,7 +198,6 @@
       text-align: center;
       padding-top: 80px;
     }
-
     .steps-action {
       margin-top: 24px;
     }
@@ -107,7 +215,6 @@
       color: #1890ff;
     }
   }
-
   // progress 字体透明度
   .step-content /deep/ .ant-steps-item-process > .ant-steps-item-content > .ant-steps-item-title{
     color: rgba(0, 0, 0, 0.65);
@@ -162,34 +269,7 @@
   .step-content /deep/ .ant-steps-small .ant-steps-item-tail{
     top:12px;
   }
-  .submit{
-    padding-top: 48px;
-    display: flex;
-    justify-content: flex-end;
-  }
 
-  .btn-wrap{
-    .sign{
-      color: #d9d9d9;
-      padding: 0 8px;
-      font-size: 18px;
-    }
-    .checking{
-      color:#F5222D;
-    }
-    .btn{
-      &:focus{
-        .checking{
-          color: #40a9ff;
-        }
-      }
-      &:hover{
-        .checking{
-          color: #40a9ff;
-        }
-      }
-    }
-  }
 </style>
 <template>
   <div :style="!$route.meta.hiddenHeaderContent ? 'margin: -24px -24px 0px;' : null">
@@ -235,57 +315,59 @@
       </div>
       <!-- 高级带分布步骤 -->
       <div slot="step" v-if="$route.meta.showStep">
-        <!-- 标题 -->
-        <div class="page-title">
-          <div class="item">
-            <span class="label">名称：</span>
-            <span class="value">1000000000</span>
-          </div>
-          <div class="item">
-            <span class="label">编码：</span>
-            <span class="value">{{ code }}</span>
-          </div>
-          <div class="item">
-            <span class="label">录入日期：</span>
-            <span class="value">{{ date }}</span>
-          </div>
-          <a class="item editor">编辑</a>
-          <a class="item detial">流程详情</a>
-        </div>
-        <!-- 高级带分布步骤 -->
-        <div class="step-content">
-          <template>
-            <div>
-              <a-steps :current="current" size="small" labelPlacement="vertical" >
-                <a-step v-for="(item, index) in steps" :key="item.title" :title="item.title" :class="{ active: currentStep === index, }" @click="handelStepclick(index, item.content)">
-                </a-step>
-              </a-steps>
+        <div class="step-wrap">
+          <!-- 标题 -->
+          <div class="page-title">
+            <div class="item">
+              <span class="label">名称：</span>
+              <span class="value">1000000000</span>
             </div>
-          </template>
-        </div>
-        <div class="submit">
-          <div class="btn-wrap">
-            <a-button type="primary" style="margin-right: 8px; color:#fff;">保存</a-button>
-            <a-button-group style="margin-left: 8px;margin-right: 16px">
-              <a-button>提交审批</a-button>
-              <a-button>演示提醒</a-button>
-              <a-button>删除</a-button>
-              <a-button><a-icon type="ellipsis"/></a-button>
-            </a-button-group>
-            <span class="sign">|</span>
-            <a-button
-              class="btn"
-              @click="showDrawer"
-              style="width: 130px;margin-left:16px;">
-              审批：<span class="checking">待审批</span></a-button>
+            <div class="item">
+              <span class="label">编码：</span>
+              <span class="value">{{ code }}</span>
+            </div>
+            <div class="item">
+              <span class="label">录入日期：</span>
+              <span class="value">{{ date }}</span>
+            </div>
+            <a class="item editor">编辑</a>
+            <a class="item detial">流程详情</a>
           </div>
+          <!-- 高级带分布步骤 -->
+          <div class="step-content">
+            <template>
+              <div>
+                <a-steps :current="current" size="small" labelPlacement="vertical" >
+                  <a-step v-for="(item, index) in steps" :key="item.title" :title="item.title" :class="{ active: currentStep === index, }" @click="handelStepclick(index, item.content)">
+                  </a-step>
+                </a-steps>
+              </div>
+            </template>
+          </div>
+          <div class="submit">
+            <div class="btn-wrap">
+              <a-button type="primary" style="margin-right: 8px; color:#fff;">保存</a-button>
+              <a-button-group style="margin-left: 8px;margin-right: 16px">
+                <a-button>提交审批</a-button>
+                <a-button>演示提醒</a-button>
+                <a-button>删除</a-button>
+                <a-button><a-icon type="ellipsis"/></a-button>
+              </a-button-group>
+              <span class="sign">|</span>
+              <a-button
+                class="btn"
+                @click="showDrawer"
+                style="width: 130px;margin-left:16px;">
+                审批：<span class="checking">待审批</span></a-button>
+            </div>
+          </div>
+          <drawer :isVisible="isVisible" @close-drawer="closeDrawer" @show-drawer="showDrawer"/>
         </div>
-        <drawer :isVisible="isVisible" @close-drawer="closeDrawer" @show-drawer="showDrawer"/>
       </div>
       <!-- 相关联流程图分布表单 -->
       <div slot="relevance" v-if="$route.meta.showRelevance">
         <!-- 标题 -->
-        <div class="relevance">
+        <div class="relevance-wrap">
           <div class="relevance__name">
             <div class="relevance__name--left">2018年韶关市翁源县江尾镇高标准农田建设项目</div>
             <div class="relevance__name--right">
@@ -320,21 +402,32 @@
               <span class="value">2019年</span>
             </div>
           </div>
-          <!-- <div class="relevance__step"> -->
-          <div class="step-content">
-            <template>
-              <div>
+          <div class="relevance__step-wrap">
+            <div class="step-content step-content--only">
+              <div style="position:relative">
+                <a class="top-row">
+                  <a-icon class="icon-row" type="caret-down" />
+                </a>
                 <a-steps :current="current" size="small" labelPlacement="vertical" >
-                  <a-step v-for="(item, index) in steps" :key="item.title" :title="item.title" :class="{ active: currentStep === index, }" @click="handelStepclick(index, item.content)">
+                  <a-step
+                    v-for="(item, index) in relevanceSteps"
+                    :key="item.title"
+                    :title="item.title"
+                    :class="{ active: currentStep === index, only: index===0 , }"
+                    @click="handelStepclick(index, item)">
+                    <div class="aa">{{ item.title }}</div>
                   </a-step>
                 </a-steps>
               </div>
-            </template>
+            </div>
           </div>
           <div class="relevance__footer">
+            <div class="relevance__footer__title">
+              {{ relevanceTitle }}
+            </div>
             <div class="btn-wrap">
               <a-button type="primary" style="margin-right: 8px; color:#fff;">提交</a-button>
-              <a-button type="primary" style="margin-right: 8px; color:#fff;">提交</a-button>
+              <a-button type="primary" style="margin-right: 8px; color:#fff;"><a-icon type="ellipsis"/></a-button>
             </div>
           </div>
         </div>
@@ -388,6 +481,7 @@ export default {
       isVisible: false,
       pageTitle: null,
       description: null,
+      relevanceTitle: '项目申报',
       linkList: [],
       extraImage: '',
       search: false,
@@ -398,6 +492,18 @@ export default {
       date: 20190909,
       current: 3,
       currentStep: 0,
+      relevanceSteps: [
+        { title: '项目申报',
+          content: 'First-content' },
+        { title: '实施计划',
+          content: 'Second-content' },
+        { title: '组织实施',
+          content: '3-content' },
+        { title: '竣工验收',
+          content: '4-content' },
+        { title: '项目管护',
+          content: '5-content' }
+      ],
       steps: [
         { title: '项目库阶段',
           content: 'First-content' },
@@ -413,7 +519,6 @@ export default {
           content: '6-content' },
         { title: '管护阶段',
           content: '7-content' }
-
       ]
     }
   },
@@ -443,9 +548,10 @@ export default {
     closeDrawer () {
       this.isVisible = false
     },
-    handelStepclick (index, content) {
+    handelStepclick (index, item) {
       if (this.current < index) return
       this.currentStep = index
+      this.relevanceTitle = item.title
       // this.SET_DATALIST(index)
       this.$store.dispatch('changOneActions', index)
       this.$forceUpdate()

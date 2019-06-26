@@ -86,14 +86,20 @@
         menuWidth: 820
       }
     },
-    computed: {
-      contentWidth() {
+    computed:{
+      contentWidth(){
         return this.$store.state.app.contentWidth
+      },
+      leftWidth () {
+        return this.$store.state.app.zoom
       }
     },
-    watch: {
-      contentWidth: function() {
+    watch:{
+      contentWidth:function() {
         this.getAutoMenuWidth()
+      },
+      leftWidth: function () {
+        this.getAutoLeftWidth()
       }
     },
     mounted() {
@@ -123,11 +129,14 @@
         }
       },
       getAutoMenuWidth() {
-        if (Vue.ls.get('DEFAULT_CONTENT_WIDTH_TYPE') === 'Fixed') {
-          this.menuWidth = 820
-        } else {
-          this.menuWidth = document.body.clientWidth - 500
-        }
+       if( Vue.ls.get('DEFAULT_CONTENT_WIDTH_TYPE')==='Fixed'){
+         this.menuWidth = 820
+       }else{
+         this.menuWidth = document.body.clientWidth-500
+       }
+      },
+      getAutoLeftWidth () {
+        this.menuWidth = document.body.clientWidth - 450
       },
       toggle() {
         this.$emit('toggle')

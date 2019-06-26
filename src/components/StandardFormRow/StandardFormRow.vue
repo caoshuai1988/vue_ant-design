@@ -64,7 +64,7 @@ export default {
   }
   /deep/ .ant-form-item-label label {
     margin-right: 0;
-    color: @text-color;
+    // color: @text-color;
   }
   /deep/ .ant-form-item-label,
   .ant-form-item-control {

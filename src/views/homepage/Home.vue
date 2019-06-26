@@ -190,7 +190,7 @@
                   <a slot="title" :href="item.href">{{ item.name.last }}</a>
                   <a-avatar slot="avatar" src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
                 </a-list-item-meta>
-                <div>Content</div>
+                <!-- <div>Content</div> -->
               </a-list-item>
 
             </a-list>
@@ -209,7 +209,7 @@
                   <a slot="title" :href="item.href">{{ item.name.last }}</a>
                   <a-avatar slot="avatar" src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
                 </a-list-item-meta>
-                <div>Content</div>
+                <!-- <div>Content</div> -->
               </a-list-item>
             </a-list>
           </a-card>

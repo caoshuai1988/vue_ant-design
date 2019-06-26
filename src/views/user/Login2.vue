@@ -1,10 +1,10 @@
 <template>
-  <div class="main">
-    <img src="@/assets/login_bg1.png"/>
-    <div class="login-box">
-      <a-row>
-        <a-col :span="20">
-          <div>
+<!--  <div class="main">-->
+<!--    <img src="@/assets/login_bg1.png"/>-->
+<!--    <div class="login-box">-->
+<!--      <a-row>-->
+<!--        <a-col :span="20">-->
+<!--          <div>-->
             <a-form
               id="formLogin"
               class="user-layout-login"
@@ -141,18 +141,18 @@
                 </a-tab-pane>
               </a-tabs>
             </a-form>
-          </div>
-        </a-col>
-        <a-col :span="4"></a-col>
-      </a-row>
-    </div>
-    <two-step-captcha
-      v-if="requiredTwoStepCaptcha"
-      :visible="stepCaptchaVisible"
-      @success="stepCaptchaSuccess"
-      @cancel="stepCaptchaCancel"
-    ></two-step-captcha>
-  </div>
+<!--          </div>-->
+<!--        </a-col>-->
+<!--        <a-col :span="4"></a-col>-->
+<!--      </a-row>-->
+<!--    </div>-->
+<!--    <two-step-captcha-->
+<!--      v-if="requiredTwoStepCaptcha"-->
+<!--      :visible="stepCaptchaVisible"-->
+<!--      @success="stepCaptchaSuccess"-->
+<!--      @cancel="stepCaptchaCancel"-->
+<!--    ></two-step-captcha>-->
+<!--  </div>-->
 </template>
 
 <script>
@@ -363,25 +363,37 @@ export default {
 </script>
 
 <style lang="less" scoped>
-  .main {
-    height: calc(100% - 304px);
-    min-height: 450px;
-    position: relative;
-    img {
-      width: 100%;
+  /*.main {*/
+  /*  height: calc(100% - 304px);*/
+  /*  min-height: 450px;*/
+  /*  position: relative;*/
+  /*  img {*/
+  /*    width: 100%;*/
+  /*    height: 100%;*/
+  /*  }*/
+  .login-box {
+    width: 840px;
+    height: 428px;
+    /*border: 1px solid #f00;*/
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    &-left {
+      float: left;
+      width: 440px;
       height: 100%;
+      background: url(~@/assets/login_left_bg.png) center;
+      /*background: rgba(0,0,0,0.2);*/
     }
-    .login-box {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 100%;
-      #formLogin.user-layout-login {
-        float: right;
-        background: #ffffff;
-        padding: 32px 32px 0;
-        height: 428px;
-        border-radius: 4px;
+    #formLogin.user-layout-login {
+      float: right;
+      width: 400px;
+      height: 428px;
+      border-radius: 4px;
+      padding: 32px 32px 0;
+      /*float: right;*/
+      background: #ffffff;
         .ant-form-item {
           margin-bottom: 24px;
         }
@@ -447,5 +459,5 @@ export default {
       }
     }
     /*}*/
-  }
+  /*}*/
 </style>

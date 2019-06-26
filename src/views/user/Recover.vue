@@ -438,7 +438,7 @@ export default {
             line-height: 32px;
           }
           .ant-steps {
-            max-width: 600px;
+            max-width: 800px;
             margin: 0 auto;
           }
           .content {
@@ -464,6 +464,7 @@ export default {
                   height: 40px;
                 }
                 .ant-col-8 {
+                  padding: 0 !important;
                   width: 102px;
                   height: 40px;
                   .code {
@@ -484,6 +485,7 @@ export default {
                   height: 40px;
                 }
                 .ant-col-8 {
+                  padding: 0 !important;
                   width: 102px;
                   height: 40px;
                 }

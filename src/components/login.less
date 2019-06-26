@@ -47,8 +47,13 @@
         width: 40px !important;
         height: 40px !important;
         border-radius: 0 !important;
+        i.fa-check-circle {
+          color: #52c41a;
+          //font-size: 1.2em;
+        }
       }
     }
+    //.drag_verify .dv_handler
     .dv_handler.dv_handler_ok_bg{
       border-top-left-radius: 0 !important;
       border-bottom-left-radius: 0 !important;
@@ -59,7 +64,7 @@
 .main{
   .recover-layout {
     .ant-steps {
-      max-width: 600px;
+      max-width: 800px;
       height: 48px;
       margin: 0 auto;
       .ant-steps-item {
@@ -69,7 +74,7 @@
           display: block;
           width: 100%;
           top: 10px;
-          margin: 0px 0 0 36px;
+          margin: 0 0 0 36px;
           padding: 0;
           &:after {
             height: 2px;
@@ -104,7 +109,7 @@
       .ant-steps-item-wait > .ant-steps-item-content > .ant-steps-item-title,
       .ant-steps-item-finish > .ant-steps-item-content > .ant-steps-item-title,
       .ant-steps-item-process > .ant-steps-item-content > .ant-steps-item-title{
-        font-size: 14px !important;
+        font-size: 16px !important;
       }
 
       .ant-steps-item-finish > .ant-steps-item-content > .ant-steps-item-title,
@@ -122,19 +127,14 @@
           transform: translateX(15px);
         }
       }
-      .ant-steps-item:last-child {
-        .ant-steps-item-icon {
-          transform: translateX(5px);
-        }
-      }
       .ant-steps-item-icon, .ant-steps-item-content {
         display: block;
         vertical-align: top;
       }
       .ant-steps-item-icon {
-        width: 22px;
-        height: 22px;
-        line-height: 22px;
+        width: 32px;
+        height: 32px;
+        line-height: 32px;
         text-align: center;
       }
       .ant-steps-item-title:after {
@@ -159,6 +159,18 @@
         canvas {
           border-radius: 4px !important;
         }
+      }
+    }
+  }
+}
+//登录模板1
+#userLayout1.user-layout-wrapper {
+  .ant-carousel {
+    height: 100%;
+    .slick-slider {
+      height: 100%;
+      .slick-list {
+        height: 100% !important;
       }
     }
   }

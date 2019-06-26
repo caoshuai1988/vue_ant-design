@@ -20,8 +20,7 @@ router.beforeEach((to, from, next) => {
 
 
   if(localStorage.getItem('pro__SURPLUS_HEME')){
-    let surplusTheme = JSON.parse(localStorage.getItem('pro__SURPLUS_HEME')).value
-    /*let surplusTheme = Vue.ls.get('pro__SURPLUS_HEME')*/
+    let surplusTheme = Vue.ls.get('SURPLUS_HEME')
     if (surplusTheme) {
       let cls = 'ant-body-' + surplusTheme
       document.getElementsByTagName('body')[0].classList.add(cls)

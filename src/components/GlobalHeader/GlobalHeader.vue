@@ -83,7 +83,18 @@
       return {
         visible: true,
         oldScrollTop: 0,
-        menuWidth: 835
+        menuWidth: 820
+      }
+    },
+    computed:{
+      contentWidth(){
+        debugger
+        return this.$store.state.app.contentWidth
+      }
+    },
+    watch:{
+      contentWidth:function() {
+        this.getAutoMenuWidth()
       }
     },
     mounted() {
@@ -114,7 +125,7 @@
       },
       getAutoMenuWidth() {
        if( Vue.ls.get('DEFAULT_CONTENT_WIDTH_TYPE')==='Fixed'){
-         this.menuWidth = 835
+         this.menuWidth = 820
        }else{
          this.menuWidth = document.body.clientWidth-500
        }

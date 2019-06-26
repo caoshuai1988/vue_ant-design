@@ -170,6 +170,27 @@
           font-size: 20px;
         }
       }
+      .num-step{
+        position: absolute;
+        top:0;
+        left: 36px + 174px;
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        line-height: 24px;
+        text-align: center;
+        border-radius: 50%;
+        background: #fff;
+        border: solid 1px #1890ff;
+        z-index:2;
+        font-size: 12px;
+        &.active{
+          background: #1890ff;
+          .cont{
+            color: #fff;
+          }
+        }
+      }
     }
 
   }
@@ -398,6 +419,17 @@
           <div class="relevance__step-wrap">
             <div class="step-content step-content--only">
               <div style="position:relative">
+                <!--  显示没有被选中 -->
+                <template v-if="current ===2 && showTwoStep && !ischeckBg ">
+                  <a class="num-step" :style="`backgroucdColor:${getColor}; border-color:${getColor}!important`" >
+                    <span class="cont">2</span>
+                  </a>
+                </template>
+                <template v-if="current ===2 && showTwoStep && ischeckBg">
+                  <a class="num-step" :class="{ active: ischeckBg}" :style="`backgroucdColor:${getColor}; border-color:${getColor}!important`">
+                    <span class="cont">2</span>
+                  </a>
+                </template>
                 <template v-if="current > 0">
                   <a class="top-row" :style="{borderColor:getColor}">
                     <a-icon class="icon-row" type="caret-down" />
@@ -491,6 +523,9 @@ export default {
       date: 20190909,
       current: 2,
       currentStep: 0,
+      ischeckBg: false, // 选中背景
+      // checkBg: '#1890ff',
+      showTwoStep: true, // 是否显示定位的第二步
       relevanceSteps: [
         { title: '项目申报',
           content: 'First-content' },
@@ -553,6 +588,13 @@ export default {
     handelStepclick (index, item) {
       if (this.current < index) return
       this.currentStep = index
+      if (this.currentStep === 1) {
+        // this.showTwoStep = true
+        this.ischeckBg = true
+      } else {
+        // this.showTwoStep = false
+        this.ischeckBg = false
+      }
       this.relevanceTitle = item.title
       // this.SET_DATALIST(index)
       this.$store.dispatch('changOneActions', index)

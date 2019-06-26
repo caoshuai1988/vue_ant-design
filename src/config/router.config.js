@@ -163,6 +163,13 @@ export const asyncRouterMap = [
             component: () => import('@/views/form/advancedStepForm/index'),
             meta: { title: '高级带分步表单', keepAlive: false, permission: ['form'], showStep: true }
           },
+          // 关联规划
+          {
+            path: '/fsxt/relevance-form',
+            name: 'StepFormPageCopy',
+            component: () => import('@/views/form/advancedStepFormCopy/index'),
+            meta: { title: '关联规划分步表单', keepAlive: false, permission: ['form'], showRelevance: true }
+          },
           {
             path: 'newform/AdvancedForms',
             name: 'AdvancedForms',

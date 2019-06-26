@@ -17,16 +17,11 @@ const whiteList = ['login', 'register', 'registerResult'] // no redirect whiteli
 router.beforeEach((to, from, next) => {
   NProgress.start() // start progress bar
   to.meta && (typeof to.meta.title !== 'undefined' && setDocumentTitle(`${to.meta.title} - ${domTitle}`))
-
-
-  if(localStorage.getItem('pro__SURPLUS_HEME')){
-    let surplusTheme = JSON.parse(localStorage.getItem('pro__SURPLUS_HEME')).value
-    /*let surplusTheme = Vue.ls.get('pro__SURPLUS_HEME')*/
+    let surplusTheme = Vue.ls.get('SURPLUS_HEME')
     if (surplusTheme) {
       let cls = 'ant-body-' + surplusTheme
       document.getElementsByTagName('body')[0].classList.add(cls)
     }
-  }
   if (Vue.ls.get(ACCESS_TOKEN)) {
     /* has token */
     if (to.path === '/user/login') {

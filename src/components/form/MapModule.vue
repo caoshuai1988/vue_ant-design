@@ -59,21 +59,19 @@ export default {
     }
   },
   mounted () {
-    // console.log(window.screen.availHeight - this.$refs.text.offsetHeight - 64)
-    this.mapMr.height = window.screen.availHeight - this.$refs.text.offsetHeight - 64 - 61 - 45 - 52.5 - 93 + 'px'
+    this.mapMr.height = window.screen.availHeight - this.$refs.text.offsetHeight - 64 - 61 - 45 - 52.5 - 93 + 'px' // 暂时
   },
   methods: {
 
     onTabChange (key, type) {
-      console.log(key, type)
       this[type] = key
     },
     changeSize () {
-      if (this.mapFd.width === window.screen.availWidth + 'px') {
+      if (this.mapFd.width === document.documentElement.clientWidth + 'px') {
         this.mapFd = {}
       } else {
-        this.mapFd.width = window.screen.availWidth + 'px'
-        this.mapFd.height = window.screen.availHeight + 'px'
+        this.mapFd.width = document.documentElement.clientWidth + 'px'
+        this.mapFd.height = document.documentElement.clientHeight + 'px'
       }
 
       this.screenloadFlag = !this.screenloadFlag
@@ -82,8 +80,7 @@ export default {
       this.iconSwitch = !this.iconSwitch
     },
     amplificationBtn () {
-      // 全屏
-      this.changeSize()
+      this.changeSize() // 全屏
     },
     handler ({ BMap, map }) {
       this.center.lng = 116.404
@@ -91,8 +88,6 @@ export default {
       this.zoom = this.zoom
     },
     getClickInfo (e) {
-      console.log(e.point.lng)
-      console.log(e.point.lat)
       this.center.lng = e.point.lng
       this.center.lat = e.point.lat
     },
@@ -135,17 +130,12 @@ export default {
 </script>
 
 <style lang="less" scoped>
-/* map */
-// #container {
-//   width: 100%;
-//   height: 590px;
-// }
 
 .screenload { /* 全屏 add css */
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1999;
+  z-index: 10;
 }
 
 .mapHead { /* 放大生效 */

@@ -21,7 +21,7 @@
       @close="onClose"
       :visible="visible"
       :wrapStyle="{height: 'calc(100% - 108px)',overflow: 'auto',paddingBottom: '108px'}">
-      <a-form :form="form" layout="vertical" hideRequiredMark>
+      <a-form :form="form" layout="vertical" :hideRequiredMark="true">
         <a-row :gutter="16">
           <a-col :span="12">
             <a-form-item label="名字">
@@ -261,7 +261,7 @@
       :visible="visibles"
       :wrapStyle="{height: 'calc(100% - 108px)',overflow: 'auto',paddingBottom: '108px'}">
       <a-card :body-style="{padding: '0'}" :bordered="false">
-        <a-form @submit="handleSubmit" :form="form">
+        <a-form @submit="handleSubmit" :form="form" :hideRequiredMark="true">
           <a-form-item
             label="标题"
             :labelCol="{lg: {span: 6}, sm: {span: 7}}"

@@ -246,7 +246,6 @@
 </template>
 
 <script>
-import { triggerWindowResizeEvent } from '@/utils/util'
 import { DetailList } from '@/components'
 import SettingItem from './SettingItem'
 import config from '@/config/defaultSettings'
@@ -291,7 +290,7 @@ export default {
     },
     handeCurZoom (zoom) {
       this.$store.dispatch('ToggleZoom', zoom)
-      triggerWindowResizeEvent()
+      document.body.style.zoom = zoom
     },
     toggle () {
       this.$store.dispatch('ToggleSetDrawer', false)

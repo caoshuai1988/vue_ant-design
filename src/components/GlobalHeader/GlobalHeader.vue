@@ -88,7 +88,6 @@
     },
     computed:{
       contentWidth(){
-        debugger
         return this.$store.state.app.contentWidth
       }
     },

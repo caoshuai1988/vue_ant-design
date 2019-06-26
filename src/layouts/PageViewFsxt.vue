@@ -163,22 +163,15 @@
         border: solid 1px #722ed1;
         border-bottom: none;
         .icon-row{
+          z-index:2;
           position: absolute;
-          bottom: -8px;
-          right: -12px;
-          font-size: 24px;
+          bottom: -6px;
+          right: -10px;
+          font-size: 20px;
         }
       }
     }
 
-  }
-  .aa{
-    position: fixed;
-    top: 0;
-    width: 100px;
-    height: 50px;
-    z-index: 999999;
-    background-color: pink;
   }
 
   .step-content{
@@ -405,17 +398,23 @@
           <div class="relevance__step-wrap">
             <div class="step-content step-content--only">
               <div style="position:relative">
-                <a class="top-row">
-                  <a-icon class="icon-row" type="caret-down" />
-                </a>
+                <template v-if="current > 0">
+                  <a class="top-row" :style="{borderColor:getColor}">
+                    <a-icon class="icon-row" type="caret-down" />
+                  </a>
+                </template>
+                <template v-else>
+                  <a class="top-row" :style="{borderColor:'#e8e8e8'}">
+                    <a-icon class="icon-row" :style="{color: '#e8e8e8'}" type="caret-down" />
+                  </a>
+                </template>
                 <a-steps :current="current" size="small" labelPlacement="vertical" >
                   <a-step
                     v-for="(item, index) in relevanceSteps"
                     :key="item.title"
                     :title="item.title"
-                    :class="{ active: currentStep === index, only: index===0 , }"
+                    :class="{ active: currentStep === index, 'ant-steps-item-process': current===2 && index===1 }"
                     @click="handelStepclick(index, item)">
-                    <div class="aa">{{ item.title }}</div>
                   </a-step>
                 </a-steps>
               </div>
@@ -490,7 +489,7 @@ export default {
       name: '2018年韶关市翁源县江尾镇高标准农田建设项目',
       code: '4402290011140201810',
       date: 20190909,
-      current: 3,
+      current: 2,
       currentStep: 0,
       relevanceSteps: [
         { title: '项目申报',
@@ -525,7 +524,10 @@ export default {
   computed: {
     ...mapState({
       multiTab: state => state.app.multiTab
-    })
+    }),
+    getColor () {
+      return this.$store.state.app.color
+    }
   },
   mounted () {
     this.tabs = this.directTabs

@@ -3,6 +3,7 @@ import {
   UserLayout,
   UserLayout2,
   UserLayout3,
+  RecoverLayout,
   BasicLayout,
   RouteView,
   BlankLayout,
@@ -30,25 +31,51 @@ export const asyncRouterMap = [
       {
         path: 'user/login',
         name: 'login',
-        meta: { title: '登陆页', keepAlive: true, icon: 'user' },
+        meta: { title: '登录页', keepAlive: true, icon: 'user' },
         children: [
           // 登陆模板2
           {
             path: '/user/login2',
             name: 'login2',
-            meta: { title: '登陆模板2', target: '_blank' }
+            meta: { title: '登录模板2', target: '_blank' },
+            children: [
+              // 登陆模板2-1
+              {
+                path: '/user/login2/base',
+                name: 'login2Base',
+                meta: { title: '2账号密码登录-默认页', target: '_blank' }
+              },
+              // 登陆模板2-2
+              {
+                path: '/user/login2/error',
+                name: 'login2Error',
+                meta: { title: '2账号密码登录-错误提示页', target: '_blank' }
+              },
+              // 登陆模板2-3
+              {
+                path: '/user/login2/drag',
+                name: 'login2Drag',
+                meta: { title: '2账号密码登录-出现滑块页', target: '_blank' }
+              }
+            ]
           },
           // 登陆模板3
           {
             path: '/user/login3',
             name: 'login3',
-            meta: { title: '登陆模板3', target: '_blank' }
+            meta: { title: '登录模板3', target: '_blank' }
           },
           // 登陆模板4
           {
             path: '/user/login4',
             name: 'login4',
-            meta: { title: '登陆模板4', target: '_blank' }
+            meta: { title: '登录模板4', target: '_blank' }
+          },
+          // 找回密码
+          {
+            path: '/user/recover',
+            name: 'recover',
+            meta: { title: '找回密码', target: '_blank' }
           }
         ]
       },
@@ -103,7 +130,7 @@ export const asyncRouterMap = [
           {
             path: '/form/newbaseform',
             name: 'NewBaseForm',
-            component: () => import('@/views/newform/newBaseForm'),
+            component: () => import('@/views/newform/NewBaseForm'),
             meta: { title: '基础表单', keepAlive: true, permission: ['form'] }
           },
           {
@@ -605,21 +632,75 @@ export const constantRouterMap = [
       }
     ]
   },
+  // {
+  //   path: '/user',
+  //   component: UserLayout2,
+  //   redirect: '/user/login2',
+  //   hidden: true,
+  //   children: [
+  //     {
+  //       path: 'login2',
+  //       name: 'login2',
+  //       component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login2')
+  //     },
+  //     {
+  //       path: 'recover',
+  //       name: 'recover',
+  //       component: () => import(/* webpackChunkName: "user" */ '@/views/user/Recover')
+  //     }
+  //   ]
+  // },
   {
     path: '/user',
     component: UserLayout2,
-    redirect: '/user/login2',
+    redirect: '/user/login2/base',
     hidden: true,
     children: [
       {
-        path: 'login2',
-        name: 'login2',
-        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login2')
-      },
+        path: 'login2/base',
+        name: 'login2Base',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login2/Login2-base')
+      // },
+      // {
+      //   path: 'recover',
+      //   name: 'recover',
+      //   component: () => import(/* webpackChunkName: "user" */ '@/views/user/Recover')
+      }
+    ]
+  },
+  {
+    path: '/user',
+    component: UserLayout2,
+    redirect: '/user/login2/error',
+    hidden: true,
+    children: [
       {
-        path: 'recover',
-        name: 'recover',
-        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Recover')
+        path: 'login2/error',
+        name: 'login2Error',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login2/Login2-error')
+      // },
+      // {
+      //   path: 'recover',
+      //   name: 'recover',
+      //   component: () => import(/* webpackChunkName: "user" */ '@/views/user/Recover')
+      }
+    ]
+  },
+  {
+    path: '/user',
+    component: UserLayout2,
+    redirect: '/user/login2/drag',
+    hidden: true,
+    children: [
+      {
+        path: 'login2/drag',
+        name: 'login2Drag',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login2/Login2-drag')
+      // },
+      // {
+      //   path: 'recover',
+      //   name: 'recover',
+      //   component: () => import(/* webpackChunkName: "user" */ '@/views/user/Recover')
       }
     ]
   },
@@ -646,6 +727,19 @@ export const constantRouterMap = [
         path: 'login4',
         name: 'login4',
         component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login4')
+      }
+    ]
+  },
+  {
+    path: '/user',
+    component: RecoverLayout,
+    redirect: '/user/recover',
+    hidden: true,
+    children: [
+      {
+        path: 'recover',
+        name: 'recover',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Recover')
       }
     ]
   },

@@ -159,6 +159,59 @@
     }
   }
 }
+.form-detial /deep/ .ant-card .ant-card-body {
+  padding: 0;
+}
+.card-header {
+  box-sizing: border-box;
+  // height: 56px;
+  z-index: 1;
+  padding-top: 11px;
+  width: 100%;
+  margin-bottom: 24px;
+  background-color: #fff;
+  box-shadow: 0px 0px 20px 0px rgba(129, 129, 129, 0.2);
+}
+.ant-tabs-bar {
+  margin: 0;
+  border: none !important;
+}
+// 附件打包现在样式
+.table-wrap {
+  margin-bottom: 48px;
+  .title-box {
+    // height: 32px;
+    padding-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .title-des {
+      font-size: 16px;
+      color: rgba(0, 0, 0, 0.85);
+    }
+  }
+}
+
+// 地图的样式
+/* 放大生效 */
+
+.mapContent {
+  height: 100% !important;
+}
+#container {
+  width: 100%;
+  height: 640px;
+}
+.screenload {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 11;
+}
+.amplification{
+  cursor: pointer;
+  padding: 0 10px;
+}
 
 </style>
 <template>
@@ -316,8 +369,9 @@
                     <a-table-column title="上传时间" data-index="time" key="time"/>
                     <a-table-column title="操作" key="operation">
                       <template slot-scope="text, record" >
-                        <a href style="margin-right:10px" @click.prevent="addAmplifier(record.key)">{{ record.operation.text }}</a>
+                        <a href style="margin-right:10px" @click.prevent="addAmplifier(record.key)">  {{ record.operation.text }}</a>
                         <a style="margin-right:10px">{{ record.operation.textOne }}</a>
+                        <!-- <router-link tag="a" target="_blank" :to="{path: '/preview', query: {img:item}}"></router-link> -->
                       </template>
                     </a-table-column>
                   </a-table>

@@ -10,7 +10,8 @@ import {
   DEFAULT_FIXED_HEADER_HIDDEN,
   DEFAULT_CONTENT_WIDTH_TYPE,
   DEFAULT_MULTI_TAB,
-  DEFAULT_LAYER_VISIBLE
+  DEFAULT_LAYER_VISIBLE,
+  DEFAULT_CONTAINER_ZOOM
 } from '@/store/mutation-types'
 
 const app = {
@@ -28,6 +29,7 @@ const app = {
     weak: false,
     multiTab: true,
     visible: false, // cs
+    zoom: 1,
     settingDrawer: false
   },
   mutations: {
@@ -89,6 +91,10 @@ const app = {
       state.visible = visible
       console.log('app.js=>' + visible)
     },
+    TOGGLE_CONTAINER_ZOOM: (state, zoom) => {
+      Vue.ls.set(DEFAULT_CONTAINER_ZOOM, zoom)
+      state.zoom = zoom
+    },
     TOGGLE_SET_DRAWER: (state, bool) => {
       state.settingDrawer = bool
     }
@@ -138,6 +144,10 @@ const app = {
     },
     ToggleVisible ({ commit }, visible) { // cs 显示右侧主题层
       commit('TOGGLE_VISIBLE', visible)
+    },
+    ToggleZoom ({ commit }, zoom) {
+      console.log('ToggleZoom' + zoom)
+      commit('TOGGLE_CONTAINER_ZOOM', zoom)
     },
     ToggleSetDrawer ({ commit }, bool) {
       commit('TOGGLE_SET_DRAWER', bool)

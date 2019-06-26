@@ -47,7 +47,7 @@
                       <a-icon slot="prefix" type="lock" :style="{ color: 'rgba(0,0,0,.25)' }"/>
                     </a-input>
                   </a-form-item>
-                  <a-form-item class="login-drag">
+                  <a-form-item class="login-drag" v-if="isCheck">
                     <drag-verify
                       @passcallback="passcallback"
                       :width="drag.width"
@@ -83,7 +83,7 @@
                       :disabled="state.loginBtn"
                     >登录</a-button>
                   </a-form-item>
-                  <div class="login-tips" v-if="isError">
+                  <div class="login-tips">
                     <span>用户名或密码错误！</span>
                   </div>
                 </a-tab-pane>

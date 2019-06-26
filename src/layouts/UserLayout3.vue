@@ -3,19 +3,19 @@
     <div class="container">
       <div class="top">
         <div class="header">
-          <a href="/">
+<!--          <a href="/">-->
             <img src="~@/assets/fslogo.png" class="logo" alt="logo">
-          </a>
+<!--          </a>-->
         </div>
         <div class="desc">
-          富深协通新平台规范模板
+          富深协通新平台模板
         </div>
       </div>
 
       <route-view></route-view>
 
       <div class="footer">
-        <span>关于我们&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;版权所有：江苏富深协通科技股份有限公司&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;技术支持：0519-86612998</span>
+        <span><a href="" target="_blank">关于我们</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;版权所有：江苏富深协通科技股份有限公司&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;技术支持：0519-86612998</span>
       </div>
     </div>
   </div>
@@ -63,9 +63,9 @@ export default {
       padding: 110px 0 144px;
       position: relative;
       /*overflow-y: hidden;*/
-      a {
-        text-decoration: none;
-      }
+      /*a {*/
+      /*  text-decoration: none;*/
+      /*}*/
 
       .top {
         text-align: center;
@@ -111,6 +111,13 @@ export default {
         margin: 48px 0 24px;
         text-align: center;
         color: rgba(0,0,0,0.45);
+        a {
+          text-decoration: none;
+          color: rgba(0,0,0,0.45);
+          &:hover {
+            color: #1890ff;
+          }
+        }
       }
     }
   }

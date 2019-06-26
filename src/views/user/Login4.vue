@@ -287,6 +287,9 @@ export default {
         padding: 32px 32px 0;
         height: 428px;
         border-radius: 4px;
+        .ant-form-item {
+          margin-bottom: 24px;
+        }
         >div {
           width: 335px;
           .form-title {

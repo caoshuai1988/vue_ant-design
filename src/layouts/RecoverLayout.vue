@@ -1,5 +1,5 @@
 <template>
-  <div id="userLayout" :class="['user-layout-wrapper', device]">
+  <div id="recoverLayout" :class="['recover-layout-wrapper', device]">
     <div class="container">
       <div class="top">
         <a-row>
@@ -25,23 +25,23 @@ import { mixinDevice } from '@/utils/mixin'
 import ARow from 'ant-design-vue/es/grid/Row'
 
 export default {
-  name: 'UserLayout2',
+  name: 'RecoverLayout',
   components: { ARow, RouteView },
   mixins: [mixinDevice],
   data () {
     return {}
   },
   mounted () {
-    document.body.classList.add('userLayout')
+    document.body.classList.add('recoverLayout')
   },
   beforeDestroy () {
-    document.body.classList.remove('userLayout')
+    document.body.classList.remove('recoverLayout')
   }
 }
 </script>
 
 <style lang="less" scoped>
-  #userLayout.user-layout-wrapper {
+  #recoverLayout.recover-layout-wrapper {
     height: 100%;
 
     &.mobile {
@@ -54,6 +54,7 @@ export default {
     }
 
     .container {
+      background: #f0f2f5;
       min-width: 1200px;
       width: 100%;
       height: 100%;
@@ -83,11 +84,15 @@ export default {
       }
       .footer {
         width: 100%;
-        margin: 56px 0 128px 0;
         text-align: center;
-        height: 14px;
-        line-height: 14px;
+        background: rgba(240,242,245,1);
         color: rgba(0,0,0,0.45);
+        span {
+          display: inline-block;
+          margin: 48px 0;
+          height: 14px;
+          line-height: 14px;
+        }
         a {
           text-decoration: none;
           color: rgba(0,0,0,0.45);

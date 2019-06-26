@@ -3,6 +3,7 @@ import {
   UserLayout,
   UserLayout2,
   UserLayout3,
+  RecoverLayout,
   BasicLayout,
   RouteView,
   BlankLayout,
@@ -726,6 +727,19 @@ export const constantRouterMap = [
         path: 'login4',
         name: 'login4',
         component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login4')
+      }
+    ]
+  },
+  {
+    path: '/user',
+    component: RecoverLayout,
+    redirect: '/user/recover',
+    hidden: true,
+    children: [
+      {
+        path: 'recover',
+        name: 'recover',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Recover')
       }
     ]
   },

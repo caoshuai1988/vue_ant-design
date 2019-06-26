@@ -26,7 +26,7 @@
           <div class="header-index-wide">
             <div class="header-index-left">
               <logo class="top-nav-header" :show-title="device !== 'mobile'"/>
-              <s-menu :style="{'max-width':menuWidth+'px'}" v-if="device !== 'mobile'" mode="horizontal" :menu="menus"
+              <s-menu :style="{'max-width':menuWidth+'px',flex:'0 1 '+menuWidth+'px'}" v-if="device !== 'mobile'" mode="horizontal" :menu="menus"
                       :theme="theme" :class="surplusTheme"/>
               <a-icon v-else class="trigger" :type="collapsed ? 'menu-fold' : 'menu-unfold'" @click="toggle"/>
             </div>
@@ -86,13 +86,13 @@
         menuWidth: 820
       }
     },
-    computed:{
-      contentWidth(){
+    computed: {
+      contentWidth() {
         return this.$store.state.app.contentWidth
       }
     },
-    watch:{
-      contentWidth:function() {
+    watch: {
+      contentWidth: function() {
         this.getAutoMenuWidth()
       }
     },
@@ -123,12 +123,11 @@
         }
       },
       getAutoMenuWidth() {
-       if( Vue.ls.get('DEFAULT_CONTENT_WIDTH_TYPE')==='Fixed'){
-         this.menuWidth = 820
-       }else{
-         this.menuWidth = document.body.clientWidth-500
-       }
-
+        if (Vue.ls.get('DEFAULT_CONTENT_WIDTH_TYPE') === 'Fixed') {
+          this.menuWidth = 820
+        } else {
+          this.menuWidth = document.body.clientWidth - 500
+        }
       },
       toggle() {
         this.$emit('toggle')

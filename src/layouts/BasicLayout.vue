@@ -1,5 +1,5 @@
 <template>
-  <a-layout :class="['layout', device]" :style="{zoom:curZoom}">
+  <a-layout :class="['layout', device]">
     <!-- SideMenu -->
     <a-drawer
       v-if="isMobile()"
@@ -107,6 +107,7 @@
 </template>
 
 <script>
+import Vue from 'vue'
 import { triggerWindowResizeEvent } from '@/utils/util'
 import { mapState, mapActions } from 'vuex'
 import { mixin, mixinDevice } from '@/utils/mixin'
@@ -144,8 +145,7 @@ export default {
   computed: {
     ...mapState({
       // 动态主路由
-      mainMenu: state => state.permission.addRouters,
-      curZoom: state => state.app.zoom
+      mainMenu: state => state.permission.addRouters
     }),
     contentPaddingLeft () {
       if (!this.fixSidebar || this.isMobile()) {
@@ -166,11 +166,9 @@ export default {
 
   },
   created () {
-    console.log(this.navTheme)
-    console.log(this.surplusTheme)
     this.menus = this.mainMenu.find(item => item.path === '/').children
-    console.log(this.menus)
     this.collapsed = !this.sidebarOpened
+    document.body.style.zoom = Vue.ls.get('DEFAULT_CONTAINER_ZOOM') ? Vue.ls.get('DEFAULT_CONTAINER_ZOOM') : 1
   },
   mounted () {
     const userAgent = navigator.userAgent

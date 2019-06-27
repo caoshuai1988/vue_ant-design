@@ -61,6 +61,7 @@
         }
         .content-nav{
           padding-right:24px;
+          // padding-bottom: 50px;
           min-height: 300px;
           max-height: @height;
           overflow-y: auto;
@@ -148,7 +149,7 @@
          }
       }
       .preview-body{
-        padding: 24px;
+        padding: 24px 32px;
         // height: 100%;
       }
 
@@ -174,14 +175,14 @@
       <!-- <a-button type="primary" style="float:right;margin-top:16px" @click="backBtn">返回</a-button> -->
     </div>
     <!-- 侧边栏 -->
-    <div class="preview-main" :style="previewStyle">
-      <div class="preview-direction">
-        <div class="content-box">
+    <div class="preview-main" >
+      <div class="preview-direction" >
+        <div class="content-box" >
           <!-- 标题 -->
           <div class="title">
             {{ "可研报告" }}
           </div>
-          <div class="content-nav">
+          <div class="content-nav" :style="contentStyle">
             <div class="preview-nav--item " :class="{on: wordShow==1}" @click="tabSwitcher(1)">
               <img src="@/assets/previewIcon/word.png" alt="word">
               <div class="file-name">
@@ -303,21 +304,25 @@ export default {
     return {
       helpNum: 4,
       num: 20,
-      value: '',
+      value: '100%',
       wordShow: '',
       previewStyle: {
         height: ''
       },
-      imgBox: {
+      contentStyle: {
         height: ''
+      },
+      imgBox: {
+        height: '100%'
       }
     }
   },
 
   mounted () {
-    this.value = window.screen.availHeight - this.$refs.text.offsetHeight - 92 - 68 - 60 + 'px' // 暂时
-    this.previewStyle.height = window.screen.availHeight - this.$refs.text.offsetHeight - 92 - 68 + 'px'
-    this.imgBox.height = window.screen.availHeight - this.$refs.text.offsetHeight - 92 - 68 - 60 + 'px' // 暂时
+    // this.value = document.documentElement.clientHeight - this.$refs.text.offsetHeight - 92 - 68 + 4 + 'px' // 暂时
+    this.previewStyle.height = document.documentElement.clientHeight - this.$refs.text.offsetHeight - 94 + 'px'
+    this.contentStyle.height = document.documentElement.clientHeight - 64 - 24 + 'px'
+    // this.imgBox.height = document.documentElement.clientHeight - this.$refs.text.offsetHeight - 92 - 68 + 'px' // 暂时
     this.wordShow = this.$route.query.val
   },
   methods: {

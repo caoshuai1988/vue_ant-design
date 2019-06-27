@@ -75,7 +75,8 @@ export default {
 .flowImg{
     width:100%;
     text-align: center;
-		margin:24px auto;
+    margin: auto;
+    padding-bottom: 24px;
 		.begin{
 			font-size:16px;
 			background: #00a854;

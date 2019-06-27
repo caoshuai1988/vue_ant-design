@@ -3,6 +3,7 @@
     <div class="help-con-head">
       <div class="help-head-content">
         <div class="head-caption">
+        	<span><img src="~@/assets/fsLogo.svg" style="width:24px;height:24px;" alt="logo"></span>
           <span>富深新平台模板</span>
           <span>帮助</span>
         </div>
@@ -290,7 +291,7 @@ margin-bottom: 0;
     height:64px;
     background-color: #004081;
     .help-head-content {
-      max-width: 1000px;
+      max-width: 1200px;
       width: 100%;
       margin: 0 auto;
       display: flex;
@@ -300,11 +301,17 @@ margin-bottom: 0;
       .head-caption {
         color: #FFFFFF;
         & span:first-child {
+        vertical-align:middle
+        }
+        & span:nth-child(2) {
           font-size: 20px;
           padding-right: 8px;
+          padding-left:8px;
+          vertical-align:middle
         }
         & span:last-child {
           font-size: 16px;
+          vertical-align:bottom;
         }
       }
       .head-contact {
@@ -385,7 +392,7 @@ margin-bottom: 0;
         text-align: center;
         line-height:100%;
         margin:32px auto 24px;
-        color:rgba(0,0,0,.85);
+        color:rgba(0,0,0,.65);
         font-weight: bold;
       }
       .account-time{
@@ -405,13 +412,13 @@ margin-bottom: 0;
         .account-publictitle{
           .account-publicone{
             font-size:24px;
-            color:rgba(0,0,0,.85);
+            color:rgba(0,0,0,.65);
             line-height: 100%;
             font-weight: bold;
           }
           .account-p{
             font-size:14px;
-            color:rgba(0,0,0,.85);
+            color:rgba(0,0,0,.65);
             line-height:20px;
             margin:16px auto 16px;
           }
@@ -420,7 +427,7 @@ margin-bottom: 0;
           .account-publicthree{
             font-size:16px;
             font-weight: bold;
-            color:rgba(0,0,0,.85);
+            color:rgba(0,0,0,.65);
             margin-bottom:16px;
             line-height: 100%;
           }
@@ -430,7 +437,7 @@ margin-bottom: 0;
               margin-bottom:24px;
               li{
                 font-size:14px;
-                color:rgba(0,0,0,.85);
+                color:rgba(0,0,0,.65);
               }
             }
             ul{
@@ -438,7 +445,7 @@ margin-bottom: 0;
               margin-bottom:24px;
               li{
                 font-size:14px;
-                color:rgba(0,0,0,.85);
+                color:rgba(0,0,0,.65);
               }
             }
           }
@@ -449,7 +456,7 @@ margin-bottom: 0;
         margin:0 auto;
         .account-key{
           font-size:14px;
-          color:rgba(0,0,0,.85);
+          color:rgba(0,0,0,.45);
           .span_b{
             margin-top:12px;
             display: block;

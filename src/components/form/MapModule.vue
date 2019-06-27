@@ -24,8 +24,7 @@
           :center="center"
           :zoom="zoom"
           @ready="handler"
-          style="width:100%;height:100%"
-        >
+          style="width:100%;height:100%">
           <bm-navigation anchor="BMAP_ANCHOR_TOP_LEFT"></bm-navigation>
           <bm-geolocation
             anchor="BMAP_ANCHOR_BOTTOM_RIGHT"

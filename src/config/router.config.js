@@ -53,13 +53,13 @@ export const asyncRouterMap = [
                 name: 'login2Base',
                 meta: { title: '2账号密码登录-默认页', target: '_blank' }
               },
-              // 登录模板2-2
+              // 登陆模板2-2
               {
                 path: '/user/login2/error',
                 name: 'login2Error',
                 meta: { title: '2账号密码登录-错误提示页', target: '_blank' }
               },
-              // 登录模板2-3
+              // 登陆模板2-3
               {
                 path: '/user/login2/drag',
                 name: 'login2Drag',
@@ -73,13 +73,13 @@ export const asyncRouterMap = [
               }
             ]
           },
-          // 登录模板3
+          // 登陆模板3
           {
             path: '/user/login3',
             name: 'login3',
             meta: { title: '登录模板3', target: '_blank' }
           },
-          // 登录模板4
+          // 登陆模板4
           {
             path: '/user/login4',
             name: 'login4',
@@ -140,7 +140,7 @@ export const asyncRouterMap = [
       },
       // new FORM
 
-      // 新建表单
+      // 表单页
       {
         path: '/fsxt',
         redirect: '/fsxt/fsxt-base-form',
@@ -780,6 +780,16 @@ export const constantRouterMap = [
     path: '/preview',
     name: 'preview',
     component: () => import('@/views/newform/preview')
+  },
+  { // 地图
+    path: '/maplook',
+    name: 'maplook',
+    component: () => import('@/views/check/mapLook')
+  },
+  { // 报表
+    path: '/tablelook',
+    name: 'tablelook',
+    component: () => import('@/views/check/tableLook')
   },
   {
     path: '/test',

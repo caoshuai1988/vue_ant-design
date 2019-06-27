@@ -109,7 +109,7 @@
 
     <a-row :gutter="24">
       <a-col :body-style="{background:'#fff'}" :xl="num" :lg="num" :md="num" :sm="num" >
-        <div style="background: #fff; padding: 0">
+        <div style=" padding: 0">
           <baseFlowHead></baseFlowHead>
           <baseFormContent></baseFormContent>
         </div>
@@ -202,7 +202,7 @@
 
 <script>
 import baseFlowHead from './BaseFlowHead'
-import baseFormContent from './BaseFormContent'
+import baseFormContent from '@/components/form/BaseFormContent'
 export default {
   name: 'BaseForm',
   components: {

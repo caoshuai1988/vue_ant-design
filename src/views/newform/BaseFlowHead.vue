@@ -39,6 +39,7 @@ export default {
 
 <style lang="less" scoped>
 .sizeFLow{
+  font-size: 16px;
   color: rgba(0, 0, 0, 85%)
 }
 
@@ -68,7 +69,7 @@ export default {
     }
     .flowTwo{
       // padding-right: 32px;
-      font-size: 18px;
+      font-size: 16px;
       cursor:pointer;
     }
   }

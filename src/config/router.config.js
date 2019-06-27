@@ -175,6 +175,12 @@ export const asyncRouterMap = [
             name: 'AdvancedForms',
             component: () => import('@/views/newform/AdvancedForms'),
             meta: { title: '高级表单', keepAlive: true, permission: ['form'] }
+          },
+          {
+            path: 'newform/AdvancedMap',
+            name: 'AdvancedMap',
+            component: () => import('@/views/newform/AdvancedMap'),
+            meta: { title: '高级地图', keepAlive: true }
           }
         ]
       },

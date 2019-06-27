@@ -80,7 +80,7 @@ export default {
   },
 }
 </script>
-<style>
+<style lang="less">
 .screening .ant-table-bordered .ant-table-thead > tr > th, .ant-table-bordered .ant-table-tbody > tr > td{
 	border-right:0px !important;
 	

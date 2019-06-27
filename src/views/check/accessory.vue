@@ -1,4 +1,4 @@
-<style lang="less">
+<style lang="less" scoped>
   .table-wrap{
     margin-bottom: 48px;
     .title-box{
@@ -10,9 +10,7 @@
       .title-des{
         font-size: 16px;
         color:rgba(0, 0, 0, 0.85);
-
       }
-
     }
   }
 
@@ -125,7 +123,7 @@
 
     <a-row :gutter="24">
       <a-col :body-style="{ background:'#fff'}" :xl="num" :lg="num" :md="num" :sm="num" >
-        <div class="accessory-box" style="background: #fff; padding: 24px">
+        <div class="accessory-box" style="background: #fff; padding: 24px 32px">
           <div class="table-wrap">
             <div class="title-box">
               <div class="title-des">项目可研报告</div>
@@ -360,11 +358,12 @@ export default {
   data () {
     return {
       data,
-      num: 18,
+      isShowHelp: false,
+      num: 24,
+      // num: 18,
       helpNum: 6,
       lablenum: 7,
       valuenum: 17,
-      isShowHelp: true,
       labelCol: { lg: { span: 7 }, sm: { span: 7 } },
       wrapperCol: { lg: { span: 10 }, sm: { span: 10 } },
       headers: {

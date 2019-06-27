@@ -2,14 +2,13 @@
   <div>
     <!-- 三列 -->
     <a-card class="card" style="font-size: 26px" :bordered="false" >
-
       <layoutForm title="组标题" >
         <span class="foldStyle" @click="fold(true)">
           <a-icon type="up" v-if="iconToggle" />
           <a-icon type="down" v-else />
         </span>
         <verticaltoggle>
-          <a-form @submit="handleSubmit" :form="form" class="form" v-if="foldOne">
+          <a-form @submit="handleSubmit" :form="form" class="form" v-if="foldOne" :hideRequiredMark="true">
             <a-row class="form-row" :gutter="16">
               <a-col :lg="6" :md="12" :sm="24">
                 <a-form-item >
@@ -97,7 +96,7 @@
           <a-icon type="down" v-else />
         </span>
         <verticaltoggle>
-          <a-form @submit="handleSubmit" :form="form" class="form" v-if="foldTwo">
+          <a-form @submit="handleSubmit" :form="form" class="form" v-if="foldTwo" :hideRequiredMark="true">
             <a-row class="form-row" :gutter="16">
               <a-col :lg="6" :md="12" :sm="24">
                 <a-form-item >

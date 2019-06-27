@@ -1,5 +1,5 @@
 <template>
-  <div class="help-container">
+  <div class="help-container" :style="{zoom:curZoom}">
     <div class="help-con-head">
       <div class="help-head-content">
         <div class="head-caption">
@@ -35,36 +35,81 @@
                 <a-breadcrumb-item>帮助信息</a-breadcrumb-item>
               </a-breadcrumb>
             </div>
-            <div>
-              <p>帮用名称帮助名称帮助名称</p>
-              <p>关键字：关键字1,关键字2      关联：模块1-模块名称-列表,表单,审批；模块1-模块名称-列表,表单,审批             创建时间：2019-9-9 09:00</p>
-              <hr>
-              <div>文章浏览宽度默认为640px。如需调整，为了保障用户的阅读体验，建议不要超过720px；</div>
-              <p>1. 基本样式示例</p>
-              <p>本文用于示范，展示一些不同类型的内容，在文章中应该如何展示。包括：标题，段落，链接，附件，代码块，图片，表格内容。下载    Axure文件</p>
-              <p>1.1 段落和列表</p>
-              <p>有序列表</p>
-              <p>1.   段落和列表示列</p>
-              <p>2.   图片示例</p>
-              <p>3.   表格示例</p>
-              <p>4.   代码块示例</p>
-              <p>无序列表</p>
-              <p>1.   段落和列表示列</p>
-              <p>2.   图片示例</p>
-              <p>3.   表格示例</p>
-              <p>4.   代码块示例</p>
-              <p>1.2图片示例</p>
-              <p>图片默认居中对齐，缩略至宽度等于文章限定快读，点击可查看原图。交互方式参照云雀即可。</p>
-              <div>
-                <img style="width:640px" :src="banner" />
+            <div class="account-help-content">
+              <p class="account-title">帮用名称帮助名称</p>
+              <p class="account-time"><img style="width:14px;height:14px;display: inline-block;margin-top:-3px;margin-right:8px;" :src="time" />创建时间：2019-9-9 09:00</p>
+              <p class="account-hr"></p>
+              <div class="account-body">
+                <div class="account-publictitle">
+                  <p class="account-publicone">1. 段落和列表</p>
+                  <p class="account-p">这里是文字说明这里是文字说明这里是文字说明这里是文字说明这里是文字说明这里是文字说明，这里是文字说明 这里是文字说明。这里是文字说明这里是文字说明这里是文字说明这里是文字说明这里是文字说明这里是文字说明， 这里是文字说明这里是文字说明。</p>
+                </div>
+                <div class="account-list">
+                  <p class="account-publicthree">1.1 有序列表</p>
+                  <div class="account-li">
+                    <ol>
+                      <li>段落和列表示列</li>
+                      <li>图片示例</li>
+                      <li>表格示例</li>
+                      <li>代码块示例</li>
+                    </ol>
+                  </div>
+                  <p class="account-publicthree">1.2 无序列表</p>
+                  <div class="account-li">
+                    <ul>
+                      <li>段落和列表示列</li>
+                      <li>图片示例</li>
+                      <li>表格示例</li>
+                      <li>代码块示例</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="account-publictitle">
+                  <p class="account-publicone">2. 图片示例</p>
+                  <p class="account-p">这里是文字说明这里是文字说明这里是文字说明这里是文字说明这里是文字说明这里是文字说明，这里是文字说明 这里是文字说明。这里是文字说明这里是文字说明这里是文字说明这里是文字说明这里是文字说明这里是文字说明， 这里是文字说明这里是文字说明。</p>
+                </div>
+                <div>
+                  <img style="width:700px;margin-bottom: 24px;" :src="banner" />
+                </div>
+                <div class="account-publictitle">
+                  <p class="account-publicone">3. 表格示例</p>
+                  <p class="account-p">这里是文字说明这里是文字说明这里是文字说明这里是文字说明这里是文字说明这里是文字说明，这里是文字说明 这里是文字说明。这里是文字说明这里是文字说明这里是文字说明这里是文字说明这里是文字说明这里是文字说明， 这里是文字说明这里是文字说明。</p>
+                </div>
+                <div style="width:700px;margin-bottom: 1em;">
+                  <template>
+                    <a-table :columns="columns" :dataSource="data" :scroll="{ x: 1500, y: 300 }">
+                      <a slot="action" href="javascript:;">action</a>
+                    </a-table>
+                  </template>
+                </div>
               </div>
-              <p>1.2.1 小图示例</p>
-              <div>
-                <img style="width:339px" :src="banner" />
+              <p class="account-hr" style="margin:64px auto 24px "></p>
+
+              <div class="account-footer">
+                <p class="account-key">
+                  <span class="span_t">关键字：数据，系统，后台管理，自定义，大全景</span>
+                  <span class="span_b">关联模块：模块1-模块名称-列表,表单,关联模块：模块1-模块名称-列</span>
+                </P>
+                <div class="account-foot">
+                  <p class="foot-title">你认为本篇文章有用吗</p>
+                  <div>
+                    <ul style="overflow:hidden;padding-left:0px">
+                      <li style="float: left;">
+                        <span id="span-left" :class="{toActive : 1 == this.up}" @click="toUp(1)">
+                        <a-icon type="like" />
+                        </span>
+                        <p>88个赞</p>
+                      </li>
+                      <li style="float:right">
+                        <span id="span-right" :class="{toActive : 2 == this.under}" @click="toUnder(2)">
+                        <a-icon type="dislike" />
+                        </span>
+                        <p>25个踩</p>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
               </div>
-              <p>1.3 表格示例</p>
-              <p>当表格超出文章设定宽度，通过横向滑动查看全部内容。</p>
-              <div></div>
             </div>
           </div>
         </div>
@@ -78,12 +123,43 @@
 </template>
 
 <script>
+import Vue from 'vue'
 import { PageView, RouteView } from '@/layouts'
 import { mixinDevice } from '@/utils/mixin.js'
 import GlobalFooter from '@/components/GlobalFooter'
 
 import banner from '@/assets/login_bg1.png'
+import time from '@/assets/time.png'
+import '@/assets/iconfont/iconfont.js'
+const columns = [
+  { title: 'Full Name', width: 100, dataIndex: 'name', key: 'name', fixed: 'left' },
+  { title: 'Age', width: 100, dataIndex: 'age', key: 'age', fixed: 'left' },
+  { title: 'Column 1', dataIndex: 'address', key: '1', width: 150 },
+  { title: 'Column 2', dataIndex: 'address', key: '2', width: 150 },
+  { title: 'Column 3', dataIndex: 'address', key: '3', width: 150 },
+  { title: 'Column 4', dataIndex: 'address', key: '4', width: 150 },
+  { title: 'Column 5', dataIndex: 'address', key: '5', width: 150 },
+  { title: 'Column 6', dataIndex: 'address', key: '6', width: 150 },
+  { title: 'Column 7', dataIndex: 'address', key: '7', width: 150 },
+  { title: 'Column 8', dataIndex: 'address', key: '8' },
+  {
+    title: 'Action',
+    key: 'operation',
+    fixed: 'right',
+    width: 100,
+    scopedSlots: { customRender: 'action' }
+  }
+]
 
+const data = []
+for (let i = 0; i < 100; i++) {
+  data.push({
+    key: i,
+    name: `Edrward ${i}`,
+    age: 32,
+    address: `London Park no. ${i}`
+  })
+}
 export default {
   components: {
     RouteView,
@@ -114,8 +190,12 @@ export default {
         fixed: true,
         fixedNumber: [1, 1]
       },
-
+      up: '',
+      under: '',
+      data,
+      columns,
       pageTitle: '',
+      defaultChecked: 'true',
       contentText: '<div id="u6" class="ax_default heading_1">' +
         '<div id="u6_div" class=""></div>' +
         '<div id="u6_text" class="text ">' +
@@ -128,6 +208,12 @@ export default {
   computed: {
     banner () { // 引入流程图片
       return banner
+    },
+    curZoom () {
+      return Vue.ls.get('DEFAULT_CONTAINER_ZOOM') ? Vue.ls.get('DEFAULT_CONTAINER_ZOOM') : 1
+    },
+    time () {
+      return time
     }
   },
   created () {
@@ -140,7 +226,19 @@ export default {
     updateMenu () {
       const routes = this.$route.matched.concat()
       this.selectedKeys = [ routes.pop().path ]
-    }
+    },
+    toUp (num) {
+      if (this.under === 2) {
+   		    return
+      }
+      this.up = 1;
+    }, 
+    toUnder (num){
+      if (this.up === 1) {
+          return 
+      }
+      this.under = 2;
+    },
   },
   watch: {
     '$route' (val) {
@@ -151,13 +249,16 @@ export default {
 </script>
 
 <style lang="less" scoped>
+ p {
+margin-bottom: 0;
+ }
 .help-container {
   background-color: #EFF3F5;
   .help-con-head{
     height:64px;
     background-color: #004081;
     .help-head-content {
-      max-width: 1200px;
+      max-width: 1000px;
       width: 100%;
       margin: 0 auto;
       display: flex;
@@ -182,7 +283,7 @@ export default {
           flex-direction: column;
           justify-content: center;
           color: #fff;
-          padding-left: 8px;
+          padding-left: 6px;
           .contact-info-phone{
             font-size: 14px;
             line-height: 20px;
@@ -190,13 +291,16 @@ export default {
           .contact-info-date{
             font-size: 10px;
             line-height: 14px;
+						-webkit-transform: scale(0.9);   //缩放比例
+						transform: scale(0.9);
+						transform: translate(0px,0px);
           }
         }
       }
     }
   }
   .page-header-index-wide {
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 24px auto 0;
      background-color: #fff
   }
@@ -231,7 +335,7 @@ export default {
 
     .account-help-right {
       flex: 1 1;
-      padding: 8px 40px;
+      padding: 8px 40px 48px;
       .account-help-breadcrumb {
         color: rgba(0,0,0,.85);
         font-size: 20px;
@@ -243,10 +347,153 @@ export default {
         align-items: center;
         border-bottom: 1px solid #e8e8e8;
       }
-      .account-settings-info-view {
-        padding-top: 12px;
+    .account-help-content {
+      .account-title {
+        font-size:32px;
+        text-align: center;
+        line-height:100%;
+        margin:32px auto 24px;
+        color:rgba(0,0,0,.85);
+        font-weight: bold;
+      }
+      .account-time{
+        text-align: center;
+        font-size:14px;
+        color:rgba(0,0,0,.45);
+      }
+      .account-hr{
+        width:840px;
+        height:1px;
+        border-bottom: 1px dashed #e8e8e8;
+        margin:12px auto 32px;
+      }
+      .account-body{
+        width:714px;
+        margin:0 auto;
+        .account-publictitle{
+          .account-publicone{
+            font-size:24px;
+            color:rgba(0,0,0,.85);
+            line-height: 100%;
+            font-weight: bold;
+          }
+          .account-p{
+            font-size:14px;
+            color:rgba(0,0,0,.85);
+            line-height:20px;
+            margin:16px auto 16px;
+          }
+        }
+        .account-list{
+          .account-publicthree{
+            font-size:16px;
+            font-weight: bold;
+            color:rgba(0,0,0,.85);
+            margin-bottom:16px;
+            line-height: 100%;
+          }
+          .account-li{
+            ol{
+              padding-left:15px;
+              margin-bottom:24px;
+              li{
+                font-size:14px;
+                color:rgba(0,0,0,.85);
+              }
+            }
+            ul{
+              padding-left:19px;
+              margin-bottom:24px;
+              li{
+                font-size:14px;
+                color:rgba(0,0,0,.85);
+              }
+            }
+          }
+        }
+      }
+      .account-footer{
+        width:840px;
+        margin:0 auto;
+        .account-key{
+          font-size:14px;
+          color:rgba(0,0,0,.85);
+          .span_b{
+            margin-top:12px;
+            display: block;
+          }
+        }
+        .account-foot{
+          width:175px;
+          margin-left:265px;
+          text-align: center;
+          margin:0 auto;
+          .foot-title{
+            font-size:14px;
+            color:rgba(0,0,0,.85);
+            margin:64px 0 24px 0;
+          }
+          ul li{
+            list-style: none;
+            #span-left{
+              width:64px;
+              height:64px;
+              border-radius: 50%;
+              background:white;
+              display: block;
+              line-height:57px;
+              color:rgba(0,0,0,.45);
+              font-size:40px;
+              margin-bottom:11px;
+              cursor: pointer;
+              border-color:red;
+              border:1px solid rgba(0,0,0,.25);
+              &.toActive{
+              background:#0081EE;
+              color:white;
+              border:1px solid #0081EE;
+              }
+              &:hover {
+                border:1px solid #0081EE;
+                color:#0081EE;
+              }  
+            }
+            #span-right{
+              width:64px;
+              height:64px;
+              border-radius: 50%;
+              background:white;
+              display: block;
+              line-height:64px;
+              border:1px solid rgba(0,0,0,.25);
+              color:rgba(0,0,0,.45);
+              font-size:40px;
+              margin-bottom:11px;
+              cursor: pointer;
+              &.toActive{
+              background:#0081EE;
+              color:white;
+              border:1px solid #0081EE;
+            }
+            &:hover {
+					border:1px solid #0081EE;
+					color:#0081EE;
+				}
+          }
+            p{
+              color:rgba(0,0,0,.65);
+            }
+          }
+        }
       }
     }
+    .account-settings-info-view {
+      padding-top: 12px;
+    }
+    /deep/ .ant-pagination ,.ant-table-pagination{
+      display: none;
+    }
   }
+}
 
 </style>

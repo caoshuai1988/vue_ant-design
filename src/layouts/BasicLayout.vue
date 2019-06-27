@@ -107,6 +107,7 @@
 </template>
 
 <script>
+import Vue from 'vue'
 import { triggerWindowResizeEvent } from '@/utils/util'
 import { mapState, mapActions } from 'vuex'
 import { mixin, mixinDevice } from '@/utils/mixin'
@@ -165,11 +166,9 @@ export default {
 
   },
   created () {
-    console.log(this.navTheme)
-    console.log(this.surplusTheme)
     this.menus = this.mainMenu.find(item => item.path === '/').children
-    console.log(this.menus)
     this.collapsed = !this.sidebarOpened
+    document.body.style.zoom = Vue.ls.get('DEFAULT_CONTAINER_ZOOM') ? Vue.ls.get('DEFAULT_CONTAINER_ZOOM') : 1
   },
   mounted () {
     const userAgent = navigator.userAgent

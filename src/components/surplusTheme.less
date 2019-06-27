@@ -1,5 +1,8 @@
 /*需要建立样式表和模块对应*/
 /*侧边重置*/
+.layout.ant-layout .header {
+  padding-right: 0 !important;
+}
 
 .plusTheme01.sider {
   background: #022E5A !important;
@@ -46,9 +49,20 @@
   .ant-menu-submenu-title:hover .ant-menu-submenu-arrow:before, .ant-menu-submenu-title:hover .ant-menu-submenu-arrow:after {
     background-image: linear-gradient(to right, rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.65));
   }
+  .ant-menu-item > a {
+    color: rgba(255, 255, 255, 0.65);
+  }
 }
 
 /*顶部重置*/
+.layout.ant-layout .top-nav-header-index .header-index-wide .header-index-right {
+  margin-right: 0 !important;
+}
+
+.layout.ant-layout .top-nav-header-index .header-index-wide .header-index-left .logo.top-nav-header {
+  width: 148px !important;
+}
+
 .layout.ant-layout .top-nav-header-index.plusTheme01 {
   background: #0C3E72 !important;
   .ant-menu-root {
@@ -59,7 +73,7 @@
     color: #fff !important;
   }
   .ant-menu-horizontal > .ant-menu-submenu-selected {
-    border-bottom: 2px solid #fff;
+    border-bottom: none !important;
     color: #fff;
   }
   .user-wrapper .action {
@@ -70,6 +84,119 @@
   }
   .ant-menu-submenu-title:hover {
     color: #fff;
+  }
+
+}
+
+/*顶部菜单样式重置*/
+.topmenu {
+  .top-nav-header {
+    margin-left: 0 !important;
+    h1 {
+      margin: 0 !important;
+    }
+  }
+  .dark {
+    .ant-menu .ant-menu-item-selected {
+      background-color: transparent !important;
+      border-bottom: none !important;
+      a {
+        color: #fff !important;
+      }
+    }
+    .ant-menu .ant-menu-item-active:hover {
+      background-color: transparent !important;
+      color: #fff !important;
+      border-bottom: none !important;
+    }
+    .ant-menu .ant-menu-item-active {
+      background-color: transparent !important;
+      color: #fff !important;
+      border-bottom: none !important;
+    }
+    .ant-menu-horizontal .ant-menu-item {
+      color: #fff !important;
+      border-bottom: none !important;
+    }
+    .ant-menu .ant-menu-item > a:hover {
+      color: #fff !important;
+    }
+  }
+  .plusTheme01 {
+    .ant-menu-horizontal > .ant-menu-item {
+      border-bottom: none !important;
+    }
+    .ant-menu-horizontal > .ant-menu-item:hover {
+      border-bottom: none !important;
+      a {
+        color: #fff !important;
+      }
+    }
+    .ant-menu-horizontal > .ant-menu-submenu-active, .ant-menu-horizontal > .ant-menu-submenu-open {
+      border-bottom: none !important;
+      color: #fff !important;
+    }
+    .ant-menu-horizontal > .ant-menu-item > a {
+      color: rgba(255, 255, 255, 0.65) !important;
+    }
+    .ant-menu .ant-menu-item-selected {
+      background-color: transparent !important;
+      border-bottom: none !important;
+      a {
+        color: #fff !important;
+      }
+    }
+    .ant-menu .ant-menu-item-active:hover {
+      background-color: transparent !important;
+      color: #fff !important;
+      border-bottom: none !important;
+    }
+    .ant-menu .ant-menu-item-active {
+      background-color: transparent !important;
+      color: #fff !important;
+      border-bottom: none !important;
+    }
+    .ant-menu-horizontal > .ant-menu-submenu {
+      border-bottom: none !important;
+    }
+  }
+  .plusTheme02 {
+    .ant-menu-horizontal > .ant-menu-item {
+      border-bottom: none !important;
+    }
+    .ant-menu-horizontal > .ant-menu-item:hover {
+      border-bottom: none !important;
+      a {
+        color: #fff !important;
+      }
+    }
+    .ant-menu-horizontal > .ant-menu-submenu-active, .ant-menu-horizontal > .ant-menu-submenu-open {
+      border-bottom: none !important;
+      color: #fff !important;
+    }
+    .ant-menu-horizontal > .ant-menu-item > a {
+      color: rgba(255, 255, 255, 0.65) !important;
+    }
+    .ant-menu .ant-menu-item-selected {
+      background-color: transparent !important;
+      border-bottom: none !important;
+      a {
+        color: #fff !important;
+      }
+    }
+    .ant-menu .ant-menu-item-active:hover {
+      background-color: transparent !important;
+      color: #fff !important;
+      border-bottom: none !important;
+    }
+    .ant-menu .ant-menu-item-active {
+      background-color: transparent !important;
+      color: #fff !important;
+      border-bottom: none !important;
+    }
+    .ant-menu-horizontal > .ant-menu-submenu {
+      border-bottom: none !important;
+    }
   }
 }
 
@@ -102,7 +229,6 @@
   max-width: unset;
   margin-left: 24px;
 }
-
 
 /*fulltopmenu 添加样式*/
 .fulltopmenu {
@@ -138,55 +264,132 @@
       font-weight: 400;
     }
   }
-  .header.dark{
+  .header.dark {
     background: #001529 !important;
     .trigger {
       color: #fff;
     }
   }
-  .header.dark{
+  .header.dark {
     background: #001529 !important;
     .trigger {
       color: #fff;
     }
   }
-  .header.light{
+  .header.light {
     background: #fff !important;
     .trigger {
-      color: rgba(0,0,0,.65);;
+      color: rgba(0, 0, 0, .65);;
     }
-    .logo.top-nav-header h1{
-      color: rgba(0,0,0,.65);;
+    .logo.top-nav-header h1 {
+      color: rgba(0, 0, 0, .65);;
     }
   }
-  .header.plusTheme01{
+  .header.plusTheme01 {
     background: #022E5A !important;
     .trigger {
       color: #fff;
     }
-    .logo.top-nav-header h1{
+    .logo.top-nav-header h1 {
       color: #fff;
     }
-    .user-wrapper .action{
+    .user-wrapper .action {
       color: #fff !important;
     }
   }
 }
 
+/*菜单弹出样式*/
+.ant-body-plusTheme01 {
+  .ant-menu-submenu-popup {
+    .ant-menu-sub {
+      color: rgba(255, 255, 255, 0.65) !important;
+      background: #0C3E72 !important;
+    }
+    .ant-menu-item {
+      a {
+        color: rgba(255, 255, 255, 0.65);
+      }
+    }
+    .ant-menu-item-active {
+      a {
+        color: #fff;
+      }
+    }
+    .ant-menu-item-selected {
+      background-color: #1890ff !important;
+      a {
+        color: #fff !important;
+      }
+    }
+  }
+}
 
+.ant-body-plusTheme02 {
+  .ant-menu-submenu-popup {
+    color: rgba(0, 0, 0, 0.65) !important;
+    .ant-menu-submenu-active {
+      .ant-menu-submenu-title > span {
+        color: #1890ff !important;
+        i.anticon {
+          color: #1890ff !important;
+        }
+        i.ant-menu-submenu-arrow:before,i.ant-menu-submenu-arrow:after {
+          background:#1890ff !important;
+        }
+      }
+    }
+    i.ant-menu-submenu-arrow:before,i.ant-menu-submenu-arrow:after {
+      background: rgba(0, 0, 0, 0.65) !important;
+    }
+    .ant-menu-submenu-open {
+      color: #1890ff !important;
+    }
+    .ant-menu-sub {
+      color: rgba(0, 0, 0, 0.65) !important;
+      background: #fff !important;
+    }
+    .ant-menu-item {
+      a {
+        color: rgba(0, 0, 0, 0.65) !important;
+      }
+    }
+    .ant-menu-item-active {
+      a {
+        color: #1890ff !important;
+      }
+    }
+    .ant-menu-item-selected > a,
+    .ant-menu-item-selected > a:hover {
+      color: #1890ff !important;
+    }
+    .ant-menu-item-selected {
+      background-color: #e6f7ff !important;
+      a {
+        color: #1890ff !important;
+      }
+    }
+    .ant-menu-submenu-title:hover {
+      color: #1890ff !important;
+    }
+  }
+}
 
 /*处理流式布局topmenu隐藏menu问题*/
 .layout.ant-layout .top-nav-header-index .header-index-wide .ant-menu.ant-menu-horizontal {
-  max-width: 100% !important;
+  /*max-width: calc(100%) !important;*/
 }
+
 /*顶部 topmenu logo标题样式重置*/
 .layout.ant-layout .top-nav-header-index .header-index-wide .header-index-left .logo.top-nav-header h1 {
   font-size: 20px !important;
 }
+
 /*处理多行文本框mb 4px 问题*/
 .ant-form-horizontal textarea.ant-input {
   margin-bottom: 0 !important;
 }
+
 /*处理form line-height:39问题 重置为32*/
 .ant-form-horizontal .ant-form-item-label {
   line-height: 32px;
@@ -196,9 +399,9 @@
   line-height: 32px;
 }
 
-.ant-layout-sider-collapsed .logo{
-  padding-left:0 !important;
-  h1{
+.ant-layout-sider-collapsed .logo {
+  padding-left: 0 !important;
+  h1 {
     margin: 0 !important;
     text-align: center;
     width: 100%;

@@ -1,20 +1,20 @@
 <template>
   <div style="background:#fff;padding-top:11px;" >
-    <a-tabs defaultActiveKey="2" >
+    <a-tabs defaultActiveKey="4" >
       <a-tab-pane key="1" class="tabMar">
         <span slot="tab" >
           <span>基础信息</span>
           <div class="checkIcon">
-            <a-icon type="check" />
+            <a-icon type="check"/>
           </div>
         </span>
         <baseFormContent></baseFormContent>
       </a-tab-pane>
-      <a-tab-pane key="2" style="padding:24px 24px 24px 24px">
+      <a-tab-pane key="2" style="padding:24px 32px">
         <span slot="tab">
           <span >地理信息</span>
           <div class="checkIcon">
-            <a-icon type="check" />
+            <a-icon type="check"/>
           </div>
         </span>
         <MapModule></MapModule>
@@ -24,6 +24,7 @@
       </a-tab-pane>
       <a-tab-pane key="4">
         <span slot="tab">任务及投资情况估算表</span>
+        <ReportTable></ReportTable>
       </a-tab-pane>
       <a-tab-pane key="5">
         <span slot="tab">资益估算表</span>
@@ -40,11 +41,13 @@
 import baseFormContent from '@/components/form/BaseFormContent'
 import AccessoryForm from '@/components/form/AccessoryForm'
 import MapModule from '@/components/form/MapModule'
+import ReportTable from '@/components/form/ReportTable'
 export default {
   components: {
     baseFormContent,
     AccessoryForm,
-    MapModule
+    MapModule,
+    ReportTable
   },
   data () {
     return {
@@ -60,14 +63,11 @@ export default {
 /deep/ .ant-tabs-bar{ // 清除多余空白
    margin: 0;
 }
-.tabMar{ // tab 间距
-  // margin-left: 24px !important;
-}
+
 /deep/ .ant-tabs-nav-wrap{
   padding-left:  24px
 }
 .checkIcon { /* icon */
-
   position: absolute;
   top: 11px;
   right: -9px;

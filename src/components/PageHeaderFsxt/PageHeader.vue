@@ -3,7 +3,7 @@
 .page-header {
   position: relative;
   background: #fff;
-  padding: 16px 24px;
+  padding: 16px 32px;
   border-bottom: 1px solid #e8e8e8;
 
   .breadcrumb {
@@ -173,6 +173,7 @@
           <div class="row">
             <!-- <img v-if="logo" :src="logo" class="logo"/> -->
             <h1 v-if="title" class="title">{{ title }}</h1>
+            <!-- 第一行是否显示审批按钮 -->
             <div class="btn-wrap" v-if="$route.meta.showbtn">
               <a-button type="primary" style="margin-right: 8px; color:#fff;">保存</a-button>
               <a-button-group style="margin-left: 8px;margin-right: 16px">
@@ -209,6 +210,9 @@
           </div>
           <div>
             <slot name="step"></slot>
+          </div>
+          <div>
+            <slot name="relevance"></slot>
           </div>
         </div>
       </div>

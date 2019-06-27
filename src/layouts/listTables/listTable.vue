@@ -75,7 +75,8 @@ export default {
     this.cacheData = data.map(item => ({ ...item }))
     return {
       data,
-      columns
+      columns,
+      hideOnSinglePage:false
     }
   },
   computed: {
@@ -100,21 +101,21 @@ export default {
   },
 }
 </script>
-<style>
-.ant-table-bordered .ant-table-thead > tr > th, .ant-table-bordered .ant-table-tbody > tr > td{
+<style lang="less">
+.listtable .ant-table-bordered .ant-table-thead > tr > th, .ant-table-bordered .ant-table-tbody > tr > td{
 	border-right:0px !important;
 
 }
-.ant-table-bordered .ant-table-header > table, .ant-table-bordered .ant-table-body > table, .ant-table-bordered .ant-table-fixed-left table, .ant-table-bordered .ant-table-fixed-right table{
+.listtable .ant-table-bordered .ant-table-header > table, .ant-table-bordered .ant-table-body > table, .ant-table-bordered .ant-table-fixed-left table, .ant-table-bordered .ant-table-fixed-right table{
 	border-left:0px !important;
 }
-.editable-row-operations a {
+.listtable .editable-row-operations a {
   margin-right: 8px;
 }
-.ant-pagination{
+.listtable .ant-pagination{
 	display:none;
 }
-.ant-table-pagination{
+.listtable .ant-table-pagination{
 	display:none;
 }
 </style>

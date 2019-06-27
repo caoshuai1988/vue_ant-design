@@ -34,7 +34,7 @@ import mapForm2 from './MapForm2'
 import mapForm3 from './MapForm3'
 
 export default {
-  name: 'AdvancedStepForm',
+  name: 'AdvancedStepFormCopy',
   components: {
     mapForm0,
     mapForm1,
@@ -43,25 +43,13 @@ export default {
   },
   data () {
     return {
-      // description: '将一个冗长或用户不熟悉的表单任务分成多个步骤，指导用户完成。',
-      // currentTab: 1,
-      // form
-      // which_to_show: [
-      //   'mapForm1',
-      //   'mapForm2',
-      //   'mapForm3',
-      //   'mapForm4'
-      // ],
+
     }
   },
   computed: {
     curentIndex () {
       return this.$store.state.dataOne
     }
-    // ...mapGetters(['stepForm']),
-    // which_to_show () {
-    //   return mapForm1
-    // }
 
   }
 }

@@ -1,12 +1,16 @@
 <template>
   <transition name="showHeader">
-    <div v-if="visible" class="header-animat test11111111">
+    <div v-if="visible" class="header-animat">
       <a-layout-header
         v-if="visible"
         :class="[fixedHeader && 'ant-header-fixedHeader', sidebarOpened ? 'ant-header-side-opened' : 'ant-header-side-closed', ]"
         :style="{ padding: '0' }">
         <div v-if="mode === 'sidemenu'" class="header">
-          <a-icon v-if="device==='mobile'" class="trigger" :type="collapsed ? 'menu-fold' : 'menu-unfold'" @click="toggle"/>
+          <a-icon
+            v-if="device==='mobile'"
+            class="trigger"
+            :type="collapsed ? 'menu-fold' : 'menu-unfold'"
+            @click="toggle"/>
           <a-icon v-else class="trigger" :type="collapsed ? 'menu-unfold' : 'menu-fold'" @click="toggle"/>
           <user-menu></user-menu>
         </div>
@@ -14,7 +18,11 @@
           <div class="header-index-wide">
             <div class="header-index-left">
               <logo class="top-nav-header" :show-title="device !== 'mobile'"/>
-              <a-icon v-if="device==='mobile'" class="trigger" :type="collapsed ? 'menu-fold' : 'menu-unfold'" @click="toggle"/>
+              <a-icon
+                v-if="device==='mobile'"
+                class="trigger"
+                :type="collapsed ? 'menu-fold' : 'menu-unfold'"
+                @click="toggle"/>
               <a-icon v-else class="trigger" :type="collapsed ? 'menu-unfold' : 'menu-fold'" @click="toggle2"/>
               <user-menu></user-menu>
             </div>
@@ -24,7 +32,13 @@
           <div class="header-index-wide">
             <div class="header-index-left">
               <logo class="top-nav-header" :show-title="device !== 'mobile'"/>
-              <s-menu v-if="device !== 'mobile'" mode="horizontal" :menu="menus" :theme="theme" :class="surplusTheme"/>
+              <s-menu
+                :style="{ maxWidth: menuWidth+'px', width:menuWidth+'px', flex: '0 1 '+menuWidth+'px'}"
+                v-if="device !== 'mobile'"
+                mode="horizontal"
+                :menu="menus"
+                :theme="theme"
+                :class="surplusTheme"/>
               <a-icon v-else class="trigger" :type="collapsed ? 'menu-fold' : 'menu-unfold'" @click="toggle"/>
             </div>
             <user-menu class="header-index-right"></user-menu>
@@ -36,11 +50,11 @@
 </template>
 
 <script>
+import Vue from 'vue'
 import UserMenu from '../tools/UserMenu'
 import SMenu from '../Menu/'
 import Logo from '../tools/Logo'
 import { mixin } from '@/utils/mixin'
-
 export default {
   name: 'GlobalHeader',
   components: {
@@ -78,11 +92,30 @@ export default {
   data () {
     return {
       visible: true,
-      oldScrollTop: 0
+      oldScrollTop: 0,
+      menuWidth: 820
+    }
+  },
+  computed: {
+    contentWidth () {
+      return this.$store.state.app.contentWidth
+    },
+    leftWidth () {
+      return this.$store.state.app.zoom
+    }
+  },
+  watch: {
+    contentWidth: function () {
+      this.getAutoMenuWidth()
+    },
+
+    leftWidth: function () {
+      this.getAutoLeftWidth()
     }
   },
   mounted () {
     document.body.addEventListener('scroll', this.handleScroll, { passive: true })
+    this.getAutoMenuWidth()
   },
   methods: {
     handleScroll () {
@@ -105,6 +138,16 @@ export default {
           this.ticking = false
         })
       }
+    },
+    getAutoMenuWidth () {
+      if (Vue.ls.get('DEFAULT_CONTENT_WIDTH_TYPE') === 'Fixed') {
+        this.menuWidth = 820
+      } else {
+        this.menuWidth = document.body.clientWidth - 500
+      }
+    },
+    getAutoLeftWidth () {
+      this.menuWidth = document.body.clientWidth - 450
     },
     toggle () {
       this.$emit('toggle')

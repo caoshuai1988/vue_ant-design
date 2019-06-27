@@ -1,12 +1,11 @@
 <template>
   <div class="main">
-    <div class="step-layout recover-layout">
+    <div class="step-layout unlocking-layout">
       <div class="container">
-        <h3><span>找回密码</span></h3>
+        <h3><span>自助解锁</span></h3>
         <a-steps :current="current">
           <a-step title="填写用户名" description="" />
           <a-step title="验证身份" description="" />
-          <a-step title="设置新密码" description="" />
           <a-step title="完成" description="" />
         </a-steps>
         <div class="content">
@@ -109,55 +108,12 @@
             </a-form-item>
           </a-form>
           <a-form v-if="current==2">
-            <a-form-item
-              label="设置密码："
-              :label-col="{ span: 4 }"
-              :wrapper-col="{ span: 12 }">
-              <a-input
-                size="large"
-                type="password"
-                @click="handlePasswordInputClick"
-                autocomplete="false"
-                placeholder="请设置新的密码"
-                v-decorator="['password', {rules: [{ required: true, message: '至少4位密码，区分大小写'}, { validator: this.handlePasswordLevel }], validateTrigger: ['change', 'blur']}]"
-              ></a-input>
-            </a-form-item>
-            <a-form-item
-              label="确认密码："
-              :label-col="{ span: 4 }"
-              :wrapper-col="{ span: 12 }">
-              <a-input
-                size="large"
-                type="password"
-                autocomplete="false"
-                placeholder="再次确认密码"
-                v-decorator="['password2', {rules: [{ required: true, message: '至少4位密码，区分大小写' }, { validator: this.handlePasswordCheck }], validateTrigger: ['change', 'blur']}]"
-              ></a-input>
-            </a-form-item>
-            <a-form-item>
-              <a-row>
-                <a-col :span="12" :offset="4">
-                  <a-button
-                    style="width: 100%"
-                    size="large"
-                    type="primary"
-                    htmlType="submit"
-                    class="recover-button"
-                    :loading="recoverBtn"
-                    @click.stop.prevent="nextStep"
-                    :disabled="recoverBtn">提交
-                  </a-button>
-                </a-col>
-              </a-row>
-            </a-form-item>
-          </a-form>
-          <a-form v-if="current==3">
             <a-form-item class="resetSuccess">
               <a-row>
                 <a-col :span="4"></a-col>
                 <a-col :span="12">
                   <p><img src="~@/assets/ok.png"></p>
-                  <p><span>密码重置成功</span></p>
+                  <p><span>自助解锁成功</span></p>
                 </a-col>
               </a-row>
             </a-form-item>
@@ -337,7 +293,7 @@ export default {
     },
     // 下一步
     nextStep () {
-      if (this.current < 3) {
+      if (this.current < 2) {
         this.current += 1
       }
     },
@@ -411,7 +367,7 @@ export default {
 
   }
 
-  .recover-layout {
+  .unlocking-layout {
     .ant-input-group-addon:first-child {
       background-color: #fff;
     }
@@ -419,7 +375,7 @@ export default {
 </style>
 <style lang="less" scoped>
   .main{
-    .recover-layout {
+    .unlocking-layout {
       background: rgba(240, 242, 245, 1) !important;
       height: 489px;
       padding-top: 24px;

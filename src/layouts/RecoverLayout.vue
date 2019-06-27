@@ -4,7 +4,7 @@
       <div class="top">
         <a-row>
           <a-col :span="23" :offset="1">
-            <img src="~@/assets/fslogo.png" alt="logo">
+            <img src="~@/assets/fslogo.svg" alt="logo">
             <span class="title">富深新平台模板</span>
           </a-col>
         </a-row>
@@ -69,15 +69,15 @@ export default {
             height: 100%;
             position: relative;
             img {
-              width: 163px;
-              height: 36px;
+              width: 32px;
+              height: 32px;
               position: absolute;
-              top: 36px;
+              top: 37px;
             }
             .title {
               font-size: 28px;
               color: rgba(0,0,0,0.85);
-              margin-left: 179px;
+              margin-left: 40px;
             }
           }
         }

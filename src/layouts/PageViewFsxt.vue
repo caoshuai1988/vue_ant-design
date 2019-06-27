@@ -365,7 +365,24 @@
                 <a-button>提交审批</a-button>
                 <a-button>演示提醒</a-button>
                 <a-button>删除</a-button>
-                <a-button><a-icon type="ellipsis"/></a-button>
+                <a-button>
+                  <a-dropdown placement="topCenter">
+                    <a class="ant-dropdown-link" href="#">
+                      <a-icon type="ellipsis"/>
+                    </a>
+                    <a-menu slot="overlay">
+                      <a-menu-item>
+                        选项一
+                      </a-menu-item>
+                      <a-menu-item>
+                        选项二
+                      </a-menu-item>
+                      <a-menu-item>
+                        选项三
+                      </a-menu-item>
+                    </a-menu>
+                  </a-dropdown>
+                </a-button>
               </a-button-group>
               <!-- <span class="sign">|</span>
               <a-button
@@ -458,7 +475,25 @@
             </div>
             <div class="btn-wrap">
               <a-button type="primary" style="margin-right: 8px; color:#fff;">提交</a-button>
-              <a-button type="primary" style="margin-right: 8px; color:#fff;"><a-icon type="ellipsis"/></a-button>
+              <a-button type="primary" style="margin-right: 8px; color:#fff;">
+                <a-dropdown placement="topCenter">
+                  <a class="ant-dropdown-link" href="#">
+                    <a-icon type="ellipsis"/>
+                  </a>
+                  <a-menu slot="overlay">
+                    <a-menu-item>
+                      选项一
+                    </a-menu-item>
+                    <a-menu-item>
+                      选项二
+                    </a-menu-item>
+                    <a-menu-item>
+                      选项三
+                    </a-menu-item>
+                  </a-menu>
+                </a-dropdown>
+              </a-button>
+              <!-- <a-button type="primary" style="margin-right: 8px; color:#fff;"><a-icon type="ellipsis"/></a-button> -->
             </div>
           </div>
         </div>

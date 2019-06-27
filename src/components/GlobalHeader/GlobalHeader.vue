@@ -6,8 +6,11 @@
         :class="[fixedHeader && 'ant-header-fixedHeader', sidebarOpened ? 'ant-header-side-opened' : 'ant-header-side-closed', ]"
         :style="{ padding: '0' }">
         <div v-if="mode === 'sidemenu'" class="header">
-          <a-icon v-if="device==='mobile'" class="trigger" :type="collapsed ? 'menu-fold' : 'menu-unfold'"
-                  @click="toggle"/>
+          <a-icon
+            v-if="device==='mobile'"
+            class="trigger"
+            :type="collapsed ? 'menu-fold' : 'menu-unfold'"
+            @click="toggle"/>
           <a-icon v-else class="trigger" :type="collapsed ? 'menu-unfold' : 'menu-fold'" @click="toggle"/>
           <user-menu></user-menu>
         </div>
@@ -15,8 +18,11 @@
           <div class="header-index-wide">
             <div class="header-index-left">
               <logo class="top-nav-header" :show-title="device !== 'mobile'"/>
-              <a-icon v-if="device==='mobile'" class="trigger" :type="collapsed ? 'menu-fold' : 'menu-unfold'"
-                      @click="toggle"/>
+              <a-icon
+                v-if="device==='mobile'"
+                class="trigger"
+                :type="collapsed ? 'menu-fold' : 'menu-unfold'"
+                @click="toggle"/>
               <a-icon v-else class="trigger" :type="collapsed ? 'menu-unfold' : 'menu-fold'" @click="toggle2"/>
               <user-menu></user-menu>
             </div>
@@ -26,8 +32,13 @@
           <div class="header-index-wide">
             <div class="header-index-left">
               <logo class="top-nav-header" :show-title="device !== 'mobile'"/>
-              <s-menu :style="{'max-width':menuWidth+'px'}" v-if="device !== 'mobile'" mode="horizontal" :menu="menus"
-                      :theme="theme" :class="surplusTheme"/>
+              <s-menu
+                :style="{ maxWidth: menuWidth+'px', width:menuWidth+'px', flex: '0 1 '+menuWidth+'px'}"
+                v-if="device !== 'mobile'"
+                mode="horizontal"
+                :menu="menus"
+                :theme="theme"
+                :class="surplusTheme"/>
               <a-icon v-else class="trigger" :type="collapsed ? 'menu-fold' : 'menu-unfold'" @click="toggle"/>
             </div>
             <user-menu class="header-index-right"></user-menu>
@@ -39,108 +50,116 @@
 </template>
 
 <script>
-  import Vue from 'vue'
-  import UserMenu from '../tools/UserMenu'
-  import SMenu from '../Menu/'
-  import Logo from '../tools/Logo'
-  import { mixin } from '@/utils/mixin'
-
-  export default {
-    name: 'GlobalHeader',
-    components: {
-      UserMenu,
-      SMenu,
-      Logo
+import Vue from 'vue'
+import UserMenu from '../tools/UserMenu'
+import SMenu from '../Menu/'
+import Logo from '../tools/Logo'
+import { mixin } from '@/utils/mixin'
+export default {
+  name: 'GlobalHeader',
+  components: {
+    UserMenu,
+    SMenu,
+    Logo
+  },
+  mixins: [mixin],
+  props: {
+    mode: {
+      type: String,
+      // sidemenu, topmenu
+      default: 'sidemenu'
     },
-    mixins: [mixin],
-    props: {
-      mode: {
-        type: String,
-        // sidemenu, topmenu
-        default: 'sidemenu'
-      },
-      menus: {
-        type: Array,
-        required: true
-      },
-      theme: {
-        type: String,
-        required: false,
-        default: 'dark'
-      },
-      collapsed: {
-        type: Boolean,
-        required: false,
-        default: false
-      },
-      device: {
-        type: String,
-        required: false,
-        default: 'desktop'
-      }
+    menus: {
+      type: Array,
+      required: true
     },
-    data() {
-      return {
-        visible: true,
-        oldScrollTop: 0,
-        menuWidth: 820
-      }
+    theme: {
+      type: String,
+      required: false,
+      default: 'dark'
     },
-    computed:{
-      contentWidth(){
-        return this.$store.state.app.contentWidth
-      }
+    collapsed: {
+      type: Boolean,
+      required: false,
+      default: false
     },
-    watch:{
-      contentWidth:function() {
-        this.getAutoMenuWidth()
-      }
+    device: {
+      type: String,
+      required: false,
+      default: 'desktop'
+    }
+  },
+  data () {
+    return {
+      visible: true,
+      oldScrollTop: 0,
+      menuWidth: 820
+    }
+  },
+  computed: {
+    contentWidth () {
+      return this.$store.state.app.contentWidth
     },
-    mounted() {
-      document.body.addEventListener('scroll', this.handleScroll, { passive: true })
+    leftWidth () {
+      return this.$store.state.app.zoom
+    }
+  },
+  watch: {
+    contentWidth: function () {
       this.getAutoMenuWidth()
     },
-    methods: {
-      handleScroll() {
-        if (!this.autoHideHeader) {
-          return
-        }
 
-        const scrollTop = document.body.scrollTop + document.documentElement.scrollTop
-        if (!this.ticking) {
-          this.ticking = true
-          requestAnimationFrame(() => {
-            if (this.oldScrollTop > scrollTop) {
-              this.visible = true
-            } else if (scrollTop > 300 && this.visible) {
-              this.visible = false
-            } else if (scrollTop < 300 && !this.visible) {
-              this.visible = true
-            }
-            this.oldScrollTop = scrollTop
-            this.ticking = false
-          })
-        }
-      },
-      getAutoMenuWidth() {
-       if( Vue.ls.get('DEFAULT_CONTENT_WIDTH_TYPE')==='Fixed'){
-         this.menuWidth = 820
-       }else{
-         this.menuWidth = document.body.clientWidth-500
-       }
+    leftWidth: function () {
+      this.getAutoLeftWidth()
+    }
+  },
+  mounted () {
+    document.body.addEventListener('scroll', this.handleScroll, { passive: true })
+    this.getAutoMenuWidth()
+  },
+  methods: {
+    handleScroll () {
+      if (!this.autoHideHeader) {
+        return
+      }
 
-      },
-      toggle() {
-        this.$emit('toggle')
-      },
-      toggle2() {
-        this.$emit('toggle2')
+      const scrollTop = document.body.scrollTop + document.documentElement.scrollTop
+      if (!this.ticking) {
+        this.ticking = true
+        requestAnimationFrame(() => {
+          if (this.oldScrollTop > scrollTop) {
+            this.visible = true
+          } else if (scrollTop > 300 && this.visible) {
+            this.visible = false
+          } else if (scrollTop < 300 && !this.visible) {
+            this.visible = true
+          }
+          this.oldScrollTop = scrollTop
+          this.ticking = false
+        })
       }
     },
-    beforeDestroy() {
-      document.body.removeEventListener('scroll', this.handleScroll, true)
+    getAutoMenuWidth () {
+      if (Vue.ls.get('DEFAULT_CONTENT_WIDTH_TYPE') === 'Fixed') {
+        this.menuWidth = 820
+      } else {
+        this.menuWidth = document.body.clientWidth - 500
+      }
+    },
+    getAutoLeftWidth () {
+      this.menuWidth = document.body.clientWidth - 450
+    },
+    toggle () {
+      this.$emit('toggle')
+    },
+    toggle2 () {
+      this.$emit('toggle2')
     }
+  },
+  beforeDestroy () {
+    document.body.removeEventListener('scroll', this.handleScroll, true)
   }
+}
 </script>
 
 <style lang="less">

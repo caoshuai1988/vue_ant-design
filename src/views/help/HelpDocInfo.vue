@@ -95,11 +95,15 @@
                   <div>
                     <ul style="overflow:hidden;padding-left:0px">
                       <li style="float: left;">
-                        <span class="span-left"><img style="width:40px;height:40px;display: inline-block;margin-top:-16px" :src="up" /></span>
+                        <span id="span-left" :class="{toActive : 1 == this.up}" @click="toUp(1)" ref="content" @mouseover="selectStyle () "  @mouseout="outStyle()">
+                        <a-icon type="like" />
+                        </span>
                         <p>88个赞</p>
                       </li>
                       <li style="float:right">
-                        <span class="span-right"><img style="width:40px;height:40px;display: inline-block;margin-top:-11px" :src="under" /></span>
+                        <span id="span-right" :class="{toActive : 2 == this.under}" @click="toUnder(2)" ref="contentUn" @mouseover="selectStyleUn () "  @mouseout="outStyleUn()">
+                        <a-icon type="dislike" />
+                        </span>
                         <p>25个踩</p>
                       </li>
                     </ul>
@@ -126,8 +130,6 @@ import GlobalFooter from '@/components/GlobalFooter'
 
 import banner from '@/assets/login_bg1.png'
 import time from '@/assets/time.png'
-import up from '@/assets/up.png'
-import under from '@/assets/under.png'
 const columns = [
   { title: 'Full Name', width: 100, dataIndex: 'name', key: 'name', fixed: 'left' },
   { title: 'Age', width: 100, dataIndex: 'age', key: 'age', fixed: 'left' },
@@ -187,6 +189,8 @@ export default {
         fixed: true,
         fixedNumber: [1, 1]
       },
+      up: '',
+      under: '',
       data,
       columns,
       pageTitle: '',
@@ -209,12 +213,6 @@ export default {
     },
     time () {
       return time
-    },
-    up () {
-      return up
-    },
-    under () {
-      return under
     }
   },
   created () {
@@ -227,6 +225,51 @@ export default {
     updateMenu () {
       const routes = this.$route.matched.concat()
       this.selectedKeys = [ routes.pop().path ]
+    },
+    toUp (num) {
+      if (this.under === 2) {
+   		    return
+      }
+      this.up = 1;
+      this.$refs.content.style.color = 'white';
+    }, 
+    toUnder (num){
+      if (this.up === 1) {
+          return 
+      }
+      this.under = 2;
+      this.$refs.contentUn.style.color = 'white';
+    },
+    //设置颜色
+    selectStyle(){
+    	if(this.up ===1){
+    		this.$refs.content.style.color = 'write';
+    	}else{
+    		this.$refs.content.style.color = '#0081EE';
+    	}
+    },
+    outStyle(){
+    	if(this.up ===1){
+    		this.$refs.content.style.color = 'write';
+    		
+    	}else{
+    		this.$refs.content.style.color = 'rgba(0, 0, 0, 0.45)';
+    	}	
+    },
+    selectStyleUn(){
+    	if(this.under ===2){
+    		this.$refs.contentUn.style.color = 'write';
+    	}else{
+    		this.$refs.contentUn.style.color = '#0081EE';
+    	}
+    },
+    outStyleUn(){
+    	if(this.under ===2){
+    		this.$refs.contentUn.style.color = 'write';
+    		
+    	}else{
+    		this.$refs.contentUn.style.color = 'rgba(0, 0, 0, 0.45)';
+    	}	
     }
   },
   watch: {
@@ -424,31 +467,49 @@ margin-bottom: 0;
           }
           ul li{
             list-style: none;
-            .span-left{
+            #span-left{
               width:64px;
               height:64px;
               border-radius: 50%;
-              background:#0081EE;
+              background:white;
               display: block;
-              line-height:64px;
-              color:white;
+              line-height:57px;
+              color:rgba(0,0,0,.45);
               font-size:40px;
               margin-bottom:11px;
               cursor: pointer;
+              border-color:red;
+              border:1px solid rgba(0,0,0,.25);
+              &.toActive{
+              background:#0081EE;
+              color:white;
+              border:1px solid #0081EE;
+              }
+              &:hover {
+                border:1px solid #0081EE;
+              }  
             }
-            .span-right{
+            #span-right{
               width:64px;
               height:64px;
               border-radius: 50%;
               background:white;
               display: block;
               line-height:64px;
-              border:1px solid rgba(0,0,0,.25);;
+              border:1px solid rgba(0,0,0,.25);
               color:rgba(0,0,0,.45);
               font-size:40px;
               margin-bottom:11px;
               cursor: pointer;
+              &.toActive{
+              background:#0081EE;
+              color:white;
+              border:1px solid #0081EE;
             }
+            &:hover {
+					border:1px solid #0081EE;
+				}
+          }
             p{
               color:rgba(0,0,0,.65);
             }

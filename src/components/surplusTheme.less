@@ -60,8 +60,12 @@
 }
 
 .layout.ant-layout .top-nav-header-index .header-index-wide .header-index-left .logo.top-nav-header {
-  width: 148px !important;
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 200px;
+  flex: 0 0 200px;
+  margin-left: 0 !important;
 }
+
 
 .layout.ant-layout .top-nav-header-index.plusTheme01 {
   background: #0C3E72 !important;
@@ -90,12 +94,6 @@
 
 /*顶部菜单样式重置*/
 .topmenu {
-  .top-nav-header {
-    margin-left: 0 !important;
-    h1 {
-      margin: 0 !important;
-    }
-  }
   .dark {
     .ant-menu .ant-menu-item-selected {
       background-color: transparent !important;
@@ -238,9 +236,9 @@
   .header {
     .logo.top-nav-header {
       -webkit-box-flex: 0;
-      -ms-flex: 0 0 190px;
-      flex: 0 0 190px;
-      width: 190px;
+      -ms-flex: 0 0 200px;
+      flex: 0 0 200px;
+      width: 200px;
       height: 64px;
       position: relative;
       line-height: 64px;
@@ -250,6 +248,12 @@
       float: left;
     }
     .logo.top-nav-header svg {
+      display: inline-block;
+      vertical-align: middle;
+      height: 32px;
+      width: 32px;
+    }
+    .logo.top-nav-header img {
       display: inline-block;
       vertical-align: middle;
       height: 32px;
@@ -375,11 +379,6 @@
   }
 }
 
-/*处理流式布局topmenu隐藏menu问题*/
-.layout.ant-layout .top-nav-header-index .header-index-wide .ant-menu.ant-menu-horizontal {
-  /*max-width: calc(100%) !important;*/
-}
-
 /*顶部 topmenu logo标题样式重置*/
 .layout.ant-layout .top-nav-header-index .header-index-wide .header-index-left .logo.top-nav-header h1 {
   font-size: 20px !important;
@@ -400,7 +399,6 @@
 }
 
 .ant-layout-sider-collapsed .logo {
-  padding-left: 0 !important;
   h1 {
     margin: 0 !important;
     text-align: center;

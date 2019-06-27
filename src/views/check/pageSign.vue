@@ -111,7 +111,7 @@
       }
       .detail{
         font-size: 14px;
-        color: #62bfff;
+        color: #1890ff;
       }
       .close{
         // position: absolute;
@@ -393,8 +393,7 @@
             :lg="helpNum"
             :md="helpNum"
             :sm="helpNum"
-            :xs="helpNum"
-          >
+            :xs="helpNum">
             <a-affix :offsetTop="this.top">
               <div class="page-direction">
                 <div class="title">
@@ -569,9 +568,9 @@ export default {
       top: 0,
       // 当前tab标签为第几个
       activeKey: '1',
-      isShowHelp: true,
-      // num: 24,
-      num: 18,
+      isShowHelp: false,
+      num: 24,
+      // num: 18,
       helpNum: 6,
       lablenum: 7,
       valuenum: 17,

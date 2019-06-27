@@ -79,7 +79,7 @@
       }
     }
     .submit{
-      padding-top: 48px;
+      padding-top: 16px;
       display: flex;
       justify-content: flex-end;
     }
@@ -129,6 +129,7 @@
     }
     .relevance__main{
       margin-top: 12px;
+      padding-bottom: 16px;
       .clearfix();
       .item{
         float: left;
@@ -196,10 +197,12 @@
   }
 
   .step-content{
-    padding-top: 56px;
+    padding-top: 40px;
     padding-left: 10%;
     padding-right: 10%;
+    padding-bottom: 24px;
     &.step-content--only{
+      padding-top: 56px;
       padding-left: 0;
       padding-right: 0;
     }

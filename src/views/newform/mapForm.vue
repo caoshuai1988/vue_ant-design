@@ -20,16 +20,10 @@
         <MapModule></MapModule>
       </a-tab-pane>
       <a-tab-pane key="3">
-        <span slot="tab">基本情况表</span>
-      </a-tab-pane>
-      <a-tab-pane key="4">
-        <span slot="tab">任务及投资情况估算表</span>
+        <span slot="tab">报表信息</span>
         <ReportTable></ReportTable>
       </a-tab-pane>
-      <a-tab-pane key="5">
-        <span slot="tab">资益估算表</span>
-      </a-tab-pane>
-      <a-tab-pane key="6">
+      <a-tab-pane key="4">
         <span slot="tab">附件信息</span>
         <AccessoryForm></AccessoryForm>
       </a-tab-pane>

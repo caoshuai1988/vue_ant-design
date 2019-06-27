@@ -43,16 +43,6 @@ export default {
 <style lang="less" scoped>
   #userLayout.user-layout-wrapper {
     height: 100%;
-
-    &.mobile {
-      .container {
-        .main {
-          max-width: 368px;
-          width: 98%;
-        }
-      }
-    }
-
     .container {
       min-width: 1200px;
       width: 100%;
@@ -83,11 +73,14 @@ export default {
       }
       .footer {
         width: 100%;
-        margin: 56px 0 128px 0;
         text-align: center;
-        height: 14px;
-        line-height: 14px;
         color: rgba(0,0,0,0.45);
+        span {
+          display: inline-block;
+          margin: 48px 0;
+          height: 14px;
+          line-height: 14px;
+        }
         a {
           text-decoration: none;
           color: rgba(0,0,0,0.45);

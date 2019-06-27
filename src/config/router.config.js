@@ -64,6 +64,12 @@ export const asyncRouterMap = [
                 path: '/user/login2/drag',
                 name: 'login2Drag',
                 meta: { title: '2账号密码登录-出现滑块页', target: '_blank' }
+              },
+              // 登录模板2-4
+              {
+                path: '/user/login2/unlocking',
+                name: 'login2Unlocking',
+                meta: { title: '2账号密码登录-自助解锁', target: '_blank' }
               }
             ]
           },
@@ -84,6 +90,12 @@ export const asyncRouterMap = [
             path: '/user/recover',
             name: 'recover',
             meta: { title: '找回密码', target: '_blank' }
+          },
+          // 自助解锁
+          {
+            path: '/user/selfUnlocking',
+            name: 'selfUnlocking',
+            meta: { title: '自助解锁', target: '_blank' }
           }
         ]
       },
@@ -701,6 +713,19 @@ export const constantRouterMap = [
   },
   {
     path: '/user',
+    component: UserLayout2,
+    redirect: '/user/login2/unlocking',
+    hidden: true,
+    children: [
+      {
+        path: 'login2/unlocking',
+        name: 'login2Unlocking',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login2/Login2-unlocking')
+      }
+    ]
+  },
+  {
+    path: '/user',
     component: UserLayout3,
     redirect: '/user/login3',
     hidden: true,
@@ -735,6 +760,19 @@ export const constantRouterMap = [
         path: 'recover',
         name: 'recover',
         component: () => import(/* webpackChunkName: "user" */ '@/views/user/Recover')
+      }
+    ]
+  },
+  {
+    path: '/user',
+    component: RecoverLayout,
+    redirect: '/user/selfUnlocking',
+    hidden: true,
+    children: [
+      {
+        path: 'selfUnlocking',
+        name: 'selfUnlocking',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/SelfUnlocking')
       }
     ]
   },

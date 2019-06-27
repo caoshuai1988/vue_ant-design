@@ -8,12 +8,6 @@
 <!--          <div><img src="@/assets/login_bg1.png"/></div>-->
 <!--          <div><img src="@/assets/login_bg2.png"/></div>-->
 <!--        </a-carousel>-->
-<!--        <a-row>-->
-<!--          <a-col :span="23" :offset="1">-->
-<!--            <img src="~@/assets/fslogo.png" alt="logo">-->
-<!--            <span class="title">富深新平台模板</span>-->
-<!--          </a-col>-->
-<!--        </a-row>-->
       </div>
 
       <route-view></route-view>
@@ -55,43 +49,10 @@ export default {
   #userLayout1.user-layout-wrapper {
     height: 100%;
 
-    /*&.mobile {*/
-    /*  .container {*/
-    /*    .main {*/
-    /*      max-width: 368px;*/
-    /*      width: 98%;*/
-    /*    }*/
-    /*  }*/
-    /*}*/
-
     .container {
       min-width: 1200px;
       width: 100%;
       height: 100%;
-      /*.top {*/
-      /*  height: 106px;*/
-      /*  line-height: 106px;*/
-      /*  width:100%;*/
-      /*  background: #fff;*/
-      /*  .ant-row{*/
-      /*    height: 100%;*/
-      /*    .ant-col-23 {*/
-      /*      height: 100%;*/
-      /*      position: relative;*/
-      /*      img {*/
-      /*        width: 163px;*/
-      /*        height: 36px;*/
-      /*        position: absolute;*/
-      /*        top: 36px;*/
-      /*      }*/
-      /*      .title {*/
-      /*        font-size: 28px;*/
-      /*        color: rgba(0,0,0,0.85);*/
-      /*        margin-left: 179px;*/
-      /*      }*/
-      /*    }*/
-      /*  }*/
-      /*}*/
       .footer {
         width: 100%;
         height: 40px;

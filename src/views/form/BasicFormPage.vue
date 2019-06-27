@@ -47,7 +47,7 @@
         }
         .detail{
           font-size: 14px;
-          color: #62bfff;
+          color: #1890ff;
         }
         .close{
           // position: absolute;
@@ -167,7 +167,12 @@
               label="标题"
               :labelCol="labelCol"
               :wrapperCol="wrapperCol">
-              <a-select placeholder="请选择标题">
+              <a-select
+                placeholder="请选择标题"
+                v-decorator="[
+                  'b-title',
+                  {rules: [{ required: true, message: '请选择标题' }]}
+                ]">
                 <a-select-option value="Home">select1</a-select-option>
                 <a-select-option value="Company">select2</a-select-option>
               </a-select>
@@ -191,7 +196,8 @@
                 disabled
                 placeholder="默认值"
                 v-decorator="[
-                  'readOnly'
+                  'readOnly',
+                  {rules: [{ required: true, message: '请输入默认值' }]}
                 ]" />
             </a-form-item>
 
@@ -202,6 +208,10 @@
               :wrapperCol="wrapperCol"
               :required="false">
               <a-checkbox-group @change="onChange">
+                <!-- v-decorator="[
+                  'b-checkout',
+                  {rules: [{ required: true}]}
+                ]" -->
                 <a-checkbox value="1">选项一</a-checkbox>
                 <a-checkbox value="2">选项二</a-checkbox>
                 <a-checkbox value="3">选项三 </a-checkbox>

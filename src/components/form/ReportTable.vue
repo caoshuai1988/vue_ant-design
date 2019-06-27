@@ -17,7 +17,7 @@
           <iframe src="http://nf.finstone.com.cn:9000/nf/ReportServer?reportlet=tbreport/tb_jh_gbznttzb.cpt&__bypagesize__=false" :style="tableStyle" frameborder="0"></iframe>
         </a-card>
       </a-tab-pane>
-      <a-tab-pane key="3">
+      <a-tab-pane key="3" style="padding:24px 32px">
         <span slot="tab">重点支持领域和任务情况表</span>
         <a-card :body-style="{padding: '0'}" ref="tabs">
           <iframe src="http://nf.finstone.com.cn:9000/nf/ReportServer?reportlet=tbreport/tb_jh_gbznttzb.cpt&__bypagesize__=false" :style="tableStyle" frameborder="0"></iframe>

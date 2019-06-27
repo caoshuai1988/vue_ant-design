@@ -1,32 +1,65 @@
 <template>
-  <div class="flowDiv" v-if="flowFlag">
-    <div class="flowHeader">
-      <div class="flowOne">
-        <span class="sizeFLow">流程</span>
-        <span class="sizeTpl">详情</span>
+  <a-card :bordered="false" v-if="flowFlag" style="margin-bottom:12px">
+    <span slot="title">
+      <span>流程</span>
+      <a style="font-size:14px;margin-left:8px">详情</a>
+    </span>
+    <span slot="extra" @click="closeDiv" style="cursor: pointer;"><a-icon type="close" /></span>
+    <div class="flowImg">
+      <span class="begin">开始</span>
+      <div style="display: inline-block;margin:0 4px 0 4px" >
+        <img src="../../assets/arrow.png">
       </div>
-      <div class="flowTwo" @click="closeDiv">
-        <a-icon type="close" />
+      <div class="process">
+        <span class="processNew">新建</span>
+        <div>
+          <span class="name">县级经办岗</span>
+          <span class="status">已完成</span>
+        </div>
       </div>
+      <div style="display: inline-block;margin:0 4px 0 4px" >
+        <img src="../../assets/arrow.png">
+      </div>
+      <div class="process">
+        <span class="processNew">编辑提交</span>
+        <div>
+          <span class="name">县级经办岗</span>
+          <span class="status">已完成</span>
+        </div>
+      </div>
+      <div style="display: inline-block;margin:0 4px 0 4px" >
+        <img src="../../assets/arrow.png">
+      </div>
+      <div class="process">
+        <span class="processNew">审批</span>
+        <div>
+          <span class="name">县级经办岗</span>
+          <span class="status">已完成</span>
+        </div>
+      </div>
+      <div style="display: inline-block;margin:0 4px 0 4px" >
+        <img src="../../assets/arrow.png">
+      </div>
+      <div class="process">
+        <span class="processNew textBackground">上报备案</span>
+        <div>
+          <span class="name">县级经办岗</span>
+          <span class="status textSpanColor">进行中</span>
+        </div>
+      </div>
+      <div style="display: inline-block;margin:0 4px 0 4px" >
+        <img src="../../assets/blueArrow.png">
+      </div>
+      <span class="begin textBeginColor">结束</span>
     </div>
-    <div class="flowContent">
-      <img :src="flowPng" alt="" class="flowImg">
-    </div>
-  </div>
+  </a-card>
 </template>
 
 <script>
-import flowPng from '@/assets/flow.png'
 export default {
   data () {
     return {
-      flowFlag: true,
-      big: 'default'
-    }
-  },
-  computed: {
-    flowPng () { // 引入流程图片
-      return flowPng
+      flowFlag: true
     }
   },
   methods: {
@@ -38,49 +71,62 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.sizeFLow{
-  color: rgba(0, 0, 0, 85%)
-}
-
-.flowDiv{
-  width: 100%;
-  margin-bottom: 24px;
-  background-color: #fff;
-  .flowHeader{
-    padding: 0 32px;
-    width: 100%;
-    height: 50px;
-    line-height: 50px;
+// 流程图 qss
+.flowImg{
+    width:100%;
     text-align: center;
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px solid #e9e9e9;
-    .flowOne{
-      // padding-left: 32px;
-      font-size: 20px;
-      color: rgba(0, 0, 0, 85%);
-      .sizeTpl{
-        font-size: 14px;
-        color: #1890ff;
-        padding-left: 10px;
-        cursor:pointer;
-      }
-    }
-    .flowTwo{
-      // padding-right: 32px;
-      font-size: 18px;
-      cursor:pointer;
-    }
-  }
-  .flowContent{
-    width: 100%;
-    height: 140px;
-    line-height: 140px;
-    // margin: auto;
-    .flowImg{
-      margin: 0 auto;
-      display: block;
-    }
-  }
-}
+		margin:24px auto;
+		.begin{
+			font-size:16px;
+			background: #00a854;
+			width:88px;
+			line-height:32px;
+			display: inline-block;
+			text-align: center;
+			color:white;
+			border-radius: 20px;
+			margin-top: -40px;
+
+		}
+		.textBeginColor{
+			background:#94c4ff;
+		}
+		.process{
+			font-size:14px;
+			color:white;
+			width:120px;
+			display: inline-block;
+			border-radius: 4px;
+			border:1px solid #e8e8e8;
+			overflow:hidden;
+			margin-bottom:-30px;
+			.processNew{
+				background:#00a854;
+				display: inline-block;
+				width:120px;
+				text-align: center;
+				line-height: 32px;
+			}
+			.textBackground{
+				background:#1890ff
+			}
+			div{
+				background:white;
+				text-align: center;
+				font-size:12px;
+				padding:3px 0 3px 0;
+
+				.name{
+					color:#000000;
+					display: block;
+				}
+				.status{
+					color:#00a854;
+				}
+				.textSpanColor{
+					color:#1890ff
+				}
+			}
+		}
+	}
 </style>

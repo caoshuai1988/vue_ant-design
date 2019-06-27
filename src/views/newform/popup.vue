@@ -1,16 +1,8 @@
 <template>
   <div>
     <template>
-      <div>
-        <a-button type="primary" @click="$refs.createModal.add()">新增</a-button>
-        <div>
-          <hr>
-        </div>
-        <a-button type="primary" @click="drawer">单列抽屉</a-button>
-        <div>
-          <hr>
-        </div>
-      </div>
+      <a-button type="primary" style="margin-right: 24px" @click="$refs.createModal.add()">新增</a-button>
+      <a-button type="primary" style="margin-right: 24px" @click="drawer">单列抽屉</a-button>
       <a-button type="primary" @click="showDrawer">双列抽屉</a-button>
     </template>
     <AddForm ref="createModal" @monitor="monitor"></AddForm>

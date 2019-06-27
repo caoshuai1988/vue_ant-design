@@ -191,5 +191,7 @@ export default {
 .foldStyle {
   float: right;
   padding-right: 24px;
+  color: #a3a3a3;
+  font-size: 16px;
 }
 </style>

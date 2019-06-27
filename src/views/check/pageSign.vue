@@ -111,7 +111,7 @@
       }
       .detail{
         font-size: 14px;
-        color: #62bfff;
+        color: #1890ff;
       }
       .close{
         // position: absolute;
@@ -280,7 +280,7 @@
                 :data="loadGoodsData"
               ></s-table>
 
-              <div class="page-sign-title" @click="aa">退货进度</div>
+              <div class="page-sign-title" >退货进度</div>
               <s-table
                 style="margin-bottom: 24px"
                 row-key="key"
@@ -320,6 +320,12 @@
                   ></bm-geolocation>
                 </baidu-map>
               </div>
+            </a-card>
+          </div>
+          <!-- 报表 -->
+          <div style="margin-top:24px;" class="anchor">
+            <a-card :body-style="{padding: '24px 32px'}" title="报表信息">
+              <iframe src="http://nf.finstone.com.cn:9000/nf/ReportServer?reportlet=tbreport/tb_jh_gbznttzb.cpt&__bypagesize__=false" width="100%" height="640px" frameborder="0"></iframe>
             </a-card>
           </div>
           <!-- 附件信息 -->
@@ -387,8 +393,7 @@
             :lg="helpNum"
             :md="helpNum"
             :sm="helpNum"
-            :xs="helpNum"
-          >
+            :xs="helpNum">
             <a-affix :offsetTop="this.top">
               <div class="page-direction">
                 <div class="title">
@@ -563,9 +568,9 @@ export default {
       top: 0,
       // 当前tab标签为第几个
       activeKey: '1',
-      isShowHelp: true,
-      // num: 24,
-      num: 18,
+      isShowHelp: false,
+      num: 24,
+      // num: 18,
       helpNum: 6,
       lablenum: 7,
       valuenum: 17,
@@ -806,17 +811,21 @@ export default {
     handleScroll (el) { // 监听滚动条
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTo
       const jump = document.querySelectorAll('.anchor') // 用 class" 添加锚点
-      const total = jump[1].offsetTop
-      const totalOne = jump[2].offsetTop
-      const totalOnes = jump[0].offsetTop
-      if (scrollTop >= totalOnes) {
+      const totalSlide = jump[0].offsetTop
+      const totalSlideMove = jump[1].offsetTop
+      const totalTranslation = jump[2].offsetTop
+      const totalTrans = jump[3].offsetTop
+      if (scrollTop >= totalSlide) {
         this.activeKey = '1'
       }
-      if (scrollTop >= total) {
+      if (scrollTop >= totalSlideMove) {
         this.activeKey = '2'
       }
-      if (scrollTop >= totalOne) {
+      if (scrollTop >= totalTranslation) {
         this.activeKey = '3'
+      }
+      if (scrollTop >= totalTrans) {
+        this.activeKey = '4'
       }
     },
 
@@ -829,7 +838,7 @@ export default {
       window.removeEventListener('scroll', this.handleScroll)
       this.$forceUpdate()
       val = val - 1
-      if (val >= 3) {
+      if (val >= 4) {
         // 暂时防止页面报错
         return
       }
@@ -839,6 +848,8 @@ export default {
         this.activeKey = '3'
       } else if (val === 1) {
         this.activeKey = '2'
+      } else if (val === 3) {
+        this.activeKey = '4'
       }
       const jump = document.querySelectorAll('.anchor') // 用 class" 添加锚点
       const total = jump[val].offsetTop
@@ -874,10 +885,6 @@ export default {
           document.documentElement.scrollTop = total
         }
       }
-    },
-    aa () {
-      this.defaultActiveKey = 4
-      console.log('@@@@@', this.defaultActiveKey)
     },
     // handler
     handleSubmit (e) {

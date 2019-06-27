@@ -117,13 +117,14 @@
   <a-card :body-style="{background:'#f0f2f5', padding: 0}" :bordered="false" class="card-box">
     <a-row :gutter="24">
       <a-col :body-style="{ background:'#fff'}" :xl="num" :lg="num" :md="num" :sm="num" >
+        <BaseFlowHead></BaseFlowHead>
         <div class="form-detial" style="background: #fff; padding: 24px 32px;">
           <a-form class="detailInfo" :form="form">
             <a-form-item label="取货单号" :labelCol="labelCol" :wrapperCol="wrapperCol">
               <span>
                 {{ "1000000000" }}
               </span>
-            </a-form-item>
+            </a-form-item>`
             <a-form-item label="子订单" :labelCol="labelCol" :wrapperCol="wrapperCol">
               <span>
                 {{ "3214321432" }}
@@ -262,12 +263,14 @@
 <script>
 import { STable } from '@/components'
 import DetailList from '@/components/tools/DetailList'
+import BaseFlowHead from '@/views/newform/BaseFlowHead'
 const DetailListItem = DetailList.Item
 export default {
   components: {
     DetailList,
     DetailListItem,
-    STable
+    STable,
+    BaseFlowHead
   },
   data () {
     return {

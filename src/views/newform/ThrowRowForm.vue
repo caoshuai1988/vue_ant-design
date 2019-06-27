@@ -56,9 +56,14 @@
               <a-col :xl="{span: 7, offset: 2}" :lg="{span: 8}" :md="{span: 24}" :sm="24">
                 <a-form-item
                 >
-                  <span slot="label" :class="{textClass : ceshi == 'large'}">仓库类型     <a-tooltip title="What do you want others to call you?">
-                    <a-icon type="info-circle" />
-                  </a-tooltip></span>
+                  <span slot="label" :class="{textClass : ceshi == 'large'}">
+                    仓库类型
+                    <span style="color:rgba(0,0,0,0.45)" >
+                      <a-tooltip title="What do you want others to call you?">
+                        <a-icon type="info-circle" />
+                      </a-tooltip>
+                    </span>
+                  </span>
                   <a-input
                     v-decorator="[
                       'username',

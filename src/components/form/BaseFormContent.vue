@@ -1,11 +1,17 @@
 <template>
   <a-card :body-style="{padding: '24px 32px'}" :bordered="false">
-    <a-form @submit="handleSubmit" :form="form">
+    <a-form @submit="handleSubmit" :form="form" :hideRequiredMark="true">
       <a-form-item
-        label="标题"
         :labelCol="{lg: {span: 7}, sm: {span: 7}}"
-        :wrapperCol="{lg: {span: 10}, sm: {span: 17} }"
-      >
+        :wrapperCol="{lg: {span: 10}, sm: {span: 17} }">
+        <span slot="label">
+          标题
+          <span class="label-select">
+            <a-tooltip title="What do you want others to call you?">
+              <a-icon type="info-circle" />
+            </a-tooltip>
+          </span>
+        </span>
         <a-input
           v-decorator="[
             'name',
@@ -19,8 +25,7 @@
       <a-form-item
         label="起止日期"
         :labelCol="{lg: {span: 7}, sm: {span: 7}}"
-        :wrapperCol="{lg: {span: 10}, sm: {span: 17}}"
-      >
+        :wrapperCol="{lg: {span: 10}, sm: {span: 17}}">
         <a-range-picker
           name="buildTime"
           style="width: 100%"
@@ -33,8 +38,7 @@
       <a-form-item
         label="目标描述"
         :labelCol="{lg: {span: 7}, sm: {span: 7}}"
-        :wrapperCol="{lg: {span: 10}, sm: {span: 17} }"
-      >
+        :wrapperCol="{lg: {span: 10}, sm: {span: 17} }">
         <a-textarea
           rows="4"
           placeholder="请输入你阶段性工作目标"
@@ -48,8 +52,7 @@
       <a-form-item
         label="客户"
         :labelCol="{lg: {span: 7}, sm: {span: 7}}"
-        :wrapperCol="{lg: {span: 10}, sm: {span: 17} }"
-      >
+        :wrapperCol="{lg: {span: 10}, sm: {span: 17} }">
         <a-input
           placeholder="请描述你服务的客户，内部客户直接 @姓名／工号"
           v-decorator="[
@@ -59,25 +62,30 @@
         />
       </a-form-item>
       <a-form-item
-
         :labelCol="{lg: {span: 7}, sm: {span: 7}}"
         :wrapperCol="{lg: {span: 10}, sm: {span: 17} }"
-        :required="false"
-      >
-        <span slot="label" class="abc">
-          邀评人(选填)&nbsp;
-          <a-tooltip title="What do you want others to call you?">
-            <a-icon type="info-circle" />
-          </a-tooltip>
+        :required="false">
+        <span slot="label">
+          邀评人
+          <span class="label-select">
+            (选填)&nbsp;
+            <a-tooltip title="What do you want others to call you?">
+              <a-icon type="info-circle" />
+            </a-tooltip>
+          </span>
         </span>
         <a-input placeholder="请直接 @姓名／工号，最多可邀请 5 人"/>
       </a-form-item>
       <a-form-item
-        label="权重(选填)"
         :labelCol="{lg: {span: 7}, sm: {span: 7}}"
         :wrapperCol="{lg: {span: 10}, sm: {span: 17} }"
-        :required="false"
-      >
+        :required="false">
+        <span slot="label">
+          权重
+          <span class="label-select">
+            (选填)
+          </span>
+        </span>
         <a-input-number :min="0" :max="100"/>
         <span>%</span>
       </a-form-item>
@@ -86,8 +94,7 @@
         :labelCol="{lg: {span: 7}, sm: {span: 7}}"
         :wrapperCol="{lg: {span: 10}, sm: {span: 17} }"
         :required="false"
-        help="客户、邀评人默认被分享"
-      >
+        help="客户、邀评人默认被分享">
         <a-radio-group v-model="value">
           <a-radio :value="1">公开</a-radio>
           <a-radio :value="2">部分公开</a-radio>
@@ -146,6 +153,8 @@ export default {
 }
 </script>
 
-<style>
-
+<style  lang="less" scoped>
+  .label-select{
+    color:rgba(0,0,0,0.45);
+  }
 </style>

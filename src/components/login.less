@@ -47,8 +47,13 @@
         width: 40px !important;
         height: 40px !important;
         border-radius: 0 !important;
+        i.fa-check-circle {
+          color: #52c41a;
+          //font-size: 1.2em;
+        }
       }
     }
+    //.drag_verify .dv_handler
     .dv_handler.dv_handler_ok_bg{
       border-top-left-radius: 0 !important;
       border-bottom-left-radius: 0 !important;
@@ -57,9 +62,9 @@
 }
 //找回密码
 .main{
-  .recover-layout {
+  .step-layout {
     .ant-steps {
-      max-width: 600px;
+      max-width: 800px;
       height: 48px;
       margin: 0 auto;
       .ant-steps-item {
@@ -68,8 +73,8 @@
         .ant-steps-item-tail {
           display: block;
           width: 100%;
-          top: 10px;
-          margin: 0px 0 0 36px;
+          top: 16px;
+          margin: 0 0 0 36px;
           padding: 0;
           &:after {
             height: 2px;
@@ -87,7 +92,7 @@
         }
 
         &.ant-steps-item-process,
-        &.ant-steps-item-finish{
+        &.ant-steps-item-finish {
           .ant-steps-item-icon {
             background: #3293fe;
           }
@@ -103,8 +108,8 @@
 
       .ant-steps-item-wait > .ant-steps-item-content > .ant-steps-item-title,
       .ant-steps-item-finish > .ant-steps-item-content > .ant-steps-item-title,
-      .ant-steps-item-process > .ant-steps-item-content > .ant-steps-item-title{
-        font-size: 14px !important;
+      .ant-steps-item-process > .ant-steps-item-content > .ant-steps-item-title {
+        font-size: 16px !important;
       }
 
       .ant-steps-item-finish > .ant-steps-item-content > .ant-steps-item-title,
@@ -112,19 +117,14 @@
         color: #3293fe !important;
       }
       .ant-steps-item:first-child,
-      .ant-steps-item:nth-of-type(3){
+      .ant-steps-item:nth-of-type(3) {
         .ant-steps-item-icon {
           transform: translateX(25px);
         }
       }
-      .ant-steps-item:nth-of-type(2){
+      .ant-steps-item:nth-of-type(2) {
         .ant-steps-item-icon {
           transform: translateX(15px);
-        }
-      }
-      .ant-steps-item:last-child {
-        .ant-steps-item-icon {
-          transform: translateX(5px);
         }
       }
       .ant-steps-item-icon, .ant-steps-item-content {
@@ -132,9 +132,9 @@
         vertical-align: top;
       }
       .ant-steps-item-icon {
-        width: 22px;
-        height: 22px;
-        line-height: 22px;
+        width: 32px;
+        height: 32px;
+        line-height: 32px;
         text-align: center;
       }
       .ant-steps-item-title:after {
@@ -148,9 +148,11 @@
         left: 65%;
       }
     }
-    .content{
+    .content {
       .ant-col-4 {
         min-width: 85px;
+        height: 40px;
+        line-height: 40px;
       }
       .ant-col-12 {
         width: 335px !important;
@@ -159,6 +161,32 @@
         canvas {
           border-radius: 4px !important;
         }
+      }
+    }
+    &.unlocking-layout {
+      .ant-steps {
+        .ant-steps-item:last-child {
+          .ant-steps-item-icon {
+            transform: translateX(0);
+          }
+        }
+        .ant-steps-item {
+          .ant-steps-item-tail {
+            margin: 0 0 0 30px;
+          }
+        }
+      }
+    }
+  }
+}
+//登录模板1
+#userLayout1.user-layout-wrapper {
+  .ant-carousel {
+    height: 100%;
+    .slick-slider {
+      height: 100%;
+      .slick-list {
+        height: 100% !important;
       }
     }
   }

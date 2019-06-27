@@ -69,9 +69,10 @@
     }
     .content-box{
       padding: 24px;
+      padding-right: 2px;
     }
     .content{
-      // height: 650px;
+      padding-right: 24px;
       min-height: 300px;
       max-height: 650px;
       overflow-y: auto;
@@ -80,22 +81,21 @@
         padding: 0;
       }
       &::-webkit-scrollbar{
-        width: 4px;
+        width: 6px;
         height: 8px;
         // background-color: #F5F5F5;
       }
       /*定义滚动条轨道 内阴影+圆角*/
       &::-webkit-scrollbar-track{
-        box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+        // box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
         border-radius: 10px;
-        background-color: #a5a5a5;
+        background-color: #fff;
       }
-
       /*定义滑块 内阴影+圆角*/
       &::-webkit-scrollbar-thumb{
           border-radius: 5px;
-          box-shadow: inset 0 0 5px rgba(0,0,0,0.3);
-          background-color: #EDEDED;
+          box-shadow: inset 0 0 5px rgba(0,0,0,0.4);
+          background-color: #9B9B9B;
       }
     }
   }
@@ -109,7 +109,7 @@
 
     <a-row :gutter="24">
       <a-col :body-style="{background:'#fff'}" :xl="num" :lg="num" :md="num" :sm="num" >
-        <div style="background: #fff; padding: 0">
+        <div style=" padding: 0">
           <baseFlowHead></baseFlowHead>
           <baseFormContent></baseFormContent>
         </div>
@@ -202,7 +202,7 @@
 
 <script>
 import baseFlowHead from './BaseFlowHead'
-import baseFormContent from './BaseFormContent'
+import baseFormContent from '@/components/form/BaseFormContent'
 export default {
   name: 'BaseForm',
   components: {

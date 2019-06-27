@@ -95,13 +95,13 @@
                   <div>
                     <ul style="overflow:hidden;padding-left:0px">
                       <li style="float: left;">
-                        <span id="span-left" :class="{toActive : 1 == this.up}" @click="toUp(1)">
+                        <span id="span-left" :class="{toActive : 1 == this.up}" @click="toUp(1)" ref="content" @mouseover="selectStyle () "  @mouseout="outStyle()">
                         <a-icon type="like" />
                         </span>
                         <p>88个赞</p>
                       </li>
                       <li style="float:right">
-                        <span id="span-right" :class="{toActive : 2 == this.under}" @click="toUnder(2)">
+                        <span id="span-right" :class="{toActive : 2 == this.under}" @click="toUnder(2)" ref="contentUn" @mouseover="selectStyleUn () "  @mouseout="outStyleUn()">
                         <a-icon type="dislike" />
                         </span>
                         <p>25个踩</p>
@@ -130,7 +130,6 @@ import GlobalFooter from '@/components/GlobalFooter'
 
 import banner from '@/assets/login_bg1.png'
 import time from '@/assets/time.png'
-import '@/assets/iconfont/iconfont.js'
 const columns = [
   { title: 'Full Name', width: 100, dataIndex: 'name', key: 'name', fixed: 'left' },
   { title: 'Age', width: 100, dataIndex: 'age', key: 'age', fixed: 'left' },
@@ -232,13 +231,46 @@ export default {
    		    return
       }
       this.up = 1;
+      this.$refs.content.style.color = 'white';
     }, 
     toUnder (num){
       if (this.up === 1) {
           return 
       }
       this.under = 2;
+      this.$refs.contentUn.style.color = 'white';
     },
+    //设置颜色
+    selectStyle(){
+    	if(this.up ===1){
+    		this.$refs.content.style.color = 'write';
+    	}else{
+    		this.$refs.content.style.color = '#0081EE';
+    	}
+    },
+    outStyle(){
+    	if(this.up ===1){
+    		this.$refs.content.style.color = 'write';
+    		
+    	}else{
+    		this.$refs.content.style.color = 'rgba(0, 0, 0, 0.45)';
+    	}	
+    },
+    selectStyleUn(){
+    	if(this.under ===2){
+    		this.$refs.contentUn.style.color = 'write';
+    	}else{
+    		this.$refs.contentUn.style.color = '#0081EE';
+    	}
+    },
+    outStyleUn(){
+    	if(this.under ===2){
+    		this.$refs.contentUn.style.color = 'write';
+    		
+    	}else{
+    		this.$refs.contentUn.style.color = 'rgba(0, 0, 0, 0.45)';
+    	}	
+    }
   },
   watch: {
     '$route' (val) {
@@ -455,7 +487,6 @@ margin-bottom: 0;
               }
               &:hover {
                 border:1px solid #0081EE;
-                color:#0081EE;
               }  
             }
             #span-right{
@@ -477,7 +508,6 @@ margin-bottom: 0;
             }
             &:hover {
 					border:1px solid #0081EE;
-					color:#0081EE;
 				}
           }
             p{

@@ -121,7 +121,7 @@
       width: calc(100%-256px);
       background: #eff3f5;
       padding: 24px;
-      height: @box-height;
+      // height: @box-height;
       box-sizing: border-box;
       .title-detail{
          display: flex;
@@ -225,7 +225,7 @@
       </div>
       <!-- 右侧内容区 -->
       <div class="right-box">
-        <a-card style="height: 100%; min-width: 1200px; min-height: 640px;" :head-style="{height:'57px', fontSize:'16px', color:'rgba(0,0,0,0.85)'}" :body-style="{padding: 0, border: 0}">
+        <a-card :head-style="{height:'57px', fontSize:'16px', color:'rgba(0,0,0,0.85)'}" :body-style="{padding: 0, border: 0,previewStyle}">
           <div class="title-detail">
             <div class="info">
               <span class="title__name" style="margin-right:12px">

@@ -119,6 +119,7 @@
       overflow: hidden;
       .relevance__name--left{
         font-size: 16px;
+        color: rgba(0,0,0,0.85)
       }
       .relevance__name--right{
         font-size: 14px;

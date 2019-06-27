@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <img src="@/assets/login_bg1.png"/>
+    <!--<img src="@/assets/login_bg1.png"/>-->
     <div class="login-box">
       <a-row>
         <a-col :span="20">
@@ -269,13 +269,11 @@ export default {
 
 <style lang="less" scoped>
   .main {
-    height: calc(100% - 304px);
+    height: calc(100% - 216px);
     min-height: 450px;
     position: relative;
-    img {
-      width: 100%;
-      height: 100%;
-    }
+    background: no-repeat #eeeeee url(~@/assets/login_bg1.png) scroll top center;
+    background-size: cover;
     .login-box {
       position: absolute;
       top: 50%;

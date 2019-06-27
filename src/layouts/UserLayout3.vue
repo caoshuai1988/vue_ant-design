@@ -8,7 +8,7 @@
 <!--          </a>-->
         </div>
         <div class="desc">
-          富深协通新平台模板
+          富深新平台模板
         </div>
       </div>
 
@@ -62,10 +62,6 @@ export default {
       background-size: 100%;
       padding: 110px 0 144px;
       position: relative;
-      /*overflow-y: hidden;*/
-      /*a {*/
-      /*  text-decoration: none;*/
-      /*}*/
 
       .top {
         text-align: center;

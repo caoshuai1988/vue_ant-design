@@ -18,7 +18,8 @@
 		</a-tooltip>
 		<a-tag
 			  v-else
-			  :class="{ active:0 == index}"
+			  @click="toTag(index)"
+			  :class="{ active:index == num}"
 			  :key="tag"
 			  :closable="index !== 0"
 			  :afterClose="() => handleTagClose(tag)"
@@ -33,10 +34,14 @@
 	export default {
 		data() {
 	      return {
-	      	tags: ['默认模板', '自定义模板', '自定义模板2']
+	      	tags: ['默认模板', '自定义模板', '自定义模板2'],
+	      	num:0
 	      }
 	    },
 		methods: {
+			toTag(index) {
+				this.num = index;
+			}
 	  },
 	}
 </script>

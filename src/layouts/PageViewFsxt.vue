@@ -79,7 +79,7 @@
       }
     }
     .submit{
-      padding-top: 48px;
+      padding-top: 16px;
       display: flex;
       justify-content: flex-end;
     }
@@ -129,6 +129,7 @@
     }
     .relevance__main{
       margin-top: 12px;
+      padding-bottom: 16px;
       .clearfix();
       .item{
         float: left;
@@ -142,8 +143,9 @@
       justify-content: space-between;
       align-items: center;
       .relevance__footer__title{
-        font-size: 20px;
-        color: rgba(0,0,0,0.85)
+        font-size: 16px;
+        color: rgba(0,0,0,0.85);
+        margin:0;
       }
     }
     // 分步图部分
@@ -196,10 +198,12 @@
   }
 
   .step-content{
-    padding-top: 56px;
+    padding-top: 40px;
     padding-left: 10%;
     padding-right: 10%;
+    padding-bottom: 24px;
     &.step-content--only{
+      padding-top: 56px;
       padding-left: 0;
       padding-right: 0;
     }
@@ -317,8 +321,7 @@
             style="width: 80%; max-width: 522px;"
             placeholder="请输入..."
             size="large"
-            enterButton="搜索"
-          />
+            enterButton="搜索"/>
         </div>
         <div class="page-menu-tabs" v-if="tabs && tabs.items">
           <!-- @change="callback" :activeKey="activeKey" -->
@@ -360,22 +363,44 @@
           </div>
           <div class="submit">
             <div class="btn-wrap">
-              <a-button type="primary" style="margin-right: 8px; color:#fff;">保存</a-button>
+              <template v-if="$route.meta.isForm">
+                <a-button type="primary" style="margin-right: 8px; color:#fff;">提交</a-button>
+              </template>
+              <template v-else>
+                <a-button type="primary" style="margin-right: 8px; color:#fff;" @click="showDrawer">审批</a-button>
+              </template>
               <a-button-group style="margin-left: 8px;margin-right: 16px">
                 <a-button>提交审批</a-button>
                 <a-button>演示提醒</a-button>
                 <a-button>删除</a-button>
-                <a-button><a-icon type="ellipsis"/></a-button>
+                <a-button>
+                  <a-dropdown placement="topCenter">
+                    <a class="ant-dropdown-link" href="#">
+                      <a-icon type="ellipsis"/>
+                    </a>
+                    <a-menu slot="overlay">
+                      <a-menu-item>
+                        选项一
+                      </a-menu-item>
+                      <a-menu-item>
+                        选项二
+                      </a-menu-item>
+                      <a-menu-item>
+                        选项三
+                      </a-menu-item>
+                    </a-menu>
+                  </a-dropdown>
+                </a-button>
               </a-button-group>
-              <span class="sign">|</span>
+              <!-- <span class="sign">|</span>
               <a-button
                 class="btn"
                 @click="showDrawer"
                 style="width: 130px;margin-left:16px;">
-                审批：<span class="checking">待审批</span></a-button>
+                审批：<span class="checking">待审批</span></a-button> -->
             </div>
           </div>
-          <drawer :isVisible="isVisible" @close-drawer="closeDrawer" @show-drawer="showDrawer"/>
+          <!-- <drawer :isVisible="isVisible" @close-drawer="closeDrawer" @show-drawer="showDrawer"/> -->
         </div>
       </div>
       <!-- 相关联流程图分布表单 -->
@@ -453,12 +478,30 @@
             </div>
           </div>
           <div class="relevance__footer">
-            <div class="relevance__footer__title">
+            <h1 class="relevance__footer__title">
               {{ relevanceTitle }}
-            </div>
+            </h1>
             <div class="btn-wrap">
               <a-button type="primary" style="margin-right: 8px; color:#fff;">提交</a-button>
-              <a-button type="primary" style="margin-right: 8px; color:#fff;"><a-icon type="ellipsis"/></a-button>
+              <a-button type="primary" style="margin-right: 8px; color:#fff;">
+                <a-dropdown placement="topCenter">
+                  <a class="ant-dropdown-link" href="#">
+                    <a-icon type="ellipsis"/>
+                  </a>
+                  <a-menu slot="overlay">
+                    <a-menu-item>
+                      选项一
+                    </a-menu-item>
+                    <a-menu-item>
+                      选项二
+                    </a-menu-item>
+                    <a-menu-item>
+                      选项三
+                    </a-menu-item>
+                  </a-menu>
+                </a-dropdown>
+              </a-button>
+              <!-- <a-button type="primary" style="margin-right: 8px; color:#fff;"><a-icon type="ellipsis"/></a-button> -->
             </div>
           </div>
         </div>

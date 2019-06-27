@@ -52,7 +52,7 @@
         }
         .detail{
           font-size: 14px;
-          color: #62bfff;
+          color: #1890ff;
         }
         .close{
           // position: absolute;
@@ -73,30 +73,29 @@
     }
     .content-box{
       padding: 24px;
+      padding-right: 2px;
     }
     .content{
-      // height: 650px;
+      padding-right: 24px;
       min-height: 300px;
       max-height: 650px;
       overflow-y: auto;
       &::-webkit-scrollbar{
-        width: 4px;
+        width: 6px;
         height: 8px;
         // background-color: #F5F5F5;
       }
-
-     /*定义滚动条轨道 内阴影+圆角*/
+      /*定义滚动条轨道 内阴影+圆角*/
       &::-webkit-scrollbar-track{
-        box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+        // box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
         border-radius: 10px;
-        background-color: #a5a5a5;
+        background-color: #fff;
       }
-
-     /*定义滑块 内阴影+圆角*/
+      /*定义滑块 内阴影+圆角*/
       &::-webkit-scrollbar-thumb{
           border-radius: 5px;
-          box-shadow: inset 0 0 5px rgba(0,0,0,0.3);
-          background-color: #EDEDED;
+          box-shadow: inset 0 0 5px rgba(0,0,0,0.4);
+          background-color: #9B9B9B;
       }
     }
   }
@@ -117,13 +116,14 @@
   <a-card :body-style="{background:'#f0f2f5', padding: 0}" :bordered="false" class="card-box">
     <a-row :gutter="24">
       <a-col :body-style="{ background:'#fff'}" :xl="num" :lg="num" :md="num" :sm="num" >
+        <BaseFlowHead></BaseFlowHead>
         <div class="form-detial" style="background: #fff; padding: 24px 32px;">
           <a-form class="detailInfo" :form="form">
             <a-form-item label="取货单号" :labelCol="labelCol" :wrapperCol="wrapperCol">
               <span>
                 {{ "1000000000" }}
               </span>
-            </a-form-item>
+            </a-form-item>`
             <a-form-item label="子订单" :labelCol="labelCol" :wrapperCol="wrapperCol">
               <span>
                 {{ "3214321432" }}
@@ -262,12 +262,14 @@
 <script>
 import { STable } from '@/components'
 import DetailList from '@/components/tools/DetailList'
+import BaseFlowHead from '@/views/newform/BaseFlowHead'
 const DetailListItem = DetailList.Item
 export default {
   components: {
     DetailList,
     DetailListItem,
-    STable
+    STable,
+    BaseFlowHead
   },
   data () {
     return {

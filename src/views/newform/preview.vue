@@ -49,12 +49,12 @@
       .content-box{
         padding: 16px 0 24px 24px;
         .title{
-          font-size: 14px;
+          font-size: 16px;
           color: rgba(0,0,0,0.85);
           line-height: 20px;
-          padding-left: 8px;
+          // padding-left: 8px;
           border: 0;
-          border-left: 2px;
+          // border-left: 2px;
           border-style: solid;
           border-color: rgba(0,0,0,0.65);
           margin-bottom: 16px;
@@ -79,7 +79,7 @@
           /*定义滑块 内阴影+圆角*/
           &::-webkit-scrollbar-thumb{
               border-radius: 5px;
-              box-shadow: inset 0 0 5px rgba(0,0,0,0.3);
+              box-shadow: inset 0 0 5px rgba(0,0,0,0.4);
               background-color: #9B9B9B;
           }
           .preview-nav--item{
@@ -149,7 +149,7 @@
       }
       .preview-body{
         padding: 24px;
-        height: 100%;
+        // height: 100%;
       }
 
     }
@@ -164,16 +164,17 @@
 .bgc-class{
   width: 100%;
   height: 100%;
+
 }
 </style>
 <template>
   <div class="preview-box">
     <div class="preview-header">
       2018年韶关市翁源县江尾镇高标准农田建设项目 - 计划阶段 - 附件信息
-      <a-button type="primary" style="float:right;margin-top:16px" @click="backBtn">返回</a-button>
+      <!-- <a-button type="primary" style="float:right;margin-top:16px" @click="backBtn">返回</a-button> -->
     </div>
     <!-- 侧边栏 -->
-    <div class="preview-main">
+    <div class="preview-main" :style="previewStyle">
       <div class="preview-direction">
         <div class="content-box">
           <!-- 标题 -->
@@ -187,12 +188,16 @@
                 融合服务开发平台前端部分工 作前端部分工作规划.docx
               </div>
             </div>
-            <a-divider/>
+            <!-- <a-divider/> -->
             <div class="preview-nav--item " :class="{on: wordShow==2}" @click="tabSwitcher(2)">
               <img src="@/assets/previewIcon/excel.png" alt="word">
               <div class="file-name">
                 融合服务开发平台前端部分工 作前端部分工作规划.excel
               </div>
+            </div>
+            <a-divider/>
+            <div class="title" style="text-align: left;">
+              {{ "绩效目标" }}
             </div>
             <div class="preview-nav--item" :class="{on: wordShow==3}" @click="tabSwitcher(3)">
 
@@ -219,7 +224,7 @@
       </div>
       <!-- 右侧内容区 -->
       <div class="right-box">
-        <a-card style="height: 100%;" :head-style="{height:'57px', fontSize:'16px', color:'rgba(0,0,0,0.85)'}" :body-style="{padding: 0, border: 0}">
+        <a-card style="height: 100%; min-width: 1200px; min-height: 640px;" :head-style="{height:'57px', fontSize:'16px', color:'rgba(0,0,0,0.85)'}" :body-style="{padding: 0, border: 0}">
           <div class="title-detail">
             <div class="info">
               <span class="title__name" style="margin-right:12px">
@@ -240,7 +245,8 @@
             </div>
           </div>
           <!-- <a-divider/> -->
-          <div class="preview-body" style="paddng: 24px 0 0 24px;" ref="text" >
+          <!-- style="paddng: 24px 0 0 24px;" -->
+          <div class="preview-body" :style="previewStyle" ref="text" >
             <iframe
               v-if="wordShow == 1"
               src="https://view.officeapps.live.com/op/view.aspx?src=http://www.xdocin.com/demo/demo.docx"
@@ -299,6 +305,9 @@ export default {
       num: 20,
       value: '',
       wordShow: '',
+      previewStyle: {
+        height: ''
+      },
       imgBox: {
         height: ''
       }
@@ -307,8 +316,9 @@ export default {
 
   mounted () {
     this.value = window.screen.availHeight - this.$refs.text.offsetHeight - 92 - 68 - 60 + 'px' // 暂时
+    this.previewStyle.height = window.screen.availHeight - this.$refs.text.offsetHeight - 92 - 68 + 'px'
     this.imgBox.height = window.screen.availHeight - this.$refs.text.offsetHeight - 92 - 68 - 60 + 'px' // 暂时
-    this.wordShow = this.$route.params.val
+    this.wordShow = this.$route.query.val
   },
   methods: {
     tabSwitcher (val) {

@@ -1,6 +1,7 @@
 // eslint-disable-next-line
 import {
   UserLayout,
+  UserLayout1,
   UserLayout2,
   UserLayout3,
   RecoverLayout,
@@ -21,6 +22,7 @@ export const asyncRouterMap = [
     meta: { title: '首页' },
     redirect: '/homepage/home',
     children: [
+      // 登录页
       {
         path: '/homepage/home',
         name: 'Home',
@@ -33,13 +35,19 @@ export const asyncRouterMap = [
         name: 'login',
         meta: { title: '登录页', keepAlive: true, icon: 'user' },
         children: [
-          // 登陆模板2
+          // 登录模板1
+          {
+            path: '/user/login1',
+            name: 'login1',
+            meta: { title: '登录模板1', target: '_blank' }
+          },
+          // 登录模板2
           {
             path: '/user/login2',
             name: 'login2',
             meta: { title: '登录模板2', target: '_blank' },
             children: [
-              // 登陆模板2-1
+              // 登录模板2-1
               {
                 path: '/user/login2/base',
                 name: 'login2Base',
@@ -56,6 +64,12 @@ export const asyncRouterMap = [
                 path: '/user/login2/drag',
                 name: 'login2Drag',
                 meta: { title: '2账号密码登录-出现滑块页', target: '_blank' }
+              },
+              // 登录模板2-4
+              {
+                path: '/user/login2/unlocking',
+                name: 'login2Unlocking',
+                meta: { title: '2账号密码登录-自助解锁', target: '_blank' }
               }
             ]
           },
@@ -76,6 +90,12 @@ export const asyncRouterMap = [
             path: '/user/recover',
             name: 'recover',
             meta: { title: '找回密码', target: '_blank' }
+          },
+          // 自助解锁
+          {
+            path: '/user/selfUnlocking',
+            name: 'selfUnlocking',
+            meta: { title: '自助解锁', target: '_blank' }
           }
         ]
       },
@@ -120,7 +140,7 @@ export const asyncRouterMap = [
       },
       // new FORM
 
-      // 新建表单
+      // 表单页
       {
         path: '/fsxt',
         redirect: '/fsxt/fsxt-base-form',
@@ -128,53 +148,53 @@ export const asyncRouterMap = [
         meta: { title: '表单页', icon: 'form', permission: ['form'] },
         children: [
           {
-            path: '/form/newbaseform',
-            name: 'NewBaseForm',
-            component: () => import('@/views/newform/NewBaseForm'),
-            meta: { title: '基础表单', keepAlive: true, permission: ['form'] }
-          },
-          {
             path: 'newform/popup',
             name: 'popup',
             component: () => import('@/views/newform/popup'),
-            meta: { title: '弹出窗', keepAlive: true, permission: ['form'] }
+            meta: { title: '弹出窗', keepAlive: true, permission: ['form'], isForm: true }
           },
           {
-            path: 'newform/ThrowRowForm',
-            name: 'ThrowRowForm',
-            component: () => import('@/views/newform/ThrowRowForm'),
-            meta: { title: '三列表单', keepAlive: true, permission: ['form'] }
+            path: '/form/newbaseform',
+            name: 'NewBaseForm',
+            component: () => import('@/views/newform/NewBaseForm'),
+            meta: { title: '基础表单', keepAlive: true, permission: ['form'], showbtn: true, isForm: true }
           },
           {
             path: '/fsxt/fsxt-base-form',
             name: 'BaseFormPage',
             component: () => import('@/views/form/BasicFormPage'),
-            meta: { title: '包含帮助侧栏', keepAlive: true, permission: ['form'], showbtn: true }
+            meta: { title: '基础表单2', keepAlive: true, permission: ['form'], showbtn: true, isForm: true }
           },
           {
-            path: 'newform/mapForm',
-            name: 'mapForm',
-            component: () => import('@/views/newform/mapForm'),
-            meta: { title: '地图表单', keepAlive: true, permission: ['form'], showbtn: true }
-          },
-          {
-            path: '/fsxt/fsxt-advanced-form',
-            name: 'StepFormPage',
-            component: () => import('@/views/form/advancedStepForm/index'),
-            meta: { title: '高级带分步表单', keepAlive: false, permission: ['form'], showStep: true }
-          },
-          // 关联规划
-          {
-            path: '/fsxt/relevance-form',
-            name: 'StepFormPageCopy',
-            component: () => import('@/views/form/advancedStepFormCopy/index'),
-            meta: { title: '关联规划分步表单', keepAlive: false, permission: ['form'], showRelevance: true }
+            path: 'newform/ThrowRowForm',
+            name: 'ThrowRowForm',
+            component: () => import('@/views/newform/ThrowRowForm'),
+            meta: { title: '三列表单', keepAlive: true, permission: ['form'], isForm: true }
           },
           {
             path: 'newform/AdvancedForms',
             name: 'AdvancedForms',
             component: () => import('@/views/newform/AdvancedForms'),
-            meta: { title: '高级表单', keepAlive: true, permission: ['form'] }
+            meta: { title: '高级表单', keepAlive: true, permission: ['form'], isForm: true }
+          },
+          {
+            path: 'newform/mapForm',
+            name: 'mapForm',
+            component: () => import('@/views/newform/mapForm'),
+            meta: { title: '分页签-地图报表', keepAlive: true, permission: ['form'], showbtn: true, isForm: true }
+          },
+          {
+            path: '/fsxt/fsxt-advanced-form',
+            name: 'StepFormPage',
+            component: () => import('@/views/form/advancedStepForm/index'),
+            meta: { title: '高级带分步表单', keepAlive: false, permission: ['form'], showStep: true, isForm: true }
+          },
+          // 相关联规划
+          {
+            path: '/fsxt/relevance-form',
+            name: 'StepFormPageCopy',
+            component: () => import('@/views/form/advancedStepFormCopy/index'),
+            meta: { title: '关联规划分步表单', keepAlive: false, permission: ['form'], showRelevance: true }
           }
         ]
       },
@@ -189,32 +209,32 @@ export const asyncRouterMap = [
             path: 'check/alert',
             name: 'alert',
             component: () => import('@/views/check/alert'),
-            meta: { title: '弹出', showbtn: false, keepAlive: true, permission: ['form'] }
+            meta: { title: '弹出窗', showbtn: false, keepAlive: true, permission: ['form'] }
           },
           {
             path: '/check/single-row',
             name: 'singleRow',
             component: () => import('@/views/check/singleRow'),
-            meta: { title: '查看审批页-单列', showbtn: true, showStep: false, keepAlive: true, permission: ['form'] }
+            meta: { title: '单列详情页', showbtn: true, showStep: false, keepAlive: true, permission: ['form'] }
           },
           // 附件
           {
             path: '/check/accessory',
             name: 'accessory',
             component: () => import('@/views/check/accessory'),
-            meta: { title: '查看审批页-附件', showbtn: true, showStep: false, keepAlive: true, permission: ['form'] }
+            meta: { title: '附件详情页', showbtn: true, showStep: false, keepAlive: true, permission: ['form'] }
           },
           {
             path: '/check/three-row',
             name: 'threeRow',
             component: () => import('@/views/check/threeRow'),
-            meta: { title: '查看审批页-三列', showbtn: true, showStep: false, keepAlive: true, permission: ['form'] }
+            meta: { title: '三列详情页', showbtn: true, showStep: false, keepAlive: true, permission: ['form'] }
           },
           {
             path: '/check/page-sign',
             name: 'pageSign',
             component: () => import('@/views/check/pageSign'),
-            meta: { title: '查看审批页-分页签', showbtn: true, showStep: false, keepAlive: true, permission: ['form'] }
+            meta: { title: '分页签详情页', showbtn: true, showStep: false, keepAlive: true, permission: ['form'] }
           }
         ]
       },
@@ -639,24 +659,19 @@ export const constantRouterMap = [
       }
     ]
   },
-  // {
-  //   path: '/user',
-  //   component: UserLayout2,
-  //   redirect: '/user/login2',
-  //   hidden: true,
-  //   children: [
-  //     {
-  //       path: 'login2',
-  //       name: 'login2',
-  //       component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login2')
-  //     },
-  //     {
-  //       path: 'recover',
-  //       name: 'recover',
-  //       component: () => import(/* webpackChunkName: "user" */ '@/views/user/Recover')
-  //     }
-  //   ]
-  // },
+  {
+    path: '/user',
+    component: UserLayout1,
+    redirect: '/user/login1',
+    hidden: true,
+    children: [
+      {
+        path: 'login1',
+        name: 'login1',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login1')
+      }
+    ]
+  },
   {
     path: '/user',
     component: UserLayout2,
@@ -667,11 +682,6 @@ export const constantRouterMap = [
         path: 'login2/base',
         name: 'login2Base',
         component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login2/Login2-base')
-      // },
-      // {
-      //   path: 'recover',
-      //   name: 'recover',
-      //   component: () => import(/* webpackChunkName: "user" */ '@/views/user/Recover')
       }
     ]
   },
@@ -685,11 +695,6 @@ export const constantRouterMap = [
         path: 'login2/error',
         name: 'login2Error',
         component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login2/Login2-error')
-      // },
-      // {
-      //   path: 'recover',
-      //   name: 'recover',
-      //   component: () => import(/* webpackChunkName: "user" */ '@/views/user/Recover')
       }
     ]
   },
@@ -703,11 +708,19 @@ export const constantRouterMap = [
         path: 'login2/drag',
         name: 'login2Drag',
         component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login2/Login2-drag')
-      // },
-      // {
-      //   path: 'recover',
-      //   name: 'recover',
-      //   component: () => import(/* webpackChunkName: "user" */ '@/views/user/Recover')
+      }
+    ]
+  },
+  {
+    path: '/user',
+    component: UserLayout2,
+    redirect: '/user/login2/unlocking',
+    hidden: true,
+    children: [
+      {
+        path: 'login2/unlocking',
+        name: 'login2Unlocking',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login2/Login2-unlocking')
       }
     ]
   },
@@ -751,9 +764,32 @@ export const constantRouterMap = [
     ]
   },
   {
+    path: '/user',
+    component: RecoverLayout,
+    redirect: '/user/selfUnlocking',
+    hidden: true,
+    children: [
+      {
+        path: 'selfUnlocking',
+        name: 'selfUnlocking',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/SelfUnlocking')
+      }
+    ]
+  },
+  {
     path: '/preview',
     name: 'preview',
     component: () => import('@/views/newform/preview')
+  },
+  { // 地图
+    path: '/maplook',
+    name: 'maplook',
+    component: () => import('@/views/check/mapLook')
+  },
+  { // 报表
+    path: '/tablelook',
+    name: 'tablelook',
+    component: () => import('@/views/check/tableLook')
   },
   {
     path: '/test',

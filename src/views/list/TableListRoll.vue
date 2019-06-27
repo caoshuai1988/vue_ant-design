@@ -66,7 +66,16 @@
     <div class="table-operator" >
       <a-button type="primary" icon="plus" @click="$refs.createModal.add()">新建</a-button>
       <a-button>批量操作</a-button>
-      <a-button>...</a-button>
+	  <a-dropdown>
+	    <a-menu slot="overlay">
+	      <a-menu-item key="1">更多操作1</a-menu-item>
+	      <a-menu-item key="2">更多操作2</a-menu-item>
+	      <a-menu-item key="3">更多操作3</a-menu-item>
+	    </a-menu>
+	    <a-button>
+	      ...
+	    </a-button>
+	  </a-dropdown>
     </div>
     <s-table
     	style="min-height:400px;"
@@ -144,18 +153,18 @@ export default {
         {
           title: '规则编号',
           dataIndex: 'no',
-          width: 100,
+          width: 150,
           fixed: 'left' 
         },
         {
           title: '描述',
-          width: 150,
+          width: 200,
           dataIndex: 'description',
           scopedSlots: { customRender: 'description' }
         },
         {
           title: '服务调用次数',
-          width: 200,
+          width: 300,
           dataIndex: 'callNo',
           sorter: true,
           needTotal: true,
@@ -165,21 +174,25 @@ export default {
           title: '状态',
           width: 300,
           dataIndex: 'status',
-          scopedSlots: { customRender: 'status' }
+          scopedSlots: { customRender: 'status' },
+          filters: [
+		    { text: '填报中', value: 'male' },
+		    { text: '待审批', value: 'female' },
+		    { text: '已审批', value: 'malea' },
+		    { text: '已完成', value: 'femalea' },
+		  ]
         },
         {
           title: '更新时间',
-          width: 300,
           dataIndex: 'updatedAt',
           sorter: true
         },
-        {
-          title: '操作',
-          dataIndex: 'action',
-          fixed: 'right',
-          width: 150,
-          scopedSlots: { customRender: 'action' }
-        }
+	  	{
+		  title: '操作',
+		  fixed: 'right',
+		  width: 200,
+		  scopedSlots: { customRender: 'action' },
+	  	}
       ],
       // 加载数据方法 必须为 Promise 对象
       loadData: parameter => {
@@ -241,12 +254,12 @@ export default {
 	$('.ant-table-body').css({"height":'oHeight'});
 	$('.table-wrapper').css({"minHeight":'0px'});
 	this.scroll = {
-	  x: 2000,
+	  x: 1600,
       y: document.documentElement['clientHeight']-510
    }
 	if (document.documentElement['clientHeight'] < 710){
 		this.scroll = {
-		  x: 2000,
+		  x: 1600,
           y: 200
         }
 	}

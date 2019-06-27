@@ -42,7 +42,8 @@
       .title {
         font-size: 16px;
         font-weight: 500;
-        font-size: 20px;
+        font-size: 16px;
+        // todo
         line-height: 28px;
         font-weight: 500;
         color: rgba(0, 0, 0, 0.85);
@@ -172,22 +173,44 @@
         <div class="main" v-if="!$route.meta.hiddenHeaderContent">
           <div class="row">
             <!-- <img v-if="logo" :src="logo" class="logo"/> -->
-            <h1 v-if="title" class="title">{{ title }}</h1>
+            <h1 v-if="title && $route.meta.showRelevance!==true" class="title">{{ title }}</h1>
             <!-- 第一行是否显示审批按钮 -->
             <div class="btn-wrap" v-if="$route.meta.showbtn">
-              <a-button type="primary" style="margin-right: 8px; color:#fff;">保存</a-button>
+              <template v-if="$route.meta.isForm">
+                <a-button type="primary" style="margin-right: 8px; color:#fff;">提交</a-button>
+              </template>
+              <template v-else>
+                <a-button type="primary" style="margin-right: 8px; color:#fff;" @click="showDrawer">审批</a-button>
+              </template>
               <a-button-group style="margin-left: 8px;margin-right: 16px">
                 <a-button>提交审批</a-button>
                 <a-button>演示提醒</a-button>
                 <a-button>删除</a-button>
-                <a-button><a-icon type="ellipsis"/></a-button>
+                <a-button>
+                  <a-dropdown placement="topCenter">
+                    <a class="ant-dropdown-link" href="#">
+                      <a-icon type="ellipsis"/>
+                    </a>
+                    <a-menu slot="overlay">
+                      <a-menu-item>
+                        选项一
+                      </a-menu-item>
+                      <a-menu-item>
+                        选项二
+                      </a-menu-item>
+                      <a-menu-item>
+                        选项三
+                      </a-menu-item>
+                    </a-menu>
+                  </a-dropdown>
+                </a-button>
               </a-button-group>
-              <span class="sign">|</span>
+              <!-- <span class="sign">|</span>
               <a-button
                 class="btn"
                 @click="showDrawer"
                 style="width: 130px;margin-left:16px;">
-                审批：<span class="checking">待审批</span></a-button>
+                审批：<span class="checking">待审批</span></a-button> -->
             </div>
 
             <div class="action">

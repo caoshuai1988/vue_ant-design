@@ -1,16 +1,8 @@
 <template>
   <div>
     <template>
-      <div>
-        <a-button type="primary" @click="$refs.createModal.add()">新增</a-button>
-        <div>
-          <hr>
-        </div>
-        <a-button type="primary" @click="drawer">单列抽屉</a-button>
-        <div>
-          <hr>
-        </div>
-      </div>
+      <a-button type="primary" style="margin-right: 24px" @click="$refs.createModal.add()">新增</a-button>
+      <a-button type="primary" style="margin-right: 24px" @click="drawer">单列抽屉</a-button>
       <a-button type="primary" @click="showDrawer">双列抽屉</a-button>
     </template>
     <AddForm ref="createModal" @monitor="monitor"></AddForm>
@@ -210,7 +202,7 @@
             :required="false"
           >
             <span slot="label" class="abc">
-              邀评人(选填)&nbsp;
+              邀评人(选填)
               <a-tooltip title="What do you want others to call you?">
                 <a-icon type="info-circle" />
               </a-tooltip>
@@ -318,13 +310,11 @@
             />
           </a-form-item>
           <a-form-item
-
             :labelCol="{lg: {span: 6}, sm: {span: 7}}"
             :wrapperCol="{lg: {span: 15}, sm: {span: 17} }"
-            :required="false"
-          >
-            <span slot="label" class="abc">
-              邀评人(选填)&nbsp;
+            :required="false">
+            <span slot="label">
+              邀评人(选填)
               <a-tooltip title="What do you want others to call you?">
                 <a-icon type="info-circle" />
               </a-tooltip>
@@ -335,8 +325,7 @@
             label="权重(选填)"
             :labelCol="{lg: {span: 6}, sm: {span: 7}}"
             :wrapperCol="{lg: {span: 15}, sm: {span: 17} }"
-            :required="false"
-          >
+            :required="false">
             <a-input-number :min="0" :max="100"/>
             <span>%</span>
           </a-form-item>

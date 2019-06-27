@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <div class="recover-layout">
+    <div class="step-layout recover-layout">
       <div class="container">
         <h3><span>找回密码</span></h3>
         <a-steps :current="current">
@@ -438,7 +438,7 @@ export default {
             line-height: 32px;
           }
           .ant-steps {
-            max-width: 600px;
+            max-width: 800px;
             margin: 0 auto;
           }
           .content {
@@ -448,6 +448,9 @@ export default {
               margin: 64px auto;
               .ant-form-item {
                 margin-bottom: 24px;
+                input {
+                  padding: 0 12px;
+                }
               }
               .phoneItem {
                 height: 40px;
@@ -460,10 +463,13 @@ export default {
               .imgCaptchaItem {
                 .ant-col-16 {
                   width: 225px;
-                  margin-right: 8px;
                   height: 40px;
+                  padding: 0 !important;
+                  margin-right: 8px;
+                  margin-left: 4px;
                 }
                 .ant-col-8 {
+                  padding: 0 !important;
                   width: 102px;
                   height: 40px;
                   .code {
@@ -480,10 +486,13 @@ export default {
                 }
                 .ant-col-16 {
                   width: 225px;
-                  margin-right: 8px;
                   height: 40px;
+                  padding: 0 !important;
+                  margin-right: 8px;
+                  margin-left: 4px;
                 }
                 .ant-col-8 {
+                  padding: 0 !important;
                   width: 102px;
                   height: 40px;
                 }

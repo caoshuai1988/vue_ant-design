@@ -173,7 +173,7 @@
         <div class="main" v-if="!$route.meta.hiddenHeaderContent">
           <div class="row">
             <!-- <img v-if="logo" :src="logo" class="logo"/> -->
-            <h1 v-if="title" class="title">{{ title }}</h1>
+            <h1 v-if="title && $route.meta.showRelevance!==true" class="title">{{ title }}</h1>
             <!-- 第一行是否显示审批按钮 -->
             <div class="btn-wrap" v-if="$route.meta.showbtn">
               <a-button type="primary" style="margin-right: 8px; color:#fff;" @click="showDrawer">审批</a-button>

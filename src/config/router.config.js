@@ -120,7 +120,7 @@ export const asyncRouterMap = [
       },
       // new FORM
 
-      // 新建表单
+      // 表单页
       {
         path: '/fsxt',
         redirect: '/fsxt/fsxt-base-form',

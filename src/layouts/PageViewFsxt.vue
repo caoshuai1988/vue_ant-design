@@ -142,7 +142,7 @@
       justify-content: space-between;
       align-items: center;
       .relevance__footer__title{
-        font-size: 20px;
+        font-size: 16px;
         color: rgba(0,0,0,0.85)
       }
     }
@@ -317,8 +317,7 @@
             style="width: 80%; max-width: 522px;"
             placeholder="请输入..."
             size="large"
-            enterButton="搜索"
-          />
+            enterButton="搜索"/>
         </div>
         <div class="page-menu-tabs" v-if="tabs && tabs.items">
           <!-- @change="callback" :activeKey="activeKey" -->

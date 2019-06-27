@@ -66,7 +66,16 @@
     <div class="table-operator" >
       <a-button type="primary" icon="plus" @click="$refs.createModal.add()">新建</a-button>
       <a-button>批量操作</a-button>
-      <a-button>...</a-button>
+      <a-dropdown>
+	    <a-menu slot="overlay" @click="handleMenuClick">
+	      <a-menu-item key="1">更多操作1</a-menu-item>
+	      <a-menu-item key="2">更多操作2</a-menu-item>
+	      <a-menu-item key="3">更多操作3</a-menu-item>
+	    </a-menu>
+	    <a-button>
+	      ...
+	    </a-button>
+	  </a-dropdown>
     </div>
     <s-table
     	style="min-height:400px;"
@@ -164,7 +173,13 @@ export default {
           title: '状态',
           width: 300,
           dataIndex: 'status',
-          scopedSlots: { customRender: 'status' }
+          scopedSlots: { customRender: 'status' },
+          filters: [
+		    { text: '填报中', value: 'male' },
+		    { text: '待审批', value: 'female' },
+		    { text: '已审批', value: 'malea' },
+		    { text: '已完成', value: 'femalea' },
+		  ]
         },
         {
           title: '更新时间',

@@ -65,6 +65,12 @@
       <a-button type="primary" icon="plus" @click="$refs.createModal.add()">新建</a-button>
       <a-button>批量操作</a-button>
       <a-button @click="tableOption">{{ optionAlertShow && '关闭' || '开启' }} alert</a-button>
+       <a-alert style="margin-top: 18px;display: block;">
+          <template slot="message">
+						<span style="margin-right: 12px">已选择:<a style="font-weight: 600">4</a>项,选中项总投资合计：<b>36.4</b>万元</span> |
+						<span style="margin-right: 12px;padding-left:14px;">当前列表共<a style="font-weight: 600">44</a>项,总投资合计：<b>366.4</b>万元</span>
+          </template>
+        </a-alert>
       <a-dropdown v-action:edit v-if="selectedRowKeys.length>0">
         <a-menu slot="overlay">
           <a-menu-item key="1">
@@ -110,6 +116,17 @@
           <!--<a @click="handleEdit(record)">配置</a>-->
           <!--<a-divider type="vertical"/>-->
           <a @click="handleSub(record)">订阅报警</a>
+          <a-divider type="vertical"/>
+          
+          	<a-dropdown>
+				    <a-menu slot="overlay">
+				      <a-menu-item key="1">操作1</a-menu-item>
+				      <a-menu-item key="2">操作2</a-menu-item>
+				      <a-menu-item key="3">操作3</a-menu-item>
+				    </a-menu>
+				     <a href="javascript:;" class="ant-dropdown-link">更多<a-icon type="down" /></a>
+				  </a-dropdown>
+	        </a>
         </template>
       </span>
     </s-table>
@@ -183,7 +200,6 @@
             scopedSlots: { customRender: 'description' }
           },
           {
-            align:'right',
             title: '服务调用次数',
             dataIndex: 'callNo',
             sorter: true,
@@ -193,7 +209,13 @@
           {
             title: '状态',
             dataIndex: 'status',
-            scopedSlots: { customRender: 'status' }
+            scopedSlots: { customRender: 'status' },
+	          filters: [
+					    { text: '关闭', value: 'male' },
+					    { text: '运行中', value: 'female' },
+					     { text: '已上线', value: 'malea' },
+					    { text: '异常', value: 'femalea' },
+					  ]
           },
           {
             title: '更新时间',
@@ -203,7 +225,7 @@
           {
             title: '操作',
             dataIndex: 'action',
-            width: '150px',
+            width: '200px',
             scopedSlots: { customRender: 'action' }
           }
         ],
@@ -312,8 +334,11 @@
   }
 </script>
 
-<style lang="less">
-  .ant-card-wider-padding .ant-card-body {
+<style lang="less" scoped>
+  .ant-card-wider-padding /deep/ .ant-card-body {
     padding: 24px !important;
+  }
+  /deep/ .ant-alert{
+  	display: none;
   }
 </style>

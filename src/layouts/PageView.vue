@@ -5,11 +5,11 @@
       <slot slot="action" name="action">
         <div class="list-action" v-if="isPageList">
           <template>
-            <span><a-icon type="pie-chart" />刷新</span>
-            <span @click="showDrawer"><a-icon type="tool" />设置</span>
-            <span><a-icon type="delete" />回收站</span>
-            <span><a-icon type="snippets" />业务流程</span>
-            <span><a-icon type="question-circle" />帮助</span>
+            <span @click="refresh"><a-icon type="sync" style="font-size:14px; margin-right:8px"/>刷新</span>
+            <span @click="showDrawer"><a-icon type="setting" style="font-size:14px; margin-right:8px"/>设置</span>
+            <span><a-icon type="delete" style="font-size:14px; margin-right:8px"/>回收站</span>
+            <span><a-icon type="snippets" style="font-size:14px; margin-right:8px"/>业务流程</span>
+            <span><a-icon type="question-circle" style="font-size:14px; margin-right:8px"/>帮助</span>
           </template>
         </div>
       </slot>
@@ -53,7 +53,7 @@
           :wrapStyle="{height: 'calc(100% - 108px)',overflow: 'auto',paddingBottom: '108px'}"
         >
           <template>
-	           <div>
+	           <div style="padding-bottom:40px;">
 	           		<a-card class="card" style="font-size: 26px" :bordered="false" >
 
 						      <layoutForm title="模板" >
@@ -111,11 +111,22 @@
 		          textAlign: 'right',
 		        }"
           >
-          	<a-button :style="{marginRight: '12px'}" @click="onClose" type="primary">保存 </a-button>
+          	<a-popconfirm  placement="top" @confirm="confirm" @cancel="cancel" okText="Yes" cancelText="No">
+          	<template slot="title">
+			          <p>我是内容我是内容我是内容我是内容我是内容我是内容</p>
+			          <p>
+			          	<span>姓名</span>
+			          	<span style="display:inline-block; margin-left:6px;"><a-input placeholder="Basic usage"/></span>
+			          </p>
+		        </template>
+	          	<a-button :style="{marginRight: '12px'}" type="primary" @click="onClose">
+	          			保存为模板 
+	          	</a-button>
+          	</a-popconfirm>
             <a-button 
               @click="onClose"
             >
-             保存为模板 
+              确定
             </a-button>
           </div>
         </a-drawer>
@@ -242,16 +253,35 @@
           }
         }
       },
+      //刷新
+      refresh(){
+      	window.location.reload();
+      },
       showDrawer() {
         this.visible = true
       },
       onClose() {
         this.visible = false
-      }
+      },
+      confirm (e) {
+      console.log(e)
+      this.$message.success('Click on Yes')
+	    },
+	    cancel (e) {
+	      console.log(e)
+	      this.$message.error('Click on No')
+	    }
     }
   }
 </script>
 <style>
+.ant-popover{
+	position:absolute;
+	left:50% !important;
+	top:50% !important;
+	width:400px;
+	margin-left:-200px !important;
+}
 	.ant-drawer-close{
 		right:3px !important;
 	}
@@ -330,6 +360,7 @@
     right: 0;
     font-size: 16px;
     cursor: pointer;
+    color:rgba(0, 0, 0, 0.45)
 }
 
 </style>

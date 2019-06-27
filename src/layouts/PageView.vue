@@ -53,7 +53,7 @@
           :wrapStyle="{height: 'calc(100% - 108px)',overflow: 'auto',paddingBottom: '108px'}">
           <template>
             <div style="padding-bottom:40px;">
-              <a-card class="card" style="font-size: 26px" :bordered="false" >
+              <a-card class="card list-set-drawer" style="font-size: 26px" :bordered="false" >
 
                 <layoutForm title="模板" >
                   <span class="foldStyle" @click="fold(1)">

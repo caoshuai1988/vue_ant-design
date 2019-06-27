@@ -144,7 +144,8 @@
       align-items: center;
       .relevance__footer__title{
         font-size: 16px;
-        color: rgba(0,0,0,0.85)
+        color: rgba(0,0,0,0.85);
+        margin:0;
       }
     }
     // 分步图部分
@@ -363,7 +364,7 @@
           <div class="submit">
             <div class="btn-wrap">
               <template v-if="$route.meta.isForm">
-                <a-button type="primary" style="margin-right: 8px; color:#fff;" @click="showDrawer">提交</a-button>
+                <a-button type="primary" style="margin-right: 8px; color:#fff;">提交</a-button>
               </template>
               <template v-else>
                 <a-button type="primary" style="margin-right: 8px; color:#fff;" @click="showDrawer">审批</a-button>
@@ -477,9 +478,9 @@
             </div>
           </div>
           <div class="relevance__footer">
-            <div class="relevance__footer__title">
+            <h1 class="relevance__footer__title">
               {{ relevanceTitle }}
-            </div>
+            </h1>
             <div class="btn-wrap">
               <a-button type="primary" style="margin-right: 8px; color:#fff;">提交</a-button>
               <a-button type="primary" style="margin-right: 8px; color:#fff;">

@@ -5,7 +5,9 @@
         :labelCol="{lg: {span: 7}, sm: {span: 7}}"
         :wrapperCol="{lg: {span: 10}, sm: {span: 17} }">
         <span slot="label">
-          标题
+          <span>
+            标题
+          </span>
           <span class="label-select">
             <a-tooltip title="What do you want others to call you?">
               <a-icon type="info-circle" />
@@ -68,7 +70,7 @@
         <span slot="label">
           邀评人
           <span class="label-select">
-            (选填)&nbsp;
+            (选填)
             <a-tooltip title="What do you want others to call you?">
               <a-icon type="info-circle" />
             </a-tooltip>

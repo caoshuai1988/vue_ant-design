@@ -336,7 +336,12 @@
           <div style="margin-top:24px;" class="anchor">
             <a-card :body-style="{padding: '24px 32px'}" title="附件信息">
               <span slot="extra">
-                <a-button type="primary">全部预览</a-button>
+                <a-button type="primary">  <router-link
+                  tag="a"
+                  target="_blank"
+                  :to="{path: '/preview', query: {
+                    val: '1'
+                  }}">全部预览</router-link>  </a-button>
               </span>
               <div class="accessory-box" style="background: #fff;">
                 <div class="table-wrap">
@@ -357,7 +362,12 @@
                     <a-table-column title="上传时间" data-index="time" key="time"/>
                     <a-table-column title="操作" key="operation">
                       <template slot-scope="text, record">
-                        <a href style="margin-right:10px" @click.prevent="addAmplifier(record.key)">{{ record.operation.text }}</a>
+                        <a href style="margin-right:10px" >  <router-link
+                          tag="a"
+                          target="_blank"
+                          :to="{path: '/preview', query: {
+                            val: record.key
+                          }}">{{ record.operation.text }}</router-link>  </a>
                         <a style="margin-right:10px">{{ record.operation.textOne }}</a>
                       </template>
                     </a-table-column>
@@ -381,7 +391,13 @@
                     <a-table-column title="上传时间" data-index="time" key="time"/>
                     <a-table-column title="操作" key="operation">
                       <template slot-scope="text, record" >
-                        <a href style="margin-right:10px" @click.prevent="addAmplifier(record.key)">  {{ record.operation.text }}</a>
+                        <a href style="margin-right:10px" >
+                          <router-link
+                            tag="a"
+                            target="_blank"
+                            :to="{path: '/preview', query: {
+                              val: record.key
+                            }}">{{ record.operation.text }}</router-link>   </a>
                         <a style="margin-right:10px">{{ record.operation.textOne }}</a>
                         <!-- <router-link tag="a" target="_blank" :to="{path: '/preview', query: {img:item}}"></router-link> -->
                       </template>
@@ -792,13 +808,13 @@ export default {
   },
   methods: {
     addAmplifier (val) {
-      this.$router.push({
-        name: 'preview',
-        params: {
-          val: val,
-          scrollY: window.scrollY + 550
-        }
-      })
+      // this.$router.push({
+      //   name: 'preview',
+      //   params: {
+      //     val: val,
+      //     scrollY: window.scrollY + 550
+      //   }
+      // })
     },
     amplificationBtn () { // 地图放大
       if (this.mapFd.width === window.screen.availWidth + 'px') {

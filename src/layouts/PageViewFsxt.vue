@@ -112,7 +112,7 @@
     font-size: 14px;
     .relevance__name{
       width: 100%;
-      padding-top: 16px;
+      padding-top: 8px;
       display: flex;
       justify-content: space-between;
       align-items: center;

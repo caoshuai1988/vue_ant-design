@@ -96,13 +96,13 @@
                     <ul style="overflow:hidden;padding-left:0px">
                       <li style="float: left;">
                         <span id="span-left" :class="{toActive : 1 == this.up}" @click="toUp(1)">
-                        <a-icon type="like" />
+                          <a-icon type="like" />
                         </span>
                         <p>88个赞</p>
                       </li>
                       <li style="float:right">
                         <span id="span-right" :class="{toActive : 2 == this.under}" @click="toUnder(2)">
-                        <a-icon type="dislike" />
+                          <a-icon type="dislike" />
                         </span>
                         <p>25个踩</p>
                       </li>
@@ -130,7 +130,6 @@ import GlobalFooter from '@/components/GlobalFooter'
 
 import banner from '@/assets/login_bg1.png'
 import time from '@/assets/time.png'
-import '@/assets/iconfont/iconfont.js'
 const columns = [
   { title: 'Full Name', width: 100, dataIndex: 'name', key: 'name', fixed: 'left' },
   { title: 'Age', width: 100, dataIndex: 'age', key: 'age', fixed: 'left' },
@@ -231,14 +230,14 @@ export default {
       if (this.under === 2) {
    		    return
       }
-      this.up = 1;
-    }, 
-    toUnder (num){
-      if (this.up === 1) {
-          return 
-      }
-      this.under = 2;
+      this.up = 1
     },
+    toUnder (num) {
+      if (this.up === 1) {
+        return
+      }
+      this.under = 2
+    }
   },
   watch: {
     '$route' (val) {
@@ -456,7 +455,7 @@ margin-bottom: 0;
               &:hover {
                 border:1px solid #0081EE;
                 color:#0081EE;
-              }  
+              }
             }
             #span-right{
               width:64px;

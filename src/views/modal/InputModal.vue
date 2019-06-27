@@ -1,6 +1,9 @@
 <template>
   <div>
     <div class="container">
+      <div class="space-bottom_24">
+        <a-button type="primary" @click="showModal_860">860宽</a-button>
+      </div>
       <div class="ant-modal-content space-bottom_24" style="width:800px"><button aria-label="Close" class="ant-modal-close"><span class="ant-modal-close-x"><i class="ant-modal-close-icon anticon anticon-close"><svg
         viewBox="64 64 896 896"
         data-icon="close"
@@ -180,6 +183,108 @@
         </a-form-item>
       </a-form>
     </a-modal>
+
+    <a-modal
+      title="账单调整"
+      :visible="visible1"
+      @ok="handleSubmit1"
+      :confirmLoading="confirmLoading"
+      @cancel="handleCancel1"
+      :width="860"
+    >
+      <a-form
+        class="ant-advanced-search-form"
+        :form="form"
+        @submit="handleSubmit">
+        <a-row :gutter="24">
+          <a-col :span="10" offset="2">
+            <a-form-item label="支付宝账户：">
+              <span>AntDesign@test.com</span>
+            </a-form-item>
+          </a-col>
+          <a-col :span="10">
+            <a-form-item label="产品">
+              <span>--</span>
+            </a-form-item>
+          </a-col>
+        </a-row>
+        <a-row :gutter="24">
+          <a-col :span="10" offset="2">
+            <a-form-item label="商户登录ID：">
+              <span>城里的月光</span>
+            </a-form-item>
+          </a-col>
+          <a-col :span="10">
+            <a-form-item label="结算方式">
+              <span>--</span>
+            </a-form-item>
+          </a-col>
+        </a-row>
+        <a-row :gutter="24">
+          <a-col :span="10" offset="2">
+            <a-form-item label="合约号">
+              <span>--</span>
+            </a-form-item>
+          </a-col>
+          <a-col :span="10">
+            <a-form-item label="币种">
+              <span>--</span>
+            </a-form-item>
+          </a-col>
+        </a-row>
+        <a-row :gutter="24">
+          <a-col :span="10" offset="2">
+            <a-form-item label="调整账单日期">
+              <span>--</span>
+            </a-form-item>
+          </a-col>
+          <a-col :span="10">
+            <a-form-item label="当前会计日期">
+              <span>--</span>
+            </a-form-item>
+          </a-col>
+        </a-row>
+        <a-row :gutter="24">
+          <a-col :span="10" offset="2">
+            <a-form-item label="调整金额">
+              <a-input addonBefore="￥" defaultValue="-100" style="width:210px" />
+            </a-form-item>
+          </a-col>
+          <a-col :span="10">
+            <a-form-item label="调整后金额">
+              <span style="color:red">--</span>
+            </a-form-item>
+          </a-col>
+        </a-row>
+        <a-row :gutter="24">
+          <a-col :span="10" offset="2">
+            <a-form-item label="计费依据">
+              <a-select defaultValue="lucy" style="width: 210px" @change="handleChange">
+                <a-select-option value="">交易金额</a-select-option>
+                <a-select-option value="amount">交易金额</a-select-option>
+                <a-select-option value="amount1">交易金额1</a-select-option>
+              </a-select>
+            </a-form-item>
+          </a-col>
+          <a-col :span="10">
+            <a-form-item label="调整计费量">
+
+            </a-form-item>
+          </a-col>
+        </a-row>
+        <a-row :gutter="24">
+          <a-col :span="20" offset="2">
+            <a-form-item label="计费依据">
+              <a-select defaultValue="lucy" style="width: 210px" @change="handleChange">
+                <a-select-option value="">交易金额</a-select-option>
+                <a-select-option value="amount">交易金额</a-select-option>
+                <a-select-option value="amount1">交易金额1</a-select-option>
+              </a-select>
+            </a-form-item>
+          </a-col>
+        </a-row>
+      </a-form>
+    </a-modal>
   </div>
 </template>
 
@@ -194,11 +299,15 @@ export default {
       visible: false,
       confirmLoading: false,
       form: this.$form.createForm(this),
-      width: '800px'
+      width: '800px',
+      visible1: false
     }
   },
   computed: {},
   methods: {
+    handleChange (value) {
+      console.log(`selected ${value}`)
+    },
     handleSubmit (e) {
       e.preventDefault()
       this.confirmLoading = true
@@ -206,6 +315,18 @@ export default {
         this.form.validateFields((err, values) => {
           if (!err) {
             this.visible = false
+          }
+          this.confirmLoading = false
+        })
+      }, 2000)
+    },
+    handleSubmit1 (e) {
+      e.preventDefault()
+      this.confirmLoading = true
+      setTimeout(() => {
+        this.form.validateFields((err, values) => {
+          if (!err) {
+            this.visible1 = false
           }
           this.confirmLoading = false
         })
@@ -220,6 +341,9 @@ export default {
       this.visible = true
       this.width = '800px'
     },
+    showModal_860 () {
+      this.visible1 = true
+    },
     showDocument () {
       this.visible = true
       this.width = '500px'
@@ -227,6 +351,10 @@ export default {
     handleCancel (e) {
       console.log('Clicked cancel button')
       this.visible = false
+    },
+    handleCancel1 (e) {
+      console.log('Clicked cancel button')
+      this.visible1 = false
     }
   }
 }
@@ -241,4 +369,19 @@ export default {
     margin-bottom: 24px;
   }
 }
+//  /deep/.ant-advanced-search-form {
+//     padding: 24px;
+//     background: #fbfbfb;
+//     border: 1px solid #d9d9d9;
+//     border-radius: 6px;
+//     margin: 0 60px;
+//   }
+
+//   /deep/ .ant-advanced-search-form .ant-form-item {
+//     display: flex;
+//   }
+
+//   /deep/ .ant-advanced-search-form .ant-form-item-control-wrapper {
+//     flex: 1;
+//   }
 </style>

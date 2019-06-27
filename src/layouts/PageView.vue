@@ -110,12 +110,11 @@
               textAlign: 'right',
             }"
           >
-            <a-popconfirm placement="top" @confirm="confirm" @cancel="cancel" okText="Yes" cancelText="No">
+            <a-popconfirm placement="topRight" @confirm="confirm" @cancel="cancel" okText="确定" cancelText="取消">
               <template slot="title">
-                <p>我是内容我是内容我是内容我是内容我是内容我是内容</p>
-                <p>
-                  <span>姓名</span>
-                  <span style="display:inline-block; margin-left:6px;"><a-input placeholder="Basic usage"/></span>
+                <p style="margin-top:20px;">
+                  <span>名称：</span>
+                  <span style="display:inline-block; margin-left:6px;"><a-input placeholder=""/></span>
                 </p>
               </template>
               <a-button :style="{marginRight: '12px'}">
@@ -283,6 +282,9 @@ export default {
 	}
   .ant-drawer-title{
     font-size:18px !important;
+  }
+  .anticon-exclamation-circle{
+  	display: none !important;
   }
 </style>
 <style lang="less" scoped>

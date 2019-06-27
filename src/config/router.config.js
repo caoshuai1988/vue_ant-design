@@ -301,15 +301,15 @@ export const asyncRouterMap = [
         children: [{
           path: '/help/helpdoc',
           redirect: '/help/helpdoc',
-          meta: { title: '帮助文档', keepAlive: false, target: '_blank' }
+          meta: { title: '首页', keepAlive: false, target: '_blank' }
         }, {
           path: '/help/helpsearch',
           redirect: 'help/helpsearch',
-          meta: { title: '帮助搜索', keepAlive: false, target: '_blank' }
+          meta: { title: '搜索页', keepAlive: false, target: '_blank' }
         }, {
           path: '/help/helpinfo',
           redirect: 'help/helpinfo',
-          meta: { title: '帮助信息', keepAlive: false, target: '_blank' }
+          meta: { title: '最终页', keepAlive: false, target: '_blank' }
         }]
       },
       {

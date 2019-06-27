@@ -71,13 +71,13 @@
             style="margin-bottom: 24px;"
             :bordered="false"
             title="常用功能"
-            :body-style="{ padding: 0 }">
+            :body-style="{ padding: '0 24px' }">
             <a slot="extra">设置</a>
             <div>
               <div class="module-card-grid " :key="i" v-for="(item, i) in projects">
                 <div class="card-grid">
                   <div class="grid-icon">
-                    <a-avatar :size="64" :icon="item.icon" />
+                    <a-avatar :size="64" :icon="item.icon" style="background:rgb(19, 194, 194)" />
                   </div>
                   <div class="grid-caption">{{ item.caption }}</div>
                 </div>
@@ -91,7 +91,7 @@
             style="margin-bottom: 24px;"
             :bordered="false"
             :body-style="{ padding: 0 }">
-            <span slot="title">我的代办 <a href="javascript:void(0)" style="color:red">( 6 )</a></span>
+            <span slot="title">我的待办 <a href="javascript:void(0)" style="color:red">( 6 )</a></span>
             <a slot="extra">更多</a>
             <a-table :dataSource="table1" :pagination="false" style="padding: 24px">
               <a-table-column title="名称" data-index="name" key="name" />
@@ -504,10 +504,19 @@ export default {
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        .grid-caption {
+          position: relative;
+          top: 15px;
+        }
       }
     }
   }
-
+  /deep/ .ant-card-extra {
+      a {
+        color: rgba(0,0,0,.45);
+        font-size: 14px;
+      }
+  }
   .table-list {
     /deep/ .ant-table-thead > tr > th {
       font-weight: bold;

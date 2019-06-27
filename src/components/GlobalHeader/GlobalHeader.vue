@@ -130,9 +130,9 @@
       },
       getAutoMenuWidth() {
        if( Vue.ls.get('DEFAULT_CONTENT_WIDTH_TYPE')==='Fixed'){
-         this.menuWidth = 820
+         this.menuWidth = 800
        }else{
-         this.menuWidth = document.body.clientWidth-500
+         this.menuWidth = document.body.clientWidth-550
        }
       },
       getAutoLeftWidth () {

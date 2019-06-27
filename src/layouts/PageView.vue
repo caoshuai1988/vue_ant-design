@@ -118,11 +118,12 @@
                   <span style="display:inline-block; margin-left:6px;"><a-input placeholder="Basic usage"/></span>
                 </p>
               </template>
-              <a-button :style="{marginRight: '12px'}" type="primary" @click="onClose">
+              <a-button :style="{marginRight: '12px'}">
                 保存为模板
               </a-button>
             </a-popconfirm>
             <a-button
+            	type="primary"
               @click="onClose"
             >
               确定
@@ -265,23 +266,18 @@ export default {
     },
     confirm (e) {
       console.log(e)
-      this.$message.success('Click on Yes')
+      this.$message.success('Click on Yes');
+      this.visible = false;
     },
     cancel (e) {
       console.log(e)
-      this.$message.error('Click on No')
+      this.$message.error('Click on No');
+      this.visible = false;
     }
   }
 }
 </script>
 <style>
-.ant-popover{
-	position:absolute;
-	left:50% !important;
-	top:50% !important;
-	width:400px;
-	margin-left:-200px !important;
-}
 	.ant-drawer-close{
 		right:3px !important;
 	}

@@ -1,5 +1,5 @@
 <template>
-  <a-card :bordered="false" v-if="flowFlag" style="margin-bottom:12px">
+  <a-card :bordered="false" v-if="flowFlag" style="margin-bottom:12px;">
     <span slot="title">
       <span>流程</span>
       <a style="font-size:14px;margin-left:8px">详情</a>
@@ -75,7 +75,8 @@ export default {
 .flowImg{
     width:100%;
     text-align: center;
-		margin:24px auto;
+    margin: auto;
+    padding-bottom: 24px;
 		.begin{
 			font-size:16px;
 			background: #00a854;

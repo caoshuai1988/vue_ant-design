@@ -202,7 +202,7 @@
             :required="false"
           >
             <span slot="label" class="abc">
-              邀评人(选填)&nbsp;
+              邀评人(选填)
               <a-tooltip title="What do you want others to call you?">
                 <a-icon type="info-circle" />
               </a-tooltip>
@@ -310,13 +310,11 @@
             />
           </a-form-item>
           <a-form-item
-
             :labelCol="{lg: {span: 6}, sm: {span: 7}}"
             :wrapperCol="{lg: {span: 15}, sm: {span: 17} }"
-            :required="false"
-          >
-            <span slot="label" class="abc">
-              邀评人(选填)&nbsp;
+            :required="false">
+            <span slot="label">
+              邀评人(选填)
               <a-tooltip title="What do you want others to call you?">
                 <a-icon type="info-circle" />
               </a-tooltip>
@@ -327,8 +325,7 @@
             label="权重(选填)"
             :labelCol="{lg: {span: 6}, sm: {span: 7}}"
             :wrapperCol="{lg: {span: 15}, sm: {span: 17} }"
-            :required="false"
-          >
+            :required="false">
             <a-input-number :min="0" :max="100"/>
             <span>%</span>
           </a-form-item>

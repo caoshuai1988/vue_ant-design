@@ -3,7 +3,7 @@
     <div class="help-con-head">
       <div class="help-head-content">
         <div class="head-caption">
-        	<span><img src="~@/assets/fsLogo.svg" style="width:24px;height:24px;" alt="logo"></span>
+        	<span><img src="~@/assets/fslogo.svg" style="width:24px;height:24px;" alt="logo"></span>
           <span>富深新平台模板</span>
           <span>帮助</span>
         </div>

@@ -182,7 +182,7 @@
               <template v-else>
                 <a-button type="primary" style="margin-right: 8px; color:#fff;" @click="showDrawer">审批</a-button>
               </template>
-              <a-button-group style="margin-left: 8px;margin-right: 16px">
+              <a-button-group style="margin-left: 8px;">
                 <a-button>提交审批</a-button>
                 <a-button>演示提醒</a-button>
                 <a-button>删除</a-button>

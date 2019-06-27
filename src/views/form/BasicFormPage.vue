@@ -444,9 +444,9 @@ export default {
   name: 'BaseFormPage',
   data () {
     return {
-      num: 18,
+      num: 24,
       helpNum: 6,
-      isShowHelp: true,
+      isShowHelp: false,
       labelCol: { lg: { span: 7 }, sm: { span: 7 } },
       wrapperCol: { lg: { span: 10 }, sm: { span: 10 } },
       headers: {

@@ -109,7 +109,7 @@
 
     <a-row :gutter="24">
       <a-col :body-style="{background:'#fff'}" :xl="num" :lg="num" :md="num" :sm="num" >
-        <div style="background: #fff; padding: 0">
+        <div style=" padding: 0">
           <baseFlowHead></baseFlowHead>
           <baseFormContent></baseFormContent>
         </div>

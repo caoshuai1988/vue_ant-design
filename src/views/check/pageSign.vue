@@ -244,14 +244,12 @@
                 <span slot="tab">基本情况表</span>
               </a-tab-pane>
               <a-tab-pane key="4">
-                <span slot="tab">任务及投资情况估算表</span>
+                <span slot="tab">任务及投资情况表</span>
               </a-tab-pane>
               <a-tab-pane key="5">
-                <span slot="tab">资益估算表</span>
-              </a-tab-pane>
-              <a-tab-pane key="6">
                 <span slot="tab">附件信息</span>
               </a-tab-pane>
+
             </a-tabs>
           </a-affix>
           <a-card :body-style="{padding:'24px 32px'}" title="基础信息" class="anchor">
@@ -298,9 +296,8 @@
               :body-style="closePad"
               :style="mapFd"
               :class="{screenload: screenloadFlag}">
-              <span class="amplification" slot="extra" @click="amplificationBtn" >
-                <a-icon type="arrows-alt" v-if="iconSwitch"/>
-                <a-button type="primary" v-else>返回</a-button>
+              <span class="amplification" slot="extra" >
+                <a-button type="primary"><router-link tag="a" target="_blank" :to="{path: '/maplook'}">弹出查看</router-link></a-button>
               </span>
               <div id="container" ref="container" :style="mapFd" >
                 <baidu-map
@@ -320,7 +317,18 @@
           </div>
           <!-- 报表 -->
           <div style="margin-top:24px;" class="anchor">
-            <a-card :body-style="{padding: '24px 32px'}" title="报表信息">
+            <a-card :body-style="{padding: '24px 32px'}" title="基本情况表">
+              <span class="amplification" slot="extra" >
+                <a-button type="primary"><router-link tag="a" target="_blank" :to="{path: '/tablelook',query: {title:'基本情况表'}}">弹出查看</router-link></a-button>
+              </span>
+              <iframe src="http://nf.finstone.com.cn:9000/nf/ReportServer?reportlet=tbreport/tb_jh_gbznttzb.cpt&__bypagesize__=false" width="100%" height="640px" frameborder="0"></iframe>
+            </a-card>
+          </div>
+          <div style="margin-top:24px;" class="anchor">
+            <a-card :body-style="{padding: '24px 32px'}" title="任务及投资情况表">
+              <span class="amplification" slot="extra" >
+                <a-button type="primary"><router-link tag="a" target="_blank" :to="{path: '/tablelook',query: {title:'任务及投资情况表'}}">弹出查看</router-link></a-button>
+              </span>
               <iframe src="http://nf.finstone.com.cn:9000/nf/ReportServer?reportlet=tbreport/tb_jh_gbznttzb.cpt&__bypagesize__=false" width="100%" height="640px" frameborder="0"></iframe>
             </a-card>
           </div>
@@ -328,7 +336,12 @@
           <div style="margin-top:24px;" class="anchor">
             <a-card :body-style="{padding: '24px 32px'}" title="附件信息">
               <span slot="extra">
-                <a-button type="primary">全部预览</a-button>
+                <a-button type="primary">  <router-link
+                  tag="a"
+                  target="_blank"
+                  :to="{path: '/preview', query: {
+                    val: '1'
+                  }}">全部预览</router-link>  </a-button>
               </span>
               <div class="accessory-box" style="background: #fff;">
                 <div class="table-wrap">
@@ -349,7 +362,12 @@
                     <a-table-column title="上传时间" data-index="time" key="time"/>
                     <a-table-column title="操作" key="operation">
                       <template slot-scope="text, record">
-                        <a href style="margin-right:10px" @click.prevent="addAmplifier(record.key)">{{ record.operation.text }}</a>
+                        <a href style="margin-right:10px" >  <router-link
+                          tag="a"
+                          target="_blank"
+                          :to="{path: '/preview', query: {
+                            val: record.key
+                          }}">{{ record.operation.text }}</router-link>  </a>
                         <a style="margin-right:10px">{{ record.operation.textOne }}</a>
                       </template>
                     </a-table-column>
@@ -373,7 +391,13 @@
                     <a-table-column title="上传时间" data-index="time" key="time"/>
                     <a-table-column title="操作" key="operation">
                       <template slot-scope="text, record" >
-                        <a href style="margin-right:10px" @click.prevent="addAmplifier(record.key)">  {{ record.operation.text }}</a>
+                        <a href style="margin-right:10px" >
+                          <router-link
+                            tag="a"
+                            target="_blank"
+                            :to="{path: '/preview', query: {
+                              val: record.key
+                            }}">{{ record.operation.text }}</router-link>   </a>
                         <a style="margin-right:10px">{{ record.operation.textOne }}</a>
                         <!-- <router-link tag="a" target="_blank" :to="{path: '/preview', query: {img:item}}"></router-link> -->
                       </template>
@@ -784,13 +808,13 @@ export default {
   },
   methods: {
     addAmplifier (val) {
-      this.$router.push({
-        name: 'preview',
-        params: {
-          val: val,
-          scrollY: window.scrollY + 550
-        }
-      })
+      // this.$router.push({
+      //   name: 'preview',
+      //   params: {
+      //     val: val,
+      //     scrollY: window.scrollY + 550
+      //   }
+      // })
     },
     amplificationBtn () { // 地图放大
       if (this.mapFd.width === window.screen.availWidth + 'px') {
@@ -813,6 +837,7 @@ export default {
       const totalSlideMove = jump[1].offsetTop
       const totalTranslation = jump[2].offsetTop
       const totalTrans = jump[3].offsetTop
+      const totalTransPlural = jump[4].offsetTop
       if (scrollTop >= totalSlide) {
         this.activeKey = '1'
       }
@@ -825,6 +850,9 @@ export default {
       if (scrollTop >= totalTrans) {
         this.activeKey = '4'
       }
+      if (scrollTop >= totalTransPlural) {
+        this.activeKey = '5'
+      }
     },
 
     handler ({ BMap, map }) { // 地图处理
@@ -836,10 +864,6 @@ export default {
       window.removeEventListener('scroll', this.handleScroll)
       this.$forceUpdate()
       val = val - 1
-      if (val >= 4) {
-        // 暂时防止页面报错
-        return
-      }
       if (val === 0) { // 主动切换
         this.activeKey = '1'
       } else if (val === 2) {
@@ -848,6 +872,8 @@ export default {
         this.activeKey = '2'
       } else if (val === 3) {
         this.activeKey = '4'
+      } else if (val === 4) {
+        this.activeKey = '5'
       }
       const jump = document.querySelectorAll('.anchor') // 用 class" 添加锚点
       const total = jump[val].offsetTop

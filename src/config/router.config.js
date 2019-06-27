@@ -750,10 +750,20 @@ export const constantRouterMap = [
       }
     ]
   },
-  {
+  { // 附件
     path: '/preview',
     name: 'preview',
     component: () => import('@/views/newform/preview')
+  },
+  { // 地图
+    path: '/maplook',
+    name: 'maplook',
+    component: () => import('@/views/check/mapLook')
+  },
+  { // 报表
+    path: '/tablelook',
+    name: 'tablelook',
+    component: () => import('@/views/check/tableLook')
   },
   {
     path: '/test',

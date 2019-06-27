@@ -206,8 +206,13 @@
               label="多选框"
               :labelCol="labelCol"
               :wrapperCol="wrapperCol"
-              :required="false">
-              <a-checkbox-group @change="onChange">
+              :required="true">
+              <a-checkbox-group
+                @change="onChange"
+                v-decorator="[
+                  'input-prefixa',
+                  {rules: [{ required: true, message: '请选择' }]}
+                ]">
                 <!-- v-decorator="[
                   'b-checkout',
                   {rules: [{ required: true}]}
@@ -223,8 +228,13 @@
               label="单选框"
               :labelCol="labelCol"
               :wrapperCol="wrapperCol"
-              :required="false">
-              <a-radio-group @change="onChange">
+              :required="true">
+              <a-radio-group
+                @change="onChange"
+                v-decorator="[
+                  'input-prefixb',
+                  {rules: [{ required: true, message: '请选择' }]}
+                ]">
                 <a-radio value="1">选项一</a-radio>
                 <a-radio value="2">选项二</a-radio>
                 <a-radio value="3">选项三 </a-radio>
@@ -235,8 +245,12 @@
               label="按钮分段器"
               :labelCol="labelCol"
               :wrapperCol="wrapperCol"
-              :required="false">
-              <a-button-group>
+              :required="true">
+              <a-button-group
+                v-decorator="[
+                  'input-prefixc',
+                  {rules: [{ required: true, message: '请选择' }]}
+                ]">
                 <a-button>筛选一</a-button>
                 <a-button>筛选二</a-button>
                 <a-button>筛选三</a-button>
@@ -251,8 +265,18 @@
               label="上传附件"
               help="支持扩展名：.rar .zip .doc .docx .pdf .jpg..."
               :labelCol="labelCol"
-              :wrapperCol="wrapperCol">
-              <a-upload name="file" :multiple="true" action="https://www.mocky.io/v2/5cc8019d300000980a055e76" :headers="headers" @change="handleChange">
+              :wrapperCol="wrapperCol"
+              :required="true">
+              <a-upload
+                v-decorator="[
+                  'input-prefix',
+                  {rules: [{ required: true, message: '请选择' }]}
+                ]"
+                name="file"
+                :multiple="true"
+                action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                :headers="headers"
+                @change="handleChange">
                 <a-button>
                   <a-icon type="upload" />上传文件
                 </a-button>
@@ -263,10 +287,15 @@
             <a-form-item
               label="上传证件"
               :labelCol="labelCol"
-              :wrapperCol="wrapperCol">
+              :wrapperCol="wrapperCol"
+              :required="true">
               <template>
                 <div class="clearfix">
                   <a-upload
+                    v-decorator="[
+                      'input-prefix',
+                      {rules: [{ required: true, message: '请上传证件' }]}
+                    ]"
                     action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
                     listType="picture-card"
                     :fileList="fileList"
@@ -288,9 +317,18 @@
             <a-form-item
               label="批量上传"
               :labelCol="labelCol"
-              :wrapperCol="wrapperCol">
+              :wrapperCol="wrapperCol"
+              :required="true">
               <template>
-                <a-upload-dragger name="file" :multiple="true" action="https://www.mocky.io/v2/5cc8019d300000980a055e76" @change="handleChange">
+                <a-upload-dragger
+                  v-decorator="[
+                    'input-prefix',
+                    {rules: [{ required: true, message: '请上传文件' }]}
+                  ]"
+                  name="file"
+                  :multiple="true"
+                  action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                  @change="handleChange">
                   <p class="ant-upload-drag-icon">
                     <a-icon type="inbox" />
                   </p>

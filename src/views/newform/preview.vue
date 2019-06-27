@@ -170,7 +170,7 @@
   <div class="preview-box">
     <div class="preview-header">
       2018年韶关市翁源县江尾镇高标准农田建设项目 - 计划阶段 - 附件信息
-      <a-button type="primary" style="float:right;margin-top:16px" @click="backBtn">返回</a-button>
+      <!-- <a-button type="primary" style="float:right;margin-top:16px" @click="backBtn">返回</a-button> -->
     </div>
     <!-- 侧边栏 -->
     <div class="preview-main">
@@ -308,7 +308,7 @@ export default {
   mounted () {
     this.value = window.screen.availHeight - this.$refs.text.offsetHeight - 92 - 68 - 60 + 'px' // 暂时
     this.imgBox.height = window.screen.availHeight - this.$refs.text.offsetHeight - 92 - 68 - 60 + 'px' // 暂时
-    this.wordShow = this.$route.params.val
+    this.wordShow = this.$route.query.val
   },
   methods: {
     tabSwitcher (val) {

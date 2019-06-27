@@ -6,7 +6,7 @@
         <span class="sizeTpl">详情</span>
       </div>
       <div class="flowTwo" @click="closeDiv">
-        <a-icon type="close" />
+        <a-icon type="close" style="fontSize :16px; color:#a3a3a3;"/>
       </div>
     </div>
     <div class="flowContent">
@@ -57,12 +57,12 @@ export default {
     border-bottom: 1px solid #e9e9e9;
     .flowOne{
       // padding-left: 32px;
-      font-size: 20px;
+      font-size: 16px;
       color: rgba(0, 0, 0, 85%);
       .sizeTpl{
         font-size: 14px;
         color: #1890ff;
-        padding-left: 10px;
+        padding-left: 8px;
         cursor:pointer;
       }
     }

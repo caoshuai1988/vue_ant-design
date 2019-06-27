@@ -337,6 +337,8 @@ export default {
 // icon 样式
 .foldStyle{
   cursor: pointer;
+  color: #a3a3a3;
+  font-size: 16px;
 }
 .card {
   margin-bottom: 24px;

@@ -8,18 +8,18 @@
         <a-icon type="down" v-else />-->
         <!--<img src="../../assets/tshi.png">-->
         <div class="imgLook">
-        	<b>图示:</b>
-	        <span style="background: #00a854;"></span>已完成/同意
-	        <span style="background: #1890ff;"></span>进行中
-	        <span style="background: #94c4ff;"></span>待进行
-	        <span style="background: #cccccc;"></span>待进行
-	        <span style="background: #f04134;"></span>退回
+          <b>图示:</b>
+          <span style="background: #00a854;"></span>已完成/同意
+          <span style="background: #1890ff;"></span>进行中
+          <span style="background: #94c4ff;"></span>待进行
+          <span style="background: #cccccc;"></span>待进行
+          <span style="background: #f04134;"></span>退回
         </div>
-        
+
       </span>
       <verticaltoggle>
         <!--<img src="../../assets/flow.png" class="flowImg" style="width:1000px;margin:24px auto;display: block;">-->
-        	<FlowImg></FlowImg>
+        <FlowImg></FlowImg>
       </verticaltoggle>
     </a-card>
     <!-- 表格 -->
@@ -32,14 +32,14 @@
       <verticaltoggle>
         <div v-if="foldTable">
           <a-table :columns="columns" :dataSource="data">
-          	
-				    <span slot="name" slot-scope="text">
-				      <a href="javascript:;">{{text}}</a>
-				    </span>
-          	<span slot="status" slot-scope="text">
-			        <a-badge :status="2 | statusTypeFilter" :text="2 | statusFilter"/>
-			      </span>
-  				</a-table>
+
+            <span slot="name" slot-scope="text">
+              <a href="javascript:;">{{ text }}</a>
+            </span>
+            <span slot="status" slot-scope="text">
+              <a-badge :status="2 | statusTypeFilter" :text="2 | statusFilter"/>
+            </span>
+          </a-table>
         </div>
       </verticaltoggle>
     </a-card>
@@ -53,36 +53,36 @@ import taskForm from './TaskForms'
 import FlowImg from './flowchart/FlowImg'
 import verticaltoggle from '@/views/newform/verticaltoggle'
 const statusMap = {
-    0: {
-      status: 'default',
-      text: '已完成'
-    },
-    1: {
-      status: 'processing',
-      text: '退回'
-    },
-    2: {
-      status: 'success',
-      text: '同意'
-    },
-    3: {
-      status: 'error',
-      text: '异常'
-    }
+  0: {
+    status: 'default',
+    text: '已完成'
+  },
+  1: {
+    status: 'processing',
+    text: '退回'
+  },
+  2: {
+    status: 'success',
+    text: '同意'
+  },
+  3: {
+    status: 'error',
+    text: '异常'
   }
+}
 const columns = [
-  { title: '序号', dataIndex: 'name', key: 'name',scopedSlots: { customRender: 'name' },},
+  { title: '序号', dataIndex: 'name', key: 'name', scopedSlots: { customRender: 'name' } },
   { title: '节点', dataIndex: 'platform', key: 'platform' },
-  { title: '操作', dataIndex: 'status',scopedSlots: { customRender: 'status' }},
+  { title: '操作', dataIndex: 'status', scopedSlots: { customRender: 'status' } },
   { title: '岗位', dataIndex: 'upgradeNum', key: 'upgradeNum' },
   { title: '操作人', dataIndex: 'creator', key: 'creator' },
   { title: '操作时间', dataIndex: 'createdAt1', key: 'createdAt1' },
   { title: '备注', dataIndex: 'createdAt2', key: 'createdAt2' },
-  { title: '附件', dataIndex: 'createdAt3', key: 'createdAt3' },
-];
+  { title: '附件', dataIndex: 'createdAt3', key: 'createdAt3' }
+]
 
-const data = [];
-const indexNumber=[8,7,6,5,4,3,2,1]
+const data = []
+const indexNumber = [8, 7, 6, 5, 4, 3, 2, 1]
 for (let i = 0; i < 8; ++i) {
   data.push({
     key: i,
@@ -92,15 +92,15 @@ for (let i = 0; i < 8; ++i) {
     creator: '张三',
     createdAt1: '2014-12-24 23:12:00',
     createdAt2: '备注',
-    createdAt3: '文档.docx',
-  });
+    createdAt3: '文档.docx'
+  })
 }
 export default {
   components: {
     repositoryForm,
     taskForm,
     verticaltoggle, // 动画组件
-    FlowImg//流程图
+    FlowImg// 流程图
   },
   data () {
     return {
@@ -118,14 +118,14 @@ export default {
       // table
     }
   },
-   filters: {
-      statusFilter(type) {
-        return statusMap[type].text
-      },
-      statusTypeFilter(type) {
-        return statusMap[type].status
-      }
+  filters: {
+    statusFilter (type) {
+      return statusMap[type].text
     },
+    statusTypeFilter (type) {
+      return statusMap[type].status
+    }
+  },
   methods: {
     fold (flag) {
       if (flag) {
@@ -277,6 +277,7 @@ export default {
 // icon 样式
 .foldStyle{
   cursor: pointer;
+  color: #a3a3a3;
 }
 .abc {
   font-size: 18px;
@@ -303,7 +304,7 @@ export default {
 }
 .ant-card-bordered{
 	border:none;
-	
+
 }
 /deep/ .ant-card-body{
 	padding:24px !important;
@@ -340,7 +341,7 @@ export default {
 }
 .imgLook{
 	text-align: center;
-	
+
 	line-height: 100%;
 	span{
 		display: inline-block;

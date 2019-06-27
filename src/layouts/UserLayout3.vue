@@ -62,10 +62,6 @@ export default {
       background-size: 100%;
       padding: 110px 0 144px;
       position: relative;
-      /*overflow-y: hidden;*/
-      /*a {*/
-      /*  text-decoration: none;*/
-      /*}*/
 
       .top {
         text-align: center;

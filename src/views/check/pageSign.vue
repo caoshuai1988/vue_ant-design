@@ -275,16 +275,14 @@
                 style="margin-bottom: 24px"
                 row-key="id"
                 :columns="goodsColumns"
-                :data="loadGoodsData"
-              ></s-table>
+                :data="loadGoodsData"></s-table>
 
               <div class="page-sign-title" >退货进度</div>
               <s-table
                 style="margin-bottom: 24px"
                 row-key="key"
                 :columns="scheduleColumns"
-                :data="loadScheduleData"
-              >
+                :data="loadScheduleData">
                 <template slot="status" slot-scope="status">
                   <a-badge :status="status" :text="status"/>
                 <!-- <a-badge :status="status" :text="status | statusFilter"/> -->
@@ -306,14 +304,13 @@
                   :center="center"
                   :zoom="zoom"
                   @ready="handler"
-                  style="width:100%;height:100%"
-                >
+                  style="width:100%;height:100%">
                   <bm-navigation anchor="BMAP_ANCHOR_TOP_LEFT"></bm-navigation>
                   <bm-geolocation
                     anchor="BMAP_ANCHOR_BOTTOM_RIGHT"
                     :showAddressBar="true"
-                    :autoLocation="true"
-                  ></bm-geolocation>
+                    :autoLocation="true">
+                  </bm-geolocation>
                 </baidu-map>
               </div>
             </a-card>
@@ -338,7 +335,9 @@
           <!-- 附件信息 -->
           <div style="margin-top:24px;" class="anchor">
             <a-card :body-style="{padding: '24px 32px'}" title="附件信息">
-              <!-- <a href="#" slot="extra">More</a> -->
+              <span slot="extra">
+                <a-button type="primary">全部预览</a-button>
+              </span>
               <div class="accessory-box" style="background: #fff;">
                 <div class="table-wrap">
                   <div class="title-box">

@@ -202,7 +202,7 @@
 
 <script>
 import baseFlowHead from './BaseFlowHead'
-import baseFormContent from './BaseFormContent'
+import baseFormContent from '@/components/form/BaseFormContent'
 export default {
   name: 'BaseForm',
   components: {

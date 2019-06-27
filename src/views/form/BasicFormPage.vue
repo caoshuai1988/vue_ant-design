@@ -1,4 +1,7 @@
 <style lang="less" scoped>
+  .label-select{
+    color:rgba(0,0,0,0.45);
+  }
   .title-name {
     font-size: 18px;
     margin-left: 200px ;
@@ -119,9 +122,11 @@
               :wrapperCol="wrapperCol">
               <span slot="label">
                 输入框&nbsp;
-                <a-tooltip title="输入帮助">
-                  <a-icon type="info-circle"/>
-                </a-tooltip>
+                <span class="label-select">
+                  <a-tooltip title="输入帮助">
+                    <a-icon type="info-circle"/>
+                  </a-tooltip>
+                </span>
               </span>
               <a-input
                 v-decorator="[

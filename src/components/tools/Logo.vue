@@ -5,7 +5,8 @@
       <h1 class="text-overflow" v-if="showTitle">{{ title }}</h1> *cs*-->
       <!--<LogoSvg alt="logo" />-->
       <!-- <img src="@/assets/logo1.png" />-->
-      <h1 v-if="!showTitle">富深</h1>
+      <!--<h1 v-if="!showTitle">富深</h1>-->
+      <img src="@/assets/logo.svg" />
       <h1 v-if="showTitle">{{ title }}</h1>
     </router-link>
   </div>

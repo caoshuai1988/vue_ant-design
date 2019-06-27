@@ -1,5 +1,5 @@
 <template>
-  <a-card :bordered="false" v-if="flowFlag" style="margin-bottom:12px;">
+  <a-card :bordered="false" v-if="flowFlag" style="margin-bottom:24px">
     <span slot="title">
       <span>流程</span>
       <a style="font-size:14px;margin-left:8px">详情</a>

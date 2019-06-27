@@ -1,13 +1,13 @@
 <template>
-  <div id="userLayout" :class="['user-layout-wrapper', device]">
+  <div id="userLayout1" :class="['user-layout-wrapper', device]">
     <div class="container">
       <div class="top">
-        <a-row>
-          <a-col :span="23" :offset="1">
-            <img src="~@/assets/fslogo.svg" alt="logo">
-            <span class="title">富深新平台模板</span>
-          </a-col>
-        </a-row>
+<!--        <a-carousel :afterChange="onChange">-->
+<!--          <div><img src="@/assets/login_bg1.png"/></div>-->
+<!--          <div><img src="@/assets/login_bg2.png"/></div>-->
+<!--          <div><img src="@/assets/login_bg1.png"/></div>-->
+<!--          <div><img src="@/assets/login_bg2.png"/></div>-->
+<!--        </a-carousel>-->
       </div>
 
       <route-view></route-view>
@@ -25,7 +25,7 @@ import { mixinDevice } from '@/utils/mixin'
 import ARow from 'ant-design-vue/es/grid/Row'
 
 export default {
-  name: 'UserLayout2',
+  name: 'UserLayout1',
   components: { ARow, RouteView },
   mixins: [mixinDevice],
   data () {
@@ -34,6 +34,11 @@ export default {
   mounted () {
     document.body.classList.add('userLayout')
   },
+  methods: {
+    onChange (a, b, c) {
+      console.log(a, b, c)
+    }
+  },
   beforeDestroy () {
     document.body.classList.remove('userLayout')
   }
@@ -41,49 +46,25 @@ export default {
 </script>
 
 <style lang="less" scoped>
-  #userLayout.user-layout-wrapper {
+  #userLayout1.user-layout-wrapper {
     height: 100%;
+
     .container {
       min-width: 1200px;
       width: 100%;
       height: 100%;
-      .top {
-        height: 106px;
-        line-height: 106px;
-        width:100%;
-        background: #fff;
-        .ant-row{
-          height: 100%;
-          .ant-col-23 {
-            height: 100%;
-            position: relative;
-            img {
-              width: 32px;
-              height: 32px;
-              position: absolute;
-              top: 37px;
-            }
-            .title {
-              font-size: 28px;
-              color: rgba(0,0,0,0.85);
-              margin-left: 40px;
-            }
-          }
-        }
-      }
       .footer {
         width: 100%;
+        height: 40px;
+        line-height: 40px;
+        position: absolute;
+        bottom: 24px;
         text-align: center;
-        color: rgba(0,0,0,0.45);
-        span {
-          display: inline-block;
-          margin: 48px 0;
-          height: 14px;
-          line-height: 14px;
-        }
+        background: rgba(0,0,0,0.12);
+        color: rgba(255, 255, 255, 0.7);
         a {
           text-decoration: none;
-          color: rgba(0,0,0,0.45);
+          color: rgba(255, 255, 255, 0.7);
           &:hover {
             color: #1890ff;
           }

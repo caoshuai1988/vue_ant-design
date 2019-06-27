@@ -47,7 +47,7 @@
                       <a-icon slot="prefix" type="lock" :style="{ color: 'rgba(0,0,0,.25)' }"/>
                     </a-input>
                   </a-form-item>
-                  <a-form-item class="login-drag">
+                  <a-form-item class="login-drag" v-if="isCheck">
                     <drag-verify
                       @passcallback="passcallback"
                       :width="drag.width"
@@ -83,8 +83,12 @@
                       :disabled="state.loginBtn"
                     >登录</a-button>
                   </a-form-item>
-                  <div class="login-tips" v-if="isError">
-                    <span>用户名或密码错误！</span>
+                  <div class="login-tips">
+                    <span>因多次输错密码，此账号将被锁定n小时！
+                      <router-link
+                      :to="{ name: 'selfUnlocking'}"
+                      class="forge-password"
+                    >自助解锁</router-link></span>
                   </div>
                 </a-tab-pane>
                 <a-tab-pane key="tab2" tab="CA密钥登录">
@@ -390,14 +394,17 @@ export default {
           }
         }
         .drag_verify .dv_handler i.fa-check-circle {
-           color: #52c41a;
-           font-size: 1.2em;
-         }
+          color: #52c41a;
+          font-size: 1.2em;
+        }
         .login-tips {
           color: #FF1A2E;
           font-size: 14px;
           height: 14px;
           line-height: 14px;
+          a {
+            text-decoration: none;
+          }
         }
         label {
           font-size: 14px;

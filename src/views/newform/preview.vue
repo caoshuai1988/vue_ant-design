@@ -80,7 +80,7 @@
           /*定义滑块 内阴影+圆角*/
           &::-webkit-scrollbar-thumb{
               border-radius: 5px;
-              box-shadow: inset 0 0 5px rgba(0,0,0,0.3);
+              box-shadow: inset 0 0 5px rgba(0,0,0,0.4);
               background-color: #9B9B9B;
           }
           .preview-nav--item{

@@ -2,14 +2,13 @@
   <div>
     <!-- 三列 -->
     <a-card class="card" style="font-size: 26px" :bordered="false" >
-
       <layoutForm title="组标题" >
         <span class="foldStyle" @click="fold(true)">
           <a-icon type="up" v-if="iconToggle" />
           <a-icon type="down" v-else />
         </span>
         <verticaltoggle>
-          <a-form @submit="handleSubmit" :form="form" class="form" v-if="foldOne">
+          <a-form @submit="handleSubmit" :form="form" class="form" v-if="foldOne" :hideRequiredMark="true">
             <a-row class="form-row" :gutter="16">
               <a-col :lg="6" :md="12" :sm="24">
                 <a-form-item >
@@ -97,7 +96,7 @@
           <a-icon type="down" v-else />
         </span>
         <verticaltoggle>
-          <a-form @submit="handleSubmit" :form="form" class="form" v-if="foldTwo">
+          <a-form @submit="handleSubmit" :form="form" class="form" v-if="foldTwo" :hideRequiredMark="true">
             <a-row class="form-row" :gutter="16">
               <a-col :lg="6" :md="12" :sm="24">
                 <a-form-item >
@@ -106,27 +105,33 @@
 
                 </a-form-item>
               </a-col>
+              <!-- 银行卡号 -->
               <a-col :xl="{span: 7, offset: 2}" :lg="{span: 8}" :md="{span: 12}" :sm="24">
-                <a-form-item
-                >
+                <a-form-item>
                   <span slot="label" :class="{textClass : ceshi == 'large'}">卡号</span>
-                  <a-input-group
+                  <a-input
+                    v-decorator="[
+                      'num',
+                      {rules: [{ required: false, number:true, message: '请输入卡号' }]}
+                    ]"
+                    placeholder="请输入卡号"/>
+                  <!-- <a-input-group
                     compact
                     v-decorator="[
                       'num',
                       {rules: [{ required: true, message: '请填写完整卡号'}]}
                     ]" >
-                    <a-input style="width: 23%;border-radius: 5px;" defaultValue="0571" />
+                    <a-input placeholder="请输入卡号" />
+                    <a-input-number :min="0" @change="onChange" placeholder="请输入" />
                     <a-input style="width: 23%;margin-left: 2%; border-radius: 5px;" defaultValue="0571" />
                     <a-input style="width: 24%;margin-left: 2%; border-radius: 5px;" defaultValue="0571" />
                     <a-input style="width: 24%;margin-left: 2%; border-radius: 5px;" defaultValue="0571" />
-                  </a-input-group>
+                  </a-input-group> -->
 
                 </a-form-item>
               </a-col>
               <a-col :xl="{span: 7, offset: 2}" :lg="{span: 8}" :md="{span: 12}" :sm="24">
-                <a-form-item
-                >
+                <a-form-item>
                   <span slot="label" :class="{textClass : ceshi == 'large'}">地区级联选择</span>
                   <a-cascader
                     placeholder="请选择"
@@ -144,8 +149,7 @@
             </a-row>
             <a-row class="form-row" :gutter="16">
               <a-col :lg="6" :md="12" :sm="24">
-                <a-form-item
-                >
+                <a-form-item>
                   <span slot="label" :class="{textClass : ceshi == 'large'}">选择地址</span>
                   <a-input
                     v-decorator="[
@@ -198,7 +202,7 @@
                     compact
                     v-decorator="[
                       'iphone',
-                      {rules: [{ required: true, message: '请填写电话号码'}]}
+                      {rules: [{ required: false, message: '请填写电话号码'}]}
                     ]" >
                     <a-input style="width: 35%;border-radius: 5px;" defaultValue="0571" />
                     <span style="margin: 0 0; width: 5%;text-align: center ">--</span>
@@ -285,7 +289,7 @@
 </template>
 
 <script>
-import layoutForm from '@/views/newform/layoutForm'
+import layoutForm from '@/views/newform/LayoutForm'
 import verticaltoggle from './verticaltoggle.js'
 
 // 表单
@@ -538,6 +542,7 @@ export default {
     right: 0;
     font-size: 16px;
     cursor: pointer;
+    color:#a3a3a3;
 }
 
 </style>

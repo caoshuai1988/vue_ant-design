@@ -171,7 +171,7 @@ export default {
     })
     // {...{ props, on: on }}
     return (
-      <Menu  vModel={this.selectedKeys} {...{ props, on: on }}>
+      <Menu vModel={this.selectedKeys} {...{ props, on: on }}>
         {menuTree}
       </Menu>
     )

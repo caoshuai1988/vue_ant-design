@@ -5,7 +5,7 @@
       placement="right"
       @close="onClose"
       :closable="false"
-      :visible="visible"
+      :visible="setDrawerStatus"
     >
       <div class="setting-drawer-index-content">
 
@@ -38,10 +38,10 @@
             </a-tooltip>
             <a-tooltip>
               <template slot="title">
-                plusTheme01风格测试
+                深蓝风格
               </template>
               <div class="setting-drawer-index-item" @click="handleSurplusTheme('plusTheme01')">
-                <img src="https://gw.alipayobjects.com/zos/rmsportal/jpRkZQMyYRryryPNtyIC.svg" alt="plusTheme01">
+                <img src="/configcolor.svg" alt="plusTheme01">
                 <div class="setting-drawer-index-selectIcon" v-if="surplusTheme === 'plusTheme01'">
                   <a-icon type="check"/>
                 </div>
@@ -49,10 +49,10 @@
             </a-tooltip>
             <a-tooltip>
               <template slot="title">
-                plusTheme02风格测试
+                浅蓝风格
               </template>
               <div class="setting-drawer-index-item" @click="handleSurplusTheme('plusTheme02')">
-                <img src="https://gw.alipayobjects.com/zos/rmsportal/jpRkZQMyYRryryPNtyIC.svg" alt="plusTheme02">
+                <img src="/configcolor2.svg" alt="plusTheme02">
                 <div class="setting-drawer-index-selectIcon" v-if="surplusTheme === 'plusTheme02'">
                   <a-icon type="check"/>
                 </div>
@@ -76,7 +76,7 @@
 
           </div>
         </div>
-        <a-divider />
+        <a-divider/>
 
         <div :style="{ marginBottom: '24px' }">
           <h3 class="setting-drawer-index-title">导航模式</h3>
@@ -100,7 +100,18 @@
               </template>
               <div class="setting-drawer-index-item" @click="handleLayout('topmenu')">
                 <img src="https://gw.alipayobjects.com/zos/rmsportal/KDNDBbriJhLwuqMoxcAr.svg" alt="topmenu">
-                <div class="setting-drawer-index-selectIcon" v-if="layoutMode !== 'sidemenu'">
+                <div class="setting-drawer-index-selectIcon" v-if="layoutMode === 'topmenu'">
+                  <a-icon type="check"/>
+                </div>
+              </div>
+            </a-tooltip>
+            <a-tooltip>
+              <template slot="title">
+                满屏顶部栏导航
+              </template>
+              <div class="setting-drawer-index-item" @click="handleLayout('fulltopmenu')">
+                <img src="/configcolor3.svg" alt="fulltopmenu">
+                <div class="setting-drawer-index-selectIcon" v-if="layoutMode === 'fulltopmenu'">
                   <a-icon type="check"/>
                 </div>
               </div>
@@ -113,23 +124,42 @@
                   <template slot="title">
                     该设定仅 [顶部栏导航] 时有效
                   </template>
-                  <a-select size="small" style="width: 80px;" :defaultValue="contentWidth" @change="handleContentWidthChange">
-                    <a-select-option value="Fixed">固定</a-select-option>
-                    <a-select-option value="Fluid" v-if="layoutMode !== 'sidemenu'">流式</a-select-option>
+                  <a-select v-if="layoutMode === 'sidemenu'" size="small" style="width: 80px;" :defaultValue="contentWidth" @change="handleContentWidthChange">
+                    <a-select-option value="Fluid">流式</a-select-option>
                   </a-select>
+
+                  <a-select
+                    v-if="layoutMode === 'topmenu'"
+                    size="small"
+                    style="width: 80px;"
+                    :defaultValue="contentWidth"
+                    @change="handleContentWidthChange">
+                    <a-select-option value="Fixed">固定</a-select-option>
+                    <a-select-option value="Fluid">流式</a-select-option>
+                  </a-select>
+
+                  <a-select
+                    v-if="layoutMode === 'fulltopmenu'"
+                    size="small"
+                    style="width: 80px;"
+                    :defaultValue="contentWidth"
+                    @change="handleContentWidthChange">
+                    <a-select-option value="Fluid">流式</a-select-option>
+                  </a-select>
+
                 </a-tooltip>
                 <a-list-item-meta>
                   <div slot="title">内容区域宽度</div>
                 </a-list-item-meta>
               </a-list-item>
               <a-list-item>
-                <a-switch slot="actions" size="small" :defaultChecked="fixedHeader" @change="handleFixedHeader" />
+                <a-switch slot="actions" size="small" :defaultChecked="fixedHeader" @change="handleFixedHeader"/>
                 <a-list-item-meta>
                   <div slot="title">固定 Header</div>
                 </a-list-item-meta>
               </a-list-item>
               <a-list-item>
-                <a-switch slot="actions" size="small" :disabled="!fixedHeader" :defaultChecked="autoHideHeader" @change="handleFixedHeaderHidden" />
+                <a-switch slot="actions" size="small" :disabled="!fixedHeader" :defaultChecked="autoHideHeader" @change="handleFixedHeaderHidden"/>
                 <a-list-item-meta>
                   <a-tooltip slot="title" placement="left">
                     <template slot="title">固定 Header 时可配置</template>
@@ -137,21 +167,42 @@
                   </a-tooltip>
                 </a-list-item-meta>
               </a-list-item>
-              <a-list-item >
-                <a-switch slot="actions" size="small" :disabled="(layoutMode === 'topmenu')" :defaultChecked="fixSiderbar" @change="handleFixSiderbar" />
+              <a-list-item>
+                <a-switch
+                  slot="actions"
+                  size="small"
+                  :disabled="(layoutMode === 'topmenu')"
+                  :defaultChecked="fixSiderbar"
+                  @change="handleFixSiderbar"/>
                 <a-list-item-meta>
-                  <div slot="title" :style="{ textDecoration: layoutMode === 'topmenu' ? 'line-through' : 'unset' }">固定侧边菜单</div>
+                  <div slot="title" :style="{ textDecoration: layoutMode === 'topmenu' ? 'line-through' : 'unset' }">
+                    固定侧边菜单
+                  </div>
                 </a-list-item-meta>
               </a-list-item>
             </a-list>
           </div>
+
         </div>
-        <a-divider />
+        <a-divider/>
 
         <div :style="{ marginBottom: '24px' }">
           <h3 class="setting-drawer-index-title">其他设置</h3>
           <div>
             <a-list :split="false">
+              <a-list-item>
+                <a-tooltip slot="actions">
+                  <a-select size="small" style="width: 80px;" :defaultValue="selectOption" @change="handeCurZoom">
+                    <a-select-option value="1">100%</a-select-option>
+                    <a-select-option value="1.15">115%</a-select-option>
+                    <a-select-option value="1.25">125%</a-select-option>
+                    <a-select-option value="1.5">150%</a-select-option>
+                  </a-select>
+                </a-tooltip>
+                <a-list-item-meta>
+                  <div slot="title">缩放页面</div>
+                </a-list-item-meta>
+              </a-list-item>
               <a-list-item>
                 <a-switch slot="actions" size="small" :defaultChecked="colorWeak" @change="onColorWeak" />
                 <a-list-item-meta>
@@ -159,7 +210,7 @@
                 </a-list-item-meta>
               </a-list-item>
               <a-list-item>
-                <a-switch slot="actions" size="small" :defaultChecked="multiTab" @change="onMultiTab" />
+                <a-switch slot="actions" size="small" :defaultChecked="multiTab" @change="onMultiTab"/>
                 <a-list-item-meta>
                   <div slot="title">多页签模式</div>
                 </a-list-item-meta>
@@ -167,24 +218,28 @@
             </a-list>
           </div>
         </div>
-        <a-divider />
+        <a-divider/>
         <div :style="{ marginBottom: '24px' }">
           <a-button
             @click="doCopy"
             icon="copy"
             block
-          >拷贝设置</a-button>
+          >拷贝设置
+          </a-button>
           <a-alert type="warning" :style="{ marginTop: '24px' }">
             <span slot="message">
               配置栏只在开发环境用于预览，生产环境不会展现，请手动修改配置文件
-              <a href="https://github.com/sendya/ant-design-pro-vue/blob/master/src/config/defaultSettings.js" target="_blank">src/config/defaultSettings.js</a>
+              <a
+                href="https://github.com/sendya/ant-design-pro-vue/blob/master/src/config/defaultSettings.js"
+                target="_blank">src/config/defaultSettings.js</a>
             </span>
           </a-alert>
         </div>
       </div>
-      <div class="setting-drawer-index-handle" @click="toggle">
-        <a-icon type="setting" v-if="!visible"/>
-        <a-icon type="close" v-else/>
+      <div class="setting-drawer-index-handle" @click="toggle" v-if="setDrawerStatus">
+        <!--  <a-icon type="setting" v-if="!visible"/>
+        <a-icon type="close" v-else/>-->
+        <a-icon type="close"/>
       </div>
     </a-drawer>
   </div>
@@ -196,6 +251,7 @@ import SettingItem from './SettingItem'
 import config from '@/config/defaultSettings'
 import { updateTheme, updateColorWeak, colorList } from './settingConfig'
 import { mixin, mixinDevice } from '@/utils/mixin'
+import { mapState } from 'vuex'
 
 export default {
   components: {
@@ -212,28 +268,32 @@ export default {
   watch: {
 
   },
+  computed: {
+    setDrawerStatus () {
+      return this.$store.state.app.settingDrawer
+    },
+    ...mapState({
+      selectOption (state) {
+        return state.app.zoom ? state.app.zoom : '1'
+      }
+    })
+  },
   mounted () {
-    const vm = this
-    setTimeout(() => {
-      vm.visible = false
-    }, 16)
-    // 当主题色不是默认色时，才进行主题编译
-    if (this.primaryColor !== config.primaryColor) {
-      updateTheme(this.primaryColor)
-    }
+    updateTheme(this.primaryColor)
     if (this.colorWeak !== config.colorWeak) {
       updateColorWeak(this.colorWeak)
     }
   },
   methods: {
-    showDrawer () {
-      this.visible = true
-    },
     onClose () {
-      this.visible = false
+      this.$store.dispatch('ToggleSetDrawer', false)
+    },
+    handeCurZoom (zoom) {
+      this.$store.dispatch('ToggleZoom', zoom)
+      document.body.style.zoom = zoom
     },
     toggle () {
-      this.visible = !this.visible
+      this.$store.dispatch('ToggleSetDrawer', false)
     },
     onColorWeak (checked) {
       this.$store.dispatch('ToggleWeak', checked)
@@ -245,30 +305,36 @@ export default {
     handleMenuTheme (theme) {
       this.$store.dispatch('ToggleTheme', theme)
       this.$store.dispatch('ToggleSurplusTheme', '')
+      document.getElementsByTagName('body')[0].classList.remove('ant-body-plusTheme01', 'ant-body-plusTheme02')
     },
     handleSurplusTheme (plusTheme) {
+      // contains
+      const body = document.getElementsByTagName('body')[0].classList
+      const cls = 'ant-body-' + plusTheme
+      body.remove('ant-body-plusTheme01', 'ant-body-plusTheme02')
+      body.add(cls)
       this.$store.dispatch('ToggleSurplusTheme', plusTheme)
     },
     doCopy () {
       // get current settings from mixin or this.$store.state.app, pay attention to the property name
       const text = `export default {
-  primaryColor: '${this.primaryColor}', // primary color of ant design
-  navTheme: '${this.navTheme}', // theme for nav menu
-  layout: '${this.layoutMode}', // nav menu position: sidemenu or topmenu
-  contentWidth: '${this.contentWidth}', // layout of content: Fluid or Fixed, only works when layout is topmenu
-  fixedHeader: ${this.fixedHeader}, // sticky header
-  fixSiderbar: ${this.fixSiderbar}, // sticky siderbar
-  autoHideHeader: ${this.autoHideHeader}, //  auto hide header
-  colorWeak: ${this.colorWeak},
-  multiTab: ${this.multiTab},
-  production: process.env.NODE_ENV === 'production' && process.env.VUE_APP_PREVIEW !== 'true',
-  // vue-ls options
-  storageOptions: {
-    namespace: 'pro__',
-    name: 'ls',
-    storage: 'local',
-  }
-}`
+        primaryColor: '${this.primaryColor}', // primary color of ant design
+        navTheme: '${this.navTheme}', // theme for nav menu
+        layout: '${this.layoutMode}', // nav menu position: sidemenu or topmenu
+        contentWidth: '${this.contentWidth}', // layout of content: Fluid or Fixed, only works when layout is topmenu
+        fixedHeader: ${this.fixedHeader}, // sticky header
+        fixSiderbar: ${this.fixSiderbar}, // sticky siderbar
+        autoHideHeader: ${this.autoHideHeader}, //  auto hide header
+        colorWeak: ${this.colorWeak},
+        multiTab: ${this.multiTab},
+        production: process.env.NODE_ENV === 'production' && process.env.VUE_APP_PREVIEW !== 'true',
+        // vue-ls options
+          storageOptions: {
+            namespace: 'pro__',
+            name: 'ls',
+            storage: 'local',
+          }
+        }`
       this.$copyText(text).then(message => {
         console.log('copy', message)
         this.$message.success('复制完毕')
@@ -298,7 +364,7 @@ export default {
       this.$store.dispatch('ToggleFixedHeaderHidden', autoHidden)
     },
     handleFixSiderbar (fixed) {
-      if (this.layoutMode === 'topmenu') {
+      if (this.$store.getters.layoutMode === 'topmenu' || this.$store.getters.layoutMode === 'newmenu') {
         this.$store.dispatch('ToggleFixSiderbar', false)
         return
       }
@@ -309,22 +375,17 @@ export default {
 </script>
 
 <style lang="less" scoped>
-
   .setting-drawer-index-content {
-
     .setting-drawer-index-blockChecbox {
       display: flex;
-
       .setting-drawer-index-item {
         margin-right: 16px;
         position: relative;
         border-radius: 4px;
         cursor: pointer;
-
         img {
           width: 48px;
         }
-
         .setting-drawer-index-selectIcon {
           position: absolute;
           top: 0;
@@ -351,7 +412,6 @@ export default {
       text-align: center;
       color: #fff;
       font-weight: 700;
-
       i {
         font-size: 14px;
       }
@@ -374,7 +434,6 @@ export default {
     text-align: center;
     font-size: 16px;
     border-radius: 4px 0 0 4px;
-
     i {
       color: rgb(255, 255, 255);
       font-size: 20px;

@@ -1,99 +1,209 @@
-
 <style lang="less" scoped>
-.content {
-  padding: 24px;
-  // margin: 24px 24px 0;
-  // width: calc(100% - (10px + 5px) * 2);
-  // .main-wrap {
-  //   width: 1200px;
-  //   height: 100%;
-  //   .main {
-  //     &.content-fix {
-  //       width: calc(1200px - 400px);
-  //     }
-  //   }
-  // }
-
-  .link {
-    margin-top: 16px;
-    &:not(:empty) {
-      margin-bottom: 16px;
-    }
-    a {
-      margin-right: 32px;
-      height: 24px;
-      line-height: 24px;
-      display: inline-block;
-      i {
-        font-size: 24px;
-        margin-right: 8px;
-        vertical-align: middle;
+@import "~@/utils/utils.less";
+  .content {
+    padding: 24px;
+    .link {
+      margin-top: 16px;
+      &:not(:empty) {
+        margin-bottom: 16px;
       }
-      span {
+      a {
+        margin-right: 32px;
         height: 24px;
         line-height: 24px;
         display: inline-block;
-        vertical-align: middle;
+        i {
+          font-size: 24px;
+          margin-right: 8px;
+          vertical-align: middle;
+        }
+        span {
+          height: 24px;
+          line-height: 24px;
+          display: inline-block;
+          vertical-align: middle;
+        }
       }
     }
   }
-}
-.page-menu-search {
-  text-align: center;
-  margin-bottom: 16px;
-}
-.page-menu-tabs {
-  margin-top: 48px;
-}
-
-.extra-img {
-  margin-top: -60px;
-  text-align: center;
-  width: 195px;
-
-  img {
-    width: 100%;
-  }
-}
-
-.mobile {
-  .extra-img {
-    margin-top: 0;
+  .page-menu-search {
     text-align: center;
-    width: 96px;
-
+    margin-bottom: 16px;
+  }
+  .page-menu-tabs {
+    margin-top: 48px;
+  }
+  .extra-img {
+    margin-top: -60px;
+    text-align: center;
+    width: 195px;
     img {
       width: 100%;
     }
   }
-}
-.page-title {
-  width: 100%;
-  padding-top: 16px;
-  font-size: 14px;
-  // display: flex;
-  // justify-content: space-between;
-  overflow: hidden;
-  .item {
-    margin-right: 32px;
-    float: left;
+
+  .mobile {
+    .extra-img {
+      margin-top: 0;
+      text-align: center;
+      width: 96px;
+
+      img {
+        width: 100%;
+      }
+    }
   }
-  .label {
-    color: rgba(0, 0, 0, 0.85);
+
+  // 高级带分步骤
+  .step-wrap{
+    .page-title {
+      width: 100%;
+      padding-top: 16px;
+      font-size: 14px;
+      // display: flex;
+      // justify-content: space-between;
+      overflow: hidden;
+      .item {
+        margin-right: 32px;
+        float: left;
+      }
+      .label {
+        color: rgba(0, 0, 0, 0.85);
+      }
+      .value {
+        color: rgba(0, 0, 0, 0.65);
+      }
+      .editor,
+      .detial {
+        cursor: pointer;
+      }
+    }
+    .submit{
+      padding-top: 48px;
+      display: flex;
+      justify-content: flex-end;
+    }
+    .btn-wrap{
+      .sign{
+        color: #d9d9d9;
+        padding: 0 8px;
+        font-size: 18px;
+      }
+      .checking{
+        color:#F5222D;
+      }
+      .btn{
+        &:focus{
+          .checking{
+            color: #40a9ff;
+          }
+        }
+        &:hover{
+          .checking{
+            color: #40a9ff;
+          }
+        }
+      }
+    }
   }
-  .value {
-    color: rgba(0, 0, 0, 0.65);
+
+  // 相关联流程
+  .relevance-wrap{
+    font-size: 14px;
+    .relevance__name{
+      width: 100%;
+      padding-top: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      overflow: hidden;
+      .relevance__name--left{
+        font-size: 16px;
+      }
+      .relevance__name--right{
+        font-size: 14px;
+        .relevance-editor{
+          margin-right: 40px;
+        }
+      }
+    }
+    .relevance__main{
+      margin-top: 12px;
+      .clearfix();
+      .item{
+        float: left;
+        margin-right: 24px;
+      }
+    }
+    .relevance__footer{
+      width: 100%;
+      padding-top: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .relevance__footer__title{
+        font-size: 20px;
+        color: rgba(0,0,0,0.85)
+      }
+    }
+    // 分步图部分
+    .relevance__step-wrap{
+      // overflow-x: auto;
+      width: 800px;
+      margin: 0 auto;
+      .top-row{
+        position: absolute;
+        top:-32px;;
+        left: 48px;
+        display: inline-block;
+        width: 348px;
+        height: 32px;
+        border-radius: 5px 5px 0 0;
+        border:0;
+        border: solid 1px #722ed1;
+        border-bottom: none;
+        .icon-row{
+          z-index:2;
+          position: absolute;
+          bottom: -6px;
+          right: -10px;
+          font-size: 20px;
+        }
+      }
+      .num-step{
+        position: absolute;
+        top:0;
+        left: 36px + 174px;
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        line-height: 24px;
+        text-align: center;
+        border-radius: 50%;
+        background: #fff;
+        border: solid 1px #1890ff;
+        z-index:2;
+        font-size: 12px;
+        &.active{
+          background: #1890ff;
+          .cont{
+            color: #fff;
+          }
+        }
+      }
+    }
+
   }
-  .editor,
-  .detial {
-    cursor: pointer;
-  }
-}
-.step-content{
-  padding-top: 56px;
-  padding-left: 10%;
-  padding-right: 10%;
-  .steps-content {
+
+  .step-content{
+    padding-top: 56px;
+    padding-left: 10%;
+    padding-right: 10%;
+    &.step-content--only{
+      padding-left: 0;
+      padding-right: 0;
+    }
+    .steps-content {
       margin-top: 16px;
       border: 1px dashed #e9e9e9;
       border-radius: 6px;
@@ -102,85 +212,78 @@
       text-align: center;
       padding-top: 80px;
     }
-
     .steps-action {
       margin-top: 24px;
     }
-}
-// ant-steps-item
-
-.step-content /deep/ .ant-steps-label-vertical .ant-steps-item-title{
-  padding-right: 0;
-}
-.step-content /deep/ .ant-steps-small .ant-steps-item-title{
-  line-height: 16px;
-  padding: 16px;
-}
-.ant-steps-item-title{
-  &:hover{
-    color: #1890ff;
   }
-}
-
-// progress 字体透明度
-.step-content /deep/ .ant-steps-item-process > .ant-steps-item-content > .ant-steps-item-title{
-  color: rgba(0, 0, 0, 0.65);
-  &:hover{
-    color: #1890ff;
+  // ant-steps-item
+  .step-content /deep/ .ant-steps-label-vertical .ant-steps-item-title{
+    padding-right: 0;
   }
-}
-// progress 字体透明度
-.step-content /deep/ .ant-steps-item-finish > .ant-steps-item-content > .ant-steps-item-title{
-  &:hover{
-    color: #1890ff;
+  .step-content /deep/ .ant-steps-small .ant-steps-item-title{
+    line-height: 16px;
+    padding: 16px;
   }
-}
-.step-content /deep/.ant-steps-label-vertical .ant-steps-item{
-  cursor: pointer;
-  // progress
-  &.ant-steps-item-process .ant-steps-item-icon {
-    background: #fff;
-    .ant-steps-icon{
+  .ant-steps-item-title{
+    &:hover{
       color: #1890ff;
     }
   }
-  &.active{
-    .ant-steps-item-title{
-      // position: relative;
-      &::after{
-        contain: '';
-        display: inline-block;
-        width: 100%;
-        height: 2px;
-        background: #1890ff;
-        position: absolute;
-        top: 46px;
-        left: 0;
-      }
-    }
-    .ant-steps-item-content > .ant-steps-item-title{
+  // progress 字体透明度
+  .step-content /deep/ .ant-steps-item-process > .ant-steps-item-content > .ant-steps-item-title{
+    color: rgba(0, 0, 0, 0.65);
+    &:hover{
       color: #1890ff;
     }
-    .ant-steps-item-icon{
-      background: #1890ff;
+  }
+  // progress 字体透明度
+  .step-content /deep/ .ant-steps-item-finish > .ant-steps-item-content > .ant-steps-item-title{
+    &:hover{
+      color: #1890ff;
+    }
+  }
+  .step-content /deep/.ant-steps-label-vertical .ant-steps-item{
+    cursor: pointer;
+    // progress
+    &.ant-steps-item-process .ant-steps-item-icon {
+      background: #fff;
       .ant-steps-icon{
-        color: #fff;
+        color: #1890ff;
       }
-      .anticon svg{
-        color: #fff;
+    }
+    &.active{
+      .ant-steps-item-title{
+        // position: relative;
+        &::after{
+          contain: '';
+          display: inline-block;
+          width: 100%;
+          height: 2px;
+          background: #1890ff;
+          position: absolute;
+          top: 46px;
+          left: 0;
+        }
+      }
+      .ant-steps-item-content > .ant-steps-item-title{
+        color: #1890ff;
+      }
+      .ant-steps-item-icon{
+        background: #1890ff;
+        .ant-steps-icon{
+          color: #fff !important;
+        }
+        .anticon svg{
+          color: #fff;
+        }
       }
     }
   }
-}
 
-.step-content /deep/ .ant-steps-small .ant-steps-item-tail{
-  top:12px;
-}
-.submit{
-  padding-top: 48px;
-  display: flex;
-  justify-content: flex-end;
-}
+  .step-content /deep/ .ant-steps-small .ant-steps-item-tail{
+    top:12px;
+  }
+
 </style>
 <template>
   <div :style="!$route.meta.hiddenHeaderContent ? 'margin: -24px -24px 0px;' : null">
@@ -224,55 +327,139 @@
           </a-tabs>
         </div>
       </div>
+      <!-- 高级带分布步骤 -->
       <div slot="step" v-if="$route.meta.showStep">
-        <!-- 标题 -->
-        <div class="page-title">
-          <div class="item">
-            <span class="label">名称：</span>
-            <span class="value">{{ name }}</span>
-          </div>
-          <div class="item">
-            <span class="label">编码：</span>
-            <span class="value">{{ code }}</span>
-          </div>
-          <div class="item">
-            <span class="label">录入日期：</span>
-            <span class="value">{{ date }}</span>
-          </div>
-          <span class="item editor" style="color: #1890ff;">编辑</span>
-          <span class="item detial" style="color: #1890ff;">流程详情</span>
-        </div>
-        <!-- 高级带分布步骤 -->
-        <div class="step-content">
-          <template>
-            <div>
-              <a-steps :current="current" size="small" labelPlacement="vertical" >
-                <a-step v-for="(item, index) in steps" :key="item.title" :title="item.title" :class="{ active: currentStep === index, }" @click="handelStepclick(index, item.content)">
-                </a-step>
-              </a-steps>
-              <!-- <div class="steps-content">{{ steps[current].content }}</div> -->
-              <!-- <div class="steps-action">
-                <a-button v-if="current < steps.length - 1" type="primary" @click="next">Next</a-button>
-                <a-button
-                  v-if="current == steps.length - 1"
-                  type="primary"
-                  @click="$message.success('Processing complete!')">Done</a-button>
-                <a-button v-if="current>0" style="margin-left: 8px" @click="prev">Previous</a-button>
-              </div> -->
+        <div class="step-wrap">
+          <!-- 标题 -->
+          <div class="page-title">
+            <div class="item">
+              <span class="label">名称：</span>
+              <span class="value">1000000000</span>
             </div>
-          </template>
+            <div class="item">
+              <span class="label">编码：</span>
+              <span class="value">{{ code }}</span>
+            </div>
+            <div class="item">
+              <span class="label">录入日期：</span>
+              <span class="value">{{ date }}</span>
+            </div>
+            <a class="item editor">编辑</a>
+            <a class="item detial">流程详情</a>
+          </div>
+          <!-- 高级带分布步骤 -->
+          <div class="step-content">
+            <template>
+              <div>
+                <a-steps :current="current" size="small" labelPlacement="vertical" >
+                  <a-step v-for="(item, index) in steps" :key="item.title" :title="item.title" :class="{ active: currentStep === index, }" @click="handelStepclick(index, item.content)">
+                  </a-step>
+                </a-steps>
+              </div>
+            </template>
+          </div>
+          <div class="submit">
+            <div class="btn-wrap">
+              <a-button type="primary" style="margin-right: 8px; color:#fff;" @click="showDrawer">审批</a-button>
+              <a-button-group style="margin-left: 8px;margin-right: 16px">
+                <a-button>提交审批</a-button>
+                <a-button>演示提醒</a-button>
+                <a-button>删除</a-button>
+                <a-button><a-icon type="ellipsis"/></a-button>
+              </a-button-group>
+              <!-- <span class="sign">|</span>
+              <a-button
+                class="btn"
+                @click="showDrawer"
+                style="width: 130px;margin-left:16px;">
+                审批：<span class="checking">待审批</span></a-button> -->
+            </div>
+          </div>
+          <drawer :isVisible="isVisible" @close-drawer="closeDrawer" @show-drawer="showDrawer"/>
         </div>
-        <div class="submit">
-          <div class="btn-wrap">
-            <a-button type="primary" style="margin-right: 8px; color:#fff;">保存</a-button>
-            <a-button-group style="margin-left: 8px;margin-right: 16px">
-              <a-button>提交审批</a-button>
-              <a-button>演示提醒</a-button>
-              <a-button>删除</a-button>
-              <a-button><a-icon type="ellipsis"/></a-button>
-            </a-button-group>
-            <span class="sign">|</span>
-            <a-button style="width: 130px;margin-left:16px;">审批：<span style="color:#F5222D">待审批</span> <a-icon type="caret-down" /></a-button>
+      </div>
+      <!-- 相关联流程图分布表单 -->
+      <div slot="relevance" v-if="$route.meta.showRelevance">
+        <!-- 标题 -->
+        <div class="relevance-wrap">
+          <div class="relevance__name">
+            <div class="relevance__name--left">2018年韶关市翁源县江尾镇高标准农田建设项目</div>
+            <div class="relevance__name--right">
+              <a class="relevance-editor">编辑</a>
+              <a class="relevance-detial">流程详情</a>
+            </div>
+          </div>
+          <!-- 项目相关详细信息 -->
+          <div class="relevance__main">
+            <div class="item">
+              <span class="label">项目编号：</span>
+              <span class="value">1000000000</span>
+            </div>
+            <div class="item">
+              <span class="label">项目区划：</span>
+              <span class="value">韶关市翁源县</span>
+            </div>
+            <div class="item">
+              <span class="label">项目类型：</span>
+              <span class="value">高标准农田建设项目</span>
+            </div>
+            <div class="item">
+              <span class="label">立项年度：</span>
+              <span class="value">2019年</span>
+            </div>
+            <div class="item">
+              <span class="label">创建时间：</span>
+              <span class="value">20190101&nbsp;09:00</span>
+            </div>
+            <div class="item">
+              <span class="label">备注：</span>
+              <span class="value">2019年</span>
+            </div>
+          </div>
+          <div class="relevance__step-wrap">
+            <div class="step-content step-content--only">
+              <div style="position:relative">
+                <!--  显示没有被选中 -->
+                <template v-if="current ===2 && showTwoStep && !ischeckBg ">
+                  <a class="num-step" :style="`backgroucdColor:${getColor}; border-color:${getColor}!important`" >
+                    <span class="cont">2</span>
+                  </a>
+                </template>
+                <template v-if="current ===2 && showTwoStep && ischeckBg">
+                  <a class="num-step" :class="{ active: ischeckBg}" :style="`backgroucdColor:${getColor}; border-color:${getColor}!important`">
+                    <span class="cont">2</span>
+                  </a>
+                </template>
+                <template v-if="current > 0">
+                  <a class="top-row" :style="{borderColor:getColor}">
+                    <a-icon class="icon-row" type="caret-down" />
+                  </a>
+                </template>
+                <template v-else>
+                  <a class="top-row" :style="{borderColor:'#e8e8e8'}">
+                    <a-icon class="icon-row" :style="{color: '#e8e8e8'}" type="caret-down" />
+                  </a>
+                </template>
+                <a-steps :current="current" size="small" labelPlacement="vertical" >
+                  <a-step
+                    v-for="(item, index) in relevanceSteps"
+                    :key="item.title"
+                    :title="item.title"
+                    :class="{ active: currentStep === index, 'ant-steps-item-process': current===2 && index===1 }"
+                    @click="handelStepclick(index, item)">
+                  </a-step>
+                </a-steps>
+              </div>
+            </div>
+          </div>
+          <div class="relevance__footer">
+            <div class="relevance__footer__title">
+              {{ relevanceTitle }}
+            </div>
+            <div class="btn-wrap">
+              <a-button type="primary" style="margin-right: 8px; color:#fff;">提交</a-button>
+              <a-button type="primary" style="margin-right: 8px; color:#fff;"><a-icon type="ellipsis"/></a-button>
+            </div>
           </div>
         </div>
       </div>
@@ -294,11 +481,13 @@
 <script>
 import { mapState, mapMutations } from 'vuex'
 import PageHeader from '@/components/PageHeaderFsxt'
+import drawer from '@/components/drawer'
 
 export default {
-  name: 'PageView',
+  name: 'PageViewFsxt',
   components: {
-    PageHeader
+    PageHeader,
+    drawer
   },
   props: {
     avatar: {
@@ -320,8 +509,10 @@ export default {
   },
   data () {
     return {
+      isVisible: false,
       pageTitle: null,
       description: null,
+      relevanceTitle: '项目申报',
       linkList: [],
       extraImage: '',
       search: false,
@@ -330,8 +521,23 @@ export default {
       name: '2018年韶关市翁源县江尾镇高标准农田建设项目',
       code: '4402290011140201810',
       date: 20190909,
-      current: 3,
+      current: 2,
       currentStep: 0,
+      ischeckBg: false, // 选中背景
+      // checkBg: '#1890ff',
+      showTwoStep: true, // 是否显示定位的第二步
+      relevanceSteps: [
+        { title: '项目申报',
+          content: 'First-content' },
+        { title: '实施计划',
+          content: 'Second-content' },
+        { title: '组织实施',
+          content: '3-content' },
+        { title: '竣工验收',
+          content: '4-content' },
+        { title: '项目管护',
+          content: '5-content' }
+      ],
       steps: [
         { title: '项目库阶段',
           content: 'First-content' },
@@ -347,14 +553,16 @@ export default {
           content: '6-content' },
         { title: '管护阶段',
           content: '7-content' }
-
       ]
     }
   },
   computed: {
     ...mapState({
       multiTab: state => state.app.multiTab
-    })
+    }),
+    getColor () {
+      return this.$store.state.app.color
+    }
   },
   mounted () {
     this.tabs = this.directTabs
@@ -371,9 +579,23 @@ export default {
     //   this.current--
     // },
     ...mapMutations('stepform', ['SET_DATALIST']),
-    handelStepclick (index, content) {
+    showDrawer () {
+      this.isVisible = true
+    },
+    closeDrawer () {
+      this.isVisible = false
+    },
+    handelStepclick (index, item) {
       if (this.current < index) return
       this.currentStep = index
+      if (this.currentStep === 1) {
+        // this.showTwoStep = true
+        this.ischeckBg = true
+      } else {
+        // this.showTwoStep = false
+        this.ischeckBg = false
+      }
+      this.relevanceTitle = item.title
       // this.SET_DATALIST(index)
       this.$store.dispatch('changOneActions', index)
       this.$forceUpdate()

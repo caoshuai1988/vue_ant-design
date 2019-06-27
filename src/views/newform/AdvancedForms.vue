@@ -2,7 +2,7 @@
   <div>
     <!-- 仓库 -->
     <a-card class="card" style="font-size: 26px" :bordered="false" >
-      <span slot="title" :class="{abc : big == 'large'}">仓库管理</span>
+      <span slot="title" :class="{titleSize : big == 'large'}">仓库管理</span>
       <span slot="extra" class="foldStyle" @click="fold(true)">
         <a-icon type="up" v-if="iconToggle" />
         <a-icon type="down" v-else />
@@ -13,7 +13,7 @@
     </a-card>
     <!-- 任务 -->
     <a-card class="card" :bordered="false" >
-      <span slot="title" :class="{abc : big == 'large'}">任务管理</span>
+      <span slot="title" :class="{titleSize : big == 'large'}">任务管理</span>
       <span slot="extra" class="foldStyle" @click="fold()">
         <a-icon type="up" v-if="iconToggleOne" />
         <a-icon type="down" v-else />
@@ -24,7 +24,7 @@
     </a-card>
     <!-- 表格 -->
     <a-card class="card" >
-      <span slot="title" :class="{abc : big == 'large'}">成员管理</span>
+      <span slot="title" :class="{titleSize : big == 'large'}">成员管理</span>
       <span slot="extra" class="foldStyle" @click="fold(0)">
         <a-icon type="up" v-if="iconTable" />
         <a-icon type="down" v-else />
@@ -183,6 +183,9 @@ export default {
     }
   },
   methods: {
+    bianda () {
+      this.$store.dispatch('changFormLargen', 'large')
+    },
     fold (flag) {
       if (flag) {
         this.foldOne = !this.foldOne
@@ -333,11 +336,13 @@ export default {
 // icon 样式
 .foldStyle{
   cursor: pointer;
+  color: #a3a3a3;
+  font-size: 16px;
 }
 .card {
   margin-bottom: 24px;
 }
-.abc {
+.titleSize {
   font-size: 18px;
 }
 .popover-wrapper {

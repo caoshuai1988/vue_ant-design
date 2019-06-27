@@ -3,7 +3,9 @@
 @help-width: 50px;
 
 body {
-
+  font-family:  -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif,
+  "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important;
+  -webkit-font-smoothing: antialiased;
   &.colorWeak {
     filter: invert(80%);
   }
@@ -118,6 +120,14 @@ body {
       &.ant-header-side-closed {
         width: calc(100% - 80px);
       }
+    }
+  }
+
+  .newmenu {
+    display: flex;
+    flex-direction: column;
+    .ant-layout-content {
+      display: flex;
     }
   }
 
@@ -251,17 +261,18 @@ body {
       }
 
       .header-index-left {
-        flex: 0 1 1000px;
+        flex: 0 1 800px; // cs
         display: flex;
 
         .logo.top-nav-header {
-          flex: 0 0 165px;
-          width: 165px;
+          // flex: 0 0 165px;
+          width: 200px;
           height: 64px;
           position: relative;
           line-height: 64px;
           transition: all 0.3s;
           overflow: hidden;
+          margin-left: 24px;
 
           img,
           svg {
@@ -286,7 +297,7 @@ body {
         flex: 1 0 auto;
         height: 64px;
         overflow: hidden;
-
+        margin-right: 24px;
         .content-box {
           float: right;
         }
@@ -311,7 +322,6 @@ body {
   // 内容区
   .layout-content {
     margin: 24px 24px 0px;
-    height: 100%;
     height: 64px;
     padding: 0 12px 0 0;
   }
@@ -378,7 +388,7 @@ body {
     padding-left: 24px;
     overflow: hidden;
     line-height: 64px;
-    background: #002140;
+    background:#002140;
     transition: all .3s;
 
     img,
@@ -398,7 +408,6 @@ body {
       color: #fff;
       font-size: 20px;
       margin: 0 0 0 12px;
-      font-family: Avenir, 'Helvetica Neue, Arial', Helvetica, sans-serif;
       font-weight: 600;
       vertical-align: middle;
     }
@@ -494,4 +503,19 @@ body {
     }
   }
 }
-
+/** cs-custom-style Start **/
+.text-overflow {
+  overflow:hidden; /*内容超出宽度时隐藏超出部分的内容 */
+  text-overflow:ellipsis;/* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用。*/
+  white-space:nowrap; /*不换行 */
+}
+.no-padding {
+  padding: 0 !important;
+}
+.no-margin {
+  margin: 0 !important;
+}
+.ant-notification-notice-message {
+  font-weight: bold;
+}
+/** cs-custom-style End **/

@@ -27,7 +27,10 @@ const mixin = {
       return this.layoutMode === 'topmenu'
     },
     isSideMenu () {
-      return !this.isTopMenu()
+      return this.layoutMode === 'sidemenu'
+    },
+    isFullTopMenu () {
+      return this.layoutMode === 'fulltopmenu'
     }
   }
 }

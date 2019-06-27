@@ -1,5 +1,5 @@
 <template>
-  <a-card :bordered="false">
+  <a-card :bordered="false" class="table-list-tabs">
     <a-tabs @change="callback" type="card">
       <template v-for="item in tabsList">
         <a-tab-pane :tab="item.tab" :key="item.key">
@@ -69,7 +69,7 @@
           <a-button type="primary" icon="plus" @click="$refs.createModal.add()">新建</a-button>
           <a-button>提交</a-button>
           <a-dropdown>
-				    <a-menu slot="overlay" @click="handleMenuClick">
+				    <a-menu slot="overlay">
 				      <a-menu-item key="1">更多操作1</a-menu-item>
 				      <a-menu-item key="2">更多操作2</a-menu-item>
 				      <a-menu-item key="3">更多操作3</a-menu-item>
@@ -300,9 +300,9 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-  .ant-card-wider-padding /deep/ .ant-card-body {
+/*  .ant-card-wider-padding /deep/ .ant-card-body {
     padding: 0px !important;
-  }
+  }*/
   /deep/ .ant-tabs-bar{
   	margin-bottom:0px !important;
   	padding-top:24px !important;
@@ -311,6 +311,6 @@ export default {
   	padding-left:24px !important;
   }
   /deep/ .ant-tabs .ant-tabs-top-content, .ant-tabs .ant-tabs-bottom-content{
-  	padding:24px !important;
+  	padding:24px 32px !important;
   }
 </style>

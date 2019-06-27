@@ -298,7 +298,4 @@ export default {
 }
 </script>
 <style lang="less">
-  .ant-card-wider-padding .ant-card-body {
-    padding: 24px !important;
-  }
 </style>

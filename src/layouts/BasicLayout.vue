@@ -19,49 +19,95 @@
         @menuSelect="menuSelect"
       ></side-menu>
     </a-drawer>
-
-    <side-menu
-      :class="surplusTheme"
-      v-else-if="isSideMenu()"
-      mode="inline"
-      :menus="menus"
-      :theme="navTheme"
-      :collapsed="collapsed"
-      :collapsible="true"
-    ></side-menu>
-
-    <a-layout :class="[layoutMode, `content-width-${contentWidth}`]" :style="{ paddingLeft: contentPaddingLeft, minHeight: '100vh' }">
-      <!-- layout header -->
-      <global-header
-        :mode="layoutMode"
+    <a-layout v-if="!isFullTopMenu()">
+      <side-menu
+        :class="surplusTheme"
+        v-if="isSideMenu()"
+        mode="inline"
         :menus="menus"
         :theme="navTheme"
         :collapsed="collapsed"
-        :device="device"
-        @toggle="toggle"
-      />
+        :collapsible="true"
+      ></side-menu>
+      <a-layout :class="[layoutMode, `content-width-${contentWidth}`]" :style="{ paddingLeft: contentPaddingLeft, minHeight: '100vh' }">
+        <!-- layout header -->
+        <global-header
+          :mode="layoutMode"
+          :menus="menus"
+          :theme="navTheme"
+          :collapsed="collapsed"
+          :device="device"
+          @toggle="toggle"
+        />
 
-      <!-- layout content -->
-      <a-layout-content :style="{ height: '100%', margin: '24px 24px 0', paddingTop: fixedHeader ? '64px' : '0' }">
-        <multi-tab v-if="multiTab"></multi-tab>
-        <transition name="page-transition">
-          <route-view />
-        </transition>
-      </a-layout-content>
+        <!-- layout content -->
+        <a-layout-content :style="{ height: '100%', margin: '24px 24px 0', paddingTop: fixedHeader ? '64px' : '0' }">
+          <multi-tab v-if="multiTab"></multi-tab>
+          <transition name="page-transition">
+            <route-view />
+          </transition>
+        </a-layout-content>
 
-      <!-- layout footer -->
-      <a-layout-footer>
-        <global-footer />
-      </a-layout-footer>
+        <!-- layout footer -->
+        <a-layout-footer>
+          <global-footer />
+        </a-layout-footer>
 
-      <!-- Setting Drawer (show in development mode) -->
-      <setting-drawer v-if="!production"></setting-drawer>
+        <!-- Setting Drawer (show in development mode) -->
+        <setting-drawer v-if="!production"></setting-drawer>
+      </a-layout>
     </a-layout>
+
+    <a-layout v-if="isFullTopMenu()">
+      <a-layout :class="[layoutMode, `content-width-${contentWidth}`]" :style="{ paddingLeft: contentPaddingLeft, minHeight: '100vh' }">
+        <!-- layout header -->
+        <global-header
+          :mode="layoutMode"
+          :menus="menus"
+          :theme="navTheme"
+          :collapsed="collapsed"
+          :device="device"
+          @toggle2="toggle2"
+        />
+        <a-layout class="ant-layout-has-sider">
+          <low-side-menu
+            :class="surplusTheme"
+            mode="inline"
+            :menus="menus"
+            :theme="navTheme"
+            :collapsed="collapsed"
+            :collapsible="true"
+          ></low-side-menu>
+          <a-layout>
+
+            <!-- layout content -->
+            <a-layout-content :style="{ height: '100%', margin: '24px 24px 0', paddingTop: fixedHeader ? '64px' : '0' }">
+              <multi-tab v-if="multiTab"></multi-tab>
+              <transition name="page-transition">
+                <route-view />
+              </transition>
+            </a-layout-content>
+
+            <!-- layout footer -->
+            <a-layout-footer>
+              <global-footer />
+            </a-layout-footer>
+
+          </a-layout>
+
+        </a-layout>
+        <!-- Setting Drawer (show in development mode) -->
+        <setting-drawer v-if="!production"></setting-drawer>
+      </a-layout>
+
+    </a-layout>
+
   </a-layout>
 
 </template>
 
 <script>
+import Vue from 'vue'
 import { triggerWindowResizeEvent } from '@/utils/util'
 import { mapState, mapActions } from 'vuex'
 import { mixin, mixinDevice } from '@/utils/mixin'
@@ -70,20 +116,24 @@ import config from '@/config/defaultSettings'
 import RouteView from './RouteView'
 import MultiTab from '@/components/MultiTab'
 import SideMenu from '@/components/Menu/SideMenu'
+import LowSideMenu from '@/components/Menu/LowSideMenu'
 import GlobalHeader from '@/components/GlobalHeader'
 import GlobalFooter from '@/components/GlobalFooter'
 import SettingDrawer from '@/components/SettingDrawer'
+import ALayoutSider from 'ant-design-vue/es/layout/Sider'
 
 export default {
   name: 'BasicLayout',
   mixins: [mixin, mixinDevice],
   components: {
+    ALayoutSider,
     RouteView,
     MultiTab,
     SideMenu,
     GlobalHeader,
     GlobalFooter,
-    SettingDrawer
+    SettingDrawer,
+    LowSideMenu
   },
   data () {
     return {
@@ -112,15 +162,13 @@ export default {
       this.collapsed = !val
     }
   },
-  beforeCreate(){
+  beforeCreate () {
 
   },
   created () {
-
-    console.log(this.navTheme)
-    console.log(this.surplusTheme)
     this.menus = this.mainMenu.find(item => item.path === '/').children
     this.collapsed = !this.sidebarOpened
+    document.body.style.zoom = Vue.ls.get('DEFAULT_CONTAINER_ZOOM') ? Vue.ls.get('DEFAULT_CONTAINER_ZOOM') : 1
   },
   mounted () {
     const userAgent = navigator.userAgent
@@ -136,7 +184,11 @@ export default {
   methods: {
     ...mapActions(['setSidebar']),
     toggle () {
-      debugger
+      this.collapsed = !this.collapsed
+      this.setSidebar(!this.collapsed)
+      triggerWindowResizeEvent()
+    },
+    toggle2 () {
       this.collapsed = !this.collapsed
       this.setSidebar(!this.collapsed)
       triggerWindowResizeEvent()

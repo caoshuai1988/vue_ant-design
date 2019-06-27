@@ -1,4 +1,4 @@
-<style lang="less">
+<style lang="less" scoped>
   .title-name {
     font-size: 18px;
     margin-left: 200px ;
@@ -47,7 +47,7 @@
         }
         .detail{
           font-size: 14px;
-          color: #62bfff;
+          color: #1890ff;
         }
         .close{
           // position: absolute;
@@ -101,20 +101,14 @@
   .form-body /deep/.ant-form{
     background: #fff;
   }
-  .form-body /deep/.ant-card-body {
-    background:'#f0f2f5';
-  }
-  .content /deep/ .ant-card-wider-padding .ant-card-body{
-    padding: 0
-  }
 
 </style>
 <template>
-  <a-card :body-style="{background:'#f0f2f5'}" class="form-body" :bordered="false">
+  <a-card :body-style="{background:'#f0f2f5', padding:0}" class="form-body" :bordered="false">
 
     <a-row :gutter="24">
-      <a-col :body-style="{padding: '24px', background:'#fff'}" :xl="num" :lg="num" :md="num" :sm="num" >
-        <div style="background: #fff; padding: 24px">
+      <a-col :body-style="{background:'#fff'}" :xl="num" :lg="num" :md="num" :sm="num" >
+        <div style="background: #fff; padding: 24px 32px">
           <a-form @submit="handleSubmit" :form="form" >
             <!-- <h1 class="title-name">标题组</h1> -->
             <!-- :colon="false"
@@ -173,7 +167,12 @@
               label="标题"
               :labelCol="labelCol"
               :wrapperCol="wrapperCol">
-              <a-select placeholder="请选择标题">
+              <a-select
+                placeholder="请选择标题"
+                v-decorator="[
+                  'b-title',
+                  {rules: [{ required: true, message: '请选择标题' }]}
+                ]">
                 <a-select-option value="Home">select1</a-select-option>
                 <a-select-option value="Company">select2</a-select-option>
               </a-select>
@@ -197,7 +196,8 @@
                 disabled
                 placeholder="默认值"
                 v-decorator="[
-                  'readOnly'
+                  'readOnly',
+                  {rules: [{ required: true, message: '请输入默认值' }]}
                 ]" />
             </a-form-item>
 
@@ -208,6 +208,10 @@
               :wrapperCol="wrapperCol"
               :required="false">
               <a-checkbox-group @change="onChange">
+                <!-- v-decorator="[
+                  'b-checkout',
+                  {rules: [{ required: true}]}
+                ]" -->
                 <a-checkbox value="1">选项一</a-checkbox>
                 <a-checkbox value="2">选项二</a-checkbox>
                 <a-checkbox value="3">选项三 </a-checkbox>
@@ -243,6 +247,7 @@
             <!-- <h1 class="title-name">组标题</h1> -->
             <!-- 上传附件 -->
             <a-form-item
+              style="margin-bottom:32px"
               label="上传附件"
               help="支持扩展名：.rar .zip .doc .docx .pdf .jpg..."
               :labelCol="labelCol"

@@ -1,5 +1,5 @@
 <template>
-  <div :style="!$route.meta.hiddenHeaderContent ? 'margin: -24px -24px 0px;' : null" class="contentBox">
+  <div :style="!$route.meta.hiddenHeaderContent && !isFullTopMenu() ? 'margin: -24px -24px 0px;' : 'width:100%'">
     <!-- pageHeader , route meta :true on hide -->
     <page-header v-if="!$route.meta.hiddenHeaderContent" :title="pageTitle" :logo="logo" :avatar="avatar">
       <slot slot="action" name="action">
@@ -50,80 +50,79 @@
           :width="640"
           @close="onClose"
           :visible="visible"
-          :wrapStyle="{height: 'calc(100% - 108px)',overflow: 'auto',paddingBottom: '108px'}"
-        >
+          :wrapStyle="{height: 'calc(100% - 108px)',overflow: 'auto',paddingBottom: '108px'}">
           <template>
-	           <div style="padding-bottom:40px;">
-	           		<a-card class="card" style="font-size: 26px" :bordered="false" >
+            <div style="padding-bottom:40px;">
+              <a-card class="card" style="font-size: 26px" :bordered="false" >
 
-						      <layoutForm title="模板" >
-						        <span class="foldStyle" @click="fold(1)">
-						          <a-icon type="up" v-if="iconToggle" />
-						          <a-icon type="down" v-else />
-						        </span>
-						        <verticaltoggle>
-						          <TagModule v-if="foldOne"></TagModule>
-						        </verticaltoggle>
-						      </layoutForm>
-						      <a-divider style="margin-bottom: 32px"/>
-						      <layoutForm title="列表基础">
-						        <span class="foldStyle" @click="fold(2)">
-						          <a-icon type="up" v-if="iconToggleOne" />
-						          <a-icon type="down" v-else />
-						        </span>
-						        <verticaltoggle>
-						          <Listjc v-if="foldTwo"></Listjc>
-						        </verticaltoggle>
-						      </layoutForm>
-						      <a-divider style="margin-bottom: 32px"/>
-						      <layoutForm title="列表列">
-						        <span class="foldStyle" @click="fold(3)">
-						          <a-icon type="up" v-if="iconTable" />
-						          <a-icon type="down" v-else />
-						        </span>
-						        <verticaltoggle>
-						          <ListTable v-if="foldTable"></ListTable>
-						        </verticaltoggle>
-						      </layoutForm>
-						      <a-divider style="margin-bottom: 32px"/>
-						      <layoutForm title="默认筛选">
-						        <span class="foldStyle" @click="fold(4)">
-						          <a-icon type="up" v-if="iconFour" />
-						          <a-icon type="down" v-else />
-						        </span>
-						        <verticaltoggle>
-						          <ScreeningTable v-if="dataFour"></ScreeningTable>
-						        </verticaltoggle>
-						      </layoutForm>
-						      <a-divider style="margin-bottom: 32px"/>
-						    </a-card>
-	           </div>
+                <layoutForm title="模板" >
+                  <span class="foldStyle" @click="fold(1)">
+                    <a-icon type="up" v-if="iconToggle" />
+                    <a-icon type="down" v-else />
+                  </span>
+                  <verticaltoggle>
+                    <TagModule v-if="foldOne"></TagModule>
+                  </verticaltoggle>
+                </layoutForm>
+                <a-divider style="margin-bottom: 32px"/>
+                <layoutForm title="列表基础">
+                  <span class="foldStyle" @click="fold(2)">
+                    <a-icon type="up" v-if="iconToggleOne" />
+                    <a-icon type="down" v-else />
+                  </span>
+                  <verticaltoggle>
+                    <Listjc v-if="foldTwo"></Listjc>
+                  </verticaltoggle>
+                </layoutForm>
+                <a-divider style="margin-bottom: 32px"/>
+                <layoutForm title="列表列">
+                  <span class="foldStyle" @click="fold(3)">
+                    <a-icon type="up" v-if="iconTable" />
+                    <a-icon type="down" v-else />
+                  </span>
+                  <verticaltoggle>
+                    <ListTable v-if="foldTable"></ListTable>
+                  </verticaltoggle>
+                </layoutForm>
+                <a-divider style="margin-bottom: 32px"/>
+                <layoutForm title="默认筛选">
+                  <span class="foldStyle" @click="fold(4)">
+                    <a-icon type="up" v-if="iconFour" />
+                    <a-icon type="down" v-else />
+                  </span>
+                  <verticaltoggle>
+                    <ScreeningTable v-if="dataFour"></ScreeningTable>
+                  </verticaltoggle>
+                </layoutForm>
+                <a-divider style="margin-bottom: 32px"/>
+              </a-card>
+            </div>
           </template>
           <div
             :style="{
-		          position: 'absolute',
-		          left: 0,
-		          bottom: 0,
-		          width: '100%',
-		          borderTop: '1px solid #e9e9e9',
-		          padding: '10px 16px',
-		          background: '#fff',
-		          textAlign: 'right',
-		        }"
+              position: 'absolute',
+              left: 0,
+              bottom: 0,
+              width: '100%',
+              borderTop: '1px solid #e9e9e9',
+              padding: '10px 16px',
+              background: '#fff',
+              textAlign: 'right',
+            }"
           >
-          	<a-popconfirm  placement="top" @confirm="confirm" @cancel="cancel" okText="Yes" cancelText="No">
-          	<template slot="title">
-			          <p>我是内容我是内容我是内容我是内容我是内容我是内容</p>
-			          <p>
-			          	<span>姓名</span>
-			          	<span style="display:inline-block; margin-left:6px;"><a-input placeholder="Basic usage"/></span>
-			          </p>
-		        </template>
-	          	<a-button :style="{marginRight: '12px'}" type="primary" @click="onClose">
-	          			保存为模板 
-	          	</a-button>
-          	</a-popconfirm>
-            <a-button 
+            <a-popconfirm placement="top" @confirm="confirm" @cancel="cancel" okText="Yes" cancelText="No">
+              <template slot="title">
+                <p>我是内容我是内容我是内容我是内容我是内容我是内容</p>
+                <p>
+                  <span>姓名</span>
+                  <span style="display:inline-block; margin-left:6px;"><a-input placeholder="Basic usage"/></span>
+                </p>
+              </template>
+              <a-button :style="{marginRight: '12px'}" type="primary" @click="onClose">
+                保存为模板
+              </a-button>
+            </a-popconfirm>
+            <a-button
               @click="onClose"
             >
               确定
@@ -147,132 +146,133 @@
 </template>
 
 <script>
-  import { mapState } from 'vuex'
-  import PageHeader from '@/components/PageHeader'
-  import TagModule from './listTables/TagModule'
-  import ListTable from './listTables/listTable'
-  import ScreeningTable from './listTables/ScreeningTable'
-  import verticaltoggle from '@/views/newform/verticaltoggle.js'
-  import Listjc from './listTables/listjc'
-  import layoutForm from '@/views/newform/layoutForm'
+import { mapState } from 'vuex'
+import PageHeader from '@/components/PageHeader'
+import { mixin } from '@/utils/mixin'
+import TagModule from './listTables/TagModule'
+import ListTable from './listTables/listTable'
+import ScreeningTable from './listTables/ScreeningTable'
+import verticaltoggle from '@/views/newform/verticaltoggle.js'
+import Listjc from './listTables/listjc'
+import layoutForm from '@/views/newform/LayoutForm'
 
-  export default {
-    name: 'PageView',
-    components: {
-      PageHeader,
-      TagModule,
-      ListTable,
-      ScreeningTable,
-      verticaltoggle,
-      Listjc,
-      layoutForm
+export default {
+  name: 'PageView',
+  mixins: [mixin],
+  components: {
+    PageHeader,
+    TagModule,
+    ListTable,
+    ScreeningTable,
+    verticaltoggle,
+    Listjc,
+    layoutForm
+  },
+  props: {
+    avatar: {
+      type: String,
+      default: null
     },
-    props: {
-      avatar: {
-        type: String,
-        default: null
-      },
-      title: {
-        type: [String, Boolean],
-        default: true
-      },
-      logo: {
-        type: String,
-        default: null
-      },
-      directTabs: {
-        type: Object,
-        default: null
+    title: {
+      type: [String, Boolean],
+      default: true
+    },
+    logo: {
+      type: String,
+      default: null
+    },
+    directTabs: {
+      type: Object,
+      default: null
+    }
+  },
+  data () {
+    return {
+      tags: ['默认模板', '自定义模板', '自定义模板2'],
+      pageTitle: null,
+      description: null,
+      linkList: [],
+      extraImage: '',
+      search: true,
+      tabs: {},
+      isPageList: false,
+      visible: false,
+      foldOne: true, // 折叠组件1
+      foldTwo: true, // 折叠组件2
+      foldTable: false, // 折叠表格
+      iconTable: false, // 图标表格
+      iconToggle: true, // 图标1
+      iconToggleOne: true, // 图标2
+      memberLoading: false,
+      iconFour: false, // 筛选icon
+      dataFour: false // 筛选组件
+    }
+  },
+  computed: {
+    ...mapState({
+      multiTab: state => state.app.multiTab
+    })
+  },
+  mounted () {
+    this.tabs = this.directTabs
+    this.getPageMeta()
+  },
+  updated () {
+    this.getPageMeta()
+  },
+  methods: {
+    //  	消失隐藏
+    fold (flag) {
+      if (flag === 1) {
+        this.foldOne = !this.foldOne
+        this.iconToggle = !this.iconToggle
+      } else if (flag === 2) {
+        this.foldTwo = !this.foldTwo
+        this.iconToggleOne = !this.iconToggleOne
+      } else if (flag === 3) {
+        this.foldTable = !this.foldTable
+        this.iconTable = !this.iconTable
+      } else if (flag === 4) {
+        this.iconFour = !this.iconFour
+        this.dataFour = !this.dataFour
       }
     },
-    data() {
-      return {
-        tags: ['默认模板', '自定义模板', '自定义模板2'],
-        pageTitle: null,
-        description: null,
-        linkList: [],
-        extraImage: '',
-        search: true,
-        tabs: {},
-        isPageList: false,
-        visible: false,
-        foldOne: true, // 折叠组件1
-	      foldTwo: true, // 折叠组件2
-	      foldTable: false, // 折叠表格
-	      iconTable: false, // 图标表格
-	      iconToggle: true, // 图标1
-	      iconToggleOne: true, // 图标2
-	      memberLoading: false,
-	      iconFour:false, //筛选icon
-	      dataFour:false  //筛选组件
-      }
-    },
-    computed: {
-      ...mapState({
-        multiTab: state => state.app.multiTab
-      })
-    },
-    mounted() {
-      this.tabs = this.directTabs
-      this.getPageMeta()
-    },
-    updated() {
-      this.getPageMeta()
-    },
-    methods: {
-//  	消失隐藏
-    	fold (flag) {
-	      if (flag==1) {
-	        this.foldOne = !this.foldOne
-	        this.iconToggle = !this.iconToggle
-	      } else if (flag === 2) {
-	        this.foldTwo = !this.foldTwo
-          this.iconToggleOne = !this.iconToggleOne
-	      }else if (flag === 3) {
-	        this.foldTable = !this.foldTable
-	        this.iconTable = !this.iconTable
-	      } else if (flag === 4) {
-	        this.iconFour = !this.iconFour
-	        this.dataFour = !this.dataFour
-	      }
-     },
-      getPageMeta() {
-
-        this.pageTitle = (typeof(this.title) === 'string' || !this.title) ? this.title : this.$route.meta.title
-        this.isPageList = typeof (this.$route.meta.isList) === 'boolean' ? this.$route.meta.isList : false
-        const content = this.$refs.content
-        if (content) {
-          if (content.pageMeta) {
-            Object.assign(this, content.pageMeta)
-          } else {
-            this.description = content.description
-            this.linkList = content.linkList
-            this.extraImage = content.extraImage
-            this.search = content.search === true
-            this.tabs = content.tabs
-          }
+    getPageMeta () {
+      this.pageTitle = (typeof (this.title) === 'string' || !this.title) ? this.title : this.$route.meta.title
+      this.isPageList = typeof (this.$route.meta.isList) === 'boolean' ? this.$route.meta.isList : false
+      const content = this.$refs.content
+      if (content) {
+        if (content.pageMeta) {
+          Object.assign(this, content.pageMeta)
+        } else {
+          this.description = content.description
+          this.linkList = content.linkList
+          this.extraImage = content.extraImage
+          this.search = content.search === true
+          this.tabs = content.tabs
         }
-      },
-      //刷新
-      refresh(){
-      	window.location.reload();
-      },
-      showDrawer() {
-        this.visible = true
-      },
-      onClose() {
-        this.visible = false
-      },
-      confirm (e) {
+      }
+    },
+    // 刷新
+    refresh () {
+      window.location.reload()
+    },
+    showDrawer () {
+      this.visible = true
+    },
+    onClose () {
+      this.visible = false
+    },
+    confirm (e) {
       console.log(e)
       this.$message.success('Click on Yes')
-	    },
-	    cancel (e) {
-	      console.log(e)
-	      this.$message.error('Click on No')
-	    }
+    },
+    cancel (e) {
+      console.log(e)
+      this.$message.error('Click on No')
     }
   }
+}
 </script>
 <style>
 .ant-popover{
@@ -316,7 +316,7 @@
       }
     }
   }
-  /deep/ .ant-card-body{
+  .list-set-drawer .ant-card-body{
 		padding:1px !important;
 	}
   .page-menu-search {
@@ -337,7 +337,7 @@
       width: 100%;
     }
   }
-	
+
   .mobile {
     .extra-img {
       margin-top: 0;
@@ -359,9 +359,8 @@
     top: -34px;
     right: 0;
     font-size: 16px;
+    color: #a3a3a3;
     cursor: pointer;
     color:rgba(0, 0, 0, 0.45)
 }
-
 </style>
-

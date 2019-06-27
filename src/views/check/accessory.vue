@@ -1,4 +1,4 @@
-<style lang="less">
+<style lang="less" scoped>
   .table-wrap{
     margin-bottom: 48px;
     .title-box{
@@ -10,9 +10,7 @@
       .title-des{
         font-size: 16px;
         color:rgba(0, 0, 0, 0.85);
-
       }
-
     }
   }
 
@@ -70,7 +68,7 @@
         }
         .detail{
           font-size: 14px;
-          color: #62bfff;
+          color: #1890ff;
         }
         .close{
           // position: absolute;
@@ -125,7 +123,7 @@
 
     <a-row :gutter="24">
       <a-col :body-style="{ background:'#fff'}" :xl="num" :lg="num" :md="num" :sm="num" >
-        <div class="accessory-box" style="background: #fff; padding: 24px">
+        <div class="accessory-box" style="background: #fff; padding: 24px 32px">
           <div class="table-wrap">
             <div class="title-box">
               <div class="title-des">项目可研报告</div>
@@ -134,7 +132,9 @@
             <a-table :dataSource="data" :pagination="false">
               <a-table-column title="种类" data-index="icon" key="icon">
                 <template slot-scope="icon">
-                  <a-icon :type="item" v-for="item in icon" :key="item.icon"/>
+                  <div v-for="img in icon" :key="img.id">
+                    <img :src="img" style="width:24px;height: 24px" alt="文件图标">
+                  </div>
                 </template>
               </a-table-column>
               <a-table-column title="名称" data-index="name" key="name"/>
@@ -156,7 +156,9 @@
             <a-table :dataSource="data" :pagination="false">
               <a-table-column title="种类" data-index="icon" key="icon">
                 <template slot-scope="icon">
-                  <a-icon :type="item" v-for="item in icon" :key="item.icon"/>
+                  <div v-for="img in icon" :key="img.id">
+                    <img :src="img" style="width:24px;height: 24px" alt="文件图标">
+                  </div>
                 </template>
               </a-table-column>
               <a-table-column title="名称" data-index="name" key="name"/>
@@ -172,6 +174,7 @@
           </div>
         </div>
       </a-col>
+      <!-- 帮助 -->
       <template v-if="isShowHelp">
         <a-col
           style="padding: 0 12px"
@@ -268,12 +271,21 @@
 <script>
 import { STable } from '@/components'
 import DetailList from '@/components/tools/DetailList'
+// word格式
+import icon1 from '@/assets/iconfiles/fileicon4.svg'
+// MP4格式
+import icon2 from '@/assets/iconfiles/fileicon10.svg'
+// pdf格式
+import icon3 from '@/assets/iconfiles/fileicon15.svg'
+// ppt格式
+import icon4 from '@/assets/iconfiles/fileicon1.svg'
+
 const DetailListItem = DetailList.Item
 // 列表的数据定义
 const data = [
   {
     key: '1',
-    icon: ['file-text'],
+    icon: [icon1],
     name: '融合服务开发服务平台前端部分工作规划.docx',
     size: '23.6MB',
     time: '2016-09-21 08:50:08',
@@ -286,8 +298,8 @@ const data = [
   },
   {
     key: '2',
-    icon: ['file-text'],
-    name: '融合服务开发服务平台前端部分工作规划.docx',
+    icon: [icon2],
+    name: '融合服务开发服务平台前端部分工作规划.mp4',
     size: '23.6MB',
     time: '2016-09-21 08:50:08',
     state: [{ c: 100, d: 'success' }],
@@ -299,8 +311,8 @@ const data = [
   },
   {
     key: '3',
-    icon: ['file-text'],
-    name: '融合服务开发服务平台前端部分工作规划.docx',
+    icon: [icon3],
+    name: '融合服务开发服务平台前端部分工作规划.pdf',
     size: '23.6MB',
     time: '2016-09-21 08:50:08',
     state: [{ c: 80, d: 'exception' }],
@@ -312,8 +324,8 @@ const data = [
   },
   {
     key: '4',
-    icon: ['file-text'],
-    name: '融合服务开发服务平台前端部分工作规划.docx',
+    icon: [icon4],
+    name: '融合服务开发服务平台前端部分工作规划.ppt',
     size: '23.6MB',
     time: '2016-09-21 08:50:08',
     state: [{ c: 60, d: 'active' }],
@@ -325,8 +337,8 @@ const data = [
   },
   {
     key: '5',
-    icon: ['file-text'],
-    name: '融合服务开发服务平台前端部分工作规划.docx',
+    icon: [icon1],
+    name: '融合服务开发服务平台前端部分工作规划.doc',
     size: '23.6MB',
     time: '2016-09-21 08:50:08',
     state: [{ c: 60, d: 'active' }],
@@ -346,11 +358,12 @@ export default {
   data () {
     return {
       data,
-      num: 18,
+      isShowHelp: false,
+      num: 24,
+      // num: 18,
       helpNum: 6,
       lablenum: 7,
       valuenum: 17,
-      isShowHelp: true,
       labelCol: { lg: { span: 7 }, sm: { span: 7 } },
       wrapperCol: { lg: { span: 10 }, sm: { span: 10 } },
       headers: {

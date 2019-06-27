@@ -1,4 +1,4 @@
-<style lang="less">
+<style lang="less" scoped>
 .lable{
   text-align: right;
 }
@@ -27,7 +27,6 @@
   }
 
   .page-direction{
-    // right: @help-width;
     background: #fff;
     // min-width: 400px;
     // height: 600px;
@@ -53,7 +52,7 @@
         }
         .detail{
           font-size: 14px;
-          color: #62bfff;
+          color: #1890ff;
         }
         .close{
           // position: absolute;
@@ -86,14 +85,14 @@
         // background-color: #F5F5F5;
       }
 
-/*定义滚动条轨道 内阴影+圆角*/
+     /*定义滚动条轨道 内阴影+圆角*/
       &::-webkit-scrollbar-track{
         box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
         border-radius: 10px;
         background-color: #a5a5a5;
       }
 
-/*定义滑块 内阴影+圆角*/
+     /*定义滑块 内阴影+圆角*/
       &::-webkit-scrollbar-thumb{
           border-radius: 5px;
           box-shadow: inset 0 0 5px rgba(0,0,0,0.3);
@@ -116,10 +115,9 @@
 </style>
 <template>
   <a-card :body-style="{background:'#f0f2f5', padding: 0}" :bordered="false" class="card-box">
-
     <a-row :gutter="24">
       <a-col :body-style="{ background:'#fff'}" :xl="num" :lg="num" :md="num" :sm="num" >
-        <div class="form-detial" style="background: #fff; padding: 24px">
+        <div class="form-detial" style="background: #fff; padding: 24px 32px;">
           <a-form class="detailInfo" :form="form">
             <a-form-item label="取货单号" :labelCol="labelCol" :wrapperCol="wrapperCol">
               <span>
@@ -258,7 +256,6 @@
         </a-col>
       </template>
     </a-row>
-
   </a-card>
 </template>
 
@@ -274,11 +271,12 @@ export default {
   },
   data () {
     return {
+      isShowHelp: true,
+      // num: 24,
       num: 18,
       helpNum: 6,
       lablenum: 7,
       valuenum: 17,
-      isShowHelp: true,
       labelCol: { lg: { span: 7 }, sm: { span: 7 } },
       wrapperCol: { lg: { span: 10 }, sm: { span: 10 } },
       headers: {

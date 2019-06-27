@@ -3,7 +3,7 @@
 .page-header {
   position: relative;
   background: #fff;
-  padding: 16px 24px;
+  padding: 16px 32px;
   border-bottom: 1px solid #e8e8e8;
 
   .breadcrumb {
@@ -42,7 +42,8 @@
       .title {
         font-size: 16px;
         font-weight: 500;
-        font-size: 20px;
+        font-size: 16px;
+        // todo
         line-height: 28px;
         font-weight: 500;
         color: rgba(0, 0, 0, 0.85);
@@ -54,6 +55,21 @@
           color: #d9d9d9;
           padding: 0 8px;
           font-size: 18px;
+        }
+        .checking{
+          color:#F5222D;
+        }
+        .btn{
+          &:focus{
+            .checking{
+              color: #40a9ff;
+            }
+          }
+          &:hover{
+            .checking{
+              color: #40a9ff;
+            }
+          }
         }
       }
       .logo {
@@ -147,6 +163,7 @@
 .detail .main .title{
   margin:0;
 }
+
 </style>
 <template>
   <div class="page-header">
@@ -157,16 +174,21 @@
           <div class="row">
             <!-- <img v-if="logo" :src="logo" class="logo"/> -->
             <h1 v-if="title" class="title">{{ title }}</h1>
+            <!-- 第一行是否显示审批按钮 -->
             <div class="btn-wrap" v-if="$route.meta.showbtn">
-              <a-button type="primary" style="margin-right: 8px; color:#fff;">保存</a-button>
+              <a-button type="primary" style="margin-right: 8px; color:#fff;" @click="showDrawer">审批</a-button>
               <a-button-group style="margin-left: 8px;margin-right: 16px">
                 <a-button>提交审批</a-button>
                 <a-button>演示提醒</a-button>
                 <a-button>删除</a-button>
                 <a-button><a-icon type="ellipsis"/></a-button>
               </a-button-group>
-              <span class="sign">|</span>
-              <a-button style="width: 130px;margin-left:16px;">审批：<span style="color:#F5222D">待审批</span> <a-icon type="caret-down" /></a-button>
+              <!-- <span class="sign">|</span>
+              <a-button
+                class="btn"
+                @click="showDrawer"
+                style="width: 130px;margin-left:16px;">
+                审批：<span class="checking">待审批</span></a-button> -->
             </div>
 
             <div class="action">
@@ -190,19 +212,25 @@
           <div>
             <slot name="step"></slot>
           </div>
+          <div>
+            <slot name="relevance"></slot>
+          </div>
         </div>
       </div>
       <!-- <div class="page-direction"></div> -->
+      <drawer :isVisible="isVisible" @close-drawer="closeDrawer" @show-drawer="showDrawer"/>
     </div>
   </div>
 </template>
 
 <script>
 import Breadcrumb from '@/components/tools/Breadcrumb'
+import drawer from '@/components/drawer'
 
 export default {
   name: 'PageHeader',
   components: {
+    drawer,
     's-breadcrumb': Breadcrumb
   },
   props: {
@@ -223,7 +251,17 @@ export default {
     }
   },
   data () {
-    return {}
+    return {
+      isVisible: false
+    }
+  },
+  methods: {
+    showDrawer () {
+      this.isVisible = true
+    },
+    closeDrawer () {
+      this.isVisible = false
+    }
   }
 }
 </script>

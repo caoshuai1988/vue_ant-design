@@ -1,5 +1,5 @@
 <template>
-  <a-card :body-style="{padding: '24px'}">
+  <a-card :body-style="{padding: '24px 32px'}">
     <a-form-item v-bind="formItemLayout" class="boxBoder">
       <div>
         项目可研报告
@@ -40,7 +40,8 @@
         <a-table :dataSource="data" :pagination="false">
           <a-table-column title="种类" data-index="icon" key="icon">
             <template slot-scope="icon">
-              <a-icon :type="item" v-for="item in icon" :key="item.icon"/>
+              <!-- <a-icon :type="item" v-for="item in icon" :key="item.icon"/> -->
+              <img :src="item" alt="" v-for="item in icon" :key="item.icon" width="24px">
             </template>
           </a-table-column>
           <a-table-column title="名称" data-index="name" key="name"/>
@@ -84,10 +85,17 @@
 
 <script>
 import verticaltoggle from '@/views/newform/verticaltoggle' // 你看不懂的 js  别看了
+import icon1 from '@/assets/iconfiles/fileicon4.svg'
+// MP4格式
+import icon2 from '@/assets/iconfiles/fileicon10.svg'
+// pdf格式
+import icon3 from '@/assets/iconfiles/fileicon15.svg'
+// ppt格式
+import icon4 from '@/assets/iconfiles/fileicon1.svg'
 const data = [
   {
     key: '1',
-    icon: ['file-text'],
+    icon: [icon1],
     name: '融合服务开发服务平台前端部分工作规划.doc',
     size: '23.6kb',
     time: '2016-09-21 08:50:08',
@@ -99,7 +107,7 @@ const data = [
   },
   {
     key: '2',
-    icon: ['file-text'],
+    icon: [icon2],
     name: '融合服务开发服务平台前端部分工作规划.doc',
     size: '23.6kb',
     time: '2016-09-21 08:50:08',
@@ -112,7 +120,7 @@ const data = [
   },
   {
     key: '3',
-    icon: ['file-text'],
+    icon: [icon3],
     name: '融合服务开发服务平台前端部分工作规划.doc',
     size: '23.6kb',
     time: '2016-09-21 08:50:08',
@@ -125,7 +133,7 @@ const data = [
   },
   {
     key: '4',
-    icon: ['file-text'],
+    icon: [icon4],
     name: '融合服务开发服务平台前端部分工作规划.doc',
     size: '23.6kb',
     time: '2016-09-21 08:50:08',
@@ -183,5 +191,7 @@ export default {
 .foldStyle {
   float: right;
   padding-right: 24px;
+  color: #a3a3a3;
+  font-size: 16px;
 }
 </style>

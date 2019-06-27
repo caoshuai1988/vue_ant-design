@@ -1,6 +1,7 @@
 <template>
   <div>
     <baseFlowHead></baseFlowHead>
+
     <baseFormContent></baseFormContent>
   </div>
 </template>
@@ -15,16 +16,12 @@ export default {
     baseFormContent
   },
   data () {
-    return {
-    }
+    return {}
   },
-  mounted () {
-  },
-  methods: {
-  }
+  mounted () {},
+  methods: {}
 }
 </script>
 
 <style lang="less" scoped>
-
 </style>

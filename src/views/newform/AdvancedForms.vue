@@ -1,6 +1,5 @@
 <template>
   <div>
-    <!-- <button @click="bianda">测试 一键变大</button> -->
     <!-- 仓库 -->
     <a-card class="card" style="font-size: 26px" :bordered="false" >
       <span slot="title" :class="{titleSize : big == 'large'}">仓库管理</span>

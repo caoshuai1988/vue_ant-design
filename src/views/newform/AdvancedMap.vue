@@ -26,16 +26,18 @@
             style="width:100%;height:100%"
           >
             <bm-navigation anchor="BMAP_ANCHOR_TOP_LEFT"></bm-navigation>
-            <bm-polygon
+            <!-- <bm-polygon
               :path="polygonPath"
               stroke-color="#0177d5"
               :stroke-weight="3"
               fillColor="#87c3fa"
-              :editing="true"
+              :editing="false"
               @lineupdate="updatePolygonPath"
-            />
+            /> -->
+            <bm-point-collection :points="points" shape="BMAP_POINT_SHAPE_SQUARE" color="#0177d5" size="BMAP_POINT_SIZE_BIG" ></bm-point-collection>
           </baidu-map>
         </div>
+
       </div>
       <div class="map-rightbox">
         <a-tabs defaultActiveKey="1" type="card">
@@ -67,6 +69,7 @@
         </a-tabs>
       </div>
     </div>
+
   </a-card>
 </template>
 
@@ -74,17 +77,14 @@
 export default {
   data () {
     return {
+      points: [], // 海量点
+      polygonPath: [], // 绘制
       center: { lng: 0, lat: 0 }, // map 坐标
       zoom: 14, // map 级别,
-      enableMapClick: { enableMapClick: false },
-      iconFlag: false,
-      polygonPath: [
-        // map 默认点 绘制
-        // { lng: 116.412732, lat: 39.911707 }
-        // { lng: 116.39455, lat: 39.910932 },
-        // { lng: 116.403461, lat: 39.921336 }
-      ]
+      iconFlag: false
     }
+  },
+  computed: {
   },
   mounted () {
   },
@@ -109,12 +109,13 @@ export default {
         lng: e.point.lng,
         lat: e.point.lat
       })
+      this.points.push({
+        lng: e.point.lng,
+        lat: e.point.lat
+      })
     },
     updatePolygonPath (e) {
       this.polygonPath = e.target.getPath()
-    },
-    addPolygonPoint () {
-      this.polygonPath.push({ lng: 116.404, lat: 39.915 })
     }
   }
 }

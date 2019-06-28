@@ -90,6 +90,7 @@
                     <a-icon type="up" v-if="iconFour" />
                     <a-icon type="down" v-else />
                   </span>
+                  <div style="display: none;">合并分支</div>
                   <verticaltoggle>
                     <ScreeningTable v-if="dataFour"></ScreeningTable>
                   </verticaltoggle>

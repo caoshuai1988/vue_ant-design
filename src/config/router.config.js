@@ -35,55 +35,56 @@ export const asyncRouterMap = [
         name: 'login',
         meta: { title: '登录页', keepAlive: true, icon: 'user' },
         children: [
-          // 登录模板1
-          {
-            path: '/user/login1',
-            name: 'login1',
-            meta: { title: '登录模板1', target: '_blank' }
-          },
           // 登录模板2
           {
             path: '/user/login2',
             name: 'login2',
-            meta: { title: '登录模板2', target: '_blank' },
+            meta: { title: '三栏版', target: '_blank' },
             children: [
               // 登录模板2-1
               {
                 path: '/user/login2/base',
                 name: 'login2Base',
-                meta: { title: '2账号密码登录-默认页', target: '_blank' }
+                meta: { title: '默认页', target: '_blank' }
               },
               // 登陆模板2-2
               {
                 path: '/user/login2/error',
                 name: 'login2Error',
-                meta: { title: '2账号密码登录-错误提示页', target: '_blank' }
+                meta: { title: '错误提示页', target: '_blank' }
               },
               // 登陆模板2-3
               {
                 path: '/user/login2/drag',
                 name: 'login2Drag',
-                meta: { title: '2账号密码登录-出现滑块页', target: '_blank' }
+                meta: { title: '出现验证页', target: '_blank' }
               },
               // 登录模板2-4
               {
                 path: '/user/login2/unlocking',
                 name: 'login2Unlocking',
-                meta: { title: '2账号密码登录-自助解锁', target: '_blank' }
+                meta: { title: '账号锁定页', target: '_blank' }
               }
             ]
-          },
-          // 登陆模板3
-          {
-            path: '/user/login3',
-            name: 'login3',
-            meta: { title: '登录模板3', target: '_blank' }
           },
           // 登陆模板4
           {
             path: '/user/login4',
             name: 'login4',
-            meta: { title: '登录模板4', target: '_blank' }
+            meta: { title: '单登陆模式', target: '_blank' }
+          },
+          // 登录模板1
+          {
+            path: '/user/login1',
+            name: 'login1',
+            meta: { title: '全屏版', target: '_blank' }
+          },
+
+          // 登陆模板3
+          {
+            path: '/user/login3',
+            name: 'login3',
+            meta: { title: 'Ant原版', target: '_blank' }
           },
           // 找回密码
           {

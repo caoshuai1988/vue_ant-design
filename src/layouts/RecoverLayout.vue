@@ -74,7 +74,7 @@ export default {
         .title {
           font-size: 28px;
           color: rgba(0,0,0,0.85);
-          margin-left: 80px;
+          margin: 0 0 0 80px;
         }
       }
       .footer {

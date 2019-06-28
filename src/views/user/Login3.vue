@@ -8,6 +8,7 @@
       @submit="handleSubmit"
     >
       <a-tabs
+        :animated="false"
         :activeKey="customActiveKey"
         :tabBarStyle="{ textAlign: 'center', borderBottom: 'unset' }"
         @change="handleTabClick"

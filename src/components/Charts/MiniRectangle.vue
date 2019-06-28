@@ -48,7 +48,7 @@
 
 <script>
 const data = [{
-  type: '',
+  type: '家具',
   value: 48000,
   cat: '家具'
 }, {
@@ -56,16 +56,8 @@ const data = [{
   value: 36000,
   cat: '家具'
 }, {
-  type: '',
-  value: 9000,
-  cat: '家具'
-}, {
-  type: '',
+  type: '技术',
   value: 30500,
-  cat: '技术'
-}, {
-  type: '',
-  value: 22000,
   cat: '技术'
 }, {
   type: '配件',
@@ -74,10 +66,6 @@ const data = [{
 }, {
   type: '',
   value: 25000,
-  cat: '办公用品'
-}, {
-  type: '',
-  value: 17000,
   cat: '办公用品'
 }, {
   type: '美术',

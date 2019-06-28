@@ -69,15 +69,15 @@ export default {
             height: 100%;
             position: relative;
             img {
-              width: 32px;
-              height: 32px;
+              width: 64px;
+              height: 64px;
               position: absolute;
-              top: 37px;
+              top: 21px;
             }
             .title {
               font-size: 28px;
               color: rgba(0,0,0,0.85);
-              margin-left: 40px;
+              margin-left: 80px;
             }
           }
         }

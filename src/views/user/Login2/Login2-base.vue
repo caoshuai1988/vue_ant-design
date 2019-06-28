@@ -1,5 +1,5 @@
 <template>
-  <div class="main">
+  <div class="main main-login2-base">
     <!--<img src="@/assets/login_bg1.png"/>-->
     <div class="login-box">
       <a-row>
@@ -165,6 +165,9 @@ import AFormItem from 'ant-design-vue/es/form/FormItem'
 import 'font-awesome/css/font-awesome.min.css'
 import dragVerify from 'vue-drag-verify'
 import ARow from 'ant-design-vue/es/grid/Row'
+import $ from 'jquery'
+import 'jquery-backstretch'
+import imgSrc from '../../../assets/login_bg1.png'
 
 export default {
   components: {
@@ -222,6 +225,9 @@ export default {
         this.requiredTwoStepCaptcha = false
       })
     // this.requiredTwoStepCaptcha = true
+  },
+  mounted() {
+    $('.main-login2-base').backstretch(imgSrc);
   },
   methods: {
     // 滑动完成消失
@@ -367,8 +373,6 @@ export default {
     height: calc(100% - 216px);
     min-height: 450px;
     position: relative;
-    background: no-repeat #eeeeee url(~@/assets/login_bg1.png) scroll top center;
-    background-size: cover;
     .login-box {
       position: absolute;
       top: 50%;

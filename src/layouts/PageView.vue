@@ -53,7 +53,7 @@
           :wrapStyle="{height: 'calc(100% - 108px)',overflow: 'auto',paddingBottom: '108px'}">
           <template>
             <div style="padding-bottom:40px;">
-              <a-card class="card" style="font-size: 26px" :bordered="false" >
+              <a-card class="card list-set-drawer" style="font-size: 26px" :bordered="false" >
 
                 <layoutForm title="模板" >
                   <span class="foldStyle" @click="fold(1)">
@@ -111,19 +111,19 @@
               textAlign: 'right',
             }"
           >
-            <a-popconfirm placement="top" @confirm="confirm" @cancel="cancel" okText="Yes" cancelText="No">
+            <a-popconfirm placement="topRight" @confirm="confirm" @cancel="cancel" okText="确定" cancelText="取消">
               <template slot="title">
-                <p>我是内容我是内容我是内容我是内容我是内容我是内容</p>
-                <p>
-                  <span>姓名</span>
-                  <span style="display:inline-block; margin-left:6px;"><a-input placeholder="Basic usage"/></span>
+                <p style="margin-top:20px;">
+                  <span>名称：</span>
+                  <span style="display:inline-block; margin-left:6px;"><a-input placeholder=""/></span>
                 </p>
               </template>
-              <a-button :style="{marginRight: '12px'}" type="primary" @click="onClose">
+              <a-button :style="{marginRight: '12px'}">
                 保存为模板
               </a-button>
             </a-popconfirm>
             <a-button
+            	type="primary"
               @click="onClose"
             >
               确定
@@ -266,28 +266,26 @@ export default {
     },
     confirm (e) {
       console.log(e)
-      this.$message.success('Click on Yes')
+      this.$message.success('Click on Yes');
+      this.visible = false;
     },
     cancel (e) {
       console.log(e)
-      this.$message.error('Click on No')
+      this.$message.error('Click on No');
+      this.visible = false;
     }
   }
 }
 </script>
 <style>
-.ant-popover{
-	position:absolute;
-	left:50% !important;
-	top:50% !important;
-	width:400px;
-	margin-left:-200px !important;
-}
 	.ant-drawer-close{
 		right:3px !important;
 	}
   .ant-drawer-title{
     font-size:18px !important;
+  }
+  .anticon-exclamation-circle{
+  	display: none !important;
   }
 </style>
 <style lang="less" scoped>

@@ -800,22 +800,23 @@ export default {
   .note-row{
     width: 100%;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
     font-size: 14px;
     height: 36px;
-    padding: 11px 0;
+    // padding: 11px 0;
     cursor: pointer;
     &:hover{
       opacity: 0.7;
     }
     .time{
-      min-width: 78px;
-      margin-right: 24px;
-      width: 80px;
+      display: inline-block;
+      width: 35%;
     }
     .content{
-      min-width: 168px;
+      display: inline-block;
+      width: 65%;
+      text-align: left;
       overflow: hidden;
       text-overflow:ellipsis; //溢出用省略号显示
       white-space:nowrap;
@@ -831,24 +832,21 @@ export default {
     align-items: center;
     font-size: 14px;
     height: 36px;
-    padding: 11px 0;
     cursor: pointer;
     &:hover{
       color:#1890ff;
     }
     .left{
-      margin-right: 24px;
-      // width: 80px;
-      // min-width: 168px;
+      width: 80%;
       overflow: hidden;
       text-overflow:ellipsis; //溢出用省略号显示
       white-space:nowrap;
     }
     .right{
-      min-width: 36px;
+      text-align: right;
+      width: 20%;
       color: rgba(0,0,0,.45);
     }
-
   }
 
 </style>

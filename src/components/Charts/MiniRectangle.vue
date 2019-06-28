@@ -1,58 +1,165 @@
 <template>
   <div>
-    <v-chart :forceFit="true" :height="55" :data="data" :scale="scale" padding="auto">
-      <v-interval
-        position="name*value"
-        color="name"
-        :opacity="0.7"
-      ></v-interval>
-      <v-interval
-        position="name*range"
-        color="name"
-        :size="40"
-        shape="tick"
-      ></v-interval>
+    <v-chart :forceFit="true" :height="height" :data="data" :scale="scale" padding="auto">
+      <v-tooltip />
+      <v-axis dataKey="type" :label="label" :tickLine="tickLine"></v-axis>
+      <v-axis dataKey="value" :label="labelFormat" :title="title"></v-axis>
+      <v-interval position="type*value" color="cat" :opcaity="1"></v-interval>
+      <v-guide
+        type="text"
+        :top="true"
+        :position="pos1"
+        content=""
+        :style="style"
+        :offsetY="40"
+      />
+      <v-guide
+        type="text"
+        :top="true"
+        :position="pos2"
+        content="技术"
+        :style="style"
+        :offsetY="40"
+      />
+      <v-guide
+        type="text"
+        :top="true"
+        :position="pos3"
+        content="办公用品"
+        :style="style"
+        :offsetY="40"
+        :offsetX="20"
+      />
+      <v-guide
+        type="line"
+        :start="start1"
+        :end="end1"
+        :lineStyle="lineStyle"
+      />
+      <v-guide
+        type="line"
+        :start="start2"
+        :end="end2"
+        :lineStyle="lineStyle"
+      />
     </v-chart>
   </div>
 </template>
 
 <script>
 const data = [{
-  name: '类别一',
-  value: 150,
-  error: 6
+  type: '',
+  value: 48000,
+  cat: '家具'
 }, {
-  name: '类别二',
-  value: 120,
-  error: 10
+  type: '椅子',
+  value: 36000,
+  cat: '家具'
 }, {
-  name: '类别三',
-  value: 170,
-  error: 5
+  type: '',
+  value: 9000,
+  cat: '家具'
 }, {
-  name: '类别四',
-  value: 170,
-  error: 5
+  type: '',
+  value: 30500,
+  cat: '技术'
+}, {
+  type: '',
+  value: 22000,
+  cat: '技术'
+}, {
+  type: '配件',
+  value: 12000,
+  cat: '技术'
+}, {
+  type: '',
+  value: 25000,
+  cat: '办公用品'
+}, {
+  type: '',
+  value: 17000,
+  cat: '办公用品'
+}, {
+  type: '美术',
+  value: 8000,
+  cat: '办公用品'
+}, {
+  type: '',
+  value: 2000,
+  cat: '办公用品'
 }]
-data.forEach(function (obj) {
-  obj.range = [obj.value - obj.error, obj.value + obj.error]
-})
+
+const scale = [{
+  dataKey: 'value',
+  alias: '占比（%）'
+}]
+// const scale = [
+//   {
+//     dataKey: 'value',
+//     min: 0,
+//     max: 200
+//   },
+//   {
+//     dataKey: 'range',
+//     min: 0,
+//     mx: 200
+//   }
+// ]
+const label = {
+  textStyle: {
+    fill: '#aaaaaa'
+  }
+}
+
+const tickLine = {
+  alignWithLabel: false,
+  length: 0
+}
+
+const labelFormat = {
+  textStyle: {
+    fill: '#aaaaaa'
+  },
+  formatter: function formatter (text) {
+    return text.replace(/(\d)(?=(?:\d{3})+$)/g, '$1,')
+  }
+}
+
+const title = {
+  offset: 70
+}
+
+const lineStyle = {
+  stroke: '#d9d9d9',
+  lineDash: [0, 0]
+}
+
+const style = {
+  fill: '#c0c0c0',
+  fontSize: 12,
+  fontWeight: '300',
+  textAlign: 'center'
+}
+
 export default {
   data () {
     return {
-      data: data,
-      scale: [
-        {
-          dataKey: 'value',
-          min: 0,
-          max: 200
-        },
-        {
-          dataKey: 'range',
-          min: 0,
-          mx: 200
-        }
-      ]
+      data,
+      scale,
+      height: 110,
+      style,
+      label,
+      tickLine,
+      labelFormat,
+      title,
+      lineStyle,
+      pos1: ['椅子', 'min'],
+      pos2: ['电话', 'min'],
+      pos3: ['笔', 'min'],
+      start1: ['30%', '100%'],
+      end1: ['30%', '120%'],
+      start2: ['60%', '100%'],
+      end2: ['60%', '120%']
     }
   }
 }

@@ -3,7 +3,7 @@
     <v-chart :forceFit="true" :height="height" :data="data" :scale="scale" padding="auto">
       <v-tooltip />
       <v-axis dataKey="type" :label="label" :tickLine="tickLine"></v-axis>
-      <v-axis dataKey="value" :label="labelFormat" :title="title"></v-axis>
+      <!-- <v-axis dataKey="value" :label="labelFormat" :title="title"></v-axis> -->
       <v-interval position="type*value" color="cat" :opcaity="1"></v-interval>
       <v-guide
         type="text"

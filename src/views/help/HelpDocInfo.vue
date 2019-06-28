@@ -9,7 +9,6 @@
         </div>
         <div class="head-search">
           <a-input-search
-            placeholder="请输入"
             style="width: 272px"
           />
         </div>

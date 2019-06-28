@@ -46,6 +46,11 @@ export const asyncRouterMap = [
                 path: '/user/login2/base',
                 name: 'login2Base',
                 meta: { title: '默认页', target: '_blank' }
+              },  // 登陆模板4
+              {
+                path: '/user/login4',
+                name: 'login4',
+                meta: { title: '单登陆模式', target: '_blank' }
               },
               // 登陆模板2-2
               {
@@ -66,12 +71,6 @@ export const asyncRouterMap = [
                 meta: { title: '账号锁定页', target: '_blank' }
               }
             ]
-          },
-          // 登陆模板4
-          {
-            path: '/user/login4',
-            name: 'login4',
-            meta: { title: '单登陆模式', target: '_blank' }
           },
           // 登录模板1
           {

@@ -1,7 +1,4 @@
 <style lang="less" scoped>
-// @box-height: 980px;
-// @height: @box-height - 20px- 16px - 40px;
-
 /deep/ .ant-card-head-wrapper {
   height: 56px;
 }
@@ -14,9 +11,6 @@
 }
 .preview-box {
   position: fixed;
-  // top: 0;
-  // left: 0;
-  // z-index: 11;
   width: 100%;
   height: 100%;
   background: '#f0f2f5';
@@ -25,7 +19,6 @@
     background: #fff;
     box-sizing: border-box;
     height: 64px;
-    // padding: 24px 24px 20px;
     padding: 0 24px;
     font-size: 20px;
     color: rgba(0, 0, 0, 0.85);
@@ -39,7 +32,6 @@
     padding-left: 256px;
     position: relative;
     height: 100%;
-    // height: @box-height;
     .preview-direction {
       position: absolute;
       left: 0;
@@ -52,11 +44,9 @@
       &::-webkit-scrollbar {
         width: 6px;
         height: 8px;
-        // background-color: #F5F5F5;
       }
       /*定义滚动条轨道 内阴影+圆角*/
       &::-webkit-scrollbar-track {
-        // box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
         border-radius: 10px;
         background-color: #fff;
       }
@@ -66,32 +56,24 @@
         box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.4);
         background-color: #9b9b9b;
       }
-      // height:@box-height;
       .content-box {
-        padding: 16px 0 24px 24px;
+        padding: 16px 0 0 24px;
         .title {
           font-size: 16px;
           color: rgba(0, 0, 0, 0.85);
           line-height: 20px;
-          // padding-left: 8px;
           border: 0;
-          // border-left: 2px;
           border-style: solid;
           border-color: rgba(0, 0, 0, 0.65);
           margin-bottom: 16px;
         }
         .content-nav {
           padding-right: 24px;
-          // padding-bottom: 50px;
-          // min-height: 300px;
-          // max-height: @height;
           height: 100%;
-          overflow-y: auto;
+          // overflow-y: auto;
           text-align: center;
 
           .preview-nav--item {
-            // width: 208px;
-            // height: 172px;
             width: 208px;
             box-sizing: border-box;
             line-height: 20px;
@@ -113,9 +95,6 @@
             .file-name {
               max-height: 80px;
               overflow: hidden;
-              // white-space:nowrap;
-              // overflow:hidden;
-              // text-overflow:ellipsis;
             }
           }
         }
@@ -128,7 +107,6 @@
       background: #eff3f5;
       padding: 24px;
       height: 100%;
-      // height: @box-height;
       height: 100%;
       box-sizing: border-box;
       .title-detail {
@@ -158,7 +136,6 @@
       }
       .preview-body {
         padding: 24px 32px;
-        // height: 100%;
       }
     }
   }
@@ -176,7 +153,9 @@
 </style>
 <template>
   <div class="preview-box" :style="previewContent">
-    <div class="preview-header">2018年韶关市翁源县江尾镇高标准农田建设项目 - 计划阶段 - 附件信息</div>
+    <div class="preview-header">
+      <h1 style="font-size: 20px;">2018年韶关市翁源县江尾镇高标准农田建设项目 - 计划阶段 - 附件信息</h1>
+    </div>
     <!-- 侧边栏 -->
     <div class="preview-main">
       <div class="preview-direction" :style="contentStyle">
@@ -309,10 +288,12 @@ export default {
       }
     }
   },
-
+  beforeCreate () {
+    document.title = '附件信息 - 计划阶段 - 2018年韶关市翁源县江尾镇高标准农田建设项目'
+  },
   mounted () {
     this.previewStyle.height = document.documentElement.clientHeight - this.$refs.text.offsetHeight - 94 - 24 + 'px'
-    this.contentStyle.height = document.documentElement.clientHeight - 64 - 24 + 'px'
+    this.contentStyle.height = document.documentElement.clientHeight - 64 + 'px'
     this.wordShow = this.$route.query.val
   },
   methods: {

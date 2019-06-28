@@ -66,13 +66,15 @@ export default {
           vertical-align: middle;
         }
         img {
-          width: 32px;
-          height: 32px;
+          width: 64px;
+          height: 64px;
+          position: absolute;
+          top: 21px;
         }
         .title {
           font-size: 28px;
           color: rgba(0,0,0,0.85);
-          margin: 0 0 0 8px;
+          margin-left: 80px;
         }
       }
       .footer {

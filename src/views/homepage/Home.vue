@@ -417,11 +417,11 @@ export default {
     return {
       // 便签数据
       noteList: [
-        { time: '08-12 09:00', content: '24小时内要做的工作红字', color: '#FF0000' },
-        { time: '08-12 09:00', content: '72小时内要做的工作橙字', color: '#FF9933' },
-        { time: '08-12 09:00', content: '72小时内要做的工作橙字', color: '#FF9933' },
-        { time: '08-12 09:00', content: '提醒事项提醒事项提醒事项', color: 'rgba(0,0,0,0.65)' },
-        { time: '08-12 09:00', content: '提醒事项提醒事项提醒事项', color: 'rgba(0,0,0,0.65)' }
+        { time: '08-12 09:00', content: '24小时内要做的工作红字要做的工作红字', color: '#FF0000' },
+        { time: '08-12 09:00', content: '72小时内要做的工作橙字要做的工作橙字要做的工作橙字', color: '#FF9933' },
+        { time: '08-12 09:00', content: '72小时内要做的工作橙字要做的工作橙字要做的工作橙字', color: '#FF9933' },
+        { time: '08-12 09:00', content: '提醒事项提醒事项提醒事项提醒事项提醒事项提醒事项', color: 'rgba(0,0,0,0.65)' },
+        { time: '08-12 09:00', content: '提醒事项提醒事项提醒事项提醒事项提醒事项提醒事项', color: 'rgba(0,0,0,0.65)' }
       ],
       announceList: [
         { content: '【公告】公告名称公告名称公告名称', time: '06-25' },
@@ -801,6 +801,7 @@ export default {
     width: 100%;
     display: flex;
     justify-content: space-between;
+    // justify-content: flex-start;
     align-items: center;
     font-size: 14px;
     height: 36px;
@@ -811,12 +812,14 @@ export default {
     }
     .time{
       display: inline-block;
-      // width: 30%;
-      max-width: 40%;
+      width: 120px;
+      // margin-right: 24px;
+      // max-width: 40%;
     }
     .content{
       display: inline-block;
-      width: 60%;
+      // width: 60%;
+      width: 240px;
       text-align: left;
       overflow: hidden;
       text-overflow:ellipsis; //溢出用省略号显示
@@ -836,6 +839,9 @@ export default {
     cursor: pointer;
     &:hover{
       color:#1890ff;
+      .right{
+        color:#1890ff;
+      }
     }
     .left{
       width: 80%;

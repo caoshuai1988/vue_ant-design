@@ -5,11 +5,11 @@
       <slot slot="action" name="action">
         <div class="list-action" v-if="isPageList">
           <template>
-            <span><a-icon type="pie-chart" />刷新</span>
-            <span @click="showDrawer"><a-icon type="tool" />设置</span>
-            <span><a-icon type="delete" />回收站</span>
-            <span><a-icon type="snippets" />业务流程</span>
-            <span><a-icon type="question-circle" />帮助</span>
+            <span @click="refresh"><a-icon type="sync" style="font-size:14px; margin-right:8px"/>刷新</span>
+            <span @click="showDrawer"><a-icon type="setting" style="font-size:14px; margin-right:8px"/>设置</span>
+            <span><a-icon type="delete" style="font-size:14px; margin-right:8px"/>回收站</span>
+            <span><a-icon type="snippets" style="font-size:14px; margin-right:8px"/>业务流程</span>
+            <span><a-icon type="question-circle" style="font-size:14px; margin-right:8px"/>帮助</span>
           </template>
         </div>
       </slot>
@@ -52,8 +52,9 @@
           :visible="visible"
           :wrapStyle="{height: 'calc(100% - 108px)',overflow: 'auto',paddingBottom: '108px'}">
           <template>
-            <div>
-              <a-card class="card list-set-drawer" style="font-size: 26px;" :bordered="false" >
+            <div style="padding-bottom:40px;">
+              <a-card class="card list-set-drawer" style="font-size: 26px" :bordered="false" >
+
                 <layoutForm title="模板" >
                   <span class="foldStyle" @click="fold(1)">
                     <a-icon type="up" v-if="iconToggle" />
@@ -107,9 +108,25 @@
               padding: '10px 16px',
               background: '#fff',
               textAlign: 'right',
-            }">
-            <a-button :style="{marginRight: '12px'}" @click="onClose" type="primary">保存 </a-button>
-            <a-button @click="onClose">保存为模板</a-button>
+            }"
+          >
+            <a-popconfirm placement="topRight" @confirm="confirm" @cancel="cancel" okText="确定" cancelText="取消">
+              <template slot="title">
+                <p style="margin-top:20px;">
+                  <span>名称：</span>
+                  <span style="display:inline-block; margin-left:6px;"><a-input placeholder=""/></span>
+                </p>
+              </template>
+              <a-button :style="{marginRight: '12px'}">
+                保存为模板
+              </a-button>
+            </a-popconfirm>
+            <a-button
+            	type="primary"
+              @click="onClose"
+            >
+              确定
+            </a-button>
           </div>
         </a-drawer>
       </div>
@@ -236,11 +253,25 @@ export default {
         }
       }
     },
+    // 刷新
+    refresh () {
+      window.location.reload()
+    },
     showDrawer () {
       this.visible = true
     },
     onClose () {
       this.visible = false
+    },
+    confirm (e) {
+      console.log(e)
+      this.$message.success('Click on Yes');
+      this.visible = false;
+    },
+    cancel (e) {
+      console.log(e)
+      this.$message.error('Click on No');
+      this.visible = false;
     }
   }
 }
@@ -251,6 +282,9 @@ export default {
 	}
   .ant-drawer-title{
     font-size:18px !important;
+  }
+  .anticon-exclamation-circle{
+  	display: none !important;
   }
 </style>
 <style lang="less" scoped>
@@ -325,5 +359,6 @@ export default {
     font-size: 16px;
     color: #a3a3a3;
     cursor: pointer;
+    color:rgba(0, 0, 0, 0.45)
 }
 </style>

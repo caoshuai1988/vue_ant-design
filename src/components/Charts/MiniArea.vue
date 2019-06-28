@@ -3,7 +3,7 @@
     <div class="chart-wrapper" :style="{ height: 46 }">
       <v-chart :force-fit="true" :height="height" :data="data" :padding="[36, 0, 18, 0]">
         <v-tooltip />
-        <v-smooth-area position="x*y" />
+        <v-smooth-area position="x*y" color="#8A2BE2"/>
       </v-chart>
     </div>
   </div>

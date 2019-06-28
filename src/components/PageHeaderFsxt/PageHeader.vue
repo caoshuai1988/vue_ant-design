@@ -176,8 +176,13 @@
             <h1 v-if="title && $route.meta.showRelevance!==true" class="title">{{ title }}</h1>
             <!-- 第一行是否显示审批按钮 -->
             <div class="btn-wrap" v-if="$route.meta.showbtn">
-              <a-button type="primary" style="margin-right: 8px; color:#fff;" @click="showDrawer">审批</a-button>
-              <a-button-group style="margin-left: 8px;margin-right: 16px">
+              <template v-if="$route.meta.isForm">
+                <a-button type="primary" style="margin-right: 8px; color:#fff;">提交</a-button>
+              </template>
+              <template v-else>
+                <a-button type="primary" style="margin-right: 8px; color:#fff;" @click="showDrawer">审批</a-button>
+              </template>
+              <a-button-group style="margin-left: 8px;">
                 <a-button>提交审批</a-button>
                 <a-button>演示提醒</a-button>
                 <a-button>删除</a-button>

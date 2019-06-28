@@ -79,7 +79,7 @@
       }
     }
     .submit{
-      padding-top: 48px;
+      padding-top: 16px;
       display: flex;
       justify-content: flex-end;
     }
@@ -112,13 +112,14 @@
     font-size: 14px;
     .relevance__name{
       width: 100%;
-      padding-top: 16px;
+      padding-top: 8px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       overflow: hidden;
       .relevance__name--left{
         font-size: 16px;
+        color: rgba(0,0,0,0.85)
       }
       .relevance__name--right{
         font-size: 14px;
@@ -129,6 +130,7 @@
     }
     .relevance__main{
       margin-top: 12px;
+      padding-bottom: 16px;
       .clearfix();
       .item{
         float: left;
@@ -143,7 +145,8 @@
       align-items: center;
       .relevance__footer__title{
         font-size: 16px;
-        color: rgba(0,0,0,0.85)
+        color: rgba(0,0,0,0.85);
+        margin:0;
       }
     }
     // 分步图部分
@@ -196,10 +199,12 @@
   }
 
   .step-content{
-    padding-top: 56px;
+    padding-top: 40px;
     padding-left: 10%;
     padding-right: 10%;
+    padding-bottom: 24px;
     &.step-content--only{
+      padding-top: 56px;
       padding-left: 0;
       padding-right: 0;
     }
@@ -359,13 +364,18 @@
           </div>
           <div class="submit">
             <div class="btn-wrap">
-              <a-button type="primary" style="margin-right: 8px; color:#fff;" @click="showDrawer">审批</a-button>
-              <a-button-group style="margin-left: 8px;margin-right: 16px">
+              <template v-if="$route.meta.isForm">
+                <a-button type="primary" style="margin-right: 8px; color:#fff;">提交</a-button>
+              </template>
+              <template v-else>
+                <a-button type="primary" style="margin-right: 8px; color:#fff;" @click="showDrawer">审批</a-button>
+              </template>
+              <a-button-group style="margin-left: 8px;">
                 <a-button>提交审批</a-button>
                 <a-button>演示提醒</a-button>
                 <a-button>删除</a-button>
                 <a-button>
-                  <a-dropdown placement="topCenter">
+                  <a-dropdown placement="bottomCenter">
                     <a class="ant-dropdown-link" href="#">
                       <a-icon type="ellipsis"/>
                     </a>
@@ -391,7 +401,7 @@
                 审批：<span class="checking">待审批</span></a-button> -->
             </div>
           </div>
-          <drawer :isVisible="isVisible" @close-drawer="closeDrawer" @show-drawer="showDrawer"/>
+          <!-- <drawer :isVisible="isVisible" @close-drawer="closeDrawer" @show-drawer="showDrawer"/> -->
         </div>
       </div>
       <!-- 相关联流程图分布表单 -->
@@ -469,13 +479,13 @@
             </div>
           </div>
           <div class="relevance__footer">
-            <div class="relevance__footer__title">
+            <h1 class="relevance__footer__title">
               {{ relevanceTitle }}
-            </div>
+            </h1>
             <div class="btn-wrap">
               <a-button type="primary" style="margin-right: 8px; color:#fff;">提交</a-button>
-              <a-button type="primary" style="margin-right: 8px; color:#fff;">
-                <a-dropdown placement="topCenter">
+              <a-button type="primary" style="color:#fff;">
+                <a-dropdown placement="bottomCenter">
                   <a class="ant-dropdown-link" href="#">
                     <a-icon type="ellipsis"/>
                   </a>

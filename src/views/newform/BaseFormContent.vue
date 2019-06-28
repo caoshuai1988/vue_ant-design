@@ -65,7 +65,7 @@
         :required="false"
       >
         <span slot="label" class="abc">
-          邀评人(选填)&nbsp;
+          邀评人(选填)
           <a-tooltip title="What do you want others to call you?">
             <a-icon type="info-circle" />
           </a-tooltip>

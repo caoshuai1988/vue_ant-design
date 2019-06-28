@@ -3,7 +3,7 @@
     <div class="help-con-head">
       <div class="help-head-content">
         <div class="head-caption">
-        	<span><img src="~@/assets/fslogo.svg" style="width:24px;height:24px;" alt="logo"></span>
+          <span><img src="~@/assets/fslogo.svg" style="width:40px;height:40px;" alt="logo"></span>
           <span>富深新平台模板</span>
           <span>帮助</span>
         </div>
@@ -96,14 +96,27 @@
                   <div>
                     <ul style="overflow:hidden;padding-left:0px">
                       <li style="float: left;">
-                        <span id="span-left" :class="{toActive : 1 == this.up}" @click="toUp(1)" ref="content" @mouseover="selectStyle () "  @mouseout="outStyle()">
-                        <a-icon type="like" />
+                        <span
+                          id="span-left"
+                          :class="{toActive : 1 == this.up}"
+                          @click="toUp(1)"
+                          ref="content"
+                          @mouseover="selectStyle () "
+                          @mouseout=" utStyle()">
+                          <a-icon type="like" />
                         </span>
                         <p>88个赞</p>
                       </li>
                       <li style="float:right">
-                        <span id="span-right" :class="{toActive : 2 == this.under}" @click="toUnder(2)" ref="contentUn" @mouseover="selectStyleUn () "  @mouseout="outStyleUn()">
-                        <a-icon type="dislike" />
+                        <span
+                          id="span-right"
+                          :class="{toActive : 2 == this.under}"
+                          @click="toUnder(2)"
+                          ref="contentUn"
+                          @mouseover="selectStyleUn () "
+                          @
+                          mouseout="outStyleUn()">
+                          <a-icon type="dislike" />
                         </span>
                         <p>25个踩</p>
                       </li>
@@ -229,48 +242,46 @@ export default {
     },
     toUp (num) {
       if (this.under === 2) {
-   		    return
+        return
       }
-      this.up = 1;
-      this.$refs.content.style.color = 'white';
-    }, 
-    toUnder (num){
+      this.up = 1
+      this.$refs.content.style.color = 'white'
+    },
+    toUnder (num) {
       if (this.up === 1) {
-          return 
+        return
       }
-      this.under = 2;
-      this.$refs.contentUn.style.color = 'white';
+      this.under = 2
+      this.$refs.contentUn.style.color = 'white'
     },
-    //设置颜色
-    selectStyle(){
-    	if(this.up ===1){
-    		this.$refs.content.style.color = 'write';
-    	}else{
-    		this.$refs.content.style.color = '#0081EE';
-    	}
+    // 设置颜色
+    selectStyle () {
+      if (this.up === 1) {
+        this.$refs.content.style.color = 'write'
+      } else {
+        this.$refs.content.style.color = '#0081EE'
+      }
     },
-    outStyle(){
-    	if(this.up ===1){
-    		this.$refs.content.style.color = 'write';
-    		
-    	}else{
-    		this.$refs.content.style.color = 'rgba(0, 0, 0, 0.45)';
-    	}	
+    outStyle () {
+      if (this.up === 1) {
+        this.$refs.content.style.color = 'write'
+      } else {
+        this.$refs.content.style.color = 'rgba(0, 0, 0, 0.45)'
+      }
     },
-    selectStyleUn(){
-    	if(this.under ===2){
-    		this.$refs.contentUn.style.color = 'write';
-    	}else{
-    		this.$refs.contentUn.style.color = '#0081EE';
-    	}
+    selectStyleUn () {
+      if (this.under === 2) {
+        this.$refs.contentUn.style.color = 'write'
+      } else {
+        this.$refs.contentUn.style.color = '#0081EE'
+      }
     },
-    outStyleUn(){
-    	if(this.under ===2){
-    		this.$refs.contentUn.style.color = 'write';
-    		
-    	}else{
-    		this.$refs.contentUn.style.color = 'rgba(0, 0, 0, 0.45)';
-    	}	
+    outStyleUn () {
+      if (this.under === 2) {
+        this.$refs.contentUn.style.color = 'write'
+      } else {
+        this.$refs.contentUn.style.color = 'rgba(0, 0, 0, 0.45)'
+      }
     }
   },
   watch: {
@@ -301,17 +312,18 @@ margin-bottom: 0;
       .head-caption {
         color: #FFFFFF;
         & span:first-child {
-        vertical-align:middle
+         vertical-align:top;
         }
         & span:nth-child(2) {
           font-size: 20px;
           padding-right: 8px;
           padding-left:8px;
-          vertical-align:middle
+          vertical-align:top;
+          line-height:36px;
         }
         & span:last-child {
           font-size: 16px;
-          vertical-align:bottom;
+          vertical-align:middle;
         }
       }
       .head-contact {
@@ -494,7 +506,7 @@ margin-bottom: 0;
               }
               &:hover {
                 border:1px solid #0081EE;
-              }  
+              }
             }
             #span-right{
               width:64px;

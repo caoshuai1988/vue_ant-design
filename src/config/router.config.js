@@ -151,43 +151,43 @@ export const asyncRouterMap = [
             path: 'newform/popup',
             name: 'popup',
             component: () => import('@/views/newform/popup'),
-            meta: { title: '弹出窗', keepAlive: true, permission: ['form'] }
+            meta: { title: '弹出窗', keepAlive: true, permission: ['form'], isForm: true }
           },
           {
             path: '/form/newbaseform',
             name: 'NewBaseForm',
             component: () => import('@/views/newform/NewBaseForm'),
-            meta: { title: '基础表单', keepAlive: true, permission: ['form'], showbtn: true }
+            meta: { title: '基础表单', keepAlive: true, permission: ['form'], showbtn: true, isForm: true }
           },
           {
             path: '/fsxt/fsxt-base-form',
             name: 'BaseFormPage',
             component: () => import('@/views/form/BasicFormPage'),
-            meta: { title: '基础表单2', keepAlive: true, permission: ['form'], showbtn: true }
+            meta: { title: '基础表单2', keepAlive: true, permission: ['form'], showbtn: true, isForm: true }
           },
           {
             path: 'newform/ThrowRowForm',
             name: 'ThrowRowForm',
             component: () => import('@/views/newform/ThrowRowForm'),
-            meta: { title: '三列表单', keepAlive: true, permission: ['form'] }
+            meta: { title: '三列表单', keepAlive: true, permission: ['form'], isForm: true }
           },
           {
             path: 'newform/AdvancedForms',
             name: 'AdvancedForms',
             component: () => import('@/views/newform/AdvancedForms'),
-            meta: { title: '高级表单', keepAlive: true, permission: ['form'] }
+            meta: { title: '高级表单', keepAlive: true, permission: ['form'], isForm: true }
           },
           {
             path: 'newform/mapForm',
             name: 'mapForm',
             component: () => import('@/views/newform/mapForm'),
-            meta: { title: '分页签-地图报表', keepAlive: true, permission: ['form'], showbtn: true }
+            meta: { title: '分页签-地图报表', keepAlive: true, permission: ['form'], showbtn: true, isForm: true }
           },
           {
             path: '/fsxt/fsxt-advanced-form',
             name: 'StepFormPage',
             component: () => import('@/views/form/advancedStepForm/index'),
-            meta: { title: '高级带分步表单', keepAlive: false, permission: ['form'], showStep: true }
+            meta: { title: '高级带分步表单', keepAlive: false, permission: ['form'], showStep: true, isForm: true }
           },
           // 相关联规划
           {
@@ -301,15 +301,15 @@ export const asyncRouterMap = [
         children: [{
           path: '/help/helpdoc',
           redirect: '/help/helpdoc',
-          meta: { title: '帮助文档', keepAlive: false, target: '_blank' }
+          meta: { title: '首页', keepAlive: false, target: '_blank' }
         }, {
           path: '/help/helpsearch',
           redirect: 'help/helpsearch',
-          meta: { title: '帮助搜索', keepAlive: false, target: '_blank' }
+          meta: { title: '搜索页', keepAlive: false, target: '_blank' }
         }, {
           path: '/help/helpinfo',
           redirect: 'help/helpinfo',
-          meta: { title: '帮助信息', keepAlive: false, target: '_blank' }
+          meta: { title: '最终页', keepAlive: false, target: '_blank' }
         }]
       },
       {

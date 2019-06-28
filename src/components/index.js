@@ -11,6 +11,7 @@ import RankList from '@/components/Charts/RankList'
 import TransferBar from '@/components/Charts/TransferBar'
 import TagCloud from '@/components/Charts/TagCloud'
 import Gradient from '@/components/Charts/Gradient'
+import MiniRectangle from '@/components/Charts/MiniRectangle'
 
 // pro components
 import AvatarList from '@/components/AvatarList'
@@ -39,6 +40,7 @@ export {
   MiniSmoothArea,
   MiniBar,
   MiniProgress,
+  MiniRectangle,
   Radar,
   Gradient,
   TagCloud,

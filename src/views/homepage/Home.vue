@@ -811,11 +811,12 @@ export default {
     }
     .time{
       display: inline-block;
-      width: 35%;
+      // width: 30%;
+      max-width: 40%;
     }
     .content{
       display: inline-block;
-      width: 65%;
+      width: 60%;
       text-align: left;
       overflow: hidden;
       text-overflow:ellipsis; //溢出用省略号显示

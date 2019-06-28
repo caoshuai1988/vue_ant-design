@@ -2,12 +2,8 @@
   <div id="userLayout" :class="['user-layout-wrapper', device]">
     <div class="container">
       <div class="top">
-        <a-row>
-          <a-col :span="23" :offset="1">
-            <img src="~@/assets/fslogo.svg" alt="logo">
-            <span class="title">富深新平台模板</span>
-          </a-col>
-        </a-row>
+        <img src="~@/assets/fslogo.svg" alt="logo">
+        <h1 class="title">富深新平台模板</h1>
       </div>
 
       <route-view></route-view>
@@ -52,23 +48,20 @@ export default {
         line-height: 106px;
         width:100%;
         background: #fff;
-        .ant-row{
-          height: 100%;
-          .ant-col-23 {
-            height: 100%;
-            position: relative;
-            img {
-              width: 64px;
-              height: 64px;
-              position: absolute;
-              top: 21px;
-            }
-            .title {
-              font-size: 28px;
-              color: rgba(0,0,0,0.85);
-              margin-left: 80px;
-            }
-          }
+        padding-left: 4.166667%;
+        img,
+        .title {
+          display: inline-block;
+          vertical-align: middle;
+        }
+        img {
+          width: 32px;
+          height: 32px;
+        }
+        .title {
+          font-size: 28px;
+          color: rgba(0,0,0,0.85);
+          margin: 0 0 0 8px;
         }
       }
       .footer {

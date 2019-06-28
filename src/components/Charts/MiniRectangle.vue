@@ -49,32 +49,20 @@
 <script>
 const data = [{
   type: '家具',
-  value: 48000,
+  value: 480,
   cat: '家具'
 }, {
   type: '椅子',
-  value: 36000,
+  value: 360,
   cat: '家具'
 }, {
   type: '技术',
-  value: 30500,
+  value: 305,
   cat: '技术'
 }, {
   type: '配件',
-  value: 12000,
+  value: 120,
   cat: '技术'
-}, {
-  type: '',
-  value: 25000,
-  cat: '办公用品'
-}, {
-  type: '美术',
-  value: 8000,
-  cat: '办公用品'
-}, {
-  type: '',
-  value: 2000,
-  cat: '办公用品'
 }]
 
 const scale = [{
@@ -85,7 +73,7 @@ const scale = [{
 //   {
 //     dataKey: 'value',
 //     min: 0,
-//     max: 200
+//     max: 2
 //   },
 //   {
 //     dataKey: 'range',

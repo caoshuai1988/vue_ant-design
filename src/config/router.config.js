@@ -112,7 +112,14 @@ export const asyncRouterMap = [
             name: 'TableListMode',
             hideChildrenInMenu: true, // 强制显示 MenuItem 而不是 SubMenu
             component: () => import('@/views/list/TableListMode'),
-            meta: { title: '常规列表', keepAlive: true, permission: ['table'], isList: true }
+            meta: { title: '常规列表-无分页', keepAlive: true, permission: ['table'], isList: true }
+          },
+          {
+            path: '/list/table-list-modePage/:pageNo([1-9]\\d*)?',
+            name: 'TableListModePage',
+            hideChildrenInMenu: true, // 强制显示 MenuItem 而不是 SubMenu
+            component: () => import('@/views/list/TableListModePage'),
+            meta: { title: '常规列表-有分页', keepAlive: true, permission: ['table'], isList: true }
           },
           {
             path: '/list/table-list-rollUnder/:pageNo([1-9]\\d*)?',
@@ -279,17 +286,17 @@ export const asyncRouterMap = [
           {
             path: 'https://viserjs.github.io/demoHome.html',
             name: 'viser',
-            meta: { title: 'Viser图表库', target: '_blank' }
-          },
-          {
-            path: 'https://www.iconfont.cn/',
-            name: 'IconFont',
-            meta: { title: 'IconFont图标库', target: '_blank' }
+            meta: { title: '图表库-Viser', target: '_blank' }
           },
           {
             path: 'https://vue.ant.design/components/icon-cn/',
             name: 'IconDesign',
-            meta: { title: 'IconDesign内置图标', target: '_blank' }
+            meta: { title: '图标库-内置', target: '_blank' }
+          },
+          {
+            path: 'https://www.iconfont.cn/',
+            name: 'IconFont',
+            meta: { title: '图标库-阿里巴巴', target: '_blank' }
           }
         ]
       },

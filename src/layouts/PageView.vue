@@ -114,7 +114,7 @@
               <template slot="title">
                 <p style="margin-top:20px;">
                   <span>名称：</span>
-                  <span style="display:inline-block; margin-left:6px;"><a-input placeholder=""/></span>
+                  <span style="display:inline-block; margin-left:6px;"><a-input style="width:182px" placeholder=""/></span>
                 </p>
               </template>
               <a-button :style="{marginRight: '12px'}">
@@ -286,6 +286,12 @@ export default {
   .anticon-exclamation-circle{
   	display: none !important;
   }
+  .ant-popover-inner-content{
+	width:264px !important;
+}
+.ant-popover-message-title{
+	padding-left:0px !important;
+}
 </style>
 <style lang="less" scoped>
   .content {

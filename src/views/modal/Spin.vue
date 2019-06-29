@@ -1,21 +1,23 @@
 <template>
   <div class="example">
-    <a-spin size="small" />
-    <a-spin />
-    <a-spin size="large" />
-    <div style="margin-top:40px;">
+    <div style="margin-bottom:64px">
+    	<a-spin size="small" />
+	    <a-spin />
+	    <a-spin size="large" />
+    </div>
+    <div style="margin-bottom:64px">
       <a-spin>
         <a-icon slot="indicator" type="loading" style="font-size: 24px" spin />
       </a-spin>
       <a-spin :indicator="indicator" />
     </div>
-    <div style="margin-top:40px;">
+    <div style="margin-bottom:64px">
       <a-spin :spinning="spinning">
         <div class="spin-content">
           可以点击‘切换’按钮，控制本区域的spin展示。
         </div>
       </a-spin>
-      Loading state：<a-switch v-model="spinning"></a-switch>
+      <div style="margin-top:24px">Loading state：<a-switch v-model="spinning"></a-switch></div>
     </div>
   </div>
 </template>

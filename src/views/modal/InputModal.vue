@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="container">
-      <div class="space-bottom_24">
+      <div class="space-bottom_24" style="margin-top:24px;">
         <a-button type="primary" @click="showModal_860">860宽</a-button>
       </div>
       
@@ -156,7 +156,7 @@
 		          <a-col :span="10" offset="2">
 		            <a-form-item label="附件上传"
 		            :label-col="formItemLayout.labelCol"
-		            :wrapper-col="20"
+		            :wrapper-col="formItemLayout.wrapperCol"
 		            >
 					  <a-upload name="file" :multiple="true" action="https://www.mocky.io/v2/5cc8019d300000980a055e76" :headers="headers" @change="handleChange"
 					  	v-decorator="[
@@ -167,7 +167,7 @@
 					    <a-button>
 					      <a-icon type="upload" /> 上传文件
 					    </a-button><br>
-					    <span style="font-size:14px;color:#ccc;margin-top: 10px;display: inline-block;">支持扩展名：.doc .docx .pdf .jpg...</span>
+					    <span style="width:300px;font-size:14px;color:#ccc;margin-top: 10px;display: inline-block;">支持扩展名：.doc .docx .pdf .jpg...</span>
 					  </a-upload>
 		            </a-form-item>
 		          </a-col>
@@ -185,7 +185,7 @@
 			<div class="content-title">
 				<span style="float:left">新建任务</span><span style="float:right;"><img :src="close" /></span>
 			</div>
-			<div class="content-from" style="padding-bottom: 0px;">
+			<div class="content-from">
 				<a-alert type="error" message="错误提示的文案" banner closable />
 			      <a-form
 			        :form="form"
@@ -245,8 +245,6 @@
 			        >
 			          <a-textarea placeholder="请输入至少五个字符" :rows="4"/>
 			        </a-form-item>
-			        <a-form-item :wrapper-col="{ span: 12, offset: 5 }">
-			        </a-form-item>
 			      </a-form>
 			</div>
 			<div class="content-foot">
@@ -288,19 +286,19 @@
 	       	<a-popconfirm placement="top" @confirm="confirm" @cancel="cancel" okText="确定" cancelText="取消">
 	          <template slot="title">
 	            <p style="margin-top:20px;">
-	              <span>修改备注：</span>
-	              <span style="display:inline-block; margin-left:4px;"><a-input style="width:100px" placeholder=""/></span>
+	              <span>备注：</span>
+	              <span style="display:inline-block; margin-left:6px;"><a-input style="width:182px" placeholder=""/></span>
 	            </p>
 	          </template>
-	          <a-button type="primary">216宽</a-button>
+	          <a-button type="primary">264宽</a-button>
 	       </a-popconfirm>
     	</div>
-    	<div class="space-bottom_24" style="margin-top:146px">
+    	<div style="margin-top:150px">
 	       	<a-popconfirm placement="top" @confirm="confirm" @cancel="cancel" okText="确定" visible="true" cancelText="取消">
 	          <template slot="title">
 	            <p style="margin-top:20px;">
-	              <span>修改备注：</span>
-	              <span style="display:inline-block; margin-left:4px;"><a-input style="width:100px" placeholder=""/></span>
+	              <span>备注：</span>
+	              <span style="display:inline-block; margin-left:6px;"><a-input style="width:182px" placeholder=""/></span>
 	            </p>
 	          </template>
 	          <a-button>按钮位置</a-button>
@@ -374,8 +372,6 @@
           :wrapper-col="{ span: 16 }"
         >
           <a-textarea placeholder="请输入至少五个字符" :rows="4"/>
-        </a-form-item>
-        <a-form-item :wrapper-col="{ span: 12, offset: 5 }">
         </a-form-item>
       </a-form>
     </a-modal>
@@ -567,7 +563,7 @@
           <a-col :span="10" offset="2">
             <a-form-item label="附件上传"
             :label-col="formItemLayout.labelCol"
-            :wrapper-col="20"
+           :wrapper-col="formItemLayout.wrapperCol"
             >
 			  <a-upload name="file" :multiple="true" action="https://www.mocky.io/v2/5cc8019d300000980a055e76" :headers="headers" @change="handleChange"
 			  	v-decorator="[
@@ -578,7 +574,7 @@
 			    <a-button>
 			      <a-icon type="upload" /> 上传文件
 			    </a-button><br>
-			    <span style="font-size:14px;color:#ccc;margin-top: 10px;display: inline-block;">支持扩展名：.doc .docx .pdf .jpg...</span>
+			    <span style="width:300px;font-size:14px;color:#ccc;margin-top: 10px;display: inline-block;">支持扩展名：.doc .docx .pdf .jpg...</span>
 			  </a-upload>
             </a-form-item>
           </a-col>
@@ -671,7 +667,7 @@ export default {
     },
     showRemarks(){
       //this.visible3 = true
-      this.width = '216px'
+      this.width = '264px'
     },
     handleCancel (e) {
       console.log('Clicked cancel button')
@@ -713,10 +709,10 @@ export default {
 		text-align: right;
 	}
 .ant-popover-inner-content{
-	width:216px !important;
+	width:264px !important;
 }
 .ant-popover-message-title{
-	padding-left:6px
+	padding-left:0px !important;
 }
 </style>
 <style lang="less" scoped>
@@ -727,7 +723,7 @@ export default {
   flex-direction: column;
   .space-bottom_24 {
     margin-bottom: 24px;
-    margin-top:24px;
+    margin-top:64px;
   }
 }
 //  /deep/.ant-advanced-search-form {

@@ -338,7 +338,7 @@ export default {
 
 <style lang="less" scoped>
 .ant-card-wider-padding /deep/ .ant-card-body {
-  padding: 24px 32px !important;
+  padding: 24px 32px 40px 32px !important;
 }
 /deep/ .ant-alert{
   display: none;

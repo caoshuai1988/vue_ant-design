@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="container">
-      <div class="space-bottom_24">
+      <div class="space-bottom_24" style="margin-top:24px;">
         <a-button type="primary" @click="showModal_860">860宽</a-button>
       </div>
       
@@ -156,7 +156,7 @@
 		          <a-col :span="10" offset="2">
 		            <a-form-item label="附件上传"
 		            :label-col="formItemLayout.labelCol"
-		            :wrapper-col="20"
+		            :wrapper-col="formItemLayout.wrapperCol"
 		            >
 					  <a-upload name="file" :multiple="true" action="https://www.mocky.io/v2/5cc8019d300000980a055e76" :headers="headers" @change="handleChange"
 					  	v-decorator="[
@@ -167,7 +167,7 @@
 					    <a-button>
 					      <a-icon type="upload" /> 上传文件
 					    </a-button><br>
-					    <span style="font-size:14px;color:#ccc;margin-top: 10px;display: inline-block;">支持扩展名：.doc .docx .pdf .jpg...</span>
+					    <span style="width:300px;font-size:14px;color:#ccc;margin-top: 10px;display: inline-block;">支持扩展名：.doc .docx .pdf .jpg...</span>
 					  </a-upload>
 		            </a-form-item>
 		          </a-col>
@@ -293,7 +293,7 @@
 	          <a-button type="primary">264宽</a-button>
 	       </a-popconfirm>
     	</div>
-    	<div class="space-bottom_24" style="margin-top:150px">
+    	<div style="margin-top:150px">
 	       	<a-popconfirm placement="top" @confirm="confirm" @cancel="cancel" okText="确定" visible="true" cancelText="取消">
 	          <template slot="title">
 	            <p style="margin-top:20px;">
@@ -563,7 +563,7 @@
           <a-col :span="10" offset="2">
             <a-form-item label="附件上传"
             :label-col="formItemLayout.labelCol"
-            :wrapper-col="20"
+           :wrapper-col="formItemLayout.wrapperCol"
             >
 			  <a-upload name="file" :multiple="true" action="https://www.mocky.io/v2/5cc8019d300000980a055e76" :headers="headers" @change="handleChange"
 			  	v-decorator="[
@@ -574,7 +574,7 @@
 			    <a-button>
 			      <a-icon type="upload" /> 上传文件
 			    </a-button><br>
-			    <span style="font-size:14px;color:#ccc;margin-top: 10px;display: inline-block;">支持扩展名：.doc .docx .pdf .jpg...</span>
+			    <span style="width:300px;font-size:14px;color:#ccc;margin-top: 10px;display: inline-block;">支持扩展名：.doc .docx .pdf .jpg...</span>
 			  </a-upload>
             </a-form-item>
           </a-col>
@@ -723,7 +723,7 @@ export default {
   flex-direction: column;
   .space-bottom_24 {
     margin-bottom: 24px;
-    margin-top:24px;
+    margin-top:64px;
   }
 }
 //  /deep/.ant-advanced-search-form {

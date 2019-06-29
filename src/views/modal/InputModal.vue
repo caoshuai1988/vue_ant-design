@@ -258,7 +258,7 @@
       </div>
       <div class="content" style="width:480px; background: white;">
 			<div class="content-title">
-				<span style="float:left">新建文档</span><span style="float:right;"><img :src="close" /></span>
+				<span style="float:left">新建文档<i style="color:rgb(204, 204, 204);font-size:12px;margin-left:6px;font-style:normal;">辅助信息</i></span><span style="float:right;"><img :src="close" /></span>
 			</div>
 			<div class="content-from">
 				<a-form

@@ -131,7 +131,7 @@
       </span>
     </s-table>
     <template>
-			  <div style="text-align: right;margin-top:16px;">
+			  <div style="text-align: right;margin-top:16px;margin-bottom:16px;">
 			    <a-pagination showSizeChanger :pageSize.sync="pageSize" @showSizeChange="onShowSizeChange" :total="500" v-model="current"/>
 			  </div>
 		</template>

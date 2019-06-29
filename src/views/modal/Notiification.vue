@@ -247,5 +247,6 @@ export default {
 <style lang="less" scoped>
 .notiification {
   height: 60vh;
+  margin-top:24px;
 }
 </style>

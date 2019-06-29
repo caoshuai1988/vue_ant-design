@@ -158,7 +158,7 @@ export const asyncRouterMap = [
             path: 'newform/popup',
             name: 'popup',
             component: () => import('@/views/newform/popup'),
-            meta: { title: '弹出窗', keepAlive: true, permission: ['form'], isForm: true }
+            meta: { title: '弹窗抽屉', keepAlive: true, permission: ['form'], isForm: true }
           },
           {
             path: '/form/newbaseform',
@@ -216,7 +216,7 @@ export const asyncRouterMap = [
             path: 'check/alert',
             name: 'alert',
             component: () => import('@/views/check/alert'),
-            meta: { title: '弹出窗', showbtn: false, keepAlive: true, permission: ['form'] }
+            meta: { title: '弹窗', showbtn: false, keepAlive: true, permission: ['form'] }
           },
           {
             path: '/check/single-row',

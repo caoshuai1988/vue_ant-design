@@ -185,7 +185,7 @@
 			<div class="content-title">
 				<span style="float:left">新建任务</span><span style="float:right;"><img :src="close" /></span>
 			</div>
-			<div class="content-from">
+			<div class="content-from" style="padding-bottom: 0px;">
 				<a-alert type="error" message="错误提示的文案" banner closable />
 			      <a-form
 			        :form="form"
@@ -285,25 +285,27 @@
 			</div>
 		</div>
     	<div class="space-bottom_24">
-        	<a-button type="primary" @click="showRemarks">218宽</a-button>
+	       	<a-popconfirm placement="top" @confirm="confirm" @cancel="cancel" okText="确定" cancelText="取消">
+	          <template slot="title">
+	            <p style="margin-top:20px;">
+	              <span>修改备注：</span>
+	              <span style="display:inline-block; margin-left:4px;"><a-input style="width:100px" placeholder=""/></span>
+	            </p>
+	          </template>
+	          <a-button type="primary">216宽</a-button>
+	       </a-popconfirm>
     	</div>
-    	<div class="content" style="width:218px; background: white;">
-			<div class="content-title">
-				<span style="float:left">修改备注</span><span style="float:right;"><img :src="close" /></span>
-			</div>
-			<div class="content-from">
-			  <a-form
-		        :form="form"
-		        @submit="handleSubmit">
-		        <a-form-item>
-		          <a-input placeholder="请输入" style="margin-bottom:-37px;display: block;"/>
-		        </a-form-item>
-		      </a-form>
-			</div>
-			<div class="content-foot">
-				<a-button>取消</a-button><a-button type="primary" style="margin-left:8px;">确定</a-button>
-			</div>
-		</div>
+    	<div class="space-bottom_24" style="margin-top:146px">
+	       	<a-popconfirm placement="top" @confirm="confirm" @cancel="cancel" okText="确定" visible="true" cancelText="取消">
+	          <template slot="title">
+	            <p style="margin-top:20px;">
+	              <span>修改备注：</span>
+	              <span style="display:inline-block; margin-left:4px;"><a-input style="width:100px" placeholder=""/></span>
+	            </p>
+	          </template>
+	          <a-button>按钮位置</a-button>
+	       </a-popconfirm>
+    	</div>
     </div>
     <!--640-->
     <a-modal
@@ -410,22 +412,6 @@
     </a-modal>
     
     <!--218-->
-    <a-modal
-      title="修改备注"
-      :visible="visible3"
-      @ok="handleSubmit"
-      :confirmLoading="confirmLoading"
-      @cancel="handleCancel3"
-      :width="width"
-    >
-      <a-form
-        :form="form"
-        @submit="handleSubmit">
-        <a-form-item>
-          <a-input placeholder="请输入" style="margin-bottom:-37px;display: block;"/>
-        </a-form-item>
-      </a-form>
-    </a-modal>
     
     <!--860-->
     <a-modal
@@ -684,8 +670,8 @@ export default {
       this.width = '480px'
     },
     showRemarks(){
-      this.visible3 = true
-      this.width = '218px'
+      //this.visible3 = true
+      this.width = '216px'
     },
     handleCancel (e) {
       console.log('Clicked cancel button')
@@ -726,6 +712,12 @@ export default {
 		border-radius: 0 0 4px 4px;
 		text-align: right;
 	}
+.ant-popover-inner-content{
+	width:216px !important;
+}
+.ant-popover-message-title{
+	padding-left:6px
+}
 </style>
 <style lang="less" scoped>
 .container {

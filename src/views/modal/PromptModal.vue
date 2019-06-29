@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+  	<a-button class="space-bottom_24" style="margin-bottom:24px;" @click="warning">警告信息</a-button>
     <div class="space-bottom_24">
       <span>
         <div class="ant-message-notice">
@@ -15,8 +16,8 @@
         </div>
       </span>
     </div>
-    <a-button class="space-bottom_24" @click="warning">警告信息</a-button>
-
+    
+		<a-button class="space-bottom_24 space-bottom-btn" @click="error">错误信息</a-button>
     <div class="space-bottom_24">
       <span>
         <div class="ant-message-notice">
@@ -33,8 +34,8 @@
         </div>
       </span>
     </div>
-    <a-button class="space-bottom_24" @click="error">错误信息</a-button>
-
+    
+		<a-button class="space-bottom_24 space-bottom-btn" @click="remindInfo">提示信息</a-button>
     <div class="space-bottom_24">
       <span>
         <div class="ant-message-notice">
@@ -51,8 +52,8 @@
         </div>
       </span>
     </div>
-    <a-button class="space-bottom_24" @click="remindInfo">提示信息</a-button>
-
+    
+		<a-button class="space-bottom_24 space-bottom-btn" @click="success">成功信息</a-button>
     <div class="space-bottom_24">
       <span>
         <div class="ant-message-notice">
@@ -73,9 +74,9 @@
         </div>
       </span>
     </div>
-    <a-button class="space-bottom_24" @click="success">成功信息</a-button>
+    
 
-    <div style="text-align:center; margin-top:50px;">
+    <div style="text-align:center; margin-top:64px;">
       <a-button @click="tenSeconds">10秒显示</a-button>
       <a-button @click="loadingIcon">显示loading图标</a-button>
     </div>
@@ -134,8 +135,9 @@ export default {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  .space-bottom_24 {
-    margin-bottom: 24px;
+  .space-bottom-btn{
+  	margin-top: 64px;
+  	margin-bottom: 24px;
   }
 }
 

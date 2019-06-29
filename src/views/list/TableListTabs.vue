@@ -104,7 +104,13 @@
       <!--      <a-tab-pane tab="Tab 2" key="2">Content of Tab Pane 2</a-tab-pane>-->
       <!--      <a-tab-pane tab="Tab 3" key="3">Content of Tab Pane 3</a-tab-pane>-->
       </template>
+      <template>
+			  <div style="text-align: right;margin-top:30px;">
+			    <a-pagination showSizeChanger :pageSize.sync="pageSize" @showSizeChange="onShowSizeChange" :total="500" v-model="current"/>
+			  </div>
+			</template>
     </a-tabs>
+   
     <create-form ref="createModal" @ok="handleOk"/>
   </a-card>
 </template>
@@ -174,6 +180,8 @@ export default {
           key: 11
         }
       ],
+      pageSize: 20,
+      current: 1,
       // 高级搜索 展开/关闭 false:关闭
       advanced: false,
       // 查询参数

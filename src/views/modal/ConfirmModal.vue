@@ -258,6 +258,7 @@ export default {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin-top:24px;
   .space-bottom-btn{
   	margin-top: 64px;
   	margin-bottom: 24px;

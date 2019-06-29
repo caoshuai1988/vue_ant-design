@@ -48,7 +48,7 @@ export default {
     background: #ffffff;
     border-radius: 4px;
     margin-bottom: 20px;
-    padding: 30px 50px;
+    padding: 48px 50px;
     height: 70vh;
   }
   .spin-content{

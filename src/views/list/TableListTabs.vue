@@ -105,7 +105,7 @@
       <!--      <a-tab-pane tab="Tab 3" key="3">Content of Tab Pane 3</a-tab-pane>-->
       </template>
       <template>
-			  <div style="text-align: right;margin-top:30px;">
+			  <div style="text-align: right;margin-top:16px;">
 			    <a-pagination showSizeChanger :pageSize.sync="pageSize" @showSizeChange="onShowSizeChange" :total="500" v-model="current"/>
 			  </div>
 			</template>

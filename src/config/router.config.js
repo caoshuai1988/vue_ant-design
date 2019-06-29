@@ -112,7 +112,14 @@ export const asyncRouterMap = [
             name: 'TableListMode',
             hideChildrenInMenu: true, // 强制显示 MenuItem 而不是 SubMenu
             component: () => import('@/views/list/TableListMode'),
-            meta: { title: '常规列表', keepAlive: true, permission: ['table'], isList: true }
+            meta: { title: '常规列表-无分页', keepAlive: true, permission: ['table'], isList: true }
+          },
+          {
+            path: '/list/table-list-modePage/:pageNo([1-9]\\d*)?',
+            name: 'TableListModePage',
+            hideChildrenInMenu: true, // 强制显示 MenuItem 而不是 SubMenu
+            component: () => import('@/views/list/TableListModePage'),
+            meta: { title: '常规列表-有分页', keepAlive: true, permission: ['table'], isList: true }
           },
           {
             path: '/list/table-list-rollUnder/:pageNo([1-9]\\d*)?',

@@ -1,5 +1,4 @@
 <template>
-	<div ref="content">
   <a-card :bordered="false">
     <div class="table-page-search-wrapper">
       <a-form layout="inline">
@@ -63,22 +62,35 @@
         </a-row>
       </a-form>
     </div>
-    <div class="table-operator" >
+    <div class="table-operator">
       <a-button type="primary" icon="plus" @click="$refs.createModal.add()">新建</a-button>
       <a-button>批量操作</a-button>
-	  <a-dropdown>
-	    <a-menu slot="overlay">
-	      <a-menu-item key="1">更多操作1</a-menu-item>
-	      <a-menu-item key="2">更多操作2</a-menu-item>
-	      <a-menu-item key="3">更多操作3</a-menu-item>
-	    </a-menu>
-	    <a-button>
-	      ...
-	    </a-button>
-	  </a-dropdown>
+      <a-button @click="tableOption">{{ optionAlertShow && '关闭' || '开启' }} alert</a-button>
+      <a-alert style="margin-top: 18px;display: block;">
+        <template slot="message">
+          <span style="margin-right: 12px">已选择:<a style="font-weight: 600">4</a>项,选中项总投资合计：<b>36.4</b>万元</span> |
+          <span style="margin-right: 12px;padding-left:14px;">当前列表共<a style="font-weight: 600">44</a>项,总投资合计：<b>366.4</b>万元</span>
+        </template>
+      </a-alert>
+      <a-dropdown v-action:edit v-if="selectedRowKeys.length>0">
+        <a-menu slot="overlay">
+          <a-menu-item key="1">
+            <a-icon type="delete"/>
+            删除
+          </a-menu-item>
+          <!-- lock | unlock -->
+          <a-menu-item key="2">
+            <a-icon type="lock"/>
+            锁定
+          </a-menu-item>
+        </a-menu>
+        <a-button>
+          更多操作
+          <a-icon type="down"/>
+        </a-button>
+      </a-dropdown>
     </div>
     <s-table
-    	style="min-height:400px;"
       ref="table"
       rowKey="key"
       :columns="columns"
@@ -87,84 +99,117 @@
       :rowSelection="options.rowSelection"
       :showPagination="true"
       size="large"
-      :scroll="scroll"
     >
+      <span slot="serial" slot-scope="text, record, index">
+        {{ index + 1 }}
+      </span>
       <span slot="status" slot-scope="text">
         <a-badge :status="text | statusTypeFilter" :text="text | statusFilter"/>
       </span>
+      <span slot="description" slot-scope="text">
+        <ellipsis :length="4" tooltip>{{ text }}</ellipsis>
+      </span>
+
       <span slot="action" slot-scope="text, record">
         <template>
-          <a @click="handleDel(record)">删除</a>
+          <a @click="handleEdit(record)">删除</a>
           <a-divider type="vertical"/>
+          <!--<a @click="handleEdit(record)">配置</a>-->
+          <!--<a-divider type="vertical"/>-->
           <a @click="handleSub(record)">订阅报警</a>
+          <a-divider type="vertical"/>
+
+          <a-dropdown>
+            <a-menu slot="overlay">
+              <a-menu-item key="1">操作1</a-menu-item>
+              <a-menu-item key="2">操作2</a-menu-item>
+              <a-menu-item key="3">操作3</a-menu-item>
+            </a-menu>
+            <a href="javascript:;" class="ant-dropdown-link">更多<a-icon type="down" /></a>
+          </a-dropdown>
         </template>
       </span>
-     
     </s-table>
-	<template>
-	  <div style="text-align: right;margin-top:16px;">
-	    <a-pagination showSizeChanger :pageSize.sync="pageSize" @showSizeChange="onShowSizeChange" :total="500" v-model="current"/>
-	  </div>
-	</template>
+    <template>
+			  <div style="text-align: right;margin-top:16px;">
+			    <a-pagination showSizeChanger :pageSize.sync="pageSize" @showSizeChange="onShowSizeChange" :total="500" v-model="current"/>
+			  </div>
+		</template>
     <create-form ref="createModal" @ok="handleOk"/>
+    <step-by-step-modal ref="modal" @ok="handleOk"/>
   </a-card>
-  
-  </div>
 </template>
-<script>
-import './jquery-1.7.2.js'
-import { STable } from '@/components'
-import CreateForm from './modules/CreateForm'
-import { getRoleList, getServiceList, getTestList } from '@/api/manage'
 
+<script>
+import moment from 'moment'
+import { STable, Ellipsis } from '@/components'
+import StepByStepModal from './modules/StepByStepModal'
+import CreateForm from './modules/CreateForm'
+import { getRoleList, getServiceList } from '@/api/manage'
 
 const statusMap = {
   0: {
     status: 'default',
-    text: '项目登记 - 待审批'
+    text: '关闭'
   },
   1: {
     status: 'processing',
-    text: '在建管理 - 填报中'
+    text: '运行中'
   },
   2: {
     status: 'success',
-    text: '验收申请 - 完成'
+    text: '已上线'
   },
   3: {
     status: 'error',
-    text: '审目终止 - 待审批'
+    text: '异常'
   }
 }
 
 export default {
+  name: 'TableListMode',
   components: {
     STable,
-    CreateForm
+    Ellipsis,
+    CreateForm,
+    StepByStepModal
   },
   data () {
     return {
-      // 高级搜索 展开/关闭 false:关闭
+      mdl: {},
+      // 高级搜索 展开/关闭
       advanced: false,
       // 查询参数
       queryParam: {},
+      pageSize: 20,
+      optionAlertShow: false,
+      scrollDisabled: false,
+      current: 1,
       // 表头
       columns: [
         {
+          title: '#',
+          scopedSlots: { customRender: 'serial' }
+        },
+        {
           title: '规则编号',
           dataIndex: 'no',
-          width: 150,
-          fixed: 'left' 
+          customRender: function (text, record, index) {
+            if (index === 0) {
+              return {
+                children: <a href="javascript:;">{text}</a>
+              }
+            }
+            return text
+          }
         },
         {
           title: '描述',
-          width: 200,
           dataIndex: 'description',
           scopedSlots: { customRender: 'description' }
         },
         {
           title: '服务调用次数',
-          width: 300,
           dataIndex: 'callNo',
           sorter: true,
           needTotal: true,
@@ -172,27 +217,26 @@ export default {
         },
         {
           title: '状态',
-          width: 300,
           dataIndex: 'status',
           scopedSlots: { customRender: 'status' },
           filters: [
-		    { text: '填报中', value: 'male' },
-		    { text: '待审批', value: 'female' },
-		    { text: '已审批', value: 'malea' },
-		    { text: '已完成', value: 'femalea' },
-		  ]
+            { text: '关闭', value: 'male' },
+            { text: '运行中', value: 'female' },
+            { text: '已上线', value: 'malea' },
+            { text: '异常', value: 'femalea' }
+          ]
         },
         {
           title: '更新时间',
           dataIndex: 'updatedAt',
           sorter: true
         },
-	  	{
-		  title: '操作',
-		  fixed: 'right',
-		  width: 200,
-		  scopedSlots: { customRender: 'action' },
-	  	}
+        {
+          title: '操作',
+          dataIndex: 'action',
+          width: '200px',
+          scopedSlots: { customRender: 'action' }
+        }
       ],
       // 加载数据方法 必须为 Promise 对象
       loadData: parameter => {
@@ -203,10 +247,9 @@ export default {
             return res.result
           })
       },
-      // 选中行key值
       selectedRowKeys: [],
-      // 选中的行
       selectedRows: [],
+
       // custom table alert & rowSelection
       options: {
         alert: {
@@ -220,15 +263,7 @@ export default {
           onChange: this.onSelectChange
         }
       },
-      pageSize: 20,
-      current:4,
-      optionAlertShow: false,
-      scrollDisabled: false,
-      current: 1,
-      scroll: {
-        x:2000,
-        y:350
-      }
+      optionAlertShow: false
     }
   },
   filters: {
@@ -239,51 +274,51 @@ export default {
       return statusMap[type].status
     }
   },
-  mounted () {
-    this.changeBrowser()
-    window.addEventListener('resize', () => {
-      // debugger
-      this.changeBrowser()
-      console.log('scroll',this.scroll)
-    })
+  created () {
+    this.tableOption()
+    getRoleList({ t: new Date() })
   },
   methods: {
-  	//根据浏览器缩小改变样式
-    changeBrowser () {
-	let oHeight=document.documentElement['clientHeight']-510
-	$('.ant-table-body').css({"height":'oHeight'});
-	$('.table-wrapper').css({"minHeight":'0px'});
-	this.scroll = {
-	  x: 1600,
-      y: document.documentElement['clientHeight']-510
-   }
-	if (document.documentElement['clientHeight'] < 710){
-		this.scroll = {
-		  x: 1600,
-          y: 200
+    testExpandedRowRender: function () {
+
+    },
+    tableOption () {
+      if (!this.optionAlertShow) {
+        this.options = {
+          alert: {
+            show: true,
+            clear: () => {
+              this.selectedRowKeys = []
+            }
+          },
+          rowSelection: {
+            selectedRowKeys: this.selectedRowKeys,
+            onChange: this.onSelectChange,
+            getCheckboxProps: record => ({
+              props: {
+                disabled: record.no === 'No 2', // Column configuration not to be checked
+                name: record.no
+              }
+            })
+          }
         }
-	}
+        this.optionAlertShow = true
+      } else {
+        this.options = {
+          alert: false,
+          rowSelection: null
+        }
+        this.optionAlertShow = false
+      }
+    },
 
-
-    },
-    // 收起/展开
-    toggleAdvanced () {
-      this.advanced = !this.advanced
-    },
-    // 新增
-    handleOk () {
-      this.$refs.table.refresh()
-    },
-    // 获取选中行
-    onSelectChange (selectedRowKeys, selectedRows) {
-      this.selectedRowKeys = selectedRowKeys
-      this.selectedRows = selectedRows
-    },
-    // 删除
     handleDel (record) {
       alert('test')
     },
-    // 订阅警报
+    handleEdit (record) {
+      console.log(record)
+      this.$refs.modal.edit(record)
+    },
     handleSub (record) {
       if (record.status !== 0) {
         this.$message.info(`${record.no} 订阅成功`)
@@ -291,11 +326,30 @@ export default {
         this.$message.error(`${record.no} 订阅失败，规则已关闭`)
       }
     },
- 	onShowSizeChange(current, pageSize) {
-    	console.log(current, pageSize);
-  	}
+    handleOk () {
+      this.$refs.table.refresh()
+    },
+    onSelectChange (selectedRowKeys, selectedRows) {
+      this.selectedRowKeys = selectedRowKeys
+      this.selectedRows = selectedRows
+    },
+    toggleAdvanced () {
+      this.advanced = !this.advanced
+    },
+    resetSearchForm () {
+      this.queryParam = {
+        date: moment(new Date())
+      }
+    }
   }
 }
 </script>
-<style lang="less">
+
+<style lang="less" scoped>
+.ant-card-wider-padding /deep/ .ant-card-body {
+  padding: 24px 32px !important;
+}
+/deep/ .ant-alert{
+  display: none;
+}
 </style>

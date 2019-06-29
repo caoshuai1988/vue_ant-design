@@ -1,5 +1,5 @@
 <template>
-  <div :style="!$route.meta.hiddenHeaderContent && !isFullTopMenu() ? 'margin: -24px -24px 0px;' : 'width:100%'">
+  <div :style="!$route.meta.hiddenHeaderContent ? 'margin: -24px -24px 0px;' : 'width:100%'">
 
     <div class="content">
       <div class="page-header-index-wide">

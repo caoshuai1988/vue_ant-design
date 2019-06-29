@@ -126,7 +126,7 @@
             style="margin-bottom: 24px;"
             :bordered="false"
             :body-style="{ padding: 0 }">
-            <span slot="title">我的待办 (<a href="javascript:void(0)" style="color:red">6</a>)</span>
+            <span slot="title">我的待办 （<a href="javascript:void(0)" style="color:red">6</a>）</span>
             <a slot="extra">更多</a>
             <a-table :dataSource="table1" :pagination="false" style="padding: 24px">
               <a-table-column title="名称" data-index="name" key="name" />
@@ -247,6 +247,7 @@
           </a-card>
         </a-col>
         <!-- 右侧侧边栏 -->
+        <!-- 提醒事项 -->
         <a-col
           style="padding: 0 12px"
           :xl="6"
@@ -254,7 +255,7 @@
           :md="24"
           :sm="24"
           :xs="24">
-          <a-card style="margin-bottom: 24px" :bordered="false" :body-style="{padding: 0}">
+          <a-card style="margin-bottom: 24px" :bordered="false" :body-style="{padding: '24px',overflow: 'hidden'}">
             <!-- <span slot="title">
               提醒事项
               <a-icon type="plus" />
@@ -265,19 +266,25 @@
               <a class="title-right">更多</a>
             </div>
 
-            <a-list :dataSource="list1.results">
-              <!-- <a-list-item slot="renderItem" slot-scope="item" style="padding: 0 24px 24px"> -->
-              <a-list-item slot="renderItem" slot-scope="item" style="padding: 24px">
+            <!-- <a-list :dataSource="list1.results">
+              <a-list-item slot="renderItem" slot-scope="item" style="padding: 24px 0">
                 <a-list-item-meta :description="item.email">
                   <a slot="title" :href="item.href">{{ item.name.last }}</a>
                   <a-avatar slot="avatar" src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
                 </a-list-item-meta>
                 <div style="font-size: 12px;">06-25</div>
               </a-list-item>
+            </a-list> -->
 
-            </a-list>
+            <div class="content-main" style="padding-top:16px;">
+              <div class="note-row" v-for="(ele, index) in noteList" :key="index">
+                <div class="time" :style="{color:ele.color}">{{ ele.time }}</div>
+                <div class="content" :style="{color:ele.color}">{{ ele.content }}</div>
+              </div>
+            </div>
           </a-card>
-          <a-card style="margin-bottom: 24px" :bordered="false" :body-style="{padding: 0}">
+          <!-- 通知公告 -->
+          <a-card style="margin-bottom: 24px" :bordered="false" :body-style="{padding: '24px', overflow: 'hidden'}">
             <!-- <span slot="title">
               通知公告
               <a-icon type="plus" />
@@ -287,40 +294,30 @@
               <span>通知公告</span>
               <a class="title-right">更多</a>
             </div>
-            <a-list
+            <!-- <a-list
               :dataSource="list1.results">
-              <a-list-item slot="renderItem" slot-scope="item" style="padding: 24px">
+              <a-list-item slot="renderItem" slot-scope="item" style="padding: 24px 0">
                 <a-list-item-meta :description="item.email">
                   <a slot="title" :href="item.href">{{ item.name.last }}</a>
                   <a-avatar slot="avatar" src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
                 </a-list-item-meta>
-                <!-- <div>Content</div> -->
               </a-list-item>
-            </a-list>
-          </a-card>
+            </a-list> -->
 
-          <!-- <a-card style="margin-bottom: 24px" :bordered="false" :body-style="{padding: 0}">
-            <span slot="title">
-              快捷菜单
-            </span>
-            <a slot="extra">设置</a>
-            <a-row style="padding:5px 15px">
-              <a-col style="padding: 10px 0" :span="12" v-for="(item, index) in buttons" :key="index">
-                <div class="shortcut-menu">
-                  <a-button>
-                    <a-icon type="menu-fold" />
-                    菜单按钮项
-                  </a-button>
-                </div>
-              </a-col>
-            </a-row>
-          </a-card> -->
-          <a-card style="margin-bottom: 24px" :bordered="false" :body-style="{padding: 0}">
+            <div class="announce-main" style="padding-top:16px;">
+              <div class="announce-row" v-for="(ele, index) in announceList" :key="index">
+                <div class="left">{{ ele.content }}</div>
+                <div class="right">{{ ele.time }}</div>
+              </div>
+            </div>
+          </a-card>
+          <!-- 快捷菜单 -->
+          <a-card style="margin-bottom: 24px" :bordered="false" :body-style="{padding: 24}">
             <div class="memu-title">
               <span>快捷菜单</span>
               <a class="title-right">设置</a>
             </div>
-            <a-row style="padding:0px 16px 24px">
+            <a-row style="padding:24px 0 24px">
               <a-col style="padding: 10px 0" :span="12" v-for="(item, index) in buttons" :key="index">
                 <div class="shortcut-menu">
                   <a-button>
@@ -335,28 +332,17 @@
               </a-col>
             </a-row>
           </a-card>
-          <a-card style="margin-bottom: 24px" :loading="radarLoading" :bordered="false" :body-style="{ padding: 0 }">
+          <!-- 登录历史 -->
+          <a-card style="margin-bottom: 24px" :loading="radarLoading" :bordered="false" :body-style="{ padding: 24 }">
             <div class="memu-title">
               <span>登录历史</span>
               <a class="title-right">更多</a>
             </div>
-            <a-table :dataSource="table2" :pagination="false" style="padding:0 24px 24px">
+            <a-table :dataSource="table2" :pagination="false" style="padding:24px 0 24px">
               <a-table-column title="日期时间" data-index="datetime" key="datetime" />
               <a-table-column title="IP" data-index="ip" key="module"/>
             </a-table>
           </a-card>
-          <!-- <a-card :loading="loading" title="团队" :bordered="false">
-            <div class="members">
-              <a-row>
-                <a-col :span="12" v-for="(item, index) in teams" :key="index">
-                  <a>
-                    <a-avatar size="small" :src="item.avatar" />
-                    <span class="member">{{ item.name }}</span>
-                  </a>
-                </a-col>
-              </a-row>
-            </div>
-          </a-card> -->
         </a-col>
       </a-row>
     </div>
@@ -429,6 +415,21 @@ export default {
   },
   data () {
     return {
+      // 便签数据
+      noteList: [
+        { time: '08-12 09:00', content: '24小时内要做的工作红字要做的工作红字', color: '#FF0000' },
+        { time: '08-12 09:00', content: '72小时内要做的工作橙字要做的工作橙字要做的工作橙字', color: '#FF9933' },
+        { time: '08-12 09:00', content: '72小时内要做的工作橙字要做的工作橙字要做的工作橙字', color: '#FF9933' },
+        { time: '08-12 09:00', content: '提醒事项提醒事项提醒事项提醒事项提醒事项提醒事项', color: 'rgba(0,0,0,0.65)' },
+        { time: '08-12 09:00', content: '提醒事项提醒事项提醒事项提醒事项提醒事项提醒事项', color: 'rgba(0,0,0,0.65)' }
+      ],
+      announceList: [
+        { content: '【公告】公告名称公告名称公告名称', time: '06-25' },
+        { content: '【公告】公告名称公告名称公告名称', time: '06-25' },
+        { content: '【公告】公告名称公告名称公告名称', time: '06-25' },
+        { content: '【公告】公告名称公告名称公告名称', time: '06-25' },
+        { content: '【公告】公告名称公告名称公告名称', time: '06-25' }
+      ],
       timeFix: timeFix(),
       avatar: '',
       user: {},
@@ -666,11 +667,10 @@ export default {
 
 <style lang="less" scoped>
 
-.last{
-  position: relative;
-  top:-40px;
-}
-
+  .last{
+    position: relative;
+    top:-40px;
+  }
   .module-list {
     .module-card-grid {
       width: 20%;
@@ -771,30 +771,89 @@ export default {
     }
   }
 
-//快捷菜单
-/deep/.memu-title{
-  box-sizing: border-box;
-  color:rgba(0,0,0,.45);
-  font-size: 16px;
-  padding: 24px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  .title-right{
-    color:rgba(0,0,0,.45);
-    font-size: 14px;
-    &:hover{
-      color: #1890FF
+  //快捷菜单
+  /deep/.memu-title{
+    box-sizing: border-box;
+    color:rgba(0,0,0,.65);
+    font-size: 16px;
+    // padding: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .title-right{
+      color:rgba(0,0,0,.45);
+      font-size: 14px;
+      &:hover{
+        color: #1890FF
+      }
     }
   }
-}
+ // 常用功能图标
+  .img-wrap{
+    width: 64px;
+    text-align: center;
+    line-height: 64px;
+    height: 64px;
+    background:rgb(19, 194, 194);border-radius:50%;
+  }
+  //提醒事项
+  .note-row{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    // justify-content: flex-start;
+    align-items: center;
+    font-size: 14px;
+    height: 36px;
+    // padding: 11px 0;
+    cursor: pointer;
+    &:hover{
+      opacity: 0.7;
+    }
+    .time{
+      display: inline-block;
+      width: 120px;
+      // margin-right: 24px;
+      // max-width: 40%;
+    }
+    .content{
+      display: inline-block;
+      // width: 60%;
+      width: 240px;
+      text-align: left;
+      overflow: hidden;
+      text-overflow:ellipsis; //溢出用省略号显示
+      white-space:nowrap;
+    }
 
-.img-wrap{
-  width: 64px;
-  text-align: center;
-  line-height: 64px;
-  height: 64px;
-  background:rgb(19, 194, 194);border-radius:50%;
-}
+  }
+
+   //通知公告
+  .announce-row{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    height: 36px;
+    cursor: pointer;
+    &:hover{
+      color:#1890ff;
+      .right{
+        color:#1890ff;
+      }
+    }
+    .left{
+      width: 80%;
+      overflow: hidden;
+      text-overflow:ellipsis; //溢出用省略号显示
+      white-space:nowrap;
+    }
+    .right{
+      text-align: right;
+      width: 20%;
+      color: rgba(0,0,0,.45);
+    }
+  }
 
 </style>

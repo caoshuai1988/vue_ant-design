@@ -10,10 +10,10 @@
   margin-right: 24px;
 }
 .preview-box {
-  position: fixed;
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #f0f2f5;
   height: 100%;
-  background: '#f0f2f5';
   overflow: hidden;
   .preview-header {
     background: #fff;
@@ -29,18 +29,14 @@
     line-height: 64px;
   }
   .preview-main {
-    padding-left: 256px;
-    position: relative;
-    height: 100%;
+    height: calc(100% - 64px);
+    display: flex;
+    flex: auto;
     .preview-direction {
-      position: absolute;
-      left: 0;
-      top: 0;
+      height: 100%;
       background: #fff;
-      z-index: 3;
       width: 256px;
-      display: inline-block;
-      overflow-y: scroll;
+      overflow: auto;
       &::-webkit-scrollbar {
         width: 6px;
         height: 8px;
@@ -57,7 +53,7 @@
         background-color: #9b9b9b;
       }
       .content-box {
-        padding: 16px 0 0 24px;
+        padding: 16px 24px;
         .title {
           font-size: 16px;
           color: rgba(0, 0, 0, 0.85);
@@ -68,11 +64,9 @@
           margin-bottom: 16px;
         }
         .content-nav {
-          padding-right: 24px;
           height: 100%;
           // overflow-y: auto;
           text-align: center;
-
           .preview-nav--item {
             width: 208px;
             box-sizing: border-box;
@@ -101,14 +95,23 @@
       }
     }
     .right-box {
-      width: -moz-calc(100%-256px);
-      width: -webkit-calc(100%-256px);
-      width: calc(100%-256px);
+      display: flex;
+      overflow: auto;
+      flex: auto;
       background: #eff3f5;
       padding: 24px;
       height: 100%;
       height: 100%;
       box-sizing: border-box;
+      /deep/ .ant-card {
+        flex: auto;
+        display: flex;
+        /deep/ .ant-card-body {
+          flex: auto;
+          display: flex;
+          flex-direction: column;
+        }
+      }
       .title-detail {
         display: flex;
         justify-content: space-between;
@@ -136,6 +139,7 @@
       }
       .preview-body {
         padding: 24px 32px;
+        flex: auto;
       }
     }
   }
@@ -186,7 +190,6 @@
               <img src="@/assets/previewIcon/pdf.png" alt="word">
               <div class="file-name">融合服务开发平台前端部分工 作前端部分工作规划.pdf</div>
             </div>
-            <a-divider/>
           </div>
         </div>
       </div>
@@ -292,12 +295,7 @@ export default {
     document.title = '附件信息 - 计划阶段 - 2018年韶关市翁源县江尾镇高标准农田建设项目'
   },
   mounted () {
-    this.previewStyle.height = document.documentElement.clientHeight - this.$refs.text.offsetHeight - 94 - 24 + 'px'
-    this.contentStyle.height = document.documentElement.clientHeight - 64 + 'px'
     this.wordShow = this.$route.query.val
-    window.addEventListener('resize', () => {
-      this.previewStyle.height = document.documentElement.clientHeight - 180 + 'px'
-    })
   },
   methods: {
     tabSwitcher (val) {

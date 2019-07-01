@@ -35,55 +35,55 @@ export const asyncRouterMap = [
         name: 'login',
         meta: { title: '登录页', keepAlive: true, icon: 'user' },
         children: [
-          // 登录模板1
-          {
-            path: '/user/login1',
-            name: 'login1',
-            meta: { title: '登录模板1', target: '_blank' }
-          },
           // 登录模板2
           {
             path: '/user/login2',
             name: 'login2',
-            meta: { title: '登录模板2', target: '_blank' },
+            meta: { title: '三栏版', target: '_blank' },
             children: [
               // 登录模板2-1
               {
                 path: '/user/login2/base',
                 name: 'login2Base',
-                meta: { title: '2账号密码登录-默认页', target: '_blank' }
+                meta: { title: '默认页', target: '_blank' }
+              },  // 登陆模板4
+              {
+                path: '/user/login4',
+                name: 'login4',
+                meta: { title: '单登陆模式', target: '_blank' }
               },
               // 登陆模板2-2
               {
                 path: '/user/login2/error',
                 name: 'login2Error',
-                meta: { title: '2账号密码登录-错误提示页', target: '_blank' }
+                meta: { title: '错误提示页', target: '_blank' }
               },
               // 登陆模板2-3
               {
                 path: '/user/login2/drag',
                 name: 'login2Drag',
-                meta: { title: '2账号密码登录-出现滑块页', target: '_blank' }
+                meta: { title: '出现验证页', target: '_blank' }
               },
               // 登录模板2-4
               {
                 path: '/user/login2/unlocking',
                 name: 'login2Unlocking',
-                meta: { title: '2账号密码登录-自助解锁', target: '_blank' }
+                meta: { title: '账号锁定页', target: '_blank' }
               }
             ]
           },
+          // 登录模板1
+          {
+            path: '/user/login1',
+            name: 'login1',
+            meta: { title: '全屏版', target: '_blank' }
+          },
+
           // 登陆模板3
           {
             path: '/user/login3',
             name: 'login3',
-            meta: { title: '登录模板3', target: '_blank' }
-          },
-          // 登陆模板4
-          {
-            path: '/user/login4',
-            name: 'login4',
-            meta: { title: '登录模板4', target: '_blank' }
+            meta: { title: 'Ant原版', target: '_blank' }
           },
           // 找回密码
           {
@@ -112,7 +112,14 @@ export const asyncRouterMap = [
             name: 'TableListMode',
             hideChildrenInMenu: true, // 强制显示 MenuItem 而不是 SubMenu
             component: () => import('@/views/list/TableListMode'),
-            meta: { title: '常规列表', keepAlive: true, permission: ['table'], isList: true }
+            meta: { title: '常规列表-无分页', keepAlive: true, permission: ['table'], isList: true }
+          },
+          {
+            path: '/list/table-list-modePage/:pageNo([1-9]\\d*)?',
+            name: 'TableListModePage',
+            hideChildrenInMenu: true, // 强制显示 MenuItem 而不是 SubMenu
+            component: () => import('@/views/list/TableListModePage'),
+            meta: { title: '常规列表-有分页', keepAlive: true, permission: ['table'], isList: true }
           },
           {
             path: '/list/table-list-rollUnder/:pageNo([1-9]\\d*)?',
@@ -151,7 +158,7 @@ export const asyncRouterMap = [
             path: 'newform/popup',
             name: 'popup',
             component: () => import('@/views/newform/popup'),
-            meta: { title: '弹出窗', keepAlive: true, permission: ['form'], isForm: true }
+            meta: { title: '弹窗抽屉', keepAlive: true, permission: ['form'], isForm: true }
           },
           {
             path: '/form/newbaseform',
@@ -209,7 +216,7 @@ export const asyncRouterMap = [
             path: 'check/alert',
             name: 'alert',
             component: () => import('@/views/check/alert'),
-            meta: { title: '弹出窗', showbtn: false, keepAlive: true, permission: ['form'] }
+            meta: { title: '弹窗', showbtn: false, keepAlive: true, permission: ['form'] }
           },
           {
             path: '/check/single-row',
@@ -279,17 +286,17 @@ export const asyncRouterMap = [
           {
             path: 'https://viserjs.github.io/demoHome.html',
             name: 'viser',
-            meta: { title: 'Viser图表库', target: '_blank' }
-          },
-          {
-            path: 'https://www.iconfont.cn/',
-            name: 'IconFont',
-            meta: { title: 'IconFont图标库', target: '_blank' }
+            meta: { title: '图表库-Viser', target: '_blank' }
           },
           {
             path: 'https://vue.ant.design/components/icon-cn/',
             name: 'IconDesign',
-            meta: { title: 'IconDesign内置图标', target: '_blank' }
+            meta: { title: '图标库-内置', target: '_blank' }
+          },
+          {
+            path: 'https://www.iconfont.cn/',
+            name: 'IconFont',
+            meta: { title: '图标库-阿里巴巴', target: '_blank' }
           }
         ]
       },
@@ -301,15 +308,15 @@ export const asyncRouterMap = [
         children: [{
           path: '/help/helpdoc',
           redirect: '/help/helpdoc',
-          meta: { title: '帮助文档', keepAlive: false, target: '_blank' }
+          meta: { title: '首页', keepAlive: false, target: '_blank' }
         }, {
           path: '/help/helpsearch',
           redirect: 'help/helpsearch',
-          meta: { title: '帮助搜索', keepAlive: false, target: '_blank' }
+          meta: { title: '搜索页', keepAlive: false, target: '_blank' }
         }, {
           path: '/help/helpinfo',
           redirect: 'help/helpinfo',
-          meta: { title: '帮助信息', keepAlive: false, target: '_blank' }
+          meta: { title: '最终页', keepAlive: false, target: '_blank' }
         }]
       },
       {

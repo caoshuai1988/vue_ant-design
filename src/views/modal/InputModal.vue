@@ -4,306 +4,338 @@
       <div class="space-bottom_24" style="margin-top:24px;">
         <a-button type="primary" @click="showModal_860">860宽</a-button>
       </div>
-      
       <!--样式模板-->
-	   <div class="content" style="width:860px; background: white;">
-			<div class="content-title">
-				<span style="float:left">账单调整</span><span style="float:right;"><img :src="close" /></span>
-			</div>
-			<div class="content-from">
-				<a-form
-		        class="ant-advanced-search-form"
-		        :form="form"
-		        @submit="handleSubmit">
-		        <a-row :gutter="24">
-		          <a-col :span="10" offset="2">
-		            <a-form-item label="支付宝账户："
-		            :label-col="formItemLayout.labelCol"
-		            :wrapper-col="formItemLayout.wrapperCol"
-		            >
-		              <span>AntDesign@test.com</span>
-		            </a-form-item>
-		          </a-col>
-		          <a-col :span="10">
-		            <a-form-item label="产品"
-		            :label-col="formItemLayout.labelCol"
-		            :wrapper-col="formItemLayout.wrapperCol"
-		            >
-		              <span>--</span>
-		            </a-form-item>
-		          </a-col>
-		        </a-row>
-		        <a-row :gutter="24">
-		          <a-col :span="10" offset="2">
-		            <a-form-item label="商户登录ID："
-		            :label-col="formItemLayout.labelCol"
-		            :wrapper-col="formItemLayout.wrapperCol"
-		            >
-		              <span>城里的月光</span>
-		            </a-form-item>
-		          </a-col>
-		          <a-col :span="10">
-		            <a-form-item label="结算方式"
-		            :label-col="formItemLayout.labelCol"
-		            :wrapper-col="formItemLayout.wrapperCol"
-		            >
-		              <span>--</span>
-		            </a-form-item>
-		          </a-col>
-		        </a-row>
-		        <a-row :gutter="24">
-		          <a-col :span="10" offset="2">
-		            <a-form-item label="合约号"
-		            :label-col="formItemLayout.labelCol"
-		            :wrapper-col="formItemLayout.wrapperCol"
-		            >
-		              <span>--</span>
-		            </a-form-item>
-		          </a-col>
-		          <a-col :span="10">
-		            <a-form-item label="币种"
-		            :label-col="formItemLayout.labelCol"
-		            :wrapper-col="formItemLayout.wrapperCol"
-		            >
-		              <span>--</span>
-		            </a-form-item>
-		          </a-col>
-		        </a-row>
-		        <a-row :gutter="24">
-		          <a-col :span="10" offset="2">
-		            <a-form-item label="调整账单日期"
-		            :label-col="formItemLayout.labelCol"
-		            :wrapper-col="formItemLayout.wrapperCol"
-		            >
-		              <span>--</span>
-		            </a-form-item>
-		          </a-col>
-		          <a-col :span="10">
-		            <a-form-item label="当前会计日期"
-		            :label-col="formItemLayout.labelCol"
-		            :wrapper-col="formItemLayout.wrapperCol"
-		            >
-		              <span>--</span>
-		            </a-form-item>
-		          </a-col>
-		        </a-row>
-		        <a-row :gutter="24">
-		          <a-col :span="10" offset="2">
-		            <a-form-item label="调整金额"
-		            :label-col="formItemLayout.labelCol"
-		            :wrapper-col="formItemLayout.wrapperCol"
-		            >
-		              <a-input
-		              	 v-decorator="[
-			              'taskName',
-			              {rules: [{ required: true, message: '请输入调整金额' }],}
-			            ]"
-		              	addonBefore="￥" defaultValue="-100" style="width:210px" />
-		            </a-form-item>
-		          </a-col>
-		          <a-col :span="10">
-		            <a-form-item label="调整后金额"
-		            :label-col="formItemLayout.labelCol"
-		            :wrapper-col="formItemLayout.wrapperCol"
-		            >
-		              <span style="color:red">--</span>
-		            </a-form-item>
-		          </a-col>
-		        </a-row>
-		        <a-row :gutter="24">
-		          <a-col :span="10" offset="2">
-		            <a-form-item label="计费依据"
-		            :label-col="formItemLayout.labelCol"
-		            :wrapper-col="formItemLayout.wrapperCol"
-		            >
-		              <a-select defaultValue="lucy" style="width: 210px" @change="handleChange"
-		              	v-decorator="[
-			              'leader',
-			              {rules: [{ required: true, message: '请选择计费依据' }]}
-			            ]"
-		              >
-		                <a-select-option value="">交易金额</a-select-option>
-		                <a-select-option value="amount">交易金额</a-select-option>
-		                <a-select-option value="amount1">交易金额1</a-select-option>
-		              </a-select>
-		            </a-form-item>
-		          </a-col>
-		          <a-col :span="10">
-		            <a-form-item label="调整计费量"
-		            :label-col="formItemLayout.labelCol"
-		            :wrapper-col="formItemLayout.wrapperCol"
-		            >
-					<a-input-number :min="1" :max="10"  @change="onChange" 
-						v-decorator="[
-			              'leader',
-			              {rules: [{ required: true, message: '请输入计费量' }]}
-			            ]"
-					/>
-		            </a-form-item>
-		          </a-col>
-		        </a-row>
-		        <a-row :gutter="24" >
-		          <a-col :span="10" offset="2" style="width:780px;margin-left:-76px;">
-		            <a-form-item label="原因说明"
-		            :label-col="formItemLayout.labelCol"
-		            :wrapper-col="formItemLayout.wrapperCol"
-		            >
-		              <a-textarea placeholder="请输入至少五个字符" :rows="4" cols="70"/>
-		            </a-form-item>
-		          </a-col>
-		        </a-row>
-		        <a-row :gutter="24">
-		          <a-col :span="10" offset="2">
-		            <a-form-item label="附件上传"
-		            :label-col="formItemLayout.labelCol"
-		            :wrapper-col="formItemLayout.wrapperCol"
-		            >
-					  <a-upload name="file" :multiple="true" action="https://www.mocky.io/v2/5cc8019d300000980a055e76" :headers="headers" @change="handleChange"
-					  	v-decorator="[
-			              'leader',
-			              {rules: [{ required: true, message: '请上传' }]}
-			            ]"
-					  >
-					    <a-button>
-					      <a-icon type="upload" /> 上传文件
-					    </a-button><br>
-					    <span style="width:300px;font-size:14px;color:#ccc;margin-top: 10px;display: inline-block;">支持扩展名：.doc .docx .pdf .jpg...</span>
-					  </a-upload>
-		            </a-form-item>
-		          </a-col>
-		        </a-row>
-		      </a-form>
-			</div>
-			<div class="content-foot">
-				<a-button>取消</a-button><a-button type="primary" style="margin-left:8px;">确定</a-button>
-			</div>
-		</div>
+      <div class="content-warp" style="width:860px; background: white;">
+        <div class="content-title">
+          <span style="float:left">账单调整</span><span style="float:right;"><img :src="close" /></span>
+        </div>
+        <div class="content-from">
+          <a-form
+            class="ant-advanced-search-form"
+            :form="form"
+            @submit="handleSubmit">
+            <a-row :gutter="24">
+              <a-col :span="10" offset="2">
+                <a-form-item
+                  label="支付宝账户："
+                  :label-col="formItemLayout.labelCol"
+                  :wrapper-col="formItemLayout.wrapperCol"
+                >
+                  <span>AntDesign@test.com</span>
+                </a-form-item>
+              </a-col>
+              <a-col :span="10">
+                <a-form-item
+                  label="产品"
+                  :label-col="formItemLayout.labelCol"
+                  :wrapper-col="formItemLayout.wrapperCol"
+                >
+                  <span>--</span>
+                </a-form-item>
+              </a-col>
+            </a-row>
+            <a-row :gutter="24">
+              <a-col :span="10" offset="2">
+                <a-form-item
+                  label="商户登录ID："
+                  :label-col="formItemLayout.labelCol"
+                  :wrapper-col="formItemLayout.wrapperCol"
+                >
+                  <span>城里的月光</span>
+                </a-form-item>
+              </a-col>
+              <a-col :span="10">
+                <a-form-item
+                  label="结算方式"
+                  :label-col="formItemLayout.labelCol"
+                  :wrapper-col="formItemLayout.wrapperCol"
+                >
+                  <span>--</span>
+                </a-form-item>
+              </a-col>
+            </a-row>
+            <a-row :gutter="24">
+              <a-col :span="10" offset="2">
+                <a-form-item
+                  label="合约号"
+                  :label-col="formItemLayout.labelCol"
+                  :wrapper-col="formItemLayout.wrapperCol"
+                >
+                  <span>--</span>
+                </a-form-item>
+              </a-col>
+              <a-col :span="10">
+                <a-form-item
+                  label="币种"
+                  :label-col="formItemLayout.labelCol"
+                  :wrapper-col="formItemLayout.wrapperCol"
+                >
+                  <span>--</span>
+                </a-form-item>
+              </a-col>
+            </a-row>
+            <a-row :gutter="24">
+              <a-col :span="10" offset="2">
+                <a-form-item
+                  label="调整账单日期"
+                  :label-col="formItemLayout.labelCol"
+                  :wrapper-col="formItemLayout.wrapperCol"
+                >
+                  <span>--</span>
+                </a-form-item>
+              </a-col>
+              <a-col :span="10">
+                <a-form-item
+                  label="当前会计日期"
+                  :label-col="formItemLayout.labelCol"
+                  :wrapper-col="formItemLayout.wrapperCol"
+                >
+                  <span>--</span>
+                </a-form-item>
+              </a-col>
+            </a-row>
+            <a-row :gutter="24">
+              <a-col :span="10" offset="2">
+                <a-form-item
+                  label="调整金额"
+                  :label-col="formItemLayout.labelCol"
+                  :wrapper-col="formItemLayout.wrapperCol"
+                >
+                  <a-input
+                    v-decorator="[
+                      'taskName',
+                      {rules: [{ required: true, message: '请输入调整金额' }],}
+                    ]"
+                    addonBefore="￥"
+                    defaultValue="-100"
+                    style="width:210px" />
+                </a-form-item>
+              </a-col>
+              <a-col :span="10">
+                <a-form-item
+                  label="调整后金额"
+                  :label-col="formItemLayout.labelCol"
+                  :wrapper-col="formItemLayout.wrapperCol"
+                >
+                  <span style="color:red">--</span>
+                </a-form-item>
+              </a-col>
+            </a-row>
+            <a-row :gutter="24">
+              <a-col :span="10" offset="2">
+                <a-form-item
+                  label="计费依据"
+                  :label-col="formItemLayout.labelCol"
+                  :wrapper-col="formItemLayout.wrapperCol"
+                >
+                  <a-select
+                    defaultValue="lucy"
+                    style="width: 210px"
+                    @change="handleChange"
+                    v-decorator="[
+                      'leader',
+                      {rules: [{ required: true, message: '请选择计费依据' }]}
+                    ]"
+                  >
+                    <a-select-option value="">交易金额</a-select-option>
+                    <a-select-option value="amount">交易金额</a-select-option>
+                    <a-select-option value="amount1">交易金额1</a-select-option>
+                  </a-select>
+                </a-form-item>
+              </a-col>
+              <a-col :span="10">
+                <a-form-item
+                  label="调整计费量"
+                  :label-col="formItemLayout.labelCol"
+                  :wrapper-col="formItemLayout.wrapperCol"
+                >
+                  <a-input-number
+                    :min="1"
+                    :max="10"
+                    @change="onChange"
+                    v-decorator="[
+                      'leader',
+                      {rules: [{ required: true, message: '请输入计费量' }]}
+                    ]"
+                  />
+                </a-form-item>
+              </a-col>
+            </a-row>
+            <a-row :gutter="24" >
+              <a-col :span="10" offset="2" style="width:780px;margin-left:-76px;">
+                <a-form-item
+                  label="原因说明"
+                  :label-col="formItemLayout.labelCol"
+                  :wrapper-col="formItemLayout.wrapperCol"
+                >
+                  <a-textarea placeholder="请输入至少五个字符" :rows="4" cols="70"/>
+                </a-form-item>
+              </a-col>
+            </a-row>
+            <a-row :gutter="24">
+              <a-col :span="10" offset="2">
+                <a-form-item
+                  label="附件上传"
+                  :label-col="formItemLayout.labelCol"
+                  :wrapper-col="formItemLayout.wrapperCol"
+                >
+                  <a-upload
+                    name="file"
+                    :multiple="true"
+                    action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                    :headers="headers"
+                    @change="handleChange"
+                    v-decorator="[
+                      'leader',
+                      {rules: [{ required: true, message: '请上传' }]}
+                    ]"
+                  >
+                    <a-button>
+                      <a-icon type="upload" /> 上传文件
+                    </a-button><br>
+                    <span style="width:300px;font-size:14px;color:#ccc;margin-top: 10px;display: inline-block;">支持扩展名：.doc .docx .pdf .jpg...</span>
+                  </a-upload>
+                </a-form-item>
+              </a-col>
+            </a-row>
+          </a-form>
+        </div>
+        <div class="content-foot">
+          <a-button>取消</a-button><a-button type="primary" style="margin-left:8px;">确定</a-button>
+        </div>
+      </div>
       <div class="space-bottom_24">
         <a-button type="primary" @click="showModal">640宽</a-button>
       </div>
       <div class="content" style="width:640px; background: white;">
-			<div class="content-title">
-				<span style="float:left">新建任务</span><span style="float:right;"><img :src="close" /></span>
-			</div>
-			<div class="content-from">
-				<a-alert type="error" message="错误提示的文案" banner closable />
-			      <a-form
-			        :form="form"
-			        @submit="handleSubmit">
-			        <a-form-item
-			          style="margin-top:24px"
-			          label="创建人"
-			          :label-col="{ span: 5 }"
-			          :wrapper-col="{ span: 16 }"
-			        >
-			          <span>--</span>
-			        </a-form-item>
-			        <a-form-item
-			          label="任务名称"
-			          :label-col="{ span: 5 }"
-			          :wrapper-col="{ span: 16 }"
-			        >
-			          <a-input
-			            v-decorator="[
-			              'taskName',
-			              {rules: [{ required: true, message: '请输入你的任务名称' }]}
-			            ]"
-			          />
-			        </a-form-item>
-			        <a-form-item
-			          label="起止时间"
-			          :label-col="{ span: 5 }"
-			          :wrapper-col="{ span: 16 }"
-			        >
-			          <a-range-picker v-decorator="['range-picker', {rules: [{ type: 'array', required: true, message: '请选择时间范围' }]}]" />
-			        </a-form-item>
-			        <a-form-item
-			          label="任务负责人"
-			          :label-col="{ span: 5 }"
-			          :wrapper-col="{ span: 16 }"
-			        >
-			          <a-select
-			            v-decorator="[
-			              'leader',
-			              {rules: [{ required: true, message: '请选择负责人' }]}
-			            ]"
-			            placeholder="请选择"
-			            @change="handleSelectChange"
-			          >
-			            <a-select-option value="zhangsan">
-			              张三
-			            </a-select-option>
-			            <a-select-option value="lisi">
-			              李四
-			            </a-select-option>
-			          </a-select>
-			        </a-form-item>
-			        <a-form-item
-			          label="产品描述"
-			          :label-col="{ span: 5 }"
-			          :wrapper-col="{ span: 16 }"
-			        >
-			          <a-textarea placeholder="请输入至少五个字符" :rows="4"/>
-			        </a-form-item>
-			      </a-form>
-			</div>
-			<div class="content-foot">
-				<a-button>取消</a-button><a-button type="primary" style="margin-left:8px;">确定</a-button>
-			</div>
-		</div>
+        <div class="content-title">
+          <span style="float:left">新建任务</span><span style="float:right;"><img :src="close" /></span>
+        </div>
+        <div class="content-from">
+          <a-alert type="error" message="错误提示的文案" banner closable />
+          <a-form
+            :form="form"
+            @submit="handleSubmit">
+            <a-form-item
+              style="margin-top:24px"
+              label="创建人"
+              :label-col="{ span: 5 }"
+              :wrapper-col="{ span: 16 }"
+            >
+              <span>--</span>
+            </a-form-item>
+            <a-form-item
+              label="任务名称"
+              :label-col="{ span: 5 }"
+              :wrapper-col="{ span: 16 }"
+            >
+              <a-input
+                v-decorator="[
+                  'taskName',
+                  {rules: [{ required: true, message: '请输入你的任务名称' }]}
+                ]"
+              />
+            </a-form-item>
+            <a-form-item
+              label="起止时间"
+              :label-col="{ span: 5 }"
+              :wrapper-col="{ span: 16 }"
+            >
+              <a-range-picker v-decorator="['range-picker', {rules: [{ type: 'array', required: true, message: '请选择时间范围' }]}]" />
+            </a-form-item>
+            <a-form-item
+              label="任务负责人"
+              :label-col="{ span: 5 }"
+              :wrapper-col="{ span: 16 }"
+            >
+              <a-select
+                v-decorator="[
+                  'leader',
+                  {rules: [{ required: true, message: '请选择负责人' }]}
+                ]"
+                placeholder="请选择"
+                @change="handleSelectChange"
+              >
+                <a-select-option value="zhangsan">
+                  张三
+                </a-select-option>
+                <a-select-option value="lisi">
+                  李四
+                </a-select-option>
+              </a-select>
+            </a-form-item>
+            <a-form-item
+              label="产品描述"
+              :label-col="{ span: 5 }"
+              :wrapper-col="{ span: 16 }"
+            >
+              <a-textarea placeholder="请输入至少五个字符" :rows="4"/>
+            </a-form-item>
+          </a-form>
+        </div>
+        <div class="content-foot">
+          <a-button>取消</a-button><a-button type="primary" style="margin-left:8px;">确定</a-button>
+        </div>
+      </div>
       <div class="space-bottom_24">
         <a-button type="primary" @click="showDocument">480宽</a-button>
       </div>
       <div class="content" style="width:480px; background: white;">
-			<div class="content-title">
-				<span style="float:left">新建文档<i style="color:rgb(204, 204, 204);font-size:12px;margin-left:6px;font-style:normal;">辅助信息</i></span><span style="float:right;"><img :src="close" /></span>
-			</div>
-			<div class="content-from">
-				<a-form
-			        :form="form"
-			        @submit="handleSubmit">
-			        <a-form-item
-			          label="产品名称"
-			          :label-col="{ span: 5 }"
-			          :wrapper-col="{ span: 16 }"
-			        >
-			          <a-input placeholder="请输入"/>
-			        </a-form-item>
-			        <a-form-item
-			          label="产品描述"
-			          :label-col="{ span: 5 }"
-			          :wrapper-col="{ span: 16 }"
-			        >
-			          <a-textarea placeholder="请输入至少五个字符" :rows="4"/>
-			        </a-form-item>
-			      </a-form>
-			</div>
-			<div class="content-foot">
-				<a-button>取消</a-button><a-button type="primary" style="margin-left:8px;">确定</a-button>
-			</div>
-		</div>
-    	<div class="space-bottom_24">
-	       	<a-popconfirm placement="top" @confirm="confirm" @cancel="cancel" okText="确定" cancelText="取消">
-	          <template slot="title">
-	            <p style="margin-top:20px;">
-	              <span>备注：</span>
-	              <span style="display:inline-block; margin-left:6px;"><a-input style="width:182px" placeholder=""/></span>
-	            </p>
-	          </template>
-	          <a-button type="primary">264宽</a-button>
-	       </a-popconfirm>
-    	</div>
-    	<div style="margin-top:150px">
-	       	<a-popconfirm placement="top" @confirm="confirm" @cancel="cancel" okText="确定" visible="true" cancelText="取消">
-	          <template slot="title">
-	            <p style="margin-top:20px;">
-	              <span>备注：</span>
-	              <span style="display:inline-block; margin-left:6px;"><a-input style="width:182px" placeholder=""/></span>
-	            </p>
-	          </template>
-	          <a-button>按钮位置</a-button>
-	       </a-popconfirm>
-    	</div>
+        <div class="content-title">
+          <span style="float:left">新建文档<i style="color:rgb(204, 204, 204);font-size:12px;margin-left:6px;font-style:normal;">辅助信息</i></span><span style="float:right;"><img :src="close" /></span>
+        </div>
+        <div class="content-from">
+          <a-form
+            :form="form"
+            @submit="handleSubmit">
+            <a-form-item
+              label="产品名称"
+              :label-col="{ span: 5 }"
+              :wrapper-col="{ span: 16 }"
+            >
+              <a-input placeholder="请输入"/>
+            </a-form-item>
+            <a-form-item
+              label="产品描述"
+              :label-col="{ span: 5 }"
+              :wrapper-col="{ span: 16 }"
+            >
+              <a-textarea placeholder="请输入至少五个字符" :rows="4"/>
+            </a-form-item>
+          </a-form>
+        </div>
+        <div class="content-foot">
+          <a-button>取消</a-button><a-button type="primary" style="margin-left:8px;">确定</a-button>
+        </div>
+      </div>
+      <div class="space-bottom_24">
+        <a-popconfirm placement="top" @confirm="confirm" @cancel="cancel" okText="确定" cancelText="取消">
+          <template slot="title">
+            <p style="margin-top:20px;">
+              <span>备注：</span>
+              <span style="display:inline-block; margin-left:6px;"><a-input style="width:182px" placeholder=""/></span>
+            </p>
+          </template>
+          <a-button type="primary">264宽</a-button>
+        </a-popconfirm>
+      </div>
+      <div style="margin-top:150px">
+        <a-popconfirm
+          placement="top"
+          @confirm="confirm"
+          @cancel="cancel"
+          okText="确定"
+          visible="true"
+          cancelText="取消">
+          <template slot="title">
+            <p style="margin-top:20px;">
+              <span>备注：</span>
+              <span style="display:inline-block; margin-left:6px;"><a-input style="width:182px" placeholder=""/></span>
+            </p>
+          </template>
+          <a-button>按钮位置</a-button>
+        </a-popconfirm>
+      </div>
     </div>
     <!--640-->
     <a-modal
@@ -375,8 +407,7 @@
         </a-form-item>
       </a-form>
     </a-modal>
-    
-    
+
     <!--480-->
     <a-modal
       title="新建文档"
@@ -386,7 +417,7 @@
       @cancel="handleCancel2"
       :width="width"
     >
-    <span style="position:relative;left:70px;top:-60px;color:#ccc;font-size:12px;">辅助信息</span>
+      <span style="position:relative;left:70px;top:-60px;color:#ccc;font-size:12px;">辅助信息</span>
       <a-form
         :form="form"
         @submit="handleSubmit">
@@ -406,9 +437,9 @@
         </a-form-item>
       </a-form>
     </a-modal>
-    
+
     <!--218-->
-    
+
     <!--860-->
     <a-modal
       title="账单调整"
@@ -424,17 +455,19 @@
         @submit="handleSubmit">
         <a-row :gutter="24">
           <a-col :span="10" offset="2">
-            <a-form-item label="支付宝账户："
-            :label-col="formItemLayout.labelCol"
-            :wrapper-col="formItemLayout.wrapperCol"
+            <a-form-item
+              label="支付宝账户："
+              :label-col="formItemLayout.labelCol"
+              :wrapper-col="formItemLayout.wrapperCol"
             >
               <span>AntDesign@test.com</span>
             </a-form-item>
           </a-col>
           <a-col :span="10">
-            <a-form-item label="产品"
-            :label-col="formItemLayout.labelCol"
-            :wrapper-col="formItemLayout.wrapperCol"
+            <a-form-item
+              label="产品"
+              :label-col="formItemLayout.labelCol"
+              :wrapper-col="formItemLayout.wrapperCol"
             >
               <span>--</span>
             </a-form-item>
@@ -442,17 +475,19 @@
         </a-row>
         <a-row :gutter="24">
           <a-col :span="10" offset="2">
-            <a-form-item label="商户登录ID："
-            :label-col="formItemLayout.labelCol"
-            :wrapper-col="formItemLayout.wrapperCol"
+            <a-form-item
+              label="商户登录ID："
+              :label-col="formItemLayout.labelCol"
+              :wrapper-col="formItemLayout.wrapperCol"
             >
               <span>城里的月光</span>
             </a-form-item>
           </a-col>
           <a-col :span="10">
-            <a-form-item label="结算方式"
-            :label-col="formItemLayout.labelCol"
-            :wrapper-col="formItemLayout.wrapperCol"
+            <a-form-item
+              label="结算方式"
+              :label-col="formItemLayout.labelCol"
+              :wrapper-col="formItemLayout.wrapperCol"
             >
               <span>--</span>
             </a-form-item>
@@ -460,17 +495,19 @@
         </a-row>
         <a-row :gutter="24">
           <a-col :span="10" offset="2">
-            <a-form-item label="合约号"
-            :label-col="formItemLayout.labelCol"
-            :wrapper-col="formItemLayout.wrapperCol"
+            <a-form-item
+              label="合约号"
+              :label-col="formItemLayout.labelCol"
+              :wrapper-col="formItemLayout.wrapperCol"
             >
               <span>--</span>
             </a-form-item>
           </a-col>
           <a-col :span="10">
-            <a-form-item label="币种"
-            :label-col="formItemLayout.labelCol"
-            :wrapper-col="formItemLayout.wrapperCol"
+            <a-form-item
+              label="币种"
+              :label-col="formItemLayout.labelCol"
+              :wrapper-col="formItemLayout.wrapperCol"
             >
               <span>--</span>
             </a-form-item>
@@ -478,17 +515,19 @@
         </a-row>
         <a-row :gutter="24">
           <a-col :span="10" offset="2">
-            <a-form-item label="调整账单日期"
-            :label-col="formItemLayout.labelCol"
-            :wrapper-col="formItemLayout.wrapperCol"
+            <a-form-item
+              label="调整账单日期"
+              :label-col="formItemLayout.labelCol"
+              :wrapper-col="formItemLayout.wrapperCol"
             >
               <span>--</span>
             </a-form-item>
           </a-col>
           <a-col :span="10">
-            <a-form-item label="当前会计日期"
-            :label-col="formItemLayout.labelCol"
-            :wrapper-col="formItemLayout.wrapperCol"
+            <a-form-item
+              label="当前会计日期"
+              :label-col="formItemLayout.labelCol"
+              :wrapper-col="formItemLayout.wrapperCol"
             >
               <span>--</span>
             </a-form-item>
@@ -496,22 +535,26 @@
         </a-row>
         <a-row :gutter="24">
           <a-col :span="10" offset="2">
-            <a-form-item label="调整金额"
-            :label-col="formItemLayout.labelCol"
-            :wrapper-col="formItemLayout.wrapperCol"
+            <a-form-item
+              label="调整金额"
+              :label-col="formItemLayout.labelCol"
+              :wrapper-col="formItemLayout.wrapperCol"
             >
               <a-input
-              	 v-decorator="[
-	              'taskName',
-	              {rules: [{ required: true, message: '请输入调整金额' }],}
-	            ]"
-              	addonBefore="￥" defaultValue="-100" style="width:210px" />
+                v-decorator="[
+                  'taskName',
+                  {rules: [{ required: true, message: '请输入调整金额' }],}
+                ]"
+                addonBefore="￥"
+                defaultValue="-100"
+                style="width:210px" />
             </a-form-item>
           </a-col>
           <a-col :span="10">
-            <a-form-item label="调整后金额"
-            :label-col="formItemLayout.labelCol"
-            :wrapper-col="formItemLayout.wrapperCol"
+            <a-form-item
+              label="调整后金额"
+              :label-col="formItemLayout.labelCol"
+              :wrapper-col="formItemLayout.wrapperCol"
             >
               <span style="color:red">--</span>
             </a-form-item>
@@ -519,15 +562,19 @@
         </a-row>
         <a-row :gutter="24">
           <a-col :span="10" offset="2">
-            <a-form-item label="计费依据"
-            :label-col="formItemLayout.labelCol"
-            :wrapper-col="formItemLayout.wrapperCol"
+            <a-form-item
+              label="计费依据"
+              :label-col="formItemLayout.labelCol"
+              :wrapper-col="formItemLayout.wrapperCol"
             >
-              <a-select defaultValue="lucy" style="width: 210px" @change="handleChange"
-              	v-decorator="[
-	              'leader',
-	              {rules: [{ required: true, message: '请选择计费依据' }]}
-	            ]"
+              <a-select
+                defaultValue="lucy"
+                style="width: 210px"
+                @change="handleChange"
+                v-decorator="[
+                  'leader',
+                  {rules: [{ required: true, message: '请选择计费依据' }]}
+                ]"
               >
                 <a-select-option value="">交易金额</a-select-option>
                 <a-select-option value="amount">交易金额</a-select-option>
@@ -536,24 +583,29 @@
             </a-form-item>
           </a-col>
           <a-col :span="10">
-            <a-form-item label="调整计费量"
-            :label-col="formItemLayout.labelCol"
-            :wrapper-col="formItemLayout.wrapperCol"
+            <a-form-item
+              label="调整计费量"
+              :label-col="formItemLayout.labelCol"
+              :wrapper-col="formItemLayout.wrapperCol"
             >
-			<a-input-number :min="1" :max="10"  @change="onChange" 
-				v-decorator="[
-	              'leader',
-	              {rules: [{ required: true, message: '请输入计费量' }]}
-	            ]"
-			/>
+              <a-input-number
+                :min="1"
+                :max="10"
+                @change="onChange"
+                v-decorator="[
+                  'leader',
+                  {rules: [{ required: true, message: '请输入计费量' }]}
+                ]"
+              />
             </a-form-item>
           </a-col>
         </a-row>
         <a-row :gutter="24" >
           <a-col :span="10" offset="2" style="width:780px;margin-left:-76px;">
-            <a-form-item label="原因说明"
-            :label-col="formItemLayout.labelCol"
-            :wrapper-col="formItemLayout.wrapperCol"
+            <a-form-item
+              label="原因说明"
+              :label-col="formItemLayout.labelCol"
+              :wrapper-col="formItemLayout.wrapperCol"
             >
               <a-textarea placeholder="请输入至少五个字符" :rows="4" cols="70"/>
             </a-form-item>
@@ -561,21 +613,27 @@
         </a-row>
         <a-row :gutter="24">
           <a-col :span="10" offset="2">
-            <a-form-item label="附件上传"
-            :label-col="formItemLayout.labelCol"
-           :wrapper-col="formItemLayout.wrapperCol"
+            <a-form-item
+              label="附件上传"
+              :label-col="formItemLayout.labelCol"
+              :wrapper-col="formItemLayout.wrapperCol"
             >
-			  <a-upload name="file" :multiple="true" action="https://www.mocky.io/v2/5cc8019d300000980a055e76" :headers="headers" @change="handleChange"
-			  	v-decorator="[
-	              'leader',
-	              {rules: [{ required: true, message: '请上传' }]}
-	            ]"
-			  >
-			    <a-button>
-			      <a-icon type="upload" /> 上传文件
-			    </a-button><br>
-			    <span style="width:300px;font-size:14px;color:#ccc;margin-top: 10px;display: inline-block;">支持扩展名：.doc .docx .pdf .jpg...</span>
-			  </a-upload>
+              <a-upload
+                name="file"
+                :multiple="true"
+                action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                :headers="headers"
+                @change="handleChange"
+                v-decorator="[
+                  'leader',
+                  {rules: [{ required: true, message: '请上传' }]}
+                ]"
+              >
+                <a-button>
+                  <a-icon type="upload" /> 上传文件
+                </a-button><br>
+                <span style="width:300px;font-size:14px;color:#ccc;margin-top: 10px;display: inline-block;">支持扩展名：.doc .docx .pdf .jpg...</span>
+              </a-upload>
             </a-form-item>
           </a-col>
         </a-row>
@@ -604,18 +662,18 @@ export default {
     }
   },
   computed: {
-  	formItemLayout () {
-      const { formLayout } = this;
+    formItemLayout () {
+      const { formLayout } = this
       return formLayout === 'horizontal' ? {
         labelCol: { span: 8 },
-        wrapperCol: { span: 14 },
-      } : {};
+        wrapperCol: { span: 14 }
+      } : {}
     },
     buttonItemLayout () {
-      const { formLayout } = this;
+      const { formLayout } = this
       return formLayout === 'horizontal' ? {
-        wrapperCol: { span: 14, offset: 4 },
-      } : {};
+        wrapperCol: { span: 14, offset: 4 }
+      } : {}
     },
     close () {
       return close
@@ -665,8 +723,8 @@ export default {
       this.visible2 = true
       this.width = '480px'
     },
-    showRemarks(){
-      //this.visible3 = true
+    showRemarks () {
+      // this.visible3 = true
       this.width = '264px'
     },
     handleCancel (e) {
@@ -677,20 +735,20 @@ export default {
       console.log('Clicked cancel button')
       this.visible1 = false
     },
-    handleCancel2(e){
-    	this.visible2 = false
+    handleCancel2 (e) {
+      this.visible2 = false
     },
-    handleCancel3(e){
-    	this.visible3 = false
+    handleCancel3 (e) {
+      this.visible3 = false
     }
   }
 }
 </script>
-<style>
-	.content{
+<style scoped>
+	.content-warp{
 		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 	}
-	.content .content-title{
+	.content-warp .content-title{
 		overflow: hidden;
 		padding:16px 24px;
 		border-radius:4px 4px 0 0;

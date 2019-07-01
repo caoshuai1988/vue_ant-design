@@ -1,6 +1,7 @@
 <template>
   <home-view :avatar="avatar" :title="false">
     <div>
+      <modal :visible="isVisible" @handelClose="closeSetting"/>
       <a-row :gutter="24">
         <a-col :sm="24" :md="12" :xl="4" :style="{ marginBottom: '24px' }">
           <chart-card :loading="loading" title="总销售额" total="￥126,560">
@@ -104,7 +105,7 @@
             :bordered="false"
             title="常用功能"
             :body-style="{ padding: '0 24px' }">
-            <a slot="extra">设置</a>
+            <a slot="extra" @click="handelSetting">设置</a>
             <div>
               <div class="module-card-grid " :key="i" v-for="(item, i) in projects">
                 <div class="card-grid">
@@ -129,7 +130,7 @@
             <span slot="title">我的待办 （<a href="javascript:void(0)" style="color:red">6</a>）</span>
             <a slot="extra">更多</a>
             <a-table :dataSource="table1" :pagination="false" style="padding: 24px">
-              <a-table-column title="名称" data-index="name" key="name" />
+              <a-table-column title="名称" data-index="name" key="name" :width="380"/>
               <a-table-column title="模块" data-index="module" key="module"/>
               <a-table-column title="进度" key="progress">
                 <template slot-scope="text, record">
@@ -164,7 +165,7 @@
             <span slot="title">近期办理 <span style="color:#999999;font-size:12px;padding-left:10px;">只显示近10条业务</span></span>
             <a slot="extra">更多</a>
             <a-table :dataSource="table1" :pagination="false" style="padding: 24px">
-              <a-table-column title="名称" data-index="name" key="name" />
+              <a-table-column title="名称" data-index="name" key="name" :width="380"/>
               <a-table-column title="模块" data-index="module" key="module"/>
               <a-table-column title="进度" key="progress">
                 <template slot-scope="text, record">
@@ -198,26 +199,10 @@
             :body-style="{ padding: 0 }">
             <span slot="title">常用下载 <span style="color:#999999;font-size:12px;padding-left:10px;">只显示近10条业务</span></span>
             <a slot="extra">更多</a>
-            <a-table :dataSource="table1" :pagination="false" style="padding: 24px">
-              <a-table-column title="名称" data-index="name" key="name" />
-              <a-table-column title="模块" data-index="module" key="module"/>
-              <!-- <a-table-column title="进度" data-index="progress" key="progress"/>
-              <a-table-column title="操作时间" data-index="datetime" key="datetime"/>
-               -->
-              <a-table-column title="进度" key="progress">
-                <template slot-scope="text, record">
-                  <!-- <a-badge status="success" text="record.progress" /> -->
-                  <a-badge status="success" text="编辑(1/3)" />
-                </template>
-              </a-table-column>
-              <a-table-column title="操作时间" key="datetime">
-                <template slot-scope="text, record">
-                  <span style="color:#52c41a" v-if="record.datetime==='今天'">{{ record.datetime }}</span>
-                  <span style="color:#FF9933" v-if="record.datetime==='昨天'">{{ record.datetime }}</span>
-                  <span style="color:#FF0000" v-if="record.datetime==='2天前'">{{ record.datetime }}</span>
-                  <span style="color:#FF0000" v-if="record.datetime==='08-12'">{{ record.datetime }}</span>
-                </template>
-              </a-table-column>
+            <a-table :dataSource="table1" :pagination="false" style="padding: 24px" >
+              <a-table-column title="名称" data-index="name" key="name" :width="380" />
+              <a-table-column title="类型" data-index="module" key="module"/>
+              <a-table-column title="发布日期" data-index="publicTime" key="publicTime"/>
               <a-table-column title="操作" key="operation">
                 <template slot-scope="text, record">
                   <a>{{ record.operation.download }}</a>
@@ -357,6 +342,7 @@ import { HomeView } from '@/layouts'
 import HeadInfo from '@/components/tools/HeadInfo'
 import { Radar, Gradient, ChartCard, MiniArea, MiniBar, MiniProgress, MiniSmoothArea, RankList, Bar, Trend, NumberInfo, MiniRectangle } from '@/components'
 import { getRoleList, getServiceList } from '@/api/manage'
+import modal from './component/modal'
 
 // word格式
 import icon1 from '@/assets/icons/icon1.png'
@@ -398,6 +384,8 @@ const searchUserScale = [
 export default {
   name: 'Workplace',
   components: {
+    // 穿梭框
+    modal,
     HomeView,
     HeadInfo,
     Radar,
@@ -415,6 +403,8 @@ export default {
   },
   data () {
     return {
+      // 穿梭框是否显示
+      isVisible: false,
       // 便签数据
       noteList: [
         { time: '08-12 09:00', content: '24小时内要做的工作红字要做的工作红字', color: '#FF0000' },
@@ -482,6 +472,7 @@ export default {
           key: '1',
           name: '条目名称条目名称条目名称条目名称',
           module: '模块名称1',
+          publicTime: '2019-09-09',
           progress: '编辑(1/3)',
           datetime: '今天',
           operation: {
@@ -495,6 +486,7 @@ export default {
           key: '2',
           name: '条目名称条目名称条目名称条目名称',
           module: '模块名称2',
+          publicTime: '2019-09-09',
           progress: '编辑(1/3)',
           datetime: '昨天',
           operation: {
@@ -508,6 +500,7 @@ export default {
           key: '3',
           name: '条目名称条目名称条目名称条目名称',
           module: '模块名称3',
+          publicTime: '2019-09-09',
           progress: '编辑(1/3)',
           datetime: '2天前',
           operation: {
@@ -521,6 +514,7 @@ export default {
           key: '4',
           name: '条目名称条目名称条目名称条目名称',
           module: '模块名称4',
+          publicTime: '2019-09-09',
           progress: '编辑(1/3)',
           datetime: '2天前',
           operation: {
@@ -532,8 +526,9 @@ export default {
         },
         {
           key: '5',
-          name: '条目名称条目名称条目名称条目名称',
+          name: '一二三四五六七八九十十一十二十三',
           module: '模块名称5',
+          publicTime: '2019-09-09',
           progress: '编辑(1/3)',
           datetime: '08-12',
           operation: {
@@ -660,13 +655,29 @@ export default {
     },
     onChange (date, dateString) {
       console.log(date, dateString)
+    },
+    handelSetting () {
+      this.isVisible = true
+    },
+    closeSetting () {
+      this.isVisible = false
     }
   }
 }
 </script>
 
 <style lang="less" scoped>
-
+  /deep/ .ant-table-tbody > tr > td {
+    // padding-right: 88px;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  /deep/.ant-table table{
+      // width:30em;
+      table-layout:fixed;/* 只有定义了表格的布局算法为fixed，下面td的定义才能起作用。 */
+  }
   .last{
     position: relative;
     top:-40px;

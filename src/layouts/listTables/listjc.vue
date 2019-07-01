@@ -1,5 +1,5 @@
 <template>
-  <div class="listjc">
+  <div class="listjc ant-form-horizontal">
 	<a-form-item label="列表展示" :label-col="{ span: 6 }"
 	               :wrapper-col="{ span: 12 }">
 	    <a-select placeholder="请选择" default-value="0" style="width:300px">

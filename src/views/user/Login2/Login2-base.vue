@@ -226,8 +226,8 @@ export default {
       })
     // this.requiredTwoStepCaptcha = true
   },
-  mounted() {
-    $('.main-login2-base').backstretch(imgSrc);
+  mounted () {
+    $('.main-login2-base').backstretch(imgSrc)
   },
   methods: {
     // 滑动完成消失

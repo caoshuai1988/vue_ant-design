@@ -62,6 +62,8 @@ export default {
     originalBtn () {
       this.size = 1.0
       this.set()
+      localStorage.removeItem('setSize')
+      localStorage.setItem('setSize', parseFloat(this.size))
     },
     set () {
       this.$refs.contentIframe.style.zoom = this.size

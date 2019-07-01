@@ -295,6 +295,9 @@ export default {
     this.previewStyle.height = document.documentElement.clientHeight - this.$refs.text.offsetHeight - 94 - 24 + 'px'
     this.contentStyle.height = document.documentElement.clientHeight - 64 + 'px'
     this.wordShow = this.$route.query.val
+    window.addEventListener('resize', () => {
+      this.previewStyle.height = document.documentElement.clientHeight - 180 + 'px'
+    })
   },
   methods: {
     tabSwitcher (val) {

@@ -101,7 +101,7 @@ export default {
   },
 }
 </script>
-<style lang="less">
+<style>
 .listtable .ant-table-bordered .ant-table-thead > tr > th, .ant-table-bordered .ant-table-tbody > tr > td{
 	border-right:0px !important;
 

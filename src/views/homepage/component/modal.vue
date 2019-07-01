@@ -15,17 +15,18 @@
 <template>
   <a-modal
     title="穿梭框"
-    :width="640"
+    :width="720"
     :visible="visible"
     :confirmLoading="confirmLoading"
     :footer="null"
+    okText="保存"
     @ok="handleSubmit"
     @cancel="handleCancel"
   >
     <a-spin :spinning="confirmLoading">
       <a-transfer
         :dataSource="mockData"
-        :titles="['Source', 'Target']"
+        :titles="['未选功能', '已选功能']"
         :targetKeys="targetKeys"
         :selectedKeys="selectedKeys"
         @change="handleChange"
@@ -34,13 +35,13 @@
         :render="item=>item.title"
         :disabled="disabled"
       />
-      <a-switch
+      <!-- <a-switch
         unCheckedChildren="disabled"
         checkedChildren="disabled"
         :checked="disabled"
         @change="handleDisable"
         style="margin-top: 16px"
-      />
+      /> -->
     </a-spin>
   </a-modal>
 </template>

@@ -25,7 +25,7 @@
       </a-tab-pane>
       <div slot="tabBarExtraContent" class="amplification" @click="amplificationBtn">
         <a-button type="primary" v-if="iconFlag">返回</a-button>
-        <a-icon type="arrows-alt" v-else />
+        <a-button v-else >放大</a-button>
 
       </div>
     </a-tabs>

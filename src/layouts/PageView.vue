@@ -147,10 +147,10 @@ export default {
     refresh () {
       window.location.reload()
     },
-    //父组件展示弹窗
+    // 父组件展示弹窗
     showDrawer () {
-      this.$refs.SetAlert.toAlert();
-    },
+      this.$refs.SetAlert.toAlert()
+    }
   }
 }
 </script>

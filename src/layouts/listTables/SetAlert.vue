@@ -78,7 +78,7 @@
           </a-button>
         </a-popconfirm>
         <a-button
-        	type="primary"
+          type="primary"
           @click="onClose"
         >
           确定
@@ -107,7 +107,7 @@ export default {
     Listjc
   },
   props: {
-    
+
   },
   data () {
     return {
@@ -135,7 +135,7 @@ export default {
 
   },
   mounted () {
-    this.tabs = this.directTabs;
+    this.tabs = this.directTabs
   },
   updated () {
 
@@ -157,22 +157,22 @@ export default {
         this.dataFour = !this.dataFour
       }
     },
-    //子组件展示弹窗
-    toAlert(){
-    	this.visible = true;
+    // 子组件展示弹窗
+    toAlert () {
+      this.visible = true
     },
     onClose () {
       this.visible = false
     },
     confirm (e) {
       console.log(e)
-      this.$message.success('Click on Yes');
-      this.visible = false;
+      this.$message.success('Click on Yes')
+      this.visible = false
     },
     cancel (e) {
       console.log(e)
-      this.$message.error('Click on No');
-      this.visible = false;
+      this.$message.error('Click on No')
+      this.visible = false
     }
   }
 }

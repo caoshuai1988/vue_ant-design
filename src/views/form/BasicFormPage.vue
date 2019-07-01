@@ -104,6 +104,13 @@
   .form-body /deep/.ant-form{
     background: #fff;
   }
+// zzytodo  待删除
+   /deep/.ant-form-horizontal .ant-form-item .ant-form-item-control-wrapper .ant-form-item-control{
+    position: relative;
+  }
+  /deep/ant-form-explain{
+    position: absolute;
+  }
 
 </style>
 <template>
@@ -265,8 +272,8 @@
             <!-- <div class="line"></div> -->
             <!-- <h1 class="title-name">组标题</h1> -->
             <!-- 上传附件 -->
+            <!-- style="margin-bottom:32px" -->
             <a-form-item
-              style="margin-bottom:32px"
               label="上传附件"
               help="支持扩展名：.rar .zip .doc .docx .pdf .jpg..."
               :labelCol="labelCol"

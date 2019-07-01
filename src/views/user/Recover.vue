@@ -84,7 +84,7 @@
                     size="large"
                     :disabled="state.smsSendBtn"
                     @click.stop.prevent="getCaptcha"
-                    v-text="!state.smsSendBtn && '发送验证码'||(state.time+'s后重新获取')"></a-button>
+                    v-text="!state.smsSendBtn && '发送短信验证码'||(state.time+'s后重新获取')"></a-button>
                 </a-col>
               </a-row>
             </a-form-item>
@@ -485,7 +485,7 @@ export default {
                   margin-bottom: 0;
                 }
                 .ant-col-16 {
-                  width: 225px;
+                  width: 195px;
                   height: 40px;
                   padding: 0 !important;
                   margin-right: 8px;
@@ -493,8 +493,11 @@ export default {
                 }
                 .ant-col-8 {
                   padding: 0 !important;
-                  width: 102px;
+                  width: 132px;
                   height: 40px;
+                  button {
+                    padding: 0 8px;
+                  }
                 }
               }
               .resetSuccess {

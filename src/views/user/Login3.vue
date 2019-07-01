@@ -8,6 +8,7 @@
       @submit="handleSubmit"
     >
       <a-tabs
+        :animated="false"
         :activeKey="customActiveKey"
         :tabBarStyle="{ textAlign: 'center', borderBottom: 'unset' }"
         @change="handleTabClick"
@@ -333,7 +334,7 @@ export default {
         }
       }
       .ca-uninstall {
-        margin-top: 8px;
+        padding-top: 8px;
         text-align: center;
         div:first-child {
           margin-bottom: 24px;

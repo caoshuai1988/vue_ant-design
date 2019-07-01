@@ -2,7 +2,7 @@
   <div>
     <template>
       <div>
-        <a-button type="primary" @click="$refs.createModal.add()">新增</a-button>
+        <a-button type="primary" @click="$refs.createModal.add()">查看</a-button>
       </div>
     </template>
     <AddForm ref="createModal" @monitor="monitor"></AddForm>

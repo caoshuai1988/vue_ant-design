@@ -42,7 +42,6 @@
       .title {
         font-size: 20px;
         font-weight: 500;
-        // todo
         line-height: 28px;
         font-weight: 500;
         color: rgba(0, 0, 0, 0.85);

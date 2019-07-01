@@ -480,7 +480,7 @@ export default {
       table1: [
         {
           key: '1',
-          name: '融合服务开发服务平台前端部分工作规划.docx',
+          name: '条目名称条目名称条目名称条目名称',
           module: '模块名称1',
           progress: '编辑(1/3)',
           datetime: '今天',
@@ -493,7 +493,7 @@ export default {
         },
         {
           key: '2',
-          name: '融合服务开发服务平台前端部分工作规划.docx',
+          name: '条目名称条目名称条目名称条目名称',
           module: '模块名称2',
           progress: '编辑(1/3)',
           datetime: '昨天',
@@ -506,7 +506,7 @@ export default {
         },
         {
           key: '3',
-          name: '融合服务开发服务平台前端部分工作规划.docx',
+          name: '条目名称条目名称条目名称条目名称',
           module: '模块名称3',
           progress: '编辑(1/3)',
           datetime: '2天前',
@@ -519,7 +519,7 @@ export default {
         },
         {
           key: '4',
-          name: '融合服务开发服务平台前端部分工作规划.docx',
+          name: '条目名称条目名称条目名称条目名称',
           module: '模块名称4',
           progress: '编辑(1/3)',
           datetime: '2天前',
@@ -532,7 +532,7 @@ export default {
         },
         {
           key: '5',
-          name: '融合服务开发服务平台前端部分工作规划.docx',
+          name: '条目名称条目名称条目名称条目名称',
           module: '模块名称5',
           progress: '编辑(1/3)',
           datetime: '08-12',

@@ -303,7 +303,7 @@ a {
               :class="{screenload: screenloadFlag}"
             >
               <span class="amplification" slot="extra">
-                <a-button type="primary">
+                <a-button >
                   <router-link tag="a" target="_blank" :to="{path: '/maplook'}">弹出查看</router-link>
                 </a-button>
               </span>
@@ -328,7 +328,7 @@ a {
           <div style="margin-top:24px;" class="anchor">
             <a-card :body-style="{padding: '24px 32px'}" title="基本情况表">
               <span class="amplification" slot="extra">
-                <a-button type="primary">
+                <a-button >
                   <router-link
                     tag="a"
                     target="_blank"
@@ -347,7 +347,7 @@ a {
           <div style="margin-top:24px;" class="anchor">
             <a-card :body-style="{padding: '24px 32px'}" title="任务及投资情况表">
               <span class="amplification" slot="extra">
-                <a-button type="primary">
+                <a-button >
                   <router-link
                     tag="a"
                     target="_blank"
@@ -367,7 +367,7 @@ a {
           <div style="margin-top:24px;" class="anchor">
             <a-card :body-style="{padding: '24px 32px'}" title="附件信息">
               <span slot="extra">
-                <a-button type="primary">
+                <a-button >
                   <router-link
                     tag="a"
                     target="_blank"

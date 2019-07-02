@@ -131,10 +131,10 @@
       </span>
     </s-table>
     <template>
-			  <div style="text-align: right;margin-top:16px;margin-bottom:16px;">
-			    <a-pagination showSizeChanger :pageSize.sync="pageSize" @showSizeChange="onShowSizeChange" :total="500" v-model="current"/>
-			  </div>
-		</template>
+      <div style="text-align: right;margin-top:16px;margin-bottom:16px;">
+        <a-pagination showSizeChanger :pageSize.sync="pageSize" :total="500" v-model="current"/>
+      </div>
+    </template>
     <create-form ref="createModal" @ok="handleOk"/>
     <step-by-step-modal ref="modal" @ok="handleOk"/>
   </a-card>
@@ -262,8 +262,7 @@ export default {
           selectedRowKeys: this.selectedRowKeys,
           onChange: this.onSelectChange
         }
-      },
-      optionAlertShow: false
+      }
     }
   },
   filters: {

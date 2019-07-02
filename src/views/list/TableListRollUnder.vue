@@ -103,7 +103,7 @@
       </s-table>
       <template>
         <div style="text-align: right;margin-top:16px;margin-bottom:16px;">
-          <a-pagination showSizeChanger :pageSize.sync="pageSize" @showSizeChange="onShowSizeChange" :total="500" v-model="current"/>
+          <a-pagination showSizeChanger :pageSize.sync="pageSize" :total="500" v-model="current"/>
         </div>
       </template>
       <create-form ref="createModal" @ok="handleOk"/>
@@ -284,9 +284,6 @@ export default {
       } else {
         this.$message.error(`${record.no} 订阅失败，规则已关闭`)
       }
-    },
-    onShowSizeChange (current, pageSize) {
-      console.log(current, pageSize)
     }
   }
 }

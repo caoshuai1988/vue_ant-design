@@ -104,6 +104,21 @@
   .form-body /deep/.ant-form{
     background: #fff;
   }
+// zzytodo  待删除
+  //  /deep/.ant-form-horizontal .ant-form-item .ant-form-item-control-wrapper .ant-form-item-control{
+  //   position: relative;
+  // }
+  // /deep/ant-form-explain{
+  //   position: absolute;
+  // }
+
+  // 局部样式图片默认样式消除底部margin-bottom:8px
+  // /deep/.ant-upload-list-picture-card .ant-upload-list-item{
+  //   margin-bottom: 0
+  // }
+  // /deep/.ant-upload.ant-upload-select-picture-card{
+  //   margin-bottom: 0;
+  // }
 
 </style>
 <template>
@@ -265,11 +280,12 @@
             <!-- <div class="line"></div> -->
             <!-- <h1 class="title-name">组标题</h1> -->
             <!-- 上传附件 -->
+            <!-- style="margin-bottom:32px" -->
             <a-form-item
-              style="margin-bottom:32px"
               label="上传附件"
               help="支持扩展名：.rar .zip .doc .docx .pdf .jpg..."
               :labelCol="labelCol"
+              style="margin-bottom: 24px;"
               :wrapperCol="wrapperCol"
               :required="true">
               <a-upload
@@ -345,7 +361,7 @@
             <!-- 提交 -->
             <a-form-item
               :wrapperCol="{ span: 24 }"
-              style="text-align: center">
+              style="text-align: center; margin-top:32px">
               <a-button htmlType="submit" type="primary">提交</a-button>
               <a-button style="margin-left: 8px">保存</a-button>
             </a-form-item>

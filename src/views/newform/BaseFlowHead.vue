@@ -4,7 +4,7 @@
       <span>流程</span>
       <a style="font-size:14px;margin-left:8px">详情</a>
     </span>
-    <span slot="extra" @click="closeDiv" style="cursor: pointer;"><a-icon type="close" /></span>
+    <span slot="extra" @click="closeDiv" style="cursor: pointer; font-size: 16px;color:#a3a3a3;"><a-icon type="close" /></span>
     <div class="flowImg">
       <span class="begin">开始</span>
       <div style="display: inline-block;margin:0 4px 0 4px" >

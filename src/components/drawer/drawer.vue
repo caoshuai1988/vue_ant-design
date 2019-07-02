@@ -1,4 +1,4 @@
-<style lang="less">
+<style lang="less" scoped>
 @import '~@/utils/utils.less';
 .approval-content {
   // padding: 24px;

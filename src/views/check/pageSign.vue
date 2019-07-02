@@ -221,9 +221,7 @@ a {
     <a-card
       :body-style="{background:'#f0f2f5', padding: 0}"
       :bordered="false"
-      class="aa"
-      ref="content"
-    >
+      ref="content">
       <a-row :gutter="24">
         <a-col :body-style="{ background:'#f0f2f5'}" :xl="num" :lg="num" :md="num" :sm="num">
           <a-affix :offsetTop="this.top">
@@ -232,8 +230,7 @@ a {
               class="tabMar card-header"
               :animated="false"
               @tabClick="callback"
-              style="padding:8px 24px 0 24px"
-            >
+              style="padding:8px 24px 0 24px">
               <a-tab-pane key="1">
                 <span slot="tab">
                   <span>基础信息</span>
@@ -278,16 +275,15 @@ a {
                 style="margin-bottom: 24px"
                 row-key="id"
                 :columns="goodsColumns"
-                :data="loadGoodsData"
-              ></s-table>
+                :data="loadGoodsData">
+              </s-table>
 
               <div class="page-sign-title">退货进度</div>
               <s-table
                 style="margin-bottom: 24px"
                 row-key="key"
                 :columns="scheduleColumns"
-                :data="loadScheduleData"
-              >
+                :data="loadScheduleData">
                 <template slot="status" slot-scope="status">
                   <a-badge :status="status" :text="status"/>
                   <!-- <a-badge :status="status" :text="status | statusFilter"/> -->
@@ -300,8 +296,7 @@ a {
               title="地理信息"
               :body-style="closePad"
               :style="mapFd"
-              :class="{screenload: screenloadFlag}"
-            >
+              :class="{screenload: screenloadFlag}">
               <span class="amplification" slot="extra">
                 <a-button >
                   <router-link tag="a" target="_blank" :to="{path: '/maplook'}">弹出查看</router-link>
@@ -312,8 +307,7 @@ a {
                   :center="center"
                   :zoom="zoom"
                   @ready="handler"
-                  style="width:100%;height:100%"
-                >
+                  style="width:100%;height:100%">
                   <bm-navigation anchor="BMAP_ANCHOR_TOP_LEFT"></bm-navigation>
                   <bm-geolocation
                     anchor="BMAP_ANCHOR_BOTTOM_RIGHT"

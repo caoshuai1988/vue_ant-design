@@ -32,6 +32,7 @@
     height: calc(100% - 64px);
     display: flex;
     flex: auto;
+    // 左侧
     .preview-direction {
       height: 100%;
       background: #fff;
@@ -94,13 +95,13 @@
         }
       }
     }
+    // 右侧
     .right-box {
       display: flex;
       overflow: auto;
       flex: auto;
       background: #eff3f5;
       padding: 24px;
-      height: 100%;
       height: 100%;
       box-sizing: border-box;
       /deep/ .ant-card {
@@ -157,11 +158,12 @@
 </style>
 <template>
   <div class="preview-box" :style="previewContent">
+    <!-- 顶部 -->
     <div class="preview-header">
       <h1 style="font-size: 20px;">2018年韶关市翁源县江尾镇高标准农田建设项目 - 计划阶段 - 附件信息</h1>
     </div>
-    <!-- 侧边栏 -->
     <div class="preview-main">
+      <!-- 侧边栏 -->
       <div class="preview-direction" :style="contentStyle">
         <div class="content-box">
           <div class="content-nav">
@@ -197,8 +199,7 @@
       <div class="right-box">
         <a-card
           :head-style="{height:'57px', fontSize:'16px', color:'rgba(0,0,0,0.85)'}"
-          :body-style="{padding: 0, border: 0,previewStyle}"
-        >
+          :body-style="{padding: 0, border: 0,previewStyle}">
           <div class="title-detail">
             <div class="info">
               <span class="title__name" style="margin-right:12px">

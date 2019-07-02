@@ -90,21 +90,21 @@
 
 <script>
 import TagModule from './TagModule'
-import ListTable from './ListTable'
+//import ListTable from './ListTable'
 import ScreeningTable from './ScreeningTable'
 import verticaltoggle from '@/views/newform/verticaltoggle.js'
 import layoutForm from '@/views/newform/LayoutForm'
-import Listjc from './Listjc'
+//import Listjc from './Listjc'
 
 export default {
   name: 'SetAlert',
   components: {
     TagModule,
-    ListTable,
+//  ListTable,
     ScreeningTable,
     verticaltoggle,
-    layoutForm,
-    Listjc
+    layoutForm
+//  Listjc
   },
   props: {
 

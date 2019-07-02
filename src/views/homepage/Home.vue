@@ -309,6 +309,15 @@
                 </div>
               </a-col>
             </a-row> -->
+            <div class="item-group">
+              <a>操作一</a>
+              <a>操作二</a>
+              <a>操作三</a>
+              <a>操作四</a>
+              <a>操作五</a>
+              <a>操作六</a>
+              <a-button size="small" type="primary" ghost icon="plus">添加</a-button>
+            </div>
 
           </a-card>
           <!-- 登录历史 -->
@@ -732,17 +741,6 @@ export default {
     justify-content: center;
     align-items: center;
   }
-  .item-group {
-    padding: 20px 0 8px 24px;
-    font-size: 0;
-    a {
-      color: rgba(0, 0, 0, 0.65);
-      display: inline-block;
-      font-size: 14px;
-      margin-bottom: 13px;
-      width: 25%;
-    }
-  }
 
   .members {
     a {
@@ -841,6 +839,18 @@ export default {
       text-align: right;
       width: 20%;
       color: rgba(0,0,0,.45);
+    }
+  }
+  // 快捷菜单
+  .item-group {
+    // padding: 20px 0 8px 24px;
+    font-size: 0;
+    a {
+      color: rgba(0, 0, 0, 0.65);
+      display: inline-block;
+      font-size: 14px;
+      margin-bottom: 13px;
+      width: 25%;
     }
   }
 

@@ -221,9 +221,7 @@ a {
     <a-card
       :body-style="{background:'#f0f2f5', padding: 0}"
       :bordered="false"
-      class="aa"
-      ref="content"
-    >
+      ref="content">
       <a-row :gutter="24">
         <a-col :body-style="{ background:'#f0f2f5'}" :xl="num" :lg="num" :md="num" :sm="num">
           <a-affix :offsetTop="this.top">
@@ -232,8 +230,7 @@ a {
               class="tabMar card-header"
               :animated="false"
               @tabClick="callback"
-              style="padding:8px 24px 0 24px"
-            >
+              style="padding:8px 24px 0 24px">
               <a-tab-pane key="1">
                 <span slot="tab">
                   <span>基础信息</span>

@@ -626,13 +626,10 @@ export default {
       data,
       flag: false,
       valueKey: 1,
-      // 固钉
-      top: 0,
-      // 当前tab标签为第几个
-      activeKey: '1',
+      top: 0, // 固钉
+      activeKey: '1', // 当前tab标签为第几个
       isShowHelp: false,
       num: 24,
-      // num: 18,
       helpNum: 6,
       lablenum: 7,
       valuenum: 17,
@@ -824,13 +821,12 @@ export default {
       },
 
       // 地图相关 待删除
-      center: { lng: 0, lat: 0 }, // 地图坐标
-      zoom: 11, // 地图级别
-      mapFlag: false, // 地图内容
-      screenloadFlag: false, // 全屏
-      iconSwitch: true, // 缩放图标
+      center: { lng: 0, lat: 0 }, // map lng lat
+      zoom: 11, // map level
+      mapFlag: false, // map content
+      screenloadFlag: false, // full screen
+      iconSwitch: true, // zoom icon
       mapFd: {
-        // 自定义样式map
         width: '',
         height: ''
       },

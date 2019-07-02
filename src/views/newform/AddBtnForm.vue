@@ -92,7 +92,6 @@ export default {
       },
       visible: false,
       confirmLoading: false,
-
       form: this.$form.createForm(this)
     }
   },

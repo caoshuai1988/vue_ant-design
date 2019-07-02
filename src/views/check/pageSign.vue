@@ -1,4 +1,7 @@
 <style lang="less" scoped>
+a {
+  text-decoration: none;
+}
 .page-sign-title {
   color: rgba(0, 0, 0, 0.85);
   font-size: 16px;
@@ -46,7 +49,7 @@
   margin: 0;
   border: none !important;
 }
-/deep/.ant-tabs-nav-container{
+/deep/.ant-tabs-nav-container {
   margin-bottom: 0;
 }
 // 附件打包现在样式
@@ -81,22 +84,22 @@
   left: 0;
   z-index: 1999;
 }
-.amplification{
+.amplification {
   cursor: pointer;
   padding: 0 10px;
 }
-.page-direction{
+.page-direction {
   background: #fff;
   // min-width: 400px;
   // height: 600px;
   // min-height: 800px;
   z-index: 3;
-  .title{
+  .title {
     position: relative;
     box-sizing: border-box;
-    padding:0 24px;
+    padding: 0 24px;
     height: 56px;
-    .title-des{
+    .title-des {
       box-sizing: border-box;
       height: 56px;
       // flex: 1 1;
@@ -104,58 +107,58 @@
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
-      .help{
+      .help {
         font-size: 16px;
         color: #272727;
         margin-right: 8px;
       }
-      .detail{
+      .detail {
         font-size: 14px;
         color: #1890ff;
       }
-      .close{
+      .close {
         // position: absolute;
         // right: 24px;
         float: right;
         margin-top: 4px;
         // top: 16px;
-        &:hover{
+        &:hover {
           cursor: pointer;
         }
       }
     }
   }
-  .help-line{
+  .help-line {
     width: 100%;
     height: 0.5px;
     background: #e9e9e9;
   }
-  .content-box{
+  .content-box {
     padding: 24px;
   }
-  .content{
+  .content {
     // height: 650px;
     min-height: 300px;
     max-height: 650px;
     overflow-y: auto;
-    &::-webkit-scrollbar{
+    &::-webkit-scrollbar {
       width: 4px;
       height: 8px;
       // background-color: #F5F5F5;
     }
 
     /*定义滚动条轨道 内阴影+圆角*/
-    &::-webkit-scrollbar-track{
-      box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+    &::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
       border-radius: 10px;
       background-color: #a5a5a5;
     }
 
     /*定义滑块 内阴影+圆角*/
-    &::-webkit-scrollbar-thumb{
-        border-radius: 5px;
-        box-shadow: inset 0 0 5px rgba(0,0,0,0.3);
-        background-color: #EDEDED;
+    &::-webkit-scrollbar-thumb {
+      border-radius: 5px;
+      box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+      background-color: #ededed;
     }
   }
 }
@@ -208,11 +211,10 @@
   left: 0;
   z-index: 11;
 }
-.amplification{
+.amplification {
   cursor: pointer;
   padding: 0 10px;
 }
-
 </style>
 <template>
   <div>
@@ -220,7 +222,8 @@
       :body-style="{background:'#f0f2f5', padding: 0}"
       :bordered="false"
       class="aa"
-      ref="content">
+      ref="content"
+    >
       <a-row :gutter="24">
         <a-col :body-style="{ background:'#f0f2f5'}" :xl="num" :lg="num" :md="num" :sm="num">
           <a-affix :offsetTop="this.top">
@@ -229,7 +232,8 @@
               class="tabMar card-header"
               :animated="false"
               @tabClick="callback"
-              style="padding:8px 24px 0 24px">
+              style="padding:8px 24px 0 24px"
+            >
               <a-tab-pane key="1">
                 <span slot="tab">
                   <span>基础信息</span>
@@ -249,7 +253,6 @@
               <a-tab-pane key="5">
                 <span slot="tab">附件信息</span>
               </a-tab-pane>
-
             </a-tabs>
           </a-affix>
           <a-card :body-style="{padding:'24px 32px'}" title="基础信息" class="anchor">
@@ -275,42 +278,48 @@
                 style="margin-bottom: 24px"
                 row-key="id"
                 :columns="goodsColumns"
-                :data="loadGoodsData"></s-table>
+                :data="loadGoodsData"
+              ></s-table>
 
-              <div class="page-sign-title" >退货进度</div>
+              <div class="page-sign-title">退货进度</div>
               <s-table
                 style="margin-bottom: 24px"
                 row-key="key"
                 :columns="scheduleColumns"
-                :data="loadScheduleData">
+                :data="loadScheduleData"
+              >
                 <template slot="status" slot-scope="status">
                   <a-badge :status="status" :text="status"/>
-                <!-- <a-badge :status="status" :text="status | statusFilter"/> -->
+                  <!-- <a-badge :status="status" :text="status | statusFilter"/> -->
                 </template>
               </s-table>
             </div>
           </a-card>
-          <div style="margin-top:24px;" class="anchor" >
+          <div style="margin-top:24px;" class="anchor">
             <a-card
               title="地理信息"
               :body-style="closePad"
               :style="mapFd"
-              :class="{screenload: screenloadFlag}">
-              <span class="amplification" slot="extra" >
-                <a-button type="primary"><router-link tag="a" target="_blank" :to="{path: '/maplook'}">弹出查看</router-link></a-button>
+              :class="{screenload: screenloadFlag}"
+            >
+              <span class="amplification" slot="extra">
+                <a-button >
+                  <router-link tag="a" target="_blank" :to="{path: '/maplook'}">弹出查看</router-link>
+                </a-button>
               </span>
-              <div id="container" ref="container" :style="mapFd" >
+              <div id="container" ref="container" :style="mapFd">
                 <baidu-map
                   :center="center"
                   :zoom="zoom"
                   @ready="handler"
-                  style="width:100%;height:100%">
+                  style="width:100%;height:100%"
+                >
                   <bm-navigation anchor="BMAP_ANCHOR_TOP_LEFT"></bm-navigation>
                   <bm-geolocation
                     anchor="BMAP_ANCHOR_BOTTOM_RIGHT"
                     :showAddressBar="true"
-                    :autoLocation="true">
-                  </bm-geolocation>
+                    :autoLocation="true"
+                  ></bm-geolocation>
                 </baidu-map>
               </div>
             </a-card>
@@ -318,30 +327,55 @@
           <!-- 报表 -->
           <div style="margin-top:24px;" class="anchor">
             <a-card :body-style="{padding: '24px 32px'}" title="基本情况表">
-              <span class="amplification" slot="extra" >
-                <a-button type="primary"><router-link tag="a" target="_blank" :to="{path: '/tablelook',query: {title:'基本情况表'}}">弹出查看</router-link></a-button>
+              <span class="amplification" slot="extra">
+                <a-button >
+                  <router-link
+                    tag="a"
+                    target="_blank"
+                    :to="{path: '/tablelook',query: {title:'2018年韶关市翁源县江尾镇高标准农田建设项目 - 计划阶段 - 基本情况表'}}"
+                  >弹出查看</router-link>
+                </a-button>
               </span>
-              <iframe src="http://nf.finstone.com.cn:9000/nf/ReportServer?reportlet=tbreport/tb_jh_gbznttzb.cpt&__bypagesize__=false" width="100%" height="640px" frameborder="0"></iframe>
+              <iframe
+                src="http://nf.finstone.com.cn:9000/nf/ReportServer?reportlet=tbreport/tb_jh_gbznttzb.cpt&__bypagesize__=false"
+                width="100%"
+                height="640px"
+                frameborder="0"
+              ></iframe>
             </a-card>
           </div>
           <div style="margin-top:24px;" class="anchor">
             <a-card :body-style="{padding: '24px 32px'}" title="任务及投资情况表">
-              <span class="amplification" slot="extra" >
-                <a-button type="primary"><router-link tag="a" target="_blank" :to="{path: '/tablelook',query: {title:'任务及投资情况表'}}">弹出查看</router-link></a-button>
+              <span class="amplification" slot="extra">
+                <a-button >
+                  <router-link
+                    tag="a"
+                    target="_blank"
+                    :to="{path: '/tablelook',query: {title:'2018年韶关市翁源县江尾镇高标准农田建设项目 - 计划阶段 - 任务及投资情况表'}}"
+                  >弹出查看</router-link>
+                </a-button>
               </span>
-              <iframe src="http://nf.finstone.com.cn:9000/nf/ReportServer?reportlet=tbreport/tb_jh_gbznttzb.cpt&__bypagesize__=false" width="100%" height="640px" frameborder="0"></iframe>
+              <iframe
+                src="http://nf.finstone.com.cn:9000/nf/ReportServer?reportlet=tbreport/tb_jh_gbznttzb.cpt&__bypagesize__=false"
+                width="100%"
+                height="640px"
+                frameborder="0"
+              ></iframe>
             </a-card>
           </div>
           <!-- 附件信息 -->
           <div style="margin-top:24px;" class="anchor">
             <a-card :body-style="{padding: '24px 32px'}" title="附件信息">
               <span slot="extra">
-                <a-button type="primary">  <router-link
-                  tag="a"
-                  target="_blank"
-                  :to="{path: '/preview', query: {
-                    val: '1'
-                  }}">全部预览</router-link>  </a-button>
+                <a-button >
+                  <router-link
+                    tag="a"
+                    target="_blank"
+                    :to="{path: '/preview', query: {
+                      val: '1'
+                    }}"
+                  >全部预览</router-link>
+                </a-button>
               </span>
               <div class="accessory-box" style="background: #fff;">
                 <div class="table-wrap">
@@ -362,12 +396,15 @@
                     <a-table-column title="上传时间" data-index="time" key="time"/>
                     <a-table-column title="操作" key="operation">
                       <template slot-scope="text, record">
-                        <a href style="margin-right:10px" >  <router-link
-                          tag="a"
-                          target="_blank"
-                          :to="{path: '/preview', query: {
-                            val: record.key
-                          }}">{{ record.operation.text }}</router-link>  </a>
+                        <a href style="margin-right:10px">
+                          <router-link
+                            tag="a"
+                            target="_blank"
+                            :to="{path: '/preview', query: {
+                              val: record.key
+                            }}"
+                          >{{ record.operation.text }}</router-link>
+                        </a>
                         <a style="margin-right:10px">{{ record.operation.textOne }}</a>
                       </template>
                     </a-table-column>
@@ -390,14 +427,16 @@
                     <a-table-column title="大小" data-index="size" key="size"/>
                     <a-table-column title="上传时间" data-index="time" key="time"/>
                     <a-table-column title="操作" key="operation">
-                      <template slot-scope="text, record" >
-                        <a href style="margin-right:10px" >
+                      <template slot-scope="text, record">
+                        <a href style="margin-right:10px">
                           <router-link
                             tag="a"
                             target="_blank"
                             :to="{path: '/preview', query: {
                               val: record.key
-                            }}">{{ record.operation.text }}</router-link>   </a>
+                            }}"
+                          >{{ record.operation.text }}</router-link>
+                        </a>
                         <a style="margin-right:10px">{{ record.operation.textOne }}</a>
                         <!-- <router-link tag="a" target="_blank" :to="{path: '/preview', query: {img:item}}"></router-link> -->
                       </template>
@@ -415,7 +454,8 @@
             :lg="helpNum"
             :md="helpNum"
             :sm="helpNum"
-            :xs="helpNum">
+            :xs="helpNum"
+          >
             <a-affix :offsetTop="this.top">
               <div class="page-direction">
                 <div class="title">
@@ -816,7 +856,8 @@ export default {
       //   }
       // })
     },
-    amplificationBtn () { // 地图放大
+    amplificationBtn () {
+      // 地图放大
       if (this.mapFd.width === window.screen.availWidth + 'px') {
         this.mapFd = {}
         this.closePad.padding = 24 + 'px' // 缩小清除边距
@@ -830,7 +871,8 @@ export default {
       this.mapFlag = !this.mapFlag
       this.iconSwitch = !this.iconSwitch
     },
-    handleScroll (el) { // 监听滚动条
+    handleScroll (el) {
+      // 监听滚动条
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTo
       const jump = document.querySelectorAll('.anchor') // 用 class" 添加锚点
       const totalSlide = jump[0].offsetTop
@@ -855,16 +897,19 @@ export default {
       }
     },
 
-    handler ({ BMap, map }) { // 地图处理
+    handler ({ BMap, map }) {
+      // 地图处理
       this.center.lng = 116.404
       this.center.lat = 39.915
       this.zoom = this.zoom
     },
-    callback (val) { // 点击tab
+    callback (val) {
+      // 点击tab
       window.removeEventListener('scroll', this.handleScroll)
       this.$forceUpdate()
       val = val - 1
-      if (val === 0) { // 主动切换
+      if (val === 0) {
+        // 主动切换
         this.activeKey = '1'
       } else if (val === 2) {
         this.activeKey = '3'
@@ -936,7 +981,8 @@ export default {
     },
     onChange () {}
   },
-  beforeDestroy () { // 取消监听滚动条
+  beforeDestroy () {
+    // 取消监听滚动条
     window.removeEventListener('scroll', this.handleScroll)
   }
 }

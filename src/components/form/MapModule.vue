@@ -14,9 +14,8 @@
           <a-input-search placeholder="请输入" style="width: 300px"/>
         </span>
         <div class="amplification" @click="amplificationBtn">
-          <a-icon type="arrows-alt" v-if="iconSwitch"/>
+          <a-button v-if="iconSwitch" >放大</a-button>
           <a-button type="primary" v-else>返回</a-button>
-          <!-- <a-icon type="shrink" v-else/> -->
         </div>
       </div>
       <div id="container" ref="container" :style="mapMr" :class="{mapContent: mapFlag}">

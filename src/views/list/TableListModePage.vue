@@ -130,6 +130,11 @@
         </template>
       </span>
     </s-table>
+    <template>
+			  <div style="text-align: right;margin-top:16px;margin-bottom:16px;">
+			    <a-pagination showSizeChanger :pageSize.sync="pageSize" @showSizeChange="onShowSizeChange" :total="500" v-model="current"/>
+			  </div>
+		</template>
     <create-form ref="createModal" @ok="handleOk"/>
     <step-by-step-modal ref="modal" @ok="handleOk"/>
   </a-card>
@@ -176,6 +181,10 @@ export default {
       advanced: false,
       // 查询参数
       queryParam: {},
+      pageSize: 20,
+      optionAlertShow: false,
+      scrollDisabled: false,
+      current: 1,
       // 表头
       columns: [
         {
@@ -339,9 +348,6 @@ export default {
 <style lang="less" scoped>
 .ant-card-wider-padding /deep/ .ant-card-body {
   padding: 24px 32px !important;
-}
-/deep/ .table-wrapper{
-	margin-bottom:16px !important;;
 }
 /deep/ .ant-alert{
   display: none;

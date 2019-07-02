@@ -3,19 +3,17 @@
     <div class="container">
       <div class="top">
         <div class="header">
-<!--          <a href="/">-->
-            <img src="~@/assets/fslogo.png" class="logo" alt="logo">
-<!--          </a>-->
-        </div>
-        <div class="desc">
-          富深新平台模板
+          <a href="/">
+            <img src="~@/assets/fslogo.svg" class="logo" alt="logo">
+            <span class="antd-pro-layouts-user-layout-title">富深新平台模板</span>
+          </a>
         </div>
       </div>
 
       <route-view></route-view>
 
       <div class="footer">
-        <span><a href="" target="_blank">关于我们</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;版权所有：江苏富深协通科技股份有限公司&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;技术支持：0519-86612998</span>
+        <span><a href="http://www.finstone.com.cn" target="_blank">关于我们</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;版权所有：江苏富深协通科技股份有限公司&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;技术支持：0519-86612998</span>
       </div>
     </div>
   </div>
@@ -42,6 +40,15 @@ export default {
 </script>
 
 <style lang="less" scoped>
+
+  #userLayout .antd-pro-layouts-user-layout-title {
+    font-size: 33px;
+    color: rgba(0,0,0,.85);
+    font-family: Avenir,Helvetica Neue,Arial,Helvetica,sans-serif;
+    font-weight: 600;
+    position: relative;
+    vertical-align: middle;
+  }
   #userLayout.user-layout-wrapper {
     height: 100%;
 
@@ -67,6 +74,9 @@ export default {
         text-align: center;
 
         .header {
+          height: 44px;
+          line-height: 44px;
+          margin-bottom: 40px;
           .badge {
             position: absolute;
             display: inline-block;
@@ -78,10 +88,10 @@ export default {
           }
 
           .logo {
-            width: 178px;
-            vertical-align: top;
+            width: 44px;
             margin-right: 16px;
             border-style: none;
+            vertical-align: top;
           }
         }
         .desc {

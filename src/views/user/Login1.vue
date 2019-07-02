@@ -13,7 +13,6 @@
         class="user-layout-login"
         ref="formLogin"
         :form="form"
-        @submit="handleSubmit"
       >
         <a-tabs
           :animated="false"
@@ -50,24 +49,6 @@
                 <a-icon slot="prefix" type="lock" :style="{ color: 'rgba(0,0,0,.25)' }"/>
               </a-input>
             </a-form-item>
-            <a-form-item class="login-drag" v-if="isCheck">
-              <drag-verify
-                @passcallback="passcallback"
-                :width="drag.width"
-                :height="drag.height"
-                :text="drag.text"
-                :success-text="drag.successText"
-                success-icon="fa fa-check-circle"
-                :background="drag.background"
-                :progress-bar-bg="drag.progressBarBg"
-                :completed-bg="drag.completedBg"
-                :handler-bg="drag.handlerBg"
-                handler-icon="fa fa-angle-double-right"
-                :text-size="drag.textSize"
-                ref="Verify"
-              >
-              </drag-verify>
-            </a-form-item>
             <a-form-item class="login-operation">
               <a-checkbox v-decorator="['rememberMe']">记住账号</a-checkbox>
               <router-link
@@ -85,6 +66,7 @@
                 class="login-button"
                 :loading="state.loginBtn"
                 :disabled="state.loginBtn"
+                @click="handleSubmit"
               >登录
               </a-button>
             </a-form-item>
@@ -154,248 +136,120 @@
 </template>
 
 <script>
-  import md5 from 'md5'
-  import TwoStepCaptcha from '@/components/tools/TwoStepCaptcha'
-  import { mapActions } from 'vuex'
-  import { timeFix } from '@/utils/util'
-  import { getSmsCaptcha, get2step } from '@/api/login'
-  import AFormItem from 'ant-design-vue/es/form/FormItem'
-  import 'font-awesome/css/font-awesome.min.css'
-  import dragVerify from 'vue-drag-verify'
-  import ARow from 'ant-design-vue/es/grid/Row'
-  import $ from 'jquery'
-  import 'jquery-backstretch'
-  import imgSrc from '../../assets/login1_bg1.png'
+import md5 from 'md5'
+import { mapActions } from 'vuex'
+import { timeFix } from '@/utils/util'
+import AFormItem from 'ant-design-vue/es/form/FormItem'
+import ARow from 'ant-design-vue/es/grid/Row'
+import $ from 'jquery'
+import 'jquery-backstretch'
+import imgSrc from '../../assets/login1_bg1.png'
 
-  export default {
-    components: {
-      ARow,
-      AFormItem,
-      TwoStepCaptcha,
-      dragVerify
-    },
-    data() {
-      return {
-        customActiveKey: 'tab1',
-        testBtn: false,
+export default {
+  components: {
+    ARow,
+    AFormItem
+  },
+  data () {
+    return {
+      customActiveKey: 'tab1',
+      testBtn: false,
+      loginBtn: false,
+      // login type: 0 email, 1 username, 2 telephone
+      loginType: 0,
+      requiredTwoStepCaptcha: false,
+      stepCaptchaVisible: false,
+      form: this.$form.createForm(this),
+      state: {
+        time: 60,
         loginBtn: false,
+        testBtn: false,
+        caLoginBtn: false,
         // login type: 0 email, 1 username, 2 telephone
-        loginType: 0,
-        requiredTwoStepCaptcha: false,
-        stepCaptchaVisible: false,
-        form: this.$form.createForm(this),
-        state: {
-          time: 60,
-          loginBtn: false,
-          testBtn: false,
-          caLoginBtn: false,
-          // login type: 0 email, 1 username, 2 telephone
-          loginType: 0,
-          smsSendBtn: false
-        },
-        isCheck: false, // 验证框是否展示
-        // 滑块
-        drag: {
-          // show: true,
-          background: 'rgba(0,0,0,0.15)',
-          progressBarBg: '#52c41a',
-          completedBg: '#52c41a',
-          handlerBg: '#fff',
-          text: '请按住滑块，拖动到最右边',
-          successText: '验证成功',
-          width: 335,
-          height: 40,
-          textSize: '14px',
-          circle: false,
-          color: 'rgba(0,0,0,0.25)'
-        },
-        isPassCA: false,
-        clickCount: 0,
-        isError: false // 错误提示
-      }
+        loginType: 0
+      },
+      isPassCA: false,
+      isError: false // 错误提示
+    }
+  },
+  created () {
+  },
+  mounted () {
+    $('.main-login1').backstretch(imgSrc)
+  },
+  methods: {
+    // 检测CA密钥
+    testCA () {
+      this.state.testBtn = true
+      this.isPassCA = true
     },
-    created() {
+    ...mapActions(['Login', 'Logout']),
+    handleTabClick (key) {
+      this.customActiveKey = key
+      // this.form.resetFields()
+    },
+    handleSubmit (e) {
       // debugger
-      // eslint-disable-next-line no-unused-expressions
-      // this.setBgWidthHeight
-      get2step({})
-        .then(res => {
-          this.requiredTwoStepCaptcha = res.result.stepCode
-        })
-        .catch(() => {
-          this.requiredTwoStepCaptcha = false
-        })
-      // this.requiredTwoStepCaptcha = true
-    },
-    mounted() {
-      $('.main-login1').backstretch(imgSrc);
-    },
-    methods: {
-      setBgWidthHeight() {
-        // debugger
-        const obj = document.getElementsByClassName('slick-slide')
-        const bgObj = obj.getElementsByTagName('img')
-        console.log('bgObj' + bgObj)
-      },
-      // 滑动完成消失
-      passcallback() {
-        if (this.$refs.Verify.isPassing) {
-          // this.show = false
-          this.isError = false
-        }
-      },
-      // 检测CA密钥
-      testCA() {
-        this.state.testBtn = true
-        this.isPassCA = true
-      },
-      ...mapActions(['Login', 'Logout']),
-      // handler
-      // handleUsernameOrEmail (rule, value, callback) {
-      //   const { state } = this
-      //   const regex = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/
-      //   if (regex.test(value)) {
-      //     state.loginType = 0
-      //   } else {
-      //     state.loginType = 1
-      //   }
-      //   callback()
-      // },
-      handleTabClick(key) {
-        this.customActiveKey = key
-        // this.form.resetFields()
-      },
-      handleSubmit(e) {
-        // debugger
-        const that = this
-        that.isError = false
-        e.preventDefault()
-        const {
-          form: { validateFields },
-          state,
-          customActiveKey,
-          Login
-        } = this
+      const that = this
+      that.isError = false
+      e.preventDefault()
+      const {
+        form: { validateFields },
+        state,
+        customActiveKey,
+        Login
+      } = this
 
-        state.loginBtn = true
+      state.loginBtn = true
 
-        const validateFieldsKey = customActiveKey === 'tab1' ? ['username', 'password'] : ['mobile', 'captcha']
+      const validateFieldsKey = customActiveKey === 'tab1' ? ['username', 'password'] : ['mobile', 'captcha']
 
-        validateFields(validateFieldsKey, { force: true }, (err, values) => {
-          if (!err) {
-            console.log('login form', values)
-            const loginParams = { ...values }
-            delete loginParams.username
-            // debugger
-            // loginParams[!state.loginType ? 'email' : 'username'] = values.username
-            loginParams['username'] = values.username
-            loginParams.password = md5(values.password)
-            Login(loginParams)
-              .then((res) => this.loginSuccess(res))
-              .catch(err => this.requestFailed(err))
-              .finally(() => {
-                state.loginBtn = false
-              })
-          } else {
-            setTimeout(() => {
+      validateFields(validateFieldsKey, { force: true }, (err, values) => {
+        if (!err) {
+          console.log('login form', values)
+          const loginParams = { ...values }
+          delete loginParams.username
+          // debugger
+          // loginParams[!state.loginType ? 'email' : 'username'] = values.username
+          loginParams['username'] = values.username
+          loginParams.password = md5(values.password)
+          Login(loginParams)
+            .then((res) => this.loginSuccess(res))
+            .catch(err => this.requestFailed(err))
+            .finally(() => {
               state.loginBtn = false
-            }, 600)
-          }
-        })
-      },
-      getCaptcha(e) {
-        e.preventDefault()
-        const { form: { validateFields }, state } = this
-
-        validateFields(['mobile'], { force: true }, (err, values) => {
-          if (!err) {
-            state.smsSendBtn = true
-
-            const interval = window.setInterval(() => {
-              if (state.time-- <= 0) {
-                state.time = 60
-                state.smsSendBtn = false
-                window.clearInterval(interval)
-              }
-            }, 1000)
-
-            const hide = this.$message.loading('验证码发送中..', 0)
-            getSmsCaptcha({ mobile: values.mobile }).then(res => {
-              setTimeout(hide, 2500)
-              this.$notification['success']({
-                message: '提示',
-                description: '验证码获取成功，您的验证码为：' + res.result.captcha,
-                duration: 8
-              })
-            }).catch(err => {
-              setTimeout(hide, 1)
-              clearInterval(interval)
-              state.time = 60
-              state.smsSendBtn = false
-              this.requestFailed(err)
             })
-          }
-        })
-      },
-      stepCaptchaSuccess() {
-        this.loginSuccess()
-      },
-      stepCaptchaCancel() {
-        this.Logout().then(() => {
-          this.loginBtn = false
-          this.stepCaptchaVisible = false
-        })
-      },
-      loginSuccess(res) {
-        console.log(res)
-        this.$router.push({ name: 'dashboard' })
-        // 延迟 1 秒显示欢迎信息
-        setTimeout(() => {
-          this.$notification.success({
-            message: '欢迎',
-            description: `${timeFix()}，欢迎回来`
-          })
-        }, 1000)
-      },
-      // eslint-disable-next-line handle-callback-err
-      requestFailed(err) {
-        const that = this
-        that.clickCount++
-        if (that.clickCount >= 2) {
-          that.isCheck = true
+        } else {
+          setTimeout(() => {
+            state.loginBtn = false
+          }, 600)
         }
-        that.isError = true
-        // this.$notification['error']({
-        //   message: '错误',
-        //   description: ((err.response || {}).data || {}).message || '请求出现错误，请稍后再试',
-        //   duration: 4
-        // })
-      }
+      })
+    },
+    loginSuccess (res) {
+      console.log(res)
+      this.$router.push({ name: 'dashboard' })
+      // 延迟 1 秒显示欢迎信息
+      setTimeout(() => {
+        this.$notification.success({
+          message: '欢迎',
+          description: `${timeFix()}，欢迎回来`
+        })
+      }, 1000)
+    },
+    // eslint-disable-next-line handle-callback-err
+    requestFailed (err) {
+      const that = this
+      that.isError = true
     }
   }
+}
 </script>
 
 <style lang="less" scoped>
   .main {
     height: 100%;
-    /*min-height: 450px;*/
     position: relative;
-    /*img {*/
-    /*  width: 100%;*/
-    /*  height: 100%;*/
-    /*!*}*!*/
-    /*.ant-carousel {*/
-    /*  height: 100%;*/
-    /*  .slick-slider {*/
-    /*    height: 100%;*/
-    /*    .slick-list {*/
-    /*      height: 100% !important;*/
-    /*    }*/
-    /*  }*/
-    /*}*/
-    /*.ant-carousel .slick-dots {*/
-    /*  bottom: 24px;*/
-    /*}*/
     .login-box {
       width: 840px;
       height: 428px;

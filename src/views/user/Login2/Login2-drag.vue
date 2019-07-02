@@ -1,6 +1,5 @@
 <template>
   <div class="main main-login2-drag">
-    <!--<img src="@/assets/login_bg1.png"/>-->
     <div class="login-box">
       <a-row>
         <a-col :span="20">
@@ -10,7 +9,6 @@
               class="user-layout-login"
               ref="formLogin"
               :form="form"
-              @submit="handleSubmit"
             >
               <a-tabs
                 :animated="false"
@@ -81,6 +79,7 @@
                       class="login-button"
                       :loading="state.loginBtn"
                       :disabled="state.loginBtn"
+                      @click="handleSubmit"
                     >登录</a-button>
                   </a-form-item>
                   <div class="login-tips" v-if="isError">
@@ -146,21 +145,13 @@
         <a-col :span="4"></a-col>
       </a-row>
     </div>
-    <two-step-captcha
-      v-if="requiredTwoStepCaptcha"
-      :visible="stepCaptchaVisible"
-      @success="stepCaptchaSuccess"
-      @cancel="stepCaptchaCancel"
-    ></two-step-captcha>
   </div>
 </template>
 
 <script>
 import md5 from 'md5'
-import TwoStepCaptcha from '@/components/tools/TwoStepCaptcha'
 import { mapActions } from 'vuex'
 import { timeFix } from '@/utils/util'
-import { getSmsCaptcha, get2step } from '@/api/login'
 import AFormItem from 'ant-design-vue/es/form/FormItem'
 import 'font-awesome/css/font-awesome.min.css'
 import dragVerify from 'vue-drag-verify'
@@ -173,7 +164,6 @@ export default {
   components: {
     ARow,
     AFormItem,
-    TwoStepCaptcha,
     dragVerify
   },
   data () {
@@ -183,8 +173,6 @@ export default {
       loginBtn: false,
       // login type: 0 email, 1 username, 2 telephone
       loginType: 0,
-      requiredTwoStepCaptcha: false,
-      stepCaptchaVisible: false,
       form: this.$form.createForm(this),
       state: {
         time: 60,
@@ -192,8 +180,7 @@ export default {
         testBtn: false,
         caLoginBtn: false,
         // login type: 0 email, 1 username, 2 telephone
-        loginType: 0,
-        smsSendBtn: false
+        loginType: 0
       },
       isCheck: false, // 验证框是否展示
       // 滑块
@@ -217,23 +204,14 @@ export default {
     }
   },
   created () {
-    get2step({ })
-      .then(res => {
-        this.requiredTwoStepCaptcha = res.result.stepCode
-      })
-      .catch(() => {
-        this.requiredTwoStepCaptcha = false
-      })
-    // this.requiredTwoStepCaptcha = true
   },
-  mounted() {
-    $('.main-login2-drag').backstretch(imgSrc);
+  mounted () {
+    $('.main-login2-drag').backstretch(imgSrc)
   },
   methods: {
     // 滑动完成消失
     passcallback () {
       if (this.$refs.Verify.isPassing) {
-        // this.show = false
         this.isError = false
       }
     },
@@ -243,17 +221,6 @@ export default {
       this.isPassCA = true
     },
     ...mapActions(['Login', 'Logout']),
-    // handler
-    // handleUsernameOrEmail (rule, value, callback) {
-    //   const { state } = this
-    //   const regex = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/
-    //   if (regex.test(value)) {
-    //     state.loginType = 0
-    //   } else {
-    //     state.loginType = 1
-    //   }
-    //   callback()
-    // },
     handleTabClick (key) {
       this.customActiveKey = key
       // this.form.resetFields()
@@ -296,49 +263,6 @@ export default {
         }
       })
     },
-    getCaptcha (e) {
-      e.preventDefault()
-      const { form: { validateFields }, state } = this
-
-      validateFields(['mobile'], { force: true }, (err, values) => {
-        if (!err) {
-          state.smsSendBtn = true
-
-          const interval = window.setInterval(() => {
-            if (state.time-- <= 0) {
-              state.time = 60
-              state.smsSendBtn = false
-              window.clearInterval(interval)
-            }
-          }, 1000)
-
-          const hide = this.$message.loading('验证码发送中..', 0)
-          getSmsCaptcha({ mobile: values.mobile }).then(res => {
-            setTimeout(hide, 2500)
-            this.$notification['success']({
-              message: '提示',
-              description: '验证码获取成功，您的验证码为：' + res.result.captcha,
-              duration: 8
-            })
-          }).catch(err => {
-            setTimeout(hide, 1)
-            clearInterval(interval)
-            state.time = 60
-            state.smsSendBtn = false
-            this.requestFailed(err)
-          })
-        }
-      })
-    },
-    stepCaptchaSuccess () {
-      this.loginSuccess()
-    },
-    stepCaptchaCancel () {
-      this.Logout().then(() => {
-        this.loginBtn = false
-        this.stepCaptchaVisible = false
-      })
-    },
     loginSuccess (res) {
       console.log(res)
       this.$router.push({ name: 'dashboard' })
@@ -358,11 +282,6 @@ export default {
         that.isCheck = true
       }
       that.isError = true
-      // this.$notification['error']({
-      //   message: '错误',
-      //   description: ((err.response || {}).data || {}).message || '请求出现错误，请稍后再试',
-      //   duration: 4
-      // })
     }
   }
 }
@@ -373,8 +292,6 @@ export default {
     height: calc(100% - 216px);
     min-height: 450px;
     position: relative;
-/*    background: no-repeat #eeeeee url(~@/assets/login_bg1.png) scroll top center;
-    background-size: cover;*/
     .login-box {
       position: absolute;
       top: 50%;
@@ -450,6 +367,5 @@ export default {
         }
       }
     }
-    /*}*/
   }
 </style>

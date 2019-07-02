@@ -123,7 +123,7 @@
               <span>
                 {{ "1000000000" }}
               </span>
-            </a-form-item>`
+            </a-form-item>
             <a-form-item label="子订单" :labelCol="labelCol" :wrapperCol="wrapperCol">
               <span>
                 {{ "3214321432" }}

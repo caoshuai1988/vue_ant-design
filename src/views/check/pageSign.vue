@@ -275,16 +275,15 @@ a {
                 style="margin-bottom: 24px"
                 row-key="id"
                 :columns="goodsColumns"
-                :data="loadGoodsData"
-              ></s-table>
+                :data="loadGoodsData">
+              </s-table>
 
               <div class="page-sign-title">退货进度</div>
               <s-table
                 style="margin-bottom: 24px"
                 row-key="key"
                 :columns="scheduleColumns"
-                :data="loadScheduleData"
-              >
+                :data="loadScheduleData">
                 <template slot="status" slot-scope="status">
                   <a-badge :status="status" :text="status"/>
                   <!-- <a-badge :status="status" :text="status | statusFilter"/> -->
@@ -297,8 +296,7 @@ a {
               title="地理信息"
               :body-style="closePad"
               :style="mapFd"
-              :class="{screenload: screenloadFlag}"
-            >
+              :class="{screenload: screenloadFlag}">
               <span class="amplification" slot="extra">
                 <a-button >
                   <router-link tag="a" target="_blank" :to="{path: '/maplook'}">弹出查看</router-link>
@@ -309,8 +307,7 @@ a {
                   :center="center"
                   :zoom="zoom"
                   @ready="handler"
-                  style="width:100%;height:100%"
-                >
+                  style="width:100%;height:100%">
                   <bm-navigation anchor="BMAP_ANCHOR_TOP_LEFT"></bm-navigation>
                   <bm-geolocation
                     anchor="BMAP_ANCHOR_BOTTOM_RIGHT"

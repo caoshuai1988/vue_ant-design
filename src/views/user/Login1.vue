@@ -1,5 +1,13 @@
 <template>
   <div class="main main-login1">
+    <div class="bgChoose">
+      <ul>
+        <li>大山</li>
+        <li>大山</li>
+        <li>大山</li>
+        <li>大山</li>
+      </ul>
+    </div>
     <div class="login-box">
       <div class="login-box-left">
         <p>

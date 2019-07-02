@@ -27,7 +27,7 @@
                 <a-icon type="down" v-else />
               </span>
               <verticaltoggle>
-                <Listjc v-if="foldTwo"></Listjc>
+                <SelectList v-if="foldTwo"></SelectList>
               </verticaltoggle>
             </layoutForm>
             <a-divider style="margin-bottom: 32px"/>
@@ -37,11 +37,11 @@
                 <a-icon type="down" v-else />
               </span>
               <verticaltoggle>
-                <ListTable v-if="foldTable"></ListTable>
+                <TableList v-if="foldTable"></TableList>
               </verticaltoggle>
             </layoutForm>
             <a-divider v-show="!foldTable" style="margin-bottom: 32px"/>
-            <a-divider v-show="foldTable" style="margin-bottom: 32px;opacity: 0;"/>
+            <a-divider v-show="foldTable" style="margin-bottom: 0px;opacity: 0;"/>
             <layoutForm title="默认筛选">
               <span class="foldStyle" @click="fold(4)">
                 <a-icon type="up" v-if="iconFour" />
@@ -90,21 +90,21 @@
 
 <script>
 import TagModule from './TagModule'
-//import ListTable from './ListTable'
+import TableList from './TableList'
 import ScreeningTable from './ScreeningTable'
 import verticaltoggle from '@/views/newform/verticaltoggle.js'
 import layoutForm from '@/views/newform/LayoutForm'
-//import Listjc from './Listjc'
+import SelectList from './SelectList'
 
 export default {
   name: 'SetAlert',
   components: {
     TagModule,
-//  ListTable,
+    TableList,
+    SelectList,
     ScreeningTable,
     verticaltoggle,
     layoutForm
-//  Listjc
   },
   props: {
 

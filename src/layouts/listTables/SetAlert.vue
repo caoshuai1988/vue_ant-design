@@ -40,7 +40,8 @@
                 <ListTable v-if="foldTable"></ListTable>
               </verticaltoggle>
             </layoutForm>
-            <a-divider style="margin-bottom: 32px"/>
+            <a-divider v-show="!foldTable" style="margin-bottom: 32px"/>
+            <a-divider v-show="foldTable" style="margin-bottom: 32px;opacity: 0;"/>
             <layoutForm title="默认筛选">
               <span class="foldStyle" @click="fold(4)">
                 <a-icon type="up" v-if="iconFour" />

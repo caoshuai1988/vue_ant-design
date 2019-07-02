@@ -20,13 +20,12 @@
 export default {
   data   () {
     return {
-      center: { lng: 0, lat: 0 }, // 地图坐标
-      zoom: 11, // 地图级别
-      mapFlag: false, // 地图内容
-      screenloadFlag: false, // 全屏
-      iconSwitch: true, // 缩放图标
+      center: { lng: 0, lat: 0 }, // map lng lat
+      zoom: 11, // map level
+      mapFlag: false, // map content
+      screenloadFlag: false, // full screen
+      iconSwitch: true, // zoom icon
       mapFd: {
-        // 自定义样式map
         width: '',
         height: ''
       },

@@ -37,18 +37,18 @@
 export default {
   data () {
     return {
-      tabSwitch: { // 默认外层样式
+      tabSwitch: { // tab style
         height: '',
         width: '',
         background: '#fff',
         paddingTop: '16px'
       },
-      tableStyle: { // 报表默认
+      tableStyle: { // table def
         height: '',
         width: '100%'
       },
       iconFlag: false,
-      screenloadFlag: false // 全屏
+      screenloadFlag: false // full screen
     }
   },
   mounted () {
@@ -63,8 +63,8 @@ export default {
         this.tabSwitch.width = document.documentElement.clientWidth + 'px'
         this.tabSwitch.height = document.documentElement.clientHeight + 'px'
       }
-      this.iconFlag = !this.iconFlag // 图标
-      this.screenloadFlag = !this.screenloadFlag // 全屏
+      this.iconFlag = !this.iconFlag // icon
+      this.screenloadFlag = !this.screenloadFlag // full screen
     }
   }
 }
@@ -72,14 +72,14 @@ export default {
 
 <style lang="less" scoped>
 
-.screenload { /* 全屏 add css */
+.screenload { /* full screen add css */
   position: fixed;
   top: 0;
   left: 0;
   z-index: 10;
 }
 
-.amplification { /* 放大icon */
+.amplification { /* zoom icon */
   float: right;
   font-weight: 700;
   font-size: 18px;
@@ -88,7 +88,7 @@ export default {
   margin-right: 22px;
 }
 
-/deep/ .ant-tabs-bar{ // 清除多余空白
+/deep/ .ant-tabs-bar{ // remove the blank
    margin: 0;
 }
 

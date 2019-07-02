@@ -456,12 +456,12 @@ export default {
       labelCol: { lg: { span: 2 }, sm: { span: 2 } },
       wrapperCol: { lg: { span: 18 }, sm: { span: 18 } },
       fileList: [
-        {
-          uid: '-1',
-          name: 'xxx.png',
-          status: 'done',
-          url: 'http://www.baidu.com/xxx.png'
-        }
+        // {
+        //   uid: '-1',
+        //   name: 'xxx.png',
+        //   status: 'done',
+        //   url: 'http://www.baidu.com/xxx.png'
+        // }
       ],
       form: this.$form.createForm(this)
     }

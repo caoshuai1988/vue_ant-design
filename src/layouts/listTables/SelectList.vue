@@ -31,6 +31,7 @@
       </a-select>
     </a-form-item>
     <a-form-item
+    	style="margin-bottom:8px"
       label="默认行数"
       :label-col="{ span: 6 }"
       :wrapper-col="{ span: 12 }">

@@ -41,8 +41,7 @@ export default {
 
 <style lang="less" scoped>
 	.tagBox{
-		display: inline-block;
-		margin-top:-10px;
+		display:inline-block;
 	}
 	.active{
 		color:#40a9ff !important;
@@ -53,8 +52,7 @@ export default {
 		border-color:#40a9ff !important;
 	}*/
 	.tagModule{
-		padding-top:10px;
-		margin-bottom:-8px;
+		margin-bottom:-16px;
 	}
 	.tagModule .ant-tag{
 		padding:10px 10px 10px 10px !important;
@@ -62,6 +60,6 @@ export default {
 		text-align: center !important;
 		height:34px !important;
 		float:left;
-		margin-bottom:24px;
+		margin-bottom:16px;
 	}
 </style>

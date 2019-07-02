@@ -340,12 +340,12 @@ export default {
   },
   data () {
     return {
-      foldOne: true, // 折叠组件1
-      foldTwo: true, // 折叠组件2
-      foldTable: true, // 折叠表格
-      iconTable: true, // 图标表格
-      iconToggle: true, // 图标1
-      iconToggleOne: true, // 图标2
+      foldOne: true, // fold 组件1
+      foldTwo: true, // fold 组件2
+      foldTable: true, //  zoom table
+      iconTable: true, // icon table
+      iconToggle: true, // icon1
+      iconToggleOne: true, // icon2
       form: this.$form.createForm(this),
       residences,
       memberLoading: false,
@@ -422,7 +422,7 @@ export default {
     onChange (value) { // number
       console.log('changed', value)
     },
-    handleSubmit (e) { // 表单
+    handleSubmit (e) { // form
       e.preventDefault()
       this.form.validateFields((err, values) => {
         if (!err) {

@@ -135,7 +135,7 @@
               <a-table-column title="进度" key="progress">
                 <template slot-scope="text, record">
                   <!-- <a-badge status="success" text="record.progress" /> -->
-                  <a-badge status="success" text="编辑(1/3)" />
+                  <a-badge status="success" text="编辑(1/3)"/>
                 </template>
               </a-table-column>
               <a-table-column title="操作时间" key="datetime">

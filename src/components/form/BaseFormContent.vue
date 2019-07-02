@@ -110,7 +110,7 @@
           </a-select>
         </a-form-item> -->
       </a-form-item>
-      <a-form-item :wrapperCol="{ span: 18 }" style="text-align: center; padding-top: 20px">
+      <a-form-item :wrapperCol="{ span: 18 }" style="text-align: center; padding-top: 32px">
         <!-- <a-button htmlType="submit" type="primary">提交</a-button> -->
         <a-button htmlType="submit" type="primary" loading>
           提交

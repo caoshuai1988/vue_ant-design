@@ -46,7 +46,7 @@ export const asyncRouterMap = [
                 path: '/user/login2/base',
                 name: 'login2Base',
                 meta: { title: '默认页', target: '_blank' }
-              },  // 登陆模板4
+              }, // 登陆模板4
               {
                 path: '/user/login4',
                 name: 'login4',

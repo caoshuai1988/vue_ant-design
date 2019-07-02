@@ -280,7 +280,7 @@
         </verticaltoggle>
       </layoutForm>
       <div class="footerBox" >
-        <a-form-item :wrapperCol="{ span: 24 }" style="text-align: center; padding: 20px 0">
+        <a-form-item :wrapperCol="{ span: 24 }" style="text-align: center; margin-top:32px">
           <a-button htmlType="submit" type="primary" loading>
             提交
           </a-button>

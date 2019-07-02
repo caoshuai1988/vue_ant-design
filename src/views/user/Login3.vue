@@ -5,7 +5,6 @@
       class="user-layout-login"
       ref="formLogin"
       :form="form"
-      @submit="handleSubmit"
     >
       <a-tabs
         :animated="false"
@@ -59,6 +58,7 @@
               class="login-button"
               :loading="state.loginBtn"
               :disabled="state.loginBtn"
+              @click="handleSubmit"
             >确定</a-button>
           </a-form-item>
         </a-tab-pane>
@@ -117,55 +117,34 @@
       </a-tabs>
     </a-form>
 
-    <two-step-captcha
-      v-if="requiredTwoStepCaptcha"
-      :visible="stepCaptchaVisible"
-      @success="stepCaptchaSuccess"
-      @cancel="stepCaptchaCancel"
-    ></two-step-captcha>
   </div>
 </template>
 
 <script>
 import md5 from 'md5'
-import TwoStepCaptcha from '@/components/tools/TwoStepCaptcha'
 import { mapActions } from 'vuex'
 import { timeFix } from '@/utils/util'
-import { getSmsCaptcha, get2step } from '@/api/login'
 
 export default {
-  components: {
-    TwoStepCaptcha
-  },
+  components: {},
   data () {
     return {
       customActiveKey: 'tab1',
       loginBtn: false,
       // login type: 0 email, 1 username, 2 telephone
       loginType: 0,
-      requiredTwoStepCaptcha: false,
-      stepCaptchaVisible: false,
       form: this.$form.createForm(this),
       state: {
         time: 60,
         loginBtn: false,
         testBtn: false,
         // login type: 0 email, 1 username, 2 telephone
-        loginType: 0,
-        smsSendBtn: false
+        loginType: 0
       },
       isPassCA: false
     }
   },
   created () {
-    get2step({ })
-      .then(res => {
-        this.requiredTwoStepCaptcha = res.result.stepCode
-      })
-      .catch(() => {
-        this.requiredTwoStepCaptcha = false
-      })
-    // this.requiredTwoStepCaptcha = true
   },
   methods: {
     // 检测CA密钥
@@ -222,49 +201,6 @@ export default {
         }
       })
     },
-    getCaptcha (e) {
-      e.preventDefault()
-      const { form: { validateFields }, state } = this
-
-      validateFields(['mobile'], { force: true }, (err, values) => {
-        if (!err) {
-          state.smsSendBtn = true
-
-          const interval = window.setInterval(() => {
-            if (state.time-- <= 0) {
-              state.time = 60
-              state.smsSendBtn = false
-              window.clearInterval(interval)
-            }
-          }, 1000)
-
-          const hide = this.$message.loading('验证码发送中..', 0)
-          getSmsCaptcha({ mobile: values.mobile }).then(res => {
-            setTimeout(hide, 2500)
-            this.$notification['success']({
-              message: '提示',
-              description: '验证码获取成功，您的验证码为：' + res.result.captcha,
-              duration: 8
-            })
-          }).catch(err => {
-            setTimeout(hide, 1)
-            clearInterval(interval)
-            state.time = 60
-            state.smsSendBtn = false
-            this.requestFailed(err)
-          })
-        }
-      })
-    },
-    stepCaptchaSuccess () {
-      this.loginSuccess()
-    },
-    stepCaptchaCancel () {
-      this.Logout().then(() => {
-        this.loginBtn = false
-        this.stepCaptchaVisible = false
-      })
-    },
     loginSuccess (res) {
       console.log(res)
       this.$router.push({ name: 'dashboard' })
@@ -290,7 +226,6 @@ export default {
 <style lang="less" scoped>
   .main {
     #formLogin {
-      /*height: 340px;*/
       .ant-form-item {
         margin-bottom: 24px;
       }
@@ -358,7 +293,6 @@ export default {
         }
       }
       .ca-install {
-        /*margin-top: 24px;*/
         div:first-child {
           font-size: 16px;
           color: rgba(0,0,0,0.65);

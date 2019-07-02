@@ -23,7 +23,7 @@
     color: rgba(0, 0, 0, 0.65);
     list-style: none;
     background: #e8e8e8;
-    border: 1px solid rgba(232, 232, 232, 1)
+    // border: 1px solid rgba(232, 232, 232, 1)
   }
   // 宽浅色的分割线
   .shallow-horizontal {
@@ -188,7 +188,7 @@
           <div class="approval-content__title">状态</div>
           <div class="first-item">
             <span class="name">当前节点:  新建</span>
-            <span class="name" >办理岗位:  县级经办岗</span>
+            <span class="name" style="margin-left:24px">办理岗位:  县级经办岗</span>
             <span class="right-box-btn">流程详情</span>
           </div>
           <div class="divider-horizontal"></div>

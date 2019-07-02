@@ -25,9 +25,7 @@
   }
 
   .page-direction{
-    // right: @help-width;
     background: #fff;
-    z-index: 3;
     .title{
       position: relative;
       box-sizing: border-box;
@@ -68,13 +66,16 @@
       background: #e9e9e9;
     }
     .content-box{
-      padding: 24px;
+      padding: 0 24px 24px;
       padding-right: 2px;
     }
     .content{
-      padding-right: 24px;
-      min-height: 300px;
-      max-height: 650px;
+      padding: 24px 24px 0 0;
+      // min-height: 300px;
+      background: #fff;
+      // max-height: 650px;
+      // height: calc(100% - 56px);
+      height:100%;
       overflow-y: auto;
       p{
         margin: 0;
@@ -83,11 +84,9 @@
       &::-webkit-scrollbar{
         width: 6px;
         height: 8px;
-        // background-color: #F5F5F5;
       }
       /*定义滚动条轨道 内阴影+圆角*/
       &::-webkit-scrollbar-track{
-        // box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
         border-radius: 10px;
         background-color: #fff;
       }
@@ -124,7 +123,7 @@
           :sm="helpNum"
           :xs="helpNum">
           <a-affix :offsetTop="this.top">
-            <div class="page-direction">
+            <div class="page-direction" ref="pageDirection">
               <div class="title">
                 <div class="title-des">
                   <span class="help">帮助</span>
@@ -133,8 +132,8 @@
                 </div>
               </div>
               <div class="help-line"></div>
-              <div class="content-box">
-                <div class="content">
+              <div class="content-box" :style="boxHeight">
+                <div class="content" style="margin:0">
                   <div style="margin-bottom:20px">
                     <p class="question">
                       为什么选择云服务器ECS？
@@ -214,6 +213,9 @@ export default {
   },
   data () {
     return {
+      boxHeight: {
+        height: ''
+      },
       // 固钉
       top: 0,
       num: 18,
@@ -238,7 +240,19 @@ export default {
 
     }
   },
+  mounted () {
+    this.checkResize()
+    const evt = 'onorientationchange' in window ? 'orientationchange' : 'resize'
+    window.addEventListener(evt, this.checkResize)
+  },
   methods: {
+    checkResize () {
+      this.boxHeight.height = document.documentElement.clientHeight - 48 - 65 - 65 + 'px'
+      // const top = this.$refs.pageDirection.getBoundingClientRect().top
+      // if (top === 0) {
+      //   this.boxHeight.height = document.documentElement.clientHeight + 'px'
+      // }
+    },
     // handler
     handleSubmit (e) {
       e.preventDefault()
@@ -266,6 +280,10 @@ export default {
     onChange () {
 
     }
+  },
+  beforeDestroy () {
+    const evt = 'onorientationchange' in window ? 'orientationchange' : 'resize'
+    window.removeEventListener(evt, this.checkResize)
   }
 }
 </script>

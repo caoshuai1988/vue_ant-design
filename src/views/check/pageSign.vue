@@ -847,15 +847,6 @@ export default {
     })
   },
   methods: {
-    addAmplifier (val) {
-      // this.$router.push({
-      //   name: 'preview',
-      //   params: {
-      //     val: val,
-      //     scrollY: window.scrollY + 550
-      //   }
-      // })
-    },
     amplificationBtn () {
       // 地图放大
       if (this.mapFd.width === window.screen.availWidth + 'px') {
@@ -880,21 +871,11 @@ export default {
       const totalTranslation = jump[2].offsetTop
       const totalTrans = jump[3].offsetTop
       const totalTransPlural = jump[4].offsetTop
-      if (scrollTop >= totalSlide) {
-        this.activeKey = '1'
-      }
-      if (scrollTop >= totalSlideMove) {
-        this.activeKey = '2'
-      }
-      if (scrollTop >= totalTranslation) {
-        this.activeKey = '3'
-      }
-      if (scrollTop >= totalTrans) {
-        this.activeKey = '4'
-      }
-      if (scrollTop >= totalTransPlural) {
-        this.activeKey = '5'
-      }
+      if (scrollTop >= totalSlide) this.activeKey = '1'
+      if (scrollTop >= totalSlideMove) this.activeKey = '2'
+      if (scrollTop >= totalTranslation) this.activeKey = '3'
+      if (scrollTop >= totalTrans) this.activeKey = '4'
+      if (scrollTop >= totalTransPlural) this.activeKey = '5'
     },
 
     handler ({ BMap, map }) {
@@ -905,20 +886,27 @@ export default {
     },
     callback (val) {
       // 点击tab
-      window.removeEventListener('scroll', this.handleScroll)
-      this.$forceUpdate()
+      // window.removeEventListener('scroll', this.handleScroll)
+      // this.$forceUpdate()
       val = val - 1
-      if (val === 0) {
-        // 主动切换
-        this.activeKey = '1'
-      } else if (val === 2) {
-        this.activeKey = '3'
-      } else if (val === 1) {
-        this.activeKey = '2'
-      } else if (val === 3) {
-        this.activeKey = '4'
-      } else if (val === 4) {
-        this.activeKey = '5'
+      switch (val) {
+        case 0:
+          this.activeKey = '1'
+          break
+        case 1:
+          this.activeKey = '2'
+          break
+        case 2:
+          this.activeKey = '3'
+          break
+        case 3:
+          this.activeKey = '4'
+          break
+        case 4:
+          this.activeKey = '5'
+          break
+        default:
+          this.activeKey = '1'
       }
       const jump = document.querySelectorAll('.anchor') // 用 class" 添加锚点
       const total = jump[val].offsetTop
@@ -960,7 +948,6 @@ export default {
       e.preventDefault()
       this.form.validateFields((err, values) => {
         if (!err) {
-          // eslint-disable-next-line no-console
           console.log('Received values of form: ', values)
         }
       })

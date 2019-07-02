@@ -876,8 +876,8 @@ export default {
     },
     callback (val) {
       // 点击tab
-      // window.removeEventListener('scroll', this.handleScroll)
-      // this.$forceUpdate()
+      window.removeEventListener('scroll', this.handleScroll)
+      this.$forceUpdate()
       val = val - 1
       switch (val) {
         case 0:
@@ -902,12 +902,12 @@ export default {
       const total = jump[val].offsetTop
       let distance = document.documentElement.scrollTop || document.body.scrollTop
 
-      let step = total / 40 // 平滑滚动，时长500ms，每10ms一跳，共30跳
+      let step = total / 30 // 平滑滚动，时长500ms，每10ms一跳，共30跳
       if (total > distance) {
         smoothDown()
       } else {
         const newTotal = distance - total
-        step = newTotal / 40
+        step = newTotal / 30
         smoothUp()
       }
       function smoothDown () {
@@ -932,6 +932,8 @@ export default {
           document.documentElement.scrollTop = total
         }
       }
+      window.addEventListener('scroll', this.handleScroll) // 监听滚动条
+      this.$forceUpdate()
     },
     // handler
     handleSubmit (e) {

@@ -35,8 +35,7 @@
             <template
               v-for="(col, i) in ['name', 'workId', 'department']"
               :slot="col"
-              slot-scope="text, record"
-            >
+              slot-scope="text, record">
               <a-input
                 :key="col"
                 v-if="record.editable"

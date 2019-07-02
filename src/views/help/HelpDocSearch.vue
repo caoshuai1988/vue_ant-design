@@ -2,15 +2,19 @@
   <div class="help-container" :style="{zoom:curZoom}">
     <div class="help-con-head">
       <div class="help-head-content">
-        <div class="head-caption">
-          <span>富深新平台模板</span>
-          <span>帮助</span>
-        </div>
+        <router-link :to="{ path: '/help/helpdoc' }">
+	        <div class="head-caption">
+	          <span><img src="~@/assets/fslogo.svg" style="width:40px;height:40px;" alt="logo"></span>
+	          <span>富深新平台模板</span>
+	          <span>帮助</span>
+	        </div>
+        </router-link>
         <div class="head-search">
-          <a-input-search
-            placeholder="请输入"
-            style="width: 272px"
-          />
+          <router-link :to="{ path: '/help/helpsearch' }">
+	          <a-input-search
+	            style="width: 272px"
+	          />
+	        </router-link>
         </div>
         <div class="head-contact">
           <div>
@@ -255,11 +259,18 @@ export default {
       .head-caption {
         color: #FFFFFF;
         & span:first-child {
+         vertical-align:top;
+        }
+        & span:nth-child(2) {
           font-size: 20px;
           padding-right: 8px;
+          padding-left:8px;
+          vertical-align:top;
+          line-height:36px;
         }
         & span:last-child {
           font-size: 16px;
+          vertical-align:middle;
         }
       }
       .head-contact {

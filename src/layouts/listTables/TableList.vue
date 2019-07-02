@@ -1,13 +1,16 @@
 <template>
-  <div class="screening">
+  <div class="listtable">
     <a-table :columns="columns" :dataSource="data" bordered>
+      <span slot="customTitle"><a-icon type="smile-o" /> Name</span>
+
       <template v-for="col1 in ['hide']" :slot="col1">
 
         <div :key="col1">
           <a-switch defaultChecked checkedChildren="是" unCheckedChildren="否"/>
         </div>
       </template>
-      <template v-for="col in ['name', 'age', 'address']" :slot="col">
+      <template v-for="col in ['name', 'age', 'address']" :slot="col" slot-scope="text, record,">
+
         <div :key="col">
           <a-input
             style="margin: -5px 0"
@@ -17,37 +20,52 @@
           />
         </div>
       </template>
+      <template v-for="coll in ['address']" :slot="coll" slot-scope="textl, record,">
+
+        <div :key="coll">
+          <a-input
+            style="margin: -5px 0"
+            :value="textl"
+            placeholder="输入列宽"
+            @change="e => handleChange(e.target.value, record.key, coll)"
+          />
+        </div>
+      </template>
     </a-table>
   </div>
-
 </template>
 <script>
 const columns = [{
-  title: '筛选项',
+  title: '列名',
   dataIndex: 'age',
-  width: '33.333%'
+  width: '25%'
 },
 {
   title: '显示',
   dataIndex: 'hide',
-  width: '33.333%',
+  width: '25%',
   scopedSlots: { customRender: 'hide' }
 },
 {
   title: '顺序',
   dataIndex: 'name',
-  width: '33.333%',
+  width: '25%',
   scopedSlots: { customRender: 'name' }
+}, {
+  title: '列宽(px)',
+  dataIndex: 'address',
+  width: '25%',
+  scopedSlots: { customRender: 'address' }
 }]
 
 const data = []
-const name = ['状态', '进度', '名称', '编号', '日期范围']
+const name = ['状态', '进度', '名称', '编号', '创建日期']
 for (let i = 0; i < 5; i++) {
   data.push({
     key: i.toString(),
     name: '',
     age: name[i],
-    address: `London Park no. ${i}`
+    address: ''
   })
 }
 export default {
@@ -55,7 +73,8 @@ export default {
     this.cacheData = data.map(item => ({ ...item }))
     return {
       data,
-      columns
+      columns,
+      hideOnSinglePage: false
     }
   },
   computed: {
@@ -72,21 +91,21 @@ export default {
   }
 }
 </script>
-<style lang="less">
-.screening .ant-table-bordered .ant-table-thead > tr > th, .ant-table-bordered .ant-table-tbody > tr > td{
+<style>
+.listtable .ant-table-bordered .ant-table-thead > tr > th, .ant-table-bordered .ant-table-tbody > tr > td{
 	border-right:0px !important;
 
 }
-.screening .ant-table-bordered .ant-table-header > table, .ant-table-bordered .ant-table-body > table, .ant-table-bordered .ant-table-fixed-left table, .ant-table-bordered .ant-table-fixed-right table{
+.listtable .ant-table-bordered .ant-table-header > table, .ant-table-bordered .ant-table-body > table, .ant-table-bordered .ant-table-fixed-left table, .ant-table-bordered .ant-table-fixed-right table{
 	border-left:0px !important;
 }
-.screening .editable-row-operations a {
+.listtable .editable-row-operations a {
   margin-right: 8px;
 }
-.screening .ant-pagination{
+.listtable .ant-pagination{
 	display:none;
 }
-.screening .ant-table-pagination{
+.listtable .ant-table-pagination{
 	display:none;
 }
 </style>

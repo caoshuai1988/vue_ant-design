@@ -194,7 +194,6 @@
               </div>
             </div>
           </a-affix>
-
         </a-col>
       </template>
     </a-row>
@@ -237,7 +236,6 @@ export default {
         status: 'done',
         url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png'
       }]
-
     }
   },
   mounted () {

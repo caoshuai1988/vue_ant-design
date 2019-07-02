@@ -62,25 +62,13 @@
 import { mapState } from 'vuex'
 import PageHeader from '@/components/PageHeader'
 import { mixin } from '@/utils/mixin'
-import TagModule from './listTables/TagModule'
-import ListTable from './listTables/ListTable'
-import ScreeningTable from './listTables/ScreeningTable'
-import verticaltoggle from '@/views/newform/verticaltoggle.js'
-import Listjc from './listTables/Listjc'
 import SetAlert from './listTables/SetAlert'
-import layoutForm from '@/views/newform/LayoutForm'
 
 export default {
   name: 'PageView',
   mixins: [mixin],
   components: {
     PageHeader,
-    TagModule,
-    ListTable,
-    ScreeningTable,
-    verticaltoggle,
-    Listjc,
-    layoutForm,
     SetAlert
   },
   props: {

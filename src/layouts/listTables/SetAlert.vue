@@ -8,7 +8,7 @@
       :visible="visible"
       :wrapStyle="{height: 'calc(100% - 108px)',overflow: 'auto',paddingBottom: '108px'}">
       <template>
-        <div style="padding-bottom:40px;">
+        <div style="padding-bottom:80px;">
           <a-card class="card list-set-drawer" style="font-size: 26px" :bordered="false" >
 
             <layoutForm title="模板" >
@@ -50,7 +50,6 @@
                 <ScreeningTable v-if="dataFour"></ScreeningTable>
               </verticaltoggle>
             </layoutForm>
-            <a-divider style="margin-bottom: 32px"/>
           </a-card>
         </div>
       </template>

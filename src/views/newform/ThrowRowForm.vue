@@ -120,19 +120,6 @@
                       {rules: [{ required: false, number:true, message: '请输入卡号' }]}
                     ]"
                     placeholder="请输入卡号"/>
-                  <!-- <a-input-group
-                    compact
-                    v-decorator="[
-                      'num',
-                      {rules: [{ required: true, message: '请填写完整卡号'}]}
-                    ]" >
-                    <a-input placeholder="请输入卡号" />
-                    <a-input-number :min="0" @change="onChange" placeholder="请输入" />
-                    <a-input style="width: 23%;margin-left: 2%; border-radius: 5px;" defaultValue="0571" />
-                    <a-input style="width: 24%;margin-left: 2%; border-radius: 5px;" defaultValue="0571" />
-                    <a-input style="width: 24%;margin-left: 2%; border-radius: 5px;" defaultValue="0571" />
-                  </a-input-group> -->
-
                 </a-form-item>
               </a-col>
               <a-col :xl="{span: 7, offset: 2}" :lg="{span: 8}" :md="{span: 12}" :sm="24">

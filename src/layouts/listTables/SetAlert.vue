@@ -89,6 +89,7 @@
 
 <script>
 import TagModule from './TagModule'
+import ListTable from './ListTable'
 import ScreeningTable from './ScreeningTable'
 import verticaltoggle from '@/views/newform/verticaltoggle.js'
 import layoutForm from '@/views/newform/LayoutForm'
@@ -98,6 +99,7 @@ export default {
   name: 'SetAlert',
   components: {
     TagModule,
+    ListTable,
     ScreeningTable,
     verticaltoggle,
     layoutForm,

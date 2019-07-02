@@ -1,4 +1,4 @@
-<style lang="less">
+<style lang="less" >
 @import '~@/utils/utils.less';
 .approval-content {
   // padding: 24px;
@@ -165,9 +165,6 @@
 
 .ant-form-item-control{
   margin-left: 16px !important;
-}
-.ant-form-explain, .ant-form-extra{
-  padding-top: 10px;
 }
 .ant-divider, .ant-divider-vertical{
   top: .3em !important;

@@ -86,6 +86,12 @@
         this.$store.dispatch('ToggleSetDrawer', true)
       },
       bigScale() {
+        /**
+         * 放大镜功能待优化
+         * @param scale
+         * @param className
+         * @constructor
+         */
         $.fn.BUP = function(scale, className) {
           let $element = this
           let $className = className
@@ -150,18 +156,10 @@
             'box-shadow': $options.shadow
           })
 
-          // 尝试使用 左右按键实现 控制放大 缩小
+          // keydown A or left  D or right
           document.onkeydown = function(e) {
             e = event || window.event
-            if (e && e.keyCode === 37) {//左
-              scale += 0.1
-              if (scale >= 5) {
-                scale = 5
-                console.log('已经最大了')
-              }
-              console.log('Q')
-            }
-            if (e && e.keyCode === 39) {//右边
+            if (e && e.keyCode === 37 || e && e.keyCode === 65) {//left or A 缩小
               scale -= 0.1
               if (scale <= 1) {
                 scale = 1
@@ -169,11 +167,40 @@
               }
               console.log('H')
             }
+            if (e && e.keyCode === 39 || e && e.keyCode === 68) {//right or D 放大
+              scale += 0.1
+              if (scale >= 5) {
+                scale = 5
+                console.log('已经最大了')
+              }
+              console.log('Q')
+            }
+            if (e && e.keyCode === 87) {// w
+              if ($options.width <= 1200) {
+                $options.width += $options.width * 0.1
+                $options.height += $options.height * 0.1
+              }
+              console.log('放大镜变大')
+            }
+            if (e && e.keyCode === 83) {// s small
+              $options.width -= $options.width * 0.1
+              $options.height -= $options.height * 0.1
+              if ($options.width <= 400) {
+                $options.width = 400
+                $options.height = 200
+              }
+              console.log('放大镜变小')
+            }
             console.log(scale)
+
+            //
+            $blowupLens.css({
+              'width': $options.width,
+              'height': $options.height
+            })
             $blowupLens.children().css({
               'transform': 'scale(' + scale + ')'
             })
-
           }
 
           // Show magnification lens
@@ -218,7 +245,7 @@
         }
         setTimeout(function() {
           $('#app').BUP(1.5, 'App')
-        }, 1000)
+        }, 300)
       }
     }
   }

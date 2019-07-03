@@ -173,15 +173,15 @@ export const asyncRouterMap = [
         meta: { title: '表单页', icon: 'form', permission: ['form'] },
         children: [
           {
-            path: 'newform/popup',
-            name: 'popup',
-            component: () => import('@/views/newform/popup'),
+            path: 'formpages/Popup',
+            name: 'Popup',
+            component: () => import('@/views/formpages/Popup'),
             meta: { title: '弹窗抽屉', keepAlive: true, permission: ['form'], isForm: true }
           },
           {
             path: '/form/newbaseform',
             name: 'NewBaseForm',
-            component: () => import('@/views/newform/NewBaseForm'),
+            component: () => import('@/views/formpages/NewBaseForm'),
             meta: { title: '基础表单', keepAlive: true, permission: ['form'], showbtn: true, isForm: true }
           },
           {
@@ -191,22 +191,22 @@ export const asyncRouterMap = [
             meta: { title: '基础表单2', keepAlive: true, permission: ['form'], showbtn: true, isForm: true }
           },
           {
-            path: 'newform/ThrowRowForm',
+            path: 'formpages/ThrowRowForm',
             name: 'ThrowRowForm',
-            component: () => import('@/views/newform/ThrowRowForm'),
+            component: () => import('@/views/formpages/ThrowRowForm'),
             meta: { title: '三列表单', keepAlive: true, permission: ['form'], isForm: true }
           },
           {
-            path: 'newform/AdvancedForms',
+            path: 'formpages/AdvancedForms',
             name: 'AdvancedForms',
-            component: () => import('@/views/newform/AdvancedForms'),
+            component: () => import('@/views/formpages/AdvancedForms'),
             meta: { title: '高级表单', keepAlive: true, permission: ['form'], isForm: true }
           },
           {
-            path: 'newform/mapForm',
-            name: 'mapForm',
-            component: () => import('@/views/newform/mapForm'),
-            meta: { title: '分页签-地图报表附件', keepAlive: true, permission: ['form'], showbtn: true, isForm: true }
+            path: 'formpages/MapForm',
+            name: 'MapForm',
+            component: () => import('@/views/formpages/MapForm'),
+            meta: { title: '分页签-地图报表', keepAlive: true, permission: ['form'], showbtn: true, isForm: true }
           },
           {
             path: '/fsxt/fsxt-advanced-form',
@@ -264,7 +264,7 @@ export const asyncRouterMap = [
           {
             path: '/check/flow-head',
             name: 'flowHead',
-            component: () => import('@/views/newform/Flowchart'),
+            component: () => import('@/views/formpages/Flowchart'),
             meta: { title: '全业务流程图', showbtn: true, showStep: false, keepAlive: true, permission: ['form'] }
           }
 
@@ -913,9 +913,9 @@ export const constantRouterMap = [
     ]
   },
   {
-    path: '/preview',
-    name: 'preview',
-    component: () => import('@/views/newform/preview')
+    path: '/Preview',
+    name: 'Preview',
+    component: () => import('@/views/formpages/Preview')
   },
   { // 地图
     path: '/maplook',

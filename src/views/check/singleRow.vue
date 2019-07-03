@@ -258,7 +258,7 @@
 <script>
 import { STable } from '@/components'
 import DetailList from '@/components/tools/DetailList'
-import BaseFlowHead from '@/views/newform/BaseFlowHead'
+import BaseFlowHead from '@/views/formpages/BaseFlowHead'
 const DetailListItem = DetailList.Item
 export default {
   components: {

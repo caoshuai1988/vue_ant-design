@@ -35,7 +35,13 @@
     background: #f4f4f4;
   }
   .first-item {
-     padding: 0 0 8px 0;
+    padding: 0 0 16px 0;
+    .name{
+     color: rgba(0, 0, 0, 0.85)
+    }
+    .name-title{
+       color: rgba(0, 0, 0, 0.65)
+    }
     .status {
       font-weight: 600;
     }
@@ -67,7 +73,8 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    padding: 16px 0;
+    padding: 16px 0 8px 0;
+    font-size: 16px;
     &.title-submit {
       padding: 0 8px;
       background: #fafafa;
@@ -92,7 +99,7 @@
   border-left: 1px;
   border-style: solid;
   border-color: #e5e5e5;
-  .table-lable{
+  .table-lable {
     text-align: right;
     box-sizing: border-box;
     display: inline-block;
@@ -100,7 +107,6 @@
     padding: 0 16px;
   }
   .table-content {
-
     box-sizing: border-box;
     // float: left;
     display: inline-block;
@@ -138,7 +144,23 @@
       &.doc-wrap {
         padding: 0;
         .doc {
-          padding: 8px 16px;
+          padding: 16px 0 0 16px;
+          &.doc--line {
+            width: 100%;
+            border: 0;
+            border-bottom: 1px;
+            border-style: solid;
+            border-color: #e5e5e5;
+            position: relative;
+          }
+          .look {
+            float: right;
+            margin: 0 4px;
+            // margin: 0 16px;
+          }
+        }
+        .doc-bottom {
+          padding: 0 0 16px 16px;
           &.doc--line {
             width: 100%;
             border: 0;
@@ -157,17 +179,18 @@
     }
   }
 }
-.right-box-btn{
+.right-box-btn {
   float: right;
-  color: #1890FF;
+  color: #1890ff;
   cursor: pointer;
 }
 
-/deep/ .ant-form-item-control{
-  margin-left: 16px !important;
+/deep/ .ant-form-item-control {
+  margin-left: 16px ;
 }
-/deep/ .ant-divider, .ant-divider-vertical{
-  top: .3em !important;
+/deep/ .ant-divider,
+.ant-divider-vertical {
+  top: 0.3em !important;
 }
 </style>
 
@@ -175,8 +198,9 @@
   <div>
     <a-drawer
       title="审批"
-      :width="480"
+      :width="520"
       @close="onClose"
+      :closable="false"
       :visible="isVisible"
       :wrapStyle="{height: 'calc(100% - 108px)',overflow: 'auto',paddingBottom: '108px'}"
     >
@@ -184,23 +208,42 @@
         <div class="common-title">
           <div class="approval-content__title">状态</div>
           <div class="first-item">
-            <span class="name">当前节点:  新建</span>
-            <span class="name" style="margin-left:24px">办理岗位:  县级经办岗</span>
+            <span class="name">当前节点: <span class="name-title">新建</span> </span>
+            <span class="name" style="margin-left:24px">办理岗位: <span class="name-title">县级经办岗</span></span>
             <span class="right-box-btn">流程详情</span>
           </div>
-          <a-divider style="margin-bottom: 32px"/>
+          <a-divider style="margin-bottom: 32px" />
           <div class="common-title">
-            <div class="approval-content__title">
-              操作
-            </div>
+            <div class="approval-content__title">操作</div>
             <a-form @submit="handleSubmit" :form="form">
               <!-- 单选框 -->
-              <a-form-item label="结果" :labelCol="labelCol" :wrapperCol="wrapperCol" :required="false">
-                <a-radio-group >
-                  <a-radio value="1">同意</a-radio>
-                  <a-radio value="2">退回</a-radio>
+              <a-form-item
+                label="结果"
+                :labelCol="labelCol"
+                :wrapperCol="wrapperCol"
+                :required="false"
+              >
+                <a-radio-group v-model="value">
+                  <a-radio :value="1">同意</a-radio>
+                  <a-radio :value="2">退回</a-radio>
                 </a-radio-group>
+                <a-select mode="multiple" v-if="value === 2" placeholder="请选择">
+                  <a-select-option value="4">省级经办岗</a-select-option>
+                  <a-select-option value="5">县级经办岗</a-select-option>
+                </a-select>
               </a-form-item>
+              <!-- <a-form-item
+                v-if="value === 2"
+                label="驳回目标"
+                :labelCol="labelCol"
+                :wrapperCol="wrapperCol"
+              >
+                <a-select mode="multiple" >
+                  <a-select-option value="4">同事一</a-select-option>
+                  <a-select-option value="5">同事二</a-select-option>
+                  <a-select-option value="6">同事三</a-select-option>
+                </a-select>
+              </a-form-item> -->
               <!-- 备注 -->
               <a-form-item label="备注" :labelCol="labelCol" :wrapperCol="wrapperCol">
                 <a-textarea rows="4" placeholder="请填写备注或审核意见（选填）" />
@@ -226,14 +269,16 @@
                 </a-form-item>
               </div>
               <!-- 提交 -->
-              <a-form-item :wrapperCol="{ span: 9 }" style="text-align: center">
+              <a-form-item
+                :wrapperCol="{ span: 9 }"
+                style="text-align: center;padding-bottom:16px;"
+              >
                 <a-button htmlType="submit" type="primary">提交</a-button>
               </a-form-item>
             </a-form>
           </div>
           <!-- 浅色横线 -->
-          <!-- <div class="divider-horizontal"></div> -->
-          <a-divider style="margin-bottom: 32px"/>
+          <a-divider style="margin-bottom: 32px" />
           <div class="common-title">
             <div class="approval-content__title">
               <span>历史</span>
@@ -281,7 +326,7 @@
                     <a-divider type="vertical" class="look" />
                     <a href="javascript:;" class="look">预览</a>
                   </div>
-                  <div class="doc">
+                  <div class="doc-bottom">
                     <i class="anticon anticon-paper-clip" style="color: rgba(0, 0, 0, 0.45);">
                       <svg
                         viewBox="64 64 896 896"
@@ -349,7 +394,7 @@
                     <a-divider type="vertical" class="look" />
                     <a href="javascript:;" class="look">预览</a>
                   </div>
-                  <div class="doc">
+                  <div class="doc-bottom ">
                     <i class="anticon anticon-paper-clip" style="color: rgba(0, 0, 0, 0.45);">
                       <svg
                         viewBox="64 64 896 896"
@@ -374,69 +419,10 @@
                 </div>
               </div>
             </div>
-            <!-- 提交 -->
-            <!-- <div class="approval__status title-submit">
-              <span style="color:#FACC14">提交</span>
-              <span>2017-12-14 &nbsp;09:00</span>
-            </div>
-            <div class="drawer-content-box">
-              <div class="second-row">
-                <div class="table-lable">备注</div>
-                <div class="table-content">
-                  <p>审核内容审核内容审核内容审核内容审核内容审核内容审核内容审核内容审核内容。</p>
-                </div>
-              </div>
-              <div class="third-row">
-                <div class="table-lable">附件</div>
-                <div class="table-content doc-wrap">
-                  <div class="doc doc--line">
-                    <i class="anticon anticon-paper-clip" style="color: rgba(0, 0, 0, 0.45);">
-                      <svg
-                        viewBox="64 64 896 896"
-                        data-icon="paper-clip"
-                        width="1em"
-                        height="1em"
-                        fill="currentColor"
-                        aria-hidden="true"
-                        class
-                      >
-                        <path
-                          d="M779.3 196.6c-94.2-94.2-247.6-94.2-341.7 0l-261 260.8c-1.7 1.7-2.6 4-2.6 6.4s.9 4.7 2.6 6.4l36.9 36.9a9 9 0 0 0 12.7 0l261-260.8c32.4-32.4 75.5-50.2 121.3-50.2s88.9 17.8 121.2 50.2c32.4 32.4 50.2 75.5 50.2 121.2 0 45.8-17.8 88.8-50.2 121.2l-266 265.9-43.1 43.1c-40.3 40.3-105.8 40.3-146.1 0-19.5-19.5-30.2-45.4-30.2-73s10.7-53.5 30.2-73l263.9-263.8c6.7-6.6 15.5-10.3 24.9-10.3h.1c9.4 0 18.1 3.7 24.7 10.3 6.7 6.7 10.3 15.5 10.3 24.9 0 9.3-3.7 18.1-10.3 24.7L372.4 653c-1.7 1.7-2.6 4-2.6 6.4s.9 4.7 2.6 6.4l36.9 36.9a9 9 0 0 0 12.7 0l215.6-215.6c19.9-19.9 30.8-46.3 30.8-74.4s-11-54.6-30.8-74.4c-41.1-41.1-107.9-41-149 0L463 364 224.8 602.1A172.22 172.22 0 0 0 174 724.8c0 46.3 18.1 89.8 50.8 122.5 33.9 33.8 78.3 50.7 122.7 50.7 44.4 0 88.8-16.9 122.6-50.7l309.2-309C824.8 492.7 850 432 850 367.5c.1-64.6-25.1-125.3-70.7-170.9z"
-                        />
-                      </svg>
-                    </i>
-                    <span style="margin-left:8px">文档.docx</span>
-                  </div>
-                  <div class="doc">
-                    <i class="anticon anticon-paper-clip" style="color: rgba(0, 0, 0, 0.45);">
-                      <svg
-                        viewBox="64 64 896 896"
-                        data-icon="paper-clip"
-                        width="1em"
-                        height="1em"
-                        fill="currentColor"
-                        aria-hidden="true"
-                        class
-                      >
-                        <path
-                          d="M779.3 196.6c-94.2-94.2-247.6-94.2-341.7 0l-261 260.8c-1.7 1.7-2.6 4-2.6 6.4s.9 4.7 2.6 6.4l36.9 36.9a9 9 0 0 0 12.7 0l261-260.8c32.4-32.4 75.5-50.2 121.3-50.2s88.9 17.8 121.2 50.2c32.4 32.4 50.2 75.5 50.2 121.2 0 45.8-17.8 88.8-50.2 121.2l-266 265.9-43.1 43.1c-40.3 40.3-105.8 40.3-146.1 0-19.5-19.5-30.2-45.4-30.2-73s10.7-53.5 30.2-73l263.9-263.8c6.7-6.6 15.5-10.3 24.9-10.3h.1c9.4 0 18.1 3.7 24.7 10.3 6.7 6.7 10.3 15.5 10.3 24.9 0 9.3-3.7 18.1-10.3 24.7L372.4 653c-1.7 1.7-2.6 4-2.6 6.4s.9 4.7 2.6 6.4l36.9 36.9a9 9 0 0 0 12.7 0l215.6-215.6c19.9-19.9 30.8-46.3 30.8-74.4s-11-54.6-30.8-74.4c-41.1-41.1-107.9-41-149 0L463 364 224.8 602.1A172.22 172.22 0 0 0 174 724.8c0 46.3 18.1 89.8 50.8 122.5 33.9 33.8 78.3 50.7 122.7 50.7 44.4 0 88.8-16.9 122.6-50.7l309.2-309C824.8 492.7 850 432 850 367.5c.1-64.6-25.1-125.3-70.7-170.9z"
-                        />
-                      </svg>
-                    </i>
-                    <span style="margin-left:8px">文档.docx</span>
-                  </div>
-                </div>
-              </div>
-              <div class="first-row">
-                <div class="table-lable">
-                  <span>审核人</span>
-                </div>
-                <div class="table-content">名称(职位)</div>
-              </div>
-            </div> -->
           </div>
         </div>
-      </div></a-drawer>
+      </div>
+    </a-drawer>
   </div>
 </template>
 <script>
@@ -451,16 +437,10 @@ export default {
   },
   data () {
     return {
+      value: 1,
       labelCol: { lg: { span: 2 }, sm: { span: 2 } },
       wrapperCol: { lg: { span: 18 }, sm: { span: 18 } },
-      fileList: [
-        // {
-        //   uid: '-1',
-        //   name: 'xxx.png',
-        //   status: 'done',
-        //   url: 'http://www.baidu.com/xxx.png'
-        // }
-      ],
+      fileList: [],
       form: this.$form.createForm(this)
     }
   },
@@ -476,22 +456,15 @@ export default {
       e.preventDefault()
       this.form.validateFields((err, values) => {
         if (!err) {
-          // eslint-disable-next-line no-console
           console.log('Received values of form: ', values)
         }
       })
     },
     handleChange (info) {
       let fileList = [...info.fileList]
-
-      // 1. Limit the number of uploaded files
-      //    Only to show two recent uploaded files, and old ones will be replaced by the new
       fileList = fileList.slice(-2)
-
-      // 2. read from response and show file link
       fileList = fileList.map(file => {
         if (file.response) {
-          // Component will show file.url as link
           file.url = file.response.url
         }
         return file

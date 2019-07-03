@@ -12,6 +12,7 @@
       :width="720"
       @close="onClose"
       :visible="visible"
+      :closable="false"
       :wrapStyle="{height: 'calc(100% - 108px)',overflow: 'auto',paddingBottom: '108px'}">
       <a-form :form="form" layout="vertical" :hideRequiredMark="true">
         <a-row :gutter="16">
@@ -131,6 +132,7 @@
     <a-drawer
       title="单列抽屉"
       :width="640"
+      :closable="false"
       @close="onCloses"
       :visible="visibles"
       :wrapStyle="{height: 'calc(100% - 108px)',overflow: 'auto',paddingBottom: '108px'}">

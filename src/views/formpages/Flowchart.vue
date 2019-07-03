@@ -51,7 +51,7 @@ import repositoryForm from './RepositoryForms'
 // import flowPng from '@/assets/flow.png'
 import taskForm from './TaskForms'
 import FlowImg from './flowchart/FlowImg'
-import verticaltoggle from '@/views/newform/verticaltoggle'
+import verticaltoggle from '@/views/formpages/verticaltoggle'
 const statusMap = {
   0: {
     status: 'default',

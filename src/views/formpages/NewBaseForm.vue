@@ -105,7 +105,6 @@
 </style>
 <template>
   <a-card :body-style="{background:'#f0f2f5', padding:0}" class="form-body" :bordered="false">
-
     <a-row :gutter="24">
       <a-col :body-style="{background:'#fff'}" :xl="num" :lg="num" :md="num" :sm="num" >
         <div style=" padding: 0">

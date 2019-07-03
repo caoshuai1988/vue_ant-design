@@ -48,7 +48,7 @@ export default {
         width: '100%'
       },
       iconFlag: false,
-      screenloadFlag: false // 全屏
+      screenloadFlag: false // full screen
     }
   },
   mounted () {
@@ -63,8 +63,8 @@ export default {
         this.tabSwitch.width = document.documentElement.clientWidth + 'px'
         this.tabSwitch.height = document.documentElement.clientHeight + 'px'
       }
-      this.iconFlag = !this.iconFlag // 图标
-      this.screenloadFlag = !this.screenloadFlag // 全屏
+      this.iconFlag = !this.iconFlag // icon
+      this.screenloadFlag = !this.screenloadFlag // full screen
     }
   }
 }
@@ -72,7 +72,7 @@ export default {
 
 <style lang="less" scoped>
 
-.screenload { /* 全屏 add css */
+.screenload { /* full screen add css */
   position: fixed;
   top: 0;
   left: 0;
@@ -80,7 +80,7 @@ export default {
   height: 100%;
 }
 
-.amplification { /* 放大icon */
+.amplification { /* zoom icon */
   float: right;
   font-weight: 700;
   font-size: 18px;

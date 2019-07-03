@@ -40,7 +40,6 @@
         <a-table :dataSource="data" :pagination="false">
           <a-table-column title="种类" data-index="icon" key="icon">
             <template slot-scope="icon">
-              <!-- <a-icon :type="item" v-for="item in icon" :key="item.icon"/> -->
               <img :src="item" alt="" v-for="item in icon" :key="item.icon" width="24px">
             </template>
           </a-table-column>
@@ -52,7 +51,6 @@
               <div style="width: 100%" v-for="aa in state" :key="aa.id">
                 <div>
                   <a-progress :percent="aa.c" size="small" :status="aa.d"/>
-                  <!-- <a-progress :percent="100" /> -->
                 </div>
               </div>
             </template>
@@ -84,7 +82,7 @@
 </template>
 
 <script>
-import verticaltoggle from '@/views/newform/verticaltoggle' // 你看不懂的 js  别看了
+import verticaltoggle from '@/views/newform/verticaltoggle' // animation
 import icon1 from '@/assets/iconfiles/fileicon4.svg'
 // MP4格式
 import icon2 from '@/assets/iconfiles/fileicon10.svg'
@@ -152,7 +150,7 @@ export default {
     return {
       data,
       headers: {
-        authorization: 'authorization-text' // 上传文件
+        authorization: 'authorization-text' // upload files
       },
       iconShow: true,
       iconToggleOne: true,
@@ -163,11 +161,11 @@ export default {
     }
   },
   methods: {
-    fold () { // 伸缩
+    fold () { // animation
       this.iconShow = !this.iconShow
       this.iconToggleOne = !this.iconToggleOne
     },
-    handleChange (info) { // 上传文件
+    handleChange (info) { // upload files
       if (info.file.status !== 'uploading') {
         console.log(info.file, info.fileList)
       }

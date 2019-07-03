@@ -104,7 +104,8 @@
             style="margin-bottom: 24px;"
             :bordered="false"
             title="常用功能"
-            :body-style="{ padding: '0 24px' }">
+            :head-style="{ padding: '0 32px'}"
+            :body-style="{ padding: '24px 32px' }">
             <a slot="extra" @click="handelSetting">设置</a>
             <div>
               <div class="module-card-grid " :key="i" v-for="(item, i) in projects">
@@ -126,16 +127,17 @@
             :loading="loading"
             style="margin-bottom: 24px;"
             :bordered="false"
+            :head-style="{ padding: '0 32px'}"
             :body-style="{ padding: 0 }">
             <span slot="title">我的待办 （<a href="javascript:void(0)" style="color:red">6</a>）</span>
             <a slot="extra">更多</a>
-            <a-table :dataSource="table1" :pagination="false" style="padding: 24px">
+            <a-table :dataSource="table1" :pagination="false" style="padding: 24px 32px">
               <a-table-column title="名称" data-index="name" key="name" :width="380"/>
               <a-table-column title="模块" data-index="module" key="module"/>
               <a-table-column title="进度" key="progress">
                 <template slot-scope="text, record">
                   <!-- <a-badge status="success" text="record.progress" /> -->
-                  <a-badge status="success" text="编辑(1/3)" />
+                  <a-badge status="success" text="编辑(1/3)"/>
                 </template>
               </a-table-column>
               <a-table-column title="操作时间" key="datetime">
@@ -161,10 +163,11 @@
             :loading="loading"
             style="margin-bottom: 24px;"
             :bordered="false"
+            :head-style="{ padding: '0 32px'}"
             :body-style="{ padding: 0 }">
             <span slot="title">近期办理 <span style="color:#999999;font-size:12px;padding-left:10px;">只显示近10条业务</span></span>
             <a slot="extra">更多</a>
-            <a-table :dataSource="table1" :pagination="false" style="padding: 24px">
+            <a-table :dataSource="table1" :pagination="false" style="padding: 24px 32px">
               <a-table-column title="名称" data-index="name" key="name" :width="380"/>
               <a-table-column title="模块" data-index="module" key="module"/>
               <a-table-column title="进度" key="progress">
@@ -196,10 +199,11 @@
             :loading="loading"
             style="margin-bottom: 24px;"
             :bordered="false"
+            :head-style="{ padding: '0 32px'}"
             :body-style="{ padding: 0 }">
             <span slot="title">常用下载 <span style="color:#999999;font-size:12px;padding-left:10px;">只显示近10条业务</span></span>
             <a slot="extra">更多</a>
-            <a-table :dataSource="table1" :pagination="false" style="padding: 24px" >
+            <a-table :dataSource="table1" :pagination="false" style="padding: 24px 32px" >
               <a-table-column title="名称" data-index="name" key="name" :width="380" />
               <a-table-column title="类型" data-index="module" key="module"/>
               <a-table-column title="发布日期" data-index="publicTime" key="publicTime"/>
@@ -218,6 +222,7 @@
             style="margin-bottom: 24px;"
             :bordered="false"
             title="数据统计"
+            :head-style="{ padding: '0 32px'}"
             :body-style="{ padding: 0 }">
             <a-form slot="extra">
               <a-form-item
@@ -228,7 +233,7 @@
                 <a-range-picker @change="onChange" />
               </a-form-item>
             </a-form>
-            <gradient style="padding:24px; box-sizing: border-box;"/>
+            <gradient style="padding:24px 32px; box-sizing: border-box;"/>
           </a-card>
         </a-col>
         <!-- 右侧侧边栏 -->
@@ -241,16 +246,11 @@
           :sm="24"
           :xs="24">
           <a-card style="margin-bottom: 24px" :bordered="false" :body-style="{padding: '24px',overflow: 'hidden'}">
-            <!-- <span slot="title">
+            <span slot="title">
               提醒事项
               <a-icon type="plus" />
             </span>
-            <a slot="extra">更多</a> -->
-            <div class="memu-title" style="padding-bottom: 0">
-              <span>提醒事项<a-icon type="plus" /></span>
-              <a class="title-right">更多</a>
-            </div>
-
+            <a slot="extra">更多</a>
             <!-- <a-list :dataSource="list1.results">
               <a-list-item slot="renderItem" slot-scope="item" style="padding: 24px 0">
                 <a-list-item-meta :description="item.email">
@@ -261,7 +261,7 @@
               </a-list-item>
             </a-list> -->
 
-            <div class="content-main" style="padding-top:16px;">
+            <div class="content-main">
               <div class="note-row" v-for="(ele, index) in noteList" :key="index">
                 <div class="time" :style="{color:ele.color}">{{ ele.time }}</div>
                 <div class="content" :style="{color:ele.color}">{{ ele.content }}</div>
@@ -270,15 +270,11 @@
           </a-card>
           <!-- 通知公告 -->
           <a-card style="margin-bottom: 24px" :bordered="false" :body-style="{padding: '24px', overflow: 'hidden'}">
-            <!-- <span slot="title">
+            <span slot="title">
               通知公告
-              <a-icon type="plus" />
+              <!-- <a-icon type="plus" /> -->
             </span>
-            <a slot="extra">更多</a> -->
-            <div class="memu-title" style="padding-bottom: 0">
-              <span>通知公告</span>
-              <a class="title-right">更多</a>
-            </div>
+            <a slot="extra">更多</a>
             <!-- <a-list
               :dataSource="list1.results">
               <a-list-item slot="renderItem" slot-scope="item" style="padding: 24px 0">
@@ -289,7 +285,7 @@
               </a-list-item>
             </a-list> -->
 
-            <div class="announce-main" style="padding-top:16px;">
+            <div class="announce-main">
               <div class="announce-row" v-for="(ele, index) in announceList" :key="index">
                 <div class="left">{{ ele.content }}</div>
                 <div class="right">{{ ele.time }}</div>
@@ -298,32 +294,40 @@
           </a-card>
           <!-- 快捷菜单 -->
           <a-card style="margin-bottom: 24px" :bordered="false" :body-style="{padding: 24}">
-            <div class="memu-title">
-              <span>快捷菜单</span>
-              <a class="title-right">设置</a>
-            </div>
-            <a-row style="padding:24px 0 24px">
+            <span slot="title">
+              快捷菜单
+              <!-- <a-icon type="plus" /> -->
+            </span>
+            <a slot="extra">设置</a>
+            <!-- <a-row>
               <a-col style="padding: 10px 0" :span="12" v-for="(item, index) in buttons" :key="index">
                 <div class="shortcut-menu">
                   <a-button>
                     <a-icon type="menu-fold" />
                     菜单按钮项
                   </a-button>
-                  <!-- <a-button>
-                    <a-icon type="menu-fold" />
-                    菜单名称2
-                  </a-button> -->
                 </div>
               </a-col>
-            </a-row>
+            </a-row> -->
+            <div class="item-group">
+              <a>操作一</a>
+              <a>操作二</a>
+              <a>操作三</a>
+              <a>操作四</a>
+              <a>操作五</a>
+              <a>操作六</a>
+              <a-button size="small" type="primary" ghost icon="plus">添加</a-button>
+            </div>
+
           </a-card>
           <!-- 登录历史 -->
           <a-card style="margin-bottom: 24px" :loading="radarLoading" :bordered="false" :body-style="{ padding: 24 }">
-            <div class="memu-title">
-              <span>登录历史</span>
-              <a class="title-right">更多</a>
-            </div>
-            <a-table :dataSource="table2" :pagination="false" style="padding:24px 0 24px">
+            <span slot="title">
+              登录历史
+              <!-- <a-icon type="plus" /> -->
+            </span>
+            <a slot="extra">更多</a>
+            <a-table :dataSource="table2" :pagination="false">
               <a-table-column title="日期时间" data-index="datetime" key="datetime" />
               <a-table-column title="IP" data-index="ip" key="module"/>
             </a-table>
@@ -667,6 +671,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
+  // 处理左侧表格单行文本溢出
   /deep/ .ant-table-tbody > tr > td {
     // padding-right: 88px;
     width: 100%;
@@ -693,11 +698,19 @@ export default {
         justify-content: center;
         align-items: center;
         .grid-caption {
-          position: relative;
-          top: 8px;
+          // position: relative;
+          margin-top: 8px;
         }
       }
     }
+  }
+  // 常用功能模块图标样式
+  .img-wrap{
+    width: 64px;
+    text-align: center;
+    line-height: 64px;
+    height: 64px;
+    background:rgb(19, 194, 194);border-radius:50%;
   }
   /deep/ .ant-card-extra {
       a {
@@ -727,17 +740,6 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  .item-group {
-    padding: 20px 0 8px 24px;
-    font-size: 0;
-    a {
-      color: rgba(0, 0, 0, 0.65);
-      display: inline-block;
-      font-size: 14px;
-      margin-bottom: 13px;
-      width: 25%;
-    }
   }
 
   .members {
@@ -782,41 +784,14 @@ export default {
     }
   }
 
-  //快捷菜单
-  /deep/.memu-title{
-    box-sizing: border-box;
-    color:rgba(0,0,0,.65);
-    font-size: 16px;
-    // padding: 24px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    .title-right{
-      color:rgba(0,0,0,.45);
-      font-size: 14px;
-      &:hover{
-        color: #1890FF
-      }
-    }
-  }
- // 常用功能图标
-  .img-wrap{
-    width: 64px;
-    text-align: center;
-    line-height: 64px;
-    height: 64px;
-    background:rgb(19, 194, 194);border-radius:50%;
-  }
   //提醒事项
   .note-row{
     width: 100%;
     display: flex;
     justify-content: space-between;
-    // justify-content: flex-start;
     align-items: center;
     font-size: 14px;
     height: 36px;
-    // padding: 11px 0;
     cursor: pointer;
     &:hover{
       opacity: 0.7;
@@ -864,6 +839,18 @@ export default {
       text-align: right;
       width: 20%;
       color: rgba(0,0,0,.45);
+    }
+  }
+  // 快捷菜单
+  .item-group {
+    // padding: 20px 0 8px 24px;
+    font-size: 0;
+    a {
+      color: rgba(0, 0, 0, 0.65);
+      display: inline-block;
+      font-size: 14px;
+      margin-bottom: 13px;
+      width: 25%;
     }
   }
 

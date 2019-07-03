@@ -68,8 +68,8 @@
       <a-button @click="tableOption">{{ optionAlertShow && '关闭' || '开启' }} alert</a-button>
       <a-alert style="margin-top: 18px;display: block;">
         <template slot="message">
-          <span style="margin-right: 12px">已选择:<a style="font-weight: 600">4</a>项,选中项总投资合计：<b>36.4</b>万元</span> |
-          <span style="margin-right: 12px;padding-left:14px;">当前列表共<a style="font-weight: 600">44</a>项,总投资合计：<b>366.4</b>万元</span>
+         <img style="display: inline-block;margin-top:-3px;margin-right:4px;" :src="prompt"/><span style="margin-right: 6px">已选择:<a style="font-weight: 600;margin-left:6px;margin-right:6px;">4</a>项</span><span style="margin-left:12px;margin-right:12px">选中项总投资合计：<b style="margin-right:6px">36.4</b>万元</span> |
+          <span style="margin-right: 6px;margin-left:12px;">已选择:<a style="font-weight: 600;margin-left:6px;margin-right:6px;">44</a>项</span><span style="margin-left:12px;margin-right:12px">选中项总投资合计：<b style="margin-right:6px">366.4</b>万元</span>
         </template>
       </a-alert>
       <a-dropdown v-action:edit v-if="selectedRowKeys.length>0">
@@ -131,10 +131,10 @@
       </span>
     </s-table>
     <template>
-			  <div style="text-align: right;margin-top:16px;margin-bottom:16px;">
-			    <a-pagination showSizeChanger :pageSize.sync="pageSize" @showSizeChange="onShowSizeChange" :total="500" v-model="current"/>
-			  </div>
-		</template>
+      <div style="text-align: right;margin-top:16px;margin-bottom:16px;">
+        <a-pagination showSizeChanger :pageSize.sync="pageSize" :total="500" v-model="current"/>
+      </div>
+    </template>
     <create-form ref="createModal" @ok="handleOk"/>
     <step-by-step-modal ref="modal" @ok="handleOk"/>
   </a-card>
@@ -145,6 +145,7 @@ import moment from 'moment'
 import { STable, Ellipsis } from '@/components'
 import StepByStepModal from './modules/StepByStepModal'
 import CreateForm from './modules/CreateForm'
+import prompt from '@/assets/prompt.png'
 import { getRoleList, getServiceList } from '@/api/manage'
 
 const statusMap = {
@@ -262,8 +263,7 @@ export default {
           selectedRowKeys: this.selectedRowKeys,
           onChange: this.onSelectChange
         }
-      },
-      optionAlertShow: false
+      }
     }
   },
   filters: {
@@ -272,6 +272,11 @@ export default {
     },
     statusTypeFilter (type) {
       return statusMap[type].status
+    }
+  },
+  computed: {
+    prompt () {
+      return prompt
     }
   },
   created () {

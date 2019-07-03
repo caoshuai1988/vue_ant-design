@@ -46,11 +46,12 @@ export const asyncRouterMap = [
                 path: '/user/login2/base',
                 name: 'login2Base',
                 meta: { title: '默认页', target: '_blank' }
-              }, // 登陆模板4
+              },
+              // 单登录模式
               {
-                path: '/user/login4',
-                name: 'login4',
-                meta: { title: '单登陆模式', target: '_blank' }
+                path: '/user/login2/single',
+                name: 'login2Single',
+                meta: { title: '单登录模式', target: '_blank' }
               },
               // 登陆模板2-2
               {
@@ -242,7 +243,14 @@ export const asyncRouterMap = [
             name: 'pageSign',
             component: () => import('@/views/check/pageSign'),
             meta: { title: '分页签详情页', showbtn: true, showStep: false, keepAlive: true, permission: ['form'] }
+          },
+          {
+            path: '/check/flow-head',
+            name: 'flowHead',
+            component: () => import('@/views/newform/BaseFlowHead'),
+            meta: { title: '流程图', showbtn: true, showStep: false, keepAlive: true, permission: ['form'] }
           }
+
         ]
       },
       // Modal
@@ -695,6 +703,19 @@ export const constantRouterMap = [
   {
     path: '/user',
     component: UserLayout2,
+    redirect: '/user/login2/single',
+    hidden: true,
+    children: [
+      {
+        path: 'login2/single',
+        name: 'login2Single',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login2/Login2-single')
+      }
+    ]
+  },
+  {
+    path: '/user',
+    component: UserLayout2,
     redirect: '/user/login2/error',
     hidden: true,
     children: [
@@ -741,19 +762,6 @@ export const constantRouterMap = [
         path: 'login3',
         name: 'login3',
         component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login3')
-      }
-    ]
-  },
-  {
-    path: '/user',
-    component: UserLayout2,
-    redirect: '/user/login4',
-    hidden: true,
-    children: [
-      {
-        path: 'login4',
-        name: 'login4',
-        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login4')
       }
     ]
   },

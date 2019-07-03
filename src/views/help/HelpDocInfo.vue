@@ -2,19 +2,19 @@
   <div class="help-container" :style="{zoom:curZoom}">
     <div class="help-con-head">
       <div class="help-head-content">
-      	<router-link :to="{ path: '/help/helpdoc' }">
-	        <div class="head-caption">
-	          <span><img src="~@/assets/fslogo.svg" style="width:40px;height:40px;" alt="logo"></span>
-	          <span>富深新平台模板</span>
-	          <span>帮助</span>
-	        </div>
+        <router-link :to="{ path: '/help/helpdoc' }">
+          <div class="head-caption">
+            <span><img src="~@/assets/fslogo.svg" style="width:40px;height:40px;" alt="logo"></span>
+            <span>富深新平台模板</span>
+            <span>帮助</span>
+          </div>
         </router-link>
         <div class="head-search">
-	        <router-link :to="{ path: '/help/helpsearch' }">
-	          <a-input-search
-	            style="width: 272px"
-	          />
-	        </router-link>
+          <router-link :to="{ path: '/help/helpsearch' }">
+            <a-input-search
+              style="width: 272px"
+            />
+          </router-link>
         </div>
         <div class="head-contact">
           <div>
@@ -33,8 +33,8 @@
           <div class="account-help-right">
             <div class="account-help-breadcrumb">
               <a-breadcrumb>
-              	<router-link :to="{ path: '/help/helpdoc' }">
-                	<a-breadcrumb-item>首页</a-breadcrumb-item>
+                <router-link :to="{ path: '/help/helpdoc' }">
+                  <a-breadcrumb-item>首页</a-breadcrumb-item>
                 </router-link>
                 <a-breadcrumb-item><a href="">帮助</a></a-breadcrumb-item>
                 <a-breadcrumb-item><a href="">帮助文档</a></a-breadcrumb-item>

@@ -14,7 +14,7 @@
           <a-input-search placeholder="请输入" style="width: 300px"/>
         </span>
         <div class="amplification" @click="amplificationBtn">
-          <a-button v-if="iconSwitch" >放大</a-button>
+          <a-button v-if="iconSwitch" >全屏</a-button>
           <a-button type="primary" v-else>返回</a-button>
         </div>
       </div>

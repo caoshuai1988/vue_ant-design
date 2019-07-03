@@ -5,10 +5,15 @@
         <h1 style="font-size: 20px;">{{ title }}</h1>
       </div>
       <div slot="extra">
-        <a-radio-group>
+        <!-- <a-radio-group>
           <a-radio-button @click="zoominBtn">缩 小</a-radio-button>
           <a-radio-button @click="originalBtn">原始大小</a-radio-button>
           <a-radio-button @click="magnifyBtn">放 大</a-radio-button>
+        </a-radio-group> -->
+        <a-radio-group @change="handleSizeChange">
+          <a-radio-button value="narrow">缩 小</a-radio-button>
+          <a-radio-button value="default">原始大小</a-radio-button>
+          <a-radio-button value="magnify">放 大</a-radio-button>
         </a-radio-group>
       </div>
 
@@ -26,6 +31,7 @@
 </template>
 
 <script>
+import Vue from 'vue'
 export default {
   data () {
     return {
@@ -62,10 +68,21 @@ export default {
       this.set()
       this.accessData()
     },
+    handleSizeChange (e) {
+      if (e.target.value === 'narrow') {
+        this.size += 0.1
+      } else if (e.target.value === 'default') {
+        this.size = 1.0
+      } else if (e.target.value === 'magnify') {
+        this.size -= 0.1
+      }
+      this.set()
+      this.accessData()
+    },
     accessData () {
       // 存取
-      localStorage.removeItem('setSize')
-      localStorage.setItem('setSize', parseFloat(this.size))
+      Vue.ls.removeItem('setSize')
+      Vue.ls.setItem('setSize', parseFloat(this.size))
     },
     set () {
       // change size

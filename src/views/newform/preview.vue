@@ -36,7 +36,7 @@
     .preview-direction {
       height: 100%;
       background: #fff;
-      width: 256px;
+      min-width: 256px;
       overflow: auto;
       &::-webkit-scrollbar {
         width: 6px;

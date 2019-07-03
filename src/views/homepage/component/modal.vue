@@ -14,6 +14,10 @@
   justify-content: center;
   align-items: center;
 }
+/deep/.ant-transfer-list{
+  width: 200px;
+  height: 320px;
+}
 </style>
 
 <template>

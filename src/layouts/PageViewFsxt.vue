@@ -2,6 +2,16 @@
 @import "~@/utils/utils.less";
   .content {
     padding: 24px;
+    flex: auto;
+    display: flex;
+    flex-direction: column;
+    .page-header-index-wide {
+      width: 100%;
+      flex: auto;
+      flex: auto;
+      display: flex;
+      flex-direction: column;
+    }
     .link {
       margin-top: 16px;
       &:not(:empty) {
@@ -291,7 +301,7 @@
 
 </style>
 <template>
-  <div :style="!$route.meta.hiddenHeaderContent ? 'margin: -24px -24px 0px;' : null">
+  <div :style="!$route.meta.hiddenHeaderContent ? 'margin: -24px -24px 0; flex:auto;display:flex;flex-direction:column' : null">
     <!-- pageHeader , route meta :true on hide -->
     <page-header
       v-if="!$route.meta.hiddenHeaderContent"

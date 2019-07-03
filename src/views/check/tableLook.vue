@@ -1,5 +1,5 @@
 <template>
-  <div ref="text">
+  <div ref="text" style="height:100%;width:100%;">
     <a-card :body-style="{padding: '24px 32px'}">
       <div slot="title">
         <h1 style="font-size: 20px;">{{ title }}</h1>
@@ -13,11 +13,13 @@
       </div>
 
       <iframe
+        id="myFrame"
         ref="contentIframe"
         src="http://nf.finstone.com.cn:9000/nf/ReportServer?reportlet=tbreport/tb_jh_gbznttzb.cpt&__bypagesize__=false"
         width="100%"
-        :height="value"
+        height="100%"
         frameborder="0"
+        scrolling="no"
       ></iframe>
     </a-card>
   </div>
@@ -33,18 +35,13 @@ export default {
       sizeNum: ''
     }
   },
+  computed: {},
   beforeCreate () {
     if (this.$route.query.title === '2018年韶关市翁源县江尾镇高标准农田建设项目 - 计划阶段 - 任务及投资情况表') {
       document.title = '任务及投资情况表 - 计划阶段 - 2018年韶关市翁源县江尾镇高标准农田建设项目'
     } else {
       document.title = '基本情况表 - 计划阶段 - 2018年韶关市翁源县江尾镇高标准农田建设项目'
     }
-  },
-  mounted () {
-    this.sizeNum = localStorage.getItem('setSize')
-    this.size = parseFloat(this.sizeNum)
-    this.set()
-    this.value = window.screen.availHeight - this.$refs.text.offsetHeight + 'px'
   },
   methods: {
     magnifyBtn () {
@@ -72,10 +69,10 @@ export default {
     },
     set () {
       // change size
-      this.$refs.contentIframe.style.zoom = this.size
-      this.$refs.contentIframe.style.cssText +=
+      this.$refs.text.style.zoom = this.size
+      this.$refs.text.style.cssText +=
         '; -moz-transform: scale(' + this.size + ');-moz-transform-origin: 0 0; '
-      this.$refs.contentIframe.style.cssText +=
+      this.$refs.text.style.cssText +=
         '; -webkit-transform: scale(' + this.size + '); -webkit-transform-origin: 0 0; '
     }
   }
@@ -85,5 +82,16 @@ export default {
 <style lang="less" scoped>
 h1 {
   margin: 0;
+}
+/deep/ .ant-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  /deep/ .ant-card-head {
+    height: 62px;
+  }
+  /deep/ .ant-card-body {
+    flex: auto;
+  }
 }
 </style>

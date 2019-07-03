@@ -1,5 +1,5 @@
 <template>
-  <div style="background:#fff;padding-top:11px;" >
+  <div style="background:#fff;padding-top:11px;flex:auto;display: flex;flex-direction: column;" >
     <a-tabs defaultActiveKey="4" >
       <a-tab-pane key="1" class="tabMar">
         <span slot="tab" >
@@ -53,9 +53,25 @@ export default {
 </script>
 
  <style lang="less" scoped>
-
+/deep/ .ant-layout-content {
+  display: flex;
+  flex: auto;
+  /deep/ .ant-tabs-tabpane {
+    display: flex;
+    flex-direction: column;
+  }
+}
+/deep/ .ant-tabs {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex: auto;
+}
 /deep/ .ant-tabs-bar{ // 清除多余空白
    margin: 0;
+}
+/deep/ .ant-tabs .ant-tabs-top-content.ant-tabs-content-animated {
+  flex: auto;
 }
 
 /deep/ .ant-tabs-nav-wrap{

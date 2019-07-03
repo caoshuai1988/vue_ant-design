@@ -29,7 +29,8 @@
         :collapsed="collapsed"
         :collapsible="true"
       ></side-menu>
-      <a-layout :class="[layoutMode, `content-width-${contentWidth}`]"
+      <a-layout
+:class="[layoutMode, `content-width-${contentWidth}`]"
                 :style="{ paddingLeft: contentPaddingLeft, minHeight: '100vh' }">
         <!-- layout header -->
         <global-header
@@ -60,7 +61,8 @@
     </a-layout>
 
     <a-layout v-if="isFullTopMenu()">
-      <a-layout :class="[layoutMode, `content-width-${contentWidth}`]"
+      <a-layout
+:class="[layoutMode, `content-width-${contentWidth}`]"
                 :style="{ paddingLeft: contentPaddingLeft, minHeight: '100vh' }">
         <!-- layout header -->
         <global-header
@@ -109,111 +111,111 @@
 </template>
 
 <script>
-  import Vue from 'vue'
-  import { triggerWindowResizeEvent } from '@/utils/util'
-  import { mapState, mapActions } from 'vuex'
-  import { mixin, mixinDevice } from '@/utils/mixin'
-  import config from '@/config/defaultSettings'
+import Vue from 'vue'
+import { triggerWindowResizeEvent } from '@/utils/util'
+import { mapState, mapActions } from 'vuex'
+import { mixin, mixinDevice } from '@/utils/mixin'
+import config from '@/config/defaultSettings'
 
-  import RouteView from './RouteView'
-  import MultiTab from '@/components/MultiTab'
-  import SideMenu from '@/components/Menu/SideMenu'
-  import LowSideMenu from '@/components/Menu/LowSideMenu'
-  import GlobalHeader from '@/components/GlobalHeader'
-  import GlobalFooter from '@/components/GlobalFooter'
-  import SettingDrawer from '@/components/SettingDrawer'
-  import ALayoutSider from 'ant-design-vue/es/layout/Sider'
+import RouteView from './RouteView'
+import MultiTab from '@/components/MultiTab'
+import SideMenu from '@/components/Menu/SideMenu'
+import LowSideMenu from '@/components/Menu/LowSideMenu'
+import GlobalHeader from '@/components/GlobalHeader'
+import GlobalFooter from '@/components/GlobalFooter'
+import SettingDrawer from '@/components/SettingDrawer'
+import ALayoutSider from 'ant-design-vue/es/layout/Sider'
 
-  export default {
-    name: 'BasicLayout',
-    mixins: [mixin, mixinDevice],
-    components: {
-      ALayoutSider,
-      RouteView,
-      MultiTab,
-      SideMenu,
-      GlobalHeader,
-      GlobalFooter,
-      SettingDrawer,
-      LowSideMenu
-    },
-    data() {
-      return {
-        production: config.production,
-        collapsed: false,
-        menus: []
+export default {
+  name: 'BasicLayout',
+  mixins: [mixin, mixinDevice],
+  components: {
+    ALayoutSider,
+    RouteView,
+    MultiTab,
+    SideMenu,
+    GlobalHeader,
+    GlobalFooter,
+    SettingDrawer,
+    LowSideMenu
+  },
+  data () {
+    return {
+      production: config.production,
+      collapsed: false,
+      menus: []
+    }
+  },
+  computed: {
+    ...mapState({
+      // 动态主路由
+      mainMenu: state => state.permission.addRouters
+    }),
+    contentPaddingLeft () {
+      if (!this.fixSidebar || this.isMobile()) {
+        return '0'
       }
-    },
-    computed: {
-      ...mapState({
-        // 动态主路由
-        mainMenu: state => state.permission.addRouters
-      }),
-      contentPaddingLeft() {
-        if (!this.fixSidebar || this.isMobile()) {
-          return '0'
-        }
-        if (this.sidebarOpened) {
-          return '256px'
-        }
-        return '80px'
+      if (this.sidebarOpened) {
+        return '256px'
       }
-    },
-    watch: {
-      sidebarOpened(val) {
-        this.collapsed = !val
-      }
-    },
-    beforeCreate() {
+      return '80px'
+    }
+  },
+  watch: {
+    sidebarOpened (val) {
+      this.collapsed = !val
+    }
+  },
+  beforeCreate () {
 
-    },
-    created() {
-      this.menus = this.mainMenu.find(item => item.path === '/').children
-      this.collapsed = !this.sidebarOpened
-      document.body.style.zoom = Vue.ls.get('DEFAULT_CONTAINER_ZOOM') ? Vue.ls.get('DEFAULT_CONTAINER_ZOOM') : 1
-    },
-    mounted() {
-      const userAgent = navigator.userAgent
-      if (userAgent.indexOf('Edge') > -1) {
-        this.$nextTick(() => {
+  },
+  created () {
+    this.menus = this.mainMenu.find(item => item.path === '/').children
+    this.collapsed = !this.sidebarOpened
+    document.body.style.zoom = Vue.ls.get('DEFAULT_CONTAINER_ZOOM') ? Vue.ls.get('DEFAULT_CONTAINER_ZOOM') : 1
+  },
+  mounted () {
+    const userAgent = navigator.userAgent
+    if (userAgent.indexOf('Edge') > -1) {
+      this.$nextTick(() => {
+        this.collapsed = !this.collapsed
+        setTimeout(() => {
           this.collapsed = !this.collapsed
-          setTimeout(() => {
-            this.collapsed = !this.collapsed
-          }, 16)
-        })
-      }
+        }, 16)
+      })
+    }
+  },
+  methods: {
+    ...mapActions(['setSidebar']),
+    toggle () {
+      this.collapsed = !this.collapsed
+      this.setSidebar(!this.collapsed)
+      triggerWindowResizeEvent()
     },
-    methods: {
-      ...mapActions(['setSidebar']),
-      toggle() {
-        this.collapsed = !this.collapsed
-        this.setSidebar(!this.collapsed)
-        triggerWindowResizeEvent()
-      },
-      toggle2() {
-        this.collapsed = !this.collapsed
-        this.setSidebar(!this.collapsed)
-        triggerWindowResizeEvent()
-      },
-      paddingCalc() {
-        let left = ''
-        if (this.sidebarOpened) {
-          left = this.isDesktop() ? '256px' : '80px'
-        } else {
-          left = (this.isMobile() && '0') || ((this.fixSidebar && '80px') || '0')
-        }
-        return left
-      },
-      menuSelect() {
-        if (!this.isDesktop()) {
-          this.collapsed = false
-        }
-      },
-      drawerClose() {
+    toggle2 () {
+      this.collapsed = !this.collapsed
+      this.setSidebar(!this.collapsed)
+      triggerWindowResizeEvent()
+    },
+    paddingCalc () {
+      let left = ''
+      if (this.sidebarOpened) {
+        left = this.isDesktop() ? '256px' : '80px'
+      } else {
+        left = (this.isMobile() && '0') || ((this.fixSidebar && '80px') || '0')
+      }
+      return left
+    },
+    menuSelect () {
+      if (!this.isDesktop()) {
         this.collapsed = false
       }
+    },
+    drawerClose () {
+      this.collapsed = false
     }
   }
+}
 </script>
 
 <style lang="less">

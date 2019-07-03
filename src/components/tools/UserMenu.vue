@@ -4,10 +4,10 @@
       <span class="action" @click="bigScale">
          <a-tooltip placement="bottom">
         <template slot="title">
-          增加倍数：D和右箭头<br/>
-          缩小倍数：A和左箭头<br/>
+          增加倍数：D<br/>
+          缩小倍数：A<br/>
           放大可视区：W<br/>
-          缩小可视区：A <br/>
+          缩小可视区：S <br/>
           关闭放大镜：右键
         </template>
          <a-icon type="zoom-in"/>
@@ -97,6 +97,7 @@
       bigScale() {
         /**
          * 放大镜功能待优化
+         * 可以增加为VUE指令 放弃Jq
          * @param scale
          * @param className
          * @constructor
@@ -165,33 +166,31 @@
             'box-shadow': $options.shadow
           })
 
-          // keydown A or left  D or right
+          // keydown A or D
           document.onkeydown = function(e) {
             e = event || window.event
-            if (e && e.keyCode === 37 || e && e.keyCode === 65) {//left or A 缩小
+            if (e && e.keyCode === 65) {//A 缩小
               scale -= 0.1
               if (scale <= 1) {
                 scale = 1
                 console.log('已经最小了')
               }
-              console.log('H')
             }
-            if (e && e.keyCode === 39 || e && e.keyCode === 68) {//right or D 放大
+            if (e && e.keyCode === 68) {//D 放大
               scale += 0.1
               if (scale >= 5) {
                 scale = 5
                 console.log('已经最大了')
               }
-              console.log('Q')
             }
-            if (e && e.keyCode === 87) {// w big
+            if (e && e.keyCode === 87) {// w container big
               if ($options.width <= 1200) {
                 $options.width += $options.width * 0.1
                 $options.height += $options.height * 0.1
               }
               console.log('放大镜变大')
             }
-            if (e && e.keyCode === 83) {// s small
+            if (e && e.keyCode === 83) {// s container small
               $options.width -= $options.width * 0.1
               $options.height -= $options.height * 0.1
               if ($options.width <= 400) {
@@ -199,6 +198,11 @@
                 $options.height = 200
               }
               console.log('放大镜变小')
+            }
+            if (e && e.code === 'Escape') {
+              document.onkeydown = null
+              $blowupMask.remove()
+              $blowupLens.remove()
             }
             console.log(scale)
 
@@ -212,22 +216,22 @@
             })
           }
 
-          // Show magnification lens
+          // show magnification lens
           $blowupMask.mouseenter(function() {
             $blowupLens.css('visibility', 'visible')
           })
 
-          // Mouse motion on el
+          // mouse motion on el
           $blowupMask.mousemove(function(e) {
             //
             let lensX = e.pageX - $options.width / 2
             let lensY = e.pageY - $options.height / 2
 
-            // Zoomed  coordinates
+            // zoom  coordinates
             let zoomX = -Math.floor(lensX * scale) - ($options.width / 2) * (scale - 1)
             let zoomY = -Math.floor(lensY * scale) - ($options.height / 2) * (scale - 1)
 
-            // Apply styles to lens
+            // apply styles to lens
             $blowupLens.css({
               left: lensX,
               top: lensY

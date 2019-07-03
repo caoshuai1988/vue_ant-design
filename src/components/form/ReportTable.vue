@@ -26,7 +26,6 @@
       <div slot="tabBarExtraContent" class="amplification" @click="amplificationBtn">
         <a-button type="primary" v-if="iconFlag">返回</a-button>
         <a-button v-else >全屏</a-button>
-
       </div>
     </a-tabs>
   </div>
@@ -58,10 +57,8 @@ export default {
     amplificationBtn () {
       if (this.tabSwitch.width === document.documentElement.clientWidth + 'px') {
         this.tabSwitch.width = ''
-        this.tabSwitch.height = ''
       } else {
         this.tabSwitch.width = document.documentElement.clientWidth + 'px'
-        this.tabSwitch.height = document.documentElement.clientHeight + 'px'
       }
       this.iconFlag = !this.iconFlag // icon
       this.screenloadFlag = !this.screenloadFlag // full screen

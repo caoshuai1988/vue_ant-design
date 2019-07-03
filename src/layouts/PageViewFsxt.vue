@@ -5,6 +5,7 @@
     flex: auto;
     display: flex;
     flex-direction: column;
+    min-width: 1200px;
     .page-header-index-wide {
       width: 100%;
       flex: auto;

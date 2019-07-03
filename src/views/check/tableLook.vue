@@ -5,18 +5,12 @@
         <h1 style="font-size: 20px;">{{ title }}</h1>
       </div>
       <div slot="extra">
-        <!-- <a-radio-group>
-          <a-radio-button @click="zoominBtn">缩 小</a-radio-button>
-          <a-radio-button @click="originalBtn">原始大小</a-radio-button>
-          <a-radio-button @click="magnifyBtn">放 大</a-radio-button>
-        </a-radio-group> -->
-        <a-radio-group @change="handleSizeChange">
-          <a-radio-button value="narrow">缩 小</a-radio-button>
-          <a-radio-button value="default">原始大小</a-radio-button>
-          <a-radio-button value="magnify">放 大</a-radio-button>
-        </a-radio-group>
+        <a-button-group >
+          <a-button value="narrow" @click="handleSizeChange"><a-icon type="zoom-out" /><span>缩 小</span></a-button>
+          <a-button value="default" @click="handleSizeChange"><span>原始大小</span></a-button>
+          <a-button value="magnify" @click="handleSizeChange"><a-icon type="zoom-in" /><span>放 大</span></a-button>
+        </a-button-group>
       </div>
-
       <iframe
         id="myFrame"
         ref="contentIframe"
@@ -50,39 +44,23 @@ export default {
     }
   },
   methods: {
-    magnifyBtn () {
-      // 变大
-      this.size = this.size + 0.1
-      this.set()
-      this.accessData()
-    },
-    zoominBtn () {
-      // 缩小
-      this.size = this.size - 0.1
-      this.set()
-      this.accessData()
-    },
-    originalBtn () {
-      // 还原
-      this.size = 1.0
-      this.set()
-      this.accessData()
-    },
     handleSizeChange (e) {
+      console.log('cs:' + e)
       if (e.target.value === 'narrow') {
-        this.size += 0.1
+        this.size -= 0.1
       } else if (e.target.value === 'default') {
         this.size = 1.0
       } else if (e.target.value === 'magnify') {
-        this.size -= 0.1
+        console.log('1')
+        this.size += 0.1
       }
       this.set()
       this.accessData()
     },
     accessData () {
       // 存取
-      Vue.ls.removeItem('setSize')
-      Vue.ls.setItem('setSize', parseFloat(this.size))
+      Vue.ls.remove('setSize')
+      Vue.ls.set('setSize', parseFloat(this.size))
     },
     set () {
       // change size

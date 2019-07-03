@@ -152,7 +152,6 @@
                   <a-input-number
                     :min="1"
                     :max="10"
-                    @change="onChange"
                     v-decorator="[
                       'leader',
                       {rules: [{ required: true, message: '请输入计费量' }]}
@@ -591,7 +590,6 @@
               <a-input-number
                 :min="1"
                 :max="10"
-                @change="onChange"
                 v-decorator="[
                   'leader',
                   {rules: [{ required: true, message: '请输入计费量' }]}

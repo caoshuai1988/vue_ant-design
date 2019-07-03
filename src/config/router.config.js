@@ -247,8 +247,8 @@ export const asyncRouterMap = [
           {
             path: '/check/flow-head',
             name: 'flowHead',
-            component: () => import('@/views/newform/BaseFlowHead'),
-            meta: { title: '流程图', showbtn: true, showStep: false, keepAlive: true, permission: ['form'] }
+            component: () => import('@/views/newform/Flowchart'),
+            meta: { title: '全业务流程图', showbtn: true, showStep: false, keepAlive: true, permission: ['form'] }
           }
 
         ]

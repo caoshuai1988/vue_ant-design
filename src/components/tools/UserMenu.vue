@@ -150,11 +150,10 @@
             'box-shadow': $options.shadow
           })
 
-          // 尝试使用滚轮控制放大 wheelDelta 兼容性问题
-          document.onmousewheel = function(e) {
+          // 尝试使用 左右按键实现 控制放大 缩小
+          document.onkeydown = function(e) {
             e = event || window.event
-            console.log(e.wheelDelta)
-            if (e.wheelDelta === 120) {
+            if (e && e.keyCode === 37) {//左
               scale += 0.1
               if (scale >= 5) {
                 scale = 5
@@ -162,7 +161,7 @@
               }
               console.log('Q')
             }
-            if (e.wheelDelta === -120) {
+            if (e && e.keyCode === 39) {//右边
               scale -= 0.1
               if (scale <= 1) {
                 scale = 1
@@ -212,7 +211,7 @@
             return false
           })
           $blowupMask.contextmenu(function() {
-            document.onmousewheel = null
+            document.onkeydown = null
             $blowupMask.remove()
             $blowupLens.remove()
           })

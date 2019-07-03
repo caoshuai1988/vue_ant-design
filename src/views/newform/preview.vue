@@ -178,7 +178,7 @@ h1 {
               <img src="@/assets/previewIcon/excel.png" alt="word">
               <div class="file-name">融合服务开发平台前端部分工 作前端部分工作规划.excel</div>
             </div>
-            <a-divider style="margin: 32px 0"/>
+            <a-divider style="margin-bottom: 32px"/>
             <div class="title" style="text-align: left;">{{ "绩效目标" }}</div>
             <div class="preview-nav--item" :class="{on: wordShow==3}" @click="tabSwitcher(3)">
               <img src="@/assets/previewIcon/unknow.png" alt="word">
@@ -298,14 +298,6 @@ export default {
   methods: {
     tabSwitcher (val) {
       this.wordShow = val
-    },
-    backBtn () {
-      this.$router.push({
-        name: 'pageSign',
-        params: {
-          scrollY: this.$route.params.scrollY
-        }
-      })
     }
   }
 }

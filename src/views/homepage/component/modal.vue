@@ -32,7 +32,7 @@
     <p>{{ ModalText }}</p>
   </a-modal> -->
   <a-modal
-    title="穿梭框"
+    title="常用功能设置"
     :width="720"
     :visible="visible"
     :confirmLoading="confirmLoading"

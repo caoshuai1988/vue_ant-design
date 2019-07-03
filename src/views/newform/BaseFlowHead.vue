@@ -1,5 +1,5 @@
 <template>
-  <a-card :bordered="false" v-if="flowFlag" :body-style="{ padding:'0 24px'}" style="margin-bottom:24px;">
+  <a-card :bordered="false" v-if="flowFlag" :body-style="{ padding:'24px 32px'}" style="margin-bottom:24px;">
     <!-- <a-card :bordered="false" v-if="flowFlag" :body-style="{ padding:'50px 24px'}" style="margin-bottom:24px;min-width:1150px"> -->
     <span slot="title">
       <span>流程</span>
@@ -76,9 +76,24 @@ export default {
 <style lang="less" scoped>
 // 流程图 qss
 .flowImg-wrap{
-  padding: 50px 0;
+  padding: 32px 0;
   min-width: 60%;
   overflow-x: auto;
+  &::-webkit-scrollbar{
+    width: 6px;
+    height: 6px;
+  }
+  /*定义滚动条轨道 内阴影+圆角*/
+  &::-webkit-scrollbar-track{
+    border-radius: 10px;
+    background-color: #fff;
+  }
+  /*定义滑块 内阴影+圆角*/
+  &::-webkit-scrollbar-thumb{
+      border-radius: 5px;
+      box-shadow: inset 0 0 5px rgba(0,0,0,0.4);
+      background-color: #9B9B9B;
+  }
 }
 .flowImg{
     width:1050px;

@@ -7,7 +7,7 @@
         <li><router-link :to="{ name: 'login1Sea'}">大海</router-link></li>
         <li><router-link :to="{ name: 'login1Buildings'}">高楼</router-link></li>
         <li><router-link :to="{ name: 'login1Field'}">田野</router-link></li>
-        <li><router-link :to="{ name: 'login1Sky'}">星空</router-link></li>
+        <li><router-link :to="{ name: 'login1Sky'}" class="active">星空</router-link></li>
         <li><router-link :to="{ name: 'login1Forest'}">森林</router-link></li>
       </ul>
     </div>

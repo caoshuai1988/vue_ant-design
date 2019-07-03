@@ -80,14 +80,19 @@ export const asyncRouterMap = [
             meta: { title: '全屏版', target: '_blank' },
             children: [
               {
-                path: '/user/login1/mountain',
-                name: 'login1Mountain',
+                path: '/user/login1/normal',
+                name: 'login1Normal',
                 meta: { title: '常规版', target: '_blank' }
               },
               {
                 path: '/user/login1/dynamic',
                 name: 'login1Dynamic',
                 meta: { title: '动态版', target: '_blank' }
+              },
+              {
+                path: '/user/login1/mountain',
+                name: 'login1Mountain',
+                meta: { title: '多图版', target: '_blank' }
               }
             ]
           },
@@ -695,13 +700,26 @@ export const constantRouterMap = [
   {
     path: '/user',
     component: UserLayout1,
+    redirect: '/user/login1/normal',
+    hidden: true,
+    children: [
+      {
+        path: 'login1/normal',
+        name: 'login1Normal',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login1/Login1')
+      }
+    ]
+  },
+  {
+    path: '/user',
+    component: UserLayout1,
     redirect: '/user/login1/dynamic',
     hidden: true,
     children: [
       {
         path: 'login1/dynamic',
         name: 'login1Dynamic',
-        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login1/Login1')
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login1/Login1-dynamic')
       }
     ]
   },

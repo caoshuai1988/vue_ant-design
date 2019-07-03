@@ -102,13 +102,6 @@
           <a-radio :value="2">部分公开</a-radio>
           <a-radio :value="3">不公开</a-radio>
         </a-radio-group>
-        <!-- <a-form-item>
-          <a-select mode="multiple" v-if="value === 2" placeholder="请直接@花名/姓名/工号">
-            <a-select-option value="4">同事一</a-select-option>
-            <a-select-option value="5">同事二</a-select-option>
-            <a-select-option value="6">同事三</a-select-option>
-          </a-select>
-        </a-form-item> -->
       </a-form-item>
       <a-form-item :wrapperCol="{ span: 17, offset: 7 }" style=" padding-top: 32px">
         <!-- <a-button htmlType="submit" type="primary">提交</a-button> -->
@@ -128,7 +121,6 @@ export default {
     return {
       description: '表单页用于向用户收集或验证信息，基础表单常见于数据项较少的表单场景。',
       value: 1,
-      // flowFlag: true,
       form: this.$form.createForm(this),
       formItemLayout: {
         labelCol: {

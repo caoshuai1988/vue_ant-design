@@ -322,6 +322,11 @@ a {
           <div style="margin-top:24px;" class="anchor">
             <a-card :body-style="{padding: '24px 32px'}" title="基本情况表">
               <span class="amplification" slot="extra">
+                <a-button-group style="margin-right:8px">
+                  <a-button value="narrow"><a-icon type="zoom-out" /><span>缩 小</span></a-button>
+                  <a-button value="default"><span>原始大小</span></a-button>
+                  <a-button value="magnify"><a-icon type="zoom-in" /><span>放 大</span></a-button>
+                </a-button-group>
                 <a-button >
                   <router-link
                     tag="a"
@@ -341,6 +346,11 @@ a {
           <div style="margin-top:24px;" class="anchor">
             <a-card :body-style="{padding: '24px 32px'}" title="任务及投资情况表">
               <span class="amplification" slot="extra">
+                <a-button-group style="margin-right:8px">
+                  <a-button value="narrow"><a-icon type="zoom-out" /><span>缩 小</span></a-button>
+                  <a-button value="default"><span>原始大小</span></a-button>
+                  <a-button value="magnify"><a-icon type="zoom-in" /><span>放 大</span></a-button>
+                </a-button-group>
                 <a-button >
                   <router-link
                     tag="a"
@@ -620,13 +630,10 @@ export default {
       data,
       flag: false,
       valueKey: 1,
-      // 固钉
-      top: 0,
-      // 当前tab标签为第几个
-      activeKey: '1',
+      top: 0, // 固钉
+      activeKey: '1', // 当前tab标签为第几个
       isShowHelp: false,
       num: 24,
-      // num: 18,
       helpNum: 6,
       lablenum: 7,
       valuenum: 17,
@@ -818,13 +825,12 @@ export default {
       },
 
       // 地图相关 待删除
-      center: { lng: 0, lat: 0 }, // 地图坐标
-      zoom: 11, // 地图级别
-      mapFlag: false, // 地图内容
-      screenloadFlag: false, // 全屏
-      iconSwitch: true, // 缩放图标
+      center: { lng: 0, lat: 0 }, // map lng lat
+      zoom: 11, // map level
+      mapFlag: false, // map content
+      screenloadFlag: false, // full screen
+      iconSwitch: true, // zoom icon
       mapFd: {
-        // 自定义样式map
         width: '',
         height: ''
       },
@@ -841,15 +847,6 @@ export default {
     })
   },
   methods: {
-    addAmplifier (val) {
-      // this.$router.push({
-      //   name: 'preview',
-      //   params: {
-      //     val: val,
-      //     scrollY: window.scrollY + 550
-      //   }
-      // })
-    },
     amplificationBtn () {
       // 地图放大
       if (this.mapFd.width === window.screen.availWidth + 'px') {
@@ -874,21 +871,11 @@ export default {
       const totalTranslation = jump[2].offsetTop
       const totalTrans = jump[3].offsetTop
       const totalTransPlural = jump[4].offsetTop
-      if (scrollTop >= totalSlide) {
-        this.activeKey = '1'
-      }
-      if (scrollTop >= totalSlideMove) {
-        this.activeKey = '2'
-      }
-      if (scrollTop >= totalTranslation) {
-        this.activeKey = '3'
-      }
-      if (scrollTop >= totalTrans) {
-        this.activeKey = '4'
-      }
-      if (scrollTop >= totalTransPlural) {
-        this.activeKey = '5'
-      }
+      if (scrollTop >= totalSlide) this.activeKey = '1'
+      if (scrollTop >= totalSlideMove) this.activeKey = '2'
+      if (scrollTop >= totalTranslation) this.activeKey = '3'
+      if (scrollTop >= totalTrans) this.activeKey = '4'
+      if (scrollTop >= totalTransPlural) this.activeKey = '5'
     },
 
     handler ({ BMap, map }) {
@@ -902,28 +889,35 @@ export default {
       window.removeEventListener('scroll', this.handleScroll)
       this.$forceUpdate()
       val = val - 1
-      if (val === 0) {
-        // 主动切换
-        this.activeKey = '1'
-      } else if (val === 2) {
-        this.activeKey = '3'
-      } else if (val === 1) {
-        this.activeKey = '2'
-      } else if (val === 3) {
-        this.activeKey = '4'
-      } else if (val === 4) {
-        this.activeKey = '5'
+      switch (val) {
+        case 0:
+          this.activeKey = '1'
+          break
+        case 1:
+          this.activeKey = '2'
+          break
+        case 2:
+          this.activeKey = '3'
+          break
+        case 3:
+          this.activeKey = '4'
+          break
+        case 4:
+          this.activeKey = '5'
+          break
+        default:
+          this.activeKey = '1'
       }
       const jump = document.querySelectorAll('.anchor') // 用 class" 添加锚点
       const total = jump[val].offsetTop
       let distance = document.documentElement.scrollTop || document.body.scrollTop
 
-      let step = total / 40 // 平滑滚动，时长500ms，每10ms一跳，共30跳
+      let step = total / 30 // 平滑滚动，时长500ms，每10ms一跳，共30跳
       if (total > distance) {
         smoothDown()
       } else {
         const newTotal = distance - total
-        step = newTotal / 40
+        step = newTotal / 30
         smoothUp()
       }
       function smoothDown () {
@@ -948,13 +942,14 @@ export default {
           document.documentElement.scrollTop = total
         }
       }
+      window.addEventListener('scroll', this.handleScroll) // 监听滚动条
+      this.$forceUpdate()
     },
     // handler
     handleSubmit (e) {
       e.preventDefault()
       this.form.validateFields((err, values) => {
         if (!err) {
-          // eslint-disable-next-line no-console
           console.log('Received values of form: ', values)
         }
       })

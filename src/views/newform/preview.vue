@@ -1,4 +1,7 @@
 <style lang="less" scoped>
+h1 {
+  margin: 0;
+}
 /deep/ .ant-card-head-wrapper {
   height: 56px;
 }
@@ -36,7 +39,7 @@
     .preview-direction {
       height: 100%;
       background: #fff;
-      width: 256px;
+      min-width: 256px;
       overflow: auto;
       &::-webkit-scrollbar {
         width: 6px;
@@ -173,12 +176,11 @@
               <img src="@/assets/previewIcon/word.png" alt="word">
               <div class="file-name">融合服务开发平台前端部分工 作前端部分工作规划.docx</div>
             </div>
-            <!-- <a-divider/> -->
             <div class="preview-nav--item" :class="{on: wordShow==2}" @click="tabSwitcher(2)">
               <img src="@/assets/previewIcon/excel.png" alt="word">
               <div class="file-name">融合服务开发平台前端部分工 作前端部分工作规划.excel</div>
             </div>
-            <a-divider/>
+            <a-divider style="margin-bottom: 32px"/>
             <div class="title" style="text-align: left;">{{ "绩效目标" }}</div>
             <div class="preview-nav--item" :class="{on: wordShow==3}" @click="tabSwitcher(3)">
               <img src="@/assets/previewIcon/unknow.png" alt="word">
@@ -199,7 +201,8 @@
       <div class="right-box">
         <a-card
           :head-style="{height:'57px', fontSize:'16px', color:'rgba(0,0,0,0.85)'}"
-          :body-style="{padding: 0, border: 0,previewStyle}">
+          :body-style="{padding: 0, border: 0}"
+        >
           <div class="title-detail">
             <div class="info">
               <span class="title__name" style="margin-right:12px">
@@ -213,14 +216,10 @@
               </span>
             </div>
             <div class="btn-warp">
-              <!-- <a-button style="margin-right:12px">缩小</a-button>
-              <a-button style="margin-right:12px">放大</a-button>-->
               <a-button style="margin-right:12px">原图</a-button>
               <a-button>下载</a-button>
             </div>
           </div>
-          <!-- <a-divider/> -->
-          <!-- style="paddng: 24px 0 0 24px;" -->
           <div class="preview-body" :style="previewStyle" ref="text">
             <iframe
               v-if="wordShow == 1"
@@ -301,14 +300,6 @@ export default {
   methods: {
     tabSwitcher (val) {
       this.wordShow = val
-    },
-    backBtn () {
-      this.$router.push({
-        name: 'pageSign',
-        params: {
-          scrollY: this.$route.params.scrollY
-        }
-      })
     }
   }
 }

@@ -6,6 +6,7 @@ body {
   font-family:  -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif,
   "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
   &.colorWeak {
     filter: invert(80%);
   }
@@ -17,7 +18,10 @@ body {
 .layout.ant-layout {
   height: auto;
   overflow-x: hidden;
-
+  .ant-layout-content{
+    display: flex;
+    flex-direction: column;
+  }
   &.mobile,
   &.tablet {
     .ant-layout-content {

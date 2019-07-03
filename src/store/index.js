@@ -17,16 +17,23 @@ export default new Vuex.Store({
     stepform
   },
   state: {
-    dataOne: 0
+    dataOne: 0,
+    value:''
   },
   mutations: {
     changOne (state, type) {
       state.dataOne = type
-    }
+    },
+    SET_INPUT: (state, type) => {
+	      state.value = type
+	  }
   },
   actions: {
     changOneActions (context, type) {
       context.commit('changOne', type)
+    },
+    selectVal({ commit }, type) {
+      commit('SET_INPUT', type)
     }
   },
   getters // Getter相当于vue中的computed计算属性，getter 的返回值会根据它的依赖被缓存起来，且只有当它的依赖值发生了改变才会被重新计算

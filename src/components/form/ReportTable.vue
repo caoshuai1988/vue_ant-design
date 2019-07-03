@@ -24,9 +24,13 @@
         </a-card>
       </a-tab-pane>
       <div slot="tabBarExtraContent" class="amplification" @click="amplificationBtn">
+        <a-button-group style="margin-right:8px">
+          <a-button value="narrow"><a-icon type="zoom-out" /><span>缩 小</span></a-button>
+          <a-button value="default"><span>原始大小</span></a-button>
+          <a-button value="magnify"><a-icon type="zoom-in" /><span>放 大</span></a-button>
+        </a-button-group>
         <a-button type="primary" v-if="iconFlag">返回</a-button>
-        <a-button v-else >放大</a-button>
-
+        <a-button v-else >全屏</a-button>
       </div>
     </a-tabs>
   </div>
@@ -38,33 +42,31 @@ export default {
   data () {
     return {
       tabSwitch: { // 默认外层样式
-        height: '',
         width: '',
         background: '#fff',
-        paddingTop: '16px'
+        paddingTop: '16px',
+        height: '100%'
       },
       tableStyle: { // 报表默认
-        height: '',
+        height: '100%',
         width: '100%'
       },
       iconFlag: false,
-      screenloadFlag: false // 全屏
+      screenloadFlag: false // full screen
     }
   },
   mounted () {
-    this.tableStyle.height = window.screen.availHeight - this.$refs.text.offsetHeight + 'px'
+    // this.tableStyle.heigh-24px -24px 20px;t = window.screen.availHeight - this.$refs.text.offsetHeight + 'px'
   },
   methods: {
     amplificationBtn () {
       if (this.tabSwitch.width === document.documentElement.clientWidth + 'px') {
         this.tabSwitch.width = ''
-        this.tabSwitch.height = ''
       } else {
         this.tabSwitch.width = document.documentElement.clientWidth + 'px'
-        this.tabSwitch.height = document.documentElement.clientHeight + 'px'
       }
-      this.iconFlag = !this.iconFlag // 图标
-      this.screenloadFlag = !this.screenloadFlag // 全屏
+      this.iconFlag = !this.iconFlag // icon
+      this.screenloadFlag = !this.screenloadFlag // full screen
     }
   }
 }
@@ -72,14 +74,15 @@ export default {
 
 <style lang="less" scoped>
 
-.screenload { /* 全屏 add css */
+.screenload { /* full screen add css */
   position: fixed;
   top: 0;
   left: 0;
   z-index: 10;
+  height: 100%;
 }
 
-.amplification { /* 放大icon */
+.amplification { /* zoom icon */
   float: right;
   font-weight: 700;
   font-size: 18px;
@@ -87,11 +90,30 @@ export default {
   padding: 0 10px;
   margin-right: 22px;
 }
-
-/deep/ .ant-tabs-bar{ // 清除多余空白
+/deep/ .ant-tabs {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  /deep/ .ant-tabs-content {
+    flex: auto;
+    .ant-card {
+      height: 100%;
+    }
+  }
+  /deep/ .ant-tabs-bar{ // 清除多余空白
    margin: 0;
+  }
+  /deep/ .ant-tabs-tabpane {
+    height: 100%;
+    flex: auto;
+    /deep/ .ant-card-body {
+      height: 100%;
+    }
+  }
 }
-
+/deep/ .ant-tabs .ant-tabs-top-content.ant-tabs-content-animated {
+  flex: auto;
+}
 /deep/ .ant-tabs-nav-wrap{
   padding-left:  32px !important;
 }

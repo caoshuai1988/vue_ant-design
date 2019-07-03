@@ -2,7 +2,7 @@
   <div>
     <!-- 仓库 -->
     <a-card class="card" style="font-size: 26px" :bordered="false" >
-      <span slot="title" :class="{titleSize : big == 'large'}">仓库管理</span>
+      <span slot="title" >仓库管理</span>
       <span slot="extra" class="foldStyle" @click="fold(true)">
         <a-icon type="up" v-if="iconToggle" />
         <a-icon type="down" v-else />
@@ -13,7 +13,7 @@
     </a-card>
     <!-- 任务 -->
     <a-card class="card" :bordered="false" >
-      <span slot="title" :class="{titleSize : big == 'large'}">任务管理</span>
+      <span slot="title" >任务管理</span>
       <span slot="extra" class="foldStyle" @click="fold()">
         <a-icon type="up" v-if="iconToggleOne" />
         <a-icon type="down" v-else />
@@ -24,7 +24,7 @@
     </a-card>
     <!-- 表格 -->
     <a-card class="card" >
-      <span slot="title" :class="{titleSize : big == 'large'}">成员管理</span>
+      <span slot="title" >成员管理</span>
       <span slot="extra" class="foldStyle" @click="fold(0)">
         <a-icon type="up" v-if="iconTable" />
         <a-icon type="down" v-else />
@@ -122,9 +122,9 @@ export default {
       foldOne: true, // 折叠组件1
       foldTwo: true, // 折叠组件2
       foldTable: true, // 折叠表格
-      iconTable: true, // 图标表格
-      iconToggle: true, // 图标1
-      iconToggleOne: true, // 图标2
+      iconTable: true, // icon表格
+      iconToggle: true, // icon1
+      iconToggleOne: true, // icon2
       memberLoading: false,
       // table
       columns: [
@@ -181,9 +181,6 @@ export default {
     }
   },
   methods: {
-    bianda () {
-      this.$store.dispatch('changFormLargen', 'large')
-    },
     fold (flag) {
       if (flag) {
         this.foldOne = !this.foldOne

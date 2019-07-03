@@ -14,7 +14,7 @@
           <a-input-search placeholder="请输入" style="width: 300px"/>
         </span>
         <div class="amplification" @click="amplificationBtn">
-          <a-button v-if="iconSwitch" >放大</a-button>
+          <a-button v-if="iconSwitch" >全屏</a-button>
           <a-button type="primary" v-else>返回</a-button>
         </div>
       </div>
@@ -40,13 +40,13 @@
 export default {
   data () {
     return {
-      center: { lng: 0, lat: 0 }, // 地图坐标
-      zoom: 11, // 地图级别
-      mapFlag: false, // 地图内容
-      screenloadFlag: false, // 全屏
-      mapHeadFlag: false, // 地图自定义head
-      iconSwitch: true, // 缩放图标
-      mapFd: { // 自定义样式map
+      center: { lng: 0, lat: 0 }, // map lng lat
+      zoom: 11, // map level
+      mapFlag: false, // map content
+      screenloadFlag: false, // full screen
+      mapHeadFlag: false, // map head
+      iconSwitch: true, //  zoom icon
+      mapFd: {
         width: '',
         height: ''
       },
@@ -66,7 +66,7 @@ export default {
     },
     changeSize () {
       if (this.mapFd.width === document.documentElement.clientWidth + 'px') {
-        this.mapFd = {}
+        this.mapFd.width = ''
       } else {
         this.mapFd.width = document.documentElement.clientWidth + 'px'
         this.mapFd.height = document.documentElement.clientHeight + 'px'
@@ -78,7 +78,7 @@ export default {
       this.iconSwitch = !this.iconSwitch
     },
     amplificationBtn () {
-      this.changeSize() // 全屏
+      this.changeSize() // full screen
     },
     handler ({ BMap, map }) {
       this.center.lng = 116.404
@@ -129,7 +129,7 @@ export default {
 
 <style lang="less" scoped>
 
-.screenload { /* 全屏 add css */
+.screenload { /* full screen add css */
   position: fixed;
   top: 0;
   left: 0;
@@ -141,7 +141,7 @@ export default {
   background-color: #fff;
 }
 
-.mapContent { /* 全屏 add css end */
+.mapContent { /* full screen add css end */
   height: 100% !important;
 }
 

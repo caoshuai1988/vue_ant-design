@@ -6,6 +6,7 @@
       :width="640"
       @close="onClose"
       :visible="visible"
+      :closable="false"
       :wrapStyle="{height: 'calc(100% - 108px)',overflow: 'auto',paddingBottom: '108px'}">
       <template>
         <div style="padding-bottom:80px;">
@@ -37,11 +38,11 @@
                 <a-icon type="down" v-else />
               </span>
               <verticaltoggle>
-                <TableList v-if="foldTable"></TableList>
+                <TableList v-show="foldTable"></TableList>
               </verticaltoggle>
             </layoutForm>
             <a-divider v-show="!foldTable" style="margin-bottom: 32px"/>
-            <a-divider v-show="foldTable" style="margin-bottom: 0px;opacity: 0;"/>
+            <a-divider v-show="foldTable" style="margin-bottom: 0px;margin-top:32px;opacity: 0;"/>
             <layoutForm title="默认筛选">
               <span class="foldStyle" @click="fold(4)">
                 <a-icon type="up" v-if="iconFour" />

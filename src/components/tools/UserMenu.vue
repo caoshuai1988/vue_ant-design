@@ -218,7 +218,7 @@
           })
         }
         setTimeout(function() {
-          $('#app').BUP(1, 'App')
+          $('#app').BUP(1.5, 'App')
         }, 1000)
       }
     }

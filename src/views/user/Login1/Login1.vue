@@ -1,5 +1,5 @@
 <template>
-  <div class="main main-login1">
+  <div class="main main-login1 main-login1-dynamic">
     <div class="login-box">
       <div class="login-box-left">
         <p>
@@ -143,7 +143,7 @@ import AFormItem from 'ant-design-vue/es/form/FormItem'
 import ARow from 'ant-design-vue/es/grid/Row'
 import $ from 'jquery'
 import 'jquery-backstretch'
-import imgSrc from '../../assets/login1_bg1.png'
+import imgSrc from '../../../assets/login1_bg1.png'
 
 export default {
   components: {

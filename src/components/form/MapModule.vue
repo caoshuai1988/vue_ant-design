@@ -66,7 +66,7 @@ export default {
     },
     changeSize () {
       if (this.mapFd.width === document.documentElement.clientWidth + 'px') {
-        this.mapFd = {}
+        this.mapFd.width = ''
       } else {
         this.mapFd.width = document.documentElement.clientWidth + 'px'
         this.mapFd.height = document.documentElement.clientHeight + 'px'

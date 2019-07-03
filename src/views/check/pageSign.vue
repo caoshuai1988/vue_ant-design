@@ -322,6 +322,11 @@ a {
           <div style="margin-top:24px;" class="anchor">
             <a-card :body-style="{padding: '24px 32px'}" title="基本情况表">
               <span class="amplification" slot="extra">
+                <a-button-group style="margin-right:8px">
+                  <a-button value="narrow"><a-icon type="zoom-out" /><span>缩 小</span></a-button>
+                  <a-button value="default"><span>原始大小</span></a-button>
+                  <a-button value="magnify"><a-icon type="zoom-in" /><span>放 大</span></a-button>
+                </a-button-group>
                 <a-button >
                   <router-link
                     tag="a"
@@ -341,6 +346,11 @@ a {
           <div style="margin-top:24px;" class="anchor">
             <a-card :body-style="{padding: '24px 32px'}" title="任务及投资情况表">
               <span class="amplification" slot="extra">
+                <a-button-group style="margin-right:8px">
+                  <a-button value="narrow"><a-icon type="zoom-out" /><span>缩 小</span></a-button>
+                  <a-button value="default"><span>原始大小</span></a-button>
+                  <a-button value="magnify"><a-icon type="zoom-in" /><span>放 大</span></a-button>
+                </a-button-group>
                 <a-button >
                   <router-link
                     tag="a"

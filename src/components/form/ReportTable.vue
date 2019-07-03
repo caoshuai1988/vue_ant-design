@@ -24,6 +24,11 @@
         </a-card>
       </a-tab-pane>
       <div slot="tabBarExtraContent" class="amplification" @click="amplificationBtn">
+        <a-button-group style="margin-right:8px">
+          <a-button value="narrow"><a-icon type="zoom-out" /><span>缩 小</span></a-button>
+          <a-button value="default"><span>原始大小</span></a-button>
+          <a-button value="magnify"><a-icon type="zoom-in" /><span>放 大</span></a-button>
+        </a-button-group>
         <a-button type="primary" v-if="iconFlag">返回</a-button>
         <a-button v-else >全屏</a-button>
       </div>

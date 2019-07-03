@@ -186,6 +186,12 @@ export const asyncRouterMap = [
             meta: { title: '高级表单', keepAlive: true, permission: ['form'], isForm: true }
           },
           {
+            path: 'newform/Flowchart',
+            name: 'Flowchart',
+            component: () => import('@/views/newform/Flowchart'),
+            meta: { title: '流程图', keepAlive: true, permission: [ 'form' ] }
+          },
+          {
             path: 'newform/mapForm',
             name: 'mapForm',
             component: () => import('@/views/newform/mapForm'),

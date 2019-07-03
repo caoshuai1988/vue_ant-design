@@ -144,7 +144,8 @@ export default {
 </script>
 <style lang="less" scoped>
   .content {
-    margin: 24px 24px 0;
+    // margin: 24px 24px 0;
+    padding: 24px;
     .link {
       margin-top: 16px;
       &:not(:empty) {

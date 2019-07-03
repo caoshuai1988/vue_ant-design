@@ -221,16 +221,14 @@
               <template
                 v-for="(col, i) in ['name', 'workId', 'department','department1']"
                 :slot="col"
-                slot-scope="text, record"
-              >
+                slot-scope="text, record">
                 <a-input
                   :key="col"
                   v-if="record.editable"
                   style="margin: -5px 0"
                   :value="text"
                   :placeholder="columns[i].title"
-                  @change="e => handleChange(e.target.value, record.key, col)"
-                />
+                  @change="e => handleChange(e.target.value, record.key, col)"/>
                 <template v-else>{{ text }}</template>
               </template>
               <template slot="operation" slot-scope="text, record">
@@ -261,17 +259,21 @@
               style="width: 100%; margin-top: 16px; margin-bottom: 8px"
               type="dashed"
               icon="plus"
-              @click="newMember"
-            >新增成员</a-button>
+              @click="newMember">
+              新增成员
+            </a-button>
           </div>
         </verticaltoggle>
       </layoutForm>
       <div class="footerBox" >
         <a-form-item :wrapperCol="{ span: 24 }" style="text-align: center; margin-top:32px">
-          <a-button htmlType="submit" type="primary" loading>
+          <a-button htmlType="submit" type="primary">
             提交
           </a-button>
-          <a-button style="margin-left: 8px" type="primary" >保存</a-button>
+          <!-- <a-button htmlType="submit" type="primary" loading>
+            提交
+          </a-button> -->
+          <a-button style="margin-left: 8px" >保存</a-button>
           <a-button style="margin-left: 8px" >下一步</a-button>
         </a-form-item>
       </div>
@@ -281,7 +283,7 @@
 </template>
 
 <script>
-import layoutForm from '@/views/newform/LayoutForm'
+import layoutForm from '@/views/formpages/LayoutForm'
 import verticaltoggle from './verticaltoggle.js'
 
 // 表单

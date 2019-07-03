@@ -64,7 +64,7 @@
         :wrapperCol="{lg: {span: 10}, sm: {span: 17} }"
         :required="false"
       >
-        <span slot="label" class="abc">
+        <span slot="label">
           邀评人(选填)
           <a-tooltip title="What do you want others to call you?">
             <a-icon type="info-circle" />
@@ -79,7 +79,7 @@
         :required="false"
       >
         <a-input-number :min="0" :max="100"/>
-        <span>%</span>
+        <span style="margin-left: 8px">%</span>
       </a-form-item>
       <a-form-item
         label="目标公开"
@@ -103,7 +103,7 @@
       </a-form-item>
       <a-form-item :wrapperCol="{ span: 18 }" style="text-align: center; padding-top: 20px">
         <!-- <a-button htmlType="submit" type="primary">提交</a-button> -->
-        <a-button htmlType="submit" type="primary" loading>
+        <a-button htmlType="submit" type="primary">
           提交
         </a-button>
         <a-button style="margin-left: 8px" >保存</a-button>

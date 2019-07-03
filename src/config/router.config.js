@@ -80,14 +80,19 @@ export const asyncRouterMap = [
             meta: { title: '全屏版', target: '_blank' },
             children: [
               {
-                path: '/user/login1/mountain',
-                name: 'login1Mountain',
+                path: '/user/login1/normal',
+                name: 'login1Normal',
                 meta: { title: '常规版', target: '_blank' }
               },
               {
                 path: '/user/login1/dynamic',
                 name: 'login1Dynamic',
                 meta: { title: '动态版', target: '_blank' }
+              },
+              {
+                path: '/user/login1/mountain',
+                name: 'login1Mountain',
+                meta: { title: '多图版', target: '_blank' }
               }
             ]
           },
@@ -168,15 +173,15 @@ export const asyncRouterMap = [
         meta: { title: '表单页', icon: 'form', permission: ['form'] },
         children: [
           {
-            path: 'newform/popup',
-            name: 'popup',
-            component: () => import('@/views/newform/popup'),
+            path: 'formpages/Popup',
+            name: 'Popup',
+            component: () => import('@/views/formpages/Popup'),
             meta: { title: '弹窗抽屉', keepAlive: true, permission: ['form'], isForm: true }
           },
           {
             path: '/form/newbaseform',
             name: 'NewBaseForm',
-            component: () => import('@/views/newform/NewBaseForm'),
+            component: () => import('@/views/formpages/NewBaseForm'),
             meta: { title: '基础表单', keepAlive: true, permission: ['form'], showbtn: true, isForm: true }
           },
           {
@@ -186,21 +191,21 @@ export const asyncRouterMap = [
             meta: { title: '基础表单2', keepAlive: true, permission: ['form'], showbtn: true, isForm: true }
           },
           {
-            path: 'newform/ThrowRowForm',
+            path: 'formpages/ThrowRowForm',
             name: 'ThrowRowForm',
-            component: () => import('@/views/newform/ThrowRowForm'),
+            component: () => import('@/views/formpages/ThrowRowForm'),
             meta: { title: '三列表单', keepAlive: true, permission: ['form'], isForm: true }
           },
           {
-            path: 'newform/AdvancedForms',
+            path: 'formpages/AdvancedForms',
             name: 'AdvancedForms',
-            component: () => import('@/views/newform/AdvancedForms'),
+            component: () => import('@/views/formpages/AdvancedForms'),
             meta: { title: '高级表单', keepAlive: true, permission: ['form'], isForm: true }
           },
           {
-            path: 'newform/mapForm',
-            name: 'mapForm',
-            component: () => import('@/views/newform/mapForm'),
+            path: 'formpages/MapForm',
+            name: 'MapForm',
+            component: () => import('@/views/formpages/MapForm'),
             meta: { title: '分页签-地图报表', keepAlive: true, permission: ['form'], showbtn: true, isForm: true }
           },
           {
@@ -214,7 +219,7 @@ export const asyncRouterMap = [
             path: '/fsxt/relevance-form',
             name: 'StepFormPageCopy',
             component: () => import('@/views/form/advancedStepFormCopy/index'),
-            meta: { title: '关联规划分步表单', keepAlive: false, permission: ['form'], showRelevance: true }
+            meta: { title: '高级带分步表单2', keepAlive: false, permission: ['form'], showRelevance: true }
           }
         ]
       },
@@ -259,7 +264,7 @@ export const asyncRouterMap = [
           {
             path: '/check/flow-head',
             name: 'flowHead',
-            component: () => import('@/views/newform/Flowchart'),
+            component: () => import('@/views/formpages/Flowchart'),
             meta: { title: '全业务流程图', showbtn: true, showStep: false, keepAlive: true, permission: ['form'] }
           }
 
@@ -689,13 +694,26 @@ export const constantRouterMap = [
   {
     path: '/user',
     component: UserLayout1,
+    redirect: '/user/login1/normal',
+    hidden: true,
+    children: [
+      {
+        path: 'login1/normal',
+        name: 'login1Normal',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login1/Login1')
+      }
+    ]
+  },
+  {
+    path: '/user',
+    component: UserLayout1,
     redirect: '/user/login1/dynamic',
     hidden: true,
     children: [
       {
         path: 'login1/dynamic',
         name: 'login1Dynamic',
-        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login1/Login1')
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login1/Login1-dynamic')
       }
     ]
   },
@@ -895,9 +913,9 @@ export const constantRouterMap = [
     ]
   },
   {
-    path: '/preview',
-    name: 'preview',
-    component: () => import('@/views/newform/preview')
+    path: '/Preview',
+    name: 'Preview',
+    component: () => import('@/views/formpages/Preview')
   },
   { // 地图
     path: '/maplook',

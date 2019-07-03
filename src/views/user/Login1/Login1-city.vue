@@ -3,7 +3,7 @@
     <div class="bgChoose">
       <ul>
         <li><router-link :to="{ name: 'login1Mountain'}">大山</router-link></li>
-        <li><router-link :to="{ name: 'login1City'}">城市</router-link></li>
+        <li><router-link :to="{ name: 'login1City'}" class="active">城市</router-link></li>
         <li><router-link :to="{ name: 'login1Sea'}">大海</router-link></li>
         <li><router-link :to="{ name: 'login1Buildings'}">高楼</router-link></li>
         <li><router-link :to="{ name: 'login1Field'}">田野</router-link></li>

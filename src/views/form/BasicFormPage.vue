@@ -104,15 +104,32 @@
   .form-body /deep/.ant-form{
     background: #fff;
   }
-// zzytodo  待删除
-  //  /deep/.ant-form-horizontal .ant-form-item .ant-form-item-control-wrapper .ant-form-item-control{
-  //   position: relative;
-  // }
-  // /deep/ant-form-explain{
-  //   position: absolute;
-  // }
+  .step-form-style-desc {
+    padding: 0 56px;
+    color: rgba(0,0,0,.45);
 
-  // 局部样式图片默认样式消除底部margin-bottom:8px
+    h3 {
+      margin: 0 0 12px;
+      color: rgba(0,0,0,.45);
+      font-size: 16px;
+      line-height: 32px;
+    }
+
+    h4 {
+      margin: 0 0 4px;
+      color: rgba(0,0,0,.45);
+      font-size: 14px;
+      line-height: 22px;
+    }
+
+    p {
+      margin-top: 0;
+      margin-bottom: 12px;
+      line-height: 22px;
+    }
+  }
+
+  // 局部样式图片默认样式消除底部margin-bottom:8px  现在提到全局样式了
   // /deep/.ant-upload-list-picture-card .ant-upload-list-item{
   //   margin-bottom: 0
   // }
@@ -128,7 +145,6 @@
       <a-col :body-style="{background:'#fff'}" :xl="num" :lg="num" :md="num" :sm="num" >
         <div style="background: #fff; padding: 24px 32px">
           <a-form @submit="handleSubmit" :form="form" >
-            <!-- <h1 class="title-name">标题组</h1> -->
             <!-- :colon="false"
               label="输入框" -->
             <!-- 输入框 -->
@@ -321,8 +337,7 @@
                     listType="picture-card"
                     :fileList="fileList"
                     @preview="handlePreview"
-                    @change="handleChange"
-                  >
+                    @change="handleChange">
                     <div v-if="fileList.length < 3">
                       <a-icon type="plus" />
                       <div class="ant-upload-text">Upload</div>
@@ -360,13 +375,20 @@
             </a-form-item>
             <!-- 提交 -->
             <a-form-item
-              :wrapperCol="{ span: 24 }"
-              style="text-align: center; margin-top:32px">
+              :wrapperCol="{span: 10, offset: 7}"
+              style="margin-top:32px">
               <a-button htmlType="submit" type="primary">提交</a-button>
               <a-button style="margin-left: 8px">保存</a-button>
             </a-form-item>
-
           </a-form>
+          <a-divider />
+          <div class="step-form-style-desc">
+            <h3>说明</h3>
+            <h4>转账到支付宝账户</h4>
+            <p>如果需要，这里可以放一些关于产品的常见问题说明。如果需要，这里可以放一些关于产品的常见问题说明。如果需要，这里可以放一些关于产品的常见问题说明。</p>
+            <h4>转账到银行卡</h4>
+            <p>如果需要，这里可以放一些关于产品的常见问题说明。如果需要，这里可以放一些关于产品的常见问题说明。如果需要，这里可以放一些关于产品的常见问题说明。</p>
+          </div>
         </div>
       </a-col>
       <!-- 帮助侧边栏 -->

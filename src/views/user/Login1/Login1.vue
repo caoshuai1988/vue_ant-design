@@ -1,5 +1,5 @@
 <template>
-  <div class="main main-login1 main-login1-dynamic">
+  <div class="main main-login1">
     <div class="login-box">
       <div class="login-box-left">
         <p>

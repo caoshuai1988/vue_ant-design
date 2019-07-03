@@ -6,6 +6,7 @@
       :width="640"
       @close="onClose"
       :visible="visible"
+      :closable="false"
       :wrapStyle="{height: 'calc(100% - 108px)',overflow: 'auto',paddingBottom: '108px'}">
       <template>
         <div style="padding-bottom:80px;">
@@ -92,8 +93,8 @@
 import TagModule from './TagModule'
 import TableList from './TableList'
 import ScreeningTable from './ScreeningTable'
-import verticaltoggle from '@/views/newform/verticaltoggle.js'
-import layoutForm from '@/views/newform/LayoutForm'
+import verticaltoggle from '@/views/formpages/verticaltoggle.js'
+import layoutForm from '@/views/formpages/LayoutForm'
 import SelectList from './SelectList'
 
 export default {

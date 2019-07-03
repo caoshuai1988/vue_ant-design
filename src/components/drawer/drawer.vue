@@ -227,23 +227,11 @@
                   <a-radio :value="1">同意</a-radio>
                   <a-radio :value="2">退回</a-radio>
                 </a-radio-group>
-                <a-select mode="multiple" v-if="value === 2" placeholder="请选择">
+                <a-select compact v-if="value === 2" placeholder="请选择驳回目标">
                   <a-select-option value="4">省级经办岗</a-select-option>
                   <a-select-option value="5">县级经办岗</a-select-option>
                 </a-select>
               </a-form-item>
-              <!-- <a-form-item
-                v-if="value === 2"
-                label="驳回目标"
-                :labelCol="labelCol"
-                :wrapperCol="wrapperCol"
-              >
-                <a-select mode="multiple" >
-                  <a-select-option value="4">同事一</a-select-option>
-                  <a-select-option value="5">同事二</a-select-option>
-                  <a-select-option value="6">同事三</a-select-option>
-                </a-select>
-              </a-form-item> -->
               <!-- 备注 -->
               <a-form-item label="备注" :labelCol="labelCol" :wrapperCol="wrapperCol">
                 <a-textarea rows="4" placeholder="请填写备注或审核意见（选填）" />

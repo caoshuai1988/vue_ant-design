@@ -281,7 +281,7 @@
 </template>
 
 <script>
-import layoutForm from '@/views/newform/LayoutForm'
+import layoutForm from '@/views/formpages/LayoutForm'
 import verticaltoggle from './verticaltoggle.js'
 
 // 表单

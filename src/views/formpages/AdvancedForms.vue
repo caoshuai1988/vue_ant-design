@@ -2,105 +2,118 @@
   <div>
     <!-- 仓库 -->
     <a-card class="card" style="font-size: 26px" :bordered="false" >
-      <span slot="title" :class="{abc : big == 'large'}">流程图</span>
+      <span slot="title" >仓库管理</span>
       <span slot="extra" class="foldStyle" @click="fold(true)">
-        <!--<a-icon type="up" v-if="iconToggle" />
-        <a-icon type="down" v-else />-->
-        <!--<img src="../../assets/tshi.png">-->
-        <div class="imgLook">
-          <b>图示:</b>
-          <span style="background: #00a854;"></span>已完成/同意
-          <span style="background: #1890ff;"></span>进行中
-          <span style="background: #94c4ff;"></span>待进行
-          <span style="background: #cccccc;"></span>待进行
-          <span style="background: #f04134;"></span>退回
-        </div>
-
+        <a-icon type="up" v-if="iconToggle" />
+        <a-icon type="down" v-else />
       </span>
       <verticaltoggle>
-        <!--<img src="../../assets/flow.png" class="flowImg" style="width:1000px;margin:24px auto;display: block;">-->
-        <FlowImg></FlowImg>
+        <repository-form ref="repository" :showSubmit="false" :ceshi="big" v-if="foldOne"/>
+      </verticaltoggle>
+    </a-card>
+    <!-- 任务 -->
+    <a-card class="card" :bordered="false" >
+      <span slot="title" >任务管理</span>
+      <span slot="extra" class="foldStyle" @click="fold()">
+        <a-icon type="up" v-if="iconToggleOne" />
+        <a-icon type="down" v-else />
+      </span>
+      <verticaltoggle>
+        <task-form ref="task" :showSubmit="false" v-if="foldTwo" />
       </verticaltoggle>
     </a-card>
     <!-- 表格 -->
     <a-card class="card" >
-      <span slot="title" :class="{abc : big == 'large'}">流程历史</span>
-      <!--<span slot="extra" class="foldStyle" @click="fold(0)">
+      <span slot="title" >成员管理</span>
+      <span slot="extra" class="foldStyle" @click="fold(0)">
         <a-icon type="up" v-if="iconTable" />
         <a-icon type="down" v-else />
-      </span>-->
+      </span>
       <verticaltoggle>
         <div v-if="foldTable">
-          <a-table :columns="columns" :dataSource="data">
-
-            <span slot="name" slot-scope="text">
-              <a href="javascript:;">{{ text }}</a>
-            </span>
-            <span slot="status" slot-scope="text">
-              <a-badge :status="2 | statusTypeFilter" :text="2 | statusFilter"/>
-            </span>
+          <a-table :columns="columns" :dataSource="data" :pagination="false" :loading="memberLoading">
+            <template
+              v-for="(col, i) in ['name', 'workId', 'department']"
+              :slot="col"
+              slot-scope="text, record">
+              <a-input
+                :key="col"
+                v-if="record.editable"
+                style="margin: -5px 0"
+                :value="text"
+                :placeholder="columns[i].title"
+                @change="e => handleChange(e.target.value, record.key, col)"/>
+              <template v-else>{{ text }}</template>
+            </template>
+            <template slot="operation" slot-scope="text, record">
+              <template v-if="record.editable">
+                <span v-if="record.isNew">
+                  <a @click="saveRow(record)">添加</a>
+                  <a-divider type="vertical"/>
+                  <a-popconfirm title="是否要删除此行？" @confirm="remove(record.key)">
+                    <a>删除</a>
+                  </a-popconfirm>
+                </span>
+                <span v-else>
+                  <a @click="saveRow(record)">保存</a>
+                  <a-divider type="vertical"/>
+                  <a @click="cancel(record.key)">取消</a>
+                </span>
+              </template>
+              <span v-else>
+                <a @click="toggle(record.key)">编辑</a>
+                <a-divider type="vertical"/>
+                <a-popconfirm title="是否要删除此行？" @confirm="remove(record.key)">
+                  <a>删除</a>
+                </a-popconfirm>
+              </span>
+            </template>
           </a-table>
+          <a-button
+            style="width: 100%; margin-top: 16px; margin-bottom: 8px"
+            type="dashed"
+            icon="plus"
+            @click="newMember"
+          >新增成员</a-button>
         </div>
       </verticaltoggle>
     </a-card>
+    <div class="footerBox" >
+      <a-form-item :wrapperCol="{ span: 24 }" style="text-align: center; padding:  24px">
+        <!-- <a-button htmlType="submit" type="primary">提交</a-button> -->
+        <a-button htmlType="submit" type="primary" loading>
+          提交
+        </a-button>
+        <a-button style="margin-left: 8px" type="primary" >保存</a-button>
+        <a-button style="margin-left: 8px" >下一步</a-button>
+      </a-form-item>
+    </div>
   </div>
 </template>
 
 <script>
 import repositoryForm from './RepositoryForms'
-// import flowPng from '@/assets/flow.png'
 import taskForm from './TaskForms'
-import FlowImg from './flowchart/FlowImg'
-import verticaltoggle from '@/views/newform/verticaltoggle'
-const statusMap = {
-  0: {
-    status: 'default',
-    text: '已完成'
-  },
-  1: {
-    status: 'processing',
-    text: '退回'
-  },
-  2: {
-    status: 'success',
-    text: '同意'
-  },
-  3: {
-    status: 'error',
-    text: '异常'
-  }
-}
-const columns = [
-  { title: '序号', dataIndex: 'name', key: 'name', scopedSlots: { customRender: 'name' } },
-  { title: '节点', dataIndex: 'platform', key: 'platform' },
-  { title: '操作', dataIndex: 'status', scopedSlots: { customRender: 'status' } },
-  { title: '岗位', dataIndex: 'upgradeNum', key: 'upgradeNum' },
-  { title: '操作人', dataIndex: 'creator', key: 'creator' },
-  { title: '操作时间', dataIndex: 'createdAt1', key: 'createdAt1' },
-  { title: '备注', dataIndex: 'createdAt2', key: 'createdAt2' },
-  { title: '附件', dataIndex: 'createdAt3', key: 'createdAt3' }
-]
-
-const data = []
-const indexNumber = [8, 7, 6, 5, 4, 3, 2, 1]
-for (let i = 0; i < 8; ++i) {
-  data.push({
-    key: i,
-    name: indexNumber[i],
-    platform: '省级审批',
-    upgradeNum: '县级经办岗',
-    creator: '张三',
-    createdAt1: '2014-12-24 23:12:00',
-    createdAt2: '备注',
-    createdAt3: '文档.docx'
-  })
+import verticaltoggle from '@/views/formpages/verticaltoggle'
+const fieldLabels = {
+  name: '仓库名',
+  url: '仓库域名',
+  owner: '仓库管理员',
+  approver: '审批人',
+  dateRange: '生效日期',
+  type: '仓库类型',
+  name2: '任务名',
+  url2: '任务描述',
+  owner2: '执行人',
+  approver2: '责任人',
+  dateRange2: '生效日期',
+  type2: '任务类型'
 }
 export default {
   components: {
     repositoryForm,
     taskForm,
-    verticaltoggle, // 动画组件
-    FlowImg// 流程图
+    verticaltoggle // 动画组件
   },
   data () {
     return {
@@ -109,21 +122,62 @@ export default {
       foldOne: true, // 折叠组件1
       foldTwo: true, // 折叠组件2
       foldTable: true, // 折叠表格
-      iconTable: true, // 图标表格
-      iconToggle: true, // 图标1
-      iconToggleOne: true, // 图标2
+      iconTable: true, // icon表格
+      iconToggle: true, // icon1
+      iconToggleOne: true, // icon2
       memberLoading: false,
-      data,
-      columns
       // table
-    }
-  },
-  filters: {
-    statusFilter (type) {
-      return statusMap[type].text
-    },
-    statusTypeFilter (type) {
-      return statusMap[type].status
+      columns: [
+        {
+          title: '成员姓名',
+          dataIndex: 'name',
+          key: 'name',
+          width: '20%',
+          scopedSlots: { customRender: 'name' }
+        },
+        {
+          title: '工号',
+          dataIndex: 'workId',
+          key: 'workId',
+          width: '20%',
+          scopedSlots: { customRender: 'workId' }
+        },
+        {
+          title: '所属部门',
+          dataIndex: 'department',
+          key: 'department',
+          width: '40%',
+          scopedSlots: { customRender: 'department' }
+        },
+        {
+          title: '操作',
+          key: 'action',
+          scopedSlots: { customRender: 'operation' }
+        }
+      ],
+      data: [
+        {
+          key: '1',
+          name: '小明',
+          workId: '001',
+          editable: false,
+          department: '行政部'
+        },
+        {
+          key: '2',
+          name: '李莉',
+          workId: '002',
+          editable: false,
+          department: 'IT部'
+        },
+        {
+          key: '3',
+          name: '王小帅',
+          workId: '003',
+          editable: false,
+          department: '财务部'
+        }
+      ]
     }
   },
   methods: {
@@ -278,8 +332,12 @@ export default {
 .foldStyle{
   cursor: pointer;
   color: #a3a3a3;
+  font-size: 16px;
 }
-.abc {
+.card {
+  margin-bottom: 24px;
+}
+.titleSize {
   font-size: 18px;
 }
 .popover-wrapper {
@@ -298,16 +356,6 @@ export default {
   i {
     margin-right: 4px;
   }
-}
-/deep/ .ant-card-head{
-	border-bottom:none;
-}
-.ant-card-bordered{
-	border:none;
-
-}
-/deep/ .ant-card-body{
-	padding:24px !important;
 }
 .antd-pro-pages-forms-style-errorListItem {
   padding: 8px 16px;
@@ -331,27 +379,5 @@ export default {
     color: rgba(0, 0, 0, 0.45);
     font-size: 12px;
   }
-}
-/*隐藏分页*/
-/deep/ .ant-pagination{
-	display:none;
-}
-/deep/  .ant-table-pagination{
-	display:none;
-}
-.imgLook{
-	text-align: center;
-
-	line-height: 100%;
-	span{
-		display: inline-block;
-		width:16px;
-		height:16px;
-		margin-left:30px;
-		border-radius: 5px;
-		margin-right:3px;
-		vertical-align: middle;
-		font-size: 14px;
-	}
 }
 </style>

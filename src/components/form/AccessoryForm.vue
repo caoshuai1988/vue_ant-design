@@ -82,7 +82,7 @@
 </template>
 
 <script>
-import verticaltoggle from '@/views/newform/verticaltoggle' // animation
+import verticaltoggle from '@/views/formpages/verticaltoggle' // animation
 import icon1 from '@/assets/iconfiles/fileicon4.svg'
 // MP4格式
 import icon2 from '@/assets/iconfiles/fileicon10.svg'

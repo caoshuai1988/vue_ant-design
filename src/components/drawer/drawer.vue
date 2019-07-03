@@ -35,7 +35,7 @@
     background: #f4f4f4;
   }
   .first-item {
-     padding: 0 0 24px  0;
+     padding: 0 0 8px 0;
     .status {
       font-weight: 600;
     }
@@ -188,7 +188,7 @@
             <span class="name" style="margin-left:24px">办理岗位:  县级经办岗</span>
             <span class="right-box-btn">流程详情</span>
           </div>
-          <div class="divider-horizontal"></div>
+          <a-divider style="margin-bottom: 32px"/>
           <div class="common-title">
             <div class="approval-content__title">
               操作
@@ -232,7 +232,8 @@
             </a-form>
           </div>
           <!-- 浅色横线 -->
-          <div class="divider-horizontal"></div>
+          <!-- <div class="divider-horizontal"></div> -->
+          <a-divider style="margin-bottom: 32px"/>
           <div class="common-title">
             <div class="approval-content__title">
               <span>历史</span>

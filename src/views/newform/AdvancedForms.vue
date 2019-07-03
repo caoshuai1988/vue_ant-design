@@ -81,7 +81,7 @@
     <div class="footerBox" >
       <a-form-item :wrapperCol="{ span: 24 }" style="text-align: center; padding:  24px">
         <!-- <a-button htmlType="submit" type="primary">提交</a-button> -->
-        <a-button htmlType="submit" type="primary" loading>
+        <a-button htmlType="submit" type="primary">
           提交
         </a-button>
         <a-button style="margin-left: 8px" type="primary" >保存</a-button>

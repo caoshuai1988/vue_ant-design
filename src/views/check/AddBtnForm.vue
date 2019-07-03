@@ -16,14 +16,12 @@
 
 <template>
   <a-modal
-    title="新建项目"
+    title="项目基础信息"
     :width="640"
     :visible="visible"
     :confirmLoading="confirmLoading"
-    :footer="null"
     @ok="handleSubmit"
-    @cancel="handleCancel"
-  >
+    @cancel="handleCancel">
     <a-spin :spinning="confirmLoading">
       <!-- <span class="err-div">
         <a-alert
@@ -69,7 +67,7 @@
         </a-form-item>
         <a-form-item label="取货地址" :labelCol="labelCol" :wrapperCol="wrapperCol">
           <span>
-            {{ "浙江省杭州市西湖区万塘路18号" }}
+            {{ "浙江省杭州市西湖区万塘路118号浙江省杭州市西湖区万塘路18号浙江省杭州市西湖区万塘路18号" }}
           </span>
         </a-form-item>
         <a-form-item label="备注：" :labelCol="labelCol" :wrapperCol="wrapperCol">

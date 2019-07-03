@@ -28,6 +28,7 @@
             :value="textl"
             placeholder="输入列宽"
             @change="e => handleChange(e.target.value, record.key, coll)"
+            :disabled="isdisabled"
           />
         </div>
       </template>
@@ -35,6 +36,7 @@
   </div>
 </template>
 <script>
+import { mapState} from 'vuex'
 const columns = [{
   title: '列名',
   dataIndex: 'age',
@@ -74,10 +76,29 @@ export default {
     return {
       data,
       columns,
-      hideOnSinglePage: false
+      hideOnSinglePage: false,
+      isdisabled:true,
+      val:this.value
     }
   },
+  created(){
+  	this.isdisabled=true;
+  },
   computed: {
+		...mapState([
+		  'value'
+		])
+//			value() {
+//	      return this.$store.state.value;
+//	   }
+//		isdisabledFn(){
+//			console.log(this.val)
+//			if(this.val==0){
+//				return this.isdisabled=false;
+//			}else{
+//				return this.isdisabled=true;
+//			}
+//		}
   },
   methods: {
     handleChange (value, key, column) {
@@ -88,7 +109,20 @@ export default {
         this.data = newData
       }
     }
-  }
+  },
+  watch: {
+			'value'(num,value) {
+				immediate: true,
+				console.log(num);
+				console.log(value)
+				if(num!=0){
+					this.isdisabled=false;
+				}else{
+					this.isdisabled=true;
+				}
+			}
+
+		}
 }
 </script>
 <style>

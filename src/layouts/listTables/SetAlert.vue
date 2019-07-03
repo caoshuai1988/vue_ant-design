@@ -37,7 +37,7 @@
                 <a-icon type="down" v-else />
               </span>
               <verticaltoggle>
-                <TableList v-if="foldTable"></TableList>
+                <TableList v-show="foldTable"></TableList>
               </verticaltoggle>
             </layoutForm>
             <a-divider v-show="!foldTable" style="margin-bottom: 32px"/>

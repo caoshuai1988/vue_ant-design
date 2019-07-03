@@ -44,17 +44,15 @@
 </template>
 
 <script>
-import {mapState, mapGetters, mapActions ,mapMutations} from 'vuex'
+import { mapState, mapActions } from 'vuex'
 export default {
-  data () {
-    return {
-    }
-  },
   methods:{
+//	...mapActions([
+//	    	'selectVal'
+//	  ]),
   	handleChange(val){
-//		...mapMutations ('modules/modelManagement', [
-//	        'increment',
-//	    ])
+			//this.selectVal(val)
+			this.$store.dispatch('selectVal',val);
   	}
   }
 }

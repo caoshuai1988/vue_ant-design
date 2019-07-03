@@ -2,7 +2,16 @@
   <div class="user-wrapper">
     <div class="content-box">
       <span class="action" @click="bigScale">
-        <a-icon type="zoom-in"/>
+         <a-tooltip placement="bottom">
+        <template slot="title">
+          增加倍数：D和右箭头<br/>
+          缩小倍数：A和左箭头<br/>
+          放大可视区：W<br/>
+          缩小可视区：A <br/>
+          关闭放大镜：右键
+        </template>
+         <a-icon type="zoom-in"/>
+      </a-tooltip>
       </span>
       <a href="/help/children/first" target="_blank">
         <span class="action">
@@ -175,7 +184,7 @@
               }
               console.log('Q')
             }
-            if (e && e.keyCode === 87) {// w
+            if (e && e.keyCode === 87) {// w big
               if ($options.width <= 1200) {
                 $options.width += $options.width * 0.1
                 $options.height += $options.height * 0.1

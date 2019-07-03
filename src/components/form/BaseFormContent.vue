@@ -89,7 +89,7 @@
           </span>
         </span>
         <a-input-number :min="0" :max="100"/>
-        <span>%</span>
+        <span style="margin-left: 8px">%</span>
       </a-form-item>
       <a-form-item
         label="目标公开"
@@ -103,8 +103,9 @@
           <a-radio :value="3">不公开</a-radio>
         </a-radio-group>
       </a-form-item>
-      <a-form-item :wrapperCol="{ span: 18 }" style="text-align: center; padding-top: 32px">
-        <a-button htmlType="submit" type="primary" loading>
+      <a-form-item :wrapperCol="{ span: 17, offset: 7 }" style=" padding-top: 32px">
+        <!-- <a-button htmlType="submit" type="primary">提交</a-button> -->
+        <a-button htmlType="submit" type="primary">
           提交
         </a-button>
         <a-button style="margin-left: 8px" >保存</a-button>

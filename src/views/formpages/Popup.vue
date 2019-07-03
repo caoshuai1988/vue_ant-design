@@ -198,20 +198,22 @@
             :wrapperCol="{lg: {span: 15}, sm: {span: 17} }"
             :required="false">
             <span slot="label">
-              邀评人(选填)
-              <a-tooltip title="What do you want others to call you?">
-                <a-icon type="info-circle" />
+              邀评人<span class="label-select">（选填）<a-tooltip title="What do you want others to call you?">
+                <a-icon type="info-circle" style="padding-right:4px"/>
               </a-tooltip>
+              </span>
             </span>
             <a-input placeholder="请直接 @姓名／工号，最多可邀请 5 人"/>
           </a-form-item>
           <a-form-item
-            label="权重(选填)"
             :labelCol="{lg: {span: 6}, sm: {span: 7}}"
             :wrapperCol="{lg: {span: 15}, sm: {span: 17} }"
             :required="false">
+            <span slot="label">
+              权重<span class="label-select">（选填）</span>
+            </span>
             <a-input-number :min="0" :max="100"/>
-            <span>%</span>
+            <span style="margin-left: 8px">%</span>
           </a-form-item>
           <a-form-item
             label="目标公开"
@@ -225,13 +227,13 @@
               <a-radio :value="2">部分公开</a-radio>
               <a-radio :value="3">不公开</a-radio>
             </a-radio-group>
-            <a-form-item>
+            <!-- <a-form-item>
               <a-select mode="multiple" v-if="value === 2" placeholder="请直接@花名/姓名/工号">
                 <a-select-option value="4">同事一</a-select-option>
                 <a-select-option value="5">同事二</a-select-option>
                 <a-select-option value="6">同事三</a-select-option>
               </a-select>
-            </a-form-item>
+            </a-form-item> -->
           </a-form-item>
           <a-form-item :wrapperCol="{ span: 24 }" style="text-align: center; padding-top: 20px">
           </a-form-item>
@@ -310,3 +312,10 @@ export default {
 
 }
 </script>
+
+<style  lang="less" scoped>
+  .label-select{
+    color:rgba(0,0,0,0.45);
+  }
+
+</style>

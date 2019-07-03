@@ -1,56 +1,59 @@
 <template>
-  <a-card :bordered="false" v-if="flowFlag" style="margin-bottom:24px;min-width:1150px;">
+  <a-card :bordered="false" v-if="flowFlag" :body-style="{ padding:'0 24px'}" style="margin-bottom:24px;">
+    <!-- <a-card :bordered="false" v-if="flowFlag" :body-style="{ padding:'50px 24px'}" style="margin-bottom:24px;min-width:1150px"> -->
     <span slot="title">
       <span>流程</span>
       <a style="font-size:14px;margin-left:8px">详情</a>
     </span>
     <span slot="extra" @click="closeDiv" style="cursor: pointer; font-size: 16px;color:#a3a3a3;"><a-icon type="close" /></span>
-    <div class="flowImg">
-      <span class="begin">开始</span>
-      <div style="display: inline-block;margin:0 4px 0 4px" >
-        <img src="../../assets/arrow.png">
-      </div>
-      <div class="process">
-        <span class="processNew">新建</span>
-        <div>
-          <span class="name">县级经办岗</span>
-          <span class="status">已完成</span>
+    <div class="flowImg-wrap">
+      <div class="flowImg">
+        <span class="begin">开始</span>
+        <div style="display: inline-block;margin:0 4px 0 4px" >
+          <img src="../../assets/arrow.png">
         </div>
-      </div>
-      <div style="display: inline-block;margin:0 4px 0 4px" >
-        <img src="../../assets/arrow.png">
-      </div>
-      <div class="process">
-        <span class="processNew">编辑提交</span>
-        <div>
-          <span class="name">县级经办岗</span>
-          <span class="status">已完成</span>
+        <div class="process">
+          <span class="processNew">新建</span>
+          <div>
+            <span class="name">县级经办岗</span>
+            <span class="status">已完成</span>
+          </div>
         </div>
-      </div>
-      <div style="display: inline-block;margin:0 4px 0 4px" >
-        <img src="../../assets/arrow.png">
-      </div>
-      <div class="process">
-        <span class="processNew">审批</span>
-        <div>
-          <span class="name">县级经办岗</span>
-          <span class="status">已完成</span>
+        <div style="display: inline-block;margin:0 4px 0 4px" >
+          <img src="../../assets/arrow.png">
         </div>
-      </div>
-      <div style="display: inline-block;margin:0 4px 0 4px" >
-        <img src="../../assets/arrow.png">
-      </div>
-      <div class="process">
-        <span class="processNew textBackground">上报备案</span>
-        <div>
-          <span class="name">县级经办岗</span>
-          <span class="status textSpanColor">进行中</span>
+        <div class="process">
+          <span class="processNew">编辑提交</span>
+          <div>
+            <span class="name">县级经办岗</span>
+            <span class="status">已完成</span>
+          </div>
         </div>
+        <div style="display: inline-block;margin:0 4px 0 4px" >
+          <img src="../../assets/arrow.png">
+        </div>
+        <div class="process">
+          <span class="processNew">审批</span>
+          <div>
+            <span class="name">县级经办岗</span>
+            <span class="status">已完成</span>
+          </div>
+        </div>
+        <div style="display: inline-block;margin:0 4px 0 4px" >
+          <img src="../../assets/arrow.png">
+        </div>
+        <div class="process">
+          <span class="processNew textBackground">上报备案</span>
+          <div>
+            <span class="name">县级经办岗</span>
+            <span class="status textSpanColor">进行中</span>
+          </div>
+        </div>
+        <div style="display: inline-block;margin:0 4px 0 4px" >
+          <img src="../../assets/blueArrow.png">
+        </div>
+        <span class="begin textBeginColor">结束</span>
       </div>
-      <div style="display: inline-block;margin:0 4px 0 4px" >
-        <img src="../../assets/blueArrow.png">
-      </div>
-      <span class="begin textBeginColor">结束</span>
     </div>
   </a-card>
 </template>
@@ -72,8 +75,13 @@ export default {
 
 <style lang="less" scoped>
 // 流程图 qss
+.flowImg-wrap{
+  padding: 50px 0;
+  min-width: 60%;
+  overflow-x: auto;
+}
 .flowImg{
-    width:100%;
+    width:1050px;
     text-align: center;
     margin: auto;
     padding-bottom: 24px;

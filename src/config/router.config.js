@@ -47,6 +47,17 @@ export const asyncRouterMap = [
                 name: 'login2Base',
                 meta: { title: '默认页', target: '_blank' }
               },
+              // 动态页
+              {
+                path: '/user/login2/dynamic',
+                name: 'login2Dynamic',
+                meta: { title: '动态页', target: '_blank' }
+              },
+              {
+                path: '/user/login2/mountain',
+                name: 'login2Mountain',
+                meta: { title: '多图版', target: '_blank' }
+              },
               // 单登录模式
               {
                 path: '/user/login2/single',
@@ -694,113 +705,49 @@ export const constantRouterMap = [
   {
     path: '/user',
     component: UserLayout1,
-    redirect: '/user/login1/normal',
+    redirect: '/user/login1',
     hidden: true,
     children: [
       {
         path: 'login1/normal',
         name: 'login1Normal',
         component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login1/Login1')
-      }
-    ]
-  },
-  {
-    path: '/user',
-    component: UserLayout1,
-    redirect: '/user/login1/dynamic',
-    hidden: true,
-    children: [
+      },
       {
         path: 'login1/dynamic',
         name: 'login1Dynamic',
         component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login1/Login1-dynamic')
-      }
-    ]
-  },
-  {
-    path: '/user',
-    component: UserLayout1,
-    redirect: '/user/login1/mountain',
-    hidden: true,
-    children: [
+      },
       {
         path: 'login1/mountain',
         name: 'login1Mountain',
         component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login1/Login1-mountain')
-      }
-    ]
-  },
-  {
-    path: '/user',
-    component: UserLayout1,
-    redirect: '/user/login1/city',
-    hidden: true,
-    children: [
+      },
       {
         path: 'login1/city',
         name: 'login1City',
         component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login1/Login1-city')
-      }
-    ]
-  },
-  {
-    path: '/user',
-    component: UserLayout1,
-    redirect: '/user/login1/sea',
-    hidden: true,
-    children: [
+      },
       {
         path: 'login1/sea',
         name: 'login1Sea',
         component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login1/Login1-sea')
-      }
-    ]
-  },
-  {
-    path: '/user',
-    component: UserLayout1,
-    redirect: '/user/login1/buildings',
-    hidden: true,
-    children: [
+      },
       {
         path: 'login1/buildings',
         name: 'login1Buildings',
         component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login1/Login1-buildings')
-      }
-    ]
-  },
-  {
-    path: '/user',
-    component: UserLayout1,
-    redirect: '/user/login1/field',
-    hidden: true,
-    children: [
+      },
       {
         path: 'login1/field',
         name: 'login1Field',
         component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login1/Login1-field')
-      }
-    ]
-  },
-  {
-    path: '/user',
-    component: UserLayout1,
-    redirect: '/user/login1/sky',
-    hidden: true,
-    children: [
+      },
       {
         path: 'login1/sky',
         name: 'login1Sky',
         component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login1/Login1-sky')
-      }
-    ]
-  },
-  {
-    path: '/user',
-    component: UserLayout1,
-    redirect: '/user/login1/forest',
-    hidden: true,
-    children: [
+      },
       {
         path: 'login1/forest',
         name: 'login1Forest',
@@ -811,61 +758,69 @@ export const constantRouterMap = [
   {
     path: '/user',
     component: UserLayout2,
-    redirect: '/user/login2/base',
+    redirect: '/user/login2',
     hidden: true,
     children: [
       {
         path: 'login2/base',
         name: 'login2Base',
         component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login2/Login2-base')
-      }
-    ]
-  },
-  {
-    path: '/user',
-    component: UserLayout2,
-    redirect: '/user/login2/single',
-    hidden: true,
-    children: [
+      },
+      {
+        path: 'login2/dynamic',
+        name: 'login2Dynamic',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login2/Login2-dynamic')
+      },
+      {
+        path: 'login2/mountain',
+        name: 'login2Mountain',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login2/Login2-mountain')
+      },
+      {
+        path: 'login2/buildings',
+        name: 'login2Buildings',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login2/Login2-buildings')
+      },
+      {
+        path: 'login2/city',
+        name: 'login2City',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login2/Login2-city')
+      },
+      {
+        path: 'login2/field',
+        name: 'login2Field',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login2/Login2-field')
+      },
+      {
+        path: 'login2/forest',
+        name: 'login2Forest',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login2/Login2-forest')
+      },
+      {
+        path: 'login2/sea',
+        name: 'login2Sea',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login2/Login2-sea')
+      },
+      {
+        path: 'login2/sky',
+        name: 'login2Sky',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login2/Login2-sky')
+      },
       {
         path: 'login2/single',
         name: 'login2Single',
         component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login2/Login2-single')
-      }
-    ]
-  },
-  {
-    path: '/user',
-    component: UserLayout2,
-    redirect: '/user/login2/error',
-    hidden: true,
-    children: [
+      },
       {
         path: 'login2/error',
         name: 'login2Error',
         component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login2/Login2-error')
-      }
-    ]
-  },
-  {
-    path: '/user',
-    component: UserLayout2,
-    redirect: '/user/login2/drag',
-    hidden: true,
-    children: [
+      },
       {
         path: 'login2/drag',
         name: 'login2Drag',
         component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login2/Login2-drag')
-      }
-    ]
-  },
-  {
-    path: '/user',
-    component: UserLayout2,
-    redirect: '/user/login2/unlocking',
-    hidden: true,
-    children: [
+      },
       {
         path: 'login2/unlocking',
         name: 'login2Unlocking',

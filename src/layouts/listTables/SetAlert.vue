@@ -6,6 +6,7 @@
       :width="640"
       @close="onClose"
       :visible="visible"
+      :closable="false"
       :wrapStyle="{height: 'calc(100% - 108px)',overflow: 'auto',paddingBottom: '108px'}">
       <template>
         <div style="padding-bottom:80px;">

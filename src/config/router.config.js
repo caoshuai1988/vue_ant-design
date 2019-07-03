@@ -206,7 +206,7 @@ export const asyncRouterMap = [
             path: 'newform/mapForm',
             name: 'mapForm',
             component: () => import('@/views/newform/mapForm'),
-            meta: { title: '分页签-地图报表', keepAlive: true, permission: ['form'], showbtn: true, isForm: true }
+            meta: { title: '分页签-地图报表附件', keepAlive: true, permission: ['form'], showbtn: true, isForm: true }
           },
           {
             path: '/fsxt/fsxt-advanced-form',
@@ -219,7 +219,7 @@ export const asyncRouterMap = [
             path: '/fsxt/relevance-form',
             name: 'StepFormPageCopy',
             component: () => import('@/views/form/advancedStepFormCopy/index'),
-            meta: { title: '关联规划分步表单', keepAlive: false, permission: ['form'], showRelevance: true }
+            meta: { title: '高级带分步表单2', keepAlive: false, permission: ['form'], showRelevance: true }
           }
         ]
       },

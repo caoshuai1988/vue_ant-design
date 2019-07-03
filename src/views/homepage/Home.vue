@@ -237,7 +237,7 @@
           </a-card>
         </a-col>
         <!-- 右侧侧边栏 -->
-        <!-- 提醒事项 -->
+        <!-- 便签 -->
         <a-col
           style="padding: 0 12px"
           :xl="6"
@@ -247,24 +247,17 @@
           :xs="24">
           <a-card style="margin-bottom: 24px" :bordered="false" :body-style="{padding: '24px',overflow: 'hidden'}">
             <span slot="title">
-              提醒事项
-              <a-icon type="plus" />
+              便签
+              <a-icon type="plus" style="margin-left: 8px"/>
             </span>
             <a slot="extra">更多</a>
-            <!-- <a-list :dataSource="list1.results">
-              <a-list-item slot="renderItem" slot-scope="item" style="padding: 24px 0">
-                <a-list-item-meta :description="item.email">
-                  <a slot="title" :href="item.href">{{ item.name.last }}</a>
-                  <a-avatar slot="avatar" src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-                </a-list-item-meta>
-                <div style="font-size: 12px;">06-25</div>
-              </a-list-item>
-            </a-list> -->
 
             <div class="content-main">
-              <div class="note-row" v-for="(ele, index) in noteList" :key="index">
-                <div class="time" :style="{color:ele.color}">{{ ele.time }}</div>
-                <div class="content" :style="{color:ele.color}">{{ ele.content }}</div>
+              <div class="note-row" v-for="(ele, index) in statusMap" :key="index">
+                <!-- <div class="time" :style="{color:ele.color}">{{ ele.time }}</div> -->
+                <div class="content">
+                  <a-badge :status="ele.status " :text="ele.text " />
+                </div>
               </div>
             </div>
           </a-card>
@@ -275,16 +268,6 @@
               <!-- <a-icon type="plus" /> -->
             </span>
             <a slot="extra">更多</a>
-            <!-- <a-list
-              :dataSource="list1.results">
-              <a-list-item slot="renderItem" slot-scope="item" style="padding: 24px 0">
-                <a-list-item-meta :description="item.email">
-                  <a slot="title" :href="item.href">{{ item.name.last }}</a>
-                  <a-avatar slot="avatar" src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-                </a-list-item-meta>
-              </a-list-item>
-            </a-list> -->
-
             <div class="announce-main">
               <div class="announce-row" v-for="(ele, index) in announceList" :key="index">
                 <div class="left">{{ ele.content }}</div>
@@ -299,16 +282,6 @@
               <!-- <a-icon type="plus" /> -->
             </span>
             <a slot="extra">设置</a>
-            <!-- <a-row>
-              <a-col style="padding: 10px 0" :span="12" v-for="(item, index) in buttons" :key="index">
-                <div class="shortcut-menu">
-                  <a-button>
-                    <a-icon type="menu-fold" />
-                    菜单按钮项
-                  </a-button>
-                </div>
-              </a-col>
-            </a-row> -->
             <div class="item-group">
               <a>操作一</a>
               <a>操作二</a>
@@ -324,7 +297,6 @@
           <a-card style="margin-bottom: 24px" :loading="radarLoading" :bordered="false" :body-style="{ padding: 24 }">
             <span slot="title">
               登录历史
-              <!-- <a-icon type="plus" /> -->
             </span>
             <a slot="extra">更多</a>
             <a-table :dataSource="table2" :pagination="false">
@@ -385,11 +357,33 @@ const searchUserScale = [
     max: 10
   }]
 
+const statusMap = {
+  0: {
+    status: 'default',
+    text: '24小时内要做的工作红字要做的工作红字'
+  },
+  1: {
+    status: 'success',
+    text: '72小时内要做的工作橙字要做的工作橙字'
+  },
+  2: {
+    status: 'error',
+    text: '72小时内要做的工作橙字要做的工作橙字'
+  },
+  3: {
+    status: 'processing',
+    text: '提醒事项提醒事项提醒事项提醒事项提醒'
+  },
+  4: {
+    status: 'warning',
+    text: '提醒事项提醒事项提醒事项提醒事项提醒'
+  }
+}
+
 export default {
   name: 'Workplace',
   components: {
-    // 穿梭框
-    modal,
+    modal, // 穿梭框
     HomeView,
     HeadInfo,
     Radar,
@@ -409,14 +403,15 @@ export default {
     return {
       // 穿梭框是否显示
       isVisible: false,
+      statusMap, // 便签数据
       // 便签数据
-      noteList: [
-        { time: '08-12 09:00', content: '24小时内要做的工作红字要做的工作红字', color: '#FF0000' },
-        { time: '08-12 09:00', content: '72小时内要做的工作橙字要做的工作橙字要做的工作橙字', color: '#FF9933' },
-        { time: '08-12 09:00', content: '72小时内要做的工作橙字要做的工作橙字要做的工作橙字', color: '#FF9933' },
-        { time: '08-12 09:00', content: '提醒事项提醒事项提醒事项提醒事项提醒事项提醒事项', color: 'rgba(0,0,0,0.65)' },
-        { time: '08-12 09:00', content: '提醒事项提醒事项提醒事项提醒事项提醒事项提醒事项', color: 'rgba(0,0,0,0.65)' }
-      ],
+      // noteList: [
+      //   { time: '08-12 09:00', content: '24小时内要做的工作红字要做的工作红字', color: '#FF0000' },
+      //   { time: '08-12 09:00', content: '72小时内要做的工作橙字要做的工作橙字', color: '#FF9933' },
+      //   { time: '08-12 09:00', content: '72小时内要做的工作橙字要做的工作橙字', color: '#FF9933' },
+      //   { time: '08-12 09:00', content: '提醒事项提醒事项提醒事项提醒事项提醒', color: 'rgba(0,0,0,0.65)' },
+      //   { time: '08-12 09:00', content: '提醒事项提醒事项提醒事项提醒事项提醒', color: 'rgba(0,0,0,0.65)' }
+      // ],
       announceList: [
         { content: '【公告】公告名称公告名称公告名称', time: '06-25' },
         { content: '【公告】公告名称公告名称公告名称', time: '06-25' },
@@ -559,6 +554,14 @@ export default {
   computed: {
     userInfo () {
       return this.$store.getters.userInfo
+    }
+  },
+  filters: {
+    statusFilter (type) {
+      return statusMap[type].text
+    },
+    statusTypeFilter (type) {
+      return statusMap[type].status
     }
   },
   created () {
@@ -784,32 +787,29 @@ export default {
     }
   }
 
-  //提醒事项
+  //便签
   .note-row{
     width: 100%;
     display: flex;
-    justify-content: space-between;
     align-items: center;
     font-size: 14px;
     height: 36px;
     cursor: pointer;
-    &:hover{
-      opacity: 0.7;
-    }
     .time{
       display: inline-block;
       width: 120px;
-      // margin-right: 24px;
-      // max-width: 40%;
     }
     .content{
       display: inline-block;
       // width: 60%;
-      width: 240px;
+      width: 100%;
       text-align: left;
       overflow: hidden;
       text-overflow:ellipsis; //溢出用省略号显示
       white-space:nowrap;
+      &:hover{
+        color:#1890ff;
+      }
     }
 
   }

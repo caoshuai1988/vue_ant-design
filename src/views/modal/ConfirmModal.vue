@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-  	<a-button
-  		style="margin-bottom:24px;"
+    <a-button
+      style="margin-bottom:24px;"
       class="space-bottom_24"
       type="primary"
       @click="showModal"
@@ -31,7 +31,7 @@
         <div class="ant-modal-body"><p data-v-12a1e7ae="">此处是一条通知提醒，衬衫的价格是九磅十五便士，所以你选择B选项。衬衫的价格是九磅十五便士，所以你选择B选项。</p></div>
         <div class="ant-modal-footer"><div><button type="button" class="ant-btn ant-btn-default"><span>取 消</span></button><button type="button" class="ant-btn ant-btn-primary"><span>确 定</span></button></div></div></div><div tabindex="0" style="width: 0px; height: 0px; overflow: hidden;">sentinelEnd</div>
     </div>
-    
+
     <a-button type="primary" class="space-bottom_24 space-bottom-btn" @click="warning">警告弹窗</a-button>
     <div
       role="document"
@@ -70,7 +70,7 @@
         </div>
       </div>
     </div>
-     <a-button type="primary" class="space-bottom_24 space-bottom-btn" @click="modalSuccess">成功弹窗</a-button>
+    <a-button type="primary" class="space-bottom_24 space-bottom-btn" @click="modalSuccess">成功弹窗</a-button>
     <div
       role="document"
       class=" ant-modal-confirm ant-modal-confirm-success ant-modal-success space-bottom_24"
@@ -103,7 +103,7 @@
         </div>
       </div>
     </div>
-    
+
     <a-button type="primary" class="space-bottom_24 space-bottom-btn" @click="modalInfo">信息弹窗</a-button>
     <div
       role="document"
@@ -178,7 +178,7 @@
         </div>
       </div>
     </div>
-    
+
   </div>
 </template>
 
@@ -260,8 +260,8 @@ export default {
   flex-direction: column;
   margin-top:24px;
   .space-bottom-btn{
-  	margin-top: 64px;
-  	margin-bottom: 24px;
+    margin-top: 64px;
+    margin-bottom: 24px;
   }
 }
 </style>

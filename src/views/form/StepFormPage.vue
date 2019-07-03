@@ -86,7 +86,7 @@
           :required="false"
         >
           <a-input-number :min="0" :max="100"/>
-          <span>%</span>
+          <span style="margin-left: 8px">%</span>
         </a-form-item>
         <a-form-item
           label="目标公开"

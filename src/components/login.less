@@ -199,10 +199,10 @@
     transform: scale(1.1);
   }
   50% {
-    transform: scale(1.2);
+    transform: scale(1.15);
   }
   75% {
-    transform: scale(1.2);
+    transform: scale(1.18);
   }
   100% {
     transform: scale(1.2);
@@ -211,15 +211,13 @@
 .main-login1 {
   &-dynamic {
     .backstretch .backstretch-item img {
-      animation: scaleImg 5s linear 1;
-      transform: scale(1.2);
+      animation: scaleImg 5s linear forwards;
     }
   }
   .bgChoose {
     ul {
       padding: 0;
       li {
-        //color: #1890ff;
         list-style: none;
         border: 1px rgba(255,255,255,0.3) solid;
         border-radius: 2px;
@@ -240,9 +238,9 @@
     transform: translateY(-50%);
   }
 }
-.main-login2-dynamic {
-  .backstretch .backstretch-item img {
-    animation: scaleImg 5s linear 1;
-    transform: scale(1.2);
-  }
-}
+//.main-login2-dynamic {
+//  .backstretch .backstretch-item img {
+//    animation: scaleImg 7s linear 1;
+//    transform: scale(1.2);
+//  }
+//}

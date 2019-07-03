@@ -80,14 +80,14 @@ export const asyncRouterMap = [
             meta: { title: '全屏版', target: '_blank' },
             children: [
               {
-                path: '/user/login1/dynamic',
-                name: 'login1Dynamic',
-                meta: { title: '动态版', target: '_blank' }
-              },
-              {
                 path: '/user/login1/mountain',
                 name: 'login1Mountain',
                 meta: { title: '常规版', target: '_blank' }
+              },
+              {
+                path: '/user/login1/dynamic',
+                name: 'login1Dynamic',
+                meta: { title: '动态版', target: '_blank' }
               }
             ]
           },

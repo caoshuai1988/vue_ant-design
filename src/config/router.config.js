@@ -46,11 +46,12 @@ export const asyncRouterMap = [
                 path: '/user/login2/base',
                 name: 'login2Base',
                 meta: { title: '默认页', target: '_blank' }
-              }, // 登陆模板4
+              },
+              // 单登录模式
               {
-                path: '/user/login4',
-                name: 'login4',
-                meta: { title: '单登陆模式', target: '_blank' }
+                path: '/user/login2/single',
+                name: 'login2Single',
+                meta: { title: '单登录模式', target: '_blank' }
               },
               // 登陆模板2-2
               {
@@ -76,7 +77,19 @@ export const asyncRouterMap = [
           {
             path: '/user/login1',
             name: 'login1',
-            meta: { title: '全屏版', target: '_blank' }
+            meta: { title: '全屏版', target: '_blank' },
+            children: [
+              {
+                path: '/user/login1/mountain',
+                name: 'login1Mountain',
+                meta: { title: '常规版', target: '_blank' }
+              },
+              {
+                path: '/user/login1/dynamic',
+                name: 'login1Dynamic',
+                meta: { title: '动态版', target: '_blank' }
+              }
+            ]
           },
 
           // 登陆模板3
@@ -185,6 +198,12 @@ export const asyncRouterMap = [
             meta: { title: '高级表单', keepAlive: true, permission: ['form'], isForm: true }
           },
           {
+            path: 'newform/Flowchart',
+            name: 'Flowchart',
+            component: () => import('@/views/newform/Flowchart'),
+            meta: { title: '流程图', keepAlive: true, permission: [ 'form' ] }
+          },
+          {
             path: 'newform/mapForm',
             name: 'mapForm',
             component: () => import('@/views/newform/mapForm'),
@@ -242,7 +261,14 @@ export const asyncRouterMap = [
             name: 'pageSign',
             component: () => import('@/views/check/pageSign'),
             meta: { title: '分页签详情页', showbtn: true, showStep: false, keepAlive: true, permission: ['form'] }
+          },
+          {
+            path: '/check/flow-head',
+            name: 'flowHead',
+            component: () => import('@/views/newform/Flowchart'),
+            meta: { title: '全业务流程图', showbtn: true, showStep: false, keepAlive: true, permission: ['form'] }
           }
+
         ]
       },
       // Modal
@@ -669,13 +695,104 @@ export const constantRouterMap = [
   {
     path: '/user',
     component: UserLayout1,
-    redirect: '/user/login1',
+    redirect: '/user/login1/dynamic',
     hidden: true,
     children: [
       {
-        path: 'login1',
-        name: 'login1',
-        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login1')
+        path: 'login1/dynamic',
+        name: 'login1Dynamic',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login1/Login1')
+      }
+    ]
+  },
+  {
+    path: '/user',
+    component: UserLayout1,
+    redirect: '/user/login1/mountain',
+    hidden: true,
+    children: [
+      {
+        path: 'login1/mountain',
+        name: 'login1Mountain',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login1/Login1-mountain')
+      }
+    ]
+  },
+  {
+    path: '/user',
+    component: UserLayout1,
+    redirect: '/user/login1/city',
+    hidden: true,
+    children: [
+      {
+        path: 'login1/city',
+        name: 'login1City',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login1/Login1-city')
+      }
+    ]
+  },
+  {
+    path: '/user',
+    component: UserLayout1,
+    redirect: '/user/login1/sea',
+    hidden: true,
+    children: [
+      {
+        path: 'login1/sea',
+        name: 'login1Sea',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login1/Login1-sea')
+      }
+    ]
+  },
+  {
+    path: '/user',
+    component: UserLayout1,
+    redirect: '/user/login1/buildings',
+    hidden: true,
+    children: [
+      {
+        path: 'login1/buildings',
+        name: 'login1Buildings',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login1/Login1-buildings')
+      }
+    ]
+  },
+  {
+    path: '/user',
+    component: UserLayout1,
+    redirect: '/user/login1/field',
+    hidden: true,
+    children: [
+      {
+        path: 'login1/field',
+        name: 'login1Field',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login1/Login1-field')
+      }
+    ]
+  },
+  {
+    path: '/user',
+    component: UserLayout1,
+    redirect: '/user/login1/sky',
+    hidden: true,
+    children: [
+      {
+        path: 'login1/sky',
+        name: 'login1Sky',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login1/Login1-sky')
+      }
+    ]
+  },
+  {
+    path: '/user',
+    component: UserLayout1,
+    redirect: '/user/login1/forest',
+    hidden: true,
+    children: [
+      {
+        path: 'login1/forest',
+        name: 'login1Forest',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login1/Login1-forest')
       }
     ]
   },
@@ -689,6 +806,19 @@ export const constantRouterMap = [
         path: 'login2/base',
         name: 'login2Base',
         component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login2/Login2-base')
+      }
+    ]
+  },
+  {
+    path: '/user',
+    component: UserLayout2,
+    redirect: '/user/login2/single',
+    hidden: true,
+    children: [
+      {
+        path: 'login2/single',
+        name: 'login2Single',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login2/Login2-single')
       }
     ]
   },
@@ -741,19 +871,6 @@ export const constantRouterMap = [
         path: 'login3',
         name: 'login3',
         component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login3')
-      }
-    ]
-  },
-  {
-    path: '/user',
-    component: UserLayout2,
-    redirect: '/user/login4',
-    hidden: true,
-    children: [
-      {
-        path: 'login4',
-        name: 'login4',
-        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login4')
       }
     ]
   },

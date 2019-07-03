@@ -423,113 +423,111 @@ export default {
       background: rgba(240, 242, 245, 1) !important;
       height: 489px;
       padding-top: 24px;
-      /*.ant-row {*/
-        .container {
-          margin: 0 20%;
-          width: 60%;
-          height: 100%;
-          padding-top: 48px;
-          background: #fff;
-          >h3 {
-            text-align: center;
-            margin-bottom: 48px;
-            font-size: 32px;
-            height: 32px;
-            line-height: 32px;
-          }
-          .ant-steps {
-            max-width: 800px;
-            margin: 0 auto;
-          }
-          .content {
-            max-width: 500px;
-            margin: 0 auto;
-            .ant-form {
-              margin: 64px auto;
-              .ant-form-item {
-                margin-bottom: 24px;
-                input {
-                  padding: 0 12px;
-                }
+      .container {
+        margin: 0 20%;
+        width: 60%;
+        height: 100%;
+        padding-top: 48px;
+        background: #fff;
+        >h3 {
+          text-align: center;
+          margin-bottom: 48px;
+          font-size: 32px;
+          height: 32px;
+          line-height: 32px;
+        }
+        .ant-steps {
+          max-width: 800px;
+          margin: 0 auto;
+        }
+        .content {
+          max-width: 500px;
+          margin: 0 auto;
+          .ant-form {
+            margin: 64px auto;
+            .ant-form-item {
+              margin-bottom: 24px;
+              input {
+                padding: 0 12px;
               }
-              .phoneItem {
+            }
+            .phoneItem {
+              height: 40px;
+              text-align: center;
+              color: rgba(0, 0, 0, 0.85);
+              .ant-form-item-control {
+                line-height: 40px;
+              }
+            }
+            .imgCaptchaItem {
+              .ant-col-16 {
+                width: 225px;
                 height: 40px;
-                text-align: center;
-                color: rgba(0, 0, 0, 0.85);
-                .ant-form-item-control {
-                  line-height: 40px;
-                }
+                padding: 0 !important;
+                margin-right: 8px;
+                margin-left: 4px;
               }
-              .imgCaptchaItem {
-                .ant-col-16 {
-                  width: 225px;
-                  height: 40px;
-                  padding: 0 !important;
-                  margin-right: 8px;
-                  margin-left: 4px;
-                }
-                .ant-col-8 {
-                  padding: 0 !important;
-                  width: 102px;
-                  height: 40px;
-                  .code {
+              .ant-col-8 {
+                padding: 0 !important;
+                width: 102px;
+                height: 40px;
+                .code {
+                  height: 100%;
+                  .s-canvas {
                     height: 100%;
-                    .s-canvas {
-                      height: 100%;
-                    }
                   }
                 }
               }
-              .captchaItem {
-                .ant-row.ant-form-item {
-                  margin-bottom: 0;
-                }
-                .ant-col-16 {
-                  width: 195px;
-                  height: 40px;
-                  padding: 0 !important;
-                  margin-right: 8px;
-                  margin-left: 4px;
-                }
-                .ant-col-8 {
-                  padding: 0 !important;
-                  width: 132px;
-                  height: 40px;
-                  button {
-                    padding: 0 8px;
-                  }
-                }
+            }
+            .captchaItem {
+              .ant-row.ant-form-item {
+                margin-bottom: 0;
               }
-              .resetSuccess {
-                text-align: center;
-                margin-bottom: 32px;
-                p:first-child {
-                  margin-bottom: 24px;
-                  img {
-                    width: 56px;
-                    height: 56px;
-                  }
-                }
-                p:nth-of-type(2) {
-                  margin-bottom: 0;
-                  line-height: 16px;
-                  height: 16px;
+              .ant-col-16 {
+                width: 195px;
+                height: 40px;
+                padding: 0 !important;
+                margin-right: 8px;
+                margin-left: 4px;
+              }
+              .ant-col-8 {
+                padding: 0 !important;
+                width: 132px;
+                height: 40px;
+                button {
+                  padding: 0 8px;
                 }
               }
             }
-            a {
-              text-decoration: none;
+            .resetSuccess {
+              text-align: center;
+              margin-bottom: 32px;
+              p:first-child {
+                margin-bottom: 24px;
+                img {
+                  width: 56px;
+                  height: 56px;
+                }
+              }
+              p:nth-of-type(2) {
+                margin-bottom: 0;
+                line-height: 16px;
+                height: 16px;
+              }
             }
-            .input-tips {
-              margin-top: 12px;
-              color: #FF1A2E;
-              font-size: 14px;
-              height: 14px;
-              line-height: 14px;
-            }
+          }
+          a {
+            text-decoration: none;
+          }
+          .input-tips {
+            margin-top: 12px;
+            color: #FF1A2E;
+            font-size: 14px;
+            height: 14px;
+            line-height: 14px;
           }
         }
-      /*}*/
+      }
       .getCaptcha {
         padding: 0;
         font-size: 14px;

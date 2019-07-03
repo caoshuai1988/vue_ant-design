@@ -134,7 +134,7 @@
 
             <div class="three-row-title">退货商品</div>
             <s-table
-              style="margin-bottom: 24px"
+              style="margin-bottom: 32px"
               row-key="id"
               :columns="goodsColumns"
               :data="loadGoodsData">

@@ -120,19 +120,6 @@
                       {rules: [{ required: false, number:true, message: '请输入卡号' }]}
                     ]"
                     placeholder="请输入卡号"/>
-                  <!-- <a-input-group
-                    compact
-                    v-decorator="[
-                      'num',
-                      {rules: [{ required: true, message: '请填写完整卡号'}]}
-                    ]" >
-                    <a-input placeholder="请输入卡号" />
-                    <a-input-number :min="0" @change="onChange" placeholder="请输入" />
-                    <a-input style="width: 23%;margin-left: 2%; border-radius: 5px;" defaultValue="0571" />
-                    <a-input style="width: 24%;margin-left: 2%; border-radius: 5px;" defaultValue="0571" />
-                    <a-input style="width: 24%;margin-left: 2%; border-radius: 5px;" defaultValue="0571" />
-                  </a-input-group> -->
-
                 </a-form-item>
               </a-col>
               <a-col :xl="{span: 7, offset: 2}" :lg="{span: 8}" :md="{span: 12}" :sm="24">
@@ -353,12 +340,12 @@ export default {
   },
   data () {
     return {
-      foldOne: true, // 折叠组件1
-      foldTwo: true, // 折叠组件2
-      foldTable: true, // 折叠表格
-      iconTable: true, // 图标表格
-      iconToggle: true, // 图标1
-      iconToggleOne: true, // 图标2
+      foldOne: true, // fold 组件1
+      foldTwo: true, // fold 组件2
+      foldTable: true, //  zoom table
+      iconTable: true, // icon table
+      iconToggle: true, // icon1
+      iconToggleOne: true, // icon2
       form: this.$form.createForm(this),
       residences,
       memberLoading: false,
@@ -435,7 +422,7 @@ export default {
     onChange (value) { // number
       console.log('changed', value)
     },
-    handleSubmit (e) { // 表单
+    handleSubmit (e) { // form
       e.preventDefault()
       this.form.validateFields((err, values) => {
         if (!err) {

@@ -221,9 +221,7 @@ a {
     <a-card
       :body-style="{background:'#f0f2f5', padding: 0}"
       :bordered="false"
-      class="aa"
-      ref="content"
-    >
+      ref="content">
       <a-row :gutter="24">
         <a-col :body-style="{ background:'#f0f2f5'}" :xl="num" :lg="num" :md="num" :sm="num">
           <a-affix :offsetTop="this.top">
@@ -232,8 +230,7 @@ a {
               class="tabMar card-header"
               :animated="false"
               @tabClick="callback"
-              style="padding:8px 24px 0 24px"
-            >
+              style="padding:8px 24px 0 24px">
               <a-tab-pane key="1">
                 <span slot="tab">
                   <span>基础信息</span>
@@ -278,16 +275,15 @@ a {
                 style="margin-bottom: 24px"
                 row-key="id"
                 :columns="goodsColumns"
-                :data="loadGoodsData"
-              ></s-table>
+                :data="loadGoodsData">
+              </s-table>
 
               <div class="page-sign-title">退货进度</div>
               <s-table
                 style="margin-bottom: 24px"
                 row-key="key"
                 :columns="scheduleColumns"
-                :data="loadScheduleData"
-              >
+                :data="loadScheduleData">
                 <template slot="status" slot-scope="status">
                   <a-badge :status="status" :text="status"/>
                   <!-- <a-badge :status="status" :text="status | statusFilter"/> -->
@@ -300,8 +296,7 @@ a {
               title="地理信息"
               :body-style="closePad"
               :style="mapFd"
-              :class="{screenload: screenloadFlag}"
-            >
+              :class="{screenload: screenloadFlag}">
               <span class="amplification" slot="extra">
                 <a-button >
                   <router-link tag="a" target="_blank" :to="{path: '/maplook'}">弹出查看</router-link>
@@ -312,8 +307,7 @@ a {
                   :center="center"
                   :zoom="zoom"
                   @ready="handler"
-                  style="width:100%;height:100%"
-                >
+                  style="width:100%;height:100%">
                   <bm-navigation anchor="BMAP_ANCHOR_TOP_LEFT"></bm-navigation>
                   <bm-geolocation
                     anchor="BMAP_ANCHOR_BOTTOM_RIGHT"
@@ -626,13 +620,10 @@ export default {
       data,
       flag: false,
       valueKey: 1,
-      // 固钉
-      top: 0,
-      // 当前tab标签为第几个
-      activeKey: '1',
+      top: 0, // 固钉
+      activeKey: '1', // 当前tab标签为第几个
       isShowHelp: false,
       num: 24,
-      // num: 18,
       helpNum: 6,
       lablenum: 7,
       valuenum: 17,
@@ -824,13 +815,12 @@ export default {
       },
 
       // 地图相关 待删除
-      center: { lng: 0, lat: 0 }, // 地图坐标
-      zoom: 11, // 地图级别
-      mapFlag: false, // 地图内容
-      screenloadFlag: false, // 全屏
-      iconSwitch: true, // 缩放图标
+      center: { lng: 0, lat: 0 }, // map lng lat
+      zoom: 11, // map level
+      mapFlag: false, // map content
+      screenloadFlag: false, // full screen
+      iconSwitch: true, // zoom icon
       mapFd: {
-        // 自定义样式map
         width: '',
         height: ''
       },
@@ -847,15 +837,6 @@ export default {
     })
   },
   methods: {
-    addAmplifier (val) {
-      // this.$router.push({
-      //   name: 'preview',
-      //   params: {
-      //     val: val,
-      //     scrollY: window.scrollY + 550
-      //   }
-      // })
-    },
     amplificationBtn () {
       // 地图放大
       if (this.mapFd.width === window.screen.availWidth + 'px') {
@@ -880,21 +861,11 @@ export default {
       const totalTranslation = jump[2].offsetTop
       const totalTrans = jump[3].offsetTop
       const totalTransPlural = jump[4].offsetTop
-      if (scrollTop >= totalSlide) {
-        this.activeKey = '1'
-      }
-      if (scrollTop >= totalSlideMove) {
-        this.activeKey = '2'
-      }
-      if (scrollTop >= totalTranslation) {
-        this.activeKey = '3'
-      }
-      if (scrollTop >= totalTrans) {
-        this.activeKey = '4'
-      }
-      if (scrollTop >= totalTransPlural) {
-        this.activeKey = '5'
-      }
+      if (scrollTop >= totalSlide) this.activeKey = '1'
+      if (scrollTop >= totalSlideMove) this.activeKey = '2'
+      if (scrollTop >= totalTranslation) this.activeKey = '3'
+      if (scrollTop >= totalTrans) this.activeKey = '4'
+      if (scrollTop >= totalTransPlural) this.activeKey = '5'
     },
 
     handler ({ BMap, map }) {
@@ -908,28 +879,35 @@ export default {
       window.removeEventListener('scroll', this.handleScroll)
       this.$forceUpdate()
       val = val - 1
-      if (val === 0) {
-        // 主动切换
-        this.activeKey = '1'
-      } else if (val === 2) {
-        this.activeKey = '3'
-      } else if (val === 1) {
-        this.activeKey = '2'
-      } else if (val === 3) {
-        this.activeKey = '4'
-      } else if (val === 4) {
-        this.activeKey = '5'
+      switch (val) {
+        case 0:
+          this.activeKey = '1'
+          break
+        case 1:
+          this.activeKey = '2'
+          break
+        case 2:
+          this.activeKey = '3'
+          break
+        case 3:
+          this.activeKey = '4'
+          break
+        case 4:
+          this.activeKey = '5'
+          break
+        default:
+          this.activeKey = '1'
       }
       const jump = document.querySelectorAll('.anchor') // 用 class" 添加锚点
       const total = jump[val].offsetTop
       let distance = document.documentElement.scrollTop || document.body.scrollTop
 
-      let step = total / 40 // 平滑滚动，时长500ms，每10ms一跳，共30跳
+      let step = total / 30 // 平滑滚动，时长500ms，每10ms一跳，共30跳
       if (total > distance) {
         smoothDown()
       } else {
         const newTotal = distance - total
-        step = newTotal / 40
+        step = newTotal / 30
         smoothUp()
       }
       function smoothDown () {
@@ -954,13 +932,14 @@ export default {
           document.documentElement.scrollTop = total
         }
       }
+      window.addEventListener('scroll', this.handleScroll) // 监听滚动条
+      this.$forceUpdate()
     },
     // handler
     handleSubmit (e) {
       e.preventDefault()
       this.form.validateFields((err, values) => {
         if (!err) {
-          // eslint-disable-next-line no-console
           console.log('Received values of form: ', values)
         }
       })

@@ -138,7 +138,7 @@ import AFormItem from 'ant-design-vue/es/form/FormItem'
 import ARow from 'ant-design-vue/es/grid/Row'
 import $ from 'jquery'
 import 'jquery-backstretch'
-import imgSrc from '../../../assets/login_bg1.png'
+import imgSrc from '../../../assets/login_bg1.jpg'
 
 export default {
   components: {

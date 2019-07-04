@@ -216,7 +216,7 @@ export const asyncRouterMap = [
           {
             path: 'newform/mapForm',
             name: 'mapForm',
-            component: () => import('@/views/newform/mapForm'),
+            component: () => import('@/views/formpages/MapForm'),
             meta: { title: '分页签-地图报表附件', keepAlive: true, permission: ['form'], showbtn: true, isForm: true }
           },
           {

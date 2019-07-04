@@ -1,3 +1,9 @@
+<!--
+ * @Author: 张志勇
+ * @Date: 2019-06-14 17:46:50
+ * @LastEditTime: 2019-07-04 10:31:16
+ * @Description:查看审批弹窗入口
+ -->
 <template>
   <div>
     <template>
@@ -18,7 +24,6 @@ export default {
   },
   data () {
     return {
-
     }
   },
   methods: {

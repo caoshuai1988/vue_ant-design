@@ -1,3 +1,10 @@
+<!--
+ * @Author: 张志勇
+ * @Date: 2019-07-01 17:58:19
+ * @LastEditTime: 2019-07-04 11:20:32
+ * @Description: 新增首页页面 重用功能设置利用穿梭框的样式
+ *               包含一些图表信息
+ -->
 <template>
   <home-view :avatar="avatar" :title="false">
     <div>
@@ -556,14 +563,14 @@ export default {
       return this.$store.getters.userInfo
     }
   },
-  filters: {
-    statusFilter (type) {
-      return statusMap[type].text
-    },
-    statusTypeFilter (type) {
-      return statusMap[type].status
-    }
-  },
+  // filters: {
+  //   statusFilter (type) {
+  //     return statusMap[type].text
+  //   },
+  //   statusTypeFilter (type) {
+  //     return statusMap[type].status
+  //   }
+  // },
   created () {
     this.user = this.userInfo
     this.avatar = this.userInfo.avatar

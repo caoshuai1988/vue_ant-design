@@ -39,68 +39,67 @@
 </template>
 
 <script>
-  import Vue from 'vue'
-  import $ from 'jquery'
-  import '@/utils/bup'
+import Vue from 'vue'
+import $ from 'jquery'
+import '@/utils/bup'
 
-  export default {
-    data() {
-      return {
-        title: this.$route.query.title,
-        value: '',
-        size: 1.0,
-        sizeNum: ''
-      }
+export default {
+  data () {
+    return {
+      title: this.$route.query.title,
+      value: '',
+      size: 1.0,
+      sizeNum: ''
+    }
+  },
+  computed: {},
+  beforeCreate () {
+    if (this.$route.query.title === '2018年韶关市翁源县江尾镇高标准农田建设项目 - 计划阶段 - 任务及投资情况表') {
+      document.title = '任务及投资情况表 - 计划阶段 - 2018年韶关市翁源县江尾镇高标准农田建设项目'
+    } else {
+      document.title = '基本情况表 - 计划阶段 - 2018年韶关市翁源县江尾镇高标准农田建设项目'
+    }
+  },
+  methods: {
+    bigScale () {
+      setTimeout(function () {
+        $('#app').BUP(1.5, 'App')
+      }, 300)
     },
-    computed: {},
-    beforeCreate() {
-      if (this.$route.query.title === '2018年韶关市翁源县江尾镇高标准农田建设项目 - 计划阶段 - 任务及投资情况表') {
-        document.title = '任务及投资情况表 - 计划阶段 - 2018年韶关市翁源县江尾镇高标准农田建设项目'
-      } else {
-        document.title = '基本情况表 - 计划阶段 - 2018年韶关市翁源县江尾镇高标准农田建设项目'
+    handleSizeChange (e) {
+      console.log('cs:' + e)
+      if (e.target.value === 'narrow') {
+        this.size -= 0.1
+      } else if (e.target.value === 'default') {
+        this.size = 1.0
+      } else if (e.target.value === 'magnify') {
+        console.log('1')
+        this.size += 0.1
       }
+      this.set()
+      this.accessData()
     },
-    methods: {
-      bigScale() {
-        setTimeout(function() {
-          $('#app').BUP(1.5, 'App')
-        }, 300)
-      },
-      handleSizeChange(e) {
-        console.log('cs:' + e)
-        if (e.target.value === 'narrow') {
-          this.size -= 0.1
-        } else if (e.target.value === 'default') {
-          this.size = 1.0
-        } else if (e.target.value === 'magnify') {
-          console.log('1')
-          this.size += 0.1
-        }
-        this.set()
-        this.accessData()
-      },
-      accessData() {
-        // 存取
-        Vue.ls.remove('setSize')
-        Vue.ls.set('setSize', parseFloat(this.size))
-      },
-      set() {
-        // change size
-        this.$refs.text.style.zoom = this.size
-        this.$refs.text.style.cssText +=
+    accessData () {
+      // 存取
+      Vue.ls.remove('setSize')
+      Vue.ls.set('setSize', parseFloat(this.size))
+    },
+    set () {
+      // change size
+      this.$refs.text.style.zoom = this.size
+      this.$refs.text.style.cssText +=
           '; -moz-transform: scale(' + this.size + ');-moz-transform-origin: 0 0; '
-        this.$refs.text.style.cssText +=
+      this.$refs.text.style.cssText +=
           '; -webkit-transform: scale(' + this.size + '); -webkit-transform-origin: 0 0; '
-      }
     }
   }
+}
 </script>
 
 <style lang="less" scoped>
   h1 {
     margin: 0;
   }
-
   /deep/ .ant-card {
     display: flex;
     flex-direction: column;

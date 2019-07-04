@@ -1,12 +1,13 @@
+<!--
+ * @Author: 张志勇
+ * @Date: 2019-06-21 15:27:49
+ * @LastEditTime: 2019-07-04 11:08:14
+ * @Description:高级分步组件入口文件
+                其中每个步骤点击后都会进行一整个组件的切换 状态的控制通过vuex
+ -->
 <template>
   <a-card :bordered="false" :body-style="{ padding:0}">
     <div class="content">
-      <!-- <keep-alive>
-        <component :is="aaa"></component>
-        <map-form1 v-if="stepForm.data.currentTab ===1" />
-        <map-form2 v-if="stepForm.data.currentTab ===2" />
-      </keep-alive> -->
-      <!-- // 4 -->
       <template v-if="curentIndex === 0">
         <map-form0 />
       </template>
@@ -16,11 +17,9 @@
       <template v-else-if="curentIndex === 2">
         <map-form2 />
       </template>
-      <!-- 3 -->
       <template v-else>
         <map-form3/>
       </template>
-      <!-- <map-form2 v-show="stepForm.data.currentTab ===1" /> -->
     </div>
   </a-card>
 </template>

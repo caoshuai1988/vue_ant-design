@@ -1,306 +1,12 @@
-<style lang="less" scoped>
-@import "~@/utils/utils.less";
-  .content {
-    padding: 24px;
-    flex: auto;
-    display: flex;
-    flex-direction: column;
-    min-width: 1200px;
-    .page-header-index-wide {
-      width: 100%;
-      flex: auto;
-      flex: auto;
-      display: flex;
-      flex-direction: column;
-    }
-    .link {
-      margin-top: 16px;
-      &:not(:empty) {
-        margin-bottom: 16px;
-      }
-      a {
-        margin-right: 32px;
-        height: 24px;
-        line-height: 24px;
-        display: inline-block;
-        i {
-          font-size: 24px;
-          margin-right: 8px;
-          vertical-align: middle;
-        }
-        span {
-          height: 24px;
-          line-height: 24px;
-          display: inline-block;
-          vertical-align: middle;
-        }
-      }
-    }
-  }
-  .page-menu-search {
-    text-align: center;
-    margin-bottom: 16px;
-  }
-  .page-menu-tabs {
-    margin-top: 48px;
-  }
-  .extra-img {
-    margin-top: -60px;
-    text-align: center;
-    width: 195px;
-    img {
-      width: 100%;
-    }
-  }
+<!--
+ * @Author: 张志勇
+ * @Date: 2019-06-06 16:54:24
+ * @LastEditTime: 2019-07-04 11:53:03
+ * @Description: 该文件是左侧路由中表单页的所有页面 查看审批页的所有页面 的外层公用的入口组件;
+                 包含了右侧页面的整体布局 和 高级带分布表单和高级带分布表单1 中的流程图;
+                 所有页面的头部稍有差别 其配置在路由配置文件中的meta标签中设置
+ -->
 
-  .mobile {
-    .extra-img {
-      margin-top: 0;
-      text-align: center;
-      width: 96px;
-
-      img {
-        width: 100%;
-      }
-    }
-  }
-
-  // 高级带分步骤
-  .step-wrap{
-    .page-title {
-      width: 100%;
-      padding-top: 16px;
-      font-size: 14px;
-      // display: flex;
-      // justify-content: space-between;
-      overflow: hidden;
-      .item {
-        margin-right: 32px;
-        float: left;
-      }
-      .label {
-        color: rgba(0, 0, 0, 0.85);
-      }
-      .value {
-        color: rgba(0, 0, 0, 0.65);
-      }
-      .editor,
-      .detial {
-        cursor: pointer;
-      }
-    }
-    .submit{
-      padding-top: 16px;
-      display: flex;
-      justify-content: flex-end;
-    }
-    .btn-wrap{
-      .sign{
-        color: #d9d9d9;
-        padding: 0 8px;
-        font-size: 18px;
-      }
-      .checking{
-        color:#F5222D;
-      }
-      .btn{
-        &:focus{
-          .checking{
-            color: #40a9ff;
-          }
-        }
-        &:hover{
-          .checking{
-            color: #40a9ff;
-          }
-        }
-      }
-    }
-  }
-
-  // 相关联流程
-  .relevance-wrap{
-    font-size: 14px;
-    .relevance__name{
-      width: 100%;
-      padding-top: 8px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      overflow: hidden;
-      .relevance__name--left{
-        font-size: 16px;
-        color: rgba(0,0,0,0.85)
-      }
-      .relevance__name--right{
-        font-size: 14px;
-        .relevance-editor{
-          margin-right: 40px;
-        }
-      }
-    }
-    .relevance__main{
-      margin-top: 12px;
-      padding-bottom: 16px;
-      .clearfix();
-      .item{
-        float: left;
-        margin-right: 24px;
-      }
-    }
-    .relevance__footer{
-      width: 100%;
-      padding-top: 16px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      .relevance__footer__title{
-        font-size: 16px;
-        color: rgba(0,0,0,0.85);
-        margin:0;
-      }
-    }
-    // 分步图部分
-    .relevance__step-wrap{
-      // overflow-x: auto;
-      width: 800px;
-      margin: 0 auto;
-      .top-row{
-        position: absolute;
-        top:-32px;;
-        left: 48px;
-        display: inline-block;
-        width: 348px;
-        height: 32px;
-        border-radius: 5px 5px 0 0;
-        border:0;
-        border: solid 1px #722ed1;
-        border-bottom: none;
-        .icon-row{
-          z-index:2;
-          position: absolute;
-          bottom: -6px;
-          right: -10px;
-          font-size: 20px;
-        }
-      }
-      .num-step{
-        position: absolute;
-        top:0;
-        left: 36px + 174px;
-        display: inline-block;
-        width: 24px;
-        height: 24px;
-        line-height: 24px;
-        text-align: center;
-        border-radius: 50%;
-        background: #fff;
-        border: solid 1px #1890ff;
-        z-index:2;
-        font-size: 12px;
-        &.active{
-          background: #1890ff;
-          .cont{
-            color: #fff;
-          }
-        }
-      }
-    }
-
-  }
-
-  .step-content{
-    padding-top: 40px;
-    padding-left: 10%;
-    padding-right: 10%;
-    padding-bottom: 24px;
-    &.step-content--only{
-      padding-top: 56px;
-      padding-left: 0;
-      padding-right: 0;
-    }
-    .steps-content {
-      margin-top: 16px;
-      border: 1px dashed #e9e9e9;
-      border-radius: 6px;
-      background-color: #fafafa;
-      min-height: 200px;
-      text-align: center;
-      padding-top: 80px;
-    }
-    .steps-action {
-      margin-top: 24px;
-    }
-  }
-  // ant-steps-item
-  .step-content /deep/ .ant-steps-label-vertical .ant-steps-item-title{
-    padding-right: 0;
-  }
-  .step-content /deep/ .ant-steps-small .ant-steps-item-title{
-    line-height: 16px;
-    padding: 16px;
-  }
-  .ant-steps-item-title{
-    &:hover{
-      color: #1890ff;
-    }
-  }
-  // progress 字体透明度
-  .step-content /deep/ .ant-steps-item-process > .ant-steps-item-content > .ant-steps-item-title{
-    color: rgba(0, 0, 0, 0.65);
-    &:hover{
-      color: #1890ff;
-    }
-  }
-  // progress 字体透明度
-  .step-content /deep/ .ant-steps-item-finish > .ant-steps-item-content > .ant-steps-item-title{
-    &:hover{
-      color: #1890ff;
-    }
-  }
-  .step-content /deep/.ant-steps-label-vertical .ant-steps-item{
-    cursor: pointer;
-    // progress
-    &.ant-steps-item-process .ant-steps-item-icon {
-      background: #fff;
-      .ant-steps-icon{
-        color: #1890ff;
-      }
-    }
-    &.active{
-      .ant-steps-item-title{
-        // position: relative;
-        &::after{
-          contain: '';
-          display: inline-block;
-          width: 100%;
-          height: 2px;
-          background: #1890ff;
-          position: absolute;
-          top: 46px;
-          left: 0;
-        }
-      }
-      .ant-steps-item-content > .ant-steps-item-title{
-        color: #1890ff;
-      }
-      .ant-steps-item-icon{
-        background: #1890ff;
-        .ant-steps-icon{
-          color: #fff !important;
-        }
-        .anticon svg{
-          color: #fff;
-        }
-      }
-    }
-  }
-
-  .step-content /deep/ .ant-steps-small .ant-steps-item-tail{
-    top:12px;
-  }
-
-</style>
 <template>
   <div :style="!$route.meta.hiddenHeaderContent ? 'margin: -24px -24px 0; flex:auto;display:flex;flex-direction:column' : null">
     <!-- pageHeader , route meta :true on hide -->
@@ -627,12 +333,6 @@ export default {
     this.getPageMeta()
   },
   methods: {
-    // next () {
-    //   this.current++
-    // },
-    // prev () {
-    //   this.current--
-    // },
     ...mapMutations('stepform', ['SET_DATALIST']),
     showDrawer () {
       this.isVisible = true
@@ -644,21 +344,16 @@ export default {
       if (this.current < index) return
       this.currentStep = index
       if (this.currentStep === 1) {
-        // this.showTwoStep = true
         this.ischeckBg = true
       } else {
-        // this.showTwoStep = false
         this.ischeckBg = false
       }
       this.relevanceTitle = item.title
-      // this.SET_DATALIST(index)
       this.$store.dispatch('changOneActions', index)
       this.$forceUpdate()
     },
     getPageMeta () {
-      // eslint-disable-next-line
       this.pageTitle = typeof this.title === 'string' || !this.title ? this.title : this.$route.meta.title
-
       const content = this.$refs.content
       if (content) {
         if (content.pageMeta) {
@@ -675,3 +370,304 @@ export default {
   }
 }
 </script>
+<style lang="less" scoped>
+@import "~@/utils/utils.less";
+  .content {
+    padding: 24px;
+    flex: auto;
+    display: flex;
+    flex-direction: column;
+    min-width: 1200px;
+    .page-header-index-wide {
+      width: 100%;
+      flex: auto;
+      flex: auto;
+      display: flex;
+      flex-direction: column;
+    }
+    .link {
+      margin-top: 16px;
+      &:not(:empty) {
+        margin-bottom: 16px;
+      }
+      a {
+        margin-right: 32px;
+        height: 24px;
+        line-height: 24px;
+        display: inline-block;
+        i {
+          font-size: 24px;
+          margin-right: 8px;
+          vertical-align: middle;
+        }
+        span {
+          height: 24px;
+          line-height: 24px;
+          display: inline-block;
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+  .page-menu-search {
+    text-align: center;
+    margin-bottom: 16px;
+  }
+  .page-menu-tabs {
+    margin-top: 48px;
+  }
+  .extra-img {
+    margin-top: -60px;
+    text-align: center;
+    width: 195px;
+    img {
+      width: 100%;
+    }
+  }
+
+  .mobile {
+    .extra-img {
+      margin-top: 0;
+      text-align: center;
+      width: 96px;
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+
+  // 高级带分步骤
+  .step-wrap{
+    .page-title {
+      width: 100%;
+      padding-top: 16px;
+      font-size: 14px;
+      // display: flex;
+      // justify-content: space-between;
+      overflow: hidden;
+      .item {
+        margin-right: 32px;
+        float: left;
+      }
+      .label {
+        color: rgba(0, 0, 0, 0.85);
+      }
+      .value {
+        color: rgba(0, 0, 0, 0.65);
+      }
+      .editor,
+      .detial {
+        cursor: pointer;
+      }
+    }
+    .submit{
+      padding-top: 16px;
+      display: flex;
+      justify-content: flex-end;
+    }
+    .btn-wrap{
+      .sign{
+        color: #d9d9d9;
+        padding: 0 8px;
+        font-size: 18px;
+      }
+      .checking{
+        color:#F5222D;
+      }
+      .btn{
+        &:focus{
+          .checking{
+            color: #40a9ff;
+          }
+        }
+        &:hover{
+          .checking{
+            color: #40a9ff;
+          }
+        }
+      }
+    }
+  }
+
+  // 相关联流程
+  .relevance-wrap{
+    font-size: 14px;
+    .relevance__name{
+      width: 100%;
+      padding-top: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      overflow: hidden;
+      .relevance__name--left{
+        font-size: 16px;
+        color: rgba(0,0,0,0.85)
+      }
+      .relevance__name--right{
+        font-size: 14px;
+        .relevance-editor{
+          margin-right: 40px;
+        }
+      }
+    }
+    .relevance__main{
+      margin-top: 12px;
+      padding-bottom: 16px;
+      .clearfix();
+      .item{
+        float: left;
+        margin-right: 24px;
+      }
+    }
+    .relevance__footer{
+      width: 100%;
+      padding-top: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .relevance__footer__title{
+        font-size: 16px;
+        color: rgba(0,0,0,0.85);
+        margin:0;
+      }
+    }
+    // 分步图部分
+    .relevance__step-wrap{
+      // overflow-x: auto;
+      width: 800px;
+      margin: 0 auto;
+      .top-row{
+        position: absolute;
+        top:-32px;;
+        left: 48px;
+        display: inline-block;
+        width: 348px;
+        height: 32px;
+        border-radius: 5px 5px 0 0;
+        border:0;
+        border: solid 1px #722ed1;
+        border-bottom: none;
+        .icon-row{
+          z-index:2;
+          position: absolute;
+          bottom: -6px;
+          right: -10px;
+          font-size: 20px;
+        }
+      }
+      .num-step{
+        position: absolute;
+        top:0;
+        left: 36px + 174px;
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        line-height: 24px;
+        text-align: center;
+        border-radius: 50%;
+        background: #fff;
+        border: solid 1px #1890ff;
+        z-index:2;
+        font-size: 12px;
+        &.active{
+          background: #1890ff;
+          .cont{
+            color: #fff;
+          }
+        }
+      }
+    }
+
+  }
+
+  .step-content{
+    padding-top: 40px;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-bottom: 24px;
+    &.step-content--only{
+      padding-top: 56px;
+      padding-left: 0;
+      padding-right: 0;
+    }
+    .steps-content {
+      margin-top: 16px;
+      border: 1px dashed #e9e9e9;
+      border-radius: 6px;
+      background-color: #fafafa;
+      min-height: 200px;
+      text-align: center;
+      padding-top: 80px;
+    }
+    .steps-action {
+      margin-top: 24px;
+    }
+  }
+  // ant-steps-item
+  .step-content /deep/ .ant-steps-label-vertical .ant-steps-item-title{
+    padding-right: 0;
+  }
+  .step-content /deep/ .ant-steps-small .ant-steps-item-title{
+    line-height: 16px;
+    padding: 16px;
+  }
+  .ant-steps-item-title{
+    &:hover{
+      color: #1890ff;
+    }
+  }
+  // progress 字体透明度
+  .step-content /deep/ .ant-steps-item-process > .ant-steps-item-content > .ant-steps-item-title{
+    color: rgba(0, 0, 0, 0.65);
+    &:hover{
+      color: #1890ff;
+    }
+  }
+  // progress 字体透明度
+  .step-content /deep/ .ant-steps-item-finish > .ant-steps-item-content > .ant-steps-item-title{
+    &:hover{
+      color: #1890ff;
+    }
+  }
+  .step-content /deep/.ant-steps-label-vertical .ant-steps-item{
+    cursor: pointer;
+    // progress
+    &.ant-steps-item-process .ant-steps-item-icon {
+      background: #fff;
+      .ant-steps-icon{
+        color: #1890ff;
+      }
+    }
+    &.active{
+      .ant-steps-item-title{
+        // position: relative;
+        &::after{
+          contain: '';
+          display: inline-block;
+          width: 100%;
+          height: 2px;
+          background: #1890ff;
+          position: absolute;
+          top: 46px;
+          left: 0;
+        }
+      }
+      .ant-steps-item-content > .ant-steps-item-title{
+        color: #1890ff;
+      }
+      .ant-steps-item-icon{
+        background: #1890ff;
+        .ant-steps-icon{
+          color: #fff !important;
+        }
+        .anticon svg{
+          color: #fff;
+        }
+      }
+    }
+  }
+  .step-content /deep/ .ant-steps-small .ant-steps-item-tail{
+    top:12px;
+  }
+</style>

@@ -1,3 +1,9 @@
+<!--
+ * @Author: 张志勇
+ * @Date: 2019-06-15 15:08:51
+ * @LastEditTime: 2019-07-04 10:04:08
+ * @Description: 附件详情页 图标使用的是本地图片
+ -->
 
 <template>
   <a-card :body-style="{background:'#f0f2f5', padding: 0}" :bordered="false" class="card-box">

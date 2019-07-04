@@ -60,14 +60,11 @@ export default {
 /deep/ .ant-tabs-bar{ // 清除多余空白
    margin: 0;
 }
-.tabMar{ // tab 间距
-  // margin-left: 24px !important;
-}
 /deep/ .ant-tabs-nav-wrap{
   padding-left:  24px
 }
-.checkIcon { /* icon */
-
+/* icon */
+.checkIcon {
   position: absolute;
   top: 11px;
   right: -9px;

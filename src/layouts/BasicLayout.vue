@@ -30,8 +30,8 @@
         :collapsible="true"
       ></side-menu>
       <a-layout
-:class="[layoutMode, `content-width-${contentWidth}`]"
-                :style="{ paddingLeft: contentPaddingLeft, minHeight: '100vh' }">
+        :class="[layoutMode, `content-width-${contentWidth}`]"
+        :style="{ paddingLeft: contentPaddingLeft, minHeight: 'calc(100vh + 94px)' }">
         <!-- layout header -->
         <global-header
           :mode="layoutMode"
@@ -61,8 +61,9 @@
     </a-layout>
 
     <a-layout v-if="isFullTopMenu()">
-      <a-layout :class="[layoutMode, `content-width-${contentWidth}`]"
-                :style="{ paddingLeft: contentPaddingLeft, minHeight: '100vh' }">
+      <a-layout
+        :class="[layoutMode, `content-width-${contentWidth}`]"
+        :style="{ paddingLeft: contentPaddingLeft, minHeight: '100vh' }">
         <!-- layout header -->
         <global-header
           :mode="layoutMode"

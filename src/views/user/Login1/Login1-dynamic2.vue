@@ -1,5 +1,5 @@
 <template>
-  <div class="main main-login1">
+  <div class="main main-login1 main-login1-dynamic">
     <div class="login-box">
       <div class="login-box-left">
         <p>
@@ -247,6 +247,17 @@ export default {
 </script>
 
 <style lang="less" scoped>
+  @-webkit-keyframes fadeIn {
+    0% {
+    opacity: 0; /*初始状态 透明度为0*/
+    }
+    50% {
+    opacity: 0; /*中间状态 透明度为0*/
+    }
+    100% {
+    opacity: 1; /*结尾状态 透明度为1*/
+    }
+  }
   .main {
     height: 100%;
     position: relative;
@@ -258,6 +269,10 @@ export default {
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
+      -webkit-animation-name: fadeIn; /*动画名称*/
+      -webkit-animation-duration: 2s; /*动画持续时间*/
+      -webkit-animation-iteration-count: 1; /*动画次数*/
+      -webkit-animation-delay: 0s; /*延迟时间*/
       &-left {
         float: left;
         width: 440px;

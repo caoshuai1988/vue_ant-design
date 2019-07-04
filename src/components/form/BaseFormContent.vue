@@ -46,7 +46,6 @@
           placeholder="请输入你阶段性工作目标"
           v-decorator="[
             'description',
-
             {rules: [{ required: true, message: '请输入目标描述' }]}
           ]"
         />

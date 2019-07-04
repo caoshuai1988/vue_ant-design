@@ -8,7 +8,7 @@
             <span @click="refresh"><a-icon type="sync" style="font-size:14px; margin-right:8px"/>刷新</span>
             <span @click="showDrawer"><a-icon type="setting" style="font-size:14px; margin-right:8px"/>设置</span>
             <span><a-icon type="delete" style="font-size:14px; margin-right:8px"/>回收站</span>
-            <span><a-icon type="snippets" style="font-size:14px; margin-right:8px"/>业务流程</span>
+            <span><a-icon type="file" style="font-size:14px; margin-right:8px"/>业务流程</span>
             <span><a-icon type="question-circle" style="font-size:14px; margin-right:8px"/>帮助</span>
           </template>
         </div>

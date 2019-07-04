@@ -57,8 +57,9 @@
           </a-table-column>
           <a-table-column title="操作" key="operation">
             <template slot-scope="text, record">
-              <a href style="margin-right:10px">{{ record.operation.text }}</a>
-              <a style="margin-right:10px">{{ record.operation.textOne }}</a>
+              <a href style="">{{ record.operation.text }}</a>
+              <a-divider type="vertical" v-if="record.operation.flagOpen" />
+              <a style="">{{ record.operation.textOne }}</a>
             </template>
           </a-table-column>
         </a-table>
@@ -108,7 +109,7 @@ const data = [
     state: [{ c: 60, d: 'active' }],
     operation: {
       text: '取消',
-      flagOpen: true
+      flagOpen: false
     }
   },
   {
@@ -146,7 +147,7 @@ const data = [
     state: [{ c: 60, d: 'active' }],
     operation: {
       text: '取消',
-      flagOpen: true
+      flagOpen: false
     }
   }
 ]

@@ -101,6 +101,11 @@ export const asyncRouterMap = [
                 meta: { title: '动态版', target: '_blank' }
               },
               {
+                path: '/user/login1/dynamic2',
+                name: 'login1Dynamic2',
+                meta: { title: '动态版2', target: '_blank' }
+              },
+              {
                 path: '/user/login1/mountain',
                 name: 'login1Mountain',
                 meta: { title: '多图版', target: '_blank' }
@@ -217,7 +222,7 @@ export const asyncRouterMap = [
             path: 'formpages/MapForm',
             name: 'MapForm',
             component: () => import('@/views/formpages/MapForm'),
-            meta: { title: '分页签-地图报表', keepAlive: true, permission: ['form'], showbtn: true, isForm: true }
+            meta: { title: '分页签-地图报表附件', keepAlive: true, permission: ['form'], showbtn: true, isForm: true }
           },
           {
             path: '/fsxt/fsxt-advanced-form',
@@ -717,6 +722,11 @@ export const constantRouterMap = [
         path: 'login1/dynamic',
         name: 'login1Dynamic',
         component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login1/Login1-dynamic')
+      },
+      {
+        path: 'login1/dynamic2',
+        name: 'login1Dynamic2',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login1/Login1-dynamic2')
       },
       {
         path: 'login1/mountain',

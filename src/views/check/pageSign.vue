@@ -548,7 +548,7 @@ import icon2 from '@/assets/iconfiles/fileicon10.svg'
 import icon3 from '@/assets/iconfiles/fileicon15.svg'
 // ppt格式
 import icon4 from '@/assets/iconfiles/fileicon1.svg'
-// import preview from '@/views/newform/preview'
+// import preview from '@/views/formpages/preview'
 const DetailListItem = DetailList.Item
 // 列表的数据定义
 const data = [

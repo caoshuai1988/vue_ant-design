@@ -78,11 +78,19 @@
         <span style="padding-left:10px">支持扩展名：.rar .zip .doc .docx .pdf .jpg...</span>
       </a-upload>
     </a-form-item>
+    <div class="footerBox" >
+      <a-form-item :wrapperCol="{ span: 24 }" style="text-align: center; margin-top:32px">
+        <a-button htmlType="submit" type="primary">
+          提交
+        </a-button>
+        <a-button style="margin-left: 8px" >保存</a-button>
+      </a-form-item>
+    </div>
   </a-card>
 </template>
 
 <script>
-import verticaltoggle from '@/views/newform/verticaltoggle' // animation
+import verticaltoggle from '@/views/formpages/verticaltoggle' // animation
 import icon1 from '@/assets/iconfiles/fileicon4.svg'
 // MP4格式
 import icon2 from '@/assets/iconfiles/fileicon10.svg'

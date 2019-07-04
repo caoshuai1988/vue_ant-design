@@ -101,6 +101,11 @@ export const asyncRouterMap = [
                 meta: { title: '动态版', target: '_blank' }
               },
               {
+                path: '/user/login1/dynamic2',
+                name: 'login1Dynamic2',
+                meta: { title: '动态版2', target: '_blank' }
+              },
+              {
                 path: '/user/login1/mountain',
                 name: 'login1Mountain',
                 meta: { title: '多图版', target: '_blank' }
@@ -717,6 +722,11 @@ export const constantRouterMap = [
         path: 'login1/dynamic',
         name: 'login1Dynamic',
         component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login1/Login1-dynamic')
+      },
+      {
+        path: 'login1/dynamic2',
+        name: 'login1Dynamic2',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login1/Login1-dynamic2')
       },
       {
         path: 'login1/mountain',

@@ -1,5 +1,18 @@
 <template>
-  <div class="main main-login1">
+  <div class="main main-login1 main-login1-buildings">
+    <div class="bgChoose">
+      <ul>
+        <li><router-link :to="{ name: 'login1Building'}" class="active">建筑</router-link></li>
+        <li><router-link :to="{ name: 'login1Forest'}">森林</router-link></li>
+        <li><router-link :to="{ name: 'login1Frontier'}">塞外</router-link></li>
+        <li><router-link :to="{ name: 'login1Galaxy'}">银河</router-link></li>
+        <li><router-link :to="{ name: 'login1Lake'}">湖泊</router-link></li>
+        <li><router-link :to="{ name: 'login1Light'}">科技光</router-link></li>
+        <li><router-link :to="{ name: 'login1Mountain'}">大山</router-link></li>
+        <li><router-link :to="{ name: 'login1Space'}">太空</router-link></li>
+        <li><router-link :to="{ name: 'login1Terrace'}">梯田</router-link></li>
+      </ul>
+    </div>
     <div class="login-box">
       <div class="login-box-left">
         <p>
@@ -143,7 +156,7 @@ import AFormItem from 'ant-design-vue/es/form/FormItem'
 import ARow from 'ant-design-vue/es/grid/Row'
 import $ from 'jquery'
 import 'jquery-backstretch'
-import imgSrc from '../../../assets/login_bg_mountain.jpg'
+import imgSrc from '../../../assets/login_bg_building.jpg'
 
 export default {
   components: {

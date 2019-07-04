@@ -1,5 +1,18 @@
 <template>
-  <div class="main main-login2-error">
+  <div class="main main-login2-base">
+    <div class="bgChoose">
+      <ul>
+        <li><router-link :to="{ name: 'login2Building'}">建筑</router-link></li>
+        <li><router-link :to="{ name: 'login2Forest'}">森林</router-link></li>
+        <li><router-link :to="{ name: 'login2Frontier'}" class="active">塞外</router-link></li>
+        <li><router-link :to="{ name: 'login2Galaxy'}">银河</router-link></li>
+        <li><router-link :to="{ name: 'login2Lake'}">湖泊</router-link></li>
+        <li><router-link :to="{ name: 'login2Light'}">科技光</router-link></li>
+        <li><router-link :to="{ name: 'login2Mountain'}">大山</router-link></li>
+        <li><router-link :to="{ name: 'login2Space'}">太空</router-link></li>
+        <li><router-link :to="{ name: 'login2Terrace'}">梯田</router-link></li>
+      </ul>
+    </div>
     <div class="login-box">
       <a-row>
         <a-col :span="20">
@@ -64,7 +77,7 @@
                       @click="handleSubmit"
                     >登录</a-button>
                   </a-form-item>
-                  <div class="login-tips">
+                  <div class="login-tips" v-if="isError">
                     <span>用户名或密码错误！</span>
                   </div>
                 </a-tab-pane>
@@ -138,7 +151,7 @@ import AFormItem from 'ant-design-vue/es/form/FormItem'
 import ARow from 'ant-design-vue/es/grid/Row'
 import $ from 'jquery'
 import 'jquery-backstretch'
-import imgSrc from '../../../assets/login_bg_mountain.jpg'
+import imgSrc from '../../../assets/login_bg_frontier.jpg'
 
 export default {
   components: {
@@ -168,7 +181,7 @@ export default {
   created () {
   },
   mounted () {
-    $('.main-login2-error').backstretch(imgSrc)
+    $('.main-login2-base').backstretch(imgSrc)
   },
   methods: {
     // 检测CA密钥
@@ -182,7 +195,6 @@ export default {
       // this.form.resetFields()
     },
     handleSubmit (e) {
-      // debugger
       const that = this
       that.isError = false
       e.preventDefault()
@@ -264,10 +276,6 @@ export default {
             font-size: 16px;
           }
         }
-        .drag_verify .dv_handler i.fa-check-circle {
-           color: #52c41a;
-           font-size: 1.2em;
-         }
         .login-tips {
           color: #FF1A2E;
           font-size: 14px;
@@ -319,6 +327,5 @@ export default {
         }
       }
     }
-    /*}*/
   }
 </style>

@@ -1,7 +1,7 @@
 <!--
  * @Author: 张志勇
  * @Date: 2019-06-14 15:59:26
- * @LastEditTime: 2019-07-04 11:11:39
+ * @LastEditTime: 2019-07-04 15:13:14
  * @Description: 单列详情页 引用了流程图组件
  -->
 
@@ -75,7 +75,7 @@
                 <div class="title-des">
                   <span class="help">帮助</span>
                   <span class="detail">详情</span>
-                  <a-icon type="close" style="fontSize :16px; color:#a3a3a3;" class="close" @click="handleClose"/>
+                  <a-icon type="close" class="close" @click="handleClose"/>
                 </div>
               </div>
               <div class="help-line"></div>
@@ -443,6 +443,8 @@ export default {
         .close{
           float: right;
           margin-top: 4px;
+          font-size :16px;
+          color:#a3a3a3;
           &:hover{
             cursor: pointer;
           }

@@ -1,3 +1,9 @@
+<!--
+ * @Author: 张志勇
+ * @Date: 2019-06-21 15:27:49
+ * @LastEditTime: 2019-07-04 13:35:20
+ * @Description:  基础表单组件的提取 包括表单常见的一些样式
+ -->
 <template>
   <a-card :body-style="{padding: '24px 32px'}" :bordered="false">
     <a-form @submit="handleSubmit" :form="form" :hideRequiredMark="true">

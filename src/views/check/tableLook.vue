@@ -75,18 +75,18 @@ export default {
 </script>
 
 <style lang="less" scoped>
-h1 {
-  margin: 0;
-}
-/deep/ .ant-card {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  /deep/ .ant-card-head {
-    height: 62px;
+  h1 {
+    margin: 0;
   }
-  /deep/ .ant-card-body {
-    flex: auto;
+  /deep/ .ant-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    /deep/ .ant-card-head {
+      height: 62px;
+    }
+    /deep/ .ant-card-body {
+      flex: auto;
+    }
   }
-}
 </style>

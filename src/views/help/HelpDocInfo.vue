@@ -147,7 +147,7 @@ import { PageView, RouteView } from '@/layouts'
 import { mixinDevice } from '@/utils/mixin.js'
 import GlobalFooter from '@/components/GlobalFooter'
 
-import banner from '@/assets/login_bg1.png'
+import banner from '@/assets/login_bg1.jpg'
 import time from '@/assets/time.png'
 const columns = [
   { title: 'Full Name', width: 100, dataIndex: 'name', key: 'name', fixed: 'left' },

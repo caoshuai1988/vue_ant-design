@@ -1,6 +1,6 @@
 <template>
 <!--  <div class="main">-->
-<!--    <img src="@/assets/login_bg1.png"/>-->
+<!--    <img src="@/assets/login_bg1.jpg"/>-->
 <!--    <div class="login-box">-->
 <!--      <a-row>-->
 <!--        <a-col :span="20">-->

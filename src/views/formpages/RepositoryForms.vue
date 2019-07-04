@@ -1,3 +1,9 @@
+<!--
+ * @Author: lxh
+ * @Date: 2019-07-03 16:01:38
+ * @LastEditTime: 2019-07-04 16:11:35
+ * @Description: 高级表单中仓库
+ -->
 <template>
   <a-form @submit="handleSubmit" :form="form" class="form" :hideRequiredMark="true">
     <a-row class="form-row" :gutter="16">
@@ -109,7 +115,6 @@ export default {
     }
   },
   mounted () {
-    console.log(this.ceshi)
   },
   methods: {
     handleSubmit (e) {

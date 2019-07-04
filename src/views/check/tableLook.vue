@@ -1,3 +1,9 @@
+<!--
+ * @Author: lxh
+ * @Date: 2019-07-01 09:13:38
+ * @LastEditTime: 2019-07-04 16:13:22
+ * @Description: 报表查看
+ -->
 <template>
   <div ref="text" style="height:100%;width:100%;">
     <a-card :body-style="{padding: '24px 32px'}">

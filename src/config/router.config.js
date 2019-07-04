@@ -214,8 +214,8 @@ export const asyncRouterMap = [
             meta: { title: '高级表单', keepAlive: true, permission: ['form'], isForm: true }
           },
           {
-            path: 'newform/mapForm',
-            name: 'mapForm',
+            path: 'formpages/MapForm',
+            name: 'MapForm',
             component: () => import('@/views/formpages/MapForm'),
             meta: { title: '分页签-地图报表附件', keepAlive: true, permission: ['form'], showbtn: true, isForm: true }
           },

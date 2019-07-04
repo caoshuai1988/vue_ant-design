@@ -556,14 +556,14 @@ export default {
       return this.$store.getters.userInfo
     }
   },
-  filters: {
-    statusFilter (type) {
-      return statusMap[type].text
-    },
-    statusTypeFilter (type) {
-      return statusMap[type].status
-    }
-  },
+  // filters: {
+  //   statusFilter (type) {
+  //     return statusMap[type].text
+  //   },
+  //   statusTypeFilter (type) {
+  //     return statusMap[type].status
+  //   }
+  // },
   created () {
     this.user = this.userInfo
     this.avatar = this.userInfo.avatar

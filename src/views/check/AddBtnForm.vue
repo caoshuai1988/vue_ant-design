@@ -1,18 +1,9 @@
-<style lang="less" scoped>
-// .ant-alert-error{
-//   margin-bottom: 24px;
-// }
-.ant-form-horizontal .ant-form-item {
-  margin-bottom: 16px;
-}
-/deep/ .ant-form-horizontal .ant-form-item > .ant-form-item-label{
-  line-height: 24px;
-}
-/deep/ .ant-form-horizontal .ant-form-item .ant-form-item-control-wrapper .ant-form-item-control{
-  line-height: 24px;
-
-}
-</style>
+<!--
+ * @Author: 张志勇
+ * @Date: 2019-06-14 17:46:50
+ * @LastEditTime: 2019-07-04 10:17:03
+ * @Description:查看页弹窗详情 包含单行表单信息的样式
+ -->
 
 <template>
   <a-modal
@@ -23,22 +14,6 @@
     @ok="handleSubmit"
     @cancel="handleCancel">
     <a-spin :spinning="confirmLoading">
-      <!-- <span class="err-div">
-        <a-alert
-          message="Error Text"
-          type="error"
-          name="errs"
-          showIcon
-          closable
-          @click="onClose"/>
-      </span> -->
-
-      <!-- <detail-list :col="1">
-        <detail-list-item term="取货单号">1000000000</detail-list-item>
-        <detail-list-item term="状态">已取货</detail-list-item>
-        <detail-list-item term="销售单号">1234123421</detail-list-item>
-        <detail-list-item term="子订单">3214321432</detail-list-item>
-      </detail-list> -->
       <a-form class="detailInfo" :form="form">
         <a-form-item label="取货单号" :labelCol="labelCol" :wrapperCol="wrapperCol">
           <span>
@@ -91,14 +66,7 @@
 </template>
 
 <script>
-// 暂时未用到 可删除
-import DetailList from '@/components/tools/DetailList'
-const DetailListItem = DetailList.Item
 export default {
-  components: {
-    DetailList,
-    DetailListItem
-  },
   data () {
     return {
       labelCol: {
@@ -136,7 +104,7 @@ export default {
             this.visible = false
             this.confirmLoading = false
             this.$emit('monitor', values)
-          }, 1500)
+          }, 500)
         } else {
           this.confirmLoading = false
         }
@@ -148,3 +116,15 @@ export default {
   }
 }
 </script>
+
+<style lang="less" scoped>
+.ant-form-horizontal .ant-form-item {
+  margin-bottom: 16px;
+}
+/deep/ .ant-form-horizontal .ant-form-item > .ant-form-item-label{
+  line-height: 24px;
+}
+/deep/ .ant-form-horizontal .ant-form-item .ant-form-item-control-wrapper .ant-form-item-control{
+  line-height: 24px;
+}
+</style>

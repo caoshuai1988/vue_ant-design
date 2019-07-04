@@ -1,3 +1,9 @@
+<!--
+ * @Author: lxh
+ * @Date: 2019-07-03 16:01:38
+ * @LastEditTime: 2019-07-04 16:04:34
+ * @Description: 基础表单默认头部
+ -->
 <template>
   <a-card :bordered="false" v-if="flowFlag" :body-style="{ padding:'24px 32px'}" style="margin-bottom:24px;">
     <!-- <a-card :bordered="false" v-if="flowFlag" :body-style="{ padding:'50px 24px'}" style="margin-bottom:24px;min-width:1150px"> -->

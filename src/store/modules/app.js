@@ -19,7 +19,7 @@ const app = {
     sidebar: true,
     device: 'desktop',
     theme: '',
-    surplusTheme: '', // 新增主题
+    surplusTheme: '', // mkk 新增主题
     layout: '',
     contentWidth: '',
     fixedHeader: false,
@@ -30,7 +30,8 @@ const app = {
     multiTab: true,
     visible: false, // cs
     zoom: 1,
-    settingDrawer: false
+    settingDrawer: true, //mkk 侧边栏站点设置
+    magnifier: true // mkk 放大镜
   },
   mutations: {
     SET_SIDEBAR_TYPE: (state, type) => {
@@ -97,59 +98,65 @@ const app = {
     },
     TOGGLE_SET_DRAWER: (state, bool) => {
       state.settingDrawer = bool
+    },
+    TOGGLE_MAGNIFIER: (state, bool) => {
+      state.magnifier = bool
     }
   },
   actions: {
-    setSidebar ({ commit }, type) {
+    ToggleMagnifier({ commit }, type) {
+      commit('TOGGLE_MAGNIFIER', type)
+    },
+    setSidebar({ commit }, type) {
       commit('SET_SIDEBAR_TYPE', type)
     },
-    CloseSidebar ({ commit }) {
+    CloseSidebar({ commit }) {
       commit('CLOSE_SIDEBAR')
     },
-    ToggleDevice ({ commit }, device) {
+    ToggleDevice({ commit }, device) {
       commit('TOGGLE_DEVICE', device)
     },
-    ToggleTheme ({ commit }, theme) {
+    ToggleTheme({ commit }, theme) {
       commit('TOGGLE_THEME', theme)
     },
-    ToggleSurplusTheme ({ commit }, plusTheme) {
+    ToggleSurplusTheme({ commit }, plusTheme) {
       commit('TOGGLE_SURPLUS_THEME', plusTheme)
     },
-    ToggleLayoutMode ({ commit }, mode) {
+    ToggleLayoutMode({ commit }, mode) {
       commit('TOGGLE_LAYOUT_MODE', mode)
     },
-    ToggleFixedHeader ({ commit }, fixedHeader) {
+    ToggleFixedHeader({ commit }, fixedHeader) {
       if (!fixedHeader) {
         commit('TOGGLE_FIXED_HEADER_HIDDEN', false)
       }
       commit('TOGGLE_FIXED_HEADER', fixedHeader)
     },
-    ToggleFixSiderbar ({ commit }, fixSiderbar) {
+    ToggleFixSiderbar({ commit }, fixSiderbar) {
       commit('TOGGLE_FIXED_SIDERBAR', fixSiderbar)
     },
-    ToggleFixedHeaderHidden ({ commit }, show) {
+    ToggleFixedHeaderHidden({ commit }, show) {
       commit('TOGGLE_FIXED_HEADER_HIDDEN', show)
     },
-    ToggleContentWidth ({ commit }, type) {
+    ToggleContentWidth({ commit }, type) {
       commit('TOGGLE_CONTENT_WIDTH', type)
     },
-    ToggleColor ({ commit }, color) {
+    ToggleColor({ commit }, color) {
       commit('TOGGLE_COLOR', color)
     },
-    ToggleWeak ({ commit }, weakFlag) {
+    ToggleWeak({ commit }, weakFlag) {
       commit('TOGGLE_WEAK', weakFlag)
     },
-    ToggleMultiTab ({ commit }, bool) {
+    ToggleMultiTab({ commit }, bool) {
       commit('TOGGLE_MULTI_TAB', bool)
     },
-    ToggleVisible ({ commit }, visible) { // cs 显示右侧主题层
+    ToggleVisible({ commit }, visible) { // cs 显示右侧主题层
       commit('TOGGLE_VISIBLE', visible)
     },
-    ToggleZoom ({ commit }, zoom) {
+    ToggleZoom({ commit }, zoom) {
       console.log('ToggleZoom' + zoom)
       commit('TOGGLE_CONTAINER_ZOOM', zoom)
     },
-    ToggleSetDrawer ({ commit }, bool) {
+    ToggleSetDrawer({ commit }, bool) {
       commit('TOGGLE_SET_DRAWER', bool)
     }
   }

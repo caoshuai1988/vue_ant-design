@@ -1,108 +1,10 @@
-<!--todo多余代码待删除-->
-<style lang="less" scoped>
-  .title-name {
-    font-size: 18px;
-    margin-left: 200px ;
-  }
+<!--
+ * @Author: lxh
+ * @Date: 2019-07-03 16:01:38
+ * @LastEditTime: 2019-07-04 16:08:15
+ * @Description: 基础表单
+ -->
 
-  .line{
-    box-sizing: border-box;
-    width:100%;
-    padding: 0 20px;
-    height: 0.5px;
-    background: #cccccc;
-    margin-bottom: 24px;
-  }
-  /* you can make up upload button and sample style by using stylesheets */
-  .ant-upload-select-picture-card i {
-    font-size: 32px;
-    color: #999;
-  }
-
-  .ant-upload-select-picture-card .ant-upload-text {
-    margin-top: 8px;
-    color: #666;
-  }
-
-  .page-direction{
-    background: #fff;
-    .title{
-      position: relative;
-      box-sizing: border-box;
-      padding:0 24px;
-      height: 56px;
-      .title-des{
-        box-sizing: border-box;
-        height: 56px;
-        // flex: 1 1;
-        padding: 16px 0;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        .help{
-          font-size: 16px;
-          color: #272727;
-          margin-right: 8px;
-        }
-        .detail{
-          font-size: 14px;
-          color: #1890ff;
-        }
-        .close{
-          // position: absolute;
-          // right: 24px;
-          float: right;
-          margin-top: 4px;
-          // top: 16px;
-          &:hover{
-            cursor: pointer;
-          }
-        }
-      }
-    }
-    .help-line{
-      width: 100%;
-      height: 0.5px;
-      background: #e9e9e9;
-    }
-    .content-box{
-      padding: 0 24px 24px;
-      padding-right: 2px;
-    }
-    .content{
-      padding: 24px 24px 0 0;
-      // min-height: 300px;
-      background: #fff;
-      // max-height: 650px;
-      // height: calc(100% - 56px);
-      height:100%;
-      overflow-y: auto;
-      p{
-        margin: 0;
-        padding: 0;
-      }
-      &::-webkit-scrollbar{
-        width: 6px;
-        height: 8px;
-      }
-      /*定义滚动条轨道 内阴影+圆角*/
-      &::-webkit-scrollbar-track{
-        border-radius: 10px;
-        background-color: #fff;
-      }
-      /*定义滑块 内阴影+圆角*/
-      &::-webkit-scrollbar-thumb{
-          border-radius: 5px;
-          box-shadow: inset 0 0 5px rgba(0,0,0,0.4);
-          background-color: #9B9B9B;
-      }
-    }
-  }
-  .form-body /deep/.ant-form{
-    background: #fff;
-  }
-
-</style>
 <template>
   <a-card :body-style="{background:'#f0f2f5', padding:0}" class="form-body" :bordered="false">
     <a-row :gutter="24">
@@ -245,17 +147,12 @@ export default {
   methods: {
     checkResize () {
       this.boxHeight.height = document.documentElement.clientHeight - 48 - 65 - 65 + 'px'
-      // const top = this.$refs.pageDirection.getBoundingClientRect().top
-      // if (top === 0) {
-      //   this.boxHeight.height = document.documentElement.clientHeight + 'px'
-      // }
     },
     // handler
     handleSubmit (e) {
       e.preventDefault()
       this.form.validateFields((err, values) => {
         if (!err) {
-          // eslint-disable-next-line no-console
           console.log('Received values of form: ', values)
         }
       })
@@ -284,3 +181,108 @@ export default {
   }
 }
 </script>
+<!--todo多余代码待删除-->
+<style lang="less" scoped>
+  .title-name {
+    font-size: 18px;
+    margin-left: 200px ;
+  }
+
+  .line{
+    box-sizing: border-box;
+    width:100%;
+    padding: 0 20px;
+    height: 0.5px;
+    background: #cccccc;
+    margin-bottom: 24px;
+  }
+  /* you can make up upload button and sample style by using stylesheets */
+  .ant-upload-select-picture-card i {
+    font-size: 32px;
+    color: #999;
+  }
+
+  .ant-upload-select-picture-card .ant-upload-text {
+    margin-top: 8px;
+    color: #666;
+  }
+
+  .page-direction{
+    background: #fff;
+    .title{
+      position: relative;
+      box-sizing: border-box;
+      padding:0 24px;
+      height: 56px;
+      .title-des{
+        box-sizing: border-box;
+        height: 56px;
+        // flex: 1 1;
+        padding: 16px 0;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        .help{
+          font-size: 16px;
+          color: #272727;
+          margin-right: 8px;
+        }
+        .detail{
+          font-size: 14px;
+          color: #1890ff;
+        }
+        .close{
+          // position: absolute;
+          // right: 24px;
+          float: right;
+          margin-top: 4px;
+          // top: 16px;
+          &:hover{
+            cursor: pointer;
+          }
+        }
+      }
+    }
+    .help-line{
+      width: 100%;
+      height: 0.5px;
+      background: #e9e9e9;
+    }
+    .content-box{
+      padding: 0 24px 24px;
+      padding-right: 2px;
+    }
+    .content{
+      padding: 24px 24px 0 0;
+      // min-height: 300px;
+      background: #fff;
+      // max-height: 650px;
+      // height: calc(100% - 56px);
+      height:100%;
+      overflow-y: auto;
+      p{
+        margin: 0;
+        padding: 0;
+      }
+      &::-webkit-scrollbar{
+        width: 6px;
+        height: 8px;
+      }
+      /*定义滚动条轨道 内阴影+圆角*/
+      &::-webkit-scrollbar-track{
+        border-radius: 10px;
+        background-color: #fff;
+      }
+      /*定义滑块 内阴影+圆角*/
+      &::-webkit-scrollbar-thumb{
+          border-radius: 5px;
+          box-shadow: inset 0 0 5px rgba(0,0,0,0.4);
+          background-color: #9B9B9B;
+      }
+    }
+  }
+  .form-body /deep/.ant-form{
+    background: #fff;
+  }
+
+</style>

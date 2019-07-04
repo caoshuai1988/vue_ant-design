@@ -1,3 +1,9 @@
+<!--
+ * @Author: lxh
+ * @Date: 2019-07-03 16:01:38
+ * @LastEditTime: 2019-07-04 16:04:13
+ * @Description:高级地图demo
+ -->
 <template>
   <a-card :body-style="{padding: '24px 32px'}">
     <div class="map-content">

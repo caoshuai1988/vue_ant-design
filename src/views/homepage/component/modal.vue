@@ -1,36 +1,11 @@
-<style lang="less" scoped>
-
-.ant-form-horizontal .ant-form-item {
-  margin-bottom: 16px;
-}
-/deep/ .ant-form-horizontal .ant-form-item > .ant-form-item-label{
-  line-height: 24px;
-}
-/deep/ .ant-form-horizontal .ant-form-item .ant-form-item-control-wrapper .ant-form-item-control{
-  line-height: 24px;
-}
-/deep/.ant-transfer{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-/deep/.ant-transfer-list{
-  width: 200px;
-  height: 320px;
-}
-</style>
+<!--
+ * @Author: 张志勇
+ * @Date: 2019-07-01 17:58:19
+ * @LastEditTime: 2019-07-04 11:21:16
+ * @Description:穿梭框样式的实现 可进行常用功能的设置
+ -->
 
 <template>
-  <!-- <a-modal
-    title="穿梭框"
-    :width="720"
-    :visible="visible"
-    :confirmLoading="confirmLoading"
-    @ok="handleOk"
-    @cancel="handleCancel"
-  >
-    <p>{{ ModalText }}</p>
-  </a-modal> -->
   <a-modal
     title="常用功能设置"
     :width="720"
@@ -50,6 +25,7 @@
         @scroll="handleScroll"
         :render="item=>item.title"
         :disabled="disabled"/>
+      <!-- 是否禁止进行选择的按钮 -->
       <!-- <a-switch
         unCheckedChildren="disabled"
         checkedChildren="disabled"
@@ -157,3 +133,24 @@ export default {
   }
 }
 </script>
+
+<style lang="less" scoped>
+  .ant-form-horizontal .ant-form-item {
+    margin-bottom: 16px;
+  }
+  /deep/ .ant-form-horizontal .ant-form-item > .ant-form-item-label{
+    line-height: 24px;
+  }
+  /deep/ .ant-form-horizontal .ant-form-item .ant-form-item-control-wrapper .ant-form-item-control{
+    line-height: 24px;
+  }
+  /deep/.ant-transfer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  /deep/.ant-transfer-list{
+    width: 200px;
+    height: 320px;
+  }
+</style>

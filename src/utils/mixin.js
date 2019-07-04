@@ -10,7 +10,7 @@ const mixin = {
     ...mapState({
       layoutMode: state => state.app.layout,
       navTheme: state => state.app.theme,
-      surplusTheme: state => state.app.surplusTheme,
+      surplusTheme: state => state.app.surplusTheme,//mkk 增加额外2种主题风格设置
       primaryColor: state => state.app.color,
       colorWeak: state => state.app.weak,
       fixedHeader: state => state.app.fixedHeader,
@@ -19,7 +19,9 @@ const mixin = {
       contentWidth: state => state.app.contentWidth,
       autoHideHeader: state => state.app.autoHideHeader,
       sidebarOpened: state => state.app.sidebar,
-      multiTab: state => state.app.multiTab
+      multiTab: state => state.app.multiTab,
+      magnifier: state => state.app.magnifier, //mkk 放大镜
+      setDrawerStatus: state => state.app.settingDrawer //mkk 侧边栏站点设置
     })
   },
   methods: {

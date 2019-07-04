@@ -1,221 +1,10 @@
-<style lang="less" scoped>
-a {
-  text-decoration: none;
-}
-.page-sign-title {
-  color: rgba(0, 0, 0, 0.85);
-  font-size: 16px;
-  font-weight: 500;
-  margin-bottom: 16px;
-}
-.lable {
-  text-align: right;
-}
-.title-name {
-  font-size: 18px;
-  margin-left: 200px;
-}
+<!--
+ * @Author: 张志勇
+ * @Date: 2019-06-15 10:22:09
+ * @LastEditTime: 2019-07-04 10:40:27
+ * @Description:分页签详情页 包含地图组件 报表组件 可进行附件预览
+ -->
 
-.line {
-  box-sizing: border-box;
-  width: 100%;
-  padding: 0 20px;
-  height: 0.5px;
-  background: #cccccc;
-  margin-bottom: 24px;
-}
-/* you can make up upload button and sample style by using stylesheets */
-.ant-upload-select-picture-card i {
-  font-size: 32px;
-  color: #999;
-}
-
-.ant-upload-select-picture-card .ant-upload-text {
-  margin-top: 8px;
-  color: #666;
-}
-
-.card-header {
-  box-sizing: border-box;
-  // height: 56px;
-  z-index: 1;
-  padding-top: 11px;
-  width: 100%;
-  margin-bottom: 24px;
-  background-color: #fff;
-  box-shadow: 0px 0px 20px 0px rgba(129, 129, 129, 0.2);
-}
-/deep/.ant-tabs-bar {
-  margin: 0;
-  border: none !important;
-}
-/deep/.ant-tabs-nav-container {
-  margin-bottom: 0;
-}
-// 附件打包现在样式
-.table-wrap {
-  margin-bottom: 48px;
-  .title-box {
-    // height: 32px;
-    padding-bottom: 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    .title-des {
-      font-size: 16px;
-      color: rgba(0, 0, 0, 0.85);
-    }
-  }
-}
-
-// 地图的样式
-/* 放大生效 */
-
-.mapContent {
-  height: 100% !important;
-}
-#container {
-  width: 100%;
-  height: 640px;
-}
-.screenload {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1999;
-}
-.amplification {
-  cursor: pointer;
-  padding: 0 10px;
-}
-.page-direction {
-  background: #fff;
-  // min-width: 400px;
-  // height: 600px;
-  // min-height: 800px;
-  z-index: 3;
-  .title {
-    position: relative;
-    box-sizing: border-box;
-    padding: 0 24px;
-    height: 56px;
-    .title-des {
-      box-sizing: border-box;
-      height: 56px;
-      // flex: 1 1;
-      padding: 16px 0;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      .help {
-        font-size: 16px;
-        color: #272727;
-        margin-right: 8px;
-      }
-      .detail {
-        font-size: 14px;
-        color: #1890ff;
-      }
-      .close {
-        // position: absolute;
-        // right: 24px;
-        float: right;
-        margin-top: 4px;
-        // top: 16px;
-        &:hover {
-          cursor: pointer;
-        }
-      }
-    }
-  }
-  .help-line {
-    width: 100%;
-    height: 0.5px;
-    background: #e9e9e9;
-  }
-  .content-box {
-    padding: 24px;
-  }
-  .content {
-    // height: 650px;
-    min-height: 300px;
-    max-height: 650px;
-    overflow-y: auto;
-    &::-webkit-scrollbar {
-      width: 4px;
-      height: 8px;
-      // background-color: #F5F5F5;
-    }
-
-    /*定义滚动条轨道 内阴影+圆角*/
-    &::-webkit-scrollbar-track {
-      box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
-      border-radius: 10px;
-      background-color: #a5a5a5;
-    }
-
-    /*定义滑块 内阴影+圆角*/
-    &::-webkit-scrollbar-thumb {
-      border-radius: 5px;
-      box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
-      background-color: #ededed;
-    }
-  }
-}
-.form-detial /deep/ .ant-card .ant-card-body {
-  padding: 0;
-}
-.card-header {
-  box-sizing: border-box;
-  // height: 56px;
-  z-index: 1;
-  padding-top: 11px;
-  width: 100%;
-  margin-bottom: 24px;
-  background-color: #fff;
-  box-shadow: 0px 0px 20px 0px rgba(129, 129, 129, 0.2);
-}
-.ant-tabs-bar {
-  margin: 0;
-  border: none !important;
-}
-// 附件打包现在样式
-.table-wrap {
-  margin-bottom: 48px;
-  .title-box {
-    // height: 32px;
-    padding-bottom: 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    .title-des {
-      font-size: 16px;
-      color: rgba(0, 0, 0, 0.85);
-    }
-  }
-}
-
-// 地图的样式
-/* 放大生效 */
-
-.mapContent {
-  height: 100% !important;
-}
-#container {
-  width: 100%;
-  height: 640px;
-}
-.screenload {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 11;
-}
-.amplification {
-  cursor: pointer;
-  padding: 0 10px;
-}
-</style>
 <template>
   <div>
     <a-card
@@ -385,7 +174,7 @@ a {
                 <div class="table-wrap">
                   <div class="title-box">
                     <div class="title-des">项目可研报告</div>
-                    <a-button size="small">打包下载</a-button>
+                    <a-button >打包下载</a-button>
                   </div>
                   <a-table :dataSource="data" :pagination="false">
                     <a-table-column title="种类" data-index="icon" key="icon">
@@ -417,7 +206,7 @@ a {
                 <div class="table-wrap">
                   <div class="title-box">
                     <div class="title-des">绩效目标</div>
-                    <a-button size="small">打包下载</a-button>
+                    <a-button >打包下载</a-button>
                   </div>
                   <a-table :dataSource="data" :pagination="false">
                     <a-table-column title="种类" data-index="icon" key="icon">
@@ -976,3 +765,172 @@ export default {
   }
 }
 </script>
+
+<style lang="less" scoped>
+  a {
+    text-decoration: none;
+  }
+  .page-sign-title {
+    color: rgba(0, 0, 0, 0.85);
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+  .lable {
+    text-align: right;
+  }
+  .title-name {
+    font-size: 18px;
+    margin-left: 200px;
+  }
+
+  .line {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 20px;
+    height: 0.5px;
+    background: #cccccc;
+    margin-bottom: 24px;
+  }
+  /* you can make up upload button and sample style by using stylesheets */
+  .ant-upload-select-picture-card i {
+    font-size: 32px;
+    color: #999;
+  }
+
+  .ant-upload-select-picture-card .ant-upload-text {
+    margin-top: 8px;
+    color: #666;
+  }
+
+  .card-header {
+    box-sizing: border-box;
+    // height: 56px;
+    z-index: 1;
+    padding-top: 11px;
+    width: 100%;
+    margin-bottom: 24px;
+    background-color: #fff;
+    box-shadow: 0px 0px 20px 0px rgba(129, 129, 129, 0.2);
+  }
+  /deep/.ant-tabs-bar {
+    margin: 0;
+    border: none !important;
+  }
+  /deep/.ant-tabs-nav-container {
+    margin-bottom: 0;
+  }
+
+  .form-detial /deep/ .ant-card .ant-card-body {
+    padding: 0;
+  }
+
+  // 附件打包现在样式
+  .table-wrap {
+    margin-bottom: 48px;
+    .title-box {
+      // height: 32px;
+      padding-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .title-des {
+        font-size: 16px;
+        color: rgba(0, 0, 0, 0.85);
+      }
+    }
+  }
+
+  // 地图的样式
+  /* 放大生效 */
+
+  .mapContent {
+    height: 100% !important;
+  }
+  #container {
+    width: 100%;
+    height: 640px;
+  }
+  .screenload {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 11;
+  }
+  .amplification {
+    cursor: pointer;
+    padding: 0 10px;
+  }
+
+  // TODOZZY帮助样式 待删除帮助组件的提取
+  .page-direction {
+    background: #fff;
+    z-index: 3;
+    .title {
+      position: relative;
+      box-sizing: border-box;
+      padding: 0 24px;
+      height: 56px;
+      .title-des {
+        box-sizing: border-box;
+        height: 56px;
+        padding: 16px 0;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        .help {
+          font-size: 16px;
+          color: #272727;
+          margin-right: 8px;
+        }
+        .detail {
+          font-size: 14px;
+          color: #1890ff;
+        }
+        .close {
+          // position: absolute;
+          // right: 24px;
+          float: right;
+          margin-top: 4px;
+          // top: 16px;
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+    .help-line {
+      width: 100%;
+      height: 0.5px;
+      background: #e9e9e9;
+    }
+    .content-box {
+      padding: 24px;
+    }
+    .content {
+      // height: 650px;
+      min-height: 300px;
+      max-height: 650px;
+      overflow-y: auto;
+      &::-webkit-scrollbar {
+        width: 4px;
+        height: 8px;
+        // background-color: #F5F5F5;
+      }
+
+      /*定义滚动条轨道 内阴影+圆角*/
+      &::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        background-color: #a5a5a5;
+      }
+
+      /*定义滑块 内阴影+圆角*/
+      &::-webkit-scrollbar-thumb {
+        border-radius: 5px;
+        box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+        background-color: #ededed;
+      }
+    }
+  }
+</style>

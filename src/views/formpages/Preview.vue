@@ -1,3 +1,155 @@
+<!--
+ * @Author: lxh
+ * @Date: 2019-07-03 16:01:38
+ * @LastEditTime: 2019-07-04 16:09:51
+ * @Description: word ... 预览
+ -->
+
+<template>
+  <div class="preview-box" :style="previewContent">
+    <!-- 顶部 -->
+    <div class="preview-header">
+      <h1 style="font-size: 20px;">2018年韶关市翁源县江尾镇高标准农田建设项目 - 计划阶段 - 附件信息</h1>
+    </div>
+    <div class="preview-main">
+      <!-- 侧边栏 -->
+      <div class="preview-direction" :style="contentStyle">
+        <div class="content-box">
+          <div class="content-nav">
+            <!-- 标题 -->
+            <div class="title" style="text-align: left;">{{ "可研报告" }}</div>
+            <div class="preview-nav--item" :class="{on: wordShow==1}" @click="tabSwitcher(1)">
+              <img src="@/assets/previewIcon/word.png" alt="word">
+              <div class="file-name">融合服务开发平台前端部分工 作前端部分工作规划.docx</div>
+            </div>
+            <div class="preview-nav--item" :class="{on: wordShow==2}" @click="tabSwitcher(2)">
+              <img src="@/assets/previewIcon/excel.png" alt="word">
+              <div class="file-name">融合服务开发平台前端部分工 作前端部分工作规划.excel</div>
+            </div>
+            <a-divider style="margin-bottom: 32px"/>
+            <div class="title" style="text-align: left;">{{ "绩效目标" }}</div>
+            <div class="preview-nav--item" :class="{on: wordShow==3}" @click="tabSwitcher(3)">
+              <img src="@/assets/previewIcon/unknow.png" alt="word">
+              <div class="file-name">融合服务开发平台前端部分工 作前端部分工作规划.jsxp</div>
+            </div>
+            <div class="preview-nav--item" :class="{on: wordShow==4}" @click="tabSwitcher(4)">
+              <img src="@/assets/previewIcon/img.png" alt="word">
+              <div class="file-name">融合服务开发平台前端部分工 作前端部分工作规划.jpg</div>
+            </div>
+            <div class="preview-nav--item" :class="{on: wordShow==5}" @click="tabSwitcher(5)">
+              <img src="@/assets/previewIcon/pdf.png" alt="word">
+              <div class="file-name">融合服务开发平台前端部分工 作前端部分工作规划.pdf</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 右侧内容区 -->
+      <div class="right-box">
+        <a-card
+          :head-style="{height:'57px', fontSize:'16px', color:'rgba(0,0,0,0.85)'}"
+          :body-style="{padding: 0, border: 0}"
+        >
+          <div class="title-detail">
+            <div class="info">
+              <span class="title__name" style="margin-right:12px">
+                <a-icon type="file-word"/>&nbsp;融合服务开发平台前端部分工作规划.docx
+              </span>
+              <span class="title-des" style="margin-right:12px">
+                <a-icon type="save"/>&nbsp;29.6MB
+              </span>
+              <span class="title-des" style="margin-right:12px">
+                <a-icon type="clock-circle"/>&nbsp;2019-09-21
+              </span>
+            </div>
+            <div class="btn-warp">
+              <a-button style="margin-right:12px">原图</a-button>
+              <a-button>下载</a-button>
+            </div>
+          </div>
+          <div class="preview-body" :style="previewStyle" ref="text">
+            <iframe
+              v-if="wordShow == 1"
+              src="https://view.officeapps.live.com/op/view.aspx?src=http://www.xdocin.com/demo/demo.docx"
+              width="100%"
+              :height="value"
+              frameborder="1"
+            ></iframe>
+            <!-- excel  -->
+            <iframe
+              v-if="wordShow == 2"
+              src="https://view.officeapps.live.com/op/view.aspx?src=http://storage.xuetangx.com/public_assets/xuetangx/PDF/1.xls"
+              width="100%"
+              :height="value"
+              frameborder="1"
+            ></iframe>
+            <!-- // PDF -->
+            <iframe
+              v-if="wordShow == 5"
+              src="http://file.dakawengu.com/file/2018-05-29/20180527-tianfeng.pdf"
+              width="100%"
+              :height="value"
+              allowfullscreen
+              webkitallowfullscreen
+            ></iframe>
+            <div class="err-icon" :style="imgBox" v-if="wordShow == 3">
+              <img src="@/assets/previewIcon/unknow.png" alt="word" style="margin-right: 32px;">
+              <div>
+                <div style="margin-bottom: 32px; font-size:16px">抱歉此附件无法在线预览</div>
+                <a-button type="primary">下载</a-button>
+              </div>
+            </div>
+            <div :style="imgBox" class v-if="wordShow == 4">
+              <img src="@/assets/demoPng.jpg" alt class="bgc-class">
+            </div>
+          </div>
+        </a-card>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'Preview',
+  props: {
+    valKey: {
+      type: Number,
+      default: 1
+    }
+  },
+  data () {
+    return {
+      helpNum: 4,
+      num: 20,
+      value: '100%',
+      wordShow: '',
+      previewStyle: {
+        height: ''
+      },
+      contentStyle: {
+        height: ''
+      },
+      imgBox: {
+        height: '100%'
+      },
+      previewContent: {
+        height: ''
+      }
+    }
+  },
+  beforeCreate () {
+    document.title = '附件信息 - 计划阶段 - 2018年韶关市翁源县江尾镇高标准农田建设项目'
+  },
+  mounted () {
+    this.wordShow = this.$route.query.val
+  },
+  methods: {
+    tabSwitcher (val) {
+      this.wordShow = val
+    }
+  }
+}
+</script>
 <style lang="less" scoped>
 h1 {
   margin: 0;
@@ -159,148 +311,3 @@ h1 {
   height: 100%;
 }
 </style>
-<template>
-  <div class="preview-box" :style="previewContent">
-    <!-- 顶部 -->
-    <div class="preview-header">
-      <h1 style="font-size: 20px;">2018年韶关市翁源县江尾镇高标准农田建设项目 - 计划阶段 - 附件信息</h1>
-    </div>
-    <div class="preview-main">
-      <!-- 侧边栏 -->
-      <div class="preview-direction" :style="contentStyle">
-        <div class="content-box">
-          <div class="content-nav">
-            <!-- 标题 -->
-            <div class="title" style="text-align: left;">{{ "可研报告" }}</div>
-            <div class="preview-nav--item" :class="{on: wordShow==1}" @click="tabSwitcher(1)">
-              <img src="@/assets/previewIcon/word.png" alt="word">
-              <div class="file-name">融合服务开发平台前端部分工 作前端部分工作规划.docx</div>
-            </div>
-            <div class="preview-nav--item" :class="{on: wordShow==2}" @click="tabSwitcher(2)">
-              <img src="@/assets/previewIcon/excel.png" alt="word">
-              <div class="file-name">融合服务开发平台前端部分工 作前端部分工作规划.excel</div>
-            </div>
-            <a-divider style="margin-bottom: 32px"/>
-            <div class="title" style="text-align: left;">{{ "绩效目标" }}</div>
-            <div class="preview-nav--item" :class="{on: wordShow==3}" @click="tabSwitcher(3)">
-              <img src="@/assets/previewIcon/unknow.png" alt="word">
-              <div class="file-name">融合服务开发平台前端部分工 作前端部分工作规划.jsxp</div>
-            </div>
-            <div class="preview-nav--item" :class="{on: wordShow==4}" @click="tabSwitcher(4)">
-              <img src="@/assets/previewIcon/img.png" alt="word">
-              <div class="file-name">融合服务开发平台前端部分工 作前端部分工作规划.jpg</div>
-            </div>
-            <div class="preview-nav--item" :class="{on: wordShow==5}" @click="tabSwitcher(5)">
-              <img src="@/assets/previewIcon/pdf.png" alt="word">
-              <div class="file-name">融合服务开发平台前端部分工 作前端部分工作规划.pdf</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- 右侧内容区 -->
-      <div class="right-box">
-        <a-card
-          :head-style="{height:'57px', fontSize:'16px', color:'rgba(0,0,0,0.85)'}"
-          :body-style="{padding: 0, border: 0}"
-        >
-          <div class="title-detail">
-            <div class="info">
-              <span class="title__name" style="margin-right:12px">
-                <a-icon type="file-word"/>&nbsp;融合服务开发平台前端部分工作规划.docx
-              </span>
-              <span class="title-des" style="margin-right:12px">
-                <a-icon type="save"/>&nbsp;29.6MB
-              </span>
-              <span class="title-des" style="margin-right:12px">
-                <a-icon type="clock-circle"/>&nbsp;2019-09-21
-              </span>
-            </div>
-            <div class="btn-warp">
-              <a-button style="margin-right:12px">原图</a-button>
-              <a-button>下载</a-button>
-            </div>
-          </div>
-          <div class="preview-body" :style="previewStyle" ref="text">
-            <iframe
-              v-if="wordShow == 1"
-              src="https://view.officeapps.live.com/op/view.aspx?src=http://www.xdocin.com/demo/demo.docx"
-              width="100%"
-              :height="value"
-              frameborder="1"
-            ></iframe>
-            <!-- excel  -->
-            <iframe
-              v-if="wordShow == 2"
-              src="https://view.officeapps.live.com/op/view.aspx?src=http://storage.xuetangx.com/public_assets/xuetangx/PDF/1.xls"
-              width="100%"
-              :height="value"
-              frameborder="1"
-            ></iframe>
-            <!-- // PDF -->
-            <iframe
-              v-if="wordShow == 5"
-              src="http://file.dakawengu.com/file/2018-05-29/20180527-tianfeng.pdf"
-              width="100%"
-              :height="value"
-              allowfullscreen
-              webkitallowfullscreen
-            ></iframe>
-            <div class="err-icon" :style="imgBox" v-if="wordShow == 3">
-              <img src="@/assets/previewIcon/unknow.png" alt="word" style="margin-right: 32px;">
-              <div>
-                <div style="margin-bottom: 32px; font-size:16px">抱歉此附件无法在线预览</div>
-                <a-button type="primary">下载</a-button>
-              </div>
-            </div>
-            <div :style="imgBox" class v-if="wordShow == 4">
-              <img src="@/assets/demoPng.jpg" alt class="bgc-class">
-            </div>
-          </div>
-        </a-card>
-      </div>
-    </div>
-  </div>
-</template>
-
-<script>
-export default {
-  name: 'Preview',
-  props: {
-    valKey: {
-      type: Number,
-      default: 1
-    }
-  },
-  data () {
-    return {
-      helpNum: 4,
-      num: 20,
-      value: '100%',
-      wordShow: '',
-      previewStyle: {
-        height: ''
-      },
-      contentStyle: {
-        height: ''
-      },
-      imgBox: {
-        height: '100%'
-      },
-      previewContent: {
-        height: ''
-      }
-    }
-  },
-  beforeCreate () {
-    document.title = '附件信息 - 计划阶段 - 2018年韶关市翁源县江尾镇高标准农田建设项目'
-  },
-  mounted () {
-    this.wordShow = this.$route.query.val
-  },
-  methods: {
-    tabSwitcher (val) {
-      this.wordShow = val
-    }
-  }
-}
-</script>

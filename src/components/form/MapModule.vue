@@ -52,12 +52,17 @@ export default {
       },
       mapMr: {
         width: '100%',
-        height: ''
+        height: '100%',
+        paddingBottom: '0'
       }
     }
   },
   mounted () {
     this.mapMr.height = window.screen.availHeight - this.$refs.text.offsetHeight - 64 - 61 - 45 - 52.5 - 93 + 'px' // 暂时
+    // window.addEventListener('resize', () => {
+    //   this.iconSwitch ? this.mapFd.width = '' : this.mapFd.width = document.documentElement.clientWidth + 'px'
+    //   this.mapMr.height = this.mapFd.height
+    // })
   },
   methods: {
 

@@ -5,10 +5,24 @@
         <h1 style="font-size: 20px;">{{ title }}</h1>
       </div>
       <div slot="extra">
-        <a-button-group >
-          <a-button value="narrow" @click="handleSizeChange"><a-icon type="zoom-out" /><span>缩 小</span></a-button>
+        <a-tooltip placement="bottom">
+          <a-button icon="zoom-in" style="margin-right: 8px" @click="bigScale">放大镜</a-button>
+          <template slot="title">
+            增加倍数：D<br/>
+            缩小倍数：A<br/>
+            放大可视区：W<br/>
+            缩小可视区：S <br/>
+            关闭放大镜：右键 Esc
+          </template>
+        </a-tooltip>
+        <a-button-group>
+          <a-button value="narrow" @click="handleSizeChange">
+            <a-icon type="zoom-out"/>
+            <span>缩 小</span></a-button>
           <a-button value="default" @click="handleSizeChange"><span>原始大小</span></a-button>
-          <a-button value="magnify" @click="handleSizeChange"><a-icon type="zoom-in" /><span>放 大</span></a-button>
+          <a-button value="magnify" @click="handleSizeChange">
+            <a-icon type="zoom-in"/>
+            <span>放 大</span></a-button>
         </a-button-group>
       </div>
       <iframe
@@ -26,6 +40,9 @@
 
 <script>
 import Vue from 'vue'
+import $ from 'jquery'
+import '@/utils/bup'
+
 export default {
   data () {
     return {
@@ -44,6 +61,11 @@ export default {
     }
   },
   methods: {
+    bigScale () {
+      setTimeout(function () {
+        $('#app').BUP(1.5, 'App')
+      }, 300)
+    },
     handleSizeChange (e) {
       console.log('cs:' + e)
       if (e.target.value === 'narrow') {
@@ -66,9 +88,9 @@ export default {
       // change size
       this.$refs.text.style.zoom = this.size
       this.$refs.text.style.cssText +=
-        '; -moz-transform: scale(' + this.size + ');-moz-transform-origin: 0 0; '
+          '; -moz-transform: scale(' + this.size + ');-moz-transform-origin: 0 0; '
       this.$refs.text.style.cssText +=
-        '; -webkit-transform: scale(' + this.size + '); -webkit-transform-origin: 0 0; '
+          '; -webkit-transform: scale(' + this.size + '); -webkit-transform-origin: 0 0; '
     }
   }
 }

@@ -124,9 +124,9 @@
           :style="{marginRight: '8px'}"
           @click="onClose"
         >
-          Cancel
+          取消
         </a-button>
-        <a-button @click="onClose" type="primary">Submit</a-button>
+        <a-button @click="onClose" type="primary">保存</a-button>
       </div>
     </a-drawer>
     <a-drawer
@@ -251,7 +251,7 @@
           textAlign: 'right',
         }"
       >
-        <a-button @click="onClose" type="primary">保存</a-button>
+        <a-button @click="onCloses" type="primary">保存</a-button>
       </div>
     </a-drawer>
   </div>

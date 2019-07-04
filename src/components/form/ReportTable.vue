@@ -56,7 +56,9 @@ export default {
     }
   },
   mounted () {
-    // this.tableStyle.heigh-24px -24px 20px;t = window.screen.availHeight - this.$refs.text.offsetHeight + 'px'
+    window.addEventListener('resize', () => {
+      !this.iconFlag ? this.tabSwitch.width = '' : this.tabSwitch.width = document.documentElement.clientWidth + 'px'
+    })
   },
   methods: {
     amplificationBtn () {

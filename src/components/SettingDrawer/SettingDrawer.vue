@@ -5,8 +5,7 @@
       placement="right"
       @close="onClose"
       :closable="false"
-      :visible="setDrawerStatus"
-    >
+      :visible="setDrawerStatus">
       <div class="setting-drawer-index-content">
 
         <div :style="{ marginBottom: '24px' }">
@@ -124,7 +123,8 @@
                   <template slot="title">
                     该设定仅 [顶部栏导航] 时有效
                   </template>
-                  <a-select v-if="layoutMode === 'sidemenu'" size="small" style="width: 80px;" :defaultValue="contentWidth" @change="handleContentWidthChange">
+                  <a-select v-if="layoutMode === 'sidemenu'" size="small" style="width: 80px;"
+                            :defaultValue="contentWidth" @change="handleContentWidthChange">
                     <a-select-option value="Fluid">流式</a-select-option>
                   </a-select>
 
@@ -159,7 +159,8 @@
                 </a-list-item-meta>
               </a-list-item>
               <a-list-item>
-                <a-switch slot="actions" size="small" :disabled="!fixedHeader" :defaultChecked="autoHideHeader" @change="handleFixedHeaderHidden"/>
+                <a-switch slot="actions" size="small" :disabled="!fixedHeader" :defaultChecked="autoHideHeader"
+                          @change="handleFixedHeaderHidden"/>
                 <a-list-item-meta>
                   <a-tooltip slot="title" placement="left">
                     <template slot="title">固定 Header 时可配置</template>
@@ -204,7 +205,7 @@
                 </a-list-item-meta>
               </a-list-item>
               <a-list-item>
-                <a-switch slot="actions" size="small" :defaultChecked="colorWeak" @change="onColorWeak" />
+                <a-switch slot="actions" size="small" :defaultChecked="colorWeak" @change="onColorWeak"/>
                 <a-list-item-meta>
                   <div slot="title">色弱模式</div>
                 </a-list-item-meta>
@@ -213,6 +214,12 @@
                 <a-switch slot="actions" size="small" :defaultChecked="multiTab" @change="onMultiTab"/>
                 <a-list-item-meta>
                   <div slot="title">多页签模式</div>
+                </a-list-item-meta>
+              </a-list-item>
+              <a-list-item>
+                <a-switch slot="actions" size="small" :defaultChecked="magnifier" @change="toggleMagnifier"/>
+                <a-list-item-meta>
+                  <div slot="title">放大镜开关</div>
                 </a-list-item-meta>
               </a-list-item>
             </a-list>
@@ -236,9 +243,19 @@
           </a-alert>
         </div>
       </div>
+      <div class="setting-drawer-index-handle" v-if="magnifier" @click="bigScale">
+        <a-tooltip placement="left">
+          <template slot="title">
+            增加倍数：D<br/>
+            缩小倍数：A<br/>
+            放大可视区：W<br/>
+            缩小可视区：S <br/>
+            关闭放大镜：右键 Esc
+          </template>
+          <a-icon type="zoom-in"/>
+        </a-tooltip>
+      </div>
       <div class="setting-drawer-index-handle" @click="toggle" v-if="setDrawerStatus">
-        <!--  <a-icon type="setting" v-if="!visible"/>
-        <a-icon type="close" v-else/>-->
         <a-icon type="close"/>
       </div>
     </a-drawer>
@@ -246,78 +263,86 @@
 </template>
 
 <script>
-import { DetailList } from '@/components'
-import SettingItem from './SettingItem'
-import config from '@/config/defaultSettings'
-import { updateTheme, updateColorWeak, colorList } from './settingConfig'
-import { mixin, mixinDevice } from '@/utils/mixin'
-import { mapState } from 'vuex'
+  import { DetailList } from '@/components'
+  import SettingItem from './SettingItem'
+  import config from '@/config/defaultSettings'
+  import { updateTheme, updateColorWeak, colorList } from './settingConfig'
+  import { mixin, mixinDevice } from '@/utils/mixin'
+  import { mapState } from 'vuex'
+  import $ from 'jquery'
+  import '@/utils/bup'
 
-export default {
-  components: {
-    DetailList,
-    SettingItem
-  },
-  mixins: [mixin, mixinDevice],
-  data () {
-    return {
-      visible: true,
-      colorList
-    }
-  },
-  watch: {
-
-  },
-  computed: {
-    setDrawerStatus () {
-      return this.$store.state.app.settingDrawer
+  export default {
+    components: {
+      DetailList,
+      SettingItem
     },
-    ...mapState({
-      selectOption (state) {
-        return state.app.zoom ? state.app.zoom : '1'
+    mixins: [mixin, mixinDevice],
+    data() {
+      return {
+        colorList
       }
-    })
-  },
-  mounted () {
-    updateTheme(this.primaryColor)
-    if (this.colorWeak !== config.colorWeak) {
-      updateColorWeak(this.colorWeak)
-    }
-  },
-  methods: {
-    onClose () {
-      this.$store.dispatch('ToggleSetDrawer', false)
     },
-    handeCurZoom (zoom) {
-      this.$store.dispatch('ToggleZoom', zoom)
-      document.body.style.zoom = zoom
+    watch: {},
+    computed: {
+      ...mapState({
+        selectOption(state) {
+          return state.app.zoom ? state.app.zoom : '1'
+        }
+      })
     },
-    toggle () {
-      this.$store.dispatch('ToggleSetDrawer', false)
+    mounted() {
+      let _this = this
+      setTimeout(() => {
+        _this.$store.state.app.settingDrawer = false
+      }, 16)
+      updateTheme(this.primaryColor)
+      if (this.colorWeak !== config.colorWeak) {
+        updateColorWeak(this.colorWeak)
+      }
     },
-    onColorWeak (checked) {
-      this.$store.dispatch('ToggleWeak', checked)
-      updateColorWeak(checked)
-    },
-    onMultiTab (checked) {
-      this.$store.dispatch('ToggleMultiTab', checked)
-    },
-    handleMenuTheme (theme) {
-      this.$store.dispatch('ToggleTheme', theme)
-      this.$store.dispatch('ToggleSurplusTheme', '')
-      document.getElementsByTagName('body')[0].classList.remove('ant-body-plusTheme01', 'ant-body-plusTheme02')
-    },
-    handleSurplusTheme (plusTheme) {
-      // contains
-      const body = document.getElementsByTagName('body')[0].classList
-      const cls = 'ant-body-' + plusTheme
-      body.remove('ant-body-plusTheme01', 'ant-body-plusTheme02')
-      body.add(cls)
-      this.$store.dispatch('ToggleSurplusTheme', plusTheme)
-    },
-    doCopy () {
-      // get current settings from mixin or this.$store.state.app, pay attention to the property name
-      const text = `export default {
+    methods: {
+      bigScale() {
+        setTimeout(function() {
+          $('#app').BUP(1.5, 'App')
+        }, 300)
+      },
+      onClose() {
+        this.$store.dispatch('ToggleSetDrawer', false)
+      },
+      handeCurZoom(zoom) {
+        this.$store.dispatch('ToggleZoom', zoom)
+        document.body.style.zoom = zoom
+      },
+      toggle() {
+        this.$store.dispatch('ToggleSetDrawer', false)
+      },
+      onColorWeak(checked) {
+        this.$store.dispatch('ToggleWeak', checked)
+        updateColorWeak(checked)
+      },
+      onMultiTab(checked) {
+        this.$store.dispatch('ToggleMultiTab', checked)
+      },
+      toggleMagnifier(checked) {
+        this.$store.dispatch('ToggleMagnifier', checked)
+      },
+      handleMenuTheme(theme) {
+        this.$store.dispatch('ToggleTheme', theme)
+        this.$store.dispatch('ToggleSurplusTheme', '')
+        document.getElementsByTagName('body')[0].classList.remove('ant-body-plusTheme01', 'ant-body-plusTheme02')
+      },
+      handleSurplusTheme(plusTheme) {
+        // contains
+        const body = document.getElementsByTagName('body')[0].classList
+        const cls = 'ant-body-' + plusTheme
+        body.remove('ant-body-plusTheme01', 'ant-body-plusTheme02')
+        body.add(cls)
+        this.$store.dispatch('ToggleSurplusTheme', plusTheme)
+      },
+      doCopy() {
+        // get current settings from mixin or this.$store.state.app, pay attention to the property name
+        const text = `export default {
         primaryColor: '${this.primaryColor}', // primary color of ant design
         navTheme: '${this.navTheme}', // theme for nav menu
         layout: '${this.layoutMode}', // nav menu position: sidemenu or topmenu
@@ -335,43 +360,43 @@ export default {
             storage: 'local',
           }
         }`
-      this.$copyText(text).then(message => {
-        console.log('copy', message)
-        this.$message.success('复制完毕')
-      }).catch(err => {
-        console.log('copy.err', err)
-        this.$message.error('复制失败')
-      })
-    },
-    handleLayout (mode) {
-      this.$store.dispatch('ToggleLayoutMode', mode)
-      // 因为顶部菜单不能固定左侧菜单栏，所以强制关闭
-      this.handleFixSiderbar(false)
-    },
-    handleContentWidthChange (type) {
-      this.$store.dispatch('ToggleContentWidth', type)
-    },
-    changeColor (color) {
-      if (this.primaryColor !== color) {
-        this.$store.dispatch('ToggleColor', color)
-        updateTheme(color)
+        this.$copyText(text).then(message => {
+          console.log('copy', message)
+          this.$message.success('复制完毕')
+        }).catch(err => {
+          console.log('copy.err', err)
+          this.$message.error('复制失败')
+        })
+      },
+      handleLayout(mode) {
+        this.$store.dispatch('ToggleLayoutMode', mode)
+        // 因为顶部菜单不能固定左侧菜单栏，所以强制关闭
+        this.handleFixSiderbar(false)
+      },
+      handleContentWidthChange(type) {
+        this.$store.dispatch('ToggleContentWidth', type)
+      },
+      changeColor(color) {
+        if (this.primaryColor !== color) {
+          this.$store.dispatch('ToggleColor', color)
+          updateTheme(color)
+        }
+      },
+      handleFixedHeader(fixed) {
+        this.$store.dispatch('ToggleFixedHeader', fixed)
+      },
+      handleFixedHeaderHidden(autoHidden) {
+        this.$store.dispatch('ToggleFixedHeaderHidden', autoHidden)
+      },
+      handleFixSiderbar(fixed) {
+        if (this.$store.getters.layoutMode === 'topmenu' || this.$store.getters.layoutMode === 'newmenu') {
+          this.$store.dispatch('ToggleFixSiderbar', false)
+          return
+        }
+        this.$store.dispatch('ToggleFixSiderbar', fixed)
       }
-    },
-    handleFixedHeader (fixed) {
-      this.$store.dispatch('ToggleFixedHeader', fixed)
-    },
-    handleFixedHeaderHidden (autoHidden) {
-      this.$store.dispatch('ToggleFixedHeaderHidden', autoHidden)
-    },
-    handleFixSiderbar (fixed) {
-      if (this.$store.getters.layoutMode === 'topmenu' || this.$store.getters.layoutMode === 'newmenu') {
-        this.$store.dispatch('ToggleFixSiderbar', false)
-        return
-      }
-      this.$store.dispatch('ToggleFixSiderbar', fixed)
     }
   }
-}
 </script>
 
 <style lang="less" scoped>

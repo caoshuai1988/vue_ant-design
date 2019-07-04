@@ -1,164 +1,10 @@
-<style lang="less" scoped>
-h1 {
-  margin: 0;
-}
-/deep/ .ant-card-head-wrapper {
-  height: 56px;
-}
-.preview-content {
-  display: flex;
-}
-.preview-content-title-box {
-  display: inline-block;
-  margin-right: 24px;
-}
-.preview-box {
-  display: flex;
-  flex-direction: column;
-  background: #f0f2f5;
-  height: 100%;
-  overflow: hidden;
-  .preview-header {
-    background: #fff;
-    box-sizing: border-box;
-    height: 64px;
-    padding: 0 24px;
-    font-size: 20px;
-    color: rgba(0, 0, 0, 0.85);
-    border: 0;
-    border-bottom: 1px;
-    border-style: solid;
-    border-color: #e8e8e8;
-    line-height: 64px;
-  }
-  .preview-main {
-    height: calc(100% - 64px);
-    display: flex;
-    flex: auto;
-    // 左侧
-    .preview-direction {
-      height: 100%;
-      background: #fff;
-      min-width: 256px;
-      overflow: auto;
-      &::-webkit-scrollbar {
-        width: 6px;
-        height: 8px;
-      }
-      /*定义滚动条轨道 内阴影+圆角*/
-      &::-webkit-scrollbar-track {
-        border-radius: 10px;
-        background-color: #fff;
-      }
-      /*定义滑块 内阴影+圆角*/
-      &::-webkit-scrollbar-thumb {
-        border-radius: 5px;
-        box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.4);
-        background-color: #9b9b9b;
-      }
-      .content-box {
-        padding: 16px 24px;
-        .title {
-          font-size: 16px;
-          color: rgba(0, 0, 0, 0.85);
-          line-height: 20px;
-          border: 0;
-          border-style: solid;
-          border-color: rgba(0, 0, 0, 0.65);
-          margin-bottom: 16px;
-        }
-        .content-nav {
-          height: 100%;
-          // overflow-y: auto;
-          text-align: center;
-          .preview-nav--item {
-            width: 208px;
-            box-sizing: border-box;
-            line-height: 20px;
-            background: #fff;
-            padding: 24px 16px;
-            margin-bottom: 16px;
-            cursor: pointer;
-            &:last-child {
-              margin-bottom: 0;
-            }
-            &.on {
-              background: #ededed;
-            }
-            img {
-              width: 56px;
-              width: 56px;
-              margin-bottom: 16px;
-            }
-            .file-name {
-              max-height: 80px;
-              overflow: hidden;
-            }
-          }
-        }
-      }
-    }
-    // 右侧
-    .right-box {
-      display: flex;
-      overflow: auto;
-      flex: auto;
-      background: #eff3f5;
-      padding: 24px;
-      height: 100%;
-      box-sizing: border-box;
-      /deep/ .ant-card {
-        flex: auto;
-        display: flex;
-        /deep/ .ant-card-body {
-          flex: auto;
-          display: flex;
-          flex-direction: column;
-        }
-      }
-      .title-detail {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        justify-items: center;
-        border: 0;
-        min-height: 56px;
-        box-sizing: border-box;
-        padding: 12px 24px;
-        border-bottom: 1px solid #e8e8e8;
-        .info {
-          width: 50%;
-          .title__name {
-            font-size: 16px;
-            color: rgba(0, 0, 0, 0.85);
-          }
-          .title-des {
-            font-size: 16px;
-            color: rgba(0, 0, 0, 0.65);
-          }
-        }
-        .btn-warp {
-          padding-left: 20px;
-        }
-      }
-      .preview-body {
-        padding: 24px 32px;
-        flex: auto;
-      }
-    }
-  }
-}
-.err-icon {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+<!--
+ * @Author: 张志勇
+ * @Date: 2019-07-03 18:03:16
+ * @LastEditTime: 2019-07-04 15:29:14
+ * @Description: 附件预览组件 增加全局预览
+ -->
 
-.bgc-class {
-  width: 100%;
-  height: 100%;
-}
-</style>
 <template>
   <div class="preview-box" :style="previewContent">
     <!-- 顶部 -->
@@ -304,3 +150,165 @@ export default {
   }
 }
 </script>
+
+<style lang="less" scoped>
+  h1 {
+    margin: 0;
+  }
+  /deep/ .ant-card-head-wrapper {
+    height: 56px;
+  }
+  .preview-content {
+    display: flex;
+  }
+  .preview-content-title-box {
+    display: inline-block;
+    margin-right: 24px;
+  }
+  .preview-box {
+    display: flex;
+    flex-direction: column;
+    background: #f0f2f5;
+    height: 100%;
+    overflow: hidden;
+    .preview-header {
+      background: #fff;
+      box-sizing: border-box;
+      height: 64px;
+      padding: 0 24px;
+      font-size: 20px;
+      color: rgba(0, 0, 0, 0.85);
+      border: 0;
+      border-bottom: 1px;
+      border-style: solid;
+      border-color: #e8e8e8;
+      line-height: 64px;
+    }
+    .preview-main {
+      height: calc(100% - 64px);
+      display: flex;
+      flex: auto;
+      // 左侧
+      .preview-direction {
+        height: 100%;
+        background: #fff;
+        min-width: 256px;
+        overflow: auto;
+        &::-webkit-scrollbar {
+          width: 6px;
+          height: 8px;
+        }
+        /*定义滚动条轨道 内阴影+圆角*/
+        &::-webkit-scrollbar-track {
+          border-radius: 10px;
+          background-color: #fff;
+        }
+        /*定义滑块 内阴影+圆角*/
+        &::-webkit-scrollbar-thumb {
+          border-radius: 5px;
+          box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.4);
+          background-color: #9b9b9b;
+        }
+        .content-box {
+          padding: 16px 24px;
+          .title {
+            font-size: 16px;
+            color: rgba(0, 0, 0, 0.85);
+            line-height: 20px;
+            border: 0;
+            border-style: solid;
+            border-color: rgba(0, 0, 0, 0.65);
+            margin-bottom: 16px;
+          }
+          .content-nav {
+            height: 100%;
+            // overflow-y: auto;
+            text-align: center;
+            .preview-nav--item {
+              width: 208px;
+              box-sizing: border-box;
+              line-height: 20px;
+              background: #fff;
+              padding: 24px 16px;
+              margin-bottom: 16px;
+              cursor: pointer;
+              &:last-child {
+                margin-bottom: 0;
+              }
+              &.on {
+                background: #ededed;
+              }
+              img {
+                width: 56px;
+                width: 56px;
+                margin-bottom: 16px;
+              }
+              .file-name {
+                max-height: 80px;
+                overflow: hidden;
+              }
+            }
+          }
+        }
+      }
+      // 右侧
+      .right-box {
+        display: flex;
+        overflow: auto;
+        flex: auto;
+        background: #eff3f5;
+        padding: 24px;
+        height: 100%;
+        box-sizing: border-box;
+        /deep/ .ant-card {
+          flex: auto;
+          display: flex;
+          /deep/ .ant-card-body {
+            flex: auto;
+            display: flex;
+            flex-direction: column;
+          }
+        }
+        .title-detail {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          justify-items: center;
+          border: 0;
+          min-height: 56px;
+          box-sizing: border-box;
+          padding: 12px 24px;
+          border-bottom: 1px solid #e8e8e8;
+          .info {
+            width: 50%;
+            .title__name {
+              font-size: 16px;
+              color: rgba(0, 0, 0, 0.85);
+            }
+            .title-des {
+              font-size: 16px;
+              color: rgba(0, 0, 0, 0.65);
+            }
+          }
+          .btn-warp {
+            padding-left: 20px;
+          }
+        }
+        .preview-body {
+          padding: 24px 32px;
+          flex: auto;
+        }
+      }
+    }
+  }
+  .err-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .bgc-class {
+    width: 100%;
+    height: 100%;
+  }
+</style>

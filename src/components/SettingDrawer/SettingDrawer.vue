@@ -372,6 +372,10 @@
         this.$store.dispatch('ToggleLayoutMode', mode)
         // 因为顶部菜单不能固定左侧菜单栏，所以强制关闭
         this.handleFixSiderbar(false)
+        //当选择fulltopmenu风格设置 强制为流式布局
+        if (mode === 'fulltopmenu') {
+          this.handleContentWidthChange('Fluid')
+        }
       },
       handleContentWidthChange(type) {
         this.$store.dispatch('ToggleContentWidth', type)

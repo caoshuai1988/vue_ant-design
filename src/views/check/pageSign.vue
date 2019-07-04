@@ -385,7 +385,7 @@ a {
                 <div class="table-wrap">
                   <div class="title-box">
                     <div class="title-des">项目可研报告</div>
-                    <a-button size="small">打包下载</a-button>
+                    <a-button >打包下载</a-button>
                   </div>
                   <a-table :dataSource="data" :pagination="false">
                     <a-table-column title="种类" data-index="icon" key="icon">
@@ -417,7 +417,7 @@ a {
                 <div class="table-wrap">
                   <div class="title-box">
                     <div class="title-des">绩效目标</div>
-                    <a-button size="small">打包下载</a-button>
+                    <a-button >打包下载</a-button>
                   </div>
                   <a-table :dataSource="data" :pagination="false">
                     <a-table-column title="种类" data-index="icon" key="icon">

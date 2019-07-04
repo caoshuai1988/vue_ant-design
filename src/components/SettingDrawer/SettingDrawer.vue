@@ -244,7 +244,16 @@
         </div>
       </div>
       <div class="setting-drawer-index-handle" v-if="magnifier" @click="bigScale">
-        <a-icon type="zoom-in"/>
+        <a-tooltip placement="left">
+          <template slot="title">
+            增加倍数：D<br/>
+            缩小倍数：A<br/>
+            放大可视区：W<br/>
+            缩小可视区：S <br/>
+            关闭放大镜：右键 Esc
+          </template>
+          <a-icon type="zoom-in"/>
+        </a-tooltip>
       </div>
       <div class="setting-drawer-index-handle" @click="toggle" v-if="setDrawerStatus">
         <a-icon type="close"/>

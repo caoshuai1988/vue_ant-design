@@ -61,8 +61,7 @@
     </a-layout>
 
     <a-layout v-if="isFullTopMenu()">
-      <a-layout
-:class="[layoutMode, `content-width-${contentWidth}`]"
+      <a-layout :class="[layoutMode, `content-width-${contentWidth}`]"
                 :style="{ paddingLeft: contentPaddingLeft, minHeight: '100vh' }">
         <!-- layout header -->
         <global-header

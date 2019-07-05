@@ -66,6 +66,10 @@ export default {
       document.title = '基本情况表 - 计划阶段 - 2018年韶关市翁源县江尾镇高标准农田建设项目'
     }
   },
+  mounted(){
+    //增加body缩放 mkk 2019/7/5
+    document.body.style.zoom = this.$store.state.app.zoom
+  },
   methods: {
     bigScale() {
       $('#app').BUP(1.5, 'App', this.$store.state.app.zoom)

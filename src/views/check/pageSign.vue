@@ -2,6 +2,7 @@
  * @Author: 张志勇
  * @Date: 2019-06-15 10:22:09
  * @LastEditTime: 2019-07-04 17:18:33
+ * @LastEditTime: 2019-07-05 11:50:24
  * @Description:分页签详情页 包含地图组件 报表组件 可进行附件预览
  -->
 
@@ -709,6 +710,9 @@ export default {
 </script>
 
 <style lang="less" scoped>
+/deep/ .ant-affix{
+  z-index: 1;
+}
   a {
     text-decoration: none;
   }

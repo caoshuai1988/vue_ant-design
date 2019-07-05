@@ -1,7 +1,7 @@
 <!--
  * @Author: lxh
  * @Date: 2019-07-03 16:01:38
- * @LastEditTime: 2019-07-04 16:08:49
+ * @LastEditTime: 2019-07-04 18:34:35
  * @Description: 弹出 抽屉
  -->
 <template>
@@ -26,9 +26,9 @@
             <a-form-item label="名字">
               <a-input
                 v-decorator="['name', {
-                  rules: [{ required: true, message: 'Please enter user name' }]
+                  rules: [{ required: true, message: '请选择' }]
                 }]"
-                placeholder="Please enter user name"
+                placeholder="请选择"
               />
             </a-form-item>
           </a-col>
@@ -36,12 +36,12 @@
             <a-form-item label="地址">
               <a-input
                 v-decorator="['url', {
-                  rules: [{ required: true, message: 'please enter url' }]
+                  rules: [{ required: true, message: '请输入url' }]
                 }]"
                 style="width: 100%"
                 addonBefore="http://"
                 addonAfter=".com"
-                placeholder="please enter url"
+                placeholder="url"
               />
             </a-form-item>
           </a-col>
@@ -51,12 +51,12 @@
             <a-form-item label="所有人">
               <a-select
                 v-decorator="['owner', {
-                  rules: [{ required: true, message: 'Please select an owner' }]
+                  rules: [{ required: true, message: '请选择' }]
                 }]"
-                placeholder="Please a-s an owner"
+                placeholder="请选择"
               >
-                <a-select-option value="xiao">Xiaoxiao Fu</a-select-option>
-                <a-select-option value="mao">Maomao Zhou</a-select-option>
+                <a-select-option value="xiao">小户</a-select-option>
+                <a-select-option value="mao">毛毛</a-select-option>
               </a-select>
             </a-form-item>
           </a-col>
@@ -64,12 +64,12 @@
             <a-form-item label="类型">
               <a-select
                 v-decorator="['type', {
-                  rules: [{ required: true, message: 'Please choose the type' }]
+                  rules: [{ required: true, message: '请选择类型' }]
                 }]"
-                placeholder="Please choose the type"
+                placeholder="请选择类型"
               >
-                <a-select-option value="private">Private</a-select-option>
-                <a-select-option value="public">Public</a-select-option>
+                <a-select-option value="private">类型A</a-select-option>
+                <a-select-option value="public">类型B</a-select-option>
               </a-select>
             </a-form-item>
           </a-col>
@@ -79,12 +79,12 @@
             <a-form-item label="批准人">
               <a-select
                 v-decorator="['approver', {
-                  rules: [{ required: true, message: 'Please choose the approver' }]
+                  rules: [{ required: true, message: '请选择' }]
                 }]"
-                placeholder="Please choose the approver"
+                placeholder="请选择比准人"
               >
-                <a-select-option value="jack">Jack Ma</a-select-option>
-                <a-select-option value="tom">Tom Liu</a-select-option>
+                <a-select-option value="jack">小明</a-select-option>
+                <a-select-option value="tom">汤姆</a-select-option>
               </a-select>
             </a-form-item>
           </a-col>
@@ -92,7 +92,7 @@
             <a-form-item label="日期时间">
               <a-date-picker
                 v-decorator="['dateTime', {
-                  rules: [{ required: true, message: 'Please choose the dateTime' }]
+                  rules: [{ required: true, message: '请选择日期' }]
                 }]"
                 style="width: 100%"
                 :getPopupContainer="trigger => trigger.parentNode"
@@ -105,10 +105,10 @@
             <a-form-item label="描述">
               <a-textarea
                 v-decorator="['description', {
-                  rules: [{ required: true, message: 'Please enter url description' }]
+                  rules: [{ required: true, message: '请填写描述' }]
                 }]"
                 :rows="4"
-                placeholder="please enter url description"
+                placeholder="请输入描述"
               />
             </a-form-item>
           </a-col>

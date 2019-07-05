@@ -5,9 +5,11 @@
  * 可以增加为VUE指令 放弃Jq
  * @param scale  缩放倍数
  * @param className 容器名字
+ * @param zoom body缩放比例
  * @constructor
  */
-$.fn.BUP = function(scale, className) {
+$.fn.BUP = function(scale, className, zoom) {
+  zoom = zoom ? zoom : 1
   let $element = this
   let $className = className
   let $BOX_WIDTH = $element.width()
@@ -63,8 +65,8 @@ $.fn.BUP = function(scale, className) {
     'visibility': 'hidden',
     'pointer-events': 'none',
     'zIndex': $options.zIndex,
-    'width': $options.width,
-    'height': $options.height,
+    'width': $options.width /zoom,
+    'height': $options.height /zoom,
     'border': $options.border,
     'background': $options.background,
     'border-radius': $options.round ? '50%' : 'none',
@@ -113,8 +115,8 @@ $.fn.BUP = function(scale, className) {
 
     //
     $blowupLens.css({
-      'width': $options.width,
-      'height': $options.height
+      'width': $options.width / zoom,
+      'height': $options.height / zoom
     })
     $blowupLens.children().css({
       'transform': 'scale(' + scale + ')'
@@ -138,12 +140,12 @@ $.fn.BUP = function(scale, className) {
 
     // apply styles to lens
     $blowupLens.css({
-      left: lensX,
-      top: lensY
+      left: lensX / zoom,
+      top: lensY / zoom
     })
     $blowupLens.children().css({
-      left: zoomX,
-      top: zoomY
+      left: zoomX / zoom,
+      top: zoomY / zoom
     })
   })
   //

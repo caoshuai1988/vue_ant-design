@@ -96,9 +96,7 @@
         this.$store.dispatch('ToggleSetDrawer', true)
       },
       bigScale() {
-        setTimeout(function() {
-          $('#app').BUP(1.5, 'App')
-        }, 300)
+        $('#app').BUP(1.5, 'App', this.$store.state.app.zoom)
       }
     }
   }

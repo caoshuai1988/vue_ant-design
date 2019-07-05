@@ -61,10 +61,8 @@ export default {
     }
   },
   methods: {
-    bigScale () {
-      setTimeout(function () {
-        $('#app').BUP(1.5, 'App')
-      }, 300)
+    bigScale() {
+      $('#app').BUP(1.5, 'App', this.$store.state.app.zoom)
     },
     handleSizeChange (e) {
       console.log('cs:' + e)

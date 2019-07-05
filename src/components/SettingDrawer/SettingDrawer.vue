@@ -303,9 +303,7 @@
     },
     methods: {
       bigScale() {
-        setTimeout(function() {
-          $('#app').BUP(1.5, 'App')
-        }, 300)
+        $('#app').BUP(1.5, 'App', this.$store.state.app.zoom)
       },
       onClose() {
         this.$store.dispatch('ToggleSetDrawer', false)
@@ -369,13 +367,13 @@
         })
       },
       handleLayout(mode) {
-        this.$store.dispatch('ToggleLayoutMode', mode)
-        // 因为顶部菜单不能固定左侧菜单栏，所以强制关闭
-        this.handleFixSiderbar(false)
-        //当选择fulltopmenu风格设置 强制为流式布局
+        //选择fulltopmenu风格 设置为流式布局 mkk
         if (mode === 'fulltopmenu') {
           this.handleContentWidthChange('Fluid')
         }
+        this.$store.dispatch('ToggleLayoutMode', mode)
+        // 因为顶部菜单不能固定左侧菜单栏，所以强制关闭
+        this.handleFixSiderbar(false)
       },
       handleContentWidthChange(type) {
         this.$store.dispatch('ToggleContentWidth', type)

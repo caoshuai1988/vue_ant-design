@@ -248,6 +248,7 @@ export default {
   methods: {
   // 根据浏览器缩小改变样式
     changeBrowser () {
+      // TODOliliang 代码待优化
       const oHeight = document.documentElement['clientHeight'] - 510
       $('.ant-table-body').css({ 'height': 'oHeight' })
       $('.table-wrapper').css({ 'minHeight': '0px' })
@@ -288,5 +289,3 @@ export default {
   }
 }
 </script>
-<style lang="less">
-</style>

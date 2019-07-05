@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-  	<a-button class="space-bottom_24" style="margin-bottom:24px;" @click="warning" type="primary">警告信息</a-button>
+    <a-button class="space-bottom_24" style="margin-bottom:24px;" @click="warning" type="primary">警告信息</a-button>
     <div class="space-bottom_24">
       <span>
         <div class="ant-message-notice">
@@ -16,8 +16,8 @@
         </div>
       </span>
     </div>
-    
-		<a-button class="space-bottom_24 space-bottom-btn" @click="error" type="primary">错误信息</a-button>
+
+    <a-button class="space-bottom_24 space-bottom-btn" @click="error" type="primary">错误信息</a-button>
     <div class="space-bottom_24">
       <span>
         <div class="ant-message-notice">
@@ -34,8 +34,8 @@
         </div>
       </span>
     </div>
-    
-		<a-button class="space-bottom_24 space-bottom-btn" @click="remindInfo" type="primary">提示信息</a-button>
+
+    <a-button class="space-bottom_24 space-bottom-btn" @click="remindInfo" type="primary">提示信息</a-button>
     <div class="space-bottom_24">
       <span>
         <div class="ant-message-notice">
@@ -52,8 +52,8 @@
         </div>
       </span>
     </div>
-    
-		<a-button class="space-bottom_24 space-bottom-btn" @click="success" type="primary">成功信息</a-button>
+
+    <a-button class="space-bottom_24 space-bottom-btn" @click="success" type="primary">成功信息</a-button>
     <div class="space-bottom_24">
       <span>
         <div class="ant-message-notice">
@@ -74,7 +74,6 @@
         </div>
       </span>
     </div>
-    
 
     <div style="text-align:center; margin-top:64px;">
       <a-button @click="tenSeconds">10秒显示</a-button>
@@ -137,8 +136,8 @@ export default {
   flex-direction: column;
   margin-top:24px;
   .space-bottom-btn{
-  	margin-top: 64px;
-  	margin-bottom: 24px;
+    margin-top: 64px;
+    margin-bottom: 24px;
   }
 }
 

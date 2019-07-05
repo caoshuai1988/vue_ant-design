@@ -17,8 +17,7 @@
           :columns="columns"
           :data="loadData"
           :alert="false"
-          :rowSelection="{ selectedRowKeys: selectedRowKeys, onChange: onSelectChange }"
-        >
+          :rowSelection="{ selectedRowKeys: selectedRowKeys, onChange: onSelectChange }">
           <span slot="action" slot-scope="text, record">
             <template v-if="$auth('table.update')">
               <a @click="handleEdit(record)">编辑</a>

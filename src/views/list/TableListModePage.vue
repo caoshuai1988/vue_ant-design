@@ -68,7 +68,7 @@
       <a-button @click="tableOption">{{ optionAlertShow && '关闭' || '开启' }} alert</a-button>
       <a-alert style="margin-top: 18px;display: block;">
         <template slot="message">
-         <img style="display: inline-block;margin-top:-3px;margin-right:4px;" :src="prompt"/><span style="margin-right: 6px">已选择:<a style="font-weight: 600;margin-left:6px;margin-right:6px;">4</a>项</span><span style="margin-left:12px;margin-right:12px">选中项总投资合计：<b style="margin-right:6px">36.4</b>万元</span> |
+          <img style="display: inline-block;margin-top:-3px;margin-right:4px;" :src="prompt"/><span style="margin-right: 6px">已选择:<a style="font-weight: 600;margin-left:6px;margin-right:6px;">4</a>项</span><span style="margin-left:12px;margin-right:12px">选中项总投资合计：<b style="margin-right:6px">36.4</b>万元</span> |
           <span style="margin-right: 6px;margin-left:12px;">已选择:<a style="font-weight: 600;margin-left:6px;margin-right:6px;">44</a>项</span><span style="margin-left:12px;margin-right:12px">选中项总投资合计：<b style="margin-right:6px">366.4</b>万元</span>
         </template>
       </a-alert>

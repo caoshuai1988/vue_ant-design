@@ -1,7 +1,7 @@
 <template>
   <div class="tagModule">
-    <template v-for="(tag, index) in tags">
-      <div class="tagBox">
+    <template v-for="(tag, index) in tags" >
+      <div class="tagBox" :key="index">
         <a-tooltip v-if="tag.length > 20" :key="tag" :title="tag">
           <a-tag
             :key="tag"
@@ -27,7 +27,7 @@
 export default {
   data () {
     return {
-      tags: ['默认模板', '自定义模板1', '自定义模板2','自定义模板3','自定义模板4','自定义模板5','自定义模板6'],
+      tags: ['默认模板', '自定义模板1', '自定义模板2', '自定义模板3', '自定义模板4', '自定义模板5', '自定义模板6'],
       num: 0
     }
   },

@@ -6,7 +6,7 @@
           <a-row :gutter="48">
             <a-col :md="8" :sm="24">
               <a-form-item label="规则编号">
-                <a-input v-model="queryParam.id" placeholder=""/>
+                <a-input v-model="queryParam.id" placeholder />
               </a-form-item>
             </a-col>
             <a-col :md="8" :sm="24">
@@ -21,12 +21,16 @@
             <template v-if="advanced">
               <a-col :md="8" :sm="24">
                 <a-form-item label="调用次数">
-                  <a-input-number v-model="queryParam.callNo" style="width: 100%"/>
+                  <a-input-number v-model="queryParam.callNo" style="width: 100%" />
                 </a-form-item>
               </a-col>
               <a-col :md="8" :sm="24">
                 <a-form-item label="更新日期">
-                  <a-date-picker v-model="queryParam.date" style="width: 100%" placeholder="请输入更新日期"/>
+                  <a-date-picker
+                    v-model="queryParam.date"
+                    style="width: 100%"
+                    placeholder="请输入更新日期"
+                  />
                 </a-form-item>
               </a-col>
               <a-col :md="8" :sm="24">
@@ -51,19 +55,20 @@
             <a-col :md="!advanced && 8 || 24" :sm="24">
               <span
                 class="table-page-search-submitButtons"
-                :style="advanced && { float: 'right', overflow: 'hidden' } || {} ">
+                :style="advanced && { float: 'right', overflow: 'hidden' } || {} "
+              >
                 <a-button type="primary" @click="$refs.table.refresh(true)">查询</a-button>
                 <a-button style="margin-left: 8px" @click="() => queryParam = {}">重置</a-button>
                 <a @click="toggleAdvanced" style="margin-left: 8px">
                   {{ advanced ? '收起' : '展开' }}
-                  <a-icon :type="advanced ? 'up' : 'down'"/>
+                  <a-icon :type="advanced ? 'up' : 'down'" />
                 </a>
               </span>
             </a-col>
           </a-row>
         </a-form>
       </div>
-      <div class="table-operator" >
+      <div class="table-operator">
         <a-button type="primary" icon="plus" @click="$refs.createModal.add()">新建</a-button>
         <a-button>批量操作</a-button>
         <a-dropdown>
@@ -72,9 +77,7 @@
             <a-menu-item key="2">更多操作2</a-menu-item>
             <a-menu-item key="3">更多操作3</a-menu-item>
           </a-menu>
-          <a-button>
-            ...
-          </a-button>
+          <a-button>...</a-button>
         </a-dropdown>
       </div>
       <s-table
@@ -86,29 +89,29 @@
         :alert="options.alert"
         :rowSelection="options.rowSelection"
         :showPagination="true"
+
         size="large"
         :scroll="scroll"
       >
         <span slot="status" slot-scope="text">
-          <a-badge :status="text | statusTypeFilter" :text="text | statusFilter"/>
+          <a-badge :status="text | statusTypeFilter" :text="text | statusFilter" />
         </span>
         <span slot="action" slot-scope="text, record">
           <template>
+
             <a @click="handleDel(record)">删除</a>
-            <a-divider type="vertical"/>
+            <a-divider type="vertical" />
             <a @click="handleSub(record)">订阅报警</a>
           </template>
         </span>
-
       </s-table>
       <template>
         <div style="text-align: right;margin-top:16px;margin-bottom:16px;">
-          <a-pagination showSizeChanger :pageSize.sync="pageSize" :total="500" v-model="current"/>
+          <a-pagination showSizeChanger :pageSize.sync="pageSize" :total="500" v-model="current" />
         </div>
       </template>
-      <create-form ref="createModal" @ok="handleOk"/>
+      <create-form ref="createModal" @ok="handleOk" />
     </a-card>
-
   </div>
 </template>
 <script>
@@ -167,7 +170,7 @@ export default {
           dataIndex: 'callNo',
           sorter: true,
           needTotal: true,
-          customRender: (text) => text + ' 次'
+          customRender: text => text + ' 次'
         },
         {
           title: '状态',
@@ -196,11 +199,10 @@ export default {
       // 加载数据方法 必须为 Promise 对象
       loadData: parameter => {
         console.log('loadData.parameter', parameter)
-        return getServiceList(Object.assign(parameter, this.queryParam))
-          .then(res => {
-            console.log('result:', res.result)
-            return res.result
-          })
+        return getServiceList(Object.assign(parameter, this.queryParam)).then(res => {
+          console.log('result:', res.result)
+          return res.result
+        })
       },
       // 选中行key值
       selectedRowKeys: [],
@@ -246,11 +248,12 @@ export default {
     })
   },
   methods: {
-  // 根据浏览器缩小改变样式
+    // 根据浏览器缩小改变样式
     changeBrowser () {
+      /* eslint-disable */
       const oHeight = document.documentElement['clientHeight'] - 510
-      $('.ant-table-body').css({ 'height': 'oHeight' })
-      $('.table-wrapper').css({ 'minHeight': '0px' })
+      $('.ant-table-body').css({ height: 'oHeight' })
+      $('.table-wrapper').css({ minHeight: '0px' })
       this.scroll = {
         x: 1600,
         y: document.documentElement['clientHeight'] - 510

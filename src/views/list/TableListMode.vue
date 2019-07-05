@@ -5,7 +5,7 @@
         <a-row :gutter="48">
           <a-col :md="8" :sm="24">
             <a-form-item label="规则编号">
-              <a-input v-model="queryParam.id" placeholder=""/>
+              <a-input v-model="queryParam.id" placeholder />
             </a-form-item>
           </a-col>
           <a-col :md="8" :sm="24">
@@ -20,12 +20,12 @@
           <template v-if="advanced">
             <a-col :md="8" :sm="24">
               <a-form-item label="调用次数">
-                <a-input-number v-model="queryParam.callNo" style="width: 100%"/>
+                <a-input-number v-model="queryParam.callNo" style="width: 100%" />
               </a-form-item>
             </a-col>
             <a-col :md="8" :sm="24">
               <a-form-item label="更新日期">
-                <a-date-picker v-model="queryParam.date" style="width: 100%" placeholder="请输入更新日期"/>
+                <a-date-picker v-model="queryParam.date" style="width: 100%" placeholder="请输入更新日期" />
               </a-form-item>
             </a-col>
             <a-col :md="8" :sm="24">
@@ -50,12 +50,13 @@
           <a-col :md="!advanced && 8 || 24" :sm="24">
             <span
               class="table-page-search-submitButtons"
-              :style="advanced && { float: 'right', overflow: 'hidden' } || {} ">
+              :style="advanced && { float: 'right', overflow: 'hidden' } || {} "
+            >
               <a-button type="primary" @click="$refs.table.refresh(true)">查询</a-button>
               <a-button style="margin-left: 8px" @click="() => queryParam = {}">重置</a-button>
               <a @click="toggleAdvanced" style="margin-left: 8px">
                 {{ advanced ? '收起' : '展开' }}
-                <a-icon :type="advanced ? 'up' : 'down'"/>
+                <a-icon :type="advanced ? 'up' : 'down'" />
               </a>
             </span>
           </a-col>
@@ -68,25 +69,38 @@
       <a-button @click="tableOption">{{ optionAlertShow && '关闭' || '开启' }} alert</a-button>
       <a-alert style="margin-top: 18px;display: block;">
         <template slot="message">
-         <img style="display: inline-block;margin-top:-3px;margin-right:4px;" :src="prompt"/><span style="margin-right: 6px">已选择:<a style="font-weight: 600;margin-left:6px;margin-right:6px;">4</a>项</span><span style="margin-left:12px;margin-right:12px">选中项总投资合计：<b style="margin-right:6px">36.4</b>万元</span> |
-          <span style="margin-right: 6px;margin-left:12px;">已选择:<a style="font-weight: 600;margin-left:6px;margin-right:6px;">44</a>项</span><span style="margin-left:12px;margin-right:12px">选中项总投资合计：<b style="margin-right:6px">366.4</b>万元</span>
+          <img style="display: inline-block;margin-top:-3px;margin-right:4px;" :src="prompt" />
+          <span style="margin-right: 6px">
+            已选择:
+            <a style="font-weight: 600;margin-left:6px;margin-right:6px;">4</a>项
+          </span>
+          <span style="margin-left:12px;margin-right:12px">
+            选中项总投资合计：
+            <b style="margin-right:6px">36.4</b>万元
+          </span> |
+          <span style="margin-right: 6px;margin-left:12px;">
+            已选择:
+            <a style="font-weight: 600;margin-left:6px;margin-right:6px;">44</a>项
+          </span>
+          <span style="margin-left:12px;margin-right:12px">
+            选中项总投资合计：
+            <b style="margin-right:6px">366.4</b>万元
+          </span>
         </template>
       </a-alert>
       <a-dropdown v-action:edit v-if="selectedRowKeys.length>0">
         <a-menu slot="overlay">
           <a-menu-item key="1">
-            <a-icon type="delete"/>
-            删除
+            <a-icon type="delete" />删除
           </a-menu-item>
           <!-- lock | unlock -->
           <a-menu-item key="2">
-            <a-icon type="lock"/>
-            锁定
+            <a-icon type="lock" />锁定
           </a-menu-item>
         </a-menu>
         <a-button>
           更多操作
-          <a-icon type="down"/>
+          <a-icon type="down" />
         </a-button>
       </a-dropdown>
     </div>
@@ -100,11 +114,9 @@
       :showPagination="true"
       size="large"
     >
-      <span slot="serial" slot-scope="text, record, index">
-        {{ index + 1 }}
-      </span>
+      <span slot="serial" slot-scope="text, record, index">{{ index + 1 }}</span>
       <span slot="status" slot-scope="text">
-        <a-badge :status="text | statusTypeFilter" :text="text | statusFilter"/>
+        <a-badge :status="text | statusTypeFilter" :text="text | statusFilter" />
       </span>
       <span slot="description" slot-scope="text">
         <ellipsis :length="4" tooltip>{{ text }}</ellipsis>
@@ -113,11 +125,11 @@
       <span slot="action" slot-scope="text, record">
         <template>
           <a @click="handleEdit(record)">删除</a>
-          <a-divider type="vertical"/>
+          <a-divider type="vertical" />
           <!--<a @click="handleEdit(record)">配置</a>-->
           <!--<a-divider type="vertical"/>-->
           <a @click="handleSub(record)">订阅报警</a>
-          <a-divider type="vertical"/>
+          <a-divider type="vertical" />
 
           <a-dropdown>
             <a-menu slot="overlay">
@@ -125,13 +137,16 @@
               <a-menu-item key="2">操作2</a-menu-item>
               <a-menu-item key="3">操作3</a-menu-item>
             </a-menu>
-            <a href="javascript:;" class="ant-dropdown-link">更多<a-icon type="down" /></a>
+            <a href="javascript:;" class="ant-dropdown-link">
+              更多
+              <a-icon type="down" />
+            </a>
           </a-dropdown>
         </template>
       </span>
     </s-table>
-    <create-form ref="createModal" @ok="handleOk"/>
-    <step-by-step-modal ref="modal" @ok="handleOk"/>
+    <create-form ref="createModal" @ok="handleOk" />
+    <step-by-step-modal ref="modal" @ok="handleOk" />
   </a-card>
 </template>
 
@@ -205,7 +220,7 @@ export default {
           dataIndex: 'callNo',
           sorter: true,
           needTotal: true,
-          customRender: (text) => text + ' 次'
+          customRender: text => text + ' 次'
         },
         {
           title: '状态',
@@ -233,11 +248,10 @@ export default {
       // 加载数据方法 必须为 Promise 对象
       loadData: parameter => {
         console.log('loadData.parameter', parameter)
-        return getServiceList(Object.assign(parameter, this.queryParam))
-          .then(res => {
-            console.log('result:', res.result)
-            return res.result
-          })
+        return getServiceList(Object.assign(parameter, this.queryParam)).then(res => {
+          console.log('result:', res.result)
+          return res.result
+        })
       },
       selectedRowKeys: [],
       selectedRows: [],
@@ -276,9 +290,7 @@ export default {
     getRoleList({ t: new Date() })
   },
   methods: {
-    testExpandedRowRender: function () {
-
-    },
+    testExpandedRowRender: function () {},
     tableOption () {
       if (!this.optionAlertShow) {
         this.options = {
@@ -346,10 +358,10 @@ export default {
 .ant-card-wider-padding /deep/ .ant-card-body {
   padding: 24px 32px !important;
 }
-/deep/ .table-wrapper{
-	margin-bottom:16px !important;;
+/deep/ .table-wrapper {
+  margin-bottom: 16px !important;
 }
-/deep/ .ant-alert{
+/deep/ .ant-alert {
   display: none;
 }
 </style>

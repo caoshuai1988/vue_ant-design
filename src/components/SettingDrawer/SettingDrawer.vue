@@ -250,7 +250,7 @@
             缩小倍数：A<br/>
             放大可视区：W<br/>
             缩小可视区：S <br/>
-            关闭放大镜：右键 Esc
+            关闭：右键 或 Esc
           </template>
           <a-icon type="zoom-in"/>
         </a-tooltip>

@@ -1,3 +1,9 @@
+<!--
+ * @Author: lxh
+ * @Date: 2019-07-01 09:13:38
+ * @LastEditTime: 2019-07-04 16:13:51
+ * @Description: map 查看
+ -->
 <template>
   <a-card class="maplook" :class="{screenload: screenloadFlag}">
     <div slot="title">

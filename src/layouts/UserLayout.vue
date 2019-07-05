@@ -5,25 +5,18 @@
         <div class="header">
           <a href="/">
             <img src="~@/assets/logo.svg" class="logo" alt="logo">
-            <span class="title">Ant Design</span>
+            <span class="title">富深新平台模板</span>
           </a>
         </div>
         <div class="desc">
-          Ant Design 是西湖区最具影响力的 Web 设计规范
+          富深协通科技有限公司软件系统Web设计规范
         </div>
       </div>
 
       <route-view></route-view>
 
       <div class="footer">
-        <div class="links">
-          <a href="_self">帮助</a>
-          <a href="_self">隐私</a>
-          <a href="_self">条款</a>
-        </div>
-        <div class="copyright">
-          Copyright &copy; 2018 白鹭学园技术组出品
-        </div>
+        <span><a href="http://www.finstone.com.cn" target="_blank">关于我们</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;版权所有：江苏富深协通科技股份有限公司&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;技术支持：0519-86612998</span>
       </div>
     </div>
   </div>
@@ -127,21 +120,11 @@ export default {
         padding: 0 16px;
         margin: 48px 0 24px;
         text-align: center;
-
-        .links {
-          margin-bottom: 8px;
-          font-size: 14px;
-          a {
-            color: rgba(0, 0, 0, 0.45);
-            transition: all 0.3s;
-            &:not(:last-child) {
-              margin-right: 40px;
-            }
+        a {
+          color: rgba(0, 0, 0, 0.65);
+          &:hover {
+            color: #1890ff;
           }
-        }
-        .copyright {
-          color: rgba(0, 0, 0, 0.45);
-          font-size: 14px;
         }
       }
     }

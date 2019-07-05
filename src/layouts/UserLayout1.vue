@@ -2,12 +2,6 @@
   <div id="userLayout1" :class="['user-layout-wrapper', device]">
     <div class="container">
       <div class="top">
-<!--        <a-carousel :afterChange="onChange">-->
-<!--          <div><img src="@/assets/login_bg1.jpg"/></div>-->
-<!--          <div><img src="@/assets/login_bg2.png"/></div>-->
-<!--          <div><img src="@/assets/login_bg1.jpg"/></div>-->
-<!--          <div><img src="@/assets/login_bg2.png"/></div>-->
-<!--        </a-carousel>-->
       </div>
 
       <route-view></route-view>

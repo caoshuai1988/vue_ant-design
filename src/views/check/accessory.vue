@@ -1,7 +1,7 @@
 <!--
  * @Author: 张志勇
  * @Date: 2019-06-15 15:08:51
- * @LastEditTime: 2019-07-04 10:04:08
+ * @LastEditTime: 2019-07-04 17:08:24
  * @Description: 附件详情页 图标使用的是本地图片
  -->
 
@@ -63,7 +63,7 @@
           </div>
         </div>
       </a-col>
-      <!-- 帮助 -->
+      <!-- 帮助侧边栏 -->
       <template v-if="isShowHelp">
         <a-col
           style="padding: 0 12px"
@@ -72,84 +72,9 @@
           :md="helpNum"
           :sm="helpNum"
           :xs="helpNum">
-          <div class="page-direction">
-            <div class="title">
-              <div class="title-des">
-                <span class="help">帮助</span>
-                <span class="detail">详情</span>
-                <a-icon type="close" style="fontSize :16px; color:#a3a3a3;" class="close" @click="handleClose"/>
-              </div>
-            </div>
-            <div class="help-line"></div>
-            <div class="content-box">
-              <div class="content">
-                <div style="margin-bottom:20px">
-                  <p class="question">
-                    企业官网或轻量的Web应用
-                  </p>
-                  <p class="question">
-                    网站初始阶段访问量小，只需要一台低配置的云服务器ECS实例即可运行Apache或Nginx等Web应用程序、数据库、存储文件等。随着网站发展，您可以随时升级ECS实例的配置，或者增加ECS实例数量，无需担心低配计算单元在业务突增时带来的资源不足。
-                  </p>
-                </div>
-                <div style="margin-bottom:20px">
-                  <p class="question">
-                    企业官网或轻量的Web应用
-                  </p>
-                  <p class="question">
-                    网站初始阶段访问量小，只需要一台低配置的云服务器ECS实例即可运行Apache或Nginx等Web应用程序、数据库、存储文件等。随着网站发展，您可以随时升级ECS实例的配置，或者增加ECS实例数量，无需担心低配计算单元在业务突增时带来的资源不足。
-                  </p>
-                </div>
-                <div style="margin-bottom:20px">
-                  <p class="question">
-                    企业官网或轻量的Web应用
-                  </p>
-                  <p class="question">
-                    网站初始阶段访问量小，只需要一台低配置的云服务器ECS实例即可运行Apache或Nginx等Web应用程序、数据库、存储文件等。随着网站发展，您可以随时升级ECS实例的配置，或者增加ECS实例数量，无需担心低配计算单元在业务突增时带来的资源不足。
-                  </p>
-                </div>
-                <div style="margin-bottom:20px">
-                  <p class="question">
-                    企业官网或轻量的Web应用
-                  </p>
-                  <p class="question">
-                    网站初始阶段访问量小，只需要一台低配置的云服务器ECS实例即可运行Apache或Nginx等Web应用程序、数据库、存储文件等。随着网站发展，您可以随时升级ECS实例的配置，或者增加ECS实例数量，无需担心低配计算单元在业务突增时带来的资源不足。
-                  </p>
-                </div>
-                <div style="margin-bottom:20px">
-                  <p class="question">
-                    企业官网或轻量的Web应用
-                  </p>
-                  <p class="question">
-                    网站初始阶段访问量小，只需要一台低配置的云服务器ECS实例即可运行Apache或Nginx等Web应用程序、数据库、存储文件等。随着网站发展，您可以随时升级ECS实例的配置，或者增加ECS实例数量，无需担心低配计算单元在业务突增时带来的资源不足。
-                  </p>
-                </div>
-                <div style="margin-bottom:20px">
-                  <p class="question">
-                    企业官网或轻量的Web应用
-                  </p>
-                  <p class="question">
-                    网站初始阶段访问量小，只需要一台低配置的云服务器ECS实例即可运行Apache或Nginx等Web应用程序、数据库、存储文件等。随着网站发展，您可以随时升级ECS实例的配置，或者增加ECS实例数量，无需担心低配计算单元在业务突增时带来的资源不足。
-                  </p>
-                </div>
-                <div style="margin-bottom:20px">
-                  <p class="question">
-                    企业官网或轻量的Web应用
-                  </p>
-                  <p class="question">
-                    网站初始阶段访问量小，只需要一台低配置的云服务器ECS实例即可运行Apache或Nginx等Web应用程序、数据库、存储文件等。随着网站发展，您可以随时升级ECS实例的配置，或者增加ECS实例数量，无需担心低配计算单元在业务突增时带来的资源不足。
-                  </p>
-                </div>
-                <div style="margin-bottom:20px">
-                  <p class="question">
-                    企业官网或轻量的Web应用
-                  </p>
-                  <p class="question">
-                    网站初始阶段访问量小，只需要一台低配置的云服务器ECS实例即可运行Apache或Nginx等Web应用程序、数据库、存储文件等。随着网站发展，您可以随时升级ECS实例的配置，或者增加ECS实例数量，无需担心低配计算单元在业务突增时带来的资源不足。
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+          <a-affix :offsetTop="this.top">
+            <Help @handleClose="handleClose" :boxHeight="boxHeight"/>
+          </a-affix>
         </a-col>
       </template>
     </a-row>
@@ -159,6 +84,8 @@
 
 <script>
 import { STable } from '@/components'
+import Help from '@/components/form/Help'
+
 import DetailList from '@/components/tools/DetailList'
 // word格式
 import icon1 from '@/assets/iconfiles/fileicon4.svg'
@@ -242,11 +169,17 @@ export default {
   components: {
     DetailList,
     DetailListItem,
-    STable
+    STable,
+    Help
   },
   data () {
     return {
       data,
+      boxHeight: {
+        height: ''
+      },
+      // 固钉
+      top: 0,
       isShowHelp: false,
       num: 24,
       // num: 18,
@@ -258,9 +191,7 @@ export default {
       headers: {
         authorization: 'authorization-text'
       },
-      // description: '表单页用于向用户收集或验证信息，基础表单常见于数据项较少的表单场',
       value: 1,
-      // form
       form: this.$form.createForm(this),
       previewVisible: false,
       previewImage: '',
@@ -477,82 +408,6 @@ export default {
   .ant-upload-select-picture-card .ant-upload-text {
     margin-top: 8px;
     color: #666;
-  }
-
-  .page-direction{
-    // right: @help-width;
-    background: #fff;
-    // min-width: 400px;
-    // height: 600px;
-    // min-height: 800px;
-    z-index: 3;
-    .title{
-      position: relative;
-      box-sizing: border-box;
-      padding:0 24px;
-      height: 56px;
-      .title-des{
-        box-sizing: border-box;
-        height: 56px;
-        // flex: 1 1;
-        padding: 16px 0;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        .help{
-          font-size: 16px;
-          color: #272727;
-          margin-right: 8px;
-        }
-        .detail{
-          font-size: 14px;
-          color: #1890ff;
-        }
-        .close{
-          // position: absolute;
-          // right: 24px;
-          float: right;
-          margin-top: 4px;
-          // top: 16px;
-          &:hover{
-            cursor: pointer;
-          }
-        }
-      }
-    }
-    .help-line{
-      width: 100%;
-      height: 0.5px;
-      background: #e9e9e9;
-    }
-    .content-box{
-      padding: 24px;
-    }
-    .content{
-      // height: 650px;
-      min-height: 300px;
-      max-height: 650px;
-      overflow-y: auto;
-      &::-webkit-scrollbar{
-        width: 4px;
-        height: 8px;
-        // background-color: #F5F5F5;
-      }
-
-      /*定义滚动条轨道 内阴影+圆角*/
-      &::-webkit-scrollbar-track{
-        box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
-        border-radius: 10px;
-        background-color: #a5a5a5;
-      }
-
-      /*定义滑块 内阴影+圆角*/
-      &::-webkit-scrollbar-thumb{
-          border-radius: 5px;
-          box-shadow: inset 0 0 5px rgba(0,0,0,0.3);
-          background-color: #EDEDED;
-      }
-    }
   }
 
 </style>

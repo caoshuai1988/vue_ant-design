@@ -1,3 +1,9 @@
+<!--
+ * @Author: lxh
+ * @Date: 2019-07-03 16:01:38
+ * @LastEditTime: 2019-07-04 16:05:35
+ * @Description: 模拟card 布局
+ -->
 <template>
   <div :class="['description-list', size, layout === 'vertical' ? 'vertical': 'horizontal']">
     <div v-if="title" class="title" >{{ title }}</div>

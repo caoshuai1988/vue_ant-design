@@ -1,7 +1,7 @@
 <!--
  * @Author: 张志勇
  * @Date: 2019-06-15 10:22:09
- * @LastEditTime: 2019-07-04 10:40:27
+ * @LastEditTime: 2019-07-04 17:18:33
  * @Description:分页签详情页 包含地图组件 报表组件 可进行附件预览
  -->
 
@@ -174,7 +174,7 @@
                 <div class="table-wrap">
                   <div class="title-box">
                     <div class="title-des">项目可研报告</div>
-                    <a-button size="small">打包下载</a-button>
+                    <a-button >打包下载</a-button>
                   </div>
                   <a-table :dataSource="data" :pagination="false">
                     <a-table-column title="种类" data-index="icon" key="icon">
@@ -206,7 +206,7 @@
                 <div class="table-wrap">
                   <div class="title-box">
                     <div class="title-des">绩效目标</div>
-                    <a-button size="small">打包下载</a-button>
+                    <a-button >打包下载</a-button>
                   </div>
                   <a-table :dataSource="data" :pagination="false">
                     <a-table-column title="种类" data-index="icon" key="icon">
@@ -240,6 +240,7 @@
             </a-card>
           </div>
         </a-col>
+        <!-- 帮助侧边栏 -->
         <template v-if="isShowHelp">
           <a-col
             style="padding: 0 12px"
@@ -247,76 +248,9 @@
             :lg="helpNum"
             :md="helpNum"
             :sm="helpNum"
-            :xs="helpNum"
-          >
+            :xs="helpNum">
             <a-affix :offsetTop="this.top">
-              <div class="page-direction">
-                <div class="title">
-                  <div class="title-des">
-                    <span class="help">帮助</span>
-                    <span class="detail">详情</span>
-                    <a-icon
-                      type="close"
-                      style="fontSize :16px; color:#a3a3a3;"
-                      class="close"
-                      @click="handleClose"
-                    />
-                  </div>
-                </div>
-                <div class="help-line"></div>
-                <div class="content-box">
-                  <div class="content">
-                    <div style="margin-bottom:20px">
-                      <p class="question">企业官网或轻量的Web应用</p>
-                      <p
-                        class="question"
-                      >网站初始阶段访问量小，只需要一台低配置的云服务器ECS实例即可运行Apache或Nginx等Web应用程序、数据库、存储文件等。随着网站发展，您可以随时升级ECS实例的配置，或者增加ECS实例数量，无需担心低配计算单元在业务突增时带来的资源不足。</p>
-                    </div>
-                    <div style="margin-bottom:20px">
-                      <p class="question">企业官网或轻量的Web应用</p>
-                      <p
-                        class="question"
-                      >网站初始阶段访问量小，只需要一台低配置的云服务器ECS实例即可运行Apache或Nginx等Web应用程序、数据库、存储文件等。随着网站发展，您可以随时升级ECS实例的配置，或者增加ECS实例数量，无需担心低配计算单元在业务突增时带来的资源不足。</p>
-                    </div>
-                    <div style="margin-bottom:20px">
-                      <p class="question">企业官网或轻量的Web应用</p>
-                      <p
-                        class="question"
-                      >网站初始阶段访问量小，只需要一台低配置的云服务器ECS实例即可运行Apache或Nginx等Web应用程序、数据库、存储文件等。随着网站发展，您可以随时升级ECS实例的配置，或者增加ECS实例数量，无需担心低配计算单元在业务突增时带来的资源不足。</p>
-                    </div>
-                    <div style="margin-bottom:20px">
-                      <p class="question">企业官网或轻量的Web应用</p>
-                      <p
-                        class="question"
-                      >网站初始阶段访问量小，只需要一台低配置的云服务器ECS实例即可运行Apache或Nginx等Web应用程序、数据库、存储文件等。随着网站发展，您可以随时升级ECS实例的配置，或者增加ECS实例数量，无需担心低配计算单元在业务突增时带来的资源不足。</p>
-                    </div>
-                    <div style="margin-bottom:20px">
-                      <p class="question">企业官网或轻量的Web应用</p>
-                      <p
-                        class="question"
-                      >网站初始阶段访问量小，只需要一台低配置的云服务器ECS实例即可运行Apache或Nginx等Web应用程序、数据库、存储文件等。随着网站发展，您可以随时升级ECS实例的配置，或者增加ECS实例数量，无需担心低配计算单元在业务突增时带来的资源不足。</p>
-                    </div>
-                    <div style="margin-bottom:20px">
-                      <p class="question">企业官网或轻量的Web应用</p>
-                      <p
-                        class="question"
-                      >网站初始阶段访问量小，只需要一台低配置的云服务器ECS实例即可运行Apache或Nginx等Web应用程序、数据库、存储文件等。随着网站发展，您可以随时升级ECS实例的配置，或者增加ECS实例数量，无需担心低配计算单元在业务突增时带来的资源不足。</p>
-                    </div>
-                    <div style="margin-bottom:20px">
-                      <p class="question">企业官网或轻量的Web应用</p>
-                      <p
-                        class="question"
-                      >网站初始阶段访问量小，只需要一台低配置的云服务器ECS实例即可运行Apache或Nginx等Web应用程序、数据库、存储文件等。随着网站发展，您可以随时升级ECS实例的配置，或者增加ECS实例数量，无需担心低配计算单元在业务突增时带来的资源不足。</p>
-                    </div>
-                    <div style="margin-bottom:20px">
-                      <p class="question">企业官网或轻量的Web应用</p>
-                      <p
-                        class="question"
-                      >网站初始阶段访问量小，只需要一台低配置的云服务器ECS实例即可运行Apache或Nginx等Web应用程序、数据库、存储文件等。随着网站发展，您可以随时升级ECS实例的配置，或者增加ECS实例数量，无需担心低配计算单元在业务突增时带来的资源不足。</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <Help @handleClose="handleClose" :boxHeight="boxHeight"/>
             </a-affix>
           </a-col>
         </template>
@@ -328,6 +262,8 @@
 
 <script>
 import { STable } from '@/components'
+import Help from '@/components/form/Help'
+
 import DetailList from '@/components/tools/DetailList'
 // word格式
 import icon1 from '@/assets/iconfiles/fileicon4.svg'
@@ -411,6 +347,7 @@ export default {
   components: {
     DetailList,
     DetailListItem,
+    Help,
     STable
     // preview
   },
@@ -419,10 +356,15 @@ export default {
       data,
       flag: false,
       valueKey: 1,
-      top: 0, // 固钉
       activeKey: '1', // 当前tab标签为第几个
+      // 帮助的默认高度
+      boxHeight: {
+        height: ''
+      },
+      top: 0, // 固钉
       isShowHelp: false,
       num: 24,
+      // num: 18,
       helpNum: 6,
       lablenum: 7,
       valuenum: 17,
@@ -860,77 +802,5 @@ export default {
   .amplification {
     cursor: pointer;
     padding: 0 10px;
-  }
-
-  // TODOZZY帮助样式 待删除帮助组件的提取
-  .page-direction {
-    background: #fff;
-    z-index: 3;
-    .title {
-      position: relative;
-      box-sizing: border-box;
-      padding: 0 24px;
-      height: 56px;
-      .title-des {
-        box-sizing: border-box;
-        height: 56px;
-        padding: 16px 0;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        .help {
-          font-size: 16px;
-          color: #272727;
-          margin-right: 8px;
-        }
-        .detail {
-          font-size: 14px;
-          color: #1890ff;
-        }
-        .close {
-          // position: absolute;
-          // right: 24px;
-          float: right;
-          margin-top: 4px;
-          // top: 16px;
-          &:hover {
-            cursor: pointer;
-          }
-        }
-      }
-    }
-    .help-line {
-      width: 100%;
-      height: 0.5px;
-      background: #e9e9e9;
-    }
-    .content-box {
-      padding: 24px;
-    }
-    .content {
-      // height: 650px;
-      min-height: 300px;
-      max-height: 650px;
-      overflow-y: auto;
-      &::-webkit-scrollbar {
-        width: 4px;
-        height: 8px;
-        // background-color: #F5F5F5;
-      }
-
-      /*定义滚动条轨道 内阴影+圆角*/
-      &::-webkit-scrollbar-track {
-        box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
-        border-radius: 10px;
-        background-color: #a5a5a5;
-      }
-
-      /*定义滑块 内阴影+圆角*/
-      &::-webkit-scrollbar-thumb {
-        border-radius: 5px;
-        box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
-        background-color: #ededed;
-      }
-    }
   }
 </style>

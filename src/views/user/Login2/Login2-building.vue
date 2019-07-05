@@ -2,13 +2,15 @@
   <div class="main main-login2-base">
     <div class="bgChoose">
       <ul>
-        <li><router-link :to="{ name: 'login2Mountain'}">大山</router-link></li>
-        <li><router-link :to="{ name: 'login2City'}">城市</router-link></li>
-        <li><router-link :to="{ name: 'login2Sea'}">大海</router-link></li>
-        <li><router-link :to="{ name: 'login2Buildings'}" class="active">高楼</router-link></li>
-        <li><router-link :to="{ name: 'login2Field'}">田野</router-link></li>
-        <li><router-link :to="{ name: 'login2Sky'}">星空</router-link></li>
+        <li><router-link :to="{ name: 'login2Building'}" class="active">建筑</router-link></li>
         <li><router-link :to="{ name: 'login2Forest'}">森林</router-link></li>
+        <li><router-link :to="{ name: 'login2Frontier'}">塞外</router-link></li>
+        <li><router-link :to="{ name: 'login2Galaxy'}">银河</router-link></li>
+        <li><router-link :to="{ name: 'login2Lake'}">湖泊</router-link></li>
+        <li><router-link :to="{ name: 'login2Light'}">科技光</router-link></li>
+        <li><router-link :to="{ name: 'login2Mountain'}">大山</router-link></li>
+        <li><router-link :to="{ name: 'login2Space'}">太空</router-link></li>
+        <li><router-link :to="{ name: 'login2Terrace'}">梯田</router-link></li>
       </ul>
     </div>
     <div class="login-box">
@@ -149,7 +151,7 @@ import AFormItem from 'ant-design-vue/es/form/FormItem'
 import ARow from 'ant-design-vue/es/grid/Row'
 import $ from 'jquery'
 import 'jquery-backstretch'
-import imgSrc from '../../../assets/login_bg4.png'
+import imgSrc from '../../../assets/login_bg_building.jpg'
 
 export default {
   components: {

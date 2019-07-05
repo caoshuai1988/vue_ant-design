@@ -77,7 +77,7 @@ import { timeFix } from '@/utils/util'
 import AFormItem from 'ant-design-vue/es/form/FormItem'
 import $ from 'jquery'
 import 'jquery-backstretch'
-import imgSrc from '../../../assets/login_bg1.jpg'
+import imgSrc from '../../../assets/login_bg_mountain.jpg'
 
 export default {
   components: {

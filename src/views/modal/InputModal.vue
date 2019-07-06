@@ -182,7 +182,6 @@
                     name="file"
                     :multiple="true"
                     action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-                    :headers="headers"
                     @change="handleChange"
                     v-decorator="[
                       'leader',
@@ -308,7 +307,7 @@
         </div>
       </div>
       <div class="space-bottom_24">
-        <a-popconfirm placement="top" @confirm="confirm" @cancel="cancel" okText="确定" cancelText="取消">
+        <a-popconfirm placement="top" okText="确定" cancelText="取消">
           <template slot="title">
             <p style="margin-top:20px;">
               <span>备注：</span>
@@ -321,8 +320,6 @@
       <div style="margin-top:150px">
         <a-popconfirm
           placement="top"
-          @confirm="confirm"
-          @cancel="cancel"
           okText="确定"
           visible="true"
           cancelText="取消">
@@ -620,7 +617,6 @@
                 name="file"
                 :multiple="true"
                 action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-                :headers="headers"
                 @change="handleChange"
                 v-decorator="[
                   'leader',
@@ -746,7 +742,7 @@ export default {
 	.content-warp{
 		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 	}
-	.content-warp .content-title{
+  .content-title{
 		overflow: hidden;
 		padding:16px 24px;
 		border-radius:4px 4px 0 0;
@@ -766,9 +762,6 @@ export default {
 	}
 .ant-popover-inner-content{
 	width:264px !important;
-}
-.ant-popover-message-title{
-	padding-left:0px !important;
 }
 </style>
 <style lang="less" scoped>

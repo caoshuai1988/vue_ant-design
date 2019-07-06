@@ -1,9 +1,9 @@
 <template>
   <div class="example">
     <div style="margin-bottom:64px">
-    	<a-spin size="small" />
-	    <a-spin />
-	    <a-spin size="large" />
+      <a-spin size="small" />
+      <a-spin />
+      <a-spin size="large" />
     </div>
     <div style="margin-bottom:64px">
       <a-spin>

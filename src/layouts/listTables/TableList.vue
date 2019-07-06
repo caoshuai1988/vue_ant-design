@@ -123,24 +123,24 @@ export default {
   }
 }
 </script>
-<style>
-.listtable .ant-table-bordered .ant-table-thead > tr > th,
-.ant-table-bordered .ant-table-tbody > tr > td {
+<style lang="less" scoped>
+.listtable /deep/ .ant-table-bordered .ant-table-thead > tr > th,
+.listtable /deep/ .ant-table-bordered .ant-table-tbody > tr > td {
   border-right: 0px !important;
 }
-.listtable .ant-table-bordered .ant-table-header > table,
-.ant-table-bordered .ant-table-body > table,
-.ant-table-bordered .ant-table-fixed-left table,
-.ant-table-bordered .ant-table-fixed-right table {
+.listtable /deep/ .ant-table-bordered .ant-table-header > table,
+.listtable /deep/ .ant-table-bordered .ant-table-body > table,
+.listtable /deep/ .ant-table-bordered .ant-table-fixed-left table,
+.listtable /deep/ .ant-table-bordered .ant-table-fixed-right table {
   border-left: 0px !important;
 }
-.listtable .editable-row-operations a {
+.listtable /deep/ .editable-row-operations a {
   margin-right: 8px;
 }
-.listtable .ant-pagination {
+.listtable /deep/ .ant-pagination {
   display: none;
 }
-.listtable .ant-table-pagination {
+.listtable /deep/ .ant-table-pagination {
   display: none;
 }
 </style>

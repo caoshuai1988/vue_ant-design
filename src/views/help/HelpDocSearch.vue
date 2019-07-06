@@ -3,18 +3,18 @@
     <div class="help-con-head">
       <div class="help-head-content">
         <router-link :to="{ path: '/help/helpdoc' }">
-	        <div class="head-caption">
-	          <span><img src="~@/assets/fslogo.svg" style="width:40px;height:40px;" alt="logo"></span>
-	          <span>富深新平台模板</span>
-	          <span>帮助</span>
-	        </div>
+          <div class="head-caption">
+            <span><img src="~@/assets/fslogo.svg" style="width:40px;height:40px;" alt="logo"></span>
+            <span>富深新平台模板</span>
+            <span>帮助</span>
+          </div>
         </router-link>
         <div class="head-search">
           <router-link :to="{ path: '/help/helpsearch' }">
-	          <a-input-search
-	            style="width: 272px"
-	          />
-	        </router-link>
+            <a-input-search
+              style="width: 272px"
+            />
+          </router-link>
         </div>
         <div class="head-contact">
           <div>

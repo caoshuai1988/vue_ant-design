@@ -114,7 +114,7 @@ export default {
     value (num, value) {
       /* eslint-disable */
       immediate: true
-      if (num !== 0) {
+      if (num !== '0') {
         this.isdisabled = false
       } else {
         this.isdisabled = true

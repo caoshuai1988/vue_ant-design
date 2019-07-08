@@ -1,7 +1,7 @@
 <!--
  * @Author: 张志勇
  * @Date: 2019-06-21 15:27:49
- * @LastEditTime: 2019-07-04 13:35:20
+ * @LastEditTime: 2019-07-08 13:39:24
  * @Description:  基础表单组件的提取 包括表单常见的一些样式
  -->
 <template>
@@ -108,6 +108,18 @@
           <a-radio :value="3">不公开</a-radio>
         </a-radio-group>
       </a-form-item>
+      <!-- <a-form-item
+        label="目标公开"
+        :labelCol="{lg: {span: 7}, sm: {span: 7}}"
+        :wrapperCol="{lg: {span: 10}, sm: {span: 17} }"
+        :required="false">
+        <a-radio-group v-model="value">
+          <a-radio :value="1">公开</a-radio>
+          <a-radio :value="2">部分公开</a-radio>
+          <a-radio :value="3">不公开</a-radio>
+        </a-radio-group>
+        <span style="padding-left:10px">客户、邀评人默认被分享</span>
+      </a-form-item> -->
       <a-form-item :wrapperCol="{ span: 17, offset: 7 }" style=" padding-top: 32px">
         <!-- <a-button htmlType="submit" type="primary">提交</a-button> -->
         <a-button htmlType="submit" type="primary">

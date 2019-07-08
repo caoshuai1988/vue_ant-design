@@ -63,7 +63,7 @@
     <a-layout v-if="isFullTopMenu()">
       <a-layout
         :class="[layoutMode, `content-width-${contentWidth}`]"
-        :style="{ paddingLeft: contentPaddingLeft, minHeight: '100vh' }">
+        :style="{ minHeight: '100vh' }">
         <!-- layout header -->
         <global-header
           :mode="layoutMode"
@@ -82,11 +82,11 @@
             :collapsed="collapsed"
             :collapsible="true"
           ></low-side-menu>
-          <a-layout>
 
+          <a-layout :style="{ paddingLeft: contentPaddingLeft }">
             <!-- layout content -->
             <a-layout-content
-              :style="{ height: '100%', margin: '24px 24px 0', paddingTop: fixedHeader ? '64px' : '0' }">
+              :style="{ height: '100%', margin: '24px 24px 0'}">
               <multi-tab v-if="multiTab"></multi-tab>
               <transition name="page-transition">
                 <route-view/>

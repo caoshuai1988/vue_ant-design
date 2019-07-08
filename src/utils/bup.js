@@ -1,13 +1,13 @@
-/***
- * @mkk 2019/7/4
- * 放大镜Jq 插件 依赖Jquery
- * 放大镜功能待优化
- * 可以增加为VUE指令 放弃Jq
+/**
+ * @author mkk
+ * @date 2019/7/4
+ * @Description: 放大镜Jq 插件 依赖Jquery
  * @param scale  缩放倍数
  * @param className 容器名字
  * @param zoom body缩放比例
  * @constructor
  */
+
 $.fn.BUP = function(scale, className, zoom) {
   zoom = zoom ? zoom : 1
   let $element = this
@@ -29,13 +29,13 @@ $.fn.BUP = function(scale, className, zoom) {
     e.preventDefault()
   })
 
-  // Create element
+  // create element
   let lens = document.createElement('div')
   lens.id = '' + $className + 'BlowupLens'
   let mask = document.createElement('div')
   mask.id = '' + $className + 'BlowupMask'
 
-  // Attack the element to the body
+  // attack the element to the body
   $('body').append(lens)
   $('body').append(mask)
   let $blowupMask = $('#' + mask.id)
@@ -65,8 +65,8 @@ $.fn.BUP = function(scale, className, zoom) {
     'visibility': 'hidden',
     'pointer-events': 'none',
     'zIndex': $options.zIndex,
-    'width': $options.width /zoom,
-    'height': $options.height /zoom,
+    'width': $options.width / zoom,
+    'height': $options.height / zoom,
     'border': $options.border,
     'background': $options.background,
     'border-radius': $options.round ? '50%' : 'none',
@@ -75,6 +75,7 @@ $.fn.BUP = function(scale, className, zoom) {
 
   // keydown A or D
   document.onkeydown = function(e) {
+    debugger
     e = event || window.event
     if (e && e.keyCode === 65) {//A 缩小
       scale -= 0.1
@@ -106,7 +107,7 @@ $.fn.BUP = function(scale, className, zoom) {
       }
       console.log('放大镜变小')
     }
-    if (e && e.code === 'Escape') {
+    if (e && e.keyCode === 27) {
       document.onkeydown = null
       $blowupMask.remove()
       $blowupLens.remove()

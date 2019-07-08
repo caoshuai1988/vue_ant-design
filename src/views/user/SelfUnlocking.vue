@@ -380,8 +380,8 @@ export default {
       height: 489px;
       padding-top: 24px;
       .container {
-        margin: 0 20%;
-        width: 60%;
+        margin: 0 auto;
+        width: 1200px;
         height: 100%;
         padding-top: 48px;
         background: #fff;

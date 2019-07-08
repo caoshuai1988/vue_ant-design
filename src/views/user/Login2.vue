@@ -363,14 +363,6 @@ export default {
 </script>
 
 <style lang="less" scoped>
-  /*.main {*/
-  /*  height: calc(100% - 216px);*/
-  /*  min-height: 450px;*/
-  /*  position: relative;*/
-  /*  img {*/
-  /*    width: 100%;*/
-  /*    height: 100%;*/
-  /*  }*/
   .login-box {
     width: 840px;
     height: 428px;

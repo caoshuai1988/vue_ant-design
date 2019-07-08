@@ -311,6 +311,9 @@ export default {
 /*  .ant-card-wider-padding /deep/ .ant-card-body {
     padding: 0px !important;
   }*/
+  /deep/ .ant-tabs-tab:last-child{
+  display: none;
+  }
   /deep/ .ant-tabs-bar{
   margin-bottom:0px !important;
   padding-top:24px !important;

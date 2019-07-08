@@ -2,7 +2,7 @@
  * @Author: 张志勇
  * @Date: 2019-06-15 10:22:09
  * @LastEditTime: 2019-07-04 17:18:33
- * @LastEditTime: 2019-07-05 11:50:24
+ * @LastEditTime: 2019-07-08 14:47:02
  * @Description:分页签详情页 包含地图组件 报表组件 可进行附件预览
  -->
 
@@ -263,6 +263,7 @@
 
 <script>
 import { STable } from '@/components'
+import Vue from 'vue'
 import Help from '@/components/form/Help'
 
 import DetailList from '@/components/tools/DetailList'
@@ -374,7 +375,6 @@ export default {
       headers: {
         authorization: 'authorization-text'
       },
-      // description: '表单页用于向用户收集或验证信息，基础表单常见于数据项较少的表单场',
       value: 1,
       // form
       form: this.$form.createForm(this),
@@ -571,8 +571,22 @@ export default {
       }
     }
   },
-
+  computed: {
+    isHeadBtn () {
+      return this.$store.state.app.fixedHeader
+    }
+  },
+  watch: {
+    isHeadBtn (val, oldVal) {
+      if (val === true) {
+        this.top = 64
+      } else {
+        this.top = 0
+      }
+    }
+  },
   mounted () {
+    Vue.ls.get('DEFAULT_FIXED_HEADER') === true ? this.top = 64 : this.top = 0
     window.addEventListener('scroll', this.handleScroll) // 监听滚动条
     this.$nextTick(() => {
       document.documentElement.scrollTop = this.$route.params.scrollY

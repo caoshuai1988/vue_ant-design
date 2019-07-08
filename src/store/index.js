@@ -18,21 +18,21 @@ export default new Vuex.Store({
   },
   state: {
     dataOne: 0,
-    value:''
+    value: ''
   },
   mutations: {
     changOne (state, type) {
       state.dataOne = type
     },
-    SET_INPUT: (state, type) => {
-	      state.value = type
-	  }
+    SET_INPUT (state, type) {
+      state.value = type
+    }
   },
   actions: {
     changOneActions (context, type) {
       context.commit('changOne', type)
     },
-    selectVal({ commit }, type) {
+    selectVal ({ commit }, type) {
       commit('SET_INPUT', type)
     }
   },

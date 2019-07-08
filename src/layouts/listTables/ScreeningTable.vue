@@ -11,7 +11,6 @@
         <div :key="col">
           <a-input
             style="margin: -5px 0"
-            :value="text"
             placeholder="输入序号"
             @change="e => handleChange(e.target.value, record.key, col)"
           />
@@ -72,21 +71,24 @@ export default {
   }
 }
 </script>
-<style lang="less">
-.screening .ant-table-bordered .ant-table-thead > tr > th, .ant-table-bordered .ant-table-tbody > tr > td{
-	border-right:0px !important;
-
+<style lang="less" scoped>
+.screening /deep/ .ant-table-bordered .ant-table-thead > tr > th,
+.screening /deep/ .ant-table-bordered .ant-table-tbody > tr > td {
+  border-right: 0px !important;
 }
-.screening .ant-table-bordered .ant-table-header > table, .ant-table-bordered .ant-table-body > table, .ant-table-bordered .ant-table-fixed-left table, .ant-table-bordered .ant-table-fixed-right table{
-	border-left:0px !important;
+.screening /deep/ .ant-table-bordered .ant-table-header > table,
+.screening /deep/ .ant-table-bordered .ant-table-body > table,
+.screening /deep/ .ant-table-bordered .ant-table-fixed-left table,
+.screening /deep/ .ant-table-bordered .ant-table-fixed-right table {
+  border-left: 0px !important;
 }
-.screening .editable-row-operations a {
+.screening /deep/ .editable-row-operations a {
   margin-right: 8px;
 }
-.screening .ant-pagination{
-	display:none;
+.screening /deep/ .ant-pagination {
+  display: none;
 }
-.screening .ant-table-pagination{
-	display:none;
+.screening /deep/ .ant-table-pagination {
+  display: none;
 }
 </style>

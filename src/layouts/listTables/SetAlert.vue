@@ -191,9 +191,6 @@ export default {
 .ant-popover-inner-content{
 	width:264px !important;
 }
-.ant-popover-message-title{
-	padding-left:0px !important;
-}
 	// 底部
 .footerBox{
   background-color: #fff;

@@ -312,7 +312,7 @@ export default {
     padding: 0px !important;
   }*/
   /deep/ .ant-tabs-tab:last-child{
-  	display: none;
+  display: none;
   }
   /deep/ .ant-tabs-bar{
   margin-bottom:0px !important;

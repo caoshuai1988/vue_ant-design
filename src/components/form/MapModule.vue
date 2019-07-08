@@ -1,7 +1,45 @@
 <template>
-  <a-card :body-style="{padding: '0'}">
-    <div :style="mapFd" :class="{screenload: screenloadFlag}">
-      <div :class="{mapHead: mapHeadFlag,headMap: !mapHeadFlag}" ref="text">
+  <a-card class="mapCard" :body-style="{width: '100%'}" >
+    <div>
+      <a-button type="primary" style="margin-left: 12px">保存</a-button>
+      <a-button-group style="margin-left: 10px">
+        <a-button>新增</a-button>
+        <a-button>绘制</a-button>
+        <a-button>审核</a-button>
+        <a-button>监管</a-button>
+        <a-button>导入</a-button>
+      </a-button-group>
+      <span class="searchSpan">
+        <a-input-search placeholder="请输入" style="width: 300px"/>
+      </span>
+      <div class="amplification" @click="amplificationBtn">
+        <a-button >全屏</a-button>
+      </div>
+    </div>
+    <div class="mapCardBody">
+      <baidu-map
+        :center="center"
+        :zoom="zoom"
+        @ready="handler"
+        style="width:100%;height:100%">
+        <bm-navigation anchor="BMAP_ANCHOR_TOP_LEFT"></bm-navigation>
+        <bm-geolocation
+          anchor="BMAP_ANCHOR_BOTTOM_RIGHT"
+          :showAddressBar="true"
+          :autoLocation="true"
+        ></bm-geolocation>
+      </baidu-map>
+    </div>
+    <a-modal
+      :body-style="{top: '-100px', position: 'absolute', width: '100%', height: '100vh', backgroundColor:'#fff', display: 'flex', flexDirection: 'column'}"
+      width="100%"
+      :visible="visible"
+      :footer="null"
+      :closable="false"
+      @ok="handleOk"
+      :confirmLoading="confirmLoading"
+      @cancel="handleCancel">
+      <div>
         <a-button type="primary" style="margin-left: 12px">保存</a-button>
         <a-button-group style="margin-left: 10px">
           <a-button>新增</a-button>
@@ -14,11 +52,10 @@
           <a-input-search placeholder="请输入" style="width: 300px"/>
         </span>
         <div class="amplification" @click="amplificationBtn">
-          <a-button v-if="iconSwitch" >全屏</a-button>
-          <a-button type="primary" v-else>返回</a-button>
+          <a-button type="primary">返回</a-button>
         </div>
       </div>
-      <div id="container" ref="container" :style="mapMr" :class="{mapContent: mapFlag}">
+      <div style="flex:auto;margin-top:28px">
         <baidu-map
           :center="center"
           :zoom="zoom"
@@ -32,7 +69,7 @@
           ></bm-geolocation>
         </baidu-map>
       </div>
-    </div>
+    </a-modal>
   </a-card>
 </template>
 
@@ -43,47 +80,16 @@ export default {
       center: { lng: 0, lat: 0 }, // map lng lat
       zoom: 11, // map level
       mapFlag: false, // map content
-      screenloadFlag: false, // full screen
-      mapHeadFlag: false, // map head
-      iconSwitch: true, //  zoom icon
-      mapFd: {
-        width: '',
-        height: ''
-      },
-      mapMr: {
-        width: '100%',
-        height: '100%',
-        paddingBottom: '0'
-      }
+      visible: false
     }
   },
-  mounted () {
-    this.mapMr.height = window.screen.availHeight - this.$refs.text.offsetHeight - 64 - 61 - 45 - 52.5 - 93 + 'px' // 暂时
-    // window.addEventListener('resize', () => {
-    //   this.iconSwitch ? this.mapFd.width = '' : this.mapFd.width = document.documentElement.clientWidth + 'px'
-    //   this.mapMr.height = this.mapFd.height
-    // })
-  },
+  mounted () {},
   methods: {
-
     onTabChange (key, type) {
       this[type] = key
     },
-    changeSize () {
-      if (this.mapFd.width === document.documentElement.clientWidth + 'px') {
-        this.mapFd.width = ''
-      } else {
-        this.mapFd.width = document.documentElement.clientWidth + 'px'
-        this.mapFd.height = document.documentElement.clientHeight + 'px'
-      }
-
-      this.screenloadFlag = !this.screenloadFlag
-      this.mapHeadFlag = !this.mapHeadFlag
-      this.mapFlag = !this.mapFlag
-      this.iconSwitch = !this.iconSwitch
-    },
     amplificationBtn () {
-      this.changeSize() // full screen
+      this.visible = !this.visible
     },
     handler ({ BMap, map }) {
       this.center.lng = 116.404
@@ -134,22 +140,6 @@ export default {
 
 <style lang="less" scoped>
 
-.screenload { /* full screen add css */
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 10;
-}
-
-.mapHead { /* 放大生效 */
-  padding: 10px 0;
-  background-color: #fff;
-}
-
-.mapContent { /* full screen add css end */
-  height: 100% !important;
-}
-
 .searchSpan { /* serch 位置 */
   margin: 45px;
 }
@@ -163,12 +153,19 @@ export default {
   margin-right: 12px;
 }
 
-.headMap {
-  width: 100%;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  background-color: #fff;
-  border-left: 1px solid #e8e8e8;
+.mapCard {
+  display: flex;
+  justify-items: center;
+  /deep/ .ant-card-body {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    .mapCardBody {
+      flex: auto;
+      margin-top: 24px;
+    }
+  }
+
 }
 
 </style>

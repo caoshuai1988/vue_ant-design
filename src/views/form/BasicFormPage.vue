@@ -1,7 +1,7 @@
 <!--
  * @Author: 张志勇
  * @Date: 2019-06-05 10:54:17
- * @LastEditTime: 2019-07-04 17:20:45
+ * @LastEditTime: 2019-07-08 13:45:30
  * @Description: 基础表单组件
  -->
 
@@ -164,7 +164,7 @@
             <!-- <h1 class="title-name">组标题</h1> -->
             <!-- 上传附件 -->
             <!-- style="margin-bottom:32px" -->
-            <a-form-item
+            <!-- <a-form-item
               label="上传附件"
               help="支持扩展名：.rar .zip .doc .docx .pdf .jpg..."
               :labelCol="labelCol"
@@ -184,6 +184,27 @@
                 <a-button>
                   <a-icon type="upload" />上传文件
                 </a-button>
+              </a-upload>
+            </a-form-item> -->
+            <a-form-item
+              label="上传附件"
+              :labelCol="labelCol"
+              :wrapperCol="wrapperCol"
+              :required="true">
+              <a-upload
+                name="file"
+                :multiple="true"
+                action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                v-decorator="[
+                  'input-prefix',
+                  {rules: [{ required: true, message: '请上传证件' }]}
+                ]"
+                :headers="headers"
+                @change="handleChange">
+                <a-button>
+                  <a-icon type="upload"/>文件上传
+                </a-button>
+                <span style="padding-left:10px">支持扩展名：.rar .zip .doc .docx .pdf .jpg...</span>
               </a-upload>
             </a-form-item>
 

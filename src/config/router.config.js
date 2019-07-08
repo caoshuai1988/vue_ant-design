@@ -325,6 +325,11 @@ export const asyncRouterMap = [
             meta: { title: '加载组件', keepAlive: false }
           },
           {
+            path: 'https://vue.ant.design/components/auto-complete-cn/',
+            name: 'antdesignComponents',
+            meta: { title: 'Ant design组件库', target: '_blank' }
+          },
+          {
             path: 'https://viserjs.github.io/demoHome.html',
             name: 'viser',
             meta: { title: '图表库-Viser', target: '_blank' }

@@ -2,6 +2,7 @@
  * @mkk 2019/7/1 17：01
  * form表单去除40px的行高
  * margin-bottom 默认为24px
+ * 处理多行文本框mb 4px 问题
  */
 .ant-form-horizontal .ant-form-item {
   .ant-form-item-control-wrapper .ant-form-item-control {
@@ -16,4 +17,8 @@
    .ant-upload.ant-upload-select-picture-card{
     margin-bottom: 0;
   }
+  textarea.ant-input {
+    margin-bottom: 0 !important;
+  }
 }
+

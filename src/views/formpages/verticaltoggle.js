@@ -1,3 +1,9 @@
+/*
+ * @Author: lxh
+ * @Date: 2019-07-03 16:01:38
+ * @LastEditTime: 2019-07-04 16:12:49
+ * @Description: 动画
+ */
 const elTransition = '0.3s height ease-in-out, 0.3s padding-top ease-in-out, 0.3s padding-bottom ease-in-out'
 const Transition = {
   'before-enter' (el) {

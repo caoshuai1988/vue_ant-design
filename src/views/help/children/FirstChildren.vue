@@ -16,9 +16,9 @@
       <img slot="extra" width="272" alt="logo" src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png" />
       <a-list-item-meta>
         <a slot="title" target="_blank">
-        	<router-link :to="{ path: '/help/helpinfo' }" target='_blank'>
-        	{{ item.title }}
-        	</router-link>
+          <router-link :to="{ path: '/help/helpinfo' }" target="_blank">
+            {{ item.title }}
+          </router-link>
         </a>
         <a slot="description">
           <span style="color:rgba(0,0,0,0.45)">{{ item.description }}</span>

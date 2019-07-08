@@ -31,7 +31,7 @@
       ></side-menu>
       <a-layout
         :class="[layoutMode, `content-width-${contentWidth}`]"
-        :style="{ paddingLeft: contentPaddingLeft, minHeight: 'calc(100vh + 94px)' }">
+        :style="{ paddingLeft: contentPaddingLeft, minHeight: 'calc(100vh)' }">
         <!-- layout header -->
         <global-header
           :mode="layoutMode"

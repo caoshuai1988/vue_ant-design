@@ -12,7 +12,7 @@ const getters = {
   multiTab: state => state.app.multiTab,
   layoutMode: state => state.app.layout, // cs
   curZoom: state => state.app.zoom, // cs
-  magnifier: state => state.app.magnifier, //mkk 放大镜
+  magnifier: state => state.app.magnifier, // mkk 放大镜
   // form 表单相关的的数据
   stepForm: state => {
     return {

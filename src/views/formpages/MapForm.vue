@@ -1,3 +1,9 @@
+<!--
+ * @Author: lxh
+ * @Date: 2019-07-03 16:01:38
+ * @LastEditTime: 2019-07-04 16:06:01
+ * @Description: 地图报表 tab
+ -->
 <template>
   <div style="background:#fff;padding-top:11px;flex:auto;display: flex;flex-direction: column;" >
     <a-tabs defaultActiveKey="4" >

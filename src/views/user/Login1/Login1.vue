@@ -143,7 +143,7 @@ import AFormItem from 'ant-design-vue/es/form/FormItem'
 import ARow from 'ant-design-vue/es/grid/Row'
 import $ from 'jquery'
 import 'jquery-backstretch'
-import imgSrc from '../../../assets/login_bg1.jpg'
+import imgSrc from '../../../assets/login_bg_mountain.jpg'
 
 export default {
   components: {
@@ -262,7 +262,7 @@ export default {
         float: left;
         width: 440px;
         height: 100%;
-        background: url(~@/assets/login_left_bg1.png) center;
+        background: url(~@/assets/login_left_building.jpg) center;
         padding: 170px 0 0 40px;
         font-size: 28px;
         color: #fff;

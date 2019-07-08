@@ -1,7 +1,7 @@
 <!--
  * @Author: 张志勇
  * @Date: 2019-06-14 17:46:50
- * @LastEditTime: 2019-07-04 11:11:51
+ * @LastEditTime: 2019-07-04 17:16:57
  * @Description:三列详情页 包含表格信息的展示
  -->
 
@@ -54,6 +54,7 @@
 
         </div>
       </a-col>
+      <!-- 帮助侧边栏 -->
       <template v-if="isShowHelp">
         <a-col
           style="padding: 0 12px"
@@ -62,84 +63,9 @@
           :md="helpNum"
           :sm="helpNum"
           :xs="helpNum">
-          <div class="page-direction">
-            <div class="title">
-              <div class="title-des">
-                <span class="help">帮助</span>
-                <span class="detail">详情</span>
-                <a-icon type="close" style="fontSize :16px; color:#a3a3a3;" class="close" @click="handleClose"/>
-              </div>
-            </div>
-            <div class="help-line"></div>
-            <div class="content-box">
-              <div class="content">
-                <div style="margin-bottom:20px">
-                  <p class="question">
-                    企业官网或轻量的Web应用
-                  </p>
-                  <p class="question">
-                    网站初始阶段访问量小，只需要一台低配置的云服务器ECS实例即可运行Apache或Nginx等Web应用程序、数据库、存储文件等。随着网站发展，您可以随时升级ECS实例的配置，或者增加ECS实例数量，无需担心低配计算单元在业务突增时带来的资源不足。
-                  </p>
-                </div>
-                <div style="margin-bottom:20px">
-                  <p class="question">
-                    企业官网或轻量的Web应用
-                  </p>
-                  <p class="question">
-                    网站初始阶段访问量小，只需要一台低配置的云服务器ECS实例即可运行Apache或Nginx等Web应用程序、数据库、存储文件等。随着网站发展，您可以随时升级ECS实例的配置，或者增加ECS实例数量，无需担心低配计算单元在业务突增时带来的资源不足。
-                  </p>
-                </div>
-                <div style="margin-bottom:20px">
-                  <p class="question">
-                    企业官网或轻量的Web应用
-                  </p>
-                  <p class="question">
-                    网站初始阶段访问量小，只需要一台低配置的云服务器ECS实例即可运行Apache或Nginx等Web应用程序、数据库、存储文件等。随着网站发展，您可以随时升级ECS实例的配置，或者增加ECS实例数量，无需担心低配计算单元在业务突增时带来的资源不足。
-                  </p>
-                </div>
-                <div style="margin-bottom:20px">
-                  <p class="question">
-                    企业官网或轻量的Web应用
-                  </p>
-                  <p class="question">
-                    网站初始阶段访问量小，只需要一台低配置的云服务器ECS实例即可运行Apache或Nginx等Web应用程序、数据库、存储文件等。随着网站发展，您可以随时升级ECS实例的配置，或者增加ECS实例数量，无需担心低配计算单元在业务突增时带来的资源不足。
-                  </p>
-                </div>
-                <div style="margin-bottom:20px">
-                  <p class="question">
-                    企业官网或轻量的Web应用
-                  </p>
-                  <p class="question">
-                    网站初始阶段访问量小，只需要一台低配置的云服务器ECS实例即可运行Apache或Nginx等Web应用程序、数据库、存储文件等。随着网站发展，您可以随时升级ECS实例的配置，或者增加ECS实例数量，无需担心低配计算单元在业务突增时带来的资源不足。
-                  </p>
-                </div>
-                <div style="margin-bottom:20px">
-                  <p class="question">
-                    企业官网或轻量的Web应用
-                  </p>
-                  <p class="question">
-                    网站初始阶段访问量小，只需要一台低配置的云服务器ECS实例即可运行Apache或Nginx等Web应用程序、数据库、存储文件等。随着网站发展，您可以随时升级ECS实例的配置，或者增加ECS实例数量，无需担心低配计算单元在业务突增时带来的资源不足。
-                  </p>
-                </div>
-                <div style="margin-bottom:20px">
-                  <p class="question">
-                    企业官网或轻量的Web应用
-                  </p>
-                  <p class="question">
-                    网站初始阶段访问量小，只需要一台低配置的云服务器ECS实例即可运行Apache或Nginx等Web应用程序、数据库、存储文件等。随着网站发展，您可以随时升级ECS实例的配置，或者增加ECS实例数量，无需担心低配计算单元在业务突增时带来的资源不足。
-                  </p>
-                </div>
-                <div style="margin-bottom:20px">
-                  <p class="question">
-                    企业官网或轻量的Web应用
-                  </p>
-                  <p class="question">
-                    网站初始阶段访问量小，只需要一台低配置的云服务器ECS实例即可运行Apache或Nginx等Web应用程序、数据库、存储文件等。随着网站发展，您可以随时升级ECS实例的配置，或者增加ECS实例数量，无需担心低配计算单元在业务突增时带来的资源不足。
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+          <a-affix :offsetTop="this.top">
+            <Help @handleClose="handleClose" :boxHeight="boxHeight"/>
+          </a-affix>
         </a-col>
       </template>
     </a-row>
@@ -150,15 +76,23 @@
 <script>
 import { STable } from '@/components'
 import DetailList from '@/components/tools/DetailList'
+import Help from '@/components/form/Help'
+
 const DetailListItem = DetailList.Item
 export default {
   components: {
     DetailList,
     DetailListItem,
-    STable
+    STable,
+    Help
   },
   data () {
     return {
+      boxHeight: {
+        height: ''
+      },
+      // 固钉
+      top: 0,
       isShowHelp: false,
       num: 24,
       // num: 18,

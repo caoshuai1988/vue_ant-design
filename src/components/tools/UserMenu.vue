@@ -8,7 +8,7 @@
           缩小倍数：A<br/>
           放大可视区：W<br/>
           缩小可视区：S <br/>
-          关闭放大镜：右键 Esc
+          关闭：右键 或 Esc
         </template>
          <a-icon type="zoom-in"/>
       </a-tooltip>
@@ -96,9 +96,7 @@
         this.$store.dispatch('ToggleSetDrawer', true)
       },
       bigScale() {
-        setTimeout(function() {
-          $('#app').BUP(1.5, 'App')
-        }, 300)
+        $('#app').BUP(1.5, 'App', this.$store.state.app.zoom)
       }
     }
   }

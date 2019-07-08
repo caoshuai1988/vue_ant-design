@@ -729,39 +729,49 @@ export const constantRouterMap = [
         component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login1/Login1-dynamic2')
       },
       {
-        path: 'login1/mountain',
-        name: 'login1Mountain',
-        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login1/Login1-mountain')
-      },
-      {
-        path: 'login1/city',
-        name: 'login1City',
-        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login1/Login1-city')
-      },
-      {
-        path: 'login1/sea',
-        name: 'login1Sea',
-        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login1/Login1-sea')
-      },
-      {
-        path: 'login1/buildings',
-        name: 'login1Buildings',
-        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login1/Login1-buildings')
-      },
-      {
-        path: 'login1/field',
-        name: 'login1Field',
-        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login1/Login1-field')
-      },
-      {
-        path: 'login1/sky',
-        name: 'login1Sky',
-        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login1/Login1-sky')
+        path: 'login1/building',
+        name: 'login1Building',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login1/Login1-building')
       },
       {
         path: 'login1/forest',
         name: 'login1Forest',
         component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login1/Login1-forest')
+      },
+      {
+        path: 'login1/frontier',
+        name: 'login1Frontier',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login1/Login1-frontier')
+      },
+      {
+        path: 'login1/galaxy',
+        name: 'login1Galaxy',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login1/Login1-galaxy')
+      },
+      {
+        path: 'login1/lake',
+        name: 'login1Lake',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login1/Login1-lake')
+      },
+      {
+        path: 'login1/light',
+        name: 'login1Light',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login1/Login1-light')
+      },
+      {
+        path: 'login1/mountain',
+        name: 'login1Mountain',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login1/Login1-mountain')
+      },
+      {
+        path: 'login1/space',
+        name: 'login1Space',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login1/Login1-space')
+      },
+      {
+        path: 'login1/terrace',
+        name: 'login1Terrace',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login1/Login1-terrace')
       }
     ]
   },
@@ -782,24 +792,9 @@ export const constantRouterMap = [
         component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login2/Login2-dynamic')
       },
       {
-        path: 'login2/mountain',
-        name: 'login2Mountain',
-        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login2/Login2-mountain')
-      },
-      {
-        path: 'login2/buildings',
-        name: 'login2Buildings',
-        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login2/Login2-buildings')
-      },
-      {
-        path: 'login2/city',
-        name: 'login2City',
-        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login2/Login2-city')
-      },
-      {
-        path: 'login2/field',
-        name: 'login2Field',
-        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login2/Login2-field')
+        path: 'login2/building',
+        name: 'login2Building',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login2/Login2-building')
       },
       {
         path: 'login2/forest',
@@ -807,14 +802,39 @@ export const constantRouterMap = [
         component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login2/Login2-forest')
       },
       {
-        path: 'login2/sea',
-        name: 'login2Sea',
-        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login2/Login2-sea')
+        path: 'login2/frontier',
+        name: 'login2Frontier',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login2/Login2-frontier')
       },
       {
-        path: 'login2/sky',
-        name: 'login2Sky',
-        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login2/Login2-sky')
+        path: 'login2/galaxy',
+        name: 'login2Galaxy',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login2/Login2-galaxy')
+      },
+      {
+        path: 'login2/lake',
+        name: 'login2Lake',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login2/Login2-lake')
+      },
+      {
+        path: 'login2/light',
+        name: 'login2Light',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login2/Login2-light')
+      },
+      {
+        path: 'login2/mountain',
+        name: 'login2Mountain',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login2/Login2-mountain')
+      },
+      {
+        path: 'login2/space',
+        name: 'login2Space',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login2/Login2-space')
+      },
+      {
+        path: 'login2/terrace',
+        name: 'login2Terrace',
+        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login2/Login2-terrace')
       },
       {
         path: 'login2/single',

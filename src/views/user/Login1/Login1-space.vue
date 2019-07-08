@@ -1,14 +1,16 @@
 <template>
-  <div class="main main-login1 main-login1-city">
+  <div class="main main-login1 main-login1-mountain">
     <div class="bgChoose">
       <ul>
-        <li><router-link :to="{ name: 'login1Mountain'}">大山</router-link></li>
-        <li><router-link :to="{ name: 'login1City'}" class="active">城市</router-link></li>
-        <li><router-link :to="{ name: 'login1Sea'}">大海</router-link></li>
-        <li><router-link :to="{ name: 'login1Buildings'}">高楼</router-link></li>
-        <li><router-link :to="{ name: 'login1Field'}">田野</router-link></li>
-        <li><router-link :to="{ name: 'login1Sky'}">星空</router-link></li>
+        <li><router-link :to="{ name: 'login1Building'}">建筑</router-link></li>
         <li><router-link :to="{ name: 'login1Forest'}">森林</router-link></li>
+        <li><router-link :to="{ name: 'login1Frontier'}">塞外</router-link></li>
+        <li><router-link :to="{ name: 'login1Galaxy'}">银河</router-link></li>
+        <li><router-link :to="{ name: 'login1Lake'}">湖泊</router-link></li>
+        <li><router-link :to="{ name: 'login1Light'}">科技光</router-link></li>
+        <li><router-link :to="{ name: 'login1Mountain'}">大山</router-link></li>
+        <li><router-link :to="{ name: 'login1Space'}" class="active">太空</router-link></li>
+        <li><router-link :to="{ name: 'login1Terrace'}">梯田</router-link></li>
       </ul>
     </div>
     <div class="login-box">
@@ -154,10 +156,9 @@ import AFormItem from 'ant-design-vue/es/form/FormItem'
 import ARow from 'ant-design-vue/es/grid/Row'
 import $ from 'jquery'
 import 'jquery-backstretch'
-import imgSrc from '../../../assets/login_bg2.png'
+import imgSrc from '../../../assets/login_bg_space.jpg'
 
 export default {
-  name: 'login1Mountain',
   components: {
     ARow,
     AFormItem
@@ -274,7 +275,7 @@ export default {
         float: left;
         width: 440px;
         height: 100%;
-        background: url(~@/assets/login_left_bg2.png) center;
+        background: url(~@/assets/login_left_space.jpg) center;
         padding: 170px 0 0 40px;
         font-size: 28px;
         color: #fff;

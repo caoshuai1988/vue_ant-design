@@ -1,3 +1,9 @@
+<!--
+ * @Author: lxh
+ * @Date: 2019-07-01 09:13:38
+ * @LastEditTime: 2019-07-04 16:13:22
+ * @Description: 报表查看
+ -->
 <template>
   <div ref="text" style="height:100%;width:100%;">
     <a-card :body-style="{padding: '24px 32px'}">
@@ -12,7 +18,7 @@
             缩小倍数：A<br/>
             放大可视区：W<br/>
             缩小可视区：S <br/>
-            关闭放大镜：右键 Esc
+            关闭：右键 或 Esc
           </template>
         </a-tooltip>
         <a-button-group>
@@ -60,11 +66,13 @@ export default {
       document.title = '基本情况表 - 计划阶段 - 2018年韶关市翁源县江尾镇高标准农田建设项目'
     }
   },
+  mounted(){
+    //增加body缩放 mkk 2019/7/5
+    document.body.style.zoom = this.$store.state.app.zoom
+  },
   methods: {
-    bigScale () {
-      setTimeout(function () {
-        $('#app').BUP(1.5, 'App')
-      }, 300)
+    bigScale() {
+      $('#app').BUP(1.5, 'App', this.$store.state.app.zoom)
     },
     handleSizeChange (e) {
       console.log('cs:' + e)

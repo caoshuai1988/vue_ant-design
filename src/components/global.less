@@ -7,6 +7,8 @@ body {
   "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  min-width: 1200px;
+  min-height: 700px;
   &.colorWeak {
     filter: invert(80%);
   }
@@ -14,7 +16,22 @@ body {
     overflow: hidden;
   }
 }
-
+@media screen and (max-width: 1200px) {
+  body{
+    &.userLayout,
+    &.recoverLayout{
+      overflow-x: scroll;
+    }
+  }
+}
+@media screen and (max-height: 700px) {
+  body {
+    &.userLayout,
+    &.recoverLayout{
+      overflow-y: scroll;
+    }
+  }
+}
 .layout.ant-layout {
   height: auto;
   overflow-x: hidden;

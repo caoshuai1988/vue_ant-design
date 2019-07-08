@@ -246,7 +246,6 @@ export default {
 <style lang="less" scoped>
   .main {
     height: calc(100% - 216px);
-    min-height: 450px;
     position: relative;
     .login-box {
       position: absolute;

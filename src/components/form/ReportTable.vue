@@ -45,7 +45,8 @@ export default {
         width: '',
         background: '#fff',
         paddingTop: '16px',
-        height: '100%'
+        height: '100%',
+        minHeight: '75vh'
       },
       tableStyle: { // 报表默认
         height: '100%',

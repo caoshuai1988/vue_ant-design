@@ -103,6 +103,7 @@
           </chart-card>
         </a-col>
       </a-row>
+
       <a-row :gutter="24">
         <a-col :xl="18" :lg="24" :md="24" :sm="24" :xs="24">
           <a-card
@@ -118,9 +119,7 @@
               <div class="module-card-grid " :key="i" v-for="(item, i) in projects">
                 <div class="card-grid">
                   <div class="img-wrap grid-icon" :style="{background: item.color}">
-                    <!-- <img src="@/assets/icons/icon2.png" alt=""> -->
                     <img style="width: 34px; height:34px;" :src="item.icon" alt="">
-                    <!-- <a-avatar :size="64" :icon="item.icon" style="background:rgb(19, 194, 194)" /> -->
                   </div>
                   <div class="grid-caption">{{ item.caption }}</div>
                 </div>
@@ -139,16 +138,15 @@
             <span slot="title">我的待办 （<a href="javascript:void(0)" style="color:red">6</a>）</span>
             <a slot="extra">更多</a>
             <a-table :dataSource="table1" :pagination="false" style="padding: 24px 32px">
-              <a-table-column title="名称" data-index="name" key="name" :width="380"/>
-              <a-table-column title="模块" data-index="module" key="module"/>
-              <a-table-column title="进度" key="progress">
+              <a-table-column title="名称" data-index="name" key="name" :width="'380px'" />
+              <a-table-column title="模块" data-index="module" key="module" />
+              <a-table-column title="进度" >
                 <template slot-scope="text, record">
-                  <!-- <a-badge status="success" text="record.progress" /> -->
-                  <a-badge status="success" text="编辑(1/3)"/>
+                  <a-badge status="success" text="编辑(1/3)" />
                 </template>
               </a-table-column>
-              <a-table-column title="操作时间" key="datetime">
-                <template slot-scope="text, record">
+              <a-table-column title="操作时间" data-index="datetime" key="datetime">
+                <template slot-scope="text, record" rowKey="id">
                   <span style="color:#52c41a" v-if="record.datetime==='今天'">{{ record.datetime }}</span>
                   <span style="color:#FF9933" v-if="record.datetime==='昨天'">{{ record.datetime }}</span>
                   <span style="color:#FF0000" v-if="record.datetime==='2天前'">{{ record.datetime }}</span>
@@ -156,7 +154,7 @@
                 </template>
               </a-table-column>
               <a-table-column title="操作" key="operation">
-                <template slot-scope="text, record">
+                <template slot-scope="text, record" rowKey="id">
                   <a href style="margin-right:10px">{{ record.operation.transaction }}</a>
                   <a>{{ record.operation.delayed }}</a>
                 </template>
@@ -177,9 +175,8 @@
             <a-table :dataSource="table1" :pagination="false" style="padding: 24px 32px">
               <a-table-column title="名称" data-index="name" key="name" :width="380"/>
               <a-table-column title="模块" data-index="module" key="module"/>
-              <a-table-column title="进度" key="progress">
+              <a-table-column title="进度" data-index="progress" key="progress">
                 <template slot-scope="text, record">
-                  <!-- <a-badge status="success" text="record.progress" /> -->
                   <a-badge status="success" text="编辑(1/3)" />
                 </template>
               </a-table-column>
@@ -194,7 +191,6 @@
               <a-table-column title="操作" key="operation">
                 <template slot-scope="text, record">
                   <a>{{ record.operation.toView }}</a>
-                  <!-- <a style="margin-right:10px">{{ record.operation.delayed }}</a> -->
                 </template>
               </a-table-column>
             </a-table>
@@ -210,8 +206,8 @@
             :body-style="{ padding: 0 }">
             <span slot="title">常用下载 <span style="color:#999999;font-size:12px;padding-left:10px;">只显示近10条业务</span></span>
             <a slot="extra">更多</a>
-            <a-table :dataSource="table1" :pagination="false" style="padding: 24px 32px" >
-              <a-table-column title="名称" data-index="name" key="name" :width="380" />
+            <a-table :dataSource="table1" :pagination="false" style="padding: 24px 32px">
+              <a-table-column title="名称" data-index="name" key="name" :width="380"/>
               <a-table-column title="类型" data-index="module" key="module"/>
               <a-table-column title="发布日期" data-index="publicTime" key="publicTime"/>
               <a-table-column title="操作" key="operation">
@@ -261,7 +257,6 @@
 
             <div class="content-main">
               <div class="note-row" v-for="(ele, index) in statusMap" :key="index">
-                <!-- <div class="time" :style="{color:ele.color}">{{ ele.time }}</div> -->
                 <div class="content">
                   <a-badge :status="ele.status " :text="ele.text " />
                 </div>
@@ -272,7 +267,6 @@
           <a-card style="margin-bottom: 24px" :bordered="false" :body-style="{padding: '24px', overflow: 'hidden'}">
             <span slot="title">
               通知公告
-              <!-- <a-icon type="plus" /> -->
             </span>
             <a slot="extra">更多</a>
             <div class="announce-main">
@@ -286,7 +280,6 @@
           <a-card style="margin-bottom: 24px" :bordered="false" :body-style="{padding: 24}">
             <span slot="title">
               快捷菜单
-              <!-- <a-icon type="plus" /> -->
             </span>
             <a slot="extra">设置</a>
             <div class="item-group">
@@ -298,7 +291,6 @@
               <a>操作六</a>
               <a-button size="small" type="primary" ghost icon="plus">添加</a-button>
             </div>
-
           </a-card>
           <!-- 登录历史 -->
           <a-card style="margin-bottom: 24px" :loading="radarLoading" :bordered="false" :body-style="{ padding: 24 }">
@@ -476,7 +468,7 @@ export default {
       table1: [
         {
           key: '1',
-          name: '条目名称条目名称条目名称条目名称',
+          name: '条目名称条目名称条目名称条目名称条目名称条目名称条目名称条目名称条目名称条目名称条目名称条目名称',
           module: '模块名称1',
           publicTime: '2019-09-09',
           progress: '编辑(1/3)',
@@ -684,7 +676,6 @@ export default {
   // 处理左侧表格单行文本溢出
   /deep/ .ant-table-tbody > tr > td {
     // padding-right: 88px;
-    width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

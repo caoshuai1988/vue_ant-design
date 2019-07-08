@@ -110,7 +110,7 @@ export default {
       min-height: 22px;
       line-height: 22px;
       padding-bottom: 16px;
-      width: 100%;
+      // width: 100%;
       &:empty {
         content: ' ';
         height: 38px;

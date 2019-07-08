@@ -1,4 +1,9 @@
-/*需要建立样式表和模块对应*/
+/**
+ * @author mkk
+ * @date 2019/7/8
+ * @Description:  框架部分 涉及风格设置 导航模式 样式重置
+ */
+
 /*侧边重置*/
 .layout.ant-layout .header {
   padding-right: 0 !important;
@@ -67,7 +72,6 @@
   flex: 0 0 200px;
   margin-left: 0 !important;
 }
-
 
 .layout.ant-layout .top-nav-header-index.plusTheme01 {
   background: #0C3E72 !important;
@@ -224,18 +228,27 @@
   }
 }
 
-.layout.ant-layout .fulltopmenu.content-width-Fluid .header-index-wide {
-  max-width: unset;
-  margin-left: 24px;
-}
-
-/*fulltopmenu 添加样式*/
+/*导航模式fulltopmenu添加样式*/
 .fulltopmenu {
-  .sider{
+  &.content-width-Fluid .header-index-wide {
+    max-width: inherit;
+    margin-left: 24px;
+  }
+  .ant-header-fixedHeader {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 9;
+    width: 100%;
+    -webkit-transition: width 0.2s;
+    transition: width 0.2s;
+  }
+  .sider {
     min-height: calc(100vh - 64px);
   }
   .header-animat {
     height: 64px;
+    z-index: 100;
   }
   .header {
     .logo.top-nav-header {
@@ -307,7 +320,7 @@
   }
 }
 
-/*菜单弹出样式*/
+/*风格设置1 菜单弹出样式*/
 .ant-body-plusTheme01 {
   .ant-menu-submenu-popup {
     .ant-menu-sub {
@@ -333,6 +346,7 @@
   }
 }
 
+/*风格设置2 菜单弹出样式 */
 .ant-body-plusTheme02 {
   .ant-menu-submenu-popup {
     color: rgba(0, 0, 0, 0.65) !important;
@@ -342,12 +356,12 @@
         i.anticon {
           color: #1890ff !important;
         }
-        i.ant-menu-submenu-arrow:before,i.ant-menu-submenu-arrow:after {
-          background:#1890ff !important;
+        i.ant-menu-submenu-arrow:before, i.ant-menu-submenu-arrow:after {
+          background: #1890ff !important;
         }
       }
     }
-    i.ant-menu-submenu-arrow:before,i.ant-menu-submenu-arrow:after {
+    i.ant-menu-submenu-arrow:before, i.ant-menu-submenu-arrow:after {
       background: rgba(0, 0, 0, 0.65) !important;
     }
     .ant-menu-submenu-open {
@@ -386,17 +400,4 @@
 /*顶部 topmenu logo标题样式重置*/
 .layout.ant-layout .top-nav-header-index .header-index-wide .header-index-left .logo.top-nav-header h1 {
   font-size: 20px !important;
-}
-
-/*处理多行文本框mb 4px 问题*/
-.ant-form-horizontal textarea.ant-input {
-  margin-bottom: 0 !important;
-}
-
-.ant-layout-sider-collapsed .logo {
-  h1 {
-    margin: 0 !important;
-    text-align: center;
-    width: 100%;
-  }
 }

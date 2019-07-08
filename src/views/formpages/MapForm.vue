@@ -26,7 +26,7 @@
         <MapModule></MapModule>
       </a-tab-pane>
       <a-tab-pane key="3">
-        <span slot="tab">报表信息</span>MapForm
+        <span slot="tab">报表信息</span>
         <ReportTable></ReportTable>
       </a-tab-pane>
       <a-tab-pane key="4">

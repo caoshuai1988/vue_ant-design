@@ -90,5 +90,8 @@ export default {
   color: #52c41a;
   z-index: 9;
 }
+/deep/ .ant-card {
+  height: 100%;
+}
 
 </style>

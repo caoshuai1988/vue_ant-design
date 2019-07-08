@@ -1,15 +1,19 @@
 <template>
   <div class="example">
     <div style="margin-bottom:64px">
-      <a-spin size="small" />
-      <a-spin />
+      <a-spin style="margin-right:20px" size="small" />
+      <a-spin style="margin-right:20px" />
       <a-spin size="large" />
     </div>
     <div style="margin-bottom:64px">
       <a-spin>
-        <a-icon slot="indicator" type="loading" style="font-size: 24px" spin />
+        <a-icon slot="indicator" type="loading" style="font-size: 20px;margin-right:20px" spin />
       </a-spin>
+
       <a-spin :indicator="indicator" />
+      <a-spin>
+        <a-icon slot="indicator" type="loading" style="font-size: 40px" spin />
+      </a-spin>
     </div>
     <div style="margin-bottom:64px">
       <a-spin :spinning="spinning">
@@ -29,7 +33,7 @@ export default {
   components: {},
   data () {
     return {
-      indicator: <a-icon type="loading" style="font-size: 24px" spin />,
+      indicator: <a-icon type="loading" style="font-size: 30px; margin-right:20px" spin />,
       spinning: false
     }
   },
